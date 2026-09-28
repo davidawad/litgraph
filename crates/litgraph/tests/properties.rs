@@ -483,10 +483,16 @@ proptest! {
             if n == v.start {
                 continue;
             }
-            // BFS from start over active edges, skipping node `d` entirely.
+            // BFS from start over active edges, skipping node `d` entirely
+            // (including as a traversal source: removing `d` must stop it
+            // from being visited AND from propagating further, so when
+            // `d == v.start` nothing is reachable at all, correctly).
             let mut seen = vec![false; v.g.nodes.len()];
-            seen[v.start] = true;
-            let mut stack = vec![v.start];
+            let mut stack = vec![];
+            if v.start != d {
+                seen[v.start] = true;
+                stack.push(v.start);
+            }
             while let Some(u) = stack.pop() {
                 for e in v.outs(u) {
                     let w = v.g.edges[e].to;
