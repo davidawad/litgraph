@@ -374,33 +374,41 @@ proptest! {
 // integer-capacity DAGs.
 // ---------------------------------------------------------------------
 
+/// Recursive worker for [`brute_force_max_flow`]: tries every integer flow
+/// for edge `i..`, and updates `best` whenever a complete assignment
+/// conserves flow at every node but 0 and `t`.
+fn brute_force_rec(i: usize, edges: &[(usize, usize, i32)], n: usize, t: usize, flow: &mut Vec<i32>, best: &mut i32) {
+    if i == edges.len() {
+        let mut balance = vec![0i64; n];
+        for (k, &(a, b, _)) in edges.iter().enumerate() {
+            balance[a] -= i64::from(flow[k]);
+            balance[b] += i64::from(flow[k]);
+        }
+        for (node, &bal) in balance.iter().enumerate() {
+            if node != 0 && node != t && bal != 0 {
+                return;
+            }
+        }
+        // Test graphs are tiny (<=6 edges, capacity <=3 each), so the flow
+        // out of node 0 never approaches i32's range.
+        #[allow(clippy::cast_possible_truncation)]
+        let out_of_source = -balance[0] as i32;
+        *best = (*best).max(out_of_source);
+        return;
+    }
+    for f in 0..=edges[i].2 {
+        flow[i] = f;
+        brute_force_rec(i + 1, edges, n, t, flow, best);
+    }
+}
+
 /// Exhaustively maximizes flow out of node 0 over all integer per-edge flows
 /// in `0..=cap`, subject to conservation at every node but 0 and `t`. Only
 /// tractable because these test graphs are tiny (few edges, small caps).
 fn brute_force_max_flow(n: usize, edges: &[(usize, usize, i32)], t: usize) -> i32 {
     let mut best = 0;
     let mut flow = vec![0i32; edges.len()];
-    fn rec(i: usize, edges: &[(usize, usize, i32)], n: usize, t: usize, flow: &mut Vec<i32>, best: &mut i32) {
-        if i == edges.len() {
-            let mut balance = vec![0i64; n];
-            for (k, &(a, b, _)) in edges.iter().enumerate() {
-                balance[a] -= i64::from(flow[k]);
-                balance[b] += i64::from(flow[k]);
-            }
-            for (node, &bal) in balance.iter().enumerate() {
-                if node != 0 && node != t && bal != 0 {
-                    return;
-                }
-            }
-            *best = (*best).max(-balance[0] as i32);
-            return;
-        }
-        for f in 0..=edges[i].2 {
-            flow[i] = f;
-            rec(i + 1, edges, n, t, flow, best);
-        }
-    }
-    rec(0, edges, n, t, &mut flow, &mut best);
+    brute_force_rec(0, edges, n, t, &mut flow, &mut best);
     best
 }
 
