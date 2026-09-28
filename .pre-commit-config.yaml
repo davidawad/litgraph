@@ -1,0 +1,60 @@
+repos:
+  - repo: local
+    hooks:
+      - id: check-branch-worktree
+        name: check branch/worktree (swe-engineering-standards)
+        entry: scripts/git-hooks/check-branch-worktree.sh
+        language: script
+        pass_filenames: false
+        always_run: true
+
+  - repo: local
+    hooks:
+      - id: push-after-commit
+        name: push after commit (swe-engineering-standards)
+        entry: scripts/git-hooks/push-after-commit.sh
+        language: script
+        pass_filenames: false
+        always_run: true
+        stages: [post-commit]
+        verbose: true
+
+  - repo: local
+    hooks:
+      - id: dependency-freshness-check
+        name: dependency freshness check (dot-5nb)
+        entry: scripts/git-hooks/dependency-freshness-check.sh
+        language: script
+        pass_filenames: false
+        always_run: true
+
+  # --- Conventional Commits (commit-msg stage) ------------------------------
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v3.6.0
+    hooks:
+      - id: conventional-pre-commit
+        stages: [commit-msg]
+        args: []
+
+  # --- secret scan -----------------------------------------------------------
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.21.2
+    hooks:
+      - id: gitleaks
+
+  # --- formatter / linter / typecheck (staged-files scope via pre-commit) ---
+  - repo: local
+    hooks:
+      - id: cargo-fmt
+        name: cargo fmt --check (formatter)
+        entry: cargo fmt --all -- --check
+        language: system
+        pass_filenames: false
+        types: [rust]
+
+      - id: cargo-clippy
+        name: cargo clippy (linter + typecheck -- the compiler IS the typecheck for Rust)
+        entry: cargo clippy --workspace --all-targets -- -D warnings
+        language: system
+        pass_filenames: false
+        types: [rust]

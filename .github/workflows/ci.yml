@@ -146,3 +146,58 @@ jobs:
       - run: nix build .#default -L
       - run: ./result/bin/litgraph describe | head -5
       - run: nix flake check -L
+
+  secret-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  commitlint:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: wagoid/commitlint-github-action@v6
+
+  actions-self-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: reviewdog/action-actionlint@v1
+        with:
+          fail_level: error
+
+  wasm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - uses: Swatinem/rust-cache@v2
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: wasm-bindgen-cli@0.2.127
+      - run: cargo build --release -p litgraph-wasm --target wasm32-unknown-unknown
+      - run: |
+          mkdir -p dist/wasm/web dist/wasm/node
+          wasm-bindgen --target web --out-dir dist/wasm/web target/wasm32-unknown-unknown/release/litgraph_wasm.wasm
+          wasm-bindgen --target nodejs --out-dir dist/wasm/node target/wasm32-unknown-unknown/release/litgraph_wasm.wasm
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: wasm smoke test
+        run: |
+          node -e "
+            const m = require('./dist/wasm/node/litgraph_wasm.js');
+            const r = JSON.parse(m.handle(JSON.stringify({packs:['cofc'],op:{op:'solve'}})));
+            if (!r.ok) { console.error(r); process.exit(1); }
+            console.log('wasm smoke ok');
+          "
