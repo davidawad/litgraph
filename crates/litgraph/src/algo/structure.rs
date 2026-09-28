@@ -260,7 +260,10 @@ pub fn min_cut(v: &View, s: NodeIx, t: NodeIx, cap: &[f64]) -> Cut {
         let mut bottleneck = f64::INFINITY;
         let mut x = t;
         while x != s {
-            let a = parent[x].unwrap();
+            // BFS above set `seen[t]`, so every node on the s→t path it
+            // found has a `parent`; if that ever fails, stop walking rather
+            // than panic (the cut below still reflects the state so far).
+            let Some(a) = parent[x] else { break };
             bottleneck = bottleneck.min(c[a]);
             x = to[a ^ 1];
         }
@@ -269,7 +272,7 @@ pub fn min_cut(v: &View, s: NodeIx, t: NodeIx, cap: &[f64]) -> Cut {
         }
         let mut x = t;
         while x != s {
-            let a = parent[x].unwrap();
+            let Some(a) = parent[x] else { break };
             c[a] -= bottleneck;
             c[a ^ 1] += bottleneck;
             x = to[a ^ 1];
@@ -300,6 +303,7 @@ pub fn min_cut(v: &View, s: NodeIx, t: NodeIx, cap: &[f64]) -> Cut {
 
 /// Brandes betweenness centrality (unweighted, directed) over active edges.
 /// High-betweenness nodes are the procedural bottlenecks most lines pass through.
+#[must_use]
 pub fn betweenness(v: &View) -> Vec<f64> {
     let n = v.g.nodes.len();
     let mut cb = vec![0.0; n];
