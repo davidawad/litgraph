@@ -171,7 +171,7 @@ pub enum Op {
         /// Metrics to summarize.
         #[serde(default = "sim_metrics", deserialize_with = "one_or_many")]
         metrics: Vec<String>,
-        /// CVaR tail fraction.
+        /// `CVaR` tail fraction.
         #[serde(default = "f_alpha")]
         alpha: f64,
         /// Step cap per run.
