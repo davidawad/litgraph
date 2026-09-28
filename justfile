@@ -109,6 +109,12 @@ wasm:
     wasm-bindgen --target web --out-dir dist/wasm/web target/wasm32-unknown-unknown/release/litgraph_wasm.wasm
     wasm-bindgen --target nodejs --out-dir dist/wasm/node target/wasm32-unknown-unknown/release/litgraph_wasm.wasm
 
+# KNOWN GAP (2026-09-28, verified locally with wasm-bindgen-cli 0.2.127):
+# this currently panics -- crates/litgraph/src/api/mod.rs:143 calls
+# std::time::Instant::now() (elapsed_ms timing), which has no clock source
+# on wasm32-unknown-unknown and traps with "RuntimeError: unreachable".
+# Out of scope for this packaging workstream (crates/** owned elsewhere);
+# needs a #[cfg(target_arch = "wasm32")] time source (e.g. js_sys::Date).
 wasm-smoke: wasm
     node -e "const m=require('./dist/wasm/node/litgraph_wasm.js'); const r=JSON.parse(m.handle(JSON.stringify({packs:['cofc'],op:{op:'solve'}}))); if(!r.ok){console.error(r);process.exit(1)} console.log('wasm smoke ok')"
 
