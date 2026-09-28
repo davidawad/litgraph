@@ -142,6 +142,8 @@ pub const TERMINAL_VARS: &[(&str, &str)] = &[
     ("pack(\"x\"), label_has(\"x\")", "as for edges"),
 ];
 
+/// The default value for every built-in [`PARAMS`] entry, keyed by name.
+#[must_use]
 pub fn default_params() -> BTreeMap<String, f64> {
     PARAMS.iter().map(|(k, v, _)| (k.to_string(), *v)).collect()
 }
