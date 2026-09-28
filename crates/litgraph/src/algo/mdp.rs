@@ -96,7 +96,7 @@ struct Ctx<'a> {
     v: &'a View<'a>,
     cost: &'a [f64],
     cara: Option<f64>,
-    /// Objective::Worst: every draw (interrupts, waits) goes against us.
+    /// `Objective::Worst`: every draw (interrupts, waits) goes against us.
     worst: bool,
 }
 
