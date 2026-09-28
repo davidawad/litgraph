@@ -436,7 +436,7 @@ fn run_view(v: &View, op: &ViewOp<'_>, sc: &Scenario) -> Result<(Value, Vec<Warn
             to,
             capacity,
             top,
-        } => explore::structure_op(v, start_of(v, from.as_ref())?, what, to, capacity, top)
+        } => explore::structure_op(v, start_of(v, from.as_ref())?, what, to.as_deref(), capacity, top)
             .map(|x| (x, vec![])),
     }
 }
