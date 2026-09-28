@@ -178,14 +178,15 @@ mod tests {
     /// `default_source` reads `$LITGRAPH_PACKS` when set (nextest gives every
     /// test its own process, so mutating the env var here is isolated).
     #[test]
-    fn default_source_honors_litgraph_packs_env_var() {
+    fn default_source_honors_litgraph_packs_env_var() -> Result<()> {
         let dir = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../packs");
         assert!(dir.is_dir(), "expected a packs/ dir at {}", dir.display());
         std::env::set_var("LITGRAPH_PACKS", &dir);
-        let c = Catalog::default_source().expect("packs/ should load");
+        let c = Catalog::default_source()?;
         std::env::remove_var("LITGRAPH_PACKS");
         assert_eq!(c.origin, dir.display().to_string());
         assert!(!c.packs.is_empty());
+        Ok(())
     }
 
     /// `compile(.., links=false, ..)` drops the link file entirely: a graph
