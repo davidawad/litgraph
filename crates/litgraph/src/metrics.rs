@@ -106,7 +106,8 @@ pub const EDGE_VARS: &[(&str, &str)] = &[
 
 pub const EDGE_FUNCS: &[(&str, &str)] = &[
     ("tag(\"x\")", "edge has tag x"),
-    ("to_tag(\"x\")", "target node has outcome tag x"),
+    ("to_tag(\"x\")", "target node has outcome or node tag x"),
+    ("from_tag(\"x\")", "source node has outcome or node tag x"),
     ("attr(\"x\", d)", "edge attr x or d"),
     ("actor(\"examiner\")", "edge's raw actor equals"),
     ("pack(\"frcp\")", "edge belongs to pack"),
@@ -221,7 +222,8 @@ impl Env for EdgeEnv<'_> {
         };
         Some(match name {
             "tag" => s().map(|t| b(e.tags.contains(&t))),
-            "to_tag" => s().map(|t| b(self.g.nodes[e.to].outcome.contains(&t))),
+            "to_tag" => s().map(|t| b(self.g.nodes[e.to].has_tag(&t))),
+            "from_tag" => s().map(|t| b(self.g.nodes[e.from].has_tag(&t))),
             "actor" => s().map(|t| b(e.actor == t)),
             "pack" => s().map(|t| b(e.pack == t || self.g.nodes[e.from].pack == t)),
             "label_has" => s().map(|t| b(contains_ci(Some(&e.label), &t))),
@@ -265,7 +267,7 @@ impl Env for TerminalEnv<'_> {
                 .and_then(|a| a.str().map(str::to_string))
         };
         Some(match name {
-            "tag" | "to_tag" => s().map(|t| b(n.outcome.contains(&t))),
+            "tag" | "to_tag" => s().map(|t| b(n.has_tag(&t))),
             "pack" => s().map(|t| b(n.pack == t)),
             "label_has" => s().map(|t| b(contains_ci(Some(&n.label), &t))),
             _ => return None,

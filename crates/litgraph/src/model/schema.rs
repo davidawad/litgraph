@@ -98,6 +98,9 @@ pub struct RawNode {
     /// Outcome tags for terminals, e.g. `win`, `fee-eligible` (v2).
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub outcome: Vec<String>,
+    /// Free-form node tags, e.g. `entry`, `router` (v2).
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub tags: Vec<String>,
     /// Free numeric attributes visible to custom functions (v2).
     #[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
     pub attrs: BTreeMap<String, f64>,

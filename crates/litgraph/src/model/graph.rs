@@ -56,6 +56,8 @@ pub struct Node {
     pub payoff_source: PayoffSource,
     /// Outcome tags.
     pub outcome: Vec<String>,
+    /// Node tags.
+    pub tags: Vec<String>,
     /// Numeric attributes.
     pub attrs: BTreeMap<String, f64>,
     /// Engine-created (the `#end` twin of a continued terminal).
@@ -63,6 +65,12 @@ pub struct Node {
 }
 
 impl Node {
+    /// True if the node carries `tag` as an outcome tag or a node tag.
+    #[must_use]
+    pub fn has_tag(&self, tag: &str) -> bool {
+        self.outcome.iter().chain(&self.tags).any(|t| t == tag)
+    }
+
     /// True for terminal nodes.
     #[must_use]
     pub fn is_terminal(&self) -> bool {
@@ -280,6 +288,7 @@ impl Graph {
                 payoff,
                 payoff_source,
                 outcome: n.outcome.clone(),
+                tags: n.tags.clone(),
                 attrs: n.attrs.clone(),
                 synthetic: false,
             });

@@ -44,16 +44,29 @@ fn policy_at(
     Ok((s.value[start.unwrap_or(v.start)], pol))
 }
 
-pub fn sweep(
-    g: &Graph,
-    sc: &Scenario,
-    param: &str,
-    lo: f64,
-    hi: f64,
-    steps: usize,
-    watch: &[NodeIx],
-    tol: f64,
-) -> Result<SweepResult> {
+/// What to sweep.
+#[derive(Debug, Clone, Copy)]
+pub struct SweepSpec<'a> {
+    /// Parameter name (any; custom functions may read it).
+    pub param: &'a str,
+    /// Low end.
+    pub lo: f64,
+    /// High end.
+    pub hi: f64,
+    /// Grid points (at least 2).
+    pub steps: usize,
+    /// Nodes whose choice flips are reported (empty = all).
+    pub watch: &'a [NodeIx],
+    /// Bisection tolerance on the parameter.
+    pub tol: f64,
+}
+
+/// Solve on a grid of parameter values and refine every policy flip to its breakpoint.
+///
+/// # Errors
+/// View or solve errors at any grid point.
+pub fn sweep(g: &Graph, sc: &Scenario, spec: &SweepSpec<'_>) -> Result<SweepResult> {
+    let SweepSpec { param, lo, hi, steps, watch, tol } = *spec;
     let steps = steps.max(2);
     let xs: Vec<f64> = (0..steps)
         .map(|i| lo + (hi - lo) * i as f64 / (steps - 1) as f64)
