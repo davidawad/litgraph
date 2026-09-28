@@ -96,10 +96,11 @@ pub enum StructureWhat {
 }
 
 /// One operation. `from` overrides the scenario's start node.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, JsonSchema)]
+#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, JsonSchema)]
 #[serde(tag = "op", rename_all = "snake_case", deny_unknown_fields)]
 pub enum Op {
     /// The machine-readable manual.
+    #[default]
     Describe,
     /// Packs with data-quality statistics.
     Packs,
