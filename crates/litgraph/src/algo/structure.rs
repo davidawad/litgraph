@@ -211,6 +211,7 @@ pub struct Cut {
 /// edge = fewest edges whose loss disconnects t (v1 `minCut`). Capacities
 /// from a metric (e.g. `p`, `dollars`) give weighted chokepoints. Self-loops
 /// ignored; non-finite or negative capacities are clamped to 0.
+#[must_use]
 pub fn min_cut(v: &View, s: NodeIx, t: NodeIx, cap: &[f64]) -> Cut {
     let n = v.g.nodes.len();
     let mut to = vec![];
