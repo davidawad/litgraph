@@ -82,7 +82,7 @@ pub struct SimOptions {
 }
 
 fn summarize(mut xs: Vec<f64>) -> Summary {
-    xs.sort_by(|a, b| a.total_cmp(b));
+    xs.sort_by(f64::total_cmp);
     let n = xs.len().max(1) as f64;
     let mean = xs.iter().sum::<f64>() / n;
     let var = xs.iter().map(|x| (x - mean).powi(2)).sum::<f64>() / n;
@@ -90,7 +90,12 @@ fn summarize(mut xs: Vec<f64>) -> Summary {
         if xs.is_empty() {
             f64::NAN
         } else {
-            xs[((xs.len() - 1) as f64 * p).round() as usize]
+            // `p` is a percentile in [0, 1] and `xs` is non-empty here, so
+            // the rounded index is in `[0, xs.len() - 1]`: never negative,
+            // never truncated in a way that escapes that range.
+            #[allow(clippy::cast_possible_truncation, clippy::cast_sign_loss)]
+            let ix = ((xs.len() - 1) as f64 * p).round() as usize;
+            xs[ix]
         }
     };
     Summary {
