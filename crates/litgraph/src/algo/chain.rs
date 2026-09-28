@@ -54,24 +54,10 @@ pub fn step_dist(v: &View, sol_choice: &BTreeMap<NodeIx, usize>, n: NodeIx) -> V
     d
 }
 
-/// Solves the absorbing chain induced by policy `sol` from `start`: exact
-/// absorption probabilities, expected visits, and expected totals for every
-/// metric in `metrics` (parallel arrays of per-edge values, indexed like `v.g.edges`).
-///
-/// # Errors
-/// `Numeric` if the induced transition matrix is singular — either some
-/// transient state's out-probabilities do not sum to 1, or (more commonly)
-/// the policy loops forever from some reachable state without ever
-/// absorbing at a terminal.
-pub fn chain(
-    v: &View,
-    sol: &Solution,
-    start: NodeIx,
-    metrics: &[(String, Vec<f64>)],
-) -> Result<ChainResult> {
-    // Transient states = non-terminals reachable from `start` along edges the
-    // policy actually uses. (Graph-reachable is wrong: a state the policy
-    // never visits may loop on itself and make I − Q singular.)
+/// Transient states = non-terminals reachable from `start` along edges the
+/// policy actually uses. (Graph-reachable is wrong: a state the policy
+/// never visits may loop on itself and make I − Q singular.)
+fn transient_states(v: &View, sol: &Solution, start: NodeIx) -> Vec<NodeIx> {
     let mut reach = vec![false; v.g.nodes.len()];
     let mut stack = vec![start];
     reach[start] = true;
@@ -87,23 +73,20 @@ pub fn chain(
             }
         }
     }
-    let transient: Vec<NodeIx> = (0..v.g.nodes.len())
+    (0..v.g.nodes.len())
         .filter(|&n| reach[n] && !matches!(v.plan[n].control, Control::Terminal))
-        .collect();
-    let tix: BTreeMap<NodeIx, usize> = transient.iter().enumerate().map(|(i, &n)| (n, i)).collect();
+        .collect()
+}
+
+/// Builds `A = (I − Q)ᵀ` (dense, row-major) plus each transient state's
+/// step distribution, for the absorbing-chain linear system.
+fn build_system(
+    v: &View,
+    sol: &Solution,
+    transient: &[NodeIx],
+    tix: &BTreeMap<NodeIx, usize>,
+) -> (Vec<f64>, Vec<Vec<(usize, f64)>>) {
     let m = transient.len();
-    if v.plan[start].control == Control::Terminal {
-        return Ok(ChainResult {
-            start,
-            absorption: vec![(start, 1.0)],
-            visits: vec![],
-            expected: metrics.iter().map(|(k, _)| (k.clone(), 0.0)).collect(),
-            expected_steps: 0.0,
-            expected_utility: v.utility[start],
-            sink_mass: 0.0,
-        });
-    }
-    // A = (I − Q)ᵀ, dense.
     let mut a = vec![0.0; m * m];
     for i in 0..m {
         a[i * m + i] = 1.0;
@@ -118,47 +101,82 @@ pub fn chain(
         }
         dists.push(d);
     }
-    let mut b = vec![0.0; m];
-    b[tix[&start]] = 1.0;
-    let x = lu_solve(&mut a, m, &mut b).ok_or_else(|| {
-        // Trapped states: transient nodes from which no terminal is reachable
-        // along edges the policy actually uses (positive probability).
-        let mut escapes = vec![false; m];
-        let mut changed = true;
-        while changed {
-            changed = false;
-            for i in 0..m {
-                if escapes[i] {
-                    continue;
-                }
-                let out = dists[i].iter().any(|&(e, p)| p > 0.0 && tix.get(&v.g.edges[e].to).is_none_or(|&j| escapes[j]));
-                if out {
-                    escapes[i] = true;
-                    changed = true;
-                }
+    (a, dists)
+}
+
+/// Explains a singular `(I − Q)ᵀ`: either transition rows that do not sum to
+/// 1, or transient states that cannot reach a terminal under this policy.
+fn diagnose_singular(
+    v: &View,
+    sol: &Solution,
+    transient: &[NodeIx],
+    tix: &BTreeMap<NodeIx, usize>,
+    dists: &[Vec<(usize, f64)>],
+    start_ix: usize,
+) -> Error {
+    let m = transient.len();
+    // Trapped states: transient nodes from which no terminal is reachable
+    // along edges the policy actually uses (positive probability).
+    let mut escapes = vec![false; m];
+    let mut changed = true;
+    while changed {
+        changed = false;
+        for i in 0..m {
+            if escapes[i] {
+                continue;
+            }
+            let out = dists[i]
+                .iter()
+                .any(|&(e, p)| p > 0.0 && tix.get(&v.g.edges[e].to).is_none_or(|&j| escapes[j]));
+            if out {
+                escapes[i] = true;
+                changed = true;
             }
         }
-        let trapped: Vec<String> = (0..m)
-            .filter(|&i| !escapes[i] && x_reachable(&dists, &tix, v, i, tix[&start]))
-            .map(|i| {
-                let n = transient[i];
-                let via = sol.choice.get(&n).map(|&e| format!(" (chooses `{}`)", crate::api::choice_label(v, e))).unwrap_or_default();
-                format!("{}{via}", v.g.nodes[n].id)
-            })
-            .take(12)
-            .collect();
-        let bad_rows: Vec<String> = (0..m)
-            .filter_map(|i| {
-                let s: f64 = dists[i].iter().map(|x| x.1).sum();
-                ((s - 1.0).abs() > 1e-9).then(|| format!("{} (out-probability {s:.6})", v.g.nodes[transient[i]].id))
-            })
-            .take(8)
-            .collect();
-        if trapped.is_empty() && !bad_rows.is_empty() {
-            return Error::Numeric(format!("transition rows do not sum to 1: {}", bad_rows.join("; ")));
-        }
-        Error::Numeric(format!("policy never terminates: these states cannot reach a terminal under the chosen policy: {}", trapped.join("; ")))
-    })?;
+    }
+    let trapped: Vec<String> = (0..m)
+        .filter(|&i| !escapes[i] && x_reachable(dists, tix, v, i, start_ix))
+        .map(|i| {
+            let n = transient[i];
+            let via = sol
+                .choice
+                .get(&n)
+                .map(|&e| format!(" (chooses `{}`)", crate::api::choice_label(v, e)))
+                .unwrap_or_default();
+            format!("{}{via}", v.g.nodes[n].id)
+        })
+        .take(12)
+        .collect();
+    let bad_rows: Vec<String> = (0..m)
+        .filter_map(|i| {
+            let s: f64 = dists[i].iter().map(|x| x.1).sum();
+            ((s - 1.0).abs() > 1e-9)
+                .then(|| format!("{} (out-probability {s:.6})", v.g.nodes[transient[i]].id))
+        })
+        .take(8)
+        .collect();
+    if trapped.is_empty() && !bad_rows.is_empty() {
+        return Error::Numeric(format!(
+            "transition rows do not sum to 1: {}",
+            bad_rows.join("; ")
+        ));
+    }
+    Error::Numeric(format!(
+        "policy never terminates: these states cannot reach a terminal under the chosen policy: {}",
+        trapped.join("; ")
+    ))
+}
+
+/// Tallies absorption probabilities, expected visits, and expected metric
+/// totals from the solved expected-visit vector `x`.
+fn tally(
+    v: &View,
+    transient: &[NodeIx],
+    tix: &BTreeMap<NodeIx, usize>,
+    dists: &[Vec<(usize, f64)>],
+    x: &[f64],
+    metrics: &[(String, Vec<f64>)],
+) -> (BTreeMap<NodeIx, f64>, BTreeMap<String, f64>, f64, f64) {
     let mut absorption: BTreeMap<NodeIx, f64> = BTreeMap::new();
     let mut expected: BTreeMap<String, f64> =
         metrics.iter().map(|(k, _)| (k.clone(), 0.0)).collect();
@@ -178,11 +196,49 @@ pub fn chain(
             for (k, vals) in metrics {
                 let val = vals[e];
                 if val.is_finite() {
-                    *expected.get_mut(k).unwrap() += visits * p * val;
+                    *expected.entry(k.clone()).or_insert(0.0) += visits * p * val;
                 }
             }
         }
     }
+    (absorption, expected, steps, sink_mass)
+}
+
+/// Solves the absorbing chain induced by policy `sol` from `start`: exact
+/// absorption probabilities, expected visits, and expected totals for every
+/// metric in `metrics` (parallel arrays of per-edge values, indexed like `v.g.edges`).
+///
+/// # Errors
+/// `Numeric` if the induced transition matrix is singular — either some
+/// transient state's out-probabilities do not sum to 1, or (more commonly)
+/// the policy loops forever from some reachable state without ever
+/// absorbing at a terminal.
+pub fn chain(
+    v: &View,
+    sol: &Solution,
+    start: NodeIx,
+    metrics: &[(String, Vec<f64>)],
+) -> Result<ChainResult> {
+    let transient = transient_states(v, sol, start);
+    let tix: BTreeMap<NodeIx, usize> = transient.iter().enumerate().map(|(i, &n)| (n, i)).collect();
+    let m = transient.len();
+    if v.plan[start].control == Control::Terminal {
+        return Ok(ChainResult {
+            start,
+            absorption: vec![(start, 1.0)],
+            visits: vec![],
+            expected: metrics.iter().map(|(k, _)| (k.clone(), 0.0)).collect(),
+            expected_steps: 0.0,
+            expected_utility: v.utility[start],
+            sink_mass: 0.0,
+        });
+    }
+    let (mut a, dists) = build_system(v, sol, &transient, &tix);
+    let mut b = vec![0.0; m];
+    b[tix[&start]] = 1.0;
+    let x = lu_solve(&mut a, m, &mut b)
+        .map_err(|Singular| diagnose_singular(v, sol, &transient, &tix, &dists, tix[&start]))?;
+    let (absorption, expected, steps, sink_mass) = tally(v, &transient, &tix, &dists, &x, metrics);
     let expected_utility = absorption.iter().map(|(&t, &p)| p * v.utility[t]).sum();
     let mut absorption: Vec<(NodeIx, f64)> =
         absorption.into_iter().filter(|(_, p)| *p > 1e-12).collect();
