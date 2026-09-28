@@ -18,7 +18,7 @@ use serde_json::json;
 /// folded into `interrupts` and go through the `MixedMode` machinery, which
 /// never consults `sc.objective` at all. So wherever nature is mixed in with
 /// a live chooser (the ordinary "mixed node" case central to this engine),
-/// switching `Expected` -> `Worst` is a complete no-op: solve() returns the
+/// switching `Expected` -> `Worst` is a complete no-op: `solve()` returns the
 /// bit-identical value, even though nature has genuine, authored,
 /// sub-certain agency at that node.
 ///
