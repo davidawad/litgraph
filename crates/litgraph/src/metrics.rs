@@ -58,6 +58,7 @@ pub const UTILITIES: &[Builtin] = &[
     },
 ];
 
+/// Built-in scenario parameters: `(name, default, doc)`.
 pub const PARAMS: &[(&str, f64, &str)] = &[
     ("rate", 500.0, "our attorney billing rate, USD/hour"),
     ("opp_rate", 500.0, "opponent billing rate, USD/hour"),
