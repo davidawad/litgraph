@@ -120,7 +120,7 @@ pub fn chain(
     }
     let mut b = vec![0.0; m];
     b[tix[&start]] = 1.0;
-    let x = lu_solve(&mut a, m, &mut b).map_err(|_| {
+    let x = lu_solve(&mut a, m, &mut b).ok_or_else(|| {
         // Trapped states: transient nodes from which no terminal is reachable
         // along edges the policy actually uses (positive probability).
         let mut escapes = vec![false; m];
