@@ -1,0 +1,1253 @@
+{
+  "schemaVersion": 1,
+  "id": "ptab-patent-trial-appeal-board",
+  "title": "PTAB Patent Trial and Appeal Board Proceedings",
+  "description": "Post-grant adversarial challenges to issued patents before the USPTO Patent Trial and Appeal Board — inter partes review (IPR) and post-grant review (PGR), from petition filing through institution, trial on the merits, final written decision, rehearing/Director review, and Federal Circuit appeal.",
+  "jurisdiction": "35 U.S.C. Chapter 31 (AIA Trials) / 37 C.F.R. Part 42 / USPTO PTAB",
+  "startNodeId": "patent-granted",
+  "groups": [
+    { "id": "pre-petition-group", "label": "Pre-Petition Posture" },
+    { "id": "petition-group", "label": "Petition Filing & Threshold" },
+    { "id": "popr-group", "label": "Patent Owner Preliminary Response" },
+    { "id": "institution-group", "label": "Institution Decision" },
+    { "id": "post-institution-group", "label": "Post-Institution Scheduling & Discovery" },
+    { "id": "trial-group", "label": "Trial on the Merits" },
+    { "id": "hearing-group", "label": "Oral Hearing" },
+    { "id": "fwd-group", "label": "Final Written Decision & Estoppel" },
+    { "id": "rehearing-director-group", "label": "Rehearing & Director Review" },
+    { "id": "appeal-group", "label": "Federal Circuit Appeal" }
+  ],
+  "nodes": [
+    {
+      "id": "patent-granted",
+      "label": "Patent Granted",
+      "kind": "state",
+      "group": "pre-petition-group",
+      "cite": "35 U.S.C. § 151",
+      "note": "The patent issues with all claims allowed. If an AIA patent (effective date post-Sept 16, 2011), the 9-month PGR window under 35 U.S.C. § 321(c) begins to run on this date; the 20-year statutory term also begins. Any third-party challenge via IPR is subject to the 1-year bar under § 315(b) if infringement suit is later served."
+    },
+    {
+      "id": "infringement-complaint-served",
+      "label": "Infringement Complaint Served",
+      "kind": "state",
+      "group": "pre-petition-group",
+      "cite": "35 U.S.C. § 315(b)",
+      "note": "Service of an infringement complaint — including amended, counterclaim, or cross-claim allegations — starts the unextendable 1-year clock to file an IPR petition. A voluntarily dismissed complaint still starts or restarts this bar; estoppel under § 315(e)(1) attaches to all invalidation grounds raised or reasonably could have been raised, binding the petitioner in any subsequent proceeding."
+    },
+    {
+      "id": "challenge-vehicle-decision",
+      "label": "Petitioner Chooses Challenge Vehicle",
+      "kind": "decision",
+      "group": "pre-petition-group",
+      "cite": "35 U.S.C. § 311(c); 35 U.S.C. § 321(c)",
+      "note": "IPR (102/103 only) may be filed by any third party, anytime after patent grant, but is barred one year after service of an infringement complaint. PGR (101/102/103/112) is available only to third parties within 9 months of an AIA patent's grant date. The two remedies are largely mutually exclusive by timing; PGR is narrower in eligible timing but broader in grounds."
+    },
+    {
+      "id": "ipr-petition-filed",
+      "label": "IPR Petition Filed",
+      "kind": "state",
+      "group": "petition-group",
+      "cite": "35 U.S.C. §311(a)-(b); 37 CFR §42.104(a)-(b)",
+      "note": "IPR petition must identify each claim, ground(s), and provide claim charts with specific limitations mapped to prior art. Word limit of 14,000 (37 CFR 42.24(a)(1)(i)) is strict — failure to comply is grounds for rejecting the filing date. Grounds limited to §§102/103 (patents and printed publications only)."
+    },
+    {
+      "id": "pgr-petition-filed",
+      "label": "PGR Petition Filed",
+      "kind": "state",
+      "group": "petition-group",
+      "cite": "35 U.S.C. §321(a)-(b); 37 CFR §42.204(a)-(b)",
+      "note": "PGR is available only within 9 months of patent grant (35 U.S.C. §321(e)) and only for AIA patents. Word limit of 18,700 (37 CFR 42.24(a)(1)(ii)). Broader grounds available than IPR (101, 102, 103, 112) but only one PGR window exists per patent."
+    },
+    {
+      "id": "petition-threshold-review",
+      "label": "Office Reviews Petition Compliance",
+      "kind": "decision",
+      "group": "petition-group",
+      "cite": "37 CFR §42.106(a)-(c); 37 CFR §42.206(a)-(c)",
+      "note": "Office examines fee payment, form/word-count compliance, and threshold sufficiency (e.g., whether claim charts actually chart the claims) before according a filing date. 42.106(b) allows minor-defect correction; material defects result in filing-date rejection. Modeled as one shared node — the time-bar branch is realistically IPR-specific, since a PGR petition cannot structurally be filed outside its own 9-month window."
+    },
+    {
+      "id": "petition-filing-date-accorded",
+      "label": "Filing Date Accorded",
+      "kind": "state",
+      "group": "petition-group",
+      "cite": "37 CFR §42.106(a); 37 CFR §42.206(a)",
+      "note": "Petition satisfies threshold requirements; notice of filing date accorded mailed, starting the patent owner's POPR clock. Accorded filing date is treated as the filing date for all PTAB purposes."
+    },
+    {
+      "id": "ipr-time-barred",
+      "label": "Petition Time-Barred — 315(b) Trap",
+      "kind": "terminal",
+      "group": "petition-group",
+      "cite": "35 U.S.C. §315(b); PTAB Rule 42.304(c)",
+      "note": "PERMADEATH. Filed more than one year after the petitioner (or real party in interest/privy) was served with an infringement complaint. Jurisdictional defect — the Board must deny or vacate institution once discovered, even post-institution. No revival mechanism or equitable exception exists; the count runs from the earliest service to any real party in interest, not just the named petitioner.",
+      "valence": "bad"
+    },
+    {
+      "id": "popr-window",
+      "label": "POPR Window Open",
+      "kind": "decision",
+      "group": "popr-group",
+      "cite": "37 CFR 42.107(b)",
+      "note": "The 90-day clock runs from the Board's notice of the petition's filing date, not the actual petition filing date — delays between filing and notice can be consequential. The period is extendable by 30 days upon request without cause. Patent owner must decide early whether to respond, waive, or disclaim."
+    },
+    {
+      "id": "popr-filed",
+      "label": "POPR Filed",
+      "kind": "state",
+      "group": "popr-group",
+      "cite": "37 CFR 42.107(a)",
+      "note": "Word-limited (14,000 IPR / 18,700 PGR). May argue the merits and/or discretionary denial (Fintiv, §325(d) follow-on-petition factors). No new testimonial evidence without Board authorization, except a district court claim-construction ruling entered before the deadline."
+    },
+    {
+      "id": "popr-waived",
+      "label": "POPR Waived",
+      "kind": "state",
+      "group": "popr-group",
+      "cite": "37 CFR 42.107(b)",
+      "note": "Waiver (express or implied by inaction) accelerates institution to within 3 months of the petition filing date rather than the full POPR period — speed versus tipping your hand pre-institution."
+    },
+    {
+      "id": "claims-disclaimed-preinstitution",
+      "label": "Claims Disclaimed Pre-Institution",
+      "kind": "terminal",
+      "group": "popr-group",
+      "cite": "37 CFR 42.107(e)",
+      "note": "Patent owner statutorily disclaims all challenged claims before institution; partial disclaimers of some challenged claims are also permitted. No trial is instituted as to disclaimed claims — a clean, low-cost exit avoiding estoppel and a final written decision, but the claims are permanently surrendered with no refund of the trial fee.",
+      "valence": "good"
+    },
+    {
+      "id": "institution-decision",
+      "label": "Institution Decision",
+      "kind": "decision",
+      "group": "institution-group",
+      "cite": "35 U.S.C. 314(a); 37 CFR 42.108",
+      "note": "Board institutes if petitioner shows a reasonable likelihood of prevailing on at least one claim — a lower bar than PGR's more-likely-than-not standard (35 U.S.C. 324(a)). Discretionary denial under the Fintiv factors and §325(d) can block institution even where the merits showing is met."
+    },
+    {
+      "id": "institution-denied-merits",
+      "label": "Institution Denied — No Reasonable Likelihood",
+      "kind": "terminal",
+      "group": "institution-group",
+      "cite": "35 U.S.C. 314(a); 314(d)",
+      "note": "Petitioner failed to establish a reasonable likelihood of prevailing on any challenged claim. Denial is unreviewable to the Federal Circuit under 314(d); only Director review (post-Arthrex) can revisit it. Patent survives and petitioner's filing and prosecution costs are sunk.",
+      "valence": "good"
+    },
+    {
+      "id": "institution-denied-fintiv",
+      "label": "Institution Denied — Fintiv Discretion",
+      "kind": "terminal",
+      "group": "institution-group",
+      "cite": "Apple Inc. v. Fintiv, Inc., IPR2020-00019, Paper 11 (PTAB June 5, 2020) (precedential)",
+      "note": "Denied despite a merits showing, weighing the six Fintiv factors against parallel district court litigation. Also unreviewable under 314(d). A Sotera-style stipulation not to pursue overlapping invalidity grounds in the parallel case can defeat this denial before it issues.",
+      "valence": "good"
+    },
+    {
+      "id": "institution-granted",
+      "label": "Trial Instituted",
+      "kind": "state",
+      "group": "institution-group",
+      "cite": "35 U.S.C. 314(a); SAS Institute Inc. v. Iancu, 138 S. Ct. 1386 (2018)",
+      "note": "Post-SAS, institution is all-or-nothing per petition — every challenged claim and ground, not a subset. Trial officially begins; the one-year final-written-decision clock (35 U.S.C. 316(a)(11)) starts."
+    },
+    {
+      "id": "scheduling-order-issued",
+      "label": "Scheduling Order Issued",
+      "kind": "state",
+      "group": "post-institution-group",
+      "cite": "37 CFR 42.5(c); 35 U.S.C. 316(a)(11)",
+      "note": "Sets Due Dates 1-7 (POR, MTA, reply, sur-reply, hearing) against the 1-year statutory FWD deadline, extendable to 18 months for good cause or joinder. Rule-set default times serve as a baseline but may be modified by Board order (37 CFR 42.5(c)(1))."
+    },
+    {
+      "id": "mandatory-disclosures",
+      "label": "Mandatory Initial Disclosures Exchanged",
+      "kind": "state",
+      "group": "post-institution-group",
+      "cite": "37 CFR 42.51(a)",
+      "note": "Routine discovery categories requiring no Board authorization: relied-upon exhibits, cross-examination scheduling for affidavits, and information inconsistent with a party's stated position. Anything beyond these narrow categories requires party agreement or a motion under 37 CFR 42.51(b)(2)."
+    },
+    {
+      "id": "additional-discovery-motion",
+      "label": "Motion for Additional Discovery",
+      "kind": "decision",
+      "group": "post-institution-group",
+      "cite": "37 CFR 42.51(b)(2); Garmin Ltd. v. Cuozzo Speed Tech. LLC, IPR2012-00001, Paper 26",
+      "note": "Beyond routine categories, discovery in IPR requires a showing that it serves 'the interests of justice,' applying the five-factor Garmin test (claim complexity, evidence availability, delay, burden/cost, non-moving party's position); PGR uses the more permissive 'good cause' standard. Each motion is fact-intensive and case-specific."
+    },
+    {
+      "id": "protective-order-ipr",
+      "label": "Protective Order Governs Discovery",
+      "kind": "state",
+      "group": "post-institution-group",
+      "cite": "37 CFR 42.54(a)",
+      "note": "Default protective order (Trial Practice Guide model order) governs confidential material exchanged in discovery unless the parties stipulate to or move for different terms; restricts disclosure to designated personnel and bars public filing without Board authorization."
+    },
+    {
+      "id": "patent-owner-response-window",
+      "label": "Patent Owner Response Window",
+      "kind": "decision",
+      "group": "trial-group",
+      "cite": "37 CFR 42.120",
+      "note": "Patent owner's principal merits brief, due per the scheduling order (typically 3 months post-institution). Structural counterpart to mpep-prosecution's response cycle, except the responder is the patent owner defending validity."
+    },
+    {
+      "id": "patent-owner-response-filed",
+      "label": "Patent Owner Response Filed",
+      "kind": "state",
+      "group": "trial-group",
+      "cite": "37 CFR 42.120(a)-(b)",
+      "note": "May include expert declarations, claim construction arguments, and objective indicia of nonobviousness. Arguments not raised here (or in prior motion practice) are waived — they cannot be resurrected in sur-reply or at the hearing, and waiver bars any estoppel defense on that theory."
+    },
+    {
+      "id": "patent-owner-no-response",
+      "label": "No Patent Owner Response Filed",
+      "kind": "state",
+      "group": "trial-group",
+      "cite": "37 CFR 42.120",
+      "note": "Rare but not automatically fatal — unlike ex parte prosecution there is no per-se sanction for silence, but the Board decides on the unrebutted petition record, crediting the petitioner's evidence unchallenged and usually resulting in a de facto loss for the patent owner."
+    },
+    {
+      "id": "petitioner-reply-brief",
+      "label": "Petitioner Reply Filed",
+      "kind": "state",
+      "group": "trial-group",
+      "cite": "37 CFR 42.23(a)",
+      "note": "Reply may only respond to arguments raised in the POR or the institution decision — new grounds, new prior-art combinations, or theories not foreshadowed in the petition risk being struck as an improper reply and not considered."
+    },
+    {
+      "id": "patent-owner-sur-reply",
+      "label": "Patent Owner Sur-Reply Filed",
+      "kind": "state",
+      "group": "trial-group",
+      "cite": "37 CFR 42.23(b)",
+      "note": "Purely responsive to the petitioner's reply — no new evidence permitted. Closes the merits briefing record ahead of any oral hearing; new arguments not responsive to the reply may be struck or given diminished weight."
+    },
+    {
+      "id": "motion-to-amend-decision",
+      "label": "Motion to Amend Decision Point",
+      "kind": "decision",
+      "group": "trial-group",
+      "cite": "35 U.S.C. 316(d); 37 CFR 42.121",
+      "note": "Patent owner may contingently move to cancel and/or substitute claims (contingent on the originals being found unpatentable) — the only mid-IPR avenue to narrow claims rather than lose them outright; no amendment by right exists at final written decision."
+    },
+    {
+      "id": "mta-filed",
+      "label": "Contingent Motion to Amend Filed",
+      "kind": "state",
+      "group": "trial-group",
+      "cite": "37 CFR 42.121; Lectrosonics Inc. v. Zaxcom, Inc., IPR2018-01129, Paper 15 (PTAB June 4, 2019) (precedential)",
+      "note": "Must propose a reasonable number of substitute claims (presumptively one-to-one), supported by the original specification without new matter, responding to the unpatentability ground raised. Lectrosonics set the burden-shifting framework the current MTA Pilot Program builds on."
+    },
+    {
+      "id": "mta-preliminary-guidance",
+      "label": "Board Issues Preliminary Guidance",
+      "kind": "state",
+      "group": "trial-group",
+      "cite": "MTA Pilot Program, 84 Fed. Reg. 9497 (Mar. 15, 2019), made permanent",
+      "note": "Non-binding, non-appealable preliminary assessment of the substitute claims' likely patentability — lets the patent owner course-correct with a revised MTA before final briefing closes, a courtesy unique to MTA practice."
+    },
+    {
+      "id": "mta-revised-filed",
+      "label": "Revised Motion to Amend Filed",
+      "kind": "state",
+      "group": "trial-group",
+      "cite": "MTA Pilot Program; 37 CFR 42.121(c)",
+      "note": "Patent owner may file one revised MTA responding to the preliminary guidance and/or petitioner's opposition — a second bite unavailable in ordinary IPR motion practice, preventing unfair surprise."
+    },
+    {
+      "id": "petitioner-opposition-mta",
+      "label": "Petitioner Opposes Motion to Amend",
+      "kind": "state",
+      "group": "trial-group",
+      "cite": "37 CFR 42.121(c)",
+      "note": "Once the patent owner meets its threshold burden on form/written description, the burden shifts to petitioner to prove unpatentability of substitute claims by a preponderance of the evidence — a burden-shift unique to MTA practice."
+    },
+    {
+      "id": "settlement-decision",
+      "label": "Settlement Considered",
+      "kind": "decision",
+      "group": "trial-group",
+      "cite": "35 U.S.C. 317",
+      "note": "Parties may settle any time before the FWD issues; settlement terminates the proceeding as to the settling parties. Timing trap: if the Board has substantially reached the merits, it MAY still issue a FWD despite settlement (317(a)) — rare but real, since §317(a) does not automatically prevent Board issuance of a FWD."
+    },
+    {
+      "id": "ipr-terminated-settlement",
+      "label": "IPR Terminated by Settlement",
+      "kind": "terminal",
+      "group": "trial-group",
+      "cite": "35 U.S.C. 317(a); 37 CFR 42.74",
+      "note": "Proceeding terminates before FWD. No 315(e) estoppel attaches to the settling petitioner — estoppel requires a final written decision on the merits. Settlement agreement must be filed with the Office, potentially under seal.",
+      "valence": "good"
+    },
+    {
+      "id": "adverse-judgment-request",
+      "label": "Patent Owner Requests Adverse Judgment",
+      "kind": "state",
+      "group": "trial-group",
+      "cite": "37 CFR 42.73(b)",
+      "note": "Patent owner may request adverse judgment (e.g., cancel all challenged claims) rather than litigate to a FWD, to cut losses — but estoppel attaches as if the claims had been found unpatentable at FWD; the waiver is identical."
+    },
+    {
+      "id": "adverse-judgment-terminal",
+      "label": "Adverse Judgment Entered — Claims Cancelled",
+      "kind": "terminal",
+      "group": "trial-group",
+      "cite": "37 CFR 42.73(b)(2)-(3)",
+      "note": "Board cancels the claims without reaching the merits in a FWD. Functionally equivalent to losing on the merits: full 315(e) estoppel attaches to grounds raised or that reasonably could have been raised in the petition.",
+      "valence": "bad"
+    },
+    {
+      "id": "oral-hearing-request",
+      "label": "Oral Hearing Requested",
+      "kind": "decision",
+      "group": "hearing-group",
+      "cite": "37 CFR 42.70(a)",
+      "note": "Either party may request oral argument; the Board may also order one sua sponte. Not requesting one waives it — cases are often decided entirely on the papers, and waiving means no opportunity for live advocacy or Board questions before the FWD."
+    },
+    {
+      "id": "oral-hearing-held",
+      "label": "Oral Hearing Held",
+      "kind": "state",
+      "group": "hearing-group",
+      "cite": "37 CFR 42.70(b)-(c)",
+      "note": "Argument only — no new evidence at hearing, no new documentary exhibits. Demonstratives must be served in advance and may not contain material outside the record; the Board typically probes weak spots in the written briefing."
+    },
+    {
+      "id": "fwd-issued",
+      "label": "Board Issues Final Written Decision",
+      "kind": "decision",
+      "group": "fwd-group",
+      "cite": "35 U.S.C. § 318(a); 37 CFR § 42.73",
+      "note": "The Board decides the patentability of every instituted claim (SAS all-or-nothing), whether or not a hearing was held. Due within 1 year of institution, extendable to 18 months (316(a)(11))."
+    },
+    {
+      "id": "fwd-all-unpatentable",
+      "label": "FWD: All Claims Unpatentable",
+      "kind": "terminal",
+      "group": "fwd-group",
+      "cite": "35 U.S.C. §§ 318(a), 318(b), 315(e)",
+      "note": "Every instituted claim held unpatentable. Full 315(e) estoppel attaches: petitioner and privies are barred from later asserting in the USPTO, district court, or ITC any ground raised or that reasonably could have been raised here, construed broadly. The worst terminal for the patent owner.",
+      "valence": "good"
+    },
+    {
+      "id": "fwd-all-confirmed",
+      "label": "FWD: All Claims Confirmed Patentable",
+      "kind": "terminal",
+      "group": "fwd-group",
+      "cite": "35 U.S.C. § 318(a)",
+      "note": "Petitioner failed to prove unpatentability of any instituted claim. Trap: 315(e) estoppel STILL attaches to the losing petitioner despite losing on validity — estoppel is triggered by reaching a FWD, not by which side wins it.",
+      "valence": "good"
+    },
+    {
+      "id": "fwd-mixed",
+      "label": "FWD: Mixed Result",
+      "kind": "terminal",
+      "group": "fwd-group",
+      "cite": "35 U.S.C. §§ 318(a), 318(b), 315(e)",
+      "note": "Some claims cancelled, others confirmed. 315(e) estoppel attaches claim-by-claim and ground-by-ground to what was actually decided. Patent survives but narrower — the AIA-trial analog of mpep-prosecution's claims-amended terminal.",
+      "valence": "good"
+    },
+    {
+      "id": "post-fwd-options",
+      "label": "Post-FWD Options",
+      "kind": "decision",
+      "group": "rehearing-director-group",
+      "cite": "35 U.S.C. § 319; 37 CFR 42.71(d); 37 CFR 42.73(d)",
+      "note": "A dissatisfied party chooses among rehearing (same panel), Director review (post-Arthrex), or a direct Federal Circuit appeal — paths run on different clocks (30 days for rehearing/Director review, 63 days for appeal) from the same triggering FWD."
+    },
+    {
+      "id": "rehearing-request-filed",
+      "label": "Rehearing Request Filed",
+      "kind": "state",
+      "group": "rehearing-director-group",
+      "cite": "37 CFR 42.71(d)",
+      "note": "Must specifically identify matters the panel misapprehended or overlooked — no new arguments or evidence. Decided by the same panel that issued the FWD; the panel typically decides within 3-6 months, though no hard deadline governs the Board's own turnaround."
+    },
+    {
+      "id": "rehearing-decision",
+      "label": "Panel Decides Rehearing Request",
+      "kind": "decision",
+      "group": "rehearing-director-group",
+      "cite": "37 CFR 42.71(d)",
+      "note": "Rehearing grant rate is exceptionally low (panels affirm their own prior reasoning in the large majority of requests). If granted, the panel may modify claim construction or validity findings, but this remains intra-panel review without external accountability."
+    },
+    {
+      "id": "rehearing-denied-affirmed",
+      "label": "Rehearing Denied — FWD Stands",
+      "kind": "state",
+      "group": "rehearing-director-group",
+      "cite": "37 CFR 42.71(d); 35 U.S.C. § 319",
+      "note": "Original FWD stands unchanged; the 63-day Federal Circuit clock runs from the rehearing decision, not the original FWD, when a timely rehearing request was filed."
+    },
+    {
+      "id": "rehearing-granted-modified",
+      "label": "Rehearing Granted — Decision Modified",
+      "kind": "state",
+      "group": "rehearing-director-group",
+      "cite": "37 CFR 42.71(d)",
+      "note": "Panel modifies its own FWD, in whole or in part — uncommon but a genuinely different outcome is possible; the modified decision becomes the operative FWD for appeal purposes."
+    },
+    {
+      "id": "director-review-request-filed",
+      "label": "Director Review Requested",
+      "kind": "state",
+      "group": "rehearing-director-group",
+      "cite": "35 U.S.C. § 6(c); 37 CFR 42.73(d)(1); Arthrex v. Smith & Nephew, 141 S. Ct. 1761 (2021)",
+      "note": "Arthrex required some avenue for accountable review of APJ decisions; the Director personally reviews on request or sua sponte, available on institution decisions and final written decisions. Typically decided within 3-9 months, with no hard deadline prescribed."
+    },
+    {
+      "id": "director-review-decision",
+      "label": "Director Decides Review Request",
+      "kind": "decision",
+      "group": "rehearing-director-group",
+      "cite": "37 CFR 42.73(d)(1); USPTO Interim Director Review Process (June 29, 2021)",
+      "note": "Director's review is truly de novo — not bound by panel reasoning. The Director may affirm, reverse, modify (e.g., reinstate claims the panel invalidated), or remand any aspect of the panel's decision — genuine hierarchical review, unlike a panel reviewing its own work."
+    },
+    {
+      "id": "director-review-affirmed",
+      "label": "Director Affirms",
+      "kind": "state",
+      "group": "rehearing-director-group",
+      "cite": "37 CFR 42.73(d)(1)",
+      "note": "FWD stands as issued by the panel; the appeal clock runs from the Director's affirmance."
+    },
+    {
+      "id": "director-review-modified",
+      "label": "Director Modifies FWD",
+      "kind": "state",
+      "group": "rehearing-director-group",
+      "cite": "37 CFR 42.73(d)(1)",
+      "note": "Director changes the outcome on one or more claims — the most consequential post-FWD outcome, because it survives appellate review as the final agency action; parties then challenge it on the Federal Circuit record, not the panel's underlying reasoning."
+    },
+    {
+      "id": "federal-circuit-window",
+      "label": "Federal Circuit Appeal Window",
+      "kind": "decision",
+      "group": "appeal-group",
+      "cite": "35 U.S.C. § 319; 28 U.S.C. § 1295(a)(4)(A); 37 CFR § 90.3(a)",
+      "note": "63 days to file notice of appeal, running from whichever decision is operative (original FWD, rehearing decision, or Director review decision). Only actual trial participants may appeal — no alternative civil-action route like 35 U.S.C. § 145 exists for AIA trials."
+    },
+    {
+      "id": "appeal-forfeited-unappealed",
+      "label": "No Timely Appeal — FWD Final",
+      "kind": "terminal",
+      "group": "appeal-group",
+      "cite": "35 U.S.C. § 319; 37 CFR § 90.3(a)",
+      "note": "PERMADEATH #2. Missing the 63-day window forfeits all further review; the FWD (as it stands after any rehearing/Director review) becomes final and unreviewable by operation of statute — no subsequent motion for reinstatement, late filing, or equitable relief is available.",
+      "valence": "bad"
+    },
+    {
+      "id": "federal-circuit-notice-of-appeal",
+      "label": "Notice of Appeal Filed",
+      "kind": "state",
+      "group": "appeal-group",
+      "cite": "35 U.S.C. § 319; 28 U.S.C. § 1295(a)(4)(A)",
+      "note": "Federal Circuit has exclusive jurisdiction over PTAB appeals. The notice must identify the Board's final decision and the appealing party; failure to adequately name a party can waive appellability."
+    },
+    {
+      "id": "federal-circuit-review",
+      "label": "Federal Circuit Reviews the Decision",
+      "kind": "decision",
+      "group": "appeal-group",
+      "cite": "35 U.S.C. § 319; 5 U.S.C. § 706",
+      "note": "Substantial-evidence review for factual findings; de novo review for legal conclusions, including claim-construction subsidiary facts post-Teva v. Sandoz. The Board's discretionary decisions (e.g., Fintiv stays) receive abuse-of-discretion review. Claim-construction and §101-based PGR outcomes are reversed at higher rates than the overall average."
+    },
+    {
+      "id": "cafc-affirms",
+      "label": "Federal Circuit Affirms",
+      "kind": "terminal",
+      "group": "appeal-group",
+      "cite": "35 U.S.C. § 319",
+      "note": "The Board's FWD and its estoppel consequences stand as issued, becoming a final, appealable judgment. Further review only by discretionary Supreme Court certiorari (rare, not modeled here).",
+      "valence": "good"
+    },
+    {
+      "id": "cafc-vacates-remands",
+      "label": "Federal Circuit Vacates/Remands",
+      "kind": "terminal",
+      "group": "appeal-group",
+      "cite": "35 U.S.C. § 319",
+      "note": "Sends the case back to the Board for further proceedings consistent with the Federal Circuit's opinion; no fixed statutory deadline governs Board reconsideration, but the typical timeline runs 6-18 months. Modeled as this playthrough's terminal disposition even though remand loops back into a new final written decision.",
+      "valence": "caution"
+    }
+  ],
+  "edges": [
+    {
+      "from": "patent-granted",
+      "to": "infringement-complaint-served",
+      "label": "Get sued for infringement",
+      "actor": "either",
+      "authority": "35 U.S.C. § 315(b)"
+    },
+    {
+      "from": "patent-granted",
+      "to": "challenge-vehicle-decision",
+      "label": "Consider challenging without suit",
+      "actor": "applicant",
+      "authority": "35 U.S.C. § 311; 35 U.S.C. § 321"
+    },
+    {
+      "from": "patent-granted",
+      "to": "pgr-petition-filed",
+      "label": "File PGR petition directly",
+      "actor": "applicant",
+      "authority": "35 U.S.C. § 321(c)",
+      "deadline": {
+        "length": 270,
+        "extendable": false,
+        "note": "PGR window is 9 months from grant date and is unextendable — the PTAB lacks authority to extend it. Failure to file before expiration closes the PGR remedy permanently; post-grant challenges must proceed via IPR (if within the 315(b) window) or ex parte reexamination."
+      },
+      "valence": "good"
+    },
+    {
+      "from": "infringement-complaint-served",
+      "to": "challenge-vehicle-decision",
+      "label": "Evaluate IPR/PGR after being sued",
+      "actor": "applicant",
+      "authority": "35 U.S.C. § 315(b)"
+    },
+    {
+      "from": "infringement-complaint-served",
+      "to": "ipr-petition-filed",
+      "label": "File IPR directly after being sued",
+      "actor": "applicant",
+      "authority": "35 U.S.C. § 311; 35 U.S.C. § 315(b)",
+      "deadline": {
+        "length": 365,
+        "extendable": false,
+        "note": "IPR petition must be filed within 1 year of service of an infringement complaint. This bar is jurisdictional and unextendable. Failure to file within one year bars all future IPR petitions by that petitioner (or its privies/real parties in interest)."
+      },
+      "valence": "good"
+    },
+    {
+      "from": "challenge-vehicle-decision",
+      "to": "ipr-petition-filed",
+      "label": "File IPR petition",
+      "actor": "applicant",
+      "authority": "35 U.S.C. § 311-312; 37 C.F.R. § 42.104"
+    },
+    {
+      "from": "challenge-vehicle-decision",
+      "to": "pgr-petition-filed",
+      "label": "File PGR petition within 9 months",
+      "actor": "applicant",
+      "authority": "35 U.S.C. § 321(c)",
+      "deadline": {
+        "length": 270,
+        "extendable": false,
+        "note": "PGR window is 9 months from patent grant, measured from the decision point. If 9 months have already elapsed since grant, the PGR remedy is permanently closed."
+      },
+      "valence": "good"
+    },
+    {
+      "from": "ipr-petition-filed",
+      "to": "petition-threshold-review",
+      "label": "Office reviews petition compliance",
+      "actor": "office",
+      "authority": "37 CFR §42.104(c); 37 CFR §42.106(a)"
+    },
+    {
+      "from": "ipr-petition-filed",
+      "to": "institution-granted",
+      "label": "Move for joinder to pending IPR",
+      "actor": "applicant"
+    },
+    {
+      "from": "pgr-petition-filed",
+      "to": "petition-threshold-review",
+      "label": "Office reviews petition compliance",
+      "actor": "office",
+      "authority": "37 CFR §42.204(c); 37 CFR §42.206(a)"
+    },
+    {
+      "from": "petition-threshold-review",
+      "to": "petition-filing-date-accorded",
+      "label": "Petition meets fee/word-count/form",
+      "actor": "office",
+      "authority": "37 CFR §42.106(a); 37 CFR §42.206(a)"
+    },
+    {
+      "from": "petition-threshold-review",
+      "to": "ipr-petition-filed",
+      "label": "Correct petition defect and refile",
+      "actor": "applicant",
+      "authority": "37 CFR §42.106(b)",
+      "deadline": {
+        "length": 14,
+        "extendable": false,
+        "note": "If a minor defect is rejected, applicant must correct and refile within 14 days or lose the filing date; failure results in rejection of the entire petition. The filing date does not relate back."
+      }
+    },
+    {
+      "from": "petition-threshold-review",
+      "to": "ipr-time-barred",
+      "label": "Board finds petition time-barred",
+      "actor": "examiner",
+      "authority": "35 U.S.C. §315(b)",
+      "deadline": {
+        "length": 365,
+        "extendable": false,
+        "note": "If the petition was filed more than 1 year after service of the complaint, it is jurisdictionally barred. The Board must deny institution or vacate trial if the bar is discovered post-institution. Trap: the count runs from the earliest service of a complaint on any real party in interest, not just the named petitioner."
+      },
+      "valence": "bad"
+    },
+    {
+      "from": "petition-filing-date-accorded",
+      "to": "popr-window",
+      "label": "Filing date accorded — POPR clock starts",
+      "actor": "office",
+      "authority": "37 CFR §42.107(b); 37 CFR §42.207(b)"
+    },
+    {
+      "from": "popr-window",
+      "to": "popr-filed",
+      "label": "File Patent Owner Preliminary Response",
+      "actor": "either",
+      "authority": "37 CFR 42.107(a), (b)",
+      "deadline": {
+        "length": 90,
+        "extendable": true,
+        "extensionAuthority": "37 CFR 42.107(b) (one 30-day extension available without cause)",
+        "note": "If the POPR is not filed within 90 days (plus any authorized extension), the patent owner waives the right to a preliminary response and the institution decision follows within 3 months of petition filing. A missed deadline is not forgivable post hoc."
+      }
+    },
+    {
+      "from": "popr-window",
+      "to": "popr-waived",
+      "label": "Waive the preliminary response",
+      "actor": "either",
+      "authority": "37 CFR 42.107(b)"
+    },
+    {
+      "from": "popr-window",
+      "to": "claims-disclaimed-preinstitution",
+      "label": "Disclaim all challenged claims",
+      "actor": "either",
+      "authority": "37 CFR 42.107(e)",
+      "valence": "good"
+    },
+    {
+      "from": "popr-filed",
+      "to": "institution-decision",
+      "label": "POPR complete — Board decides institution",
+      "actor": "office",
+      "authority": "35 U.S.C. 314(b), 37 CFR 42.108",
+      "deadline": {
+        "length": 90,
+        "extendable": true,
+        "extensionAuthority": "37 CFR 42.108(a)(1) (extendable by 1 month with parties' consent)",
+        "note": "If the Board does not issue an institution decision within 3 months of the POPR period closing, the patent owner loses any procedural right to complain of delay and trial proceeds. Failure to decide within the deadline does not invalidate the decision itself."
+      }
+    },
+    {
+      "from": "popr-waived",
+      "to": "institution-decision",
+      "label": "POPR waived — Board decides institution",
+      "actor": "office",
+      "authority": "35 U.S.C. 314(b), 37 CFR 42.108(a)(1)",
+      "deadline": {
+        "length": 90,
+        "extendable": true,
+        "extensionAuthority": "37 CFR 42.108(a)(1) (extendable by 1 month with parties' consent)",
+        "note": "When the POPR is waived, the 3-month institution clock runs from the petition filing date, not later. Failure to decide within 90 days does not toll the deadline or create estoppel; the Board retains authority to issue the decision post-deadline."
+      }
+    },
+    {
+      "from": "institution-decision",
+      "to": "institution-denied-merits",
+      "label": "Deny institution on the merits",
+      "actor": "examiner",
+      "authority": "35 U.S.C. 314(a); 37 CFR 42.108",
+      "probability": 0.2
+    },
+    {
+      "from": "institution-decision",
+      "to": "institution-denied-fintiv",
+      "label": "Deny institution on discretionary grounds",
+      "actor": "examiner",
+      "authority": "Apple Inc. v. Fintiv, Inc., IPR2020-00019, Paper 11 (PTAB June 5, 2020) (precedential); 35 U.S.C. 325(d)",
+      "probability": 0.15
+    },
+    {
+      "from": "institution-decision",
+      "to": "institution-granted",
+      "label": "Institute trial on all challenged claims",
+      "actor": "examiner",
+      "authority": "35 U.S.C. 314(a); SAS Institute Inc. v. Iancu, 138 S. Ct. 1386 (2018); 37 CFR 42.120",
+      "probability": 0.65
+    },
+    {
+      "from": "institution-denied-merits",
+      "to": "challenge-vehicle-decision",
+      "label": "File a follow-on petition",
+      "actor": "applicant",
+      "authority": "General Plastic Industrial Co. v. Canon Kabushiki Kaisha, IPR2016-01357, Paper 19 (PTAB Nov. 23, 2016) (precedential)",
+      "deadline": {
+        "length": 365,
+        "extendable": false,
+        "note": "Petitioner may file a follow-on IPR on different grounds/claims (subject to the §315(c) joinder bar), but the unextendable one-year bar from service of the infringement complaint under §315(b) still applies to any follow-on petition."
+      }
+    },
+    {
+      "from": "institution-denied-fintiv",
+      "to": "challenge-vehicle-decision",
+      "label": "Refile after parallel case resolves",
+      "actor": "applicant",
+      "authority": "35 U.S.C. 325(d); Fintiv factor 4 (parallel litigation status)",
+      "deadline": {
+        "length": 365,
+        "extendable": false,
+        "note": "If parallel litigation resolves, the Fintiv discretionary bar may no longer apply and petitioner may refile after a material change in circumstances, but the unextendable one-year bar from service of an infringement complaint under §315(b) still constrains timing."
+      }
+    },
+    {
+      "from": "institution-granted",
+      "to": "scheduling-order-issued",
+      "label": "Board issues scheduling order",
+      "actor": "office",
+      "authority": "37 CFR 42.5(a); PTAB Standing Order on Motions",
+      "deadline": {
+        "length": 30,
+        "extendable": false,
+        "note": "Board typically issues the scheduling order within 30 days of institution, setting the Patent Owner Response deadline, expert deadlines, and motion schedule."
+      }
+    },
+    {
+      "from": "institution-granted",
+      "to": "settlement-decision",
+      "label": "Consider early settlement",
+      "actor": "either",
+      "authority": "35 U.S.C. 317; 37 CFR 42.74"
+    },
+    {
+      "from": "scheduling-order-issued",
+      "to": "mandatory-disclosures",
+      "label": "Exchange mandatory initial disclosures",
+      "actor": "either",
+      "authority": "37 CFR 42.51(a)"
+    },
+    {
+      "from": "scheduling-order-issued",
+      "to": "settlement-decision",
+      "label": "Settle right after scheduling",
+      "actor": "either",
+      "authority": "35 U.S.C. 317"
+    },
+    {
+      "from": "mandatory-disclosures",
+      "to": "additional-discovery-motion",
+      "label": "Move for additional discovery",
+      "actor": "either",
+      "authority": "37 CFR 42.51(b)(2)"
+    },
+    {
+      "from": "mandatory-disclosures",
+      "to": "patent-owner-response-window",
+      "label": "Disclosures complete — no motion needed",
+      "actor": "either",
+      "authority": "37 CFR 42.120(b)",
+      "deadline": {
+        "length": 90,
+        "extendable": true,
+        "extensionAuthority": "37 CFR 42.5(c)(2)",
+        "note": "Patent Owner Response due 3 months from the institution date. Extensions require a showing of good cause per 37 CFR 42.5(c)(2). Missing this deadline without an extension waives the response and may preclude arguments at trial."
+      }
+    },
+    {
+      "from": "mandatory-disclosures",
+      "to": "protective-order-ipr",
+      "label": "Designate exchanged material confidential",
+      "actor": "either",
+      "authority": "37 CFR 42.54(a)"
+    },
+    {
+      "from": "additional-discovery-motion",
+      "to": "protective-order-ipr",
+      "label": "Board grants additional discovery",
+      "actor": "examiner",
+      "authority": "37 CFR 42.51(b)(2); 37 CFR 42.54(a)",
+      "probability": 0.3
+    },
+    {
+      "from": "additional-discovery-motion",
+      "to": "patent-owner-response-window",
+      "label": "Board denies additional discovery",
+      "actor": "examiner",
+      "authority": "37 CFR 42.51(b)(2); 37 CFR 42.120",
+      "probability": 0.7,
+      "deadline": {
+        "length": 90,
+        "extendable": true,
+        "extensionAuthority": "37 CFR 42.5(c)(2)",
+        "note": "The Patent Owner Response deadline (90 days from institution) remains unaffected by a discovery motion denial. Failure to extend if needed results in waiver of the response and preclusion at trial."
+      }
+    },
+    {
+      "from": "additional-discovery-motion",
+      "to": "additional-discovery-motion",
+      "label": "Renew motion for further discovery",
+      "actor": "either",
+      "authority": "37 CFR 42.51(b)(2)"
+    },
+    {
+      "from": "additional-discovery-motion",
+      "to": "settlement-decision",
+      "label": "Settle rather than fight discovery",
+      "actor": "either",
+      "authority": "35 U.S.C. 317"
+    },
+    {
+      "from": "protective-order-ipr",
+      "to": "patent-owner-response-window",
+      "label": "Discovery proceeds under protective order",
+      "actor": "office",
+      "authority": "37 CFR 42.54(a); 37 CFR 42.120",
+      "deadline": {
+        "length": 90,
+        "extendable": true,
+        "extensionAuthority": "37 CFR 42.5(c)(2)",
+        "note": "Patent Owner Response must comply with protective order terms while still meeting the 90-day deadline from institution. Extensions require good cause; confidentiality restrictions do not excuse untimeliness."
+      }
+    },
+    {
+      "from": "patent-owner-response-window",
+      "to": "patent-owner-response-filed",
+      "label": "File Patent Owner Response",
+      "actor": "either",
+      "authority": "37 CFR 42.120",
+      "deadline": {
+        "length": 90,
+        "extendable": true,
+        "extensionAuthority": "37 CFR 42.103; scheduling order",
+        "note": "Missing the POR deadline (typically 90 days post-institution per the scheduling order) means the Board decides on an unrebutted record — the patent owner has forfeited its right to argue on the merits and will nearly certainly lose. An extension must be requested before the deadline expires."
+      }
+    },
+    {
+      "from": "patent-owner-response-window",
+      "to": "patent-owner-no-response",
+      "label": "Elect not to respond",
+      "actor": "either",
+      "authority": "37 CFR 42.120"
+    },
+    {
+      "from": "patent-owner-response-window",
+      "to": "settlement-decision",
+      "label": "Settle instead of responding",
+      "actor": "either",
+      "authority": "35 U.S.C. 317"
+    },
+    {
+      "from": "patent-owner-response-filed",
+      "to": "petitioner-reply-brief",
+      "label": "File Petitioner Reply",
+      "actor": "applicant",
+      "authority": "37 CFR 42.23(a)",
+      "deadline": {
+        "length": 60,
+        "extendable": true,
+        "extensionAuthority": "37 CFR 42.103; scheduling order",
+        "note": "Missing the petitioner reply deadline (typically 60 days after the POR due date per the scheduling order) results in the reply not being entered or considered; the patent owner's arguments stand unrebutted."
+      }
+    },
+    {
+      "from": "patent-owner-response-filed",
+      "to": "settlement-decision",
+      "label": "Settle after filing response",
+      "actor": "either",
+      "authority": "35 U.S.C. 317"
+    },
+    {
+      "from": "petitioner-reply-brief",
+      "to": "patent-owner-sur-reply",
+      "label": "File Patent Owner Sur-Reply",
+      "actor": "either",
+      "authority": "37 CFR 42.23(b)",
+      "deadline": {
+        "length": 30,
+        "extendable": true,
+        "extensionAuthority": "37 CFR 42.103; scheduling order",
+        "note": "Missing the sur-reply deadline (typically 30 days after the petitioner reply due date) forecloses the patent owner's final opportunity to respond on the record before oral hearing or FWD; the rebuttal record closes."
+      }
+    },
+    {
+      "from": "patent-owner-sur-reply",
+      "to": "motion-to-amend-decision",
+      "label": "Briefing complete — assess amendment",
+      "actor": "either",
+      "authority": "35 U.S.C. 316(d); 37 CFR 42.121"
+    },
+    {
+      "from": "patent-owner-no-response",
+      "to": "settlement-decision",
+      "label": "Proceed toward settlement",
+      "actor": "either",
+      "authority": "35 U.S.C. 317"
+    },
+    {
+      "from": "patent-owner-no-response",
+      "to": "oral-hearing-request",
+      "label": "No response — still may request hearing",
+      "actor": "either",
+      "authority": "37 CFR 42.70"
+    },
+    {
+      "from": "motion-to-amend-decision",
+      "to": "mta-filed",
+      "label": "File contingent motion to amend",
+      "actor": "either",
+      "authority": "35 U.S.C. 316(d); 37 CFR 42.121"
+    },
+    {
+      "from": "motion-to-amend-decision",
+      "to": "settlement-decision",
+      "label": "No motion to amend — proceed",
+      "actor": "either",
+      "authority": "35 U.S.C. 317"
+    },
+    {
+      "from": "mta-filed",
+      "to": "mta-preliminary-guidance",
+      "label": "Board issues preliminary guidance",
+      "actor": "examiner",
+      "authority": "MTA Pilot Program, 84 Fed. Reg. 9497 (Mar. 15, 2019)"
+    },
+    {
+      "from": "mta-filed",
+      "to": "settlement-decision",
+      "label": "Settle while amendment is pending",
+      "actor": "either",
+      "authority": "35 U.S.C. 317"
+    },
+    {
+      "from": "mta-preliminary-guidance",
+      "to": "mta-revised-filed",
+      "label": "File a revised motion to amend",
+      "actor": "either",
+      "authority": "MTA Pilot Program",
+      "deadline": {
+        "length": 30,
+        "extendable": true,
+        "extensionAuthority": "37 CFR 42.103",
+        "note": "Revised MTA deadline (typically 30 days after preliminary guidance) — missing this forecloses the second bite. The patent owner is locked into the original MTA or left with no MTA, and petitioner's opposition stands unchallenged."
+      }
+    },
+    {
+      "from": "mta-preliminary-guidance",
+      "to": "petitioner-opposition-mta",
+      "label": "Proceed without revising",
+      "actor": "either",
+      "authority": "37 CFR 42.121(c)"
+    },
+    {
+      "from": "mta-preliminary-guidance",
+      "to": "settlement-decision",
+      "label": "Settle after unfavorable guidance",
+      "actor": "either",
+      "authority": "35 U.S.C. 317"
+    },
+    {
+      "from": "mta-revised-filed",
+      "to": "petitioner-opposition-mta",
+      "label": "Petitioner opposes revised amendment",
+      "actor": "applicant",
+      "authority": "37 CFR 42.121(c)",
+      "deadline": {
+        "length": 30,
+        "extendable": true,
+        "extensionAuthority": "37 CFR 42.103",
+        "note": "Petitioner opposition deadline (typically 30 days after the revised MTA due date per Board order) — missing this results in the opposition not being filed or considered; only the revised MTA will be assessed."
+      }
+    },
+    {
+      "from": "petitioner-opposition-mta",
+      "to": "settlement-decision",
+      "label": "MTA briefing closes",
+      "actor": "either",
+      "authority": "35 U.S.C. 317"
+    },
+    {
+      "from": "petitioner-opposition-mta",
+      "to": "oral-hearing-request",
+      "label": "MTA briefing closes — proceed to hearing",
+      "actor": "either",
+      "authority": "37 CFR 42.70"
+    },
+    {
+      "from": "settlement-decision",
+      "to": "ipr-terminated-settlement",
+      "label": "Settle before final written decision",
+      "actor": "either",
+      "authority": "35 U.S.C. 317(a); 37 CFR 42.74",
+      "valence": "good"
+    },
+    {
+      "from": "settlement-decision",
+      "to": "adverse-judgment-request",
+      "label": "Request adverse judgment instead",
+      "actor": "either",
+      "authority": "37 CFR 42.73(b)"
+    },
+    {
+      "from": "settlement-decision",
+      "to": "oral-hearing-request",
+      "label": "No settlement — proceed to hearing",
+      "actor": "either",
+      "authority": "37 CFR 42.70"
+    },
+    {
+      "from": "adverse-judgment-request",
+      "to": "adverse-judgment-terminal",
+      "label": "Board enters adverse judgment",
+      "actor": "examiner",
+      "authority": "37 CFR 42.73(b)"
+    },
+    {
+      "from": "oral-hearing-request",
+      "to": "oral-hearing-held",
+      "label": "Request oral argument",
+      "actor": "either",
+      "authority": "37 CFR 42.70(a), (b)"
+    },
+    {
+      "from": "oral-hearing-request",
+      "to": "fwd-issued",
+      "label": "Waive oral argument",
+      "actor": "either",
+      "authority": "37 CFR 42.70(a)"
+    },
+    {
+      "from": "oral-hearing-held",
+      "to": "fwd-issued",
+      "label": "Hearing concludes — case submitted",
+      "actor": "office",
+      "authority": "37 CFR 42.70(b)"
+    },
+    {
+      "from": "fwd-issued",
+      "to": "fwd-all-unpatentable",
+      "label": "Hold all instituted claims unpatentable",
+      "actor": "examiner",
+      "authority": "35 U.S.C. § 318(a)",
+      "probability": 0.55
+    },
+    {
+      "from": "fwd-issued",
+      "to": "fwd-all-confirmed",
+      "label": "Confirm all instituted claims patentable",
+      "actor": "examiner",
+      "authority": "35 U.S.C. § 318(a)",
+      "probability": 0.25
+    },
+    {
+      "from": "fwd-issued",
+      "to": "fwd-mixed",
+      "label": "Cancel some claims, confirm others",
+      "actor": "examiner",
+      "authority": "35 U.S.C. § 318(a)",
+      "probability": 0.2
+    },
+    {
+      "from": "fwd-all-unpatentable",
+      "to": "post-fwd-options",
+      "label": "Patent owner considers post-FWD relief",
+      "actor": "either",
+      "authority": "37 CFR § 42.71(d)"
+    },
+    {
+      "from": "fwd-all-confirmed",
+      "to": "post-fwd-options",
+      "label": "Petitioner considers post-FWD relief",
+      "actor": "either",
+      "authority": "37 CFR § 42.71(d)"
+    },
+    {
+      "from": "fwd-mixed",
+      "to": "post-fwd-options",
+      "label": "Either party considers post-FWD relief",
+      "actor": "either",
+      "authority": "37 CFR § 42.71(d)"
+    },
+    {
+      "from": "post-fwd-options",
+      "to": "rehearing-request-filed",
+      "label": "Request panel rehearing",
+      "actor": "either",
+      "authority": "37 CFR 42.71(d)",
+      "deadline": {
+        "length": 30,
+        "extendable": false,
+        "note": "Missing the 30-day rehearing deadline forfeits the right to request panel rehearing. The Federal Circuit appeal window (63 days) then runs directly from the original FWD date."
+      }
+    },
+    {
+      "from": "post-fwd-options",
+      "to": "director-review-request-filed",
+      "label": "Request Director review",
+      "actor": "either",
+      "authority": "37 CFR 42.73(d)(1)",
+      "deadline": {
+        "length": 30,
+        "extendable": false,
+        "note": "Missing the 30-day Director review request deadline forfeits the party's ability to petition for review, but the Director may still sua sponte initiate review. The Federal Circuit appeal window begins separately and is unaffected by missing this deadline."
+      }
+    },
+    {
+      "from": "post-fwd-options",
+      "to": "federal-circuit-window",
+      "label": "Skip rehearing — go straight to appeal",
+      "actor": "either",
+      "authority": "35 U.S.C. § 319"
+    },
+    {
+      "from": "rehearing-request-filed",
+      "to": "rehearing-decision",
+      "label": "Panel considers rehearing request",
+      "actor": "examiner",
+      "authority": "37 CFR 42.71(d)"
+    },
+    {
+      "from": "rehearing-decision",
+      "to": "rehearing-denied-affirmed",
+      "label": "Deny rehearing — decision stands",
+      "actor": "examiner",
+      "authority": "37 CFR 42.71(d)",
+      "probability": 0.9
+    },
+    {
+      "from": "rehearing-decision",
+      "to": "rehearing-granted-modified",
+      "label": "Grant rehearing — modify decision",
+      "actor": "examiner",
+      "authority": "37 CFR 42.71(d)",
+      "probability": 0.1
+    },
+    {
+      "from": "rehearing-decision",
+      "to": "director-review-request-filed",
+      "label": "Escalate denied rehearing to Director",
+      "actor": "either",
+      "authority": "37 CFR 42.73(d)(1)",
+      "deadline": {
+        "length": 30,
+        "extendable": false,
+        "note": "After a rehearing denial, a party may escalate to Director review within 30 days of the rehearing decision. Missing this deadline forfeits Director review eligibility (though the Director may still sua sponte review)."
+      }
+    },
+    {
+      "from": "rehearing-denied-affirmed",
+      "to": "federal-circuit-window",
+      "label": "Proceed to the appeal window",
+      "actor": "either",
+      "authority": "35 U.S.C. § 319"
+    },
+    {
+      "from": "rehearing-granted-modified",
+      "to": "federal-circuit-window",
+      "label": "Proceed to the appeal window",
+      "actor": "either",
+      "authority": "35 U.S.C. § 319"
+    },
+    {
+      "from": "director-review-request-filed",
+      "to": "director-review-decision",
+      "label": "Director reviews the decision",
+      "actor": "examiner",
+      "authority": "37 CFR 42.73(d)(1)"
+    },
+    {
+      "from": "director-review-decision",
+      "to": "director-review-affirmed",
+      "label": "Director affirms the panel",
+      "actor": "examiner",
+      "authority": "37 CFR 42.73(d)(1)",
+      "probability": 0.75
+    },
+    {
+      "from": "director-review-decision",
+      "to": "director-review-modified",
+      "label": "Director modifies the decision",
+      "actor": "examiner",
+      "authority": "37 CFR 42.73(d)(1)",
+      "probability": 0.15
+    },
+    {
+      "from": "director-review-decision",
+      "to": "patent-owner-response-window",
+      "label": "Director remands for further proceedings",
+      "actor": "examiner",
+      "authority": "37 CFR 42.73(d)(1)",
+      "probability": 0.1
+    },
+    {
+      "from": "director-review-affirmed",
+      "to": "federal-circuit-window",
+      "label": "Proceed to the appeal window",
+      "actor": "either",
+      "authority": "35 U.S.C. § 319"
+    },
+    {
+      "from": "director-review-modified",
+      "to": "federal-circuit-window",
+      "label": "Proceed to the appeal window",
+      "actor": "either",
+      "authority": "35 U.S.C. § 319"
+    },
+    {
+      "from": "federal-circuit-window",
+      "to": "federal-circuit-notice-of-appeal",
+      "label": "File notice of appeal",
+      "actor": "either",
+      "authority": "35 U.S.C. § 319; 37 CFR § 90.3(a)",
+      "probability": 0.92,
+      "deadline": {
+        "length": 63,
+        "extendable": false,
+        "note": "If the notice of appeal is not filed within 63 days of the Board's operative decision, the deadline expires with no remedy; the Board's decision becomes final and unreviewable, terminating all appellate rights."
+      }
+    },
+    {
+      "from": "federal-circuit-window",
+      "to": "appeal-forfeited-unappealed",
+      "label": "Let the 63-day window lapse",
+      "actor": "either",
+      "authority": "35 U.S.C. § 319; 37 CFR § 90.3(a)",
+      "probability": 0.08,
+      "deadline": {
+        "length": 63,
+        "extendable": false,
+        "note": "Lapse of the 63-day window triggers automatic forfeiture of the right to appeal; no subsequent motion for reinstatement, late filing, or equitable relief is available. The decision becomes final and binding."
+      },
+      "valence": "bad"
+    },
+    {
+      "from": "federal-circuit-notice-of-appeal",
+      "to": "federal-circuit-review",
+      "label": "Federal Circuit reviews the decision",
+      "actor": "office",
+      "authority": "35 U.S.C. § 319; Federal Circuit Rule 4"
+    },
+    {
+      "from": "federal-circuit-review",
+      "to": "cafc-affirms",
+      "label": "Affirm the Board",
+      "actor": "office",
+      "authority": "35 U.S.C. § 319",
+      "probability": 0.8
+    },
+    {
+      "from": "federal-circuit-review",
+      "to": "cafc-vacates-remands",
+      "label": "Vacate or remand to the Board",
+      "actor": "office",
+      "authority": "35 U.S.C. § 319",
+      "probability": 0.2
+    },
+    {
+      "from": "cafc-vacates-remands",
+      "to": "fwd-issued",
+      "label": "Board reconsiders on remand",
+      "actor": "examiner",
+      "authority": "35 U.S.C. § 319; 37 CFR § 42.73"
+    }
+  ]
+}

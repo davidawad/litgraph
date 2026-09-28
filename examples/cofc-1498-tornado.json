@@ -1,0 +1,27 @@
+{
+  "packs": [
+    "cofc",
+    "cafc"
+  ],
+  "scenario": {
+    "params": {
+      "rate": 850,
+      "stakes": 12
+    },
+    "remove_edges": [
+      "cofc::e-limitations-barred",
+      "cofc::e-1500-barred",
+      "cofc::e-filingfork-protest",
+      "cofc::e-casetype-general",
+      "cofc::e-patentfork-nonpatent"
+    ]
+  },
+  "op": {
+    "op": "tornado",
+    "params": [
+      "rate",
+      "stakes"
+    ],
+    "top": 10
+  }
+}

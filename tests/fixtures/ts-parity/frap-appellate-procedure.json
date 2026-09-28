@@ -1,0 +1,5109 @@
+{
+  "absorbingChain500": {
+    "absorptionProbabilityAtStart": {
+      "affirmed": 0.5541666666666666,
+      "affirmed-in-part-reversed-in-part": 0.04375,
+      "notice-of-appeal-untimely": 0.125,
+      "reversed": 0.09624999999999999,
+      "reversed-and-remanded": 0.07291666666666666,
+      "vacated-and-remanded": 0.10791666666666666
+    },
+    "dataQuality": "partial",
+    "expectedCostAtStart": 0,
+    "expectedDaysAtStart": 199.125,
+    "expectedStepsAtStart": 22.250000000000004,
+    "ok": true,
+    "policy": {
+      "appeal-clock-open": {
+        "from": "appeal-clock-open",
+        "label": "File notice of appeal (civil)",
+        "to": "notice-of-appeal-filed"
+      },
+      "appellant-brief-filed": {
+        "from": "appellant-brief-filed",
+        "label": "Appellee files response brief",
+        "to": "appellee-brief-filed"
+      },
+      "appellant-brief-window": {
+        "from": "appellant-brief-window",
+        "label": "File opening brief",
+        "to": "appellant-brief-filed"
+      },
+      "appellee-brief-filed": {
+        "from": "appellee-brief-filed",
+        "label": "File reply brief",
+        "to": "reply-brief-filed"
+      },
+      "cert-petition-window": {
+        "from": "cert-petition-window",
+        "label": "File petition for certiorari",
+        "to": "cert-petition-filed"
+      },
+      "cross-appeal-fork": {
+        "from": "cross-appeal-fork",
+        "label": "File notice of cross-appeal",
+        "to": "cross-appeal-filed"
+      },
+      "docketed-in-court-of-appeals": {
+        "from": "docketed-in-court-of-appeals",
+        "label": "Appellee weighs a cross-appeal",
+        "to": "cross-appeal-fork"
+      },
+      "interlocutory-order-issued": {
+        "from": "interlocutory-order-issued",
+        "label": "Check interlocutory review doors",
+        "to": "interlocutory-review-fork"
+      },
+      "interlocutory-review-fork": {
+        "from": "interlocutory-review-fork",
+        "label": "Injunction order — appeal as of right",
+        "to": "immediately-appealable-interlocutory"
+      },
+      "mandate-issued": {
+        "from": "mandate-issued",
+        "label": "Move to stay mandate for cert",
+        "to": "mandate-stayed-pending-cert"
+      },
+      "rehearing-window": {
+        "from": "rehearing-window",
+        "label": "Petition for rehearing / en banc",
+        "to": "rehearing-petition-filed"
+      },
+      "stay-pending-appeal-fork": {
+        "from": "stay-pending-appeal-fork",
+        "label": "Move for stay pending appeal — granted",
+        "to": "stay-granted"
+      },
+      "transcript-order-fork": {
+        "from": "transcript-order-fork",
+        "label": "Order the necessary transcript",
+        "to": "transcript-ordered"
+      },
+      "voluntary-dismissal-fork": {
+        "from": "voluntary-dismissal-fork",
+        "label": "Appeal proceeds — order the record",
+        "to": "transcript-order-fork"
+      }
+    }
+  },
+  "dijkstra500": {
+    "cheapestByDollars": {
+      "affirmed": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "final-judgment-entered",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "transcript-ordered",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "affirmed"
+        ],
+        "target": "affirmed",
+        "total": 0
+      },
+      "affirmed-in-part-reversed-in-part": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "final-judgment-entered",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "transcript-ordered",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "affirmed-in-part-reversed-in-part"
+        ],
+        "target": "affirmed-in-part-reversed-in-part",
+        "total": 0
+      },
+      "appeal-dismissed-no-brief": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "final-judgment-entered",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "transcript-ordered",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appeal-dismissed-no-brief"
+        ],
+        "target": "appeal-dismissed-no-brief",
+        "total": 0
+      },
+      "cert-denied": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "final-judgment-entered",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "transcript-ordered",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "affirmed",
+          "rehearing-window",
+          "mandate-issued",
+          "cert-petition-window",
+          "cert-petition-filed",
+          "cert-review-decision",
+          "cert-denied"
+        ],
+        "target": "cert-denied",
+        "total": 0
+      },
+      "cert-granted": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "final-judgment-entered",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "transcript-ordered",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "affirmed",
+          "rehearing-window",
+          "mandate-issued",
+          "cert-petition-window",
+          "cert-petition-filed",
+          "cert-review-decision",
+          "cert-granted"
+        ],
+        "target": "cert-granted",
+        "total": 0
+      },
+      "cert-not-sought": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "final-judgment-entered",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "transcript-ordered",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "affirmed",
+          "rehearing-window",
+          "mandate-issued",
+          "cert-petition-window",
+          "cert-not-sought"
+        ],
+        "target": "cert-not-sought",
+        "total": 0
+      },
+      "interlocutory-review-unavailable": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "interlocutory-order-issued",
+          "interlocutory-review-fork",
+          "interlocutory-review-unavailable"
+        ],
+        "target": "interlocutory-review-unavailable",
+        "total": 0
+      },
+      "notice-of-appeal-untimely": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "final-judgment-entered",
+          "appeal-clock-open",
+          "notice-of-appeal-untimely"
+        ],
+        "target": "notice-of-appeal-untimely",
+        "total": 0
+      },
+      "rehearing-en-banc-both-denied": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "final-judgment-entered",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "transcript-ordered",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "affirmed",
+          "rehearing-window",
+          "rehearing-petition-filed",
+          "panel-rehearing-decision",
+          "en-banc-poll-decision",
+          "rehearing-en-banc-both-denied"
+        ],
+        "target": "rehearing-en-banc-both-denied",
+        "total": 0
+      },
+      "reversed": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "final-judgment-entered",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "transcript-ordered",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "reversed"
+        ],
+        "target": "reversed",
+        "total": 0
+      },
+      "reversed-and-remanded": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "final-judgment-entered",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "transcript-ordered",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "reversed-and-remanded"
+        ],
+        "target": "reversed-and-remanded",
+        "total": 0
+      },
+      "vacated-and-remanded": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "final-judgment-entered",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "transcript-ordered",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "vacated-and-remanded"
+        ],
+        "target": "vacated-and-remanded",
+        "total": 0
+      },
+      "voluntarily-dismissed": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "final-judgment-entered",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-filed",
+          "voluntary-dismissal-fork",
+          "voluntarily-dismissed"
+        ],
+        "target": "voluntarily-dismissed",
+        "total": 0
+      }
+    },
+    "fastestByDays": {
+      "affirmed": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "interlocutory-order-issued",
+          "interlocutory-review-fork",
+          "immediately-appealable-interlocutory",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-not-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "statement-in-lieu-of-transcript",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "affirmed"
+        ],
+        "target": "affirmed",
+        "total": 104
+      },
+      "affirmed-in-part-reversed-in-part": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "interlocutory-order-issued",
+          "interlocutory-review-fork",
+          "immediately-appealable-interlocutory",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-not-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "statement-in-lieu-of-transcript",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "affirmed-in-part-reversed-in-part"
+        ],
+        "target": "affirmed-in-part-reversed-in-part",
+        "total": 104
+      },
+      "appeal-dismissed-no-brief": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "interlocutory-order-issued",
+          "interlocutory-review-fork",
+          "immediately-appealable-interlocutory",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-not-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "statement-in-lieu-of-transcript",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appeal-dismissed-no-brief"
+        ],
+        "target": "appeal-dismissed-no-brief",
+        "total": 34
+      },
+      "cert-denied": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "interlocutory-order-issued",
+          "interlocutory-review-fork",
+          "immediately-appealable-interlocutory",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-not-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "statement-in-lieu-of-transcript",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "affirmed",
+          "rehearing-window",
+          "mandate-issued",
+          "cert-petition-window",
+          "cert-petition-filed",
+          "cert-review-decision",
+          "cert-denied"
+        ],
+        "target": "cert-denied",
+        "total": 312
+      },
+      "cert-granted": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "interlocutory-order-issued",
+          "interlocutory-review-fork",
+          "immediately-appealable-interlocutory",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-not-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "statement-in-lieu-of-transcript",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "affirmed",
+          "rehearing-window",
+          "mandate-issued",
+          "cert-petition-window",
+          "cert-petition-filed",
+          "cert-review-decision",
+          "cert-granted"
+        ],
+        "target": "cert-granted",
+        "total": 312
+      },
+      "cert-not-sought": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "interlocutory-order-issued",
+          "interlocutory-review-fork",
+          "immediately-appealable-interlocutory",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-not-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "statement-in-lieu-of-transcript",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "affirmed",
+          "rehearing-window",
+          "mandate-issued",
+          "cert-petition-window",
+          "cert-not-sought"
+        ],
+        "target": "cert-not-sought",
+        "total": 222
+      },
+      "interlocutory-review-unavailable": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "interlocutory-order-issued",
+          "interlocutory-review-fork",
+          "interlocutory-review-unavailable"
+        ],
+        "target": "interlocutory-review-unavailable",
+        "total": 0
+      },
+      "notice-of-appeal-untimely": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "interlocutory-order-issued",
+          "interlocutory-review-fork",
+          "immediately-appealable-interlocutory",
+          "appeal-clock-open",
+          "notice-of-appeal-untimely"
+        ],
+        "target": "notice-of-appeal-untimely",
+        "total": 10
+      },
+      "rehearing-en-banc-both-denied": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "interlocutory-order-issued",
+          "interlocutory-review-fork",
+          "immediately-appealable-interlocutory",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-not-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "statement-in-lieu-of-transcript",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "affirmed",
+          "rehearing-window",
+          "rehearing-petition-filed",
+          "panel-rehearing-decision",
+          "en-banc-poll-decision",
+          "rehearing-en-banc-both-denied"
+        ],
+        "target": "rehearing-en-banc-both-denied",
+        "total": 132
+      },
+      "reversed": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "interlocutory-order-issued",
+          "interlocutory-review-fork",
+          "immediately-appealable-interlocutory",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-not-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "statement-in-lieu-of-transcript",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "reversed"
+        ],
+        "target": "reversed",
+        "total": 104
+      },
+      "reversed-and-remanded": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "interlocutory-order-issued",
+          "interlocutory-review-fork",
+          "immediately-appealable-interlocutory",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-not-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "statement-in-lieu-of-transcript",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "reversed-and-remanded"
+        ],
+        "target": "reversed-and-remanded",
+        "total": 104
+      },
+      "vacated-and-remanded": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "interlocutory-order-issued",
+          "interlocutory-review-fork",
+          "immediately-appealable-interlocutory",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-not-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "statement-in-lieu-of-transcript",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "vacated-and-remanded"
+        ],
+        "target": "vacated-and-remanded",
+        "total": 104
+      },
+      "voluntarily-dismissed": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "interlocutory-order-issued",
+          "interlocutory-review-fork",
+          "immediately-appealable-interlocutory",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-not-filed",
+          "voluntary-dismissal-fork",
+          "voluntarily-dismissed"
+        ],
+        "target": "voluntarily-dismissed",
+        "total": 24
+      }
+    },
+    "leastHours": {
+      "affirmed": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "final-judgment-entered",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "transcript-ordered",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "affirmed"
+        ],
+        "target": "affirmed",
+        "total": 0
+      },
+      "affirmed-in-part-reversed-in-part": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "final-judgment-entered",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "transcript-ordered",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "affirmed-in-part-reversed-in-part"
+        ],
+        "target": "affirmed-in-part-reversed-in-part",
+        "total": 0
+      },
+      "appeal-dismissed-no-brief": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "final-judgment-entered",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "transcript-ordered",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appeal-dismissed-no-brief"
+        ],
+        "target": "appeal-dismissed-no-brief",
+        "total": 0
+      },
+      "cert-denied": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "final-judgment-entered",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "transcript-ordered",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "affirmed",
+          "rehearing-window",
+          "mandate-issued",
+          "cert-petition-window",
+          "cert-petition-filed",
+          "cert-review-decision",
+          "cert-denied"
+        ],
+        "target": "cert-denied",
+        "total": 0
+      },
+      "cert-granted": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "final-judgment-entered",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "transcript-ordered",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "affirmed",
+          "rehearing-window",
+          "mandate-issued",
+          "cert-petition-window",
+          "cert-petition-filed",
+          "cert-review-decision",
+          "cert-granted"
+        ],
+        "target": "cert-granted",
+        "total": 0
+      },
+      "cert-not-sought": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "final-judgment-entered",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "transcript-ordered",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "affirmed",
+          "rehearing-window",
+          "mandate-issued",
+          "cert-petition-window",
+          "cert-not-sought"
+        ],
+        "target": "cert-not-sought",
+        "total": 0
+      },
+      "interlocutory-review-unavailable": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "interlocutory-order-issued",
+          "interlocutory-review-fork",
+          "interlocutory-review-unavailable"
+        ],
+        "target": "interlocutory-review-unavailable",
+        "total": 0
+      },
+      "notice-of-appeal-untimely": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "final-judgment-entered",
+          "appeal-clock-open",
+          "notice-of-appeal-untimely"
+        ],
+        "target": "notice-of-appeal-untimely",
+        "total": 0
+      },
+      "rehearing-en-banc-both-denied": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "final-judgment-entered",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "transcript-ordered",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "affirmed",
+          "rehearing-window",
+          "rehearing-petition-filed",
+          "panel-rehearing-decision",
+          "en-banc-poll-decision",
+          "rehearing-en-banc-both-denied"
+        ],
+        "target": "rehearing-en-banc-both-denied",
+        "total": 0
+      },
+      "reversed": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "final-judgment-entered",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "transcript-ordered",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "reversed"
+        ],
+        "target": "reversed",
+        "total": 0
+      },
+      "reversed-and-remanded": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "final-judgment-entered",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "transcript-ordered",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "reversed-and-remanded"
+        ],
+        "target": "reversed-and-remanded",
+        "total": 0
+      },
+      "vacated-and-remanded": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "final-judgment-entered",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-filed",
+          "voluntary-dismissal-fork",
+          "transcript-order-fork",
+          "transcript-ordered",
+          "record-transmitted",
+          "stay-pending-appeal-fork",
+          "stay-granted",
+          "appellant-brief-window",
+          "appellant-brief-filed",
+          "appellee-brief-filed",
+          "briefing-complete",
+          "oral-argument-fork",
+          "oral-argument-held",
+          "standard-of-review-fork",
+          "de-novo-review",
+          "vacated-and-remanded"
+        ],
+        "target": "vacated-and-remanded",
+        "total": 0
+      },
+      "voluntarily-dismissed": {
+        "nodes": [
+          "trial-court-disposition",
+          "appealability-fork",
+          "final-judgment-entered",
+          "appeal-clock-open",
+          "notice-of-appeal-filed",
+          "docketed-in-court-of-appeals",
+          "cross-appeal-fork",
+          "cross-appeal-filed",
+          "voluntary-dismissal-fork",
+          "voluntarily-dismissed"
+        ],
+        "target": "voluntarily-dismissed",
+        "total": 0
+      }
+    }
+  },
+  "dominators": {
+    "idom": {
+      "abuse-of-discretion-review": "standard-of-review-fork",
+      "affirmed": "standard-of-review-fork",
+      "affirmed-in-part-reversed-in-part": "standard-of-review-fork",
+      "appeal-clock-open": "appealability-fork",
+      "appeal-dismissed-no-brief": "appellant-brief-window",
+      "appealability-fork": "trial-court-disposition",
+      "appellant-brief-filed": "appellant-brief-window",
+      "appellant-brief-window": "stay-pending-appeal-fork",
+      "appellee-brief-filed": "appellant-brief-filed",
+      "briefing-complete": "appellee-brief-filed",
+      "cert-denied": "cert-review-decision",
+      "cert-granted": "cert-review-decision",
+      "cert-not-sought": "cert-petition-window",
+      "cert-petition-filed": "cert-petition-window",
+      "cert-petition-window": "mandate-issued",
+      "cert-review-decision": "cert-petition-filed",
+      "clear-error-review": "standard-of-review-fork",
+      "cross-appeal-filed": "cross-appeal-fork",
+      "cross-appeal-fork": "docketed-in-court-of-appeals",
+      "cross-appeal-not-filed": "cross-appeal-fork",
+      "de-novo-review": "standard-of-review-fork",
+      "deficient-notice-of-appeal": "notice-of-appeal-filed",
+      "docketed-in-court-of-appeals": "notice-of-appeal-filed",
+      "en-banc-poll-decision": "panel-rehearing-decision",
+      "final-judgment-entered": "appealability-fork",
+      "immediately-appealable-interlocutory": "interlocutory-review-fork",
+      "interlocutory-order-issued": "appealability-fork",
+      "interlocutory-review-fork": "interlocutory-order-issued",
+      "interlocutory-review-unavailable": "interlocutory-review-fork",
+      "mandate-issued": "rehearing-window",
+      "mandate-stayed-pending-cert": "mandate-issued",
+      "notice-of-appeal-filed": "appeal-clock-open",
+      "notice-of-appeal-untimely": "appeal-clock-open",
+      "oral-argument-fork": "briefing-complete",
+      "oral-argument-held": "oral-argument-fork",
+      "panel-rehearing-decision": "rehearing-petition-filed",
+      "post-deadline-relief-motion": "appeal-clock-open",
+      "record-transmitted": "transcript-order-fork",
+      "rehearing-en-banc-both-denied": "en-banc-poll-decision",
+      "rehearing-granted-amended-opinion": "panel-rehearing-decision",
+      "rehearing-petition-filed": "rehearing-window",
+      "rehearing-window": "standard-of-review-fork",
+      "reply-brief-filed": "appellee-brief-filed",
+      "reversed": "standard-of-review-fork",
+      "reversed-and-remanded": "de-novo-review",
+      "standard-of-review-fork": "oral-argument-fork",
+      "statement-in-lieu-of-transcript": "transcript-order-fork",
+      "stay-denied": "stay-pending-appeal-fork",
+      "stay-granted": "stay-pending-appeal-fork",
+      "stay-pending-appeal-fork": "record-transmitted",
+      "submitted-on-briefs": "oral-argument-fork",
+      "tolling-motion-disposed": "tolling-motion-filed",
+      "tolling-motion-filed": "appeal-clock-open",
+      "transcript-order-fork": "voluntary-dismissal-fork",
+      "transcript-ordered": "transcript-order-fork",
+      "trial-court-disposition": "trial-court-disposition",
+      "vacated-and-remanded": "standard-of-review-fork",
+      "voluntarily-dismissed": "voluntary-dismissal-fork",
+      "voluntary-dismissal-fork": "cross-appeal-fork"
+    },
+    "root": "trial-court-disposition"
+  },
+  "minCut500": {
+    "affirmed": {
+      "cutEdges": [
+        {
+          "from": "trial-court-disposition",
+          "label": "Assess order for finality",
+          "to": "appealability-fork"
+        }
+      ],
+      "value": 1
+    },
+    "affirmed-in-part-reversed-in-part": {
+      "cutEdges": [
+        {
+          "from": "trial-court-disposition",
+          "label": "Assess order for finality",
+          "to": "appealability-fork"
+        }
+      ],
+      "value": 1
+    },
+    "appeal-dismissed-no-brief": {
+      "cutEdges": [
+        {
+          "from": "trial-court-disposition",
+          "label": "Assess order for finality",
+          "to": "appealability-fork"
+        }
+      ],
+      "value": 1
+    },
+    "cert-denied": {
+      "cutEdges": [
+        {
+          "from": "trial-court-disposition",
+          "label": "Assess order for finality",
+          "to": "appealability-fork"
+        }
+      ],
+      "value": 1
+    },
+    "cert-granted": {
+      "cutEdges": [
+        {
+          "from": "trial-court-disposition",
+          "label": "Assess order for finality",
+          "to": "appealability-fork"
+        }
+      ],
+      "value": 1
+    },
+    "cert-not-sought": {
+      "cutEdges": [
+        {
+          "from": "trial-court-disposition",
+          "label": "Assess order for finality",
+          "to": "appealability-fork"
+        }
+      ],
+      "value": 1
+    },
+    "interlocutory-review-unavailable": {
+      "cutEdges": [
+        {
+          "from": "trial-court-disposition",
+          "label": "Assess order for finality",
+          "to": "appealability-fork"
+        }
+      ],
+      "value": 1
+    },
+    "notice-of-appeal-untimely": {
+      "cutEdges": [
+        {
+          "from": "trial-court-disposition",
+          "label": "Assess order for finality",
+          "to": "appealability-fork"
+        }
+      ],
+      "value": 1
+    },
+    "rehearing-en-banc-both-denied": {
+      "cutEdges": [
+        {
+          "from": "trial-court-disposition",
+          "label": "Assess order for finality",
+          "to": "appealability-fork"
+        }
+      ],
+      "value": 1
+    },
+    "reversed": {
+      "cutEdges": [
+        {
+          "from": "trial-court-disposition",
+          "label": "Assess order for finality",
+          "to": "appealability-fork"
+        }
+      ],
+      "value": 1
+    },
+    "reversed-and-remanded": {
+      "cutEdges": [
+        {
+          "from": "trial-court-disposition",
+          "label": "Assess order for finality",
+          "to": "appealability-fork"
+        }
+      ],
+      "value": 1
+    },
+    "vacated-and-remanded": {
+      "cutEdges": [
+        {
+          "from": "trial-court-disposition",
+          "label": "Assess order for finality",
+          "to": "appealability-fork"
+        }
+      ],
+      "value": 1
+    },
+    "voluntarily-dismissed": {
+      "cutEdges": [
+        {
+          "from": "trial-court-disposition",
+          "label": "Assess order for finality",
+          "to": "appealability-fork"
+        }
+      ],
+      "value": 1
+    }
+  },
+  "packId": "frap-appellate-procedure",
+  "packTitle": "Federal Rules of Appellate Procedure",
+  "params": {
+    "paretoCappedMaxPaths": 20000,
+    "paretoDefaultOpts": {
+      "maxNodeVisits": 1,
+      "maxPaths": 50000
+    },
+    "paretoSlowThresholdMs": 20000,
+    "policyDiffRateA": 150,
+    "policyDiffRateB": 1500,
+    "rate": 500,
+    "rateLow": 250
+  },
+  "paretoPaths500": {
+    "affirmed": {
+      "enumeratedCount": 3072,
+      "frontier": [
+        {
+          "nodes": [
+            "trial-court-disposition",
+            "appealability-fork",
+            "interlocutory-order-issued",
+            "interlocutory-review-fork",
+            "immediately-appealable-interlocutory",
+            "appeal-clock-open",
+            "notice-of-appeal-filed",
+            "deficient-notice-of-appeal",
+            "docketed-in-court-of-appeals",
+            "cross-appeal-fork",
+            "cross-appeal-not-filed",
+            "voluntary-dismissal-fork",
+            "transcript-order-fork",
+            "statement-in-lieu-of-transcript",
+            "record-transmitted",
+            "stay-pending-appeal-fork",
+            "stay-granted",
+            "appellant-brief-window",
+            "appellant-brief-filed",
+            "appellee-brief-filed",
+            "briefing-complete",
+            "oral-argument-fork",
+            "oral-argument-held",
+            "standard-of-review-fork",
+            "de-novo-review",
+            "affirmed"
+          ],
+          "totalCost": 0,
+          "totalDays": 104
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "affirmed-in-part-reversed-in-part": {
+      "enumeratedCount": 3072,
+      "frontier": [
+        {
+          "nodes": [
+            "trial-court-disposition",
+            "appealability-fork",
+            "interlocutory-order-issued",
+            "interlocutory-review-fork",
+            "immediately-appealable-interlocutory",
+            "appeal-clock-open",
+            "notice-of-appeal-filed",
+            "deficient-notice-of-appeal",
+            "docketed-in-court-of-appeals",
+            "cross-appeal-fork",
+            "cross-appeal-not-filed",
+            "voluntary-dismissal-fork",
+            "transcript-order-fork",
+            "statement-in-lieu-of-transcript",
+            "record-transmitted",
+            "stay-pending-appeal-fork",
+            "stay-granted",
+            "appellant-brief-window",
+            "appellant-brief-filed",
+            "appellee-brief-filed",
+            "briefing-complete",
+            "oral-argument-fork",
+            "oral-argument-held",
+            "standard-of-review-fork",
+            "de-novo-review",
+            "affirmed-in-part-reversed-in-part"
+          ],
+          "totalCost": 0,
+          "totalDays": 104
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "appeal-dismissed-no-brief": {
+      "enumeratedCount": 256,
+      "frontier": [
+        {
+          "nodes": [
+            "trial-court-disposition",
+            "appealability-fork",
+            "interlocutory-order-issued",
+            "interlocutory-review-fork",
+            "immediately-appealable-interlocutory",
+            "appeal-clock-open",
+            "notice-of-appeal-filed",
+            "deficient-notice-of-appeal",
+            "docketed-in-court-of-appeals",
+            "cross-appeal-fork",
+            "cross-appeal-not-filed",
+            "voluntary-dismissal-fork",
+            "transcript-order-fork",
+            "statement-in-lieu-of-transcript",
+            "record-transmitted",
+            "stay-pending-appeal-fork",
+            "stay-granted",
+            "appellant-brief-window",
+            "appeal-dismissed-no-brief"
+          ],
+          "totalCost": 0,
+          "totalDays": 34
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "cert-denied": {
+      "enumeratedCount": 50000,
+      "frontier": [
+        {
+          "nodes": [
+            "trial-court-disposition",
+            "appealability-fork",
+            "final-judgment-entered",
+            "appeal-clock-open",
+            "notice-of-appeal-filed",
+            "deficient-notice-of-appeal",
+            "docketed-in-court-of-appeals",
+            "cross-appeal-fork",
+            "cross-appeal-not-filed",
+            "voluntary-dismissal-fork",
+            "transcript-order-fork",
+            "statement-in-lieu-of-transcript",
+            "record-transmitted",
+            "stay-pending-appeal-fork",
+            "stay-granted",
+            "appellant-brief-window",
+            "appellant-brief-filed",
+            "appellee-brief-filed",
+            "briefing-complete",
+            "oral-argument-fork",
+            "oral-argument-held",
+            "standard-of-review-fork",
+            "de-novo-review",
+            "affirmed",
+            "rehearing-window",
+            "mandate-issued",
+            "cert-petition-window",
+            "cert-petition-filed",
+            "cert-review-decision",
+            "cert-denied"
+          ],
+          "totalCost": 0,
+          "totalDays": 332
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": true
+    },
+    "cert-granted": {
+      "enumeratedCount": 50000,
+      "frontier": [
+        {
+          "nodes": [
+            "trial-court-disposition",
+            "appealability-fork",
+            "final-judgment-entered",
+            "appeal-clock-open",
+            "notice-of-appeal-filed",
+            "deficient-notice-of-appeal",
+            "docketed-in-court-of-appeals",
+            "cross-appeal-fork",
+            "cross-appeal-not-filed",
+            "voluntary-dismissal-fork",
+            "transcript-order-fork",
+            "statement-in-lieu-of-transcript",
+            "record-transmitted",
+            "stay-pending-appeal-fork",
+            "stay-granted",
+            "appellant-brief-window",
+            "appellant-brief-filed",
+            "appellee-brief-filed",
+            "briefing-complete",
+            "oral-argument-fork",
+            "oral-argument-held",
+            "standard-of-review-fork",
+            "de-novo-review",
+            "affirmed",
+            "rehearing-window",
+            "mandate-issued",
+            "cert-petition-window",
+            "cert-petition-filed",
+            "cert-review-decision",
+            "cert-granted"
+          ],
+          "totalCost": 0,
+          "totalDays": 332
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": true
+    },
+    "cert-not-sought": {
+      "enumeratedCount": 50000,
+      "frontier": [
+        {
+          "nodes": [
+            "trial-court-disposition",
+            "appealability-fork",
+            "final-judgment-entered",
+            "appeal-clock-open",
+            "notice-of-appeal-filed",
+            "deficient-notice-of-appeal",
+            "docketed-in-court-of-appeals",
+            "cross-appeal-fork",
+            "cross-appeal-not-filed",
+            "voluntary-dismissal-fork",
+            "transcript-order-fork",
+            "statement-in-lieu-of-transcript",
+            "record-transmitted",
+            "stay-pending-appeal-fork",
+            "stay-granted",
+            "appellant-brief-window",
+            "appellant-brief-filed",
+            "appellee-brief-filed",
+            "briefing-complete",
+            "oral-argument-fork",
+            "oral-argument-held",
+            "standard-of-review-fork",
+            "de-novo-review",
+            "affirmed",
+            "rehearing-window",
+            "mandate-issued",
+            "cert-petition-window",
+            "cert-not-sought"
+          ],
+          "totalCost": 0,
+          "totalDays": 242
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": true
+    },
+    "interlocutory-review-unavailable": {
+      "enumeratedCount": 1,
+      "frontier": [
+        {
+          "nodes": [
+            "trial-court-disposition",
+            "appealability-fork",
+            "interlocutory-order-issued",
+            "interlocutory-review-fork",
+            "interlocutory-review-unavailable"
+          ],
+          "totalCost": 0,
+          "totalDays": 0
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "notice-of-appeal-untimely": {
+      "enumeratedCount": 24,
+      "frontier": [
+        {
+          "nodes": [
+            "trial-court-disposition",
+            "appealability-fork",
+            "interlocutory-order-issued",
+            "interlocutory-review-fork",
+            "immediately-appealable-interlocutory",
+            "appeal-clock-open",
+            "notice-of-appeal-untimely"
+          ],
+          "totalCost": 0,
+          "totalDays": 10
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "rehearing-en-banc-both-denied": {
+      "enumeratedCount": 13312,
+      "frontier": [
+        {
+          "nodes": [
+            "trial-court-disposition",
+            "appealability-fork",
+            "interlocutory-order-issued",
+            "interlocutory-review-fork",
+            "immediately-appealable-interlocutory",
+            "appeal-clock-open",
+            "notice-of-appeal-filed",
+            "deficient-notice-of-appeal",
+            "docketed-in-court-of-appeals",
+            "cross-appeal-fork",
+            "cross-appeal-not-filed",
+            "voluntary-dismissal-fork",
+            "transcript-order-fork",
+            "statement-in-lieu-of-transcript",
+            "record-transmitted",
+            "stay-pending-appeal-fork",
+            "stay-granted",
+            "appellant-brief-window",
+            "appellant-brief-filed",
+            "appellee-brief-filed",
+            "briefing-complete",
+            "oral-argument-fork",
+            "oral-argument-held",
+            "standard-of-review-fork",
+            "de-novo-review",
+            "affirmed",
+            "rehearing-window",
+            "rehearing-petition-filed",
+            "panel-rehearing-decision",
+            "en-banc-poll-decision",
+            "rehearing-en-banc-both-denied"
+          ],
+          "totalCost": 0,
+          "totalDays": 132
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "reversed": {
+      "enumeratedCount": 3072,
+      "frontier": [
+        {
+          "nodes": [
+            "trial-court-disposition",
+            "appealability-fork",
+            "interlocutory-order-issued",
+            "interlocutory-review-fork",
+            "immediately-appealable-interlocutory",
+            "appeal-clock-open",
+            "notice-of-appeal-filed",
+            "deficient-notice-of-appeal",
+            "docketed-in-court-of-appeals",
+            "cross-appeal-fork",
+            "cross-appeal-not-filed",
+            "voluntary-dismissal-fork",
+            "transcript-order-fork",
+            "statement-in-lieu-of-transcript",
+            "record-transmitted",
+            "stay-pending-appeal-fork",
+            "stay-granted",
+            "appellant-brief-window",
+            "appellant-brief-filed",
+            "appellee-brief-filed",
+            "briefing-complete",
+            "oral-argument-fork",
+            "oral-argument-held",
+            "standard-of-review-fork",
+            "de-novo-review",
+            "reversed"
+          ],
+          "totalCost": 0,
+          "totalDays": 104
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "reversed-and-remanded": {
+      "enumeratedCount": 1024,
+      "frontier": [
+        {
+          "nodes": [
+            "trial-court-disposition",
+            "appealability-fork",
+            "interlocutory-order-issued",
+            "interlocutory-review-fork",
+            "immediately-appealable-interlocutory",
+            "appeal-clock-open",
+            "notice-of-appeal-filed",
+            "deficient-notice-of-appeal",
+            "docketed-in-court-of-appeals",
+            "cross-appeal-fork",
+            "cross-appeal-not-filed",
+            "voluntary-dismissal-fork",
+            "transcript-order-fork",
+            "statement-in-lieu-of-transcript",
+            "record-transmitted",
+            "stay-pending-appeal-fork",
+            "stay-granted",
+            "appellant-brief-window",
+            "appellant-brief-filed",
+            "appellee-brief-filed",
+            "briefing-complete",
+            "oral-argument-fork",
+            "oral-argument-held",
+            "standard-of-review-fork",
+            "de-novo-review",
+            "reversed-and-remanded"
+          ],
+          "totalCost": 0,
+          "totalDays": 104
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "vacated-and-remanded": {
+      "enumeratedCount": 3072,
+      "frontier": [
+        {
+          "nodes": [
+            "trial-court-disposition",
+            "appealability-fork",
+            "interlocutory-order-issued",
+            "interlocutory-review-fork",
+            "immediately-appealable-interlocutory",
+            "appeal-clock-open",
+            "notice-of-appeal-filed",
+            "deficient-notice-of-appeal",
+            "docketed-in-court-of-appeals",
+            "cross-appeal-fork",
+            "cross-appeal-not-filed",
+            "voluntary-dismissal-fork",
+            "transcript-order-fork",
+            "statement-in-lieu-of-transcript",
+            "record-transmitted",
+            "stay-pending-appeal-fork",
+            "stay-granted",
+            "appellant-brief-window",
+            "appellant-brief-filed",
+            "appellee-brief-filed",
+            "briefing-complete",
+            "oral-argument-fork",
+            "oral-argument-held",
+            "standard-of-review-fork",
+            "de-novo-review",
+            "vacated-and-remanded"
+          ],
+          "totalCost": 0,
+          "totalDays": 104
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "voluntarily-dismissed": {
+      "enumeratedCount": 64,
+      "frontier": [
+        {
+          "nodes": [
+            "trial-court-disposition",
+            "appealability-fork",
+            "interlocutory-order-issued",
+            "interlocutory-review-fork",
+            "immediately-appealable-interlocutory",
+            "appeal-clock-open",
+            "notice-of-appeal-filed",
+            "deficient-notice-of-appeal",
+            "docketed-in-court-of-appeals",
+            "cross-appeal-fork",
+            "cross-appeal-not-filed",
+            "voluntary-dismissal-fork",
+            "voluntarily-dismissed"
+          ],
+          "totalCost": 0,
+          "totalDays": 24
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    }
+  },
+  "policyDiff_150_1500": {
+    "flips": [],
+    "rateA": 150,
+    "rateB": 1500
+  },
+  "scc": {
+    "absorbingComponents": [
+      [
+        "voluntarily-dismissed"
+      ],
+      [
+        "cert-denied"
+      ],
+      [
+        "cert-granted"
+      ],
+      [
+        "cert-not-sought"
+      ],
+      [
+        "appeal-dismissed-no-brief"
+      ],
+      [
+        "notice-of-appeal-untimely"
+      ],
+      [
+        "interlocutory-review-unavailable"
+      ]
+    ],
+    "componentOf": {
+      "abuse-of-discretion-review": 21,
+      "affirmed": 15,
+      "affirmed-in-part-reversed-in-part": 19,
+      "appeal-clock-open": 49,
+      "appeal-dismissed-no-brief": 31,
+      "appealability-fork": 55,
+      "appellant-brief-filed": 30,
+      "appellant-brief-window": 32,
+      "appellee-brief-filed": 29,
+      "briefing-complete": 27,
+      "cert-denied": 1,
+      "cert-granted": 2,
+      "cert-not-sought": 5,
+      "cert-petition-filed": 4,
+      "cert-petition-window": 6,
+      "cert-review-decision": 3,
+      "clear-error-review": 22,
+      "cross-appeal-filed": 41,
+      "cross-appeal-fork": 43,
+      "cross-appeal-not-filed": 42,
+      "de-novo-review": 20,
+      "deficient-notice-of-appeal": 46,
+      "docketed-in-court-of-appeals": 44,
+      "en-banc-poll-decision": 11,
+      "final-judgment-entered": 50,
+      "immediately-appealable-interlocutory": 51,
+      "interlocutory-order-issued": 54,
+      "interlocutory-review-fork": 53,
+      "interlocutory-review-unavailable": 52,
+      "mandate-issued": 8,
+      "mandate-stayed-pending-cert": 7,
+      "notice-of-appeal-filed": 47,
+      "notice-of-appeal-untimely": 45,
+      "oral-argument-fork": 26,
+      "oral-argument-held": 24,
+      "panel-rehearing-decision": 12,
+      "post-deadline-relief-motion": 48,
+      "record-transmitted": 36,
+      "rehearing-en-banc-both-denied": 10,
+      "rehearing-granted-amended-opinion": 9,
+      "rehearing-petition-filed": 13,
+      "rehearing-window": 14,
+      "reply-brief-filed": 28,
+      "reversed": 16,
+      "reversed-and-remanded": 17,
+      "standard-of-review-fork": 23,
+      "statement-in-lieu-of-transcript": 38,
+      "stay-denied": 34,
+      "stay-granted": 33,
+      "stay-pending-appeal-fork": 35,
+      "submitted-on-briefs": 25,
+      "tolling-motion-disposed": 49,
+      "tolling-motion-filed": 49,
+      "transcript-order-fork": 39,
+      "transcript-ordered": 37,
+      "trial-court-disposition": 56,
+      "vacated-and-remanded": 18,
+      "voluntarily-dismissed": 0,
+      "voluntary-dismissal-fork": 40
+    },
+    "components": [
+      [
+        "voluntarily-dismissed"
+      ],
+      [
+        "cert-denied"
+      ],
+      [
+        "cert-granted"
+      ],
+      [
+        "cert-review-decision"
+      ],
+      [
+        "cert-petition-filed"
+      ],
+      [
+        "cert-not-sought"
+      ],
+      [
+        "cert-petition-window"
+      ],
+      [
+        "mandate-stayed-pending-cert"
+      ],
+      [
+        "mandate-issued"
+      ],
+      [
+        "rehearing-granted-amended-opinion"
+      ],
+      [
+        "rehearing-en-banc-both-denied"
+      ],
+      [
+        "en-banc-poll-decision"
+      ],
+      [
+        "panel-rehearing-decision"
+      ],
+      [
+        "rehearing-petition-filed"
+      ],
+      [
+        "rehearing-window"
+      ],
+      [
+        "affirmed"
+      ],
+      [
+        "reversed"
+      ],
+      [
+        "reversed-and-remanded"
+      ],
+      [
+        "vacated-and-remanded"
+      ],
+      [
+        "affirmed-in-part-reversed-in-part"
+      ],
+      [
+        "de-novo-review"
+      ],
+      [
+        "abuse-of-discretion-review"
+      ],
+      [
+        "clear-error-review"
+      ],
+      [
+        "standard-of-review-fork"
+      ],
+      [
+        "oral-argument-held"
+      ],
+      [
+        "submitted-on-briefs"
+      ],
+      [
+        "oral-argument-fork"
+      ],
+      [
+        "briefing-complete"
+      ],
+      [
+        "reply-brief-filed"
+      ],
+      [
+        "appellee-brief-filed"
+      ],
+      [
+        "appellant-brief-filed"
+      ],
+      [
+        "appeal-dismissed-no-brief"
+      ],
+      [
+        "appellant-brief-window"
+      ],
+      [
+        "stay-granted"
+      ],
+      [
+        "stay-denied"
+      ],
+      [
+        "stay-pending-appeal-fork"
+      ],
+      [
+        "record-transmitted"
+      ],
+      [
+        "transcript-ordered"
+      ],
+      [
+        "statement-in-lieu-of-transcript"
+      ],
+      [
+        "transcript-order-fork"
+      ],
+      [
+        "voluntary-dismissal-fork"
+      ],
+      [
+        "cross-appeal-filed"
+      ],
+      [
+        "cross-appeal-not-filed"
+      ],
+      [
+        "cross-appeal-fork"
+      ],
+      [
+        "docketed-in-court-of-appeals"
+      ],
+      [
+        "notice-of-appeal-untimely"
+      ],
+      [
+        "deficient-notice-of-appeal"
+      ],
+      [
+        "notice-of-appeal-filed"
+      ],
+      [
+        "post-deadline-relief-motion"
+      ],
+      [
+        "appeal-clock-open",
+        "tolling-motion-disposed",
+        "tolling-motion-filed"
+      ],
+      [
+        "final-judgment-entered"
+      ],
+      [
+        "immediately-appealable-interlocutory"
+      ],
+      [
+        "interlocutory-review-unavailable"
+      ],
+      [
+        "interlocutory-review-fork"
+      ],
+      [
+        "interlocutory-order-issued"
+      ],
+      [
+        "appealability-fork"
+      ],
+      [
+        "trial-court-disposition"
+      ]
+    ],
+    "condensation": {
+      "edges": [
+        {
+          "from": 3,
+          "to": 1
+        },
+        {
+          "from": 3,
+          "to": 2
+        },
+        {
+          "from": 4,
+          "to": 3
+        },
+        {
+          "from": 6,
+          "to": 4
+        },
+        {
+          "from": 6,
+          "to": 5
+        },
+        {
+          "from": 7,
+          "to": 6
+        },
+        {
+          "from": 8,
+          "to": 6
+        },
+        {
+          "from": 8,
+          "to": 7
+        },
+        {
+          "from": 9,
+          "to": 8
+        },
+        {
+          "from": 10,
+          "to": 8
+        },
+        {
+          "from": 11,
+          "to": 9
+        },
+        {
+          "from": 11,
+          "to": 10
+        },
+        {
+          "from": 12,
+          "to": 9
+        },
+        {
+          "from": 12,
+          "to": 11
+        },
+        {
+          "from": 13,
+          "to": 12
+        },
+        {
+          "from": 14,
+          "to": 8
+        },
+        {
+          "from": 14,
+          "to": 13
+        },
+        {
+          "from": 15,
+          "to": 14
+        },
+        {
+          "from": 16,
+          "to": 14
+        },
+        {
+          "from": 17,
+          "to": 14
+        },
+        {
+          "from": 18,
+          "to": 14
+        },
+        {
+          "from": 19,
+          "to": 14
+        },
+        {
+          "from": 20,
+          "to": 15
+        },
+        {
+          "from": 20,
+          "to": 16
+        },
+        {
+          "from": 20,
+          "to": 17
+        },
+        {
+          "from": 20,
+          "to": 18
+        },
+        {
+          "from": 20,
+          "to": 19
+        },
+        {
+          "from": 21,
+          "to": 15
+        },
+        {
+          "from": 21,
+          "to": 16
+        },
+        {
+          "from": 21,
+          "to": 18
+        },
+        {
+          "from": 21,
+          "to": 19
+        },
+        {
+          "from": 22,
+          "to": 15
+        },
+        {
+          "from": 22,
+          "to": 16
+        },
+        {
+          "from": 22,
+          "to": 18
+        },
+        {
+          "from": 22,
+          "to": 19
+        },
+        {
+          "from": 23,
+          "to": 20
+        },
+        {
+          "from": 23,
+          "to": 21
+        },
+        {
+          "from": 23,
+          "to": 22
+        },
+        {
+          "from": 24,
+          "to": 23
+        },
+        {
+          "from": 25,
+          "to": 23
+        },
+        {
+          "from": 26,
+          "to": 24
+        },
+        {
+          "from": 26,
+          "to": 25
+        },
+        {
+          "from": 27,
+          "to": 26
+        },
+        {
+          "from": 28,
+          "to": 27
+        },
+        {
+          "from": 29,
+          "to": 27
+        },
+        {
+          "from": 29,
+          "to": 28
+        },
+        {
+          "from": 30,
+          "to": 29
+        },
+        {
+          "from": 32,
+          "to": 30
+        },
+        {
+          "from": 32,
+          "to": 31
+        },
+        {
+          "from": 33,
+          "to": 32
+        },
+        {
+          "from": 34,
+          "to": 32
+        },
+        {
+          "from": 35,
+          "to": 33
+        },
+        {
+          "from": 35,
+          "to": 34
+        },
+        {
+          "from": 36,
+          "to": 35
+        },
+        {
+          "from": 37,
+          "to": 36
+        },
+        {
+          "from": 38,
+          "to": 36
+        },
+        {
+          "from": 39,
+          "to": 37
+        },
+        {
+          "from": 39,
+          "to": 38
+        },
+        {
+          "from": 40,
+          "to": 0
+        },
+        {
+          "from": 40,
+          "to": 39
+        },
+        {
+          "from": 41,
+          "to": 40
+        },
+        {
+          "from": 42,
+          "to": 40
+        },
+        {
+          "from": 43,
+          "to": 41
+        },
+        {
+          "from": 43,
+          "to": 42
+        },
+        {
+          "from": 44,
+          "to": 43
+        },
+        {
+          "from": 46,
+          "to": 44
+        },
+        {
+          "from": 46,
+          "to": 45
+        },
+        {
+          "from": 47,
+          "to": 44
+        },
+        {
+          "from": 47,
+          "to": 46
+        },
+        {
+          "from": 48,
+          "to": 45
+        },
+        {
+          "from": 48,
+          "to": 47
+        },
+        {
+          "from": 49,
+          "to": 45
+        },
+        {
+          "from": 49,
+          "to": 47
+        },
+        {
+          "from": 49,
+          "to": 48
+        },
+        {
+          "from": 50,
+          "to": 49
+        },
+        {
+          "from": 51,
+          "to": 49
+        },
+        {
+          "from": 53,
+          "to": 51
+        },
+        {
+          "from": 53,
+          "to": 52
+        },
+        {
+          "from": 54,
+          "to": 53
+        },
+        {
+          "from": 55,
+          "to": 50
+        },
+        {
+          "from": 55,
+          "to": 54
+        },
+        {
+          "from": 56,
+          "to": 55
+        }
+      ],
+      "nodes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56
+      ]
+    },
+    "cyclicComponents": [
+      [
+        "appeal-clock-open",
+        "tolling-motion-disposed",
+        "tolling-motion-filed"
+      ]
+    ],
+    "cyclicLoops": [
+      {
+        "escapeEdges": [
+          {
+            "from": "appeal-clock-open",
+            "label": "File notice of appeal (civil)",
+            "to": "notice-of-appeal-filed"
+          },
+          {
+            "from": "appeal-clock-open",
+            "label": "File notice of appeal (criminal)",
+            "to": "notice-of-appeal-filed"
+          },
+          {
+            "from": "appeal-clock-open",
+            "label": "File notice of appeal (US party)",
+            "to": "notice-of-appeal-filed"
+          },
+          {
+            "from": "appeal-clock-open",
+            "label": "Let the deadline lapse",
+            "to": "notice-of-appeal-untimely"
+          },
+          {
+            "from": "appeal-clock-open",
+            "label": "Move to extend or reopen deadline",
+            "to": "post-deadline-relief-motion"
+          }
+        ],
+        "internalEdges": [
+          {
+            "from": "appeal-clock-open",
+            "label": "File Rule 4(a)(4) tolling motion",
+            "to": "tolling-motion-filed"
+          },
+          {
+            "from": "tolling-motion-disposed",
+            "label": "Appeal clock restarts from disposition",
+            "to": "appeal-clock-open"
+          },
+          {
+            "from": "tolling-motion-filed",
+            "label": "District court rules on the motion",
+            "to": "tolling-motion-disposed"
+          }
+        ],
+        "nodes": [
+          "appeal-clock-open",
+          "tolling-motion-disposed",
+          "tolling-motion-filed"
+        ]
+      }
+    ]
+  },
+  "schemaVersion": 1,
+  "startNodeId": "trial-court-disposition",
+  "terminals": [
+    "affirmed",
+    "affirmed-in-part-reversed-in-part",
+    "appeal-dismissed-no-brief",
+    "cert-denied",
+    "cert-granted",
+    "cert-not-sought",
+    "interlocutory-review-unavailable",
+    "notice-of-appeal-untimely",
+    "rehearing-en-banc-both-denied",
+    "reversed",
+    "reversed-and-remanded",
+    "vacated-and-remanded",
+    "voluntarily-dismissed"
+  ],
+  "valueIteration250": {
+    "converged": true,
+    "edgeQ": [
+      {
+        "from": "abuse-of-discretion-review",
+        "label": "No abuse found — panel affirms",
+        "q": 0,
+        "to": "affirmed"
+      },
+      {
+        "from": "abuse-of-discretion-review",
+        "label": "Panel splits the result",
+        "q": 0,
+        "to": "affirmed-in-part-reversed-in-part"
+      },
+      {
+        "from": "abuse-of-discretion-review",
+        "label": "Abuse found — panel reverses",
+        "q": 0,
+        "to": "reversed"
+      },
+      {
+        "from": "abuse-of-discretion-review",
+        "label": "Panel vacates for further findings",
+        "q": 0,
+        "to": "vacated-and-remanded"
+      },
+      {
+        "from": "affirmed",
+        "label": "Losing party weighs rehearing",
+        "q": 0,
+        "to": "rehearing-window"
+      },
+      {
+        "from": "affirmed-in-part-reversed-in-part",
+        "label": "Either party weighs rehearing",
+        "q": 0,
+        "to": "rehearing-window"
+      },
+      {
+        "from": "appeal-clock-open",
+        "label": "File notice of appeal (civil)",
+        "q": 0,
+        "to": "notice-of-appeal-filed"
+      },
+      {
+        "from": "appeal-clock-open",
+        "label": "File notice of appeal (criminal)",
+        "q": 0,
+        "to": "notice-of-appeal-filed"
+      },
+      {
+        "from": "appeal-clock-open",
+        "label": "File notice of appeal (US party)",
+        "q": 0,
+        "to": "notice-of-appeal-filed"
+      },
+      {
+        "from": "appeal-clock-open",
+        "label": "Let the deadline lapse",
+        "q": 0,
+        "to": "notice-of-appeal-untimely"
+      },
+      {
+        "from": "appeal-clock-open",
+        "label": "Move to extend or reopen deadline",
+        "q": 0,
+        "to": "post-deadline-relief-motion"
+      },
+      {
+        "from": "appeal-clock-open",
+        "label": "File Rule 4(a)(4) tolling motion",
+        "q": 0,
+        "to": "tolling-motion-filed"
+      },
+      {
+        "from": "appealability-fork",
+        "label": "Order is a final judgment",
+        "q": 0,
+        "to": "final-judgment-entered"
+      },
+      {
+        "from": "appealability-fork",
+        "label": "Order is interlocutory",
+        "q": 0,
+        "to": "interlocutory-order-issued"
+      },
+      {
+        "from": "appellant-brief-filed",
+        "label": "Appellee files response brief",
+        "q": 0,
+        "to": "appellee-brief-filed"
+      },
+      {
+        "from": "appellant-brief-window",
+        "label": "Fail to file opening brief",
+        "q": 0,
+        "to": "appeal-dismissed-no-brief"
+      },
+      {
+        "from": "appellant-brief-window",
+        "label": "File opening brief",
+        "q": 0,
+        "to": "appellant-brief-filed"
+      },
+      {
+        "from": "appellee-brief-filed",
+        "label": "Waive reply brief",
+        "q": 0,
+        "to": "briefing-complete"
+      },
+      {
+        "from": "appellee-brief-filed",
+        "label": "File reply brief",
+        "q": 0,
+        "to": "reply-brief-filed"
+      },
+      {
+        "from": "briefing-complete",
+        "label": "Clerk calendars argument decision",
+        "q": 0,
+        "to": "oral-argument-fork"
+      },
+      {
+        "from": "cert-petition-filed",
+        "label": "Supreme Court considers petition",
+        "q": 0,
+        "to": "cert-review-decision"
+      },
+      {
+        "from": "cert-petition-window",
+        "label": "90-day window lapses",
+        "q": 0,
+        "to": "cert-not-sought"
+      },
+      {
+        "from": "cert-petition-window",
+        "label": "File petition for certiorari",
+        "q": 0,
+        "to": "cert-petition-filed"
+      },
+      {
+        "from": "cert-review-decision",
+        "label": "Certiorari denied",
+        "q": 0,
+        "to": "cert-denied"
+      },
+      {
+        "from": "cert-review-decision",
+        "label": "Certiorari granted",
+        "q": 0,
+        "to": "cert-granted"
+      },
+      {
+        "from": "clear-error-review",
+        "label": "No clear error — panel affirms",
+        "q": 0,
+        "to": "affirmed"
+      },
+      {
+        "from": "clear-error-review",
+        "label": "Panel splits the result",
+        "q": 0,
+        "to": "affirmed-in-part-reversed-in-part"
+      },
+      {
+        "from": "clear-error-review",
+        "label": "Clear error found — reverses",
+        "q": 0,
+        "to": "reversed"
+      },
+      {
+        "from": "clear-error-review",
+        "label": "Panel vacates for further findings",
+        "q": 0,
+        "to": "vacated-and-remanded"
+      },
+      {
+        "from": "cross-appeal-filed",
+        "label": "Cross-appeal docketed",
+        "q": 0,
+        "to": "voluntary-dismissal-fork"
+      },
+      {
+        "from": "cross-appeal-fork",
+        "label": "File notice of cross-appeal",
+        "q": 0,
+        "to": "cross-appeal-filed"
+      },
+      {
+        "from": "cross-appeal-fork",
+        "label": "Decline to cross-appeal",
+        "q": 0,
+        "to": "cross-appeal-not-filed"
+      },
+      {
+        "from": "cross-appeal-not-filed",
+        "label": "Proceed without cross-appeal",
+        "q": 0,
+        "to": "voluntary-dismissal-fork"
+      },
+      {
+        "from": "de-novo-review",
+        "label": "Panel affirms de novo",
+        "q": 0,
+        "to": "affirmed"
+      },
+      {
+        "from": "de-novo-review",
+        "label": "Panel splits the result",
+        "q": 0,
+        "to": "affirmed-in-part-reversed-in-part"
+      },
+      {
+        "from": "de-novo-review",
+        "label": "Panel reverses de novo",
+        "q": 0,
+        "to": "reversed"
+      },
+      {
+        "from": "de-novo-review",
+        "label": "Panel reverses and remands",
+        "q": 0,
+        "to": "reversed-and-remanded"
+      },
+      {
+        "from": "de-novo-review",
+        "label": "Panel vacates and remands",
+        "q": 0,
+        "to": "vacated-and-remanded"
+      },
+      {
+        "from": "deficient-notice-of-appeal",
+        "label": "Court excuses the technical defect",
+        "q": 0,
+        "to": "docketed-in-court-of-appeals"
+      },
+      {
+        "from": "deficient-notice-of-appeal",
+        "label": "Defect held jurisdictional, uncurable",
+        "q": 0,
+        "to": "notice-of-appeal-untimely"
+      },
+      {
+        "from": "docketed-in-court-of-appeals",
+        "label": "Appellee weighs a cross-appeal",
+        "q": 0,
+        "to": "cross-appeal-fork"
+      },
+      {
+        "from": "en-banc-poll-decision",
+        "label": "En banc poll fails",
+        "q": 0,
+        "to": "rehearing-en-banc-both-denied"
+      },
+      {
+        "from": "en-banc-poll-decision",
+        "label": "Majority votes to rehear en banc",
+        "q": 0,
+        "to": "rehearing-granted-amended-opinion"
+      },
+      {
+        "from": "final-judgment-entered",
+        "label": "Final judgment starts appeal clock",
+        "q": 0,
+        "to": "appeal-clock-open"
+      },
+      {
+        "from": "immediately-appealable-interlocutory",
+        "label": "Interlocutory order ripe for appeal",
+        "q": 0,
+        "to": "appeal-clock-open"
+      },
+      {
+        "from": "interlocutory-order-issued",
+        "label": "Check interlocutory review doors",
+        "q": 0,
+        "to": "interlocutory-review-fork"
+      },
+      {
+        "from": "interlocutory-review-fork",
+        "label": "Certify for interlocutory appeal",
+        "q": 0,
+        "to": "immediately-appealable-interlocutory"
+      },
+      {
+        "from": "interlocutory-review-fork",
+        "label": "Injunction order — appeal as of right",
+        "q": 0,
+        "to": "immediately-appealable-interlocutory"
+      },
+      {
+        "from": "interlocutory-review-fork",
+        "label": "Order meets collateral order doctrine",
+        "q": 0,
+        "to": "immediately-appealable-interlocutory"
+      },
+      {
+        "from": "interlocutory-review-fork",
+        "label": "No interlocutory door applies",
+        "q": 0,
+        "to": "interlocutory-review-unavailable"
+      },
+      {
+        "from": "mandate-issued",
+        "label": "Judgment final — cert clock runs",
+        "q": 0,
+        "to": "cert-petition-window"
+      },
+      {
+        "from": "mandate-issued",
+        "label": "Move to stay mandate for cert",
+        "q": 0,
+        "to": "mandate-stayed-pending-cert"
+      },
+      {
+        "from": "mandate-stayed-pending-cert",
+        "label": "Stay granted — cert proceeds",
+        "q": 0,
+        "to": "cert-petition-window"
+      },
+      {
+        "from": "notice-of-appeal-filed",
+        "label": "Notice omits required contents",
+        "q": 0,
+        "to": "deficient-notice-of-appeal"
+      },
+      {
+        "from": "notice-of-appeal-filed",
+        "label": "Notice complies — docketed",
+        "q": 0,
+        "to": "docketed-in-court-of-appeals"
+      },
+      {
+        "from": "oral-argument-fork",
+        "label": "Panel grants oral argument",
+        "q": 0,
+        "to": "oral-argument-held"
+      },
+      {
+        "from": "oral-argument-fork",
+        "label": "Panel dispenses with argument",
+        "q": 0,
+        "to": "submitted-on-briefs"
+      },
+      {
+        "from": "oral-argument-held",
+        "label": "Argument concludes — panel deliberates",
+        "q": 0,
+        "to": "standard-of-review-fork"
+      },
+      {
+        "from": "panel-rehearing-decision",
+        "label": "Panel denies — en banc poll proceeds",
+        "q": 0,
+        "to": "en-banc-poll-decision"
+      },
+      {
+        "from": "panel-rehearing-decision",
+        "label": "Panel grants rehearing",
+        "q": 0,
+        "to": "rehearing-granted-amended-opinion"
+      },
+      {
+        "from": "post-deadline-relief-motion",
+        "label": "Court grants extension or reopening",
+        "q": 0,
+        "to": "notice-of-appeal-filed"
+      },
+      {
+        "from": "post-deadline-relief-motion",
+        "label": "Court denies relief — deadline stands",
+        "q": 0,
+        "to": "notice-of-appeal-untimely"
+      },
+      {
+        "from": "record-transmitted",
+        "label": "Record complete — motions begin",
+        "q": 0,
+        "to": "stay-pending-appeal-fork"
+      },
+      {
+        "from": "rehearing-en-banc-both-denied",
+        "label": "Mandate clock resumes",
+        "q": 0,
+        "to": "mandate-issued"
+      },
+      {
+        "from": "rehearing-granted-amended-opinion",
+        "label": "Amended opinion becomes judgment",
+        "q": 0,
+        "to": "mandate-issued"
+      },
+      {
+        "from": "rehearing-petition-filed",
+        "label": "Panel rules on rehearing",
+        "q": 0,
+        "to": "panel-rehearing-decision"
+      },
+      {
+        "from": "rehearing-window",
+        "label": "No rehearing sought — time expires",
+        "q": 0,
+        "to": "mandate-issued"
+      },
+      {
+        "from": "rehearing-window",
+        "label": "Petition for rehearing / en banc",
+        "q": 0,
+        "to": "rehearing-petition-filed"
+      },
+      {
+        "from": "reply-brief-filed",
+        "label": "Briefing closes",
+        "q": 0,
+        "to": "briefing-complete"
+      },
+      {
+        "from": "reversed",
+        "label": "Losing party weighs rehearing",
+        "q": 0,
+        "to": "rehearing-window"
+      },
+      {
+        "from": "reversed-and-remanded",
+        "label": "Losing party weighs rehearing",
+        "q": 0,
+        "to": "rehearing-window"
+      },
+      {
+        "from": "standard-of-review-fork",
+        "label": "Issue is a discretionary ruling",
+        "q": 0,
+        "to": "abuse-of-discretion-review"
+      },
+      {
+        "from": "standard-of-review-fork",
+        "label": "Issue is a factual finding",
+        "q": 0,
+        "to": "clear-error-review"
+      },
+      {
+        "from": "standard-of-review-fork",
+        "label": "Issue is a question of law",
+        "q": 0,
+        "to": "de-novo-review"
+      },
+      {
+        "from": "statement-in-lieu-of-transcript",
+        "label": "Agreed statement approved",
+        "q": 0,
+        "to": "record-transmitted"
+      },
+      {
+        "from": "stay-denied",
+        "label": "Proceed to briefing",
+        "q": 0,
+        "to": "appellant-brief-window"
+      },
+      {
+        "from": "stay-granted",
+        "label": "Proceed to briefing under stay",
+        "q": 0,
+        "to": "appellant-brief-window"
+      },
+      {
+        "from": "stay-pending-appeal-fork",
+        "label": "Stay motion denied",
+        "q": 0,
+        "to": "stay-denied"
+      },
+      {
+        "from": "stay-pending-appeal-fork",
+        "label": "Move for stay pending appeal — granted",
+        "q": 0,
+        "to": "stay-granted"
+      },
+      {
+        "from": "submitted-on-briefs",
+        "label": "Panel deliberates on the papers",
+        "q": 0,
+        "to": "standard-of-review-fork"
+      },
+      {
+        "from": "tolling-motion-disposed",
+        "label": "Appeal clock restarts from disposition",
+        "q": 0,
+        "to": "appeal-clock-open"
+      },
+      {
+        "from": "tolling-motion-filed",
+        "label": "District court rules on the motion",
+        "q": 0,
+        "to": "tolling-motion-disposed"
+      },
+      {
+        "from": "transcript-order-fork",
+        "label": "File agreed statement instead",
+        "q": 0,
+        "to": "statement-in-lieu-of-transcript"
+      },
+      {
+        "from": "transcript-order-fork",
+        "label": "Order the necessary transcript",
+        "q": 0,
+        "to": "transcript-ordered"
+      },
+      {
+        "from": "transcript-ordered",
+        "label": "Transcript completed and filed",
+        "q": 0,
+        "to": "record-transmitted"
+      },
+      {
+        "from": "trial-court-disposition",
+        "label": "Assess order for finality",
+        "q": 0,
+        "to": "appealability-fork"
+      },
+      {
+        "from": "vacated-and-remanded",
+        "label": "Losing party weighs rehearing",
+        "q": 0,
+        "to": "rehearing-window"
+      },
+      {
+        "from": "voluntary-dismissal-fork",
+        "label": "Appeal proceeds — order the record",
+        "q": 0,
+        "to": "transcript-order-fork"
+      },
+      {
+        "from": "voluntary-dismissal-fork",
+        "label": "Stipulate to or move for dismissal",
+        "q": 0,
+        "to": "voluntarily-dismissed"
+      }
+    ],
+    "iterations": 1,
+    "policy": {
+      "appeal-clock-open": {
+        "from": "appeal-clock-open",
+        "label": "File notice of appeal (civil)",
+        "to": "notice-of-appeal-filed"
+      },
+      "appellant-brief-filed": {
+        "from": "appellant-brief-filed",
+        "label": "Appellee files response brief",
+        "to": "appellee-brief-filed"
+      },
+      "appellant-brief-window": {
+        "from": "appellant-brief-window",
+        "label": "File opening brief",
+        "to": "appellant-brief-filed"
+      },
+      "appellee-brief-filed": {
+        "from": "appellee-brief-filed",
+        "label": "File reply brief",
+        "to": "reply-brief-filed"
+      },
+      "cert-petition-window": {
+        "from": "cert-petition-window",
+        "label": "File petition for certiorari",
+        "to": "cert-petition-filed"
+      },
+      "cross-appeal-fork": {
+        "from": "cross-appeal-fork",
+        "label": "File notice of cross-appeal",
+        "to": "cross-appeal-filed"
+      },
+      "docketed-in-court-of-appeals": {
+        "from": "docketed-in-court-of-appeals",
+        "label": "Appellee weighs a cross-appeal",
+        "to": "cross-appeal-fork"
+      },
+      "interlocutory-order-issued": {
+        "from": "interlocutory-order-issued",
+        "label": "Check interlocutory review doors",
+        "to": "interlocutory-review-fork"
+      },
+      "interlocutory-review-fork": {
+        "from": "interlocutory-review-fork",
+        "label": "Injunction order — appeal as of right",
+        "to": "immediately-appealable-interlocutory"
+      },
+      "mandate-issued": {
+        "from": "mandate-issued",
+        "label": "Judgment final — cert clock runs",
+        "to": "cert-petition-window"
+      },
+      "rehearing-window": {
+        "from": "rehearing-window",
+        "label": "Petition for rehearing / en banc",
+        "to": "rehearing-petition-filed"
+      },
+      "stay-pending-appeal-fork": {
+        "from": "stay-pending-appeal-fork",
+        "label": "Move for stay pending appeal — granted",
+        "to": "stay-granted"
+      },
+      "transcript-order-fork": {
+        "from": "transcript-order-fork",
+        "label": "Order the necessary transcript",
+        "to": "transcript-ordered"
+      },
+      "voluntary-dismissal-fork": {
+        "from": "voluntary-dismissal-fork",
+        "label": "Stipulate to or move for dismissal",
+        "to": "voluntarily-dismissed"
+      }
+    },
+    "qValue": {
+      "abuse-of-discretion-review→affirmed": 0,
+      "abuse-of-discretion-review→affirmed-in-part-reversed-in-part": 0,
+      "abuse-of-discretion-review→reversed": 0,
+      "abuse-of-discretion-review→vacated-and-remanded": 0,
+      "appeal-clock-open→notice-of-appeal-filed": 0,
+      "appeal-clock-open→notice-of-appeal-untimely": 0,
+      "appeal-clock-open→post-deadline-relief-motion": 0,
+      "appeal-clock-open→tolling-motion-filed": 0,
+      "appealability-fork→final-judgment-entered": 0,
+      "appealability-fork→interlocutory-order-issued": 0,
+      "appellant-brief-filed→appellee-brief-filed": 0,
+      "appellant-brief-window→appeal-dismissed-no-brief": 0,
+      "appellant-brief-window→appellant-brief-filed": 0,
+      "appellee-brief-filed→briefing-complete": 0,
+      "appellee-brief-filed→reply-brief-filed": 0,
+      "briefing-complete→oral-argument-fork": 0,
+      "cert-petition-filed→cert-review-decision": 0,
+      "cert-petition-window→cert-not-sought": 0,
+      "cert-petition-window→cert-petition-filed": 0,
+      "cert-review-decision→cert-denied": 0,
+      "cert-review-decision→cert-granted": 0,
+      "clear-error-review→affirmed": 0,
+      "clear-error-review→affirmed-in-part-reversed-in-part": 0,
+      "clear-error-review→reversed": 0,
+      "clear-error-review→vacated-and-remanded": 0,
+      "cross-appeal-filed→voluntary-dismissal-fork": 0,
+      "cross-appeal-fork→cross-appeal-filed": 0,
+      "cross-appeal-fork→cross-appeal-not-filed": 0,
+      "cross-appeal-not-filed→voluntary-dismissal-fork": 0,
+      "de-novo-review→affirmed": 0,
+      "de-novo-review→affirmed-in-part-reversed-in-part": 0,
+      "de-novo-review→reversed": 0,
+      "de-novo-review→reversed-and-remanded": 0,
+      "de-novo-review→vacated-and-remanded": 0,
+      "deficient-notice-of-appeal→docketed-in-court-of-appeals": 0,
+      "deficient-notice-of-appeal→notice-of-appeal-untimely": 0,
+      "docketed-in-court-of-appeals→cross-appeal-fork": 0,
+      "en-banc-poll-decision→rehearing-en-banc-both-denied": 0,
+      "en-banc-poll-decision→rehearing-granted-amended-opinion": 0,
+      "final-judgment-entered→appeal-clock-open": 0,
+      "immediately-appealable-interlocutory→appeal-clock-open": 0,
+      "interlocutory-order-issued→interlocutory-review-fork": 0,
+      "interlocutory-review-fork→immediately-appealable-interlocutory": 0,
+      "interlocutory-review-fork→interlocutory-review-unavailable": 0,
+      "mandate-issued→cert-petition-window": 0,
+      "mandate-issued→mandate-stayed-pending-cert": 0,
+      "mandate-stayed-pending-cert→cert-petition-window": 0,
+      "notice-of-appeal-filed→deficient-notice-of-appeal": 0,
+      "notice-of-appeal-filed→docketed-in-court-of-appeals": 0,
+      "oral-argument-fork→oral-argument-held": 0,
+      "oral-argument-fork→submitted-on-briefs": 0,
+      "oral-argument-held→standard-of-review-fork": 0,
+      "panel-rehearing-decision→en-banc-poll-decision": 0,
+      "panel-rehearing-decision→rehearing-granted-amended-opinion": 0,
+      "post-deadline-relief-motion→notice-of-appeal-filed": 0,
+      "post-deadline-relief-motion→notice-of-appeal-untimely": 0,
+      "record-transmitted→stay-pending-appeal-fork": 0,
+      "rehearing-granted-amended-opinion→mandate-issued": 0,
+      "rehearing-petition-filed→panel-rehearing-decision": 0,
+      "rehearing-window→mandate-issued": 0,
+      "rehearing-window→rehearing-petition-filed": 0,
+      "reply-brief-filed→briefing-complete": 0,
+      "standard-of-review-fork→abuse-of-discretion-review": 0,
+      "standard-of-review-fork→clear-error-review": 0,
+      "standard-of-review-fork→de-novo-review": 0,
+      "statement-in-lieu-of-transcript→record-transmitted": 0,
+      "stay-denied→appellant-brief-window": 0,
+      "stay-granted→appellant-brief-window": 0,
+      "stay-pending-appeal-fork→stay-denied": 0,
+      "stay-pending-appeal-fork→stay-granted": 0,
+      "submitted-on-briefs→standard-of-review-fork": 0,
+      "tolling-motion-disposed→appeal-clock-open": 0,
+      "tolling-motion-filed→tolling-motion-disposed": 0,
+      "transcript-order-fork→statement-in-lieu-of-transcript": 0,
+      "transcript-order-fork→transcript-ordered": 0,
+      "transcript-ordered→record-transmitted": 0,
+      "trial-court-disposition→appealability-fork": 0,
+      "voluntary-dismissal-fork→transcript-order-fork": 0,
+      "voluntary-dismissal-fork→voluntarily-dismissed": 0
+    },
+    "qValueNote": "qValue is keyed 'from→to' (StatechartEdge.qKey) and COLLIDES on parallel edges (same from/to, different label) — last-write-wins from the source Map iteration order. Use edgeQ for a collision-free per-edge view.",
+    "value": {
+      "abuse-of-discretion-review": 0,
+      "affirmed": 0,
+      "affirmed-in-part-reversed-in-part": 0,
+      "appeal-clock-open": 0,
+      "appeal-dismissed-no-brief": 0,
+      "appealability-fork": 0,
+      "appellant-brief-filed": 0,
+      "appellant-brief-window": 0,
+      "appellee-brief-filed": 0,
+      "briefing-complete": 0,
+      "cert-denied": 0,
+      "cert-granted": 0,
+      "cert-not-sought": 0,
+      "cert-petition-filed": 0,
+      "cert-petition-window": 0,
+      "cert-review-decision": 0,
+      "clear-error-review": 0,
+      "cross-appeal-filed": 0,
+      "cross-appeal-fork": 0,
+      "cross-appeal-not-filed": 0,
+      "de-novo-review": 0,
+      "deficient-notice-of-appeal": 0,
+      "docketed-in-court-of-appeals": 0,
+      "en-banc-poll-decision": 0,
+      "final-judgment-entered": 0,
+      "immediately-appealable-interlocutory": 0,
+      "interlocutory-order-issued": 0,
+      "interlocutory-review-fork": 0,
+      "interlocutory-review-unavailable": 0,
+      "mandate-issued": 0,
+      "mandate-stayed-pending-cert": 0,
+      "notice-of-appeal-filed": 0,
+      "notice-of-appeal-untimely": 0,
+      "oral-argument-fork": 0,
+      "oral-argument-held": 0,
+      "panel-rehearing-decision": 0,
+      "post-deadline-relief-motion": 0,
+      "record-transmitted": 0,
+      "rehearing-en-banc-both-denied": 0,
+      "rehearing-granted-amended-opinion": 0,
+      "rehearing-petition-filed": 0,
+      "rehearing-window": 0,
+      "reply-brief-filed": 0,
+      "reversed": 0,
+      "reversed-and-remanded": 0,
+      "standard-of-review-fork": 0,
+      "statement-in-lieu-of-transcript": 0,
+      "stay-denied": 0,
+      "stay-granted": 0,
+      "stay-pending-appeal-fork": 0,
+      "submitted-on-briefs": 0,
+      "tolling-motion-disposed": 0,
+      "tolling-motion-filed": 0,
+      "transcript-order-fork": 0,
+      "transcript-ordered": 0,
+      "trial-court-disposition": 0,
+      "vacated-and-remanded": 0,
+      "voluntarily-dismissed": 0,
+      "voluntary-dismissal-fork": 0
+    }
+  },
+  "valueIteration500": {
+    "converged": true,
+    "edgeQ": [
+      {
+        "from": "abuse-of-discretion-review",
+        "label": "No abuse found — panel affirms",
+        "q": 0,
+        "to": "affirmed"
+      },
+      {
+        "from": "abuse-of-discretion-review",
+        "label": "Panel splits the result",
+        "q": 0,
+        "to": "affirmed-in-part-reversed-in-part"
+      },
+      {
+        "from": "abuse-of-discretion-review",
+        "label": "Abuse found — panel reverses",
+        "q": 0,
+        "to": "reversed"
+      },
+      {
+        "from": "abuse-of-discretion-review",
+        "label": "Panel vacates for further findings",
+        "q": 0,
+        "to": "vacated-and-remanded"
+      },
+      {
+        "from": "affirmed",
+        "label": "Losing party weighs rehearing",
+        "q": 0,
+        "to": "rehearing-window"
+      },
+      {
+        "from": "affirmed-in-part-reversed-in-part",
+        "label": "Either party weighs rehearing",
+        "q": 0,
+        "to": "rehearing-window"
+      },
+      {
+        "from": "appeal-clock-open",
+        "label": "File notice of appeal (civil)",
+        "q": 0,
+        "to": "notice-of-appeal-filed"
+      },
+      {
+        "from": "appeal-clock-open",
+        "label": "File notice of appeal (criminal)",
+        "q": 0,
+        "to": "notice-of-appeal-filed"
+      },
+      {
+        "from": "appeal-clock-open",
+        "label": "File notice of appeal (US party)",
+        "q": 0,
+        "to": "notice-of-appeal-filed"
+      },
+      {
+        "from": "appeal-clock-open",
+        "label": "Let the deadline lapse",
+        "q": 0,
+        "to": "notice-of-appeal-untimely"
+      },
+      {
+        "from": "appeal-clock-open",
+        "label": "Move to extend or reopen deadline",
+        "q": 0,
+        "to": "post-deadline-relief-motion"
+      },
+      {
+        "from": "appeal-clock-open",
+        "label": "File Rule 4(a)(4) tolling motion",
+        "q": 0,
+        "to": "tolling-motion-filed"
+      },
+      {
+        "from": "appealability-fork",
+        "label": "Order is a final judgment",
+        "q": 0,
+        "to": "final-judgment-entered"
+      },
+      {
+        "from": "appealability-fork",
+        "label": "Order is interlocutory",
+        "q": 0,
+        "to": "interlocutory-order-issued"
+      },
+      {
+        "from": "appellant-brief-filed",
+        "label": "Appellee files response brief",
+        "q": 0,
+        "to": "appellee-brief-filed"
+      },
+      {
+        "from": "appellant-brief-window",
+        "label": "Fail to file opening brief",
+        "q": 0,
+        "to": "appeal-dismissed-no-brief"
+      },
+      {
+        "from": "appellant-brief-window",
+        "label": "File opening brief",
+        "q": 0,
+        "to": "appellant-brief-filed"
+      },
+      {
+        "from": "appellee-brief-filed",
+        "label": "Waive reply brief",
+        "q": 0,
+        "to": "briefing-complete"
+      },
+      {
+        "from": "appellee-brief-filed",
+        "label": "File reply brief",
+        "q": 0,
+        "to": "reply-brief-filed"
+      },
+      {
+        "from": "briefing-complete",
+        "label": "Clerk calendars argument decision",
+        "q": 0,
+        "to": "oral-argument-fork"
+      },
+      {
+        "from": "cert-petition-filed",
+        "label": "Supreme Court considers petition",
+        "q": 0,
+        "to": "cert-review-decision"
+      },
+      {
+        "from": "cert-petition-window",
+        "label": "90-day window lapses",
+        "q": 0,
+        "to": "cert-not-sought"
+      },
+      {
+        "from": "cert-petition-window",
+        "label": "File petition for certiorari",
+        "q": 0,
+        "to": "cert-petition-filed"
+      },
+      {
+        "from": "cert-review-decision",
+        "label": "Certiorari denied",
+        "q": 0,
+        "to": "cert-denied"
+      },
+      {
+        "from": "cert-review-decision",
+        "label": "Certiorari granted",
+        "q": 0,
+        "to": "cert-granted"
+      },
+      {
+        "from": "clear-error-review",
+        "label": "No clear error — panel affirms",
+        "q": 0,
+        "to": "affirmed"
+      },
+      {
+        "from": "clear-error-review",
+        "label": "Panel splits the result",
+        "q": 0,
+        "to": "affirmed-in-part-reversed-in-part"
+      },
+      {
+        "from": "clear-error-review",
+        "label": "Clear error found — reverses",
+        "q": 0,
+        "to": "reversed"
+      },
+      {
+        "from": "clear-error-review",
+        "label": "Panel vacates for further findings",
+        "q": 0,
+        "to": "vacated-and-remanded"
+      },
+      {
+        "from": "cross-appeal-filed",
+        "label": "Cross-appeal docketed",
+        "q": 0,
+        "to": "voluntary-dismissal-fork"
+      },
+      {
+        "from": "cross-appeal-fork",
+        "label": "File notice of cross-appeal",
+        "q": 0,
+        "to": "cross-appeal-filed"
+      },
+      {
+        "from": "cross-appeal-fork",
+        "label": "Decline to cross-appeal",
+        "q": 0,
+        "to": "cross-appeal-not-filed"
+      },
+      {
+        "from": "cross-appeal-not-filed",
+        "label": "Proceed without cross-appeal",
+        "q": 0,
+        "to": "voluntary-dismissal-fork"
+      },
+      {
+        "from": "de-novo-review",
+        "label": "Panel affirms de novo",
+        "q": 0,
+        "to": "affirmed"
+      },
+      {
+        "from": "de-novo-review",
+        "label": "Panel splits the result",
+        "q": 0,
+        "to": "affirmed-in-part-reversed-in-part"
+      },
+      {
+        "from": "de-novo-review",
+        "label": "Panel reverses de novo",
+        "q": 0,
+        "to": "reversed"
+      },
+      {
+        "from": "de-novo-review",
+        "label": "Panel reverses and remands",
+        "q": 0,
+        "to": "reversed-and-remanded"
+      },
+      {
+        "from": "de-novo-review",
+        "label": "Panel vacates and remands",
+        "q": 0,
+        "to": "vacated-and-remanded"
+      },
+      {
+        "from": "deficient-notice-of-appeal",
+        "label": "Court excuses the technical defect",
+        "q": 0,
+        "to": "docketed-in-court-of-appeals"
+      },
+      {
+        "from": "deficient-notice-of-appeal",
+        "label": "Defect held jurisdictional, uncurable",
+        "q": 0,
+        "to": "notice-of-appeal-untimely"
+      },
+      {
+        "from": "docketed-in-court-of-appeals",
+        "label": "Appellee weighs a cross-appeal",
+        "q": 0,
+        "to": "cross-appeal-fork"
+      },
+      {
+        "from": "en-banc-poll-decision",
+        "label": "En banc poll fails",
+        "q": 0,
+        "to": "rehearing-en-banc-both-denied"
+      },
+      {
+        "from": "en-banc-poll-decision",
+        "label": "Majority votes to rehear en banc",
+        "q": 0,
+        "to": "rehearing-granted-amended-opinion"
+      },
+      {
+        "from": "final-judgment-entered",
+        "label": "Final judgment starts appeal clock",
+        "q": 0,
+        "to": "appeal-clock-open"
+      },
+      {
+        "from": "immediately-appealable-interlocutory",
+        "label": "Interlocutory order ripe for appeal",
+        "q": 0,
+        "to": "appeal-clock-open"
+      },
+      {
+        "from": "interlocutory-order-issued",
+        "label": "Check interlocutory review doors",
+        "q": 0,
+        "to": "interlocutory-review-fork"
+      },
+      {
+        "from": "interlocutory-review-fork",
+        "label": "Certify for interlocutory appeal",
+        "q": 0,
+        "to": "immediately-appealable-interlocutory"
+      },
+      {
+        "from": "interlocutory-review-fork",
+        "label": "Injunction order — appeal as of right",
+        "q": 0,
+        "to": "immediately-appealable-interlocutory"
+      },
+      {
+        "from": "interlocutory-review-fork",
+        "label": "Order meets collateral order doctrine",
+        "q": 0,
+        "to": "immediately-appealable-interlocutory"
+      },
+      {
+        "from": "interlocutory-review-fork",
+        "label": "No interlocutory door applies",
+        "q": 0,
+        "to": "interlocutory-review-unavailable"
+      },
+      {
+        "from": "mandate-issued",
+        "label": "Judgment final — cert clock runs",
+        "q": 0,
+        "to": "cert-petition-window"
+      },
+      {
+        "from": "mandate-issued",
+        "label": "Move to stay mandate for cert",
+        "q": 0,
+        "to": "mandate-stayed-pending-cert"
+      },
+      {
+        "from": "mandate-stayed-pending-cert",
+        "label": "Stay granted — cert proceeds",
+        "q": 0,
+        "to": "cert-petition-window"
+      },
+      {
+        "from": "notice-of-appeal-filed",
+        "label": "Notice omits required contents",
+        "q": 0,
+        "to": "deficient-notice-of-appeal"
+      },
+      {
+        "from": "notice-of-appeal-filed",
+        "label": "Notice complies — docketed",
+        "q": 0,
+        "to": "docketed-in-court-of-appeals"
+      },
+      {
+        "from": "oral-argument-fork",
+        "label": "Panel grants oral argument",
+        "q": 0,
+        "to": "oral-argument-held"
+      },
+      {
+        "from": "oral-argument-fork",
+        "label": "Panel dispenses with argument",
+        "q": 0,
+        "to": "submitted-on-briefs"
+      },
+      {
+        "from": "oral-argument-held",
+        "label": "Argument concludes — panel deliberates",
+        "q": 0,
+        "to": "standard-of-review-fork"
+      },
+      {
+        "from": "panel-rehearing-decision",
+        "label": "Panel denies — en banc poll proceeds",
+        "q": 0,
+        "to": "en-banc-poll-decision"
+      },
+      {
+        "from": "panel-rehearing-decision",
+        "label": "Panel grants rehearing",
+        "q": 0,
+        "to": "rehearing-granted-amended-opinion"
+      },
+      {
+        "from": "post-deadline-relief-motion",
+        "label": "Court grants extension or reopening",
+        "q": 0,
+        "to": "notice-of-appeal-filed"
+      },
+      {
+        "from": "post-deadline-relief-motion",
+        "label": "Court denies relief — deadline stands",
+        "q": 0,
+        "to": "notice-of-appeal-untimely"
+      },
+      {
+        "from": "record-transmitted",
+        "label": "Record complete — motions begin",
+        "q": 0,
+        "to": "stay-pending-appeal-fork"
+      },
+      {
+        "from": "rehearing-en-banc-both-denied",
+        "label": "Mandate clock resumes",
+        "q": 0,
+        "to": "mandate-issued"
+      },
+      {
+        "from": "rehearing-granted-amended-opinion",
+        "label": "Amended opinion becomes judgment",
+        "q": 0,
+        "to": "mandate-issued"
+      },
+      {
+        "from": "rehearing-petition-filed",
+        "label": "Panel rules on rehearing",
+        "q": 0,
+        "to": "panel-rehearing-decision"
+      },
+      {
+        "from": "rehearing-window",
+        "label": "No rehearing sought — time expires",
+        "q": 0,
+        "to": "mandate-issued"
+      },
+      {
+        "from": "rehearing-window",
+        "label": "Petition for rehearing / en banc",
+        "q": 0,
+        "to": "rehearing-petition-filed"
+      },
+      {
+        "from": "reply-brief-filed",
+        "label": "Briefing closes",
+        "q": 0,
+        "to": "briefing-complete"
+      },
+      {
+        "from": "reversed",
+        "label": "Losing party weighs rehearing",
+        "q": 0,
+        "to": "rehearing-window"
+      },
+      {
+        "from": "reversed-and-remanded",
+        "label": "Losing party weighs rehearing",
+        "q": 0,
+        "to": "rehearing-window"
+      },
+      {
+        "from": "standard-of-review-fork",
+        "label": "Issue is a discretionary ruling",
+        "q": 0,
+        "to": "abuse-of-discretion-review"
+      },
+      {
+        "from": "standard-of-review-fork",
+        "label": "Issue is a factual finding",
+        "q": 0,
+        "to": "clear-error-review"
+      },
+      {
+        "from": "standard-of-review-fork",
+        "label": "Issue is a question of law",
+        "q": 0,
+        "to": "de-novo-review"
+      },
+      {
+        "from": "statement-in-lieu-of-transcript",
+        "label": "Agreed statement approved",
+        "q": 0,
+        "to": "record-transmitted"
+      },
+      {
+        "from": "stay-denied",
+        "label": "Proceed to briefing",
+        "q": 0,
+        "to": "appellant-brief-window"
+      },
+      {
+        "from": "stay-granted",
+        "label": "Proceed to briefing under stay",
+        "q": 0,
+        "to": "appellant-brief-window"
+      },
+      {
+        "from": "stay-pending-appeal-fork",
+        "label": "Stay motion denied",
+        "q": 0,
+        "to": "stay-denied"
+      },
+      {
+        "from": "stay-pending-appeal-fork",
+        "label": "Move for stay pending appeal — granted",
+        "q": 0,
+        "to": "stay-granted"
+      },
+      {
+        "from": "submitted-on-briefs",
+        "label": "Panel deliberates on the papers",
+        "q": 0,
+        "to": "standard-of-review-fork"
+      },
+      {
+        "from": "tolling-motion-disposed",
+        "label": "Appeal clock restarts from disposition",
+        "q": 0,
+        "to": "appeal-clock-open"
+      },
+      {
+        "from": "tolling-motion-filed",
+        "label": "District court rules on the motion",
+        "q": 0,
+        "to": "tolling-motion-disposed"
+      },
+      {
+        "from": "transcript-order-fork",
+        "label": "File agreed statement instead",
+        "q": 0,
+        "to": "statement-in-lieu-of-transcript"
+      },
+      {
+        "from": "transcript-order-fork",
+        "label": "Order the necessary transcript",
+        "q": 0,
+        "to": "transcript-ordered"
+      },
+      {
+        "from": "transcript-ordered",
+        "label": "Transcript completed and filed",
+        "q": 0,
+        "to": "record-transmitted"
+      },
+      {
+        "from": "trial-court-disposition",
+        "label": "Assess order for finality",
+        "q": 0,
+        "to": "appealability-fork"
+      },
+      {
+        "from": "vacated-and-remanded",
+        "label": "Losing party weighs rehearing",
+        "q": 0,
+        "to": "rehearing-window"
+      },
+      {
+        "from": "voluntary-dismissal-fork",
+        "label": "Appeal proceeds — order the record",
+        "q": 0,
+        "to": "transcript-order-fork"
+      },
+      {
+        "from": "voluntary-dismissal-fork",
+        "label": "Stipulate to or move for dismissal",
+        "q": 0,
+        "to": "voluntarily-dismissed"
+      }
+    ],
+    "iterations": 1,
+    "policy": {
+      "appeal-clock-open": {
+        "from": "appeal-clock-open",
+        "label": "File notice of appeal (civil)",
+        "to": "notice-of-appeal-filed"
+      },
+      "appellant-brief-filed": {
+        "from": "appellant-brief-filed",
+        "label": "Appellee files response brief",
+        "to": "appellee-brief-filed"
+      },
+      "appellant-brief-window": {
+        "from": "appellant-brief-window",
+        "label": "File opening brief",
+        "to": "appellant-brief-filed"
+      },
+      "appellee-brief-filed": {
+        "from": "appellee-brief-filed",
+        "label": "File reply brief",
+        "to": "reply-brief-filed"
+      },
+      "cert-petition-window": {
+        "from": "cert-petition-window",
+        "label": "File petition for certiorari",
+        "to": "cert-petition-filed"
+      },
+      "cross-appeal-fork": {
+        "from": "cross-appeal-fork",
+        "label": "File notice of cross-appeal",
+        "to": "cross-appeal-filed"
+      },
+      "docketed-in-court-of-appeals": {
+        "from": "docketed-in-court-of-appeals",
+        "label": "Appellee weighs a cross-appeal",
+        "to": "cross-appeal-fork"
+      },
+      "interlocutory-order-issued": {
+        "from": "interlocutory-order-issued",
+        "label": "Check interlocutory review doors",
+        "to": "interlocutory-review-fork"
+      },
+      "interlocutory-review-fork": {
+        "from": "interlocutory-review-fork",
+        "label": "Injunction order — appeal as of right",
+        "to": "immediately-appealable-interlocutory"
+      },
+      "mandate-issued": {
+        "from": "mandate-issued",
+        "label": "Judgment final — cert clock runs",
+        "to": "cert-petition-window"
+      },
+      "rehearing-window": {
+        "from": "rehearing-window",
+        "label": "Petition for rehearing / en banc",
+        "to": "rehearing-petition-filed"
+      },
+      "stay-pending-appeal-fork": {
+        "from": "stay-pending-appeal-fork",
+        "label": "Move for stay pending appeal — granted",
+        "to": "stay-granted"
+      },
+      "transcript-order-fork": {
+        "from": "transcript-order-fork",
+        "label": "Order the necessary transcript",
+        "to": "transcript-ordered"
+      },
+      "voluntary-dismissal-fork": {
+        "from": "voluntary-dismissal-fork",
+        "label": "Stipulate to or move for dismissal",
+        "to": "voluntarily-dismissed"
+      }
+    },
+    "qValue": {
+      "abuse-of-discretion-review→affirmed": 0,
+      "abuse-of-discretion-review→affirmed-in-part-reversed-in-part": 0,
+      "abuse-of-discretion-review→reversed": 0,
+      "abuse-of-discretion-review→vacated-and-remanded": 0,
+      "appeal-clock-open→notice-of-appeal-filed": 0,
+      "appeal-clock-open→notice-of-appeal-untimely": 0,
+      "appeal-clock-open→post-deadline-relief-motion": 0,
+      "appeal-clock-open→tolling-motion-filed": 0,
+      "appealability-fork→final-judgment-entered": 0,
+      "appealability-fork→interlocutory-order-issued": 0,
+      "appellant-brief-filed→appellee-brief-filed": 0,
+      "appellant-brief-window→appeal-dismissed-no-brief": 0,
+      "appellant-brief-window→appellant-brief-filed": 0,
+      "appellee-brief-filed→briefing-complete": 0,
+      "appellee-brief-filed→reply-brief-filed": 0,
+      "briefing-complete→oral-argument-fork": 0,
+      "cert-petition-filed→cert-review-decision": 0,
+      "cert-petition-window→cert-not-sought": 0,
+      "cert-petition-window→cert-petition-filed": 0,
+      "cert-review-decision→cert-denied": 0,
+      "cert-review-decision→cert-granted": 0,
+      "clear-error-review→affirmed": 0,
+      "clear-error-review→affirmed-in-part-reversed-in-part": 0,
+      "clear-error-review→reversed": 0,
+      "clear-error-review→vacated-and-remanded": 0,
+      "cross-appeal-filed→voluntary-dismissal-fork": 0,
+      "cross-appeal-fork→cross-appeal-filed": 0,
+      "cross-appeal-fork→cross-appeal-not-filed": 0,
+      "cross-appeal-not-filed→voluntary-dismissal-fork": 0,
+      "de-novo-review→affirmed": 0,
+      "de-novo-review→affirmed-in-part-reversed-in-part": 0,
+      "de-novo-review→reversed": 0,
+      "de-novo-review→reversed-and-remanded": 0,
+      "de-novo-review→vacated-and-remanded": 0,
+      "deficient-notice-of-appeal→docketed-in-court-of-appeals": 0,
+      "deficient-notice-of-appeal→notice-of-appeal-untimely": 0,
+      "docketed-in-court-of-appeals→cross-appeal-fork": 0,
+      "en-banc-poll-decision→rehearing-en-banc-both-denied": 0,
+      "en-banc-poll-decision→rehearing-granted-amended-opinion": 0,
+      "final-judgment-entered→appeal-clock-open": 0,
+      "immediately-appealable-interlocutory→appeal-clock-open": 0,
+      "interlocutory-order-issued→interlocutory-review-fork": 0,
+      "interlocutory-review-fork→immediately-appealable-interlocutory": 0,
+      "interlocutory-review-fork→interlocutory-review-unavailable": 0,
+      "mandate-issued→cert-petition-window": 0,
+      "mandate-issued→mandate-stayed-pending-cert": 0,
+      "mandate-stayed-pending-cert→cert-petition-window": 0,
+      "notice-of-appeal-filed→deficient-notice-of-appeal": 0,
+      "notice-of-appeal-filed→docketed-in-court-of-appeals": 0,
+      "oral-argument-fork→oral-argument-held": 0,
+      "oral-argument-fork→submitted-on-briefs": 0,
+      "oral-argument-held→standard-of-review-fork": 0,
+      "panel-rehearing-decision→en-banc-poll-decision": 0,
+      "panel-rehearing-decision→rehearing-granted-amended-opinion": 0,
+      "post-deadline-relief-motion→notice-of-appeal-filed": 0,
+      "post-deadline-relief-motion→notice-of-appeal-untimely": 0,
+      "record-transmitted→stay-pending-appeal-fork": 0,
+      "rehearing-granted-amended-opinion→mandate-issued": 0,
+      "rehearing-petition-filed→panel-rehearing-decision": 0,
+      "rehearing-window→mandate-issued": 0,
+      "rehearing-window→rehearing-petition-filed": 0,
+      "reply-brief-filed→briefing-complete": 0,
+      "standard-of-review-fork→abuse-of-discretion-review": 0,
+      "standard-of-review-fork→clear-error-review": 0,
+      "standard-of-review-fork→de-novo-review": 0,
+      "statement-in-lieu-of-transcript→record-transmitted": 0,
+      "stay-denied→appellant-brief-window": 0,
+      "stay-granted→appellant-brief-window": 0,
+      "stay-pending-appeal-fork→stay-denied": 0,
+      "stay-pending-appeal-fork→stay-granted": 0,
+      "submitted-on-briefs→standard-of-review-fork": 0,
+      "tolling-motion-disposed→appeal-clock-open": 0,
+      "tolling-motion-filed→tolling-motion-disposed": 0,
+      "transcript-order-fork→statement-in-lieu-of-transcript": 0,
+      "transcript-order-fork→transcript-ordered": 0,
+      "transcript-ordered→record-transmitted": 0,
+      "trial-court-disposition→appealability-fork": 0,
+      "voluntary-dismissal-fork→transcript-order-fork": 0,
+      "voluntary-dismissal-fork→voluntarily-dismissed": 0
+    },
+    "qValueNote": "qValue is keyed 'from→to' (StatechartEdge.qKey) and COLLIDES on parallel edges (same from/to, different label) — last-write-wins from the source Map iteration order. Use edgeQ for a collision-free per-edge view.",
+    "value": {
+      "abuse-of-discretion-review": 0,
+      "affirmed": 0,
+      "affirmed-in-part-reversed-in-part": 0,
+      "appeal-clock-open": 0,
+      "appeal-dismissed-no-brief": 0,
+      "appealability-fork": 0,
+      "appellant-brief-filed": 0,
+      "appellant-brief-window": 0,
+      "appellee-brief-filed": 0,
+      "briefing-complete": 0,
+      "cert-denied": 0,
+      "cert-granted": 0,
+      "cert-not-sought": 0,
+      "cert-petition-filed": 0,
+      "cert-petition-window": 0,
+      "cert-review-decision": 0,
+      "clear-error-review": 0,
+      "cross-appeal-filed": 0,
+      "cross-appeal-fork": 0,
+      "cross-appeal-not-filed": 0,
+      "de-novo-review": 0,
+      "deficient-notice-of-appeal": 0,
+      "docketed-in-court-of-appeals": 0,
+      "en-banc-poll-decision": 0,
+      "final-judgment-entered": 0,
+      "immediately-appealable-interlocutory": 0,
+      "interlocutory-order-issued": 0,
+      "interlocutory-review-fork": 0,
+      "interlocutory-review-unavailable": 0,
+      "mandate-issued": 0,
+      "mandate-stayed-pending-cert": 0,
+      "notice-of-appeal-filed": 0,
+      "notice-of-appeal-untimely": 0,
+      "oral-argument-fork": 0,
+      "oral-argument-held": 0,
+      "panel-rehearing-decision": 0,
+      "post-deadline-relief-motion": 0,
+      "record-transmitted": 0,
+      "rehearing-en-banc-both-denied": 0,
+      "rehearing-granted-amended-opinion": 0,
+      "rehearing-petition-filed": 0,
+      "rehearing-window": 0,
+      "reply-brief-filed": 0,
+      "reversed": 0,
+      "reversed-and-remanded": 0,
+      "standard-of-review-fork": 0,
+      "statement-in-lieu-of-transcript": 0,
+      "stay-denied": 0,
+      "stay-granted": 0,
+      "stay-pending-appeal-fork": 0,
+      "submitted-on-briefs": 0,
+      "tolling-motion-disposed": 0,
+      "tolling-motion-filed": 0,
+      "transcript-order-fork": 0,
+      "transcript-ordered": 0,
+      "trial-court-disposition": 0,
+      "vacated-and-remanded": 0,
+      "voluntarily-dismissed": 0,
+      "voluntary-dismissal-fork": 0
+    }
+  },
+  "weightedGraph500": {
+    "edges": [
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "abuse-of-discretion-review",
+        "hours": 0,
+        "label": "No abuse found — panel affirms",
+        "probability": 0.7,
+        "to": "affirmed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "abuse-of-discretion-review",
+        "hours": 0,
+        "label": "Panel splits the result",
+        "probability": 0.05,
+        "to": "affirmed-in-part-reversed-in-part"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "abuse-of-discretion-review",
+        "hours": 0,
+        "label": "Abuse found — panel reverses",
+        "probability": 0.1,
+        "to": "reversed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "abuse-of-discretion-review",
+        "hours": 0,
+        "label": "Panel vacates for further findings",
+        "probability": 0.15,
+        "to": "vacated-and-remanded"
+      },
+      {
+        "benefit": 0,
+        "days": 14,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "affirmed",
+        "hours": 0,
+        "label": "Losing party weighs rehearing",
+        "probability": null,
+        "to": "rehearing-window"
+      },
+      {
+        "benefit": 0,
+        "days": 14,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "affirmed-in-part-reversed-in-part",
+        "hours": 0,
+        "label": "Either party weighs rehearing",
+        "probability": null,
+        "to": "rehearing-window"
+      },
+      {
+        "benefit": 0,
+        "days": 30,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "appeal-clock-open",
+        "hours": 0,
+        "label": "File notice of appeal (civil)",
+        "probability": null,
+        "to": "notice-of-appeal-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 14,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "appeal-clock-open",
+        "hours": 0,
+        "label": "File notice of appeal (criminal)",
+        "probability": null,
+        "to": "notice-of-appeal-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 60,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "appeal-clock-open",
+        "hours": 0,
+        "label": "File notice of appeal (US party)",
+        "probability": null,
+        "to": "notice-of-appeal-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "appeal-clock-open",
+        "hours": 0,
+        "label": "Let the deadline lapse",
+        "probability": null,
+        "to": "notice-of-appeal-untimely"
+      },
+      {
+        "benefit": 0,
+        "days": 30,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "appeal-clock-open",
+        "hours": 0,
+        "label": "Move to extend or reopen deadline",
+        "probability": null,
+        "to": "post-deadline-relief-motion"
+      },
+      {
+        "benefit": 0,
+        "days": 28,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "appeal-clock-open",
+        "hours": 0,
+        "label": "File Rule 4(a)(4) tolling motion",
+        "probability": null,
+        "to": "tolling-motion-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "appealability-fork",
+        "hours": 0,
+        "label": "Order is a final judgment",
+        "probability": null,
+        "to": "final-judgment-entered"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "appealability-fork",
+        "hours": 0,
+        "label": "Order is interlocutory",
+        "probability": null,
+        "to": "interlocutory-order-issued"
+      },
+      {
+        "benefit": 0,
+        "days": 30,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "appellant-brief-filed",
+        "hours": 0,
+        "label": "Appellee files response brief",
+        "probability": null,
+        "to": "appellee-brief-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "appellant-brief-window",
+        "hours": 0,
+        "label": "Fail to file opening brief",
+        "probability": null,
+        "to": "appeal-dismissed-no-brief"
+      },
+      {
+        "benefit": 0,
+        "days": 40,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "appellant-brief-window",
+        "hours": 0,
+        "label": "File opening brief",
+        "probability": null,
+        "to": "appellant-brief-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "appellee-brief-filed",
+        "hours": 0,
+        "label": "Waive reply brief",
+        "probability": null,
+        "to": "briefing-complete"
+      },
+      {
+        "benefit": 0,
+        "days": 21,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "appellee-brief-filed",
+        "hours": 0,
+        "label": "File reply brief",
+        "probability": null,
+        "to": "reply-brief-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "briefing-complete",
+        "hours": 0,
+        "label": "Clerk calendars argument decision",
+        "probability": null,
+        "to": "oral-argument-fork"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "cert-petition-filed",
+        "hours": 0,
+        "label": "Supreme Court considers petition",
+        "probability": null,
+        "to": "cert-review-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "cert-petition-window",
+        "hours": 0,
+        "label": "90-day window lapses",
+        "probability": null,
+        "to": "cert-not-sought"
+      },
+      {
+        "benefit": 0,
+        "days": 90,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "cert-petition-window",
+        "hours": 0,
+        "label": "File petition for certiorari",
+        "probability": null,
+        "to": "cert-petition-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "cert-review-decision",
+        "hours": 0,
+        "label": "Certiorari denied",
+        "probability": 0.99,
+        "to": "cert-denied"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "cert-review-decision",
+        "hours": 0,
+        "label": "Certiorari granted",
+        "probability": 0.01,
+        "to": "cert-granted"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "clear-error-review",
+        "hours": 0,
+        "label": "No clear error — panel affirms",
+        "probability": 0.75,
+        "to": "affirmed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "clear-error-review",
+        "hours": 0,
+        "label": "Panel splits the result",
+        "probability": 0.05,
+        "to": "affirmed-in-part-reversed-in-part"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "clear-error-review",
+        "hours": 0,
+        "label": "Clear error found — reverses",
+        "probability": 0.08,
+        "to": "reversed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "clear-error-review",
+        "hours": 0,
+        "label": "Panel vacates for further findings",
+        "probability": 0.12,
+        "to": "vacated-and-remanded"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "cross-appeal-filed",
+        "hours": 0,
+        "label": "Cross-appeal docketed",
+        "probability": null,
+        "to": "voluntary-dismissal-fork"
+      },
+      {
+        "benefit": 0,
+        "days": 14,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "cross-appeal-fork",
+        "hours": 0,
+        "label": "File notice of cross-appeal",
+        "probability": null,
+        "to": "cross-appeal-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "cross-appeal-fork",
+        "hours": 0,
+        "label": "Decline to cross-appeal",
+        "probability": null,
+        "to": "cross-appeal-not-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "cross-appeal-not-filed",
+        "hours": 0,
+        "label": "Proceed without cross-appeal",
+        "probability": null,
+        "to": "voluntary-dismissal-fork"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "de-novo-review",
+        "hours": 0,
+        "label": "Panel affirms de novo",
+        "probability": 0.45,
+        "to": "affirmed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "de-novo-review",
+        "hours": 0,
+        "label": "Panel splits the result",
+        "probability": 0.05,
+        "to": "affirmed-in-part-reversed-in-part"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "de-novo-review",
+        "hours": 0,
+        "label": "Panel reverses de novo",
+        "probability": 0.15,
+        "to": "reversed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "de-novo-review",
+        "hours": 0,
+        "label": "Panel reverses and remands",
+        "probability": 0.25,
+        "to": "reversed-and-remanded"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "de-novo-review",
+        "hours": 0,
+        "label": "Panel vacates and remands",
+        "probability": 0.1,
+        "to": "vacated-and-remanded"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "deficient-notice-of-appeal",
+        "hours": 0,
+        "label": "Court excuses the technical defect",
+        "probability": 0.75,
+        "to": "docketed-in-court-of-appeals"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "deficient-notice-of-appeal",
+        "hours": 0,
+        "label": "Defect held jurisdictional, uncurable",
+        "probability": 0.25,
+        "to": "notice-of-appeal-untimely"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "docketed-in-court-of-appeals",
+        "hours": 0,
+        "label": "Appellee weighs a cross-appeal",
+        "probability": null,
+        "to": "cross-appeal-fork"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "en-banc-poll-decision",
+        "hours": 0,
+        "label": "En banc poll fails",
+        "probability": 0.98,
+        "to": "rehearing-en-banc-both-denied"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "en-banc-poll-decision",
+        "hours": 0,
+        "label": "Majority votes to rehear en banc",
+        "probability": 0.02,
+        "to": "rehearing-granted-amended-opinion"
+      },
+      {
+        "benefit": 0,
+        "days": 30,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "final-judgment-entered",
+        "hours": 0,
+        "label": "Final judgment starts appeal clock",
+        "probability": null,
+        "to": "appeal-clock-open"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "immediately-appealable-interlocutory",
+        "hours": 0,
+        "label": "Interlocutory order ripe for appeal",
+        "probability": null,
+        "to": "appeal-clock-open"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "interlocutory-order-issued",
+        "hours": 0,
+        "label": "Check interlocutory review doors",
+        "probability": null,
+        "to": "interlocutory-review-fork"
+      },
+      {
+        "benefit": 0,
+        "days": 10,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "interlocutory-review-fork",
+        "hours": 0,
+        "label": "Certify for interlocutory appeal",
+        "probability": null,
+        "to": "immediately-appealable-interlocutory"
+      },
+      {
+        "benefit": 0,
+        "days": 30,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "interlocutory-review-fork",
+        "hours": 0,
+        "label": "Injunction order — appeal as of right",
+        "probability": null,
+        "to": "immediately-appealable-interlocutory"
+      },
+      {
+        "benefit": 0,
+        "days": 30,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "interlocutory-review-fork",
+        "hours": 0,
+        "label": "Order meets collateral order doctrine",
+        "probability": null,
+        "to": "immediately-appealable-interlocutory"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "interlocutory-review-fork",
+        "hours": 0,
+        "label": "No interlocutory door applies",
+        "probability": null,
+        "to": "interlocutory-review-unavailable"
+      },
+      {
+        "benefit": 0,
+        "days": 90,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "mandate-issued",
+        "hours": 0,
+        "label": "Judgment final — cert clock runs",
+        "probability": null,
+        "to": "cert-petition-window"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "mandate-issued",
+        "hours": 0,
+        "label": "Move to stay mandate for cert",
+        "probability": null,
+        "to": "mandate-stayed-pending-cert"
+      },
+      {
+        "benefit": 0,
+        "days": 90,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "mandate-stayed-pending-cert",
+        "hours": 0,
+        "label": "Stay granted — cert proceeds",
+        "probability": null,
+        "to": "cert-petition-window"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "notice-of-appeal-filed",
+        "hours": 0,
+        "label": "Notice omits required contents",
+        "probability": null,
+        "to": "deficient-notice-of-appeal"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "notice-of-appeal-filed",
+        "hours": 0,
+        "label": "Notice complies — docketed",
+        "probability": null,
+        "to": "docketed-in-court-of-appeals"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "oral-argument-fork",
+        "hours": 0,
+        "label": "Panel grants oral argument",
+        "probability": 0.4,
+        "to": "oral-argument-held"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "oral-argument-fork",
+        "hours": 0,
+        "label": "Panel dispenses with argument",
+        "probability": 0.6,
+        "to": "submitted-on-briefs"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "oral-argument-held",
+        "hours": 0,
+        "label": "Argument concludes — panel deliberates",
+        "probability": null,
+        "to": "standard-of-review-fork"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "panel-rehearing-decision",
+        "hours": 0,
+        "label": "Panel denies — en banc poll proceeds",
+        "probability": 0.95,
+        "to": "en-banc-poll-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "panel-rehearing-decision",
+        "hours": 0,
+        "label": "Panel grants rehearing",
+        "probability": 0.05,
+        "to": "rehearing-granted-amended-opinion"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "post-deadline-relief-motion",
+        "hours": 0,
+        "label": "Court grants extension or reopening",
+        "probability": 0.6,
+        "to": "notice-of-appeal-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "post-deadline-relief-motion",
+        "hours": 0,
+        "label": "Court denies relief — deadline stands",
+        "probability": 0.4,
+        "to": "notice-of-appeal-untimely"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "record-transmitted",
+        "hours": 0,
+        "label": "Record complete — motions begin",
+        "probability": null,
+        "to": "stay-pending-appeal-fork"
+      },
+      {
+        "benefit": 0,
+        "days": 7,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rehearing-en-banc-both-denied",
+        "hours": 0,
+        "label": "Mandate clock resumes",
+        "probability": null,
+        "to": "mandate-issued"
+      },
+      {
+        "benefit": 0,
+        "days": 7,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rehearing-granted-amended-opinion",
+        "hours": 0,
+        "label": "Amended opinion becomes judgment",
+        "probability": null,
+        "to": "mandate-issued"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rehearing-petition-filed",
+        "hours": 0,
+        "label": "Panel rules on rehearing",
+        "probability": null,
+        "to": "panel-rehearing-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 14,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rehearing-window",
+        "hours": 0,
+        "label": "No rehearing sought — time expires",
+        "probability": null,
+        "to": "mandate-issued"
+      },
+      {
+        "benefit": 0,
+        "days": 14,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rehearing-window",
+        "hours": 0,
+        "label": "Petition for rehearing / en banc",
+        "probability": null,
+        "to": "rehearing-petition-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "reply-brief-filed",
+        "hours": 0,
+        "label": "Briefing closes",
+        "probability": null,
+        "to": "briefing-complete"
+      },
+      {
+        "benefit": 0,
+        "days": 14,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "reversed",
+        "hours": 0,
+        "label": "Losing party weighs rehearing",
+        "probability": null,
+        "to": "rehearing-window"
+      },
+      {
+        "benefit": 0,
+        "days": 14,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "reversed-and-remanded",
+        "hours": 0,
+        "label": "Losing party weighs rehearing",
+        "probability": null,
+        "to": "rehearing-window"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "standard-of-review-fork",
+        "hours": 0,
+        "label": "Issue is a discretionary ruling",
+        "probability": null,
+        "to": "abuse-of-discretion-review"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "standard-of-review-fork",
+        "hours": 0,
+        "label": "Issue is a factual finding",
+        "probability": null,
+        "to": "clear-error-review"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "standard-of-review-fork",
+        "hours": 0,
+        "label": "Issue is a question of law",
+        "probability": null,
+        "to": "de-novo-review"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "statement-in-lieu-of-transcript",
+        "hours": 0,
+        "label": "Agreed statement approved",
+        "probability": null,
+        "to": "record-transmitted"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "stay-denied",
+        "hours": 0,
+        "label": "Proceed to briefing",
+        "probability": null,
+        "to": "appellant-brief-window"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "stay-granted",
+        "hours": 0,
+        "label": "Proceed to briefing under stay",
+        "probability": null,
+        "to": "appellant-brief-window"
+      },
+      {
+        "benefit": 0,
+        "days": 10,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "stay-pending-appeal-fork",
+        "hours": 0,
+        "label": "Stay motion denied",
+        "probability": null,
+        "to": "stay-denied"
+      },
+      {
+        "benefit": 0,
+        "days": 10,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "stay-pending-appeal-fork",
+        "hours": 0,
+        "label": "Move for stay pending appeal — granted",
+        "probability": null,
+        "to": "stay-granted"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "submitted-on-briefs",
+        "hours": 0,
+        "label": "Panel deliberates on the papers",
+        "probability": null,
+        "to": "standard-of-review-fork"
+      },
+      {
+        "benefit": 0,
+        "days": 30,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "tolling-motion-disposed",
+        "hours": 0,
+        "label": "Appeal clock restarts from disposition",
+        "probability": null,
+        "to": "appeal-clock-open"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "tolling-motion-filed",
+        "hours": 0,
+        "label": "District court rules on the motion",
+        "probability": null,
+        "to": "tolling-motion-disposed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "transcript-order-fork",
+        "hours": 0,
+        "label": "File agreed statement instead",
+        "probability": null,
+        "to": "statement-in-lieu-of-transcript"
+      },
+      {
+        "benefit": 0,
+        "days": 14,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "transcript-order-fork",
+        "hours": 0,
+        "label": "Order the necessary transcript",
+        "probability": null,
+        "to": "transcript-ordered"
+      },
+      {
+        "benefit": 0,
+        "days": 30,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "transcript-ordered",
+        "hours": 0,
+        "label": "Transcript completed and filed",
+        "probability": null,
+        "to": "record-transmitted"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "trial-court-disposition",
+        "hours": 0,
+        "label": "Assess order for finality",
+        "probability": null,
+        "to": "appealability-fork"
+      },
+      {
+        "benefit": 0,
+        "days": 14,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "vacated-and-remanded",
+        "hours": 0,
+        "label": "Losing party weighs rehearing",
+        "probability": null,
+        "to": "rehearing-window"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "voluntary-dismissal-fork",
+        "hours": 0,
+        "label": "Appeal proceeds — order the record",
+        "probability": null,
+        "to": "transcript-order-fork"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "voluntary-dismissal-fork",
+        "hours": 0,
+        "label": "Stipulate to or move for dismissal",
+        "probability": null,
+        "to": "voluntarily-dismissed"
+      }
+    ],
+    "terminalValue": {
+      "abuse-of-discretion-review": 0,
+      "affirmed": 0,
+      "affirmed-in-part-reversed-in-part": 0,
+      "appeal-clock-open": 0,
+      "appeal-dismissed-no-brief": 0,
+      "appealability-fork": 0,
+      "appellant-brief-filed": 0,
+      "appellant-brief-window": 0,
+      "appellee-brief-filed": 0,
+      "briefing-complete": 0,
+      "cert-denied": 0,
+      "cert-granted": 0,
+      "cert-not-sought": 0,
+      "cert-petition-filed": 0,
+      "cert-petition-window": 0,
+      "cert-review-decision": 0,
+      "clear-error-review": 0,
+      "cross-appeal-filed": 0,
+      "cross-appeal-fork": 0,
+      "cross-appeal-not-filed": 0,
+      "de-novo-review": 0,
+      "deficient-notice-of-appeal": 0,
+      "docketed-in-court-of-appeals": 0,
+      "en-banc-poll-decision": 0,
+      "final-judgment-entered": 0,
+      "immediately-appealable-interlocutory": 0,
+      "interlocutory-order-issued": 0,
+      "interlocutory-review-fork": 0,
+      "interlocutory-review-unavailable": 0,
+      "mandate-issued": 0,
+      "mandate-stayed-pending-cert": 0,
+      "notice-of-appeal-filed": 0,
+      "notice-of-appeal-untimely": 0,
+      "oral-argument-fork": 0,
+      "oral-argument-held": 0,
+      "panel-rehearing-decision": 0,
+      "post-deadline-relief-motion": 0,
+      "record-transmitted": 0,
+      "rehearing-en-banc-both-denied": 0,
+      "rehearing-granted-amended-opinion": 0,
+      "rehearing-petition-filed": 0,
+      "rehearing-window": 0,
+      "reply-brief-filed": 0,
+      "reversed": 0,
+      "reversed-and-remanded": 0,
+      "standard-of-review-fork": 0,
+      "statement-in-lieu-of-transcript": 0,
+      "stay-denied": 0,
+      "stay-granted": 0,
+      "stay-pending-appeal-fork": 0,
+      "submitted-on-briefs": 0,
+      "tolling-motion-disposed": 0,
+      "tolling-motion-filed": 0,
+      "transcript-order-fork": 0,
+      "transcript-ordered": 0,
+      "trial-court-disposition": 0,
+      "vacated-and-remanded": 0,
+      "voluntarily-dismissed": 0,
+      "voluntary-dismissal-fork": 0
+    }
+  }
+}

@@ -1,0 +1,1253 @@
+{
+  "schemaVersion": 1,
+  "id": "frcrimp-criminal-procedure",
+  "title": "Federal Criminal Procedure Under the FRCrimP Rules",
+  "description": "Pre-charge investigation and grand jury -> criminal complaint or indictment -> arrest, initial appearance, and detention/bail determination -> arraignment and pretrial release -> Rule 12 pretrial motions (defective indictment, suppression, Speedy Trial Act) -> Rule 16 and Brady/Giglio discovery -> Rule 11 plea negotiations and the change-of-plea colloquy -> trial (Rule 29 acquittal motions, jury verdict) -> post-trial motions and U.S.S.G. sentencing -> Rule 35 correction, the FRAP 4(b) notice-of-appeal window, and direct appeal. Citations checked against the Federal Rules of Criminal Procedure, Title 18, the Sentencing Guidelines, and the Federal Rules of Appellate Procedure. Walk mode teaches the Rule 12(c)(3) pretrial-motions waiver trap, the jurisdictional (Bowles v. Russell) character of the FRAP 4(b) notice-of-appeal deadline, and the unextendable 14-day Rule 29(c)/33/35(a) post-verdict clocks.",
+  "jurisdiction": "Federal Rules of Criminal Procedure / U.S. District Courts",
+  "startNodeId": "investigation",
+  "groups": [
+    { "id": "investigation-group", "label": "Pre-Charge Investigation & Grand Jury" },
+    { "id": "charging-group", "label": "Charging & Initial Appearance" },
+    { "id": "arraignment-group", "label": "Arraignment & Pretrial Release" },
+    { "id": "pretrial-motions-group", "label": "Pretrial Motions (Rule 12)" },
+    { "id": "discovery-group", "label": "Discovery & Brady/Giglio" },
+    { "id": "plea-group", "label": "Plea Process (Rule 11)" },
+    { "id": "trial-group", "label": "Trial" },
+    { "id": "verdict-sentencing-group", "label": "Verdict, Post-Trial Motions & Sentencing" },
+    { "id": "appeal-group", "label": "Post-Conviction & Appeal" }
+  ],
+  "nodes": [
+    {
+      "id": "investigation",
+      "label": "Pre-Charge Investigation",
+      "kind": "state",
+      "group": "investigation-group",
+      "cite": "Fed. R. Crim. P. 41; 18 U.S.C. § 3282",
+      "note": "Search warrants (Rule 41) require probable cause before a magistrate judge. The five-year statute of limitations in 18 U.S.C. § 3282 applies to non-capital federal offenses, measured from the offense date, not from discovery of the crime — a trap when investigating old conduct."
+    },
+    {
+      "id": "grand-jury-convened",
+      "label": "Grand Jury Convened",
+      "kind": "state",
+      "group": "investigation-group",
+      "cite": "Fed. R. Crim. P. 6(a), (e)",
+      "note": "Grand jury proceedings are sealed under Rule 6(e); the target has no right to have counsel present in the jury room. Probable cause is the standard, not proof beyond a reasonable doubt, so hearsay and comparatively weak evidence suffice."
+    },
+    {
+      "id": "grand-jury-vote",
+      "label": "Grand Jury Votes",
+      "kind": "decision",
+      "group": "investigation-group",
+      "cite": "Fed. R. Crim. P. 6(f)",
+      "note": "At least 12 of the 16-23 jurors must concur to return a true bill. If fewer than 12 concur, the foreperson must report the lack of concurrence to the magistrate judge in writing — the indictment is not effective."
+    },
+    {
+      "id": "indictment-returned",
+      "label": "Indictment Returned (True Bill)",
+      "kind": "state",
+      "group": "investigation-group",
+      "cite": "Fed. R. Crim. P. 6(f), 7; U.S. Const. amend. V",
+      "note": "The Fifth Amendment requires grand jury indictment for federal felonies unless waived. The indictment must be returned in open court by the foreperson and starts the Speedy Trial Act clock together with arraignment (18 U.S.C. § 3161(c)(1))."
+    },
+    {
+      "id": "no-bill",
+      "label": "No Bill — Grand Jury Declines to Indict",
+      "kind": "terminal",
+      "group": "investigation-group",
+      "cite": "Fed. R. Crim. P. 6(f); Blockburger v. United States, 284 U.S. 299 (1932)",
+      "note": "Double jeopardy does not attach at the grand jury stage, so the government may re-present the same charges to a different grand jury. Jeopardy attaches only when the trial jury is sworn (or the first witness is sworn in a bench trial).",
+      "valence": "good"
+    },
+    {
+      "id": "complaint-filed",
+      "label": "Criminal Complaint Filed",
+      "kind": "state",
+      "group": "charging-group",
+      "cite": "Fed. R. Crim. P. 3",
+      "note": "Sworn written statement of essential facts administered under oath before a magistrate judge. A separate probable-cause affidavit is typically attached; the complaint itself need only allege the essential elements of the offense."
+    },
+    {
+      "id": "arrest",
+      "label": "Arrest / Warrant or Summons Executed",
+      "kind": "state",
+      "group": "charging-group",
+      "cite": "Fed. R. Crim. P. 4, 5(a); 18 U.S.C. § 3501(c)",
+      "note": "Defendant must be brought before a magistrate 'without unnecessary delay' — the McNabb-Mallory rule, now codified at 18 U.S.C. § 3501(c). Violation is not itself unconstitutional but triggers suppression of statements as the remedy; there is no bright-line federal day count."
+    },
+    {
+      "id": "initial-appearance",
+      "label": "Initial Appearance",
+      "kind": "state",
+      "group": "charging-group",
+      "cite": "Fed. R. Crim. P. 5",
+      "note": "Magistrate advises the defendant of the charges and rights and appoints or confirms counsel. TRAP: many defendants unknowingly waive the preliminary hearing right at this stage — an invalid waiver requires the court to hold the hearing anyway."
+    },
+    {
+      "id": "preliminary-hearing",
+      "label": "Preliminary Hearing",
+      "kind": "decision",
+      "group": "charging-group",
+      "cite": "Fed. R. Crim. P. 5.1",
+      "note": "Only available if not yet indicted; the magistrate applies a probable-cause standard and hearsay is permitted. Automatically moot if the grand jury indicts before the hearing concludes (Rule 5.1(f)) — the government can bypass an unfavorable PC ruling by indicting first."
+    },
+    {
+      "id": "bound-over-grand-jury",
+      "label": "Bound Over to Grand Jury",
+      "kind": "state",
+      "group": "charging-group",
+      "cite": "Fed. R. Crim. P. 5.1(f)",
+      "note": "The magistrate's probable-cause finding binds only the magistrate's own determination — the grand jury retains independent power to decline indictment, reduce charges, or indict on different counts entirely."
+    },
+    {
+      "id": "complaint-dismissed-no-pc",
+      "label": "Complaint Dismissed — No Probable Cause",
+      "kind": "terminal",
+      "group": "charging-group",
+      "cite": "Fed. R. Crim. P. 5.1(f)",
+      "note": "Magistrate finds no probable cause; defendant discharged on this complaint. Not a double jeopardy bar — jeopardy has not attached, so the government routinely re-prosecutes via grand jury indictment on the same conduct.",
+      "valence": "good"
+    },
+    {
+      "id": "detention-hearing",
+      "label": "Detention Hearing (Bail Determination)",
+      "kind": "decision",
+      "group": "arraignment-group",
+      "cite": "18 U.S.C. § 3142(e); Fed. R. Crim. P. 46",
+      "note": "Bail Reform Act factors: flight risk, danger to the community, and the nature/severity of the charges. A rebuttable presumption of detention applies to certain violent-felony and serious drug offenses under § 3142(e)(3), shifting the burden to the defendant; the court must state its reasons in writing."
+    },
+    {
+      "id": "released-on-conditions",
+      "label": "Released on Bail/Conditions",
+      "kind": "state",
+      "group": "arraignment-group",
+      "cite": "18 U.S.C. § 3142(b), (c)",
+      "note": "Conditions can include personal recognizance, bail, travel restrictions, curfew, GPS monitoring, house arrest, or a third-party custodian. Violating conditions triggers revocation proceedings under § 3142(g) and may result in detention."
+    },
+    {
+      "id": "detained-pretrial",
+      "label": "Detained Pending Trial",
+      "kind": "state",
+      "group": "arraignment-group",
+      "cite": "18 U.S.C. § 3142(e), (f); 18 U.S.C. § 3161(c)(1)",
+      "note": "Detained defendants receive priority under the Speedy Trial Act's 70-day trial clock. Defendant may move at any time to reopen detention based on newly discovered evidence; the court must hold a hearing within three days absent waiver."
+    },
+    {
+      "id": "information-filed",
+      "label": "Information Filed",
+      "kind": "state",
+      "group": "arraignment-group",
+      "cite": "Fed. R. Crim. P. 7(a)-(b)",
+      "note": "Available as of right for misdemeanors; for felonies, requires a knowing and voluntary waiver of indictment in open court or in writing. Proceeding on an information starts the Speedy Trial Act clock like an indictment does."
+    },
+    {
+      "id": "arraignment",
+      "label": "Arraignment",
+      "kind": "state",
+      "group": "arraignment-group",
+      "cite": "Fed. R. Crim. P. 10(a); 18 U.S.C. § 3161(c)(1)",
+      "note": "Defendant is informed of the charging instrument in open court and enters a plea. Arraignment is the later of the two trigger dates (with indictment/information) for the Speedy Trial Act's unextendable 70-day trial clock."
+    },
+    {
+      "id": "not-guilty-plea",
+      "label": "Not Guilty Plea Entered",
+      "kind": "state",
+      "group": "arraignment-group",
+      "cite": "Fed. R. Crim. P. 11(a), (b)",
+      "note": "Default plea when no agreement yet exists. Does not preclude simultaneous or later plea negotiations — the case proceeds into pretrial motions and discovery while plea talks may run in parallel."
+    },
+    {
+      "id": "rule12-deadline-set",
+      "label": "Rule 12(c) Motions Deadline Set",
+      "kind": "state",
+      "group": "pretrial-motions-group",
+      "cite": "Fed. R. Crim. P. 12(c)(1)",
+      "note": "Court sets the Rule 12(b)(3) motion deadline at arraignment or as soon thereafter as practicable; if no deadline is set, all pretrial motions are due at trial's start. This deadline triggers the Rule 12(c)(3) waiver trap below."
+    },
+    {
+      "id": "pretrial-motions-window",
+      "label": "Pretrial Motions Window",
+      "kind": "decision",
+      "group": "pretrial-motions-group",
+      "cite": "Fed. R. Crim. P. 12(b)(3)",
+      "note": "Motions that MUST be raised before trial include a defective indictment, suppression of evidence, severance, and Speedy Trial Act violations. Failure to raise these by the deadline forfeits them unless good cause is shown — most claims cannot be revived on appeal."
+    },
+    {
+      "id": "motion-to-dismiss-filed",
+      "label": "Motion to Dismiss Indictment Filed",
+      "kind": "state",
+      "group": "pretrial-motions-group",
+      "cite": "Fed. R. Crim. P. 12(b)(3)(B)",
+      "note": "Common grounds: a defective indictment (fails to state an offense), duplicity, multiplicity, statute-of-limitations expiration, and grand jury selection defects. Dismissal may be with or without prejudice depending on the defect's nature."
+    },
+    {
+      "id": "motion-to-suppress-filed",
+      "label": "Motion to Suppress Evidence Filed",
+      "kind": "state",
+      "group": "pretrial-motions-group",
+      "cite": "Fed. R. Crim. P. 12(b)(3)(C); U.S. Const. amend. IV",
+      "note": "Challenges evidence from a warrantless search/seizure or an involuntary statement (Miranda/Fifth Amendment). If granted, the government loses the evidence; if denied, the ruling is automatically preserved for direct appeal under the 2014 Rule 12(b)(3) amendment."
+    },
+    {
+      "id": "suppression-granted",
+      "label": "Suppression Motion Granted",
+      "kind": "state",
+      "group": "pretrial-motions-group",
+      "cite": "Fed. R. Crim. P. 12(d); Mapp v. Ohio, 367 U.S. 643 (1961)",
+      "note": "Excluded evidence often cripples the prosecution; the government may instead take an interlocutory appeal under 18 U.S.C. § 3731 to preserve the ruling for review, or proceed without the suppressed evidence if the case is still viable."
+    },
+    {
+      "id": "suppression-denied",
+      "label": "Suppression Motion Denied",
+      "kind": "state",
+      "group": "pretrial-motions-group",
+      "cite": "Fed. R. Crim. P. 12(d)",
+      "note": "Denial is automatically preserved for direct appeal without renewing the objection at trial under the 2014 amendment — the defendant need not re-object during trial to preserve the issue."
+    },
+    {
+      "id": "indictment-dismissed-defective",
+      "label": "Indictment Dismissed — Defective/Time-Barred",
+      "kind": "terminal",
+      "group": "pretrial-motions-group",
+      "cite": "Fed. R. Crim. P. 12(b)(3)(B); 18 U.S.C. § 3282",
+      "note": "May be with or without prejudice. Dismissal without prejudice is only truly final if the five-year limitations period (18 U.S.C. § 3282) has since run — otherwise re-indictment remains possible.",
+      "valence": "good"
+    },
+    {
+      "id": "rule12c-waiver-trap",
+      "label": "Rule 12(c) Waiver — Motion Forfeited",
+      "kind": "terminal",
+      "group": "pretrial-motions-group",
+      "cite": "Fed. R. Crim. P. 12(c)(3); Davis v. United States, 411 U.S. 233 (1973)",
+      "note": "TRAP. An untimely Rule 12(b)(3) motion is forfeited absent a showing of good cause for the delay — a flexible but demanding standard. Most defenses are lost for good, though a narrower plain-error path can survive for some suppression claims on direct appeal.",
+      "valence": "bad"
+    },
+    {
+      "id": "speedy-trial-dismissal",
+      "label": "Dismissed — Speedy Trial Act Violation",
+      "kind": "terminal",
+      "group": "pretrial-motions-group",
+      "cite": "18 U.S.C. §§ 3161-3162",
+      "note": "70-day trial-start clock from indictment or first appearance, whichever is later, minus excludable delay under § 3161(h). Dismissal under § 3162(a)(2) can be with or without prejudice based on offense seriousness and the impact on Speedy Trial Act administration.",
+      "valence": "good"
+    },
+    {
+      "id": "rule16-discovery",
+      "label": "Rule 16 Discovery Exchange",
+      "kind": "state",
+      "group": "discovery-group",
+      "cite": "Fed. R. Crim. P. 16(a)",
+      "note": "Government must disclose the defendant's statements, prior record, documents/objects, and expert reports — only upon the defendant's request. Reciprocal defense discovery is triggered once the defendant requests. Distinct from Brady/Giglio, which apply regardless of request."
+    },
+    {
+      "id": "brady-giglio-disclosure",
+      "label": "Brady/Giglio Disclosure",
+      "kind": "state",
+      "group": "discovery-group",
+      "cite": "Brady v. Maryland, 373 U.S. 83 (1963); Giglio v. United States, 405 U.S. 150 (1972)",
+      "note": "A continuing constitutional obligation, not a discretionary discovery rule: prosecutors must disclose evidence favorable to the accused material to guilt or punishment (Brady), including impeachment evidence such as witness deals (Giglio). No fixed deadline, and no limitations period bars post-conviction relief for a violation."
+    },
+    {
+      "id": "discovery-dispute",
+      "label": "Discovery Dispute / Motion to Compel",
+      "kind": "decision",
+      "group": "discovery-group",
+      "cite": "Fed. R. Crim. P. 16(d)(1)",
+      "note": "Defendant may move to compel when the government fails to produce Rule 16 discovery. The court has broad discretion under 16(d) to order compliance, grant a continuance, or fashion any other just remedy; Brady disputes follow the same framework."
+    },
+    {
+      "id": "discovery-sanction",
+      "label": "Discovery Sanction Imposed",
+      "kind": "state",
+      "group": "discovery-group",
+      "cite": "Fed. R. Crim. P. 16(d)(2)",
+      "note": "Sanctions range from a continuance (least severe) to exclusion of evidence to dismissal of charges. Brady/Giglio violations are especially treacherous: suppression can support post-conviction relief years later, so prevention is the only reliable remedy."
+    },
+    {
+      "id": "plea-negotiations",
+      "label": "Plea Negotiations",
+      "kind": "decision",
+      "group": "plea-group",
+      "cite": "Fed. R. Crim. P. 11(c)(1)",
+      "note": "Prosecutors and defense counsel may discuss dispositions outside court; the court cannot participate. Three agreement types: (A) charge bargain, (B) non-binding sentencing recommendation, (C) binding specific sentence or range. Absent a written or on-the-record agreement, this is negotiation only."
+    },
+    {
+      "id": "plea-agreement-reached",
+      "label": "Plea Agreement Reached",
+      "kind": "state",
+      "group": "plea-group",
+      "cite": "Fed. R. Crim. P. 11(c)(1), (c)(2)",
+      "note": "Must be disclosed in open court at the plea hearing unless the court allows in-camera disclosure for good cause. A Rule 11(c)(1)(C) binding-sentence agreement gives the defendant a statutory right to withdraw the plea if the court rejects the agreed disposition (Rule 11(c)(5))."
+    },
+    {
+      "id": "change-of-plea-hearing",
+      "label": "Change-of-Plea Hearing (Rule 11 Colloquy)",
+      "kind": "decision",
+      "group": "plea-group",
+      "cite": "Fed. R. Crim. P. 11(b)",
+      "note": "Court must address the defendant personally, ensure the plea is knowing and voluntary, confirm understanding of the rights waived and the penalties (including any mandatory minimum), and establish a factual basis. A defective colloquy is a frequent ground for appellate reversal."
+    },
+    {
+      "id": "plea-accepted",
+      "label": "Guilty Plea Accepted",
+      "kind": "state",
+      "group": "plea-group",
+      "cite": "Fed. R. Crim. P. 11(b)(3)",
+      "note": "Before accepting any guilty plea, the court must establish a factual basis sufficient to support each element of the offense — a bare admission alone is insufficient. Once accepted, the case bypasses trial entirely and proceeds straight to the presentence report."
+    },
+    {
+      "id": "plea-rejected-by-court",
+      "label": "Plea Rejected by Court",
+      "kind": "state",
+      "group": "plea-group",
+      "cite": "Fed. R. Crim. P. 11(c)(3)(A), (c)(5)",
+      "note": "Court may reject a (B)-type non-binding recommendation or a (C)-type binding agreement it deems unwarranted or contrary to law. Rejecting a binding agreement under (c)(5) entitles the defendant to withdraw the plea; rejecting a non-binding recommendation does not."
+    },
+    {
+      "id": "proceed-to-trial",
+      "label": "No Plea Agreement — Proceed to Trial",
+      "kind": "state",
+      "group": "plea-group",
+      "cite": "Fed. R. Crim. P. 11",
+      "note": "Negotiations failed or the defendant declined to plead; the Speedy Trial Act clock (18 U.S.C. § 3161, typically 70 days from indictment/arraignment) continues to run toward trial preparation, including pretrial motions, discovery, and jury selection."
+    },
+    {
+      "id": "jury-selection",
+      "label": "Jury Selection (Voir Dire)",
+      "kind": "state",
+      "group": "trial-group",
+      "cite": "Fed. R. Crim. P. 24",
+      "note": "Peremptory and for-cause challenges are available; a Batson v. Kentucky challenge polices race- or gender-based peremptory strikes through a prima facie case, a race-neutral explanation, and a totality-of-circumstances review."
+    },
+    {
+      "id": "trial-in-progress",
+      "label": "Trial in Progress",
+      "kind": "state",
+      "group": "trial-group",
+      "cite": "Fed. R. Crim. P. 26, 29-30",
+      "note": "Government presents its case-in-chief first and must prove every element beyond a reasonable doubt; the defense has no constitutional obligation to present a case at all under the Fifth Amendment."
+    },
+    {
+      "id": "rule29-motion",
+      "label": "Rule 29 Motion for Judgment of Acquittal",
+      "kind": "decision",
+      "group": "trial-group",
+      "cite": "Fed. R. Crim. P. 29(a), (c); Jackson v. Virginia, 443 U.S. 307 (1979)",
+      "note": "Standard is whether any rational trier of fact could find guilt beyond a reasonable doubt, viewing the evidence most favorably to the government. May be made mid-trial (29(a)) or renewed after verdict within 14 days (29(c)); double jeopardy consequences differ sharply by timing."
+    },
+    {
+      "id": "rule29-granted",
+      "label": "Judgment of Acquittal — Rule 29 Granted",
+      "kind": "terminal",
+      "group": "trial-group",
+      "cite": "Fed. R. Crim. P. 29(a), (c)",
+      "note": "Government's evidence was legally insufficient. Double jeopardy bars a government appeal of a pre-verdict Rule 29(a) grant; a post-verdict Rule 29(c) grant CAN be appealed because a guilty verdict already existed before the court set it aside.",
+      "valence": "good"
+    },
+    {
+      "id": "rule29-denied",
+      "label": "Rule 29 Motion Denied",
+      "kind": "state",
+      "group": "trial-group",
+      "cite": "Fed. R. Crim. P. 29(a)",
+      "note": "Case proceeds to the jury. Defense need not renew the motion at the close of all evidence to preserve the right to renew it after verdict under Rule 29(c)."
+    },
+    {
+      "id": "mistrial-hung-jury",
+      "label": "Mistrial — Hung Jury",
+      "kind": "state",
+      "group": "trial-group",
+      "cite": "Fed. R. Crim. P. 26.3; Arizona v. Washington, 434 U.S. 497 (1978)",
+      "note": "A genuinely hung jury is manifest necessity for a mistrial. Double jeopardy does NOT bar retrial after a hung jury, unlike after an acquittal — jeopardy attached but was never terminated."
+    },
+    {
+      "id": "case-dismissed-after-hung-jury",
+      "label": "Case Dismissed After Hung Jury",
+      "kind": "terminal",
+      "group": "trial-group",
+      "cite": "Fed. R. Crim. P. 48(a)",
+      "note": "Government exercises prosecutorial discretion not to retry, with leave of court. Unlike an acquittal, double jeopardy did not compel this outcome — the government could have retried but chose not to.",
+      "valence": "good"
+    },
+    {
+      "id": "verdict-returned",
+      "label": "Verdict Returned",
+      "kind": "decision",
+      "group": "trial-group",
+      "cite": "Fed. R. Crim. P. 31",
+      "note": "Verdict must be unanimous in federal court (Rule 31(a)); either party may request that the jury be polled (Rule 31(d)), and the court may declare a mistrial if the poll reveals a lack of unanimity."
+    },
+    {
+      "id": "acquittal-verdict",
+      "label": "Acquittal by Jury Verdict",
+      "kind": "terminal",
+      "group": "verdict-sentencing-group",
+      "cite": "Fed. R. Crim. P. 31(a); U.S. Const. amend. V",
+      "note": "Double jeopardy permanently bars retrial or a government appeal on this charge, no matter how erroneous the verdict looks on the law or the facts.",
+      "valence": "good"
+    },
+    {
+      "id": "guilty-verdict",
+      "label": "Guilty Verdict",
+      "kind": "state",
+      "group": "verdict-sentencing-group",
+      "cite": "Fed. R. Crim. P. 31(a)",
+      "note": "Conviction on the merits; the defendant may renew the Rule 29 acquittal motion or move for a new trial before sentencing — the two motions carry distinct deadlines from one another."
+    },
+    {
+      "id": "rule33-motion",
+      "label": "Rule 33 Motion for New Trial",
+      "kind": "decision",
+      "group": "verdict-sentencing-group",
+      "cite": "Fed. R. Crim. P. 33",
+      "note": "General grounds carry a strict 14-day post-verdict deadline, but a newly-discovered-evidence claim gets up to 3 years — a trap because the evidence must have been genuinely unavailable at trial, not merely overlooked or reconsidered."
+    },
+    {
+      "id": "presentence-report",
+      "label": "Presentence Investigation Report (PSR)",
+      "kind": "state",
+      "group": "verdict-sentencing-group",
+      "cite": "Fed. R. Crim. P. 32; 18 U.S.C. § 3552",
+      "note": "Probation must prepare and disclose the PSR at least 35 days before sentencing (waivable). Both parties may object to factual findings and Guidelines calculations before the hearing."
+    },
+    {
+      "id": "sentencing-hearing",
+      "label": "Sentencing Hearing",
+      "kind": "decision",
+      "group": "verdict-sentencing-group",
+      "cite": "Fed. R. Crim. P. 32(i)(4); 18 U.S.C. § 3553(a)",
+      "note": "Defendant has an absolute right of allocution. The court must correctly calculate the Guidelines range as a starting point (Gall/Booker framework) even though the range is now advisory and the court may vary from it for policy reasons."
+    },
+    {
+      "id": "guidelines-calculation",
+      "label": "Guidelines Range Calculated",
+      "kind": "state",
+      "group": "verdict-sentencing-group",
+      "cite": "U.S.S.G. §§ 1.1-5.A1",
+      "note": "Base offense level, adjusted for specific offense characteristics and aggravating/mitigating factors, crossed with Criminal History Category on the Sentencing Table, yields the advisory range — mandatory to calculate even if the final sentence deviates from it."
+    },
+    {
+      "id": "departure-variance",
+      "label": "Departure/Variance Considered",
+      "kind": "decision",
+      "group": "verdict-sentencing-group",
+      "cite": "U.S.S.G. § 5K1.1; 18 U.S.C. § 3553(a); United States v. Booker, 543 U.S. 220 (2005)",
+      "note": "A 'departure' is Guidelines-authorized (e.g., a government-only § 5K1.1 substantial-assistance motion); a 'variance' is a discretionary deviation under the § 3553(a) factors post-Booker. Both must be explained on the record."
+    },
+    {
+      "id": "judgment-entered",
+      "label": "Judgment and Commitment Entered",
+      "kind": "terminal",
+      "group": "verdict-sentencing-group",
+      "cite": "Fed. R. Crim. P. 32(k)",
+      "note": "Written judgment is the appealable final disposition; it simultaneously starts the Rule 35(a) 14-day correction clock and the FRAP 4(b) 14-day appeal clock. Modeled as terminal because it is reached identically whether the conviction came by plea or by jury verdict, even though Rule 35/appeal paths still branch from it.",
+      "valence": "caution"
+    },
+    {
+      "id": "rule35-motion",
+      "label": "Rule 35 Motion to Correct/Reduce Sentence",
+      "kind": "decision",
+      "group": "appeal-group",
+      "cite": "Fed. R. Crim. P. 35(a), (b)",
+      "note": "Rule 35(a) lets the court correct clear error (arithmetic, technical, procedural) within 14 days of sentencing — not a substantive do-over. Rule 35(b) lets the government move to reduce a sentence for post-sentencing substantial assistance within one year, with no effect on this 14-day window."
+    },
+    {
+      "id": "notice-of-appeal-window",
+      "label": "Notice of Appeal Window",
+      "kind": "decision",
+      "group": "appeal-group",
+      "cite": "Fed. R. App. P. 4(b)(1), (b)(4)",
+      "note": "Defendant has 14 days from judgment entry to file. The district court may extend up to 30 additional days for excusable neglect or good cause — but only if the extension motion is itself made within the original 14-day window. Post-Bowles, this is jurisdictional with no equitable exceptions."
+    },
+    {
+      "id": "notice-of-appeal-filed",
+      "label": "Notice of Appeal Filed",
+      "kind": "state",
+      "group": "appeal-group",
+      "cite": "Fed. R. App. P. 3(a), 4(b)",
+      "note": "A timely notice of appeal meeting FRAP 3's form requirements and FRAP 4(b)'s deadline is the jurisdictional invocation of appellate review. Notice must be filed in the district court; premature or delayed filings do not cure jurisdictional defects."
+    },
+    {
+      "id": "appeal-window-missed",
+      "label": "Appeal Forfeited — FRAP 4(b) Deadline Missed",
+      "kind": "terminal",
+      "group": "appeal-group",
+      "cite": "Fed. R. App. P. 4(b); Bowles v. Russell, 551 U.S. 205 (2007)",
+      "note": "TRAP. The deadline is absolute and jurisdictional. Bowles held that even a district court's own miscalculation and invitation to file late does not excuse a missed window. Only 28 U.S.C. § 2255 collateral review — a far harder standard — remains.",
+      "valence": "bad"
+    },
+    {
+      "id": "conviction-final-no-appeal",
+      "label": "Conviction Final — No Appeal Taken",
+      "kind": "terminal",
+      "group": "appeal-group",
+      "cite": "Fed. R. App. P. 4(b)",
+      "note": "Defendant deliberately lets the window lapse, often pursuant to an appeal-waiver plea agreement. Judgment becomes final for purposes of the AEDPA collateral-review clock under 28 U.S.C. § 2255(f); direct appeal is no longer available.",
+      "valence": "good"
+    },
+    {
+      "id": "appellate-briefing",
+      "label": "Appellate Briefing",
+      "kind": "state",
+      "group": "appeal-group",
+      "cite": "Fed. R. App. P. 28-31",
+      "note": "Standard of review varies by issue — de novo for legal questions, clear error for factual findings, abuse of discretion for sentencing procedure and most evidentiary rulings. Failure to raise an issue in the brief forecloses it on appeal."
+    },
+    {
+      "id": "appellate-decision",
+      "label": "Court of Appeals Decision",
+      "kind": "decision",
+      "group": "appeal-group",
+      "cite": "28 U.S.C. § 1291; Fed. R. App. P. 34",
+      "note": "Panel may affirm, reverse and render, reverse and remand for a new trial, or vacate and remand for resentencing only — a common partial win limited to the sentencing package."
+    },
+    {
+      "id": "conviction-affirmed",
+      "label": "Conviction Affirmed on Appeal",
+      "kind": "terminal",
+      "group": "appeal-group",
+      "cite": "28 U.S.C. § 1291",
+      "note": "Judgment is final. Further review is discretionary: en banc rehearing (rarely granted), certiorari to the Supreme Court (rarer still), or a 28 U.S.C. § 2255 collateral attack limited to constitutional/jurisdictional error or newly available structural defects.",
+      "valence": "bad"
+    },
+    {
+      "id": "conviction-reversed-remanded",
+      "label": "Conviction Reversed / Remanded",
+      "kind": "state",
+      "group": "appeal-group",
+      "cite": "28 U.S.C. § 2106; Burks v. United States, 437 U.S. 1 (1978)",
+      "note": "Court of appeals can remand for a new trial, for resentencing only, or with instructions to dismiss. Under Burks, reversal for evidentiary insufficiency bars retrial like an acquittal; reversal for trial error (instructional, evidentiary, Brady) permits retrial."
+    }
+  ],
+  "edges": [
+    {
+      "from": "investigation",
+      "to": "grand-jury-convened",
+      "label": "Present case to grand jury",
+      "actor": "applicant",
+      "authority": "Fed. R. Crim. P. 6(a)"
+    },
+    {
+      "from": "investigation",
+      "to": "complaint-filed",
+      "label": "File criminal complaint",
+      "actor": "applicant",
+      "authority": "Fed. R. Crim. P. 3, 4"
+    },
+    {
+      "from": "grand-jury-convened",
+      "to": "grand-jury-vote",
+      "label": "Grand jury votes",
+      "actor": "office",
+      "authority": "Fed. R. Crim. P. 6(f)"
+    },
+    {
+      "from": "grand-jury-vote",
+      "to": "indictment-returned",
+      "label": "Return true bill",
+      "actor": "office",
+      "authority": "Fed. R. Crim. P. 6(f)",
+      "probability": 0.97
+    },
+    {
+      "from": "grand-jury-vote",
+      "to": "no-bill",
+      "label": "Return no bill",
+      "actor": "office",
+      "authority": "Fed. R. Crim. P. 6(f)",
+      "probability": 0.03
+    },
+    {
+      "from": "no-bill",
+      "to": "grand-jury-convened",
+      "label": "Re-present to new grand jury",
+      "actor": "applicant",
+      "authority": "Fed. R. Crim. P. 6(a); 18 U.S.C. § 3282"
+    },
+    {
+      "from": "indictment-returned",
+      "to": "arrest",
+      "label": "Execute arrest warrant on indictment",
+      "actor": "office",
+      "authority": "Fed. R. Crim. P. 9"
+    },
+    {
+      "from": "complaint-filed",
+      "to": "arrest",
+      "label": "Execute arrest warrant or summons",
+      "actor": "office",
+      "authority": "Fed. R. Crim. P. 4(c)(1)"
+    },
+    {
+      "from": "arrest",
+      "to": "initial-appearance",
+      "label": "Bring defendant before magistrate",
+      "actor": "office",
+      "authority": "Fed. R. Crim. P. 5(a); 18 U.S.C. § 3501(c)",
+      "deadline": {
+        "length": 3,
+        "extendable": true,
+        "extensionAuthority": "Court may extend based on 'all the facts and circumstances' (Rule 5 advisory committee notes) — e.g. weather, distance",
+        "note": "Standard is 'without unnecessary delay' (McNabb-Mallory), not a fixed day count; often ~72 hours in practice but no bright-line federal rule. Violation triggers suppression of statements, not invalidation of the arrest."
+      }
+    },
+    {
+      "from": "initial-appearance",
+      "to": "preliminary-hearing",
+      "label": "Set preliminary hearing",
+      "actor": "examiner",
+      "authority": "Fed. R. Crim. P. 5.1(c)",
+      "deadline": {
+        "length": 14,
+        "extendable": true,
+        "extensionAuthority": "Fed. R. Crim. P. 5.1(c) — good cause, or extraordinary circumstances where justice requires the delay, even without the defendant's consent",
+        "note": "14 days if the defendant is in custody; 21 days if released. Missing the deadline does not dismiss the charge but may support a waiver or prejudicial-delay challenge."
+      }
+    },
+    {
+      "from": "initial-appearance",
+      "to": "detention-hearing",
+      "label": "Hold detention hearing",
+      "actor": "examiner",
+      "authority": "18 U.S.C. § 3142(f)"
+    },
+    {
+      "from": "preliminary-hearing",
+      "to": "bound-over-grand-jury",
+      "label": "Find probable cause",
+      "actor": "examiner",
+      "authority": "Fed. R. Crim. P. 5.1(f)",
+      "probability": 0.7
+    },
+    {
+      "from": "preliminary-hearing",
+      "to": "complaint-dismissed-no-pc",
+      "label": "Find no probable cause",
+      "actor": "examiner",
+      "authority": "Fed. R. Crim. P. 5.1(f)",
+      "probability": 0.05
+    },
+    {
+      "from": "preliminary-hearing",
+      "to": "indictment-returned",
+      "label": "Grand jury indicts first",
+      "actor": "office",
+      "authority": "Fed. R. Crim. P. 5.1(f)",
+      "probability": 0.25
+    },
+    {
+      "from": "bound-over-grand-jury",
+      "to": "grand-jury-convened",
+      "label": "Refer case to grand jury",
+      "actor": "office",
+      "authority": "Fed. R. Crim. P. 6; 18 U.S.C. § 3161(b)",
+      "deadline": {
+        "length": 30,
+        "extendable": true,
+        "extensionAuthority": "18 U.S.C. § 3161(b) — one additional 30-day extension if no grand jury convened during the initial 30-day period in the district",
+        "note": "Indictment must be filed within 30 days of arrest or summons. Violation requires dismissal without prejudice under the Speedy Trial Act; the clock runs from arrest, not from the bind-over date."
+      }
+    },
+    {
+      "from": "detention-hearing",
+      "to": "released-on-conditions",
+      "label": "Order release on conditions",
+      "actor": "examiner",
+      "authority": "18 U.S.C. § 3142(c)",
+      "probability": 0.35
+    },
+    {
+      "from": "detention-hearing",
+      "to": "detained-pretrial",
+      "label": "Order pretrial detention",
+      "actor": "examiner",
+      "authority": "18 U.S.C. § 3142(e)",
+      "probability": 0.65
+    },
+    {
+      "from": "released-on-conditions",
+      "to": "arraignment",
+      "label": "Proceed to arraignment",
+      "actor": "office",
+      "authority": "Fed. R. Crim. P. 10"
+    },
+    {
+      "from": "detained-pretrial",
+      "to": "arraignment",
+      "label": "Proceed to arraignment",
+      "actor": "office",
+      "authority": "Fed. R. Crim. P. 10"
+    },
+    {
+      "from": "detained-pretrial",
+      "to": "detention-hearing",
+      "label": "Move to reopen detention hearing",
+      "actor": "applicant",
+      "authority": "18 U.S.C. § 3142(f)"
+    },
+    {
+      "from": "indictment-returned",
+      "to": "arraignment",
+      "label": "Schedule arraignment on indictment",
+      "actor": "office",
+      "authority": "Fed. R. Crim. P. 10; 18 U.S.C. § 3161(c)(1)",
+      "deadline": {
+        "length": 70,
+        "extendable": true,
+        "extensionAuthority": "18 U.S.C. § 3161(h)",
+        "note": "Trial must commence within 70 days of indictment or initial appearance, whichever is later. Missing the deadline triggers dismissal with prejudice unless § 3161(h) exclusions (motions, continuances, ends-of-justice findings) apply."
+      }
+    },
+    {
+      "from": "arrest",
+      "to": "information-filed",
+      "label": "File information",
+      "actor": "applicant",
+      "authority": "Fed. R. Crim. P. 7(b)"
+    },
+    {
+      "from": "information-filed",
+      "to": "arraignment",
+      "label": "Schedule arraignment on information",
+      "actor": "office",
+      "authority": "Fed. R. Crim. P. 10"
+    },
+    {
+      "from": "arraignment",
+      "to": "not-guilty-plea",
+      "label": "Enter not guilty plea",
+      "actor": "applicant"
+    },
+    {
+      "from": "not-guilty-plea",
+      "to": "rule12-deadline-set",
+      "label": "Set pretrial motions schedule",
+      "actor": "examiner",
+      "authority": "Fed. R. Crim. P. 12(c)(1)"
+    },
+    {
+      "from": "not-guilty-plea",
+      "to": "plea-negotiations",
+      "label": "Begin plea negotiations",
+      "actor": "either",
+      "authority": "Fed. R. Crim. P. 11(c)"
+    },
+    {
+      "from": "rule12-deadline-set",
+      "to": "pretrial-motions-window",
+      "label": "Motions deadline arrives",
+      "actor": "office",
+      "authority": "Fed. R. Crim. P. 12(c)(1)",
+      "probability": 0.75
+    },
+    {
+      "from": "rule12-deadline-set",
+      "to": "rule12-deadline-set",
+      "label": "Grant continuance",
+      "actor": "examiner",
+      "authority": "18 U.S.C. § 3161(h)(7); Fed. R. Crim. P. 12(c)(1)",
+      "probability": 0.25
+    },
+    {
+      "from": "pretrial-motions-window",
+      "to": "motion-to-dismiss-filed",
+      "label": "File motion to dismiss indictment",
+      "actor": "applicant",
+      "authority": "Fed. R. Crim. P. 12(b)(3)(B)",
+      "valence": "good"
+    },
+    {
+      "from": "pretrial-motions-window",
+      "to": "motion-to-suppress-filed",
+      "label": "File motion to suppress evidence",
+      "actor": "applicant",
+      "authority": "Fed. R. Crim. P. 12(b)(3)(C)",
+      "valence": "good"
+    },
+    {
+      "from": "pretrial-motions-window",
+      "to": "speedy-trial-dismissal",
+      "label": "Move to dismiss for speedy trial",
+      "actor": "applicant",
+      "authority": "18 U.S.C. § 3162(a)(2)",
+      "valence": "good"
+    },
+    {
+      "from": "pretrial-motions-window",
+      "to": "rule12c-waiver-trap",
+      "label": "Miss pretrial motions deadline",
+      "actor": "applicant",
+      "authority": "Fed. R. Crim. P. 12(c)(3)",
+      "valence": "bad"
+    },
+    {
+      "from": "pretrial-motions-window",
+      "to": "rule16-discovery",
+      "label": "No pretrial motions filed",
+      "actor": "either"
+    },
+    {
+      "from": "motion-to-dismiss-filed",
+      "to": "indictment-dismissed-defective",
+      "label": "Grant motion to dismiss",
+      "actor": "examiner",
+      "authority": "Fed. R. Crim. P. 12(b)(3)(B)",
+      "probability": 0.15
+    },
+    {
+      "from": "motion-to-dismiss-filed",
+      "to": "rule16-discovery",
+      "label": "Deny motion to dismiss",
+      "actor": "examiner",
+      "probability": 0.85
+    },
+    {
+      "from": "motion-to-suppress-filed",
+      "to": "suppression-granted",
+      "label": "Grant suppression motion",
+      "actor": "examiner",
+      "authority": "Fed. R. Crim. P. 12(d)",
+      "probability": 0.2
+    },
+    {
+      "from": "motion-to-suppress-filed",
+      "to": "suppression-denied",
+      "label": "Deny suppression motion",
+      "actor": "examiner",
+      "authority": "Fed. R. Crim. P. 12(d)",
+      "probability": 0.8
+    },
+    {
+      "from": "suppression-granted",
+      "to": "indictment-dismissed-defective",
+      "label": "Move to dismiss after suppression",
+      "actor": "applicant",
+      "authority": "Fed. R. Crim. P. 48(a) (government motion to dismiss)",
+      "valence": "good"
+    },
+    {
+      "from": "suppression-granted",
+      "to": "rule16-discovery",
+      "label": "Proceed without suppressed evidence",
+      "actor": "applicant"
+    },
+    {
+      "from": "suppression-denied",
+      "to": "rule16-discovery",
+      "label": "Proceed to discovery",
+      "actor": "office",
+      "authority": "Fed. R. Crim. P. 16(a)"
+    },
+    {
+      "from": "rule16-discovery",
+      "to": "brady-giglio-disclosure",
+      "label": "Disclose Brady/Giglio material",
+      "actor": "applicant",
+      "authority": "Brady v. Maryland, 373 U.S. 83 (1963); Giglio v. United States, 405 U.S. 150 (1972)"
+    },
+    {
+      "from": "rule16-discovery",
+      "to": "discovery-dispute",
+      "label": "Move to compel discovery",
+      "actor": "applicant",
+      "authority": "Fed. R. Crim. P. 16(d)(1)"
+    },
+    {
+      "from": "discovery-dispute",
+      "to": "discovery-sanction",
+      "label": "Impose discovery sanction",
+      "actor": "examiner",
+      "authority": "Fed. R. Crim. P. 16(d)(2)"
+    },
+    {
+      "from": "discovery-sanction",
+      "to": "brady-giglio-disclosure",
+      "label": "Discovery dispute resolved",
+      "actor": "office",
+      "authority": "Fed. R. Crim. P. 16(d)(2)"
+    },
+    {
+      "from": "brady-giglio-disclosure",
+      "to": "plea-negotiations",
+      "label": "Continue plea negotiations",
+      "actor": "either",
+      "authority": "Fed. R. Crim. P. 11(c)",
+      "probability": 0.65
+    },
+    {
+      "from": "brady-giglio-disclosure",
+      "to": "proceed-to-trial",
+      "label": "Set case for trial",
+      "actor": "office",
+      "authority": "Fed. R. Crim. P. 12(b) and local scheduling rules",
+      "probability": 0.35
+    },
+    {
+      "from": "plea-negotiations",
+      "to": "plea-agreement-reached",
+      "label": "Reach plea agreement",
+      "actor": "either",
+      "authority": "Fed. R. Crim. P. 11(c)(1)",
+      "probability": 0.9
+    },
+    {
+      "from": "plea-negotiations",
+      "to": "proceed-to-trial",
+      "label": "Negotiations fail",
+      "actor": "either",
+      "probability": 0.1
+    },
+    {
+      "from": "plea-agreement-reached",
+      "to": "change-of-plea-hearing",
+      "label": "Schedule change-of-plea hearing",
+      "actor": "office",
+      "authority": "Fed. R. Crim. P. 11(c)(2)"
+    },
+    {
+      "from": "plea-agreement-reached",
+      "to": "proceed-to-trial",
+      "label": "Withdraw from plea deal",
+      "actor": "applicant"
+    },
+    {
+      "from": "change-of-plea-hearing",
+      "to": "plea-accepted",
+      "label": "Accept guilty plea",
+      "actor": "examiner",
+      "authority": "Fed. R. Crim. P. 11(b)(3)",
+      "probability": 0.95
+    },
+    {
+      "from": "change-of-plea-hearing",
+      "to": "plea-rejected-by-court",
+      "label": "Reject plea agreement",
+      "actor": "examiner",
+      "authority": "Fed. R. Crim. P. 11(c)(3)(A), (c)(5)",
+      "probability": 0.05
+    },
+    {
+      "from": "plea-rejected-by-court",
+      "to": "proceed-to-trial",
+      "label": "Withdraw guilty plea",
+      "actor": "applicant",
+      "authority": "Fed. R. Crim. P. 11(c)(5), (d)(2)(A)"
+    },
+    {
+      "from": "plea-rejected-by-court",
+      "to": "plea-negotiations",
+      "label": "Renegotiate plea agreement",
+      "actor": "either"
+    },
+    {
+      "from": "proceed-to-trial",
+      "to": "jury-selection",
+      "label": "Empanel jury",
+      "actor": "office",
+      "authority": "Fed. R. Crim. P. 24; 18 U.S.C. § 3161",
+      "deadline": {
+        "length": 70,
+        "extendable": true,
+        "extensionAuthority": "18 U.S.C. § 3161(h) (excludable delay)",
+        "note": "Jury selection must begin within 70 days of indictment under the Speedy Trial Act. The 70-day period itself is rigid; only statutory § 3161(h) exclusions (continuances, motions, case complexity) toll the clock."
+      }
+    },
+    {
+      "from": "jury-selection",
+      "to": "trial-in-progress",
+      "label": "Complete voir dire",
+      "actor": "examiner",
+      "authority": "Fed. R. Crim. P. 24"
+    },
+    {
+      "from": "trial-in-progress",
+      "to": "rule29-motion",
+      "label": "Move for judgment of acquittal",
+      "actor": "applicant",
+      "authority": "Fed. R. Crim. P. 29(a)",
+      "valence": "good"
+    },
+    {
+      "from": "rule29-motion",
+      "to": "rule29-granted",
+      "label": "Grant judgment of acquittal",
+      "actor": "examiner",
+      "authority": "Fed. R. Crim. P. 29(a)"
+    },
+    {
+      "from": "rule29-motion",
+      "to": "rule29-denied",
+      "label": "Deny motion, proceed to jury",
+      "actor": "examiner",
+      "authority": "Fed. R. Crim. P. 29(a)"
+    },
+    {
+      "from": "rule29-motion",
+      "to": "rule33-motion",
+      "label": "Deny post-verdict acquittal motion",
+      "actor": "examiner"
+    },
+    {
+      "from": "rule29-denied",
+      "to": "verdict-returned",
+      "label": "Submit case to jury",
+      "actor": "office",
+      "authority": "Fed. R. Crim. P. 31"
+    },
+    {
+      "from": "verdict-returned",
+      "to": "acquittal-verdict",
+      "label": "Return not guilty verdict",
+      "actor": "office",
+      "probability": 0.15
+    },
+    {
+      "from": "verdict-returned",
+      "to": "guilty-verdict",
+      "label": "Return guilty verdict",
+      "actor": "office",
+      "probability": 0.8
+    },
+    {
+      "from": "verdict-returned",
+      "to": "mistrial-hung-jury",
+      "label": "Jury deadlocks",
+      "actor": "office",
+      "authority": "Fed. R. Crim. P. 31(d)",
+      "probability": 0.05
+    },
+    {
+      "from": "mistrial-hung-jury",
+      "to": "jury-selection",
+      "label": "Retry the case",
+      "actor": "applicant",
+      "authority": "Fed. R. Crim. P. 24; Arizona v. Washington, 434 U.S. 497 (1978)"
+    },
+    {
+      "from": "mistrial-hung-jury",
+      "to": "case-dismissed-after-hung-jury",
+      "label": "Decline to retry",
+      "actor": "applicant",
+      "authority": "Fed. R. Crim. P. 48(a)",
+      "valence": "good"
+    },
+    {
+      "from": "guilty-verdict",
+      "to": "rule29-motion",
+      "label": "Renew acquittal motion post-verdict",
+      "actor": "applicant",
+      "authority": "Fed. R. Crim. P. 29(c)",
+      "deadline": {
+        "length": 14,
+        "extendable": false,
+        "note": "After 14 days from verdict the court loses jurisdiction to grant judgment of acquittal under Rule 29; failure to file forfeits the claim on the merits."
+      }
+    },
+    {
+      "from": "guilty-verdict",
+      "to": "rule33-motion",
+      "label": "Move for new trial",
+      "actor": "applicant",
+      "authority": "Fed. R. Crim. P. 33",
+      "deadline": {
+        "length": 14,
+        "extendable": true,
+        "extensionAuthority": "Rule 33(b) allows extension of the 14-day deadline if the court finds grounds within the original period; the 3-year newly-discovered-evidence window requires no extension",
+        "note": "Standard grounds are barred after 14 days post-verdict unless extension is sought within that window; newly-discovered-evidence claims get 3 years but must be genuinely unavailable at trial."
+      }
+    },
+    {
+      "from": "rule33-motion",
+      "to": "jury-selection",
+      "label": "Grant new trial",
+      "actor": "examiner",
+      "authority": "Fed. R. Crim. P. 33(a)",
+      "probability": 0.08
+    },
+    {
+      "from": "rule33-motion",
+      "to": "presentence-report",
+      "label": "Deny new trial motion",
+      "actor": "examiner",
+      "authority": "Fed. R. Crim. P. 33",
+      "probability": 0.92
+    },
+    {
+      "from": "plea-accepted",
+      "to": "presentence-report",
+      "label": "Proceed to sentencing",
+      "actor": "office",
+      "authority": "Fed. R. Crim. P. 32"
+    },
+    {
+      "from": "presentence-report",
+      "to": "sentencing-hearing",
+      "label": "Finalize PSR",
+      "actor": "office",
+      "authority": "Fed. R. Crim. P. 32(e)-(h)",
+      "deadline": {
+        "length": 35,
+        "extendable": true,
+        "extensionAuthority": "Fed. R. Crim. P. 32(e)(2) — parties may stipulate to a shorter period, or the court may set a different period for good cause",
+        "note": "PSR must be disclosed at least 35 days before sentencing unless waived; parties must have the opportunity to review, object, and correct factual inaccuracies before the hearing."
+      }
+    },
+    {
+      "from": "sentencing-hearing",
+      "to": "guidelines-calculation",
+      "label": "Calculate Guidelines range",
+      "actor": "examiner",
+      "authority": "U.S.S.G. §§ 1.1-1.4; 18 U.S.C. § 3553(a)"
+    },
+    {
+      "from": "guidelines-calculation",
+      "to": "departure-variance",
+      "label": "Consider departure or variance",
+      "actor": "examiner",
+      "authority": "18 U.S.C. § 3553(a); U.S.S.G. § 5K1.1"
+    },
+    {
+      "from": "departure-variance",
+      "to": "judgment-entered",
+      "label": "Impose sentence, enter judgment",
+      "actor": "examiner",
+      "authority": "Fed. R. Crim. P. 32(k)"
+    },
+    {
+      "from": "judgment-entered",
+      "to": "rule35-motion",
+      "label": "Consider Rule 35 relief",
+      "actor": "either",
+      "authority": "Fed. R. Crim. P. 35(a)",
+      "deadline": {
+        "length": 14,
+        "extendable": false,
+        "note": "After 14 days from judgment entry, the trial court is powerless to correct the sentence under Rule 35(a), even for obvious clear error; the government's separate Rule 35(b) substantial-assistance motion has its own 1-year window and does not extend this one."
+      }
+    },
+    {
+      "from": "rule35-motion",
+      "to": "judgment-entered",
+      "label": "Correct or reduce sentence",
+      "actor": "examiner",
+      "authority": "Fed. R. Crim. P. 35(a)",
+      "probability": 0.1
+    },
+    {
+      "from": "rule35-motion",
+      "to": "notice-of-appeal-window",
+      "label": "No Rule 35 relief granted",
+      "actor": "examiner",
+      "authority": "Fed. R. Crim. P. 35(a)",
+      "probability": 0.9
+    },
+    {
+      "from": "judgment-entered",
+      "to": "notice-of-appeal-window",
+      "label": "Start appeal clock",
+      "actor": "office",
+      "authority": "Fed. R. App. P. 4(b)(1)",
+      "deadline": {
+        "length": 14,
+        "extendable": true,
+        "extensionAuthority": "Fed. R. App. P. 4(b)(1)(B) — up to 30 additional days for good cause shown, before or after the deadline expires",
+        "note": "Appeal deadline is 14 days from judgment entry; if it passes without a notice of appeal or a timely extension request, appellate jurisdiction is lost and the sentence becomes final."
+      }
+    },
+    {
+      "from": "notice-of-appeal-window",
+      "to": "notice-of-appeal-filed",
+      "label": "File notice of appeal",
+      "actor": "applicant",
+      "authority": "Fed. R. App. P. 4(b)(1)",
+      "deadline": {
+        "length": 14,
+        "extendable": true,
+        "extensionAuthority": "Fed. R. App. P. 4(b)(4) — the extension motion must itself be filed within the 14-day period, showing excusable neglect or good cause, for up to 30 additional days",
+        "note": "Missing both the original window and the extension-motion window forecloses direct appeal entirely."
+      },
+      "valence": "good"
+    },
+    {
+      "from": "notice-of-appeal-window",
+      "to": "appeal-window-missed",
+      "label": "Miss appeal deadline",
+      "actor": "applicant",
+      "authority": "Fed. R. App. P. 4(b); Bowles v. Russell, 551 U.S. 205 (2007)",
+      "deadline": {
+        "length": 14,
+        "extendable": true,
+        "extensionAuthority": "Fed. R. App. P. 4(b)(4)",
+        "note": "Bowles bars equitable exceptions — the conviction becomes unreviewable on direct appeal; only § 2255 collateral relief survives."
+      },
+      "valence": "bad"
+    },
+    {
+      "from": "notice-of-appeal-window",
+      "to": "conviction-final-no-appeal",
+      "label": "Waive right to appeal",
+      "actor": "applicant",
+      "authority": "Fed. R. App. P. 4(b)",
+      "valence": "good"
+    },
+    {
+      "from": "notice-of-appeal-filed",
+      "to": "appellate-briefing",
+      "label": "Complete appellate briefing",
+      "actor": "either",
+      "authority": "Fed. R. App. P. 28-31"
+    },
+    {
+      "from": "appellate-briefing",
+      "to": "appellate-decision",
+      "label": "Submit case for decision",
+      "actor": "office",
+      "authority": "Fed. R. App. P. 34"
+    },
+    {
+      "from": "appellate-decision",
+      "to": "conviction-affirmed",
+      "label": "Affirm conviction",
+      "actor": "examiner",
+      "authority": "28 U.S.C. § 1291",
+      "probability": 0.78
+    },
+    {
+      "from": "appellate-decision",
+      "to": "conviction-reversed-remanded",
+      "label": "Reverse or remand conviction",
+      "actor": "examiner",
+      "authority": "28 U.S.C. § 2106",
+      "probability": 0.22
+    },
+    {
+      "from": "conviction-reversed-remanded",
+      "to": "jury-selection",
+      "label": "Remand for new trial",
+      "actor": "office",
+      "authority": "28 U.S.C. § 2106",
+      "probability": 0.4
+    },
+    {
+      "from": "conviction-reversed-remanded",
+      "to": "sentencing-hearing",
+      "label": "Remand for resentencing",
+      "actor": "office",
+      "authority": "28 U.S.C. § 2106",
+      "probability": 0.45
+    },
+    {
+      "from": "conviction-reversed-remanded",
+      "to": "indictment-dismissed-defective",
+      "label": "Remand with instructions to dismiss",
+      "actor": "office",
+      "authority": "Burks v. United States, 437 U.S. 1 (1978); 28 U.S.C. § 2106",
+      "probability": 0.15
+    },
+    {
+      "from": "indictment-dismissed-defective",
+      "to": "grand-jury-convened",
+      "label": "Re-indict after dismissal",
+      "actor": "applicant"
+    }
+  ]
+}

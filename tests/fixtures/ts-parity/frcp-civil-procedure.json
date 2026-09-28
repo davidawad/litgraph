@@ -1,0 +1,5736 @@
+{
+  "absorbingChain500": {
+    "error": "absorbing chain: transition matrix is singular — the policy induces a closed non-absorbing class (e.g. a self-loop that never reaches a terminal). Every player node's policy edge must eventually absorb.",
+    "ok": false
+  },
+  "dijkstra500": {
+    "cheapestByDollars": {
+      "appeal-window-blown": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "rule12-response-window",
+          "default-entered",
+          "answer-filed",
+          "jury-demand-decision",
+          "amendment-as-of-right-window",
+          "joinder-decision",
+          "rule26f-conference",
+          "initial-disclosures",
+          "scheduling-order-issued",
+          "discovery-open",
+          "discovery-closed",
+          "final-pretrial-conference",
+          "trial-commences",
+          "verdict-rendered",
+          "final-judgment-entered",
+          "notice-of-appeal-window",
+          "appeal-window-blown"
+        ],
+        "target": "appeal-window-blown",
+        "total": 30925
+      },
+      "default-judgment-entered": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "rule12-response-window",
+          "default-entered",
+          "default-judgment-entered"
+        ],
+        "target": "default-judgment-entered",
+        "total": 14425
+      },
+      "discovery-sanctions-default": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "rule12-response-window",
+          "default-entered",
+          "answer-filed",
+          "jury-demand-decision",
+          "amendment-as-of-right-window",
+          "joinder-decision",
+          "rule26f-conference",
+          "initial-disclosures",
+          "scheduling-order-issued",
+          "discovery-open",
+          "meet-and-confer",
+          "motion-to-compel-ruling",
+          "rule37-sanctions-ruling",
+          "discovery-sanctions-default"
+        ],
+        "target": "discovery-sanctions-default",
+        "total": 42925
+      },
+      "discovery-sanctions-dismissal": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "rule12-response-window",
+          "default-entered",
+          "answer-filed",
+          "jury-demand-decision",
+          "amendment-as-of-right-window",
+          "joinder-decision",
+          "rule26f-conference",
+          "initial-disclosures",
+          "scheduling-order-issued",
+          "discovery-open",
+          "meet-and-confer",
+          "motion-to-compel-ruling",
+          "rule37-sanctions-ruling",
+          "discovery-sanctions-dismissal"
+        ],
+        "target": "discovery-sanctions-dismissal",
+        "total": 42925
+      },
+      "dismissed-with-prejudice": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "rule12-response-window",
+          "motion-to-dismiss-filed",
+          "mtd-ruling",
+          "dismissed-with-prejudice"
+        ],
+        "target": "dismissed-with-prejudice",
+        "total": 53425
+      },
+      "judgment-affirmed": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "rule12-response-window",
+          "default-entered",
+          "answer-filed",
+          "jury-demand-decision",
+          "amendment-as-of-right-window",
+          "joinder-decision",
+          "rule26f-conference",
+          "initial-disclosures",
+          "scheduling-order-issued",
+          "discovery-open",
+          "discovery-closed",
+          "final-pretrial-conference",
+          "trial-commences",
+          "verdict-rendered",
+          "final-judgment-entered",
+          "notice-of-appeal-window",
+          "notice-of-appeal-filed",
+          "cross-appeal-window",
+          "appellate-briefing",
+          "court-of-appeals-decision",
+          "judgment-affirmed"
+        ],
+        "target": "judgment-affirmed",
+        "total": 158430
+      },
+      "judgment-final-no-appeal": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "rule12-response-window",
+          "default-entered",
+          "answer-filed",
+          "jury-demand-decision",
+          "amendment-as-of-right-window",
+          "joinder-decision",
+          "rule26f-conference",
+          "initial-disclosures",
+          "scheduling-order-issued",
+          "discovery-open",
+          "discovery-closed",
+          "final-pretrial-conference",
+          "trial-commences",
+          "verdict-rendered",
+          "final-judgment-entered",
+          "notice-of-appeal-window",
+          "judgment-final-no-appeal"
+        ],
+        "target": "judgment-final-no-appeal",
+        "total": 30925
+      },
+      "judgment-reversed-remanded": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "rule12-response-window",
+          "default-entered",
+          "answer-filed",
+          "jury-demand-decision",
+          "amendment-as-of-right-window",
+          "joinder-decision",
+          "rule26f-conference",
+          "initial-disclosures",
+          "scheduling-order-issued",
+          "discovery-open",
+          "discovery-closed",
+          "final-pretrial-conference",
+          "trial-commences",
+          "verdict-rendered",
+          "final-judgment-entered",
+          "notice-of-appeal-window",
+          "notice-of-appeal-filed",
+          "cross-appeal-window",
+          "appellate-briefing",
+          "court-of-appeals-decision",
+          "judgment-reversed-remanded"
+        ],
+        "target": "judgment-reversed-remanded",
+        "total": 158430
+      },
+      "remand-ordered": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "service-completed",
+          "removal-window",
+          "removed-to-federal",
+          "remand-ruling",
+          "remand-ordered"
+        ],
+        "target": "remand-ordered",
+        "total": 26960
+      },
+      "service-window-blown": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "service-window-blown"
+        ],
+        "target": "service-window-blown",
+        "total": 12905
+      },
+      "summary-judgment-granted": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "rule12-response-window",
+          "default-entered",
+          "answer-filed",
+          "jury-demand-decision",
+          "amendment-as-of-right-window",
+          "joinder-decision",
+          "rule26f-conference",
+          "initial-disclosures",
+          "scheduling-order-issued",
+          "discovery-open",
+          "discovery-closed",
+          "summary-judgment-motion",
+          "sj-briefing-complete",
+          "sj-ruling",
+          "summary-judgment-granted"
+        ],
+        "target": "summary-judgment-granted",
+        "total": 132925
+      },
+      "voluntary-dismissal": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "service-completed",
+          "voluntary-dismissal"
+        ],
+        "target": "voluntary-dismissal",
+        "total": 15055
+      }
+    },
+    "fastestByDays": {
+      "appeal-window-blown": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "service-completed",
+          "rule12-response-window",
+          "default-entered",
+          "answer-filed",
+          "jury-demand-decision",
+          "amendment-as-of-right-window",
+          "joinder-decision",
+          "rule26f-conference",
+          "initial-disclosures",
+          "scheduling-order-issued",
+          "discovery-open",
+          "discovery-closed",
+          "final-pretrial-conference",
+          "trial-commences",
+          "verdict-rendered",
+          "final-judgment-entered",
+          "notice-of-appeal-window",
+          "appeal-window-blown"
+        ],
+        "target": "appeal-window-blown",
+        "total": 35
+      },
+      "default-judgment-entered": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "service-completed",
+          "rule12-response-window",
+          "default-entered",
+          "default-judgment-entered"
+        ],
+        "target": "default-judgment-entered",
+        "total": 21
+      },
+      "discovery-sanctions-default": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "service-completed",
+          "rule12-response-window",
+          "default-entered",
+          "answer-filed",
+          "jury-demand-decision",
+          "amendment-as-of-right-window",
+          "joinder-decision",
+          "rule26f-conference",
+          "initial-disclosures",
+          "scheduling-order-issued",
+          "discovery-open",
+          "meet-and-confer",
+          "motion-to-compel-ruling",
+          "rule37-sanctions-ruling",
+          "discovery-sanctions-default"
+        ],
+        "target": "discovery-sanctions-default",
+        "total": 35
+      },
+      "discovery-sanctions-dismissal": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "service-completed",
+          "rule12-response-window",
+          "default-entered",
+          "answer-filed",
+          "jury-demand-decision",
+          "amendment-as-of-right-window",
+          "joinder-decision",
+          "rule26f-conference",
+          "initial-disclosures",
+          "scheduling-order-issued",
+          "discovery-open",
+          "meet-and-confer",
+          "motion-to-compel-ruling",
+          "rule37-sanctions-ruling",
+          "discovery-sanctions-dismissal"
+        ],
+        "target": "discovery-sanctions-dismissal",
+        "total": 35
+      },
+      "dismissed-with-prejudice": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "service-completed",
+          "rule12-response-window",
+          "motion-to-dismiss-filed",
+          "mtd-ruling",
+          "dismissed-with-prejudice"
+        ],
+        "target": "dismissed-with-prejudice",
+        "total": 42
+      },
+      "judgment-affirmed": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "service-completed",
+          "rule12-response-window",
+          "default-entered",
+          "answer-filed",
+          "jury-demand-decision",
+          "amendment-as-of-right-window",
+          "joinder-decision",
+          "rule26f-conference",
+          "initial-disclosures",
+          "scheduling-order-issued",
+          "discovery-open",
+          "discovery-closed",
+          "final-pretrial-conference",
+          "trial-commences",
+          "verdict-rendered",
+          "final-judgment-entered",
+          "notice-of-appeal-window",
+          "notice-of-appeal-filed",
+          "cross-appeal-window",
+          "appellate-briefing",
+          "court-of-appeals-decision",
+          "judgment-affirmed"
+        ],
+        "target": "judgment-affirmed",
+        "total": 65
+      },
+      "judgment-final-no-appeal": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "service-completed",
+          "rule12-response-window",
+          "default-entered",
+          "answer-filed",
+          "jury-demand-decision",
+          "amendment-as-of-right-window",
+          "joinder-decision",
+          "rule26f-conference",
+          "initial-disclosures",
+          "scheduling-order-issued",
+          "discovery-open",
+          "discovery-closed",
+          "final-pretrial-conference",
+          "trial-commences",
+          "verdict-rendered",
+          "final-judgment-entered",
+          "notice-of-appeal-window",
+          "judgment-final-no-appeal"
+        ],
+        "target": "judgment-final-no-appeal",
+        "total": 35
+      },
+      "judgment-reversed-remanded": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "service-completed",
+          "rule12-response-window",
+          "default-entered",
+          "answer-filed",
+          "jury-demand-decision",
+          "amendment-as-of-right-window",
+          "joinder-decision",
+          "rule26f-conference",
+          "initial-disclosures",
+          "scheduling-order-issued",
+          "discovery-open",
+          "discovery-closed",
+          "final-pretrial-conference",
+          "trial-commences",
+          "verdict-rendered",
+          "final-judgment-entered",
+          "notice-of-appeal-window",
+          "notice-of-appeal-filed",
+          "cross-appeal-window",
+          "appellate-briefing",
+          "court-of-appeals-decision",
+          "judgment-reversed-remanded"
+        ],
+        "target": "judgment-reversed-remanded",
+        "total": 65
+      },
+      "remand-ordered": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "service-completed",
+          "removal-window",
+          "removed-to-federal",
+          "remand-ruling",
+          "remand-ordered"
+        ],
+        "target": "remand-ordered",
+        "total": 60
+      },
+      "service-window-blown": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "service-window-blown"
+        ],
+        "target": "service-window-blown",
+        "total": 0
+      },
+      "summary-judgment-granted": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "service-completed",
+          "rule12-response-window",
+          "default-entered",
+          "answer-filed",
+          "jury-demand-decision",
+          "amendment-as-of-right-window",
+          "joinder-decision",
+          "rule26f-conference",
+          "initial-disclosures",
+          "scheduling-order-issued",
+          "discovery-open",
+          "discovery-closed",
+          "summary-judgment-motion",
+          "sj-briefing-complete",
+          "sj-ruling",
+          "summary-judgment-granted"
+        ],
+        "target": "summary-judgment-granted",
+        "total": 35
+      },
+      "voluntary-dismissal": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "service-completed",
+          "voluntary-dismissal"
+        ],
+        "target": "voluntary-dismissal",
+        "total": 0
+      }
+    },
+    "leastHours": {
+      "appeal-window-blown": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "rule12-response-window",
+          "default-entered",
+          "answer-filed",
+          "jury-demand-decision",
+          "amendment-as-of-right-window",
+          "joinder-decision",
+          "rule26f-conference",
+          "initial-disclosures",
+          "scheduling-order-issued",
+          "discovery-open",
+          "discovery-closed",
+          "final-pretrial-conference",
+          "trial-commences",
+          "verdict-rendered",
+          "final-judgment-entered",
+          "notice-of-appeal-window",
+          "appeal-window-blown"
+        ],
+        "target": "appeal-window-blown",
+        "total": 54
+      },
+      "default-judgment-entered": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "rule12-response-window",
+          "default-entered",
+          "default-judgment-entered"
+        ],
+        "target": "default-judgment-entered",
+        "total": 28
+      },
+      "discovery-sanctions-default": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "rule12-response-window",
+          "default-entered",
+          "answer-filed",
+          "jury-demand-decision",
+          "amendment-as-of-right-window",
+          "joinder-decision",
+          "rule26f-conference",
+          "initial-disclosures",
+          "scheduling-order-issued",
+          "discovery-open",
+          "meet-and-confer",
+          "motion-to-compel-ruling",
+          "rule37-sanctions-ruling",
+          "discovery-sanctions-default"
+        ],
+        "target": "discovery-sanctions-default",
+        "total": 68
+      },
+      "discovery-sanctions-dismissal": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "rule12-response-window",
+          "default-entered",
+          "answer-filed",
+          "jury-demand-decision",
+          "amendment-as-of-right-window",
+          "joinder-decision",
+          "rule26f-conference",
+          "initial-disclosures",
+          "scheduling-order-issued",
+          "discovery-open",
+          "meet-and-confer",
+          "motion-to-compel-ruling",
+          "rule37-sanctions-ruling",
+          "discovery-sanctions-dismissal"
+        ],
+        "target": "discovery-sanctions-dismissal",
+        "total": 68
+      },
+      "dismissed-with-prejudice": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "rule12-response-window",
+          "motion-to-dismiss-filed",
+          "mtd-ruling",
+          "dismissed-with-prejudice"
+        ],
+        "target": "dismissed-with-prejudice",
+        "total": 78
+      },
+      "judgment-affirmed": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "rule12-response-window",
+          "default-entered",
+          "answer-filed",
+          "jury-demand-decision",
+          "amendment-as-of-right-window",
+          "joinder-decision",
+          "rule26f-conference",
+          "initial-disclosures",
+          "scheduling-order-issued",
+          "discovery-open",
+          "discovery-closed",
+          "final-pretrial-conference",
+          "trial-commences",
+          "verdict-rendered",
+          "final-judgment-entered",
+          "notice-of-appeal-window",
+          "notice-of-appeal-filed",
+          "cross-appeal-window",
+          "appellate-briefing",
+          "court-of-appeals-decision",
+          "judgment-affirmed"
+        ],
+        "target": "judgment-affirmed",
+        "total": 218
+      },
+      "judgment-final-no-appeal": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "rule12-response-window",
+          "default-entered",
+          "answer-filed",
+          "jury-demand-decision",
+          "amendment-as-of-right-window",
+          "joinder-decision",
+          "rule26f-conference",
+          "initial-disclosures",
+          "scheduling-order-issued",
+          "discovery-open",
+          "discovery-closed",
+          "final-pretrial-conference",
+          "trial-commences",
+          "verdict-rendered",
+          "final-judgment-entered",
+          "notice-of-appeal-window",
+          "judgment-final-no-appeal"
+        ],
+        "target": "judgment-final-no-appeal",
+        "total": 54
+      },
+      "judgment-reversed-remanded": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "rule12-response-window",
+          "default-entered",
+          "answer-filed",
+          "jury-demand-decision",
+          "amendment-as-of-right-window",
+          "joinder-decision",
+          "rule26f-conference",
+          "initial-disclosures",
+          "scheduling-order-issued",
+          "discovery-open",
+          "discovery-closed",
+          "final-pretrial-conference",
+          "trial-commences",
+          "verdict-rendered",
+          "final-judgment-entered",
+          "notice-of-appeal-window",
+          "notice-of-appeal-filed",
+          "cross-appeal-window",
+          "appellate-briefing",
+          "court-of-appeals-decision",
+          "judgment-reversed-remanded"
+        ],
+        "target": "judgment-reversed-remanded",
+        "total": 218
+      },
+      "remand-ordered": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "service-completed",
+          "removal-window",
+          "removed-to-federal",
+          "remand-ruling",
+          "remand-ordered"
+        ],
+        "target": "remand-ordered",
+        "total": 46
+      },
+      "service-window-blown": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "service-window-blown"
+        ],
+        "target": "service-window-blown",
+        "total": 25
+      },
+      "summary-judgment-granted": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "waiver-requested",
+          "rule12-response-window",
+          "default-entered",
+          "answer-filed",
+          "jury-demand-decision",
+          "amendment-as-of-right-window",
+          "joinder-decision",
+          "rule26f-conference",
+          "initial-disclosures",
+          "scheduling-order-issued",
+          "discovery-open",
+          "discovery-closed",
+          "summary-judgment-motion",
+          "sj-briefing-complete",
+          "sj-ruling",
+          "summary-judgment-granted"
+        ],
+        "target": "summary-judgment-granted",
+        "total": 194
+      },
+      "voluntary-dismissal": {
+        "nodes": [
+          "pre-filing",
+          "jurisdiction-venue-check",
+          "complaint-filed",
+          "service-window",
+          "service-completed",
+          "voluntary-dismissal"
+        ],
+        "target": "voluntary-dismissal",
+        "total": 29
+      }
+    }
+  },
+  "dominators": {
+    "idom": {
+      "amended-complaint-filed": "rule12-response-window",
+      "amendment-as-of-right-window": "jury-demand-decision",
+      "answer-filed": "rule12-response-window",
+      "appeal-window-blown": "notice-of-appeal-window",
+      "appellate-briefing": "cross-appeal-window",
+      "complaint-filed": "jurisdiction-venue-check",
+      "court-of-appeals-decision": "appellate-briefing",
+      "cross-appeal-filed": "cross-appeal-window",
+      "cross-appeal-window": "notice-of-appeal-filed",
+      "daubert-motion-filed": "discovery-closed",
+      "daubert-ruling": "daubert-motion-filed",
+      "default-entered": "rule12-response-window",
+      "default-judgment-entered": "default-entered",
+      "discovery-closed": "discovery-open",
+      "discovery-open": "scheduling-order-issued",
+      "discovery-sanctions-default": "rule37-sanctions-ruling",
+      "discovery-sanctions-dismissal": "rule37-sanctions-ruling",
+      "dismissed-with-prejudice": "mtd-ruling",
+      "final-judgment-entered": "verdict-rendered",
+      "final-pretrial-conference": "discovery-closed",
+      "initial-disclosures": "rule26f-conference",
+      "joinder-decision": "amendment-as-of-right-window",
+      "judgment-affirmed": "court-of-appeals-decision",
+      "judgment-final-no-appeal": "notice-of-appeal-window",
+      "judgment-reversed-remanded": "court-of-appeals-decision",
+      "jurisdiction-venue-check": "pre-filing",
+      "jury-demand-decision": "answer-filed",
+      "leave-to-amend-motion": "amendment-as-of-right-window",
+      "leave-to-amend-ruling": "leave-to-amend-motion",
+      "meet-and-confer": "discovery-open",
+      "motion-to-compel-ruling": "meet-and-confer",
+      "motion-to-dismiss-filed": "rule12-response-window",
+      "motions-in-limine-filed": "daubert-ruling",
+      "mtd-ruling": "motion-to-dismiss-filed",
+      "notice-of-appeal-filed": "notice-of-appeal-window",
+      "notice-of-appeal-window": "final-judgment-entered",
+      "partial-summary-judgment": "sj-ruling",
+      "parties-joined": "joinder-decision",
+      "post-trial-motion-window": "final-judgment-entered",
+      "post-trial-ruling": "post-trial-motion-window",
+      "pre-filing": "pre-filing",
+      "protective-order-motion": "discovery-open",
+      "protective-order-ruling": "protective-order-motion",
+      "remand-ordered": "remand-ruling",
+      "remand-ruling": "removed-to-federal",
+      "removal-window": "service-completed",
+      "removed-to-federal": "removal-window",
+      "rule12-response-window": "service-window",
+      "rule26f-conference": "joinder-decision",
+      "rule37-sanctions-ruling": "motion-to-compel-ruling",
+      "rule50b-jmol-filed": "post-trial-motion-window",
+      "rule59-new-trial-filed": "post-trial-motion-window",
+      "rule59e-amend-filed": "post-trial-motion-window",
+      "rule60-relief-filed": "post-trial-motion-window",
+      "scheduling-order-issued": "initial-disclosures",
+      "service-completed": "service-window",
+      "service-window": "complaint-filed",
+      "service-window-blown": "service-window",
+      "sj-briefing-complete": "summary-judgment-motion",
+      "sj-ruling": "sj-briefing-complete",
+      "summary-judgment-granted": "sj-ruling",
+      "summary-judgment-motion": "discovery-closed",
+      "trial-commences": "final-pretrial-conference",
+      "verdict-rendered": "trial-commences",
+      "voluntary-dismissal": "service-window",
+      "waiver-requested": "service-window"
+    },
+    "root": "pre-filing"
+  },
+  "minCut500": {
+    "appeal-window-blown": {
+      "cutEdges": [
+        {
+          "from": "pre-filing",
+          "label": "Conduct Rule 11 pre-filing investigation",
+          "to": "jurisdiction-venue-check"
+        }
+      ],
+      "value": 1
+    },
+    "default-judgment-entered": {
+      "cutEdges": [
+        {
+          "from": "pre-filing",
+          "label": "Conduct Rule 11 pre-filing investigation",
+          "to": "jurisdiction-venue-check"
+        }
+      ],
+      "value": 1
+    },
+    "discovery-sanctions-default": {
+      "cutEdges": [
+        {
+          "from": "pre-filing",
+          "label": "Conduct Rule 11 pre-filing investigation",
+          "to": "jurisdiction-venue-check"
+        }
+      ],
+      "value": 1
+    },
+    "discovery-sanctions-dismissal": {
+      "cutEdges": [
+        {
+          "from": "pre-filing",
+          "label": "Conduct Rule 11 pre-filing investigation",
+          "to": "jurisdiction-venue-check"
+        }
+      ],
+      "value": 1
+    },
+    "dismissed-with-prejudice": {
+      "cutEdges": [
+        {
+          "from": "pre-filing",
+          "label": "Conduct Rule 11 pre-filing investigation",
+          "to": "jurisdiction-venue-check"
+        }
+      ],
+      "value": 1
+    },
+    "judgment-affirmed": {
+      "cutEdges": [
+        {
+          "from": "pre-filing",
+          "label": "Conduct Rule 11 pre-filing investigation",
+          "to": "jurisdiction-venue-check"
+        }
+      ],
+      "value": 1
+    },
+    "judgment-final-no-appeal": {
+      "cutEdges": [
+        {
+          "from": "pre-filing",
+          "label": "Conduct Rule 11 pre-filing investigation",
+          "to": "jurisdiction-venue-check"
+        }
+      ],
+      "value": 1
+    },
+    "judgment-reversed-remanded": {
+      "cutEdges": [
+        {
+          "from": "pre-filing",
+          "label": "Conduct Rule 11 pre-filing investigation",
+          "to": "jurisdiction-venue-check"
+        }
+      ],
+      "value": 1
+    },
+    "remand-ordered": {
+      "cutEdges": [
+        {
+          "from": "pre-filing",
+          "label": "Conduct Rule 11 pre-filing investigation",
+          "to": "jurisdiction-venue-check"
+        }
+      ],
+      "value": 1
+    },
+    "service-window-blown": {
+      "cutEdges": [
+        {
+          "from": "pre-filing",
+          "label": "Conduct Rule 11 pre-filing investigation",
+          "to": "jurisdiction-venue-check"
+        }
+      ],
+      "value": 1
+    },
+    "summary-judgment-granted": {
+      "cutEdges": [
+        {
+          "from": "pre-filing",
+          "label": "Conduct Rule 11 pre-filing investigation",
+          "to": "jurisdiction-venue-check"
+        }
+      ],
+      "value": 1
+    },
+    "voluntary-dismissal": {
+      "cutEdges": [
+        {
+          "from": "pre-filing",
+          "label": "Conduct Rule 11 pre-filing investigation",
+          "to": "jurisdiction-venue-check"
+        }
+      ],
+      "value": 1
+    }
+  },
+  "packId": "frcp-civil-procedure",
+  "packTitle": "Federal Civil Litigation Under the FRCP",
+  "params": {
+    "paretoCappedMaxPaths": 20000,
+    "paretoDefaultOpts": {
+      "maxNodeVisits": 1,
+      "maxPaths": 50000
+    },
+    "paretoSlowThresholdMs": 20000,
+    "policyDiffRateA": 150,
+    "policyDiffRateB": 1500,
+    "rate": 500,
+    "rateLow": 250
+  },
+  "paretoPaths500": {
+    "appeal-window-blown": {
+      "enumeratedCount": 27216,
+      "frontier": [
+        {
+          "nodes": [
+            "pre-filing",
+            "jurisdiction-venue-check",
+            "complaint-filed",
+            "service-window",
+            "waiver-requested",
+            "service-completed",
+            "rule12-response-window",
+            "default-entered",
+            "answer-filed",
+            "jury-demand-decision",
+            "amendment-as-of-right-window",
+            "joinder-decision",
+            "rule26f-conference",
+            "initial-disclosures",
+            "scheduling-order-issued",
+            "discovery-open",
+            "discovery-closed",
+            "final-pretrial-conference",
+            "trial-commences",
+            "verdict-rendered",
+            "final-judgment-entered",
+            "post-trial-motion-window",
+            "notice-of-appeal-window",
+            "appeal-window-blown"
+          ],
+          "totalCost": 32075,
+          "totalDays": 35
+        },
+        {
+          "nodes": [
+            "pre-filing",
+            "jurisdiction-venue-check",
+            "complaint-filed",
+            "service-window",
+            "waiver-requested",
+            "rule12-response-window",
+            "default-entered",
+            "answer-filed",
+            "jury-demand-decision",
+            "amendment-as-of-right-window",
+            "joinder-decision",
+            "rule26f-conference",
+            "initial-disclosures",
+            "scheduling-order-issued",
+            "discovery-open",
+            "discovery-closed",
+            "final-pretrial-conference",
+            "trial-commences",
+            "verdict-rendered",
+            "final-judgment-entered",
+            "post-trial-motion-window",
+            "notice-of-appeal-window",
+            "appeal-window-blown"
+          ],
+          "totalCost": 30925,
+          "totalDays": 74
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "default-judgment-entered": {
+      "enumeratedCount": 9,
+      "frontier": [
+        {
+          "nodes": [
+            "pre-filing",
+            "jurisdiction-venue-check",
+            "complaint-filed",
+            "service-window",
+            "waiver-requested",
+            "service-completed",
+            "rule12-response-window",
+            "default-entered",
+            "default-judgment-entered"
+          ],
+          "totalCost": 15575,
+          "totalDays": 21
+        },
+        {
+          "nodes": [
+            "pre-filing",
+            "jurisdiction-venue-check",
+            "complaint-filed",
+            "service-window",
+            "waiver-requested",
+            "rule12-response-window",
+            "default-entered",
+            "default-judgment-entered"
+          ],
+          "totalCost": 14425,
+          "totalDays": 60
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "discovery-sanctions-default": {
+      "enumeratedCount": 324,
+      "frontier": [
+        {
+          "nodes": [
+            "pre-filing",
+            "jurisdiction-venue-check",
+            "complaint-filed",
+            "service-window",
+            "waiver-requested",
+            "service-completed",
+            "rule12-response-window",
+            "default-entered",
+            "answer-filed",
+            "jury-demand-decision",
+            "amendment-as-of-right-window",
+            "joinder-decision",
+            "rule26f-conference",
+            "initial-disclosures",
+            "scheduling-order-issued",
+            "discovery-open",
+            "meet-and-confer",
+            "motion-to-compel-ruling",
+            "rule37-sanctions-ruling",
+            "discovery-sanctions-default"
+          ],
+          "totalCost": 44075,
+          "totalDays": 35
+        },
+        {
+          "nodes": [
+            "pre-filing",
+            "jurisdiction-venue-check",
+            "complaint-filed",
+            "service-window",
+            "waiver-requested",
+            "rule12-response-window",
+            "default-entered",
+            "answer-filed",
+            "jury-demand-decision",
+            "amendment-as-of-right-window",
+            "joinder-decision",
+            "rule26f-conference",
+            "initial-disclosures",
+            "scheduling-order-issued",
+            "discovery-open",
+            "meet-and-confer",
+            "motion-to-compel-ruling",
+            "rule37-sanctions-ruling",
+            "discovery-sanctions-default"
+          ],
+          "totalCost": 42925,
+          "totalDays": 74
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "discovery-sanctions-dismissal": {
+      "enumeratedCount": 324,
+      "frontier": [
+        {
+          "nodes": [
+            "pre-filing",
+            "jurisdiction-venue-check",
+            "complaint-filed",
+            "service-window",
+            "waiver-requested",
+            "service-completed",
+            "rule12-response-window",
+            "default-entered",
+            "answer-filed",
+            "jury-demand-decision",
+            "amendment-as-of-right-window",
+            "joinder-decision",
+            "rule26f-conference",
+            "initial-disclosures",
+            "scheduling-order-issued",
+            "discovery-open",
+            "meet-and-confer",
+            "motion-to-compel-ruling",
+            "rule37-sanctions-ruling",
+            "discovery-sanctions-dismissal"
+          ],
+          "totalCost": 44075,
+          "totalDays": 35
+        },
+        {
+          "nodes": [
+            "pre-filing",
+            "jurisdiction-venue-check",
+            "complaint-filed",
+            "service-window",
+            "waiver-requested",
+            "rule12-response-window",
+            "default-entered",
+            "answer-filed",
+            "jury-demand-decision",
+            "amendment-as-of-right-window",
+            "joinder-decision",
+            "rule26f-conference",
+            "initial-disclosures",
+            "scheduling-order-issued",
+            "discovery-open",
+            "meet-and-confer",
+            "motion-to-compel-ruling",
+            "rule37-sanctions-ruling",
+            "discovery-sanctions-dismissal"
+          ],
+          "totalCost": 42925,
+          "totalDays": 74
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "dismissed-with-prejudice": {
+      "enumeratedCount": 9,
+      "frontier": [
+        {
+          "nodes": [
+            "pre-filing",
+            "jurisdiction-venue-check",
+            "complaint-filed",
+            "service-window",
+            "waiver-requested",
+            "service-completed",
+            "rule12-response-window",
+            "motion-to-dismiss-filed",
+            "mtd-ruling",
+            "dismissed-with-prejudice"
+          ],
+          "totalCost": 54575,
+          "totalDays": 42
+        },
+        {
+          "nodes": [
+            "pre-filing",
+            "jurisdiction-venue-check",
+            "complaint-filed",
+            "service-window",
+            "waiver-requested",
+            "rule12-response-window",
+            "motion-to-dismiss-filed",
+            "mtd-ruling",
+            "dismissed-with-prejudice"
+          ],
+          "totalCost": 53425,
+          "totalDays": 81
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "judgment-affirmed": {
+      "enumeratedCount": 50000,
+      "frontier": [
+        {
+          "nodes": [
+            "pre-filing",
+            "jurisdiction-venue-check",
+            "complaint-filed",
+            "service-window",
+            "waiver-requested",
+            "rule12-response-window",
+            "answer-filed",
+            "jury-demand-decision",
+            "amendment-as-of-right-window",
+            "joinder-decision",
+            "parties-joined",
+            "rule26f-conference",
+            "initial-disclosures",
+            "scheduling-order-issued",
+            "discovery-open",
+            "discovery-closed",
+            "final-pretrial-conference",
+            "trial-commences",
+            "verdict-rendered",
+            "final-judgment-entered",
+            "post-trial-motion-window",
+            "notice-of-appeal-window",
+            "notice-of-appeal-filed",
+            "cross-appeal-window",
+            "appellate-briefing",
+            "court-of-appeals-decision",
+            "judgment-affirmed"
+          ],
+          "totalCost": 168180,
+          "totalDays": 139
+        },
+        {
+          "nodes": [
+            "pre-filing",
+            "jurisdiction-venue-check",
+            "complaint-filed",
+            "service-window",
+            "service-completed",
+            "rule12-response-window",
+            "default-entered",
+            "answer-filed",
+            "jury-demand-decision",
+            "amendment-as-of-right-window",
+            "joinder-decision",
+            "rule26f-conference",
+            "initial-disclosures",
+            "scheduling-order-issued",
+            "discovery-open",
+            "discovery-closed",
+            "final-pretrial-conference",
+            "trial-commences",
+            "verdict-rendered",
+            "final-judgment-entered",
+            "post-trial-motion-window",
+            "notice-of-appeal-window",
+            "notice-of-appeal-filed",
+            "cross-appeal-window",
+            "appellate-briefing",
+            "court-of-appeals-decision",
+            "judgment-affirmed"
+          ],
+          "totalCost": 158560,
+          "totalDays": 155
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": true
+    },
+    "judgment-final-no-appeal": {
+      "enumeratedCount": 27216,
+      "frontier": [
+        {
+          "nodes": [
+            "pre-filing",
+            "jurisdiction-venue-check",
+            "complaint-filed",
+            "service-window",
+            "waiver-requested",
+            "service-completed",
+            "rule12-response-window",
+            "default-entered",
+            "answer-filed",
+            "jury-demand-decision",
+            "amendment-as-of-right-window",
+            "joinder-decision",
+            "rule26f-conference",
+            "initial-disclosures",
+            "scheduling-order-issued",
+            "discovery-open",
+            "discovery-closed",
+            "final-pretrial-conference",
+            "trial-commences",
+            "verdict-rendered",
+            "final-judgment-entered",
+            "post-trial-motion-window",
+            "notice-of-appeal-window",
+            "judgment-final-no-appeal"
+          ],
+          "totalCost": 32075,
+          "totalDays": 35
+        },
+        {
+          "nodes": [
+            "pre-filing",
+            "jurisdiction-venue-check",
+            "complaint-filed",
+            "service-window",
+            "waiver-requested",
+            "rule12-response-window",
+            "default-entered",
+            "answer-filed",
+            "jury-demand-decision",
+            "amendment-as-of-right-window",
+            "joinder-decision",
+            "rule26f-conference",
+            "initial-disclosures",
+            "scheduling-order-issued",
+            "discovery-open",
+            "discovery-closed",
+            "final-pretrial-conference",
+            "trial-commences",
+            "verdict-rendered",
+            "final-judgment-entered",
+            "post-trial-motion-window",
+            "notice-of-appeal-window",
+            "judgment-final-no-appeal"
+          ],
+          "totalCost": 30925,
+          "totalDays": 74
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "judgment-reversed-remanded": {
+      "enumeratedCount": 50000,
+      "frontier": [
+        {
+          "nodes": [
+            "pre-filing",
+            "jurisdiction-venue-check",
+            "complaint-filed",
+            "service-window",
+            "waiver-requested",
+            "service-completed",
+            "removal-window",
+            "rule12-response-window",
+            "default-entered",
+            "answer-filed",
+            "jury-demand-decision",
+            "amendment-as-of-right-window",
+            "joinder-decision",
+            "rule26f-conference",
+            "initial-disclosures",
+            "scheduling-order-issued",
+            "discovery-open",
+            "discovery-closed",
+            "final-pretrial-conference",
+            "trial-commences",
+            "verdict-rendered",
+            "final-judgment-entered",
+            "post-trial-motion-window",
+            "notice-of-appeal-window",
+            "notice-of-appeal-filed",
+            "cross-appeal-window",
+            "appellate-briefing",
+            "court-of-appeals-decision",
+            "judgment-reversed-remanded"
+          ],
+          "totalCost": 160580,
+          "totalDays": 65
+        },
+        {
+          "nodes": [
+            "pre-filing",
+            "jurisdiction-venue-check",
+            "complaint-filed",
+            "service-window",
+            "waiver-requested",
+            "rule12-response-window",
+            "default-entered",
+            "answer-filed",
+            "jury-demand-decision",
+            "amendment-as-of-right-window",
+            "joinder-decision",
+            "rule26f-conference",
+            "initial-disclosures",
+            "scheduling-order-issued",
+            "discovery-open",
+            "discovery-closed",
+            "final-pretrial-conference",
+            "trial-commences",
+            "verdict-rendered",
+            "final-judgment-entered",
+            "post-trial-motion-window",
+            "notice-of-appeal-window",
+            "notice-of-appeal-filed",
+            "cross-appeal-window",
+            "appellate-briefing",
+            "court-of-appeals-decision",
+            "judgment-reversed-remanded"
+          ],
+          "totalCost": 158430,
+          "totalDays": 104
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": true
+    },
+    "remand-ordered": {
+      "enumeratedCount": 2,
+      "frontier": [
+        {
+          "nodes": [
+            "pre-filing",
+            "jurisdiction-venue-check",
+            "complaint-filed",
+            "service-window",
+            "waiver-requested",
+            "service-completed",
+            "removal-window",
+            "removed-to-federal",
+            "remand-ruling",
+            "remand-ordered"
+          ],
+          "totalCost": 27980,
+          "totalDays": 60
+        },
+        {
+          "nodes": [
+            "pre-filing",
+            "jurisdiction-venue-check",
+            "complaint-filed",
+            "service-window",
+            "service-completed",
+            "removal-window",
+            "removed-to-federal",
+            "remand-ruling",
+            "remand-ordered"
+          ],
+          "totalCost": 26960,
+          "totalDays": 150
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "service-window-blown": {
+      "enumeratedCount": 1,
+      "frontier": [
+        {
+          "nodes": [
+            "pre-filing",
+            "jurisdiction-venue-check",
+            "complaint-filed",
+            "service-window",
+            "service-window-blown"
+          ],
+          "totalCost": 12905,
+          "totalDays": 0
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "summary-judgment-granted": {
+      "enumeratedCount": 324,
+      "frontier": [
+        {
+          "nodes": [
+            "pre-filing",
+            "jurisdiction-venue-check",
+            "complaint-filed",
+            "service-window",
+            "waiver-requested",
+            "service-completed",
+            "rule12-response-window",
+            "default-entered",
+            "answer-filed",
+            "jury-demand-decision",
+            "amendment-as-of-right-window",
+            "joinder-decision",
+            "rule26f-conference",
+            "initial-disclosures",
+            "scheduling-order-issued",
+            "discovery-open",
+            "discovery-closed",
+            "summary-judgment-motion",
+            "sj-briefing-complete",
+            "sj-ruling",
+            "summary-judgment-granted"
+          ],
+          "totalCost": 134075,
+          "totalDays": 35
+        },
+        {
+          "nodes": [
+            "pre-filing",
+            "jurisdiction-venue-check",
+            "complaint-filed",
+            "service-window",
+            "waiver-requested",
+            "rule12-response-window",
+            "default-entered",
+            "answer-filed",
+            "jury-demand-decision",
+            "amendment-as-of-right-window",
+            "joinder-decision",
+            "rule26f-conference",
+            "initial-disclosures",
+            "scheduling-order-issued",
+            "discovery-open",
+            "discovery-closed",
+            "summary-judgment-motion",
+            "sj-briefing-complete",
+            "sj-ruling",
+            "summary-judgment-granted"
+          ],
+          "totalCost": 132925,
+          "totalDays": 74
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "voluntary-dismissal": {
+      "enumeratedCount": 326,
+      "frontier": [
+        {
+          "nodes": [
+            "pre-filing",
+            "jurisdiction-venue-check",
+            "complaint-filed",
+            "service-window",
+            "waiver-requested",
+            "service-completed",
+            "voluntary-dismissal"
+          ],
+          "totalCost": 16075,
+          "totalDays": 0
+        },
+        {
+          "nodes": [
+            "pre-filing",
+            "jurisdiction-venue-check",
+            "complaint-filed",
+            "service-window",
+            "service-completed",
+            "voluntary-dismissal"
+          ],
+          "totalCost": 15055,
+          "totalDays": 90
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    }
+  },
+  "policyDiff_150_1500": {
+    "flips": [
+      {
+        "edgeA": {
+          "from": "amendment-as-of-right-window",
+          "label": "No amendment -- proceed; consider joinder of parties",
+          "to": "joinder-decision"
+        },
+        "edgeB": {
+          "from": "amendment-as-of-right-window",
+          "label": "Amend as of right within the 21-day matter-of-course window",
+          "to": "amended-complaint-filed"
+        },
+        "nodeId": "amendment-as-of-right-window"
+      }
+    ],
+    "rateA": 150,
+    "rateB": 1500
+  },
+  "scc": {
+    "absorbingComponents": [
+      [
+        "remand-ordered"
+      ],
+      [
+        "discovery-sanctions-dismissal"
+      ],
+      [
+        "discovery-sanctions-default"
+      ],
+      [
+        "voluntary-dismissal"
+      ],
+      [
+        "summary-judgment-granted"
+      ],
+      [
+        "judgment-affirmed"
+      ],
+      [
+        "judgment-reversed-remanded"
+      ],
+      [
+        "appeal-window-blown"
+      ],
+      [
+        "judgment-final-no-appeal"
+      ],
+      [
+        "dismissed-with-prejudice"
+      ],
+      [
+        "default-judgment-entered"
+      ],
+      [
+        "service-window-blown"
+      ]
+    ],
+    "componentOf": {
+      "amended-complaint-filed": 35,
+      "amendment-as-of-right-window": 35,
+      "answer-filed": 35,
+      "appeal-window-blown": 12,
+      "appellate-briefing": 8,
+      "complaint-filed": 43,
+      "court-of-appeals-decision": 7,
+      "cross-appeal-filed": 9,
+      "cross-appeal-window": 10,
+      "daubert-motion-filed": 21,
+      "daubert-ruling": 20,
+      "default-entered": 35,
+      "default-judgment-entered": 34,
+      "discovery-closed": 26,
+      "discovery-open": 27,
+      "discovery-sanctions-default": 2,
+      "discovery-sanctions-dismissal": 1,
+      "dismissed-with-prejudice": 33,
+      "final-judgment-entered": 15,
+      "final-pretrial-conference": 18,
+      "initial-disclosures": 29,
+      "joinder-decision": 32,
+      "judgment-affirmed": 5,
+      "judgment-final-no-appeal": 13,
+      "judgment-reversed-remanded": 6,
+      "jurisdiction-venue-check": 44,
+      "jury-demand-decision": 35,
+      "leave-to-amend-motion": 35,
+      "leave-to-amend-ruling": 35,
+      "meet-and-confer": 27,
+      "motion-to-compel-ruling": 27,
+      "motion-to-dismiss-filed": 35,
+      "motions-in-limine-filed": 19,
+      "mtd-ruling": 35,
+      "notice-of-appeal-filed": 11,
+      "notice-of-appeal-window": 14,
+      "partial-summary-judgment": 22,
+      "parties-joined": 31,
+      "post-trial-motion-window": 15,
+      "post-trial-ruling": 15,
+      "pre-filing": 45,
+      "protective-order-motion": 27,
+      "protective-order-ruling": 27,
+      "remand-ordered": 0,
+      "remand-ruling": 36,
+      "removal-window": 38,
+      "removed-to-federal": 37,
+      "rule12-response-window": 35,
+      "rule26f-conference": 30,
+      "rule37-sanctions-ruling": 27,
+      "rule50b-jmol-filed": 15,
+      "rule59-new-trial-filed": 15,
+      "rule59e-amend-filed": 15,
+      "rule60-relief-filed": 15,
+      "scheduling-order-issued": 28,
+      "service-completed": 39,
+      "service-window": 42,
+      "service-window-blown": 41,
+      "sj-briefing-complete": 24,
+      "sj-ruling": 23,
+      "summary-judgment-granted": 4,
+      "summary-judgment-motion": 25,
+      "trial-commences": 17,
+      "verdict-rendered": 16,
+      "voluntary-dismissal": 3,
+      "waiver-requested": 40
+    },
+    "components": [
+      [
+        "remand-ordered"
+      ],
+      [
+        "discovery-sanctions-dismissal"
+      ],
+      [
+        "discovery-sanctions-default"
+      ],
+      [
+        "voluntary-dismissal"
+      ],
+      [
+        "summary-judgment-granted"
+      ],
+      [
+        "judgment-affirmed"
+      ],
+      [
+        "judgment-reversed-remanded"
+      ],
+      [
+        "court-of-appeals-decision"
+      ],
+      [
+        "appellate-briefing"
+      ],
+      [
+        "cross-appeal-filed"
+      ],
+      [
+        "cross-appeal-window"
+      ],
+      [
+        "notice-of-appeal-filed"
+      ],
+      [
+        "appeal-window-blown"
+      ],
+      [
+        "judgment-final-no-appeal"
+      ],
+      [
+        "notice-of-appeal-window"
+      ],
+      [
+        "final-judgment-entered",
+        "post-trial-motion-window",
+        "post-trial-ruling",
+        "rule50b-jmol-filed",
+        "rule59-new-trial-filed",
+        "rule59e-amend-filed",
+        "rule60-relief-filed"
+      ],
+      [
+        "verdict-rendered"
+      ],
+      [
+        "trial-commences"
+      ],
+      [
+        "final-pretrial-conference"
+      ],
+      [
+        "motions-in-limine-filed"
+      ],
+      [
+        "daubert-ruling"
+      ],
+      [
+        "daubert-motion-filed"
+      ],
+      [
+        "partial-summary-judgment"
+      ],
+      [
+        "sj-ruling"
+      ],
+      [
+        "sj-briefing-complete"
+      ],
+      [
+        "summary-judgment-motion"
+      ],
+      [
+        "discovery-closed"
+      ],
+      [
+        "discovery-open",
+        "meet-and-confer",
+        "motion-to-compel-ruling",
+        "protective-order-motion",
+        "protective-order-ruling",
+        "rule37-sanctions-ruling"
+      ],
+      [
+        "scheduling-order-issued"
+      ],
+      [
+        "initial-disclosures"
+      ],
+      [
+        "rule26f-conference"
+      ],
+      [
+        "parties-joined"
+      ],
+      [
+        "joinder-decision"
+      ],
+      [
+        "dismissed-with-prejudice"
+      ],
+      [
+        "default-judgment-entered"
+      ],
+      [
+        "amended-complaint-filed",
+        "amendment-as-of-right-window",
+        "answer-filed",
+        "default-entered",
+        "jury-demand-decision",
+        "leave-to-amend-motion",
+        "leave-to-amend-ruling",
+        "motion-to-dismiss-filed",
+        "mtd-ruling",
+        "rule12-response-window"
+      ],
+      [
+        "remand-ruling"
+      ],
+      [
+        "removed-to-federal"
+      ],
+      [
+        "removal-window"
+      ],
+      [
+        "service-completed"
+      ],
+      [
+        "waiver-requested"
+      ],
+      [
+        "service-window-blown"
+      ],
+      [
+        "service-window"
+      ],
+      [
+        "complaint-filed"
+      ],
+      [
+        "jurisdiction-venue-check"
+      ],
+      [
+        "pre-filing"
+      ]
+    ],
+    "condensation": {
+      "edges": [
+        {
+          "from": 7,
+          "to": 5
+        },
+        {
+          "from": 7,
+          "to": 6
+        },
+        {
+          "from": 8,
+          "to": 7
+        },
+        {
+          "from": 9,
+          "to": 8
+        },
+        {
+          "from": 10,
+          "to": 8
+        },
+        {
+          "from": 10,
+          "to": 9
+        },
+        {
+          "from": 11,
+          "to": 10
+        },
+        {
+          "from": 14,
+          "to": 11
+        },
+        {
+          "from": 14,
+          "to": 12
+        },
+        {
+          "from": 14,
+          "to": 13
+        },
+        {
+          "from": 15,
+          "to": 14
+        },
+        {
+          "from": 16,
+          "to": 15
+        },
+        {
+          "from": 17,
+          "to": 16
+        },
+        {
+          "from": 18,
+          "to": 17
+        },
+        {
+          "from": 19,
+          "to": 18
+        },
+        {
+          "from": 20,
+          "to": 19
+        },
+        {
+          "from": 21,
+          "to": 20
+        },
+        {
+          "from": 22,
+          "to": 21
+        },
+        {
+          "from": 23,
+          "to": 4
+        },
+        {
+          "from": 23,
+          "to": 21
+        },
+        {
+          "from": 23,
+          "to": 22
+        },
+        {
+          "from": 24,
+          "to": 23
+        },
+        {
+          "from": 25,
+          "to": 24
+        },
+        {
+          "from": 26,
+          "to": 18
+        },
+        {
+          "from": 26,
+          "to": 21
+        },
+        {
+          "from": 26,
+          "to": 25
+        },
+        {
+          "from": 27,
+          "to": 1
+        },
+        {
+          "from": 27,
+          "to": 2
+        },
+        {
+          "from": 27,
+          "to": 3
+        },
+        {
+          "from": 27,
+          "to": 26
+        },
+        {
+          "from": 28,
+          "to": 27
+        },
+        {
+          "from": 29,
+          "to": 28
+        },
+        {
+          "from": 30,
+          "to": 29
+        },
+        {
+          "from": 31,
+          "to": 30
+        },
+        {
+          "from": 32,
+          "to": 30
+        },
+        {
+          "from": 32,
+          "to": 31
+        },
+        {
+          "from": 35,
+          "to": 32
+        },
+        {
+          "from": 35,
+          "to": 33
+        },
+        {
+          "from": 35,
+          "to": 34
+        },
+        {
+          "from": 36,
+          "to": 0
+        },
+        {
+          "from": 36,
+          "to": 35
+        },
+        {
+          "from": 37,
+          "to": 35
+        },
+        {
+          "from": 37,
+          "to": 36
+        },
+        {
+          "from": 38,
+          "to": 35
+        },
+        {
+          "from": 38,
+          "to": 37
+        },
+        {
+          "from": 39,
+          "to": 3
+        },
+        {
+          "from": 39,
+          "to": 35
+        },
+        {
+          "from": 39,
+          "to": 38
+        },
+        {
+          "from": 40,
+          "to": 35
+        },
+        {
+          "from": 40,
+          "to": 39
+        },
+        {
+          "from": 42,
+          "to": 39
+        },
+        {
+          "from": 42,
+          "to": 40
+        },
+        {
+          "from": 42,
+          "to": 41
+        },
+        {
+          "from": 43,
+          "to": 42
+        },
+        {
+          "from": 44,
+          "to": 43
+        },
+        {
+          "from": 45,
+          "to": 44
+        }
+      ],
+      "nodes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45
+      ]
+    },
+    "cyclicComponents": [
+      [
+        "final-judgment-entered",
+        "post-trial-motion-window",
+        "post-trial-ruling",
+        "rule50b-jmol-filed",
+        "rule59-new-trial-filed",
+        "rule59e-amend-filed",
+        "rule60-relief-filed"
+      ],
+      [
+        "discovery-open",
+        "meet-and-confer",
+        "motion-to-compel-ruling",
+        "protective-order-motion",
+        "protective-order-ruling",
+        "rule37-sanctions-ruling"
+      ],
+      [
+        "amended-complaint-filed",
+        "amendment-as-of-right-window",
+        "answer-filed",
+        "default-entered",
+        "jury-demand-decision",
+        "leave-to-amend-motion",
+        "leave-to-amend-ruling",
+        "motion-to-dismiss-filed",
+        "mtd-ruling",
+        "rule12-response-window"
+      ]
+    ],
+    "cyclicLoops": [
+      {
+        "escapeEdges": [
+          {
+            "from": "final-judgment-entered",
+            "label": "No post-trial motion -- proceed directly toward appeal",
+            "to": "notice-of-appeal-window"
+          },
+          {
+            "from": "post-trial-motion-window",
+            "label": "No post-trial motion -- proceed to appeal",
+            "to": "notice-of-appeal-window"
+          },
+          {
+            "from": "post-trial-ruling",
+            "label": "Post-trial motion denied -- FRAP 4(a)(4) tolling ends, appeal clock now runs",
+            "to": "notice-of-appeal-window"
+          }
+        ],
+        "internalEdges": [
+          {
+            "from": "final-judgment-entered",
+            "label": "28-day post-trial motion window opens",
+            "to": "post-trial-motion-window"
+          },
+          {
+            "from": "post-trial-motion-window",
+            "label": "Renew motion for JMOL (requires a preceding Rule 50(a) motion)",
+            "to": "rule50b-jmol-filed"
+          },
+          {
+            "from": "post-trial-motion-window",
+            "label": "Move for a new trial",
+            "to": "rule59-new-trial-filed"
+          },
+          {
+            "from": "post-trial-motion-window",
+            "label": "Move to alter or amend the judgment",
+            "to": "rule59e-amend-filed"
+          },
+          {
+            "from": "post-trial-motion-window",
+            "label": "Move for relief from judgment",
+            "to": "rule60-relief-filed"
+          },
+          {
+            "from": "post-trial-ruling",
+            "label": "Post-trial motion granted -- amended or new judgment entered",
+            "to": "final-judgment-entered"
+          },
+          {
+            "from": "rule50b-jmol-filed",
+            "label": "Complete Rule 50(b) briefing",
+            "to": "post-trial-ruling"
+          },
+          {
+            "from": "rule59-new-trial-filed",
+            "label": "Complete Rule 59 briefing",
+            "to": "post-trial-ruling"
+          },
+          {
+            "from": "rule59e-amend-filed",
+            "label": "Complete Rule 59(e) briefing",
+            "to": "post-trial-ruling"
+          },
+          {
+            "from": "rule60-relief-filed",
+            "label": "Complete Rule 60(b) briefing",
+            "to": "post-trial-ruling"
+          }
+        ],
+        "nodes": [
+          "final-judgment-entered",
+          "post-trial-motion-window",
+          "post-trial-ruling",
+          "rule50b-jmol-filed",
+          "rule59-new-trial-filed",
+          "rule59e-amend-filed",
+          "rule60-relief-filed"
+        ]
+      },
+      {
+        "escapeEdges": [
+          {
+            "from": "discovery-open",
+            "label": "Discovery record complete -- proceed toward dispositive motions",
+            "to": "discovery-closed"
+          },
+          {
+            "from": "discovery-open",
+            "label": "Parties settle -- file stipulation of dismissal",
+            "to": "voluntary-dismissal"
+          },
+          {
+            "from": "rule37-sanctions-ruling",
+            "label": "Case-dispositive sanction -- default judgment against the disobedient defendant",
+            "to": "discovery-sanctions-default"
+          },
+          {
+            "from": "rule37-sanctions-ruling",
+            "label": "Case-dispositive sanction -- dismissal for willful noncompliance or spoliation",
+            "to": "discovery-sanctions-dismissal"
+          }
+        ],
+        "internalEdges": [
+          {
+            "from": "discovery-open",
+            "label": "Serve interrogatories (max 25 including discrete subparts, Rule 33(a)(1))",
+            "to": "discovery-open"
+          },
+          {
+            "from": "discovery-open",
+            "label": "Serve nonparty subpoena (Rule 45)",
+            "to": "discovery-open"
+          },
+          {
+            "from": "discovery-open",
+            "label": "Serve requests for admission (Rule 36) -- no timely response is deemed admitted (36(a)(3))",
+            "to": "discovery-open"
+          },
+          {
+            "from": "discovery-open",
+            "label": "Serve requests for production (Rule 34)",
+            "to": "discovery-open"
+          },
+          {
+            "from": "discovery-open",
+            "label": "Serve Rule 30(b)(6) deposition notice on an organization",
+            "to": "discovery-open"
+          },
+          {
+            "from": "discovery-open",
+            "label": "Take deposition (Rule 30) -- 10 depositions per side and 1 day of 7 hours absent stipulation or leave (Rule 30(a)(2)(A)(i); 30(d)(1))",
+            "to": "discovery-open"
+          },
+          {
+            "from": "discovery-open",
+            "label": "Meet and confer on a discovery dispute",
+            "to": "meet-and-confer"
+          },
+          {
+            "from": "discovery-open",
+            "label": "Move for a protective order",
+            "to": "protective-order-motion"
+          },
+          {
+            "from": "meet-and-confer",
+            "label": "Dispute resolved informally -- discovery resumes",
+            "to": "discovery-open"
+          },
+          {
+            "from": "meet-and-confer",
+            "label": "File motion to compel after good-faith conferral fails",
+            "to": "motion-to-compel-ruling"
+          },
+          {
+            "from": "motion-to-compel-ruling",
+            "label": "Motion denied -- movant's fees shifted absent substantial justification (Rule 37(a)(5)(B))",
+            "to": "discovery-open"
+          },
+          {
+            "from": "motion-to-compel-ruling",
+            "label": "Motion granted -- movant's fees shifted to the noncompliant party (Rule 37(a)(5)(A))",
+            "to": "discovery-open"
+          },
+          {
+            "from": "motion-to-compel-ruling",
+            "label": "Party still fails to obey the compel order -- Rule 37(b) sanctions considered",
+            "to": "rule37-sanctions-ruling"
+          },
+          {
+            "from": "protective-order-motion",
+            "label": "Complete Rule 26(c) briefing -- good-cause showing",
+            "to": "protective-order-ruling"
+          },
+          {
+            "from": "protective-order-ruling",
+            "label": "Protective order denied -- discovery proceeds unrestricted",
+            "to": "discovery-open"
+          },
+          {
+            "from": "protective-order-ruling",
+            "label": "Protective order granted",
+            "to": "discovery-open"
+          },
+          {
+            "from": "rule37-sanctions-ruling",
+            "label": "Lesser sanction imposed -- adverse inference, fee-shifting, or evidence preclusion (Rule 37(b)(2)(A)(i)-(iv))",
+            "to": "discovery-open"
+          }
+        ],
+        "nodes": [
+          "discovery-open",
+          "meet-and-confer",
+          "motion-to-compel-ruling",
+          "protective-order-motion",
+          "protective-order-ruling",
+          "rule37-sanctions-ruling"
+        ]
+      },
+      {
+        "escapeEdges": [
+          {
+            "from": "amendment-as-of-right-window",
+            "label": "No amendment -- proceed; consider joinder of parties",
+            "to": "joinder-decision"
+          },
+          {
+            "from": "default-entered",
+            "label": "Clerk or court enters default judgment",
+            "to": "default-judgment-entered"
+          },
+          {
+            "from": "leave-to-amend-ruling",
+            "label": "Leave denied",
+            "to": "joinder-decision"
+          },
+          {
+            "from": "mtd-ruling",
+            "label": "Motion granted without leave to amend -- futility",
+            "to": "dismissed-with-prejudice"
+          }
+        ],
+        "internalEdges": [
+          {
+            "from": "amended-complaint-filed",
+            "label": "Responsive-pleading window reopens for the amended pleading",
+            "to": "rule12-response-window"
+          },
+          {
+            "from": "amendment-as-of-right-window",
+            "label": "Amend as of right within the 21-day matter-of-course window",
+            "to": "amended-complaint-filed"
+          },
+          {
+            "from": "amendment-as-of-right-window",
+            "label": "Seek leave to amend outside the matter-of-course window",
+            "to": "leave-to-amend-motion"
+          },
+          {
+            "from": "answer-filed",
+            "label": "Last pleading directed to the issue served -- 14-day jury demand clock starts",
+            "to": "jury-demand-decision"
+          },
+          {
+            "from": "default-entered",
+            "label": "Move to set aside entry of default for good cause",
+            "to": "answer-filed"
+          },
+          {
+            "from": "jury-demand-decision",
+            "label": "Fail to demand within 14 days -- jury trial waived",
+            "to": "amendment-as-of-right-window"
+          },
+          {
+            "from": "jury-demand-decision",
+            "label": "Serve and file timely written jury demand",
+            "to": "amendment-as-of-right-window"
+          },
+          {
+            "from": "leave-to-amend-motion",
+            "label": "Complete Rule 15(a)(2) motion briefing",
+            "to": "leave-to-amend-ruling"
+          },
+          {
+            "from": "leave-to-amend-ruling",
+            "label": "Leave granted -- justice so requires",
+            "to": "amended-complaint-filed"
+          },
+          {
+            "from": "motion-to-dismiss-filed",
+            "label": "Complete Rule 12(b) briefing",
+            "to": "mtd-ruling"
+          },
+          {
+            "from": "mtd-ruling",
+            "label": "Motion granted with leave to amend",
+            "to": "amended-complaint-filed"
+          },
+          {
+            "from": "mtd-ruling",
+            "label": "Motion denied -- answer due within 14 days",
+            "to": "answer-filed"
+          },
+          {
+            "from": "rule12-response-window",
+            "label": "File answer within 21 days (baseline)",
+            "to": "answer-filed"
+          },
+          {
+            "from": "rule12-response-window",
+            "label": "Fail to answer or move -- default exposure",
+            "to": "default-entered"
+          },
+          {
+            "from": "rule12-response-window",
+            "label": "File pre-answer Rule 12(b) motion instead of answering",
+            "to": "motion-to-dismiss-filed"
+          }
+        ],
+        "nodes": [
+          "amended-complaint-filed",
+          "amendment-as-of-right-window",
+          "answer-filed",
+          "default-entered",
+          "jury-demand-decision",
+          "leave-to-amend-motion",
+          "leave-to-amend-ruling",
+          "motion-to-dismiss-filed",
+          "mtd-ruling",
+          "rule12-response-window"
+        ]
+      }
+    ]
+  },
+  "schemaVersion": 1,
+  "startNodeId": "pre-filing",
+  "terminals": [
+    "appeal-window-blown",
+    "default-judgment-entered",
+    "discovery-sanctions-default",
+    "discovery-sanctions-dismissal",
+    "dismissed-with-prejudice",
+    "judgment-affirmed",
+    "judgment-final-no-appeal",
+    "judgment-reversed-remanded",
+    "remand-ordered",
+    "service-window-blown",
+    "summary-judgment-granted",
+    "voluntary-dismissal"
+  ],
+  "valueIteration250": {
+    "converged": true,
+    "edgeQ": [
+      {
+        "from": "amended-complaint-filed",
+        "label": "Responsive-pleading window reopens for the amended pleading",
+        "q": 0,
+        "to": "rule12-response-window"
+      },
+      {
+        "from": "amendment-as-of-right-window",
+        "label": "Amend as of right within the 21-day matter-of-course window",
+        "q": -4500,
+        "to": "amended-complaint-filed"
+      },
+      {
+        "from": "amendment-as-of-right-window",
+        "label": "No amendment -- proceed; consider joinder of parties",
+        "q": -4000,
+        "to": "joinder-decision"
+      },
+      {
+        "from": "amendment-as-of-right-window",
+        "label": "Seek leave to amend outside the matter-of-course window",
+        "q": -6750,
+        "to": "leave-to-amend-motion"
+      },
+      {
+        "from": "answer-filed",
+        "label": "Last pleading directed to the issue served -- 14-day jury demand clock starts",
+        "q": -4000,
+        "to": "jury-demand-decision"
+      },
+      {
+        "from": "appellate-briefing",
+        "label": "Complete FRAP 28 briefing and oral argument",
+        "q": -85000,
+        "to": "court-of-appeals-decision"
+      },
+      {
+        "from": "complaint-filed",
+        "label": "Clerk signs, seals, and issues the summons",
+        "q": 0,
+        "to": "service-window"
+      },
+      {
+        "from": "court-of-appeals-decision",
+        "label": "Affirmed in part, reversed in part -- net affirmance for appellee",
+        "q": 0,
+        "to": "judgment-affirmed"
+      },
+      {
+        "from": "court-of-appeals-decision",
+        "label": "Court of appeals affirms",
+        "q": 0,
+        "to": "judgment-affirmed"
+      },
+      {
+        "from": "court-of-appeals-decision",
+        "label": "Court of appeals reverses or vacates and remands",
+        "q": 0,
+        "to": "judgment-reversed-remanded"
+      },
+      {
+        "from": "cross-appeal-filed",
+        "label": "Cross-appeal docketed with the lead appeal",
+        "q": -85000,
+        "to": "appellate-briefing"
+      },
+      {
+        "from": "cross-appeal-window",
+        "label": "No cross-appeal -- appellee will defend the judgment on the existing record",
+        "q": -85000,
+        "to": "appellate-briefing"
+      },
+      {
+        "from": "cross-appeal-window",
+        "label": "File cross-appeal",
+        "q": -87005,
+        "to": "cross-appeal-filed"
+      },
+      {
+        "from": "daubert-motion-filed",
+        "label": "Complete FRE 702 gatekeeping briefing (FRE 104(a))",
+        "q": -11500,
+        "to": "daubert-ruling"
+      },
+      {
+        "from": "daubert-ruling",
+        "label": "Expert testimony admitted -- reliability and fit satisfied",
+        "q": -6500,
+        "to": "motions-in-limine-filed"
+      },
+      {
+        "from": "daubert-ruling",
+        "label": "Expert testimony excluded in whole or in part",
+        "q": -6500,
+        "to": "motions-in-limine-filed"
+      },
+      {
+        "from": "default-entered",
+        "label": "Move to set aside entry of default for good cause",
+        "q": -10000,
+        "to": "answer-filed"
+      },
+      {
+        "from": "default-entered",
+        "label": "Clerk or court enters default judgment",
+        "q": 0,
+        "to": "default-judgment-entered"
+      },
+      {
+        "from": "discovery-closed",
+        "label": "Move to exclude opposing expert testimony pretrial",
+        "q": -35250,
+        "to": "daubert-motion-filed"
+      },
+      {
+        "from": "discovery-closed",
+        "label": "No dispositive or Daubert motion -- proceed to final pretrial conference",
+        "q": 0,
+        "to": "final-pretrial-conference"
+      },
+      {
+        "from": "discovery-closed",
+        "label": "Move for summary judgment",
+        "q": -75625,
+        "to": "summary-judgment-motion"
+      },
+      {
+        "from": "discovery-open",
+        "label": "Discovery record complete -- proceed toward dispositive motions",
+        "q": 0,
+        "to": "discovery-closed"
+      },
+      {
+        "from": "discovery-open",
+        "label": "Serve interrogatories (max 25 including discrete subparts, Rule 33(a)(1))",
+        "q": -1100,
+        "to": "discovery-open"
+      },
+      {
+        "from": "discovery-open",
+        "label": "Serve nonparty subpoena (Rule 45)",
+        "q": -1050,
+        "to": "discovery-open"
+      },
+      {
+        "from": "discovery-open",
+        "label": "Serve requests for admission (Rule 36) -- no timely response is deemed admitted (36(a)(3))",
+        "q": -550,
+        "to": "discovery-open"
+      },
+      {
+        "from": "discovery-open",
+        "label": "Serve requests for production (Rule 34)",
+        "q": -850,
+        "to": "discovery-open"
+      },
+      {
+        "from": "discovery-open",
+        "label": "Serve Rule 30(b)(6) deposition notice on an organization",
+        "q": -1500,
+        "to": "discovery-open"
+      },
+      {
+        "from": "discovery-open",
+        "label": "Take deposition (Rule 30) -- 10 depositions per side and 1 day of 7 hours absent stipulation or leave (Rule 30(a)(2)(A)(i); 30(d)(1))",
+        "q": -5500,
+        "to": "discovery-open"
+      },
+      {
+        "from": "discovery-open",
+        "label": "Meet and confer on a discovery dispute",
+        "q": -750,
+        "to": "meet-and-confer"
+      },
+      {
+        "from": "discovery-open",
+        "label": "Move for a protective order",
+        "q": -7500,
+        "to": "protective-order-motion"
+      },
+      {
+        "from": "discovery-open",
+        "label": "Parties settle -- file stipulation of dismissal",
+        "q": -1000,
+        "to": "voluntary-dismissal"
+      },
+      {
+        "from": "final-judgment-entered",
+        "label": "No post-trial motion -- proceed directly toward appeal",
+        "q": 0,
+        "to": "notice-of-appeal-window"
+      },
+      {
+        "from": "final-judgment-entered",
+        "label": "28-day post-trial motion window opens",
+        "q": 0,
+        "to": "post-trial-motion-window"
+      },
+      {
+        "from": "final-pretrial-conference",
+        "label": "Court enters final pretrial order",
+        "q": 0,
+        "to": "trial-commences"
+      },
+      {
+        "from": "initial-disclosures",
+        "label": "Exchange Rule 26(a)(1) initial disclosures",
+        "q": -2500,
+        "to": "scheduling-order-issued"
+      },
+      {
+        "from": "joinder-decision",
+        "label": "Join a required party (Rule 19) or a permissive party (Rule 20)",
+        "q": -8500,
+        "to": "parties-joined"
+      },
+      {
+        "from": "joinder-decision",
+        "label": "Nonparty intervenes as of right or permissively",
+        "q": -8500,
+        "to": "parties-joined"
+      },
+      {
+        "from": "joinder-decision",
+        "label": "No joinder -- proceed to discovery planning",
+        "q": -4000,
+        "to": "rule26f-conference"
+      },
+      {
+        "from": "jurisdiction-venue-check",
+        "label": "File complaint establishing subject-matter jurisdiction and venue",
+        "q": -2905,
+        "to": "complaint-filed"
+      },
+      {
+        "from": "jury-demand-decision",
+        "label": "Fail to demand within 14 days -- jury trial waived",
+        "q": -4000,
+        "to": "amendment-as-of-right-window"
+      },
+      {
+        "from": "jury-demand-decision",
+        "label": "Serve and file timely written jury demand",
+        "q": -4125,
+        "to": "amendment-as-of-right-window"
+      },
+      {
+        "from": "leave-to-amend-motion",
+        "label": "Complete Rule 15(a)(2) motion briefing",
+        "q": -2250,
+        "to": "leave-to-amend-ruling"
+      },
+      {
+        "from": "leave-to-amend-ruling",
+        "label": "Leave granted -- justice so requires",
+        "q": 0,
+        "to": "amended-complaint-filed"
+      },
+      {
+        "from": "leave-to-amend-ruling",
+        "label": "Leave denied",
+        "q": -4000,
+        "to": "joinder-decision"
+      },
+      {
+        "from": "meet-and-confer",
+        "label": "Dispute resolved informally -- discovery resumes",
+        "q": -250,
+        "to": "discovery-open"
+      },
+      {
+        "from": "meet-and-confer",
+        "label": "File motion to compel after good-faith conferral fails",
+        "q": -8000,
+        "to": "motion-to-compel-ruling"
+      },
+      {
+        "from": "motion-to-compel-ruling",
+        "label": "Motion denied -- movant's fees shifted absent substantial justification (Rule 37(a)(5)(B))",
+        "q": 0,
+        "to": "discovery-open"
+      },
+      {
+        "from": "motion-to-compel-ruling",
+        "label": "Motion granted -- movant's fees shifted to the noncompliant party (Rule 37(a)(5)(A))",
+        "q": 0,
+        "to": "discovery-open"
+      },
+      {
+        "from": "motion-to-compel-ruling",
+        "label": "Party still fails to obey the compel order -- Rule 37(b) sanctions considered",
+        "q": 0,
+        "to": "rule37-sanctions-ruling"
+      },
+      {
+        "from": "motion-to-dismiss-filed",
+        "label": "Complete Rule 12(b) briefing",
+        "q": -12800,
+        "to": "mtd-ruling"
+      },
+      {
+        "from": "motions-in-limine-filed",
+        "label": "Complete motions in limine (FRE 103(d))",
+        "q": -6500,
+        "to": "final-pretrial-conference"
+      },
+      {
+        "from": "mtd-ruling",
+        "label": "Motion granted with leave to amend",
+        "q": 0,
+        "to": "amended-complaint-filed"
+      },
+      {
+        "from": "mtd-ruling",
+        "label": "Motion denied -- answer due within 14 days",
+        "q": -4000,
+        "to": "answer-filed"
+      },
+      {
+        "from": "mtd-ruling",
+        "label": "Motion granted without leave to amend -- futility",
+        "q": 0,
+        "to": "dismissed-with-prejudice"
+      },
+      {
+        "from": "notice-of-appeal-filed",
+        "label": "Notice served on all parties",
+        "q": -85000,
+        "to": "cross-appeal-window"
+      },
+      {
+        "from": "notice-of-appeal-window",
+        "label": "Miss the FRAP 4(a) deadline -- no timely extension sought",
+        "q": 0,
+        "to": "appeal-window-blown"
+      },
+      {
+        "from": "notice-of-appeal-window",
+        "label": "Elect not to appeal -- judgment becomes final",
+        "q": 0,
+        "to": "judgment-final-no-appeal"
+      },
+      {
+        "from": "notice-of-appeal-window",
+        "label": "File notice of appeal within 30 days of entry of judgment",
+        "q": -86505,
+        "to": "notice-of-appeal-filed"
+      },
+      {
+        "from": "partial-summary-judgment",
+        "label": "Proceed toward trial on the remaining claims",
+        "q": -11500,
+        "to": "daubert-motion-filed"
+      },
+      {
+        "from": "parties-joined",
+        "label": "Case proceeds toward discovery planning with joined parties",
+        "q": -4000,
+        "to": "rule26f-conference"
+      },
+      {
+        "from": "post-trial-motion-window",
+        "label": "No post-trial motion -- proceed to appeal",
+        "q": 0,
+        "to": "notice-of-appeal-window"
+      },
+      {
+        "from": "post-trial-motion-window",
+        "label": "Renew motion for JMOL (requires a preceding Rule 50(a) motion)",
+        "q": -18000,
+        "to": "rule50b-jmol-filed"
+      },
+      {
+        "from": "post-trial-motion-window",
+        "label": "Move for a new trial",
+        "q": -16750,
+        "to": "rule59-new-trial-filed"
+      },
+      {
+        "from": "post-trial-motion-window",
+        "label": "Move to alter or amend the judgment",
+        "q": -13000,
+        "to": "rule59e-amend-filed"
+      },
+      {
+        "from": "post-trial-motion-window",
+        "label": "Move for relief from judgment",
+        "q": -15750,
+        "to": "rule60-relief-filed"
+      },
+      {
+        "from": "post-trial-ruling",
+        "label": "Post-trial motion granted -- amended or new judgment entered",
+        "q": 0,
+        "to": "final-judgment-entered"
+      },
+      {
+        "from": "post-trial-ruling",
+        "label": "Post-trial motion denied -- FRAP 4(a)(4) tolling ends, appeal clock now runs",
+        "q": 0,
+        "to": "notice-of-appeal-window"
+      },
+      {
+        "from": "pre-filing",
+        "label": "Conduct Rule 11 pre-filing investigation",
+        "q": -6655,
+        "to": "jurisdiction-venue-check"
+      },
+      {
+        "from": "protective-order-motion",
+        "label": "Complete Rule 26(c) briefing -- good-cause showing",
+        "q": -1500,
+        "to": "protective-order-ruling"
+      },
+      {
+        "from": "protective-order-ruling",
+        "label": "Protective order denied -- discovery proceeds unrestricted",
+        "q": 0,
+        "to": "discovery-open"
+      },
+      {
+        "from": "protective-order-ruling",
+        "label": "Protective order granted",
+        "q": 0,
+        "to": "discovery-open"
+      },
+      {
+        "from": "remand-ruling",
+        "label": "Court grants remand -- lack of subject-matter jurisdiction or removal defect",
+        "q": 0,
+        "to": "remand-ordered"
+      },
+      {
+        "from": "remand-ruling",
+        "label": "Court denies remand -- federal forum retained",
+        "q": 0,
+        "to": "rule12-response-window"
+      },
+      {
+        "from": "removal-window",
+        "label": "File notice of removal within 30 days of formal service",
+        "q": -1905,
+        "to": "removed-to-federal"
+      },
+      {
+        "from": "removal-window",
+        "label": "Decline removal -- remain in the original forum",
+        "q": 0,
+        "to": "rule12-response-window"
+      },
+      {
+        "from": "removed-to-federal",
+        "label": "Plaintiff moves to remand",
+        "q": -5500,
+        "to": "remand-ruling"
+      },
+      {
+        "from": "removed-to-federal",
+        "label": "No remand motion -- case proceeds in federal court",
+        "q": 0,
+        "to": "rule12-response-window"
+      },
+      {
+        "from": "rule12-response-window",
+        "label": "File answer within 21 days (baseline)",
+        "q": -11750,
+        "to": "answer-filed"
+      },
+      {
+        "from": "rule12-response-window",
+        "label": "Fail to answer or move -- default exposure",
+        "q": 0,
+        "to": "default-entered"
+      },
+      {
+        "from": "rule12-response-window",
+        "label": "File pre-answer Rule 12(b) motion instead of answering",
+        "q": -28300,
+        "to": "motion-to-dismiss-filed"
+      },
+      {
+        "from": "rule26f-conference",
+        "label": "Conduct Rule 26(f) conference and submit discovery plan",
+        "q": -4000,
+        "to": "initial-disclosures"
+      },
+      {
+        "from": "rule37-sanctions-ruling",
+        "label": "Lesser sanction imposed -- adverse inference, fee-shifting, or evidence preclusion (Rule 37(b)(2)(A)(i)-(iv))",
+        "q": 0,
+        "to": "discovery-open"
+      },
+      {
+        "from": "rule37-sanctions-ruling",
+        "label": "Case-dispositive sanction -- default judgment against the disobedient defendant",
+        "q": 0,
+        "to": "discovery-sanctions-default"
+      },
+      {
+        "from": "rule37-sanctions-ruling",
+        "label": "Case-dispositive sanction -- dismissal for willful noncompliance or spoliation",
+        "q": 0,
+        "to": "discovery-sanctions-dismissal"
+      },
+      {
+        "from": "rule50b-jmol-filed",
+        "label": "Complete Rule 50(b) briefing",
+        "q": -2500,
+        "to": "post-trial-ruling"
+      },
+      {
+        "from": "rule59-new-trial-filed",
+        "label": "Complete Rule 59 briefing",
+        "q": -2500,
+        "to": "post-trial-ruling"
+      },
+      {
+        "from": "rule59e-amend-filed",
+        "label": "Complete Rule 59(e) briefing",
+        "q": -2000,
+        "to": "post-trial-ruling"
+      },
+      {
+        "from": "rule60-relief-filed",
+        "label": "Complete Rule 60(b) briefing",
+        "q": -2500,
+        "to": "post-trial-ruling"
+      },
+      {
+        "from": "scheduling-order-issued",
+        "label": "Court issues Rule 16(b) scheduling order",
+        "q": 0,
+        "to": "discovery-open"
+      },
+      {
+        "from": "service-completed",
+        "label": "Defendant considers removal to federal court",
+        "q": -500,
+        "to": "removal-window"
+      },
+      {
+        "from": "service-completed",
+        "label": "No removal -- Rule 12 response clock runs in the original forum",
+        "q": 0,
+        "to": "rule12-response-window"
+      },
+      {
+        "from": "service-completed",
+        "label": "Plaintiff dismisses by notice before an answer or SJ motion is served",
+        "q": -250,
+        "to": "voluntary-dismissal"
+      },
+      {
+        "from": "service-window",
+        "label": "Serve defendant via formal process",
+        "q": -900,
+        "to": "service-completed"
+      },
+      {
+        "from": "service-window",
+        "label": "Fail to serve within 90 days -- no good cause shown",
+        "q": 0,
+        "to": "service-window-blown"
+      },
+      {
+        "from": "service-window",
+        "label": "Request waiver of service instead of formal process",
+        "q": -770,
+        "to": "waiver-requested"
+      },
+      {
+        "from": "sj-briefing-complete",
+        "label": "Motion taken under submission",
+        "q": -8625,
+        "to": "sj-ruling"
+      },
+      {
+        "from": "sj-ruling",
+        "label": "Denied -- genuine dispute of material fact; case proceeds toward trial",
+        "q": -11500,
+        "to": "daubert-motion-filed"
+      },
+      {
+        "from": "sj-ruling",
+        "label": "Granted in part -- remaining claims proceed to trial",
+        "q": -11500,
+        "to": "partial-summary-judgment"
+      },
+      {
+        "from": "sj-ruling",
+        "label": "Granted in full -- no genuine dispute of material fact",
+        "q": 0,
+        "to": "summary-judgment-granted"
+      },
+      {
+        "from": "summary-judgment-motion",
+        "label": "Complete Rule 56 briefing",
+        "q": -35625,
+        "to": "sj-briefing-complete"
+      },
+      {
+        "from": "trial-commences",
+        "label": "Evidence closed -- case submitted to the factfinder",
+        "q": 0,
+        "to": "verdict-rendered"
+      },
+      {
+        "from": "verdict-rendered",
+        "label": "Verdict / findings for defendant",
+        "q": 0,
+        "to": "final-judgment-entered"
+      },
+      {
+        "from": "verdict-rendered",
+        "label": "Verdict / findings for plaintiff",
+        "q": 0,
+        "to": "final-judgment-entered"
+      },
+      {
+        "from": "waiver-requested",
+        "label": "Defendant returns executed waiver",
+        "q": -250,
+        "to": "rule12-response-window"
+      },
+      {
+        "from": "waiver-requested",
+        "label": "Defendant refuses waiver without good cause -- formal service completed, costs shift under Rule 4(d)(2)",
+        "q": -900,
+        "to": "service-completed"
+      }
+    ],
+    "iterations": 8,
+    "policy": {
+      "amendment-as-of-right-window": {
+        "from": "amendment-as-of-right-window",
+        "label": "No amendment -- proceed; consider joinder of parties",
+        "to": "joinder-decision"
+      },
+      "answer-filed": {
+        "from": "answer-filed",
+        "label": "Last pleading directed to the issue served -- 14-day jury demand clock starts",
+        "to": "jury-demand-decision"
+      },
+      "appellate-briefing": {
+        "from": "appellate-briefing",
+        "label": "Complete FRAP 28 briefing and oral argument",
+        "to": "court-of-appeals-decision"
+      },
+      "cross-appeal-window": {
+        "from": "cross-appeal-window",
+        "label": "No cross-appeal -- appellee will defend the judgment on the existing record",
+        "to": "appellate-briefing"
+      },
+      "daubert-motion-filed": {
+        "from": "daubert-motion-filed",
+        "label": "Complete FRE 702 gatekeeping briefing (FRE 104(a))",
+        "to": "daubert-ruling"
+      },
+      "default-entered": {
+        "from": "default-entered",
+        "label": "Clerk or court enters default judgment",
+        "to": "default-judgment-entered"
+      },
+      "discovery-closed": {
+        "from": "discovery-closed",
+        "label": "No dispositive or Daubert motion -- proceed to final pretrial conference",
+        "to": "final-pretrial-conference"
+      },
+      "discovery-open": {
+        "from": "discovery-open",
+        "label": "Discovery record complete -- proceed toward dispositive motions",
+        "to": "discovery-closed"
+      },
+      "final-judgment-entered": {
+        "from": "final-judgment-entered",
+        "label": "28-day post-trial motion window opens",
+        "to": "post-trial-motion-window"
+      },
+      "initial-disclosures": {
+        "from": "initial-disclosures",
+        "label": "Exchange Rule 26(a)(1) initial disclosures",
+        "to": "scheduling-order-issued"
+      },
+      "joinder-decision": {
+        "from": "joinder-decision",
+        "label": "No joinder -- proceed to discovery planning",
+        "to": "rule26f-conference"
+      },
+      "jurisdiction-venue-check": {
+        "from": "jurisdiction-venue-check",
+        "label": "File complaint establishing subject-matter jurisdiction and venue",
+        "to": "complaint-filed"
+      },
+      "jury-demand-decision": {
+        "from": "jury-demand-decision",
+        "label": "Fail to demand within 14 days -- jury trial waived",
+        "to": "amendment-as-of-right-window"
+      },
+      "leave-to-amend-motion": {
+        "from": "leave-to-amend-motion",
+        "label": "Complete Rule 15(a)(2) motion briefing",
+        "to": "leave-to-amend-ruling"
+      },
+      "meet-and-confer": {
+        "from": "meet-and-confer",
+        "label": "Dispute resolved informally -- discovery resumes",
+        "to": "discovery-open"
+      },
+      "motion-to-dismiss-filed": {
+        "from": "motion-to-dismiss-filed",
+        "label": "Complete Rule 12(b) briefing",
+        "to": "mtd-ruling"
+      },
+      "motions-in-limine-filed": {
+        "from": "motions-in-limine-filed",
+        "label": "Complete motions in limine (FRE 103(d))",
+        "to": "final-pretrial-conference"
+      },
+      "notice-of-appeal-window": {
+        "from": "notice-of-appeal-window",
+        "label": "Miss the FRAP 4(a) deadline -- no timely extension sought",
+        "to": "appeal-window-blown"
+      },
+      "partial-summary-judgment": {
+        "from": "partial-summary-judgment",
+        "label": "Proceed toward trial on the remaining claims",
+        "to": "daubert-motion-filed"
+      },
+      "post-trial-motion-window": {
+        "from": "post-trial-motion-window",
+        "label": "No post-trial motion -- proceed to appeal",
+        "to": "notice-of-appeal-window"
+      },
+      "pre-filing": {
+        "from": "pre-filing",
+        "label": "Conduct Rule 11 pre-filing investigation",
+        "to": "jurisdiction-venue-check"
+      },
+      "protective-order-motion": {
+        "from": "protective-order-motion",
+        "label": "Complete Rule 26(c) briefing -- good-cause showing",
+        "to": "protective-order-ruling"
+      },
+      "removal-window": {
+        "from": "removal-window",
+        "label": "Decline removal -- remain in the original forum",
+        "to": "rule12-response-window"
+      },
+      "removed-to-federal": {
+        "from": "removed-to-federal",
+        "label": "No remand motion -- case proceeds in federal court",
+        "to": "rule12-response-window"
+      },
+      "rule12-response-window": {
+        "from": "rule12-response-window",
+        "label": "Fail to answer or move -- default exposure",
+        "to": "default-entered"
+      },
+      "rule26f-conference": {
+        "from": "rule26f-conference",
+        "label": "Conduct Rule 26(f) conference and submit discovery plan",
+        "to": "initial-disclosures"
+      },
+      "rule50b-jmol-filed": {
+        "from": "rule50b-jmol-filed",
+        "label": "Complete Rule 50(b) briefing",
+        "to": "post-trial-ruling"
+      },
+      "rule59-new-trial-filed": {
+        "from": "rule59-new-trial-filed",
+        "label": "Complete Rule 59 briefing",
+        "to": "post-trial-ruling"
+      },
+      "rule59e-amend-filed": {
+        "from": "rule59e-amend-filed",
+        "label": "Complete Rule 59(e) briefing",
+        "to": "post-trial-ruling"
+      },
+      "rule60-relief-filed": {
+        "from": "rule60-relief-filed",
+        "label": "Complete Rule 60(b) briefing",
+        "to": "post-trial-ruling"
+      },
+      "service-completed": {
+        "from": "service-completed",
+        "label": "No removal -- Rule 12 response clock runs in the original forum",
+        "to": "rule12-response-window"
+      },
+      "service-window": {
+        "from": "service-window",
+        "label": "Fail to serve within 90 days -- no good cause shown",
+        "to": "service-window-blown"
+      },
+      "summary-judgment-motion": {
+        "from": "summary-judgment-motion",
+        "label": "Complete Rule 56 briefing",
+        "to": "sj-briefing-complete"
+      },
+      "waiver-requested": {
+        "from": "waiver-requested",
+        "label": "Defendant returns executed waiver",
+        "to": "rule12-response-window"
+      }
+    },
+    "qValue": {
+      "amended-complaint-filed→rule12-response-window": 0,
+      "amendment-as-of-right-window→amended-complaint-filed": -4500,
+      "amendment-as-of-right-window→joinder-decision": -4000,
+      "amendment-as-of-right-window→leave-to-amend-motion": -6750,
+      "answer-filed→jury-demand-decision": -4000,
+      "appellate-briefing→court-of-appeals-decision": -85000,
+      "complaint-filed→service-window": 0,
+      "court-of-appeals-decision→judgment-affirmed": 0,
+      "court-of-appeals-decision→judgment-reversed-remanded": 0,
+      "cross-appeal-filed→appellate-briefing": -85000,
+      "cross-appeal-window→appellate-briefing": -85000,
+      "cross-appeal-window→cross-appeal-filed": -87005,
+      "daubert-motion-filed→daubert-ruling": -11500,
+      "daubert-ruling→motions-in-limine-filed": -6500,
+      "default-entered→answer-filed": -10000,
+      "default-entered→default-judgment-entered": 0,
+      "discovery-closed→daubert-motion-filed": -35250,
+      "discovery-closed→final-pretrial-conference": 0,
+      "discovery-closed→summary-judgment-motion": -75625,
+      "discovery-open→discovery-closed": 0,
+      "discovery-open→discovery-open": -1050,
+      "discovery-open→meet-and-confer": -750,
+      "discovery-open→protective-order-motion": -7500,
+      "discovery-open→voluntary-dismissal": -1000,
+      "final-judgment-entered→notice-of-appeal-window": 0,
+      "final-judgment-entered→post-trial-motion-window": 0,
+      "final-pretrial-conference→trial-commences": 0,
+      "initial-disclosures→scheduling-order-issued": -2500,
+      "joinder-decision→parties-joined": -8500,
+      "joinder-decision→rule26f-conference": -4000,
+      "jurisdiction-venue-check→complaint-filed": -2905,
+      "jury-demand-decision→amendment-as-of-right-window": -4000,
+      "leave-to-amend-motion→leave-to-amend-ruling": -2250,
+      "leave-to-amend-ruling→amended-complaint-filed": 0,
+      "leave-to-amend-ruling→joinder-decision": -4000,
+      "meet-and-confer→discovery-open": -250,
+      "meet-and-confer→motion-to-compel-ruling": -8000,
+      "motion-to-compel-ruling→discovery-open": 0,
+      "motion-to-compel-ruling→rule37-sanctions-ruling": 0,
+      "motion-to-dismiss-filed→mtd-ruling": -12800,
+      "motions-in-limine-filed→final-pretrial-conference": -6500,
+      "mtd-ruling→amended-complaint-filed": 0,
+      "mtd-ruling→answer-filed": -4000,
+      "mtd-ruling→dismissed-with-prejudice": 0,
+      "notice-of-appeal-filed→cross-appeal-window": -85000,
+      "notice-of-appeal-window→appeal-window-blown": 0,
+      "notice-of-appeal-window→judgment-final-no-appeal": 0,
+      "notice-of-appeal-window→notice-of-appeal-filed": -86505,
+      "partial-summary-judgment→daubert-motion-filed": -11500,
+      "parties-joined→rule26f-conference": -4000,
+      "post-trial-motion-window→notice-of-appeal-window": 0,
+      "post-trial-motion-window→rule50b-jmol-filed": -18000,
+      "post-trial-motion-window→rule59-new-trial-filed": -16750,
+      "post-trial-motion-window→rule59e-amend-filed": -13000,
+      "post-trial-motion-window→rule60-relief-filed": -15750,
+      "post-trial-ruling→final-judgment-entered": 0,
+      "post-trial-ruling→notice-of-appeal-window": 0,
+      "pre-filing→jurisdiction-venue-check": -6655,
+      "protective-order-motion→protective-order-ruling": -1500,
+      "protective-order-ruling→discovery-open": 0,
+      "remand-ruling→remand-ordered": 0,
+      "remand-ruling→rule12-response-window": 0,
+      "removal-window→removed-to-federal": -1905,
+      "removal-window→rule12-response-window": 0,
+      "removed-to-federal→remand-ruling": -5500,
+      "removed-to-federal→rule12-response-window": 0,
+      "rule12-response-window→answer-filed": -11750,
+      "rule12-response-window→default-entered": 0,
+      "rule12-response-window→motion-to-dismiss-filed": -28300,
+      "rule26f-conference→initial-disclosures": -4000,
+      "rule37-sanctions-ruling→discovery-open": 0,
+      "rule37-sanctions-ruling→discovery-sanctions-default": 0,
+      "rule37-sanctions-ruling→discovery-sanctions-dismissal": 0,
+      "rule50b-jmol-filed→post-trial-ruling": -2500,
+      "rule59-new-trial-filed→post-trial-ruling": -2500,
+      "rule59e-amend-filed→post-trial-ruling": -2000,
+      "rule60-relief-filed→post-trial-ruling": -2500,
+      "scheduling-order-issued→discovery-open": 0,
+      "service-completed→removal-window": -500,
+      "service-completed→rule12-response-window": 0,
+      "service-completed→voluntary-dismissal": -250,
+      "service-window→service-completed": -900,
+      "service-window→service-window-blown": 0,
+      "service-window→waiver-requested": -770,
+      "sj-briefing-complete→sj-ruling": -8625,
+      "sj-ruling→daubert-motion-filed": -11500,
+      "sj-ruling→partial-summary-judgment": -11500,
+      "sj-ruling→summary-judgment-granted": 0,
+      "summary-judgment-motion→sj-briefing-complete": -35625,
+      "trial-commences→verdict-rendered": 0,
+      "verdict-rendered→final-judgment-entered": 0,
+      "waiver-requested→rule12-response-window": -250,
+      "waiver-requested→service-completed": -900
+    },
+    "qValueNote": "qValue is keyed 'from→to' (StatechartEdge.qKey) and COLLIDES on parallel edges (same from/to, different label) — last-write-wins from the source Map iteration order. Use edgeQ for a collision-free per-edge view.",
+    "value": {
+      "amended-complaint-filed": 0,
+      "amendment-as-of-right-window": -4000,
+      "answer-filed": -4000,
+      "appeal-window-blown": 0,
+      "appellate-briefing": -85000,
+      "complaint-filed": 0,
+      "court-of-appeals-decision": 0,
+      "cross-appeal-filed": -85000,
+      "cross-appeal-window": -85000,
+      "daubert-motion-filed": -11500,
+      "daubert-ruling": -6500,
+      "default-entered": 0,
+      "default-judgment-entered": 0,
+      "discovery-closed": 0,
+      "discovery-open": 0,
+      "discovery-sanctions-default": 0,
+      "discovery-sanctions-dismissal": 0,
+      "dismissed-with-prejudice": 0,
+      "final-judgment-entered": 0,
+      "final-pretrial-conference": 0,
+      "initial-disclosures": -2500,
+      "joinder-decision": -4000,
+      "judgment-affirmed": 0,
+      "judgment-final-no-appeal": 0,
+      "judgment-reversed-remanded": 0,
+      "jurisdiction-venue-check": -2905,
+      "jury-demand-decision": -4000,
+      "leave-to-amend-motion": -2250,
+      "leave-to-amend-ruling": -1000,
+      "meet-and-confer": -250,
+      "motion-to-compel-ruling": 0,
+      "motion-to-dismiss-filed": -12800,
+      "motions-in-limine-filed": -6500,
+      "mtd-ruling": -1800,
+      "notice-of-appeal-filed": -85000,
+      "notice-of-appeal-window": 0,
+      "partial-summary-judgment": -11500,
+      "parties-joined": -4000,
+      "post-trial-motion-window": 0,
+      "post-trial-ruling": 0,
+      "pre-filing": -6655,
+      "protective-order-motion": -1500,
+      "protective-order-ruling": 0,
+      "remand-ordered": 0,
+      "remand-ruling": 0,
+      "removal-window": 0,
+      "removed-to-federal": 0,
+      "rule12-response-window": 0,
+      "rule26f-conference": -4000,
+      "rule37-sanctions-ruling": 0,
+      "rule50b-jmol-filed": -2500,
+      "rule59-new-trial-filed": -2500,
+      "rule59e-amend-filed": -2000,
+      "rule60-relief-filed": -2500,
+      "scheduling-order-issued": 0,
+      "service-completed": 0,
+      "service-window": 0,
+      "service-window-blown": 0,
+      "sj-briefing-complete": -8625,
+      "sj-ruling": -8625,
+      "summary-judgment-granted": 0,
+      "summary-judgment-motion": -35625,
+      "trial-commences": 0,
+      "verdict-rendered": 0,
+      "voluntary-dismissal": 0,
+      "waiver-requested": -250
+    }
+  },
+  "valueIteration500": {
+    "converged": true,
+    "edgeQ": [
+      {
+        "from": "amended-complaint-filed",
+        "label": "Responsive-pleading window reopens for the amended pleading",
+        "q": 0,
+        "to": "rule12-response-window"
+      },
+      {
+        "from": "amendment-as-of-right-window",
+        "label": "Amend as of right within the 21-day matter-of-course window",
+        "q": -6500,
+        "to": "amended-complaint-filed"
+      },
+      {
+        "from": "amendment-as-of-right-window",
+        "label": "No amendment -- proceed; consider joinder of parties",
+        "q": -8000,
+        "to": "joinder-decision"
+      },
+      {
+        "from": "amendment-as-of-right-window",
+        "label": "Seek leave to amend outside the matter-of-course window",
+        "q": -10500,
+        "to": "leave-to-amend-motion"
+      },
+      {
+        "from": "answer-filed",
+        "label": "Last pleading directed to the issue served -- 14-day jury demand clock starts",
+        "q": -6500,
+        "to": "jury-demand-decision"
+      },
+      {
+        "from": "appellate-briefing",
+        "label": "Complete FRAP 28 briefing and oral argument",
+        "q": -125000,
+        "to": "court-of-appeals-decision"
+      },
+      {
+        "from": "complaint-filed",
+        "label": "Clerk signs, seals, and issues the summons",
+        "q": 0,
+        "to": "service-window"
+      },
+      {
+        "from": "court-of-appeals-decision",
+        "label": "Affirmed in part, reversed in part -- net affirmance for appellee",
+        "q": 0,
+        "to": "judgment-affirmed"
+      },
+      {
+        "from": "court-of-appeals-decision",
+        "label": "Court of appeals affirms",
+        "q": 0,
+        "to": "judgment-affirmed"
+      },
+      {
+        "from": "court-of-appeals-decision",
+        "label": "Court of appeals reverses or vacates and remands",
+        "q": 0,
+        "to": "judgment-reversed-remanded"
+      },
+      {
+        "from": "cross-appeal-filed",
+        "label": "Cross-appeal docketed with the lead appeal",
+        "q": -125000,
+        "to": "appellate-briefing"
+      },
+      {
+        "from": "cross-appeal-window",
+        "label": "No cross-appeal -- appellee will defend the judgment on the existing record",
+        "q": -125000,
+        "to": "appellate-briefing"
+      },
+      {
+        "from": "cross-appeal-window",
+        "label": "File cross-appeal",
+        "q": -128505,
+        "to": "cross-appeal-filed"
+      },
+      {
+        "from": "daubert-motion-filed",
+        "label": "Complete FRE 702 gatekeeping briefing (FRE 104(a))",
+        "q": -19000,
+        "to": "daubert-ruling"
+      },
+      {
+        "from": "daubert-ruling",
+        "label": "Expert testimony admitted -- reliability and fit satisfied",
+        "q": -9000,
+        "to": "motions-in-limine-filed"
+      },
+      {
+        "from": "daubert-ruling",
+        "label": "Expert testimony excluded in whole or in part",
+        "q": -9000,
+        "to": "motions-in-limine-filed"
+      },
+      {
+        "from": "default-entered",
+        "label": "Move to set aside entry of default for good cause",
+        "q": -15000,
+        "to": "answer-filed"
+      },
+      {
+        "from": "default-entered",
+        "label": "Clerk or court enters default judgment",
+        "q": 0,
+        "to": "default-judgment-entered"
+      },
+      {
+        "from": "discovery-closed",
+        "label": "Move to exclude opposing expert testimony pretrial",
+        "q": -51500,
+        "to": "daubert-motion-filed"
+      },
+      {
+        "from": "discovery-closed",
+        "label": "No dispositive or Daubert motion -- proceed to final pretrial conference",
+        "q": 0,
+        "to": "final-pretrial-conference"
+      },
+      {
+        "from": "discovery-closed",
+        "label": "Move for summary judgment",
+        "q": -116250,
+        "to": "summary-judgment-motion"
+      },
+      {
+        "from": "discovery-open",
+        "label": "Discovery record complete -- proceed toward dispositive motions",
+        "q": 0,
+        "to": "discovery-closed"
+      },
+      {
+        "from": "discovery-open",
+        "label": "Serve interrogatories (max 25 including discrete subparts, Rule 33(a)(1))",
+        "q": -2100,
+        "to": "discovery-open"
+      },
+      {
+        "from": "discovery-open",
+        "label": "Serve nonparty subpoena (Rule 45)",
+        "q": -1800,
+        "to": "discovery-open"
+      },
+      {
+        "from": "discovery-open",
+        "label": "Serve requests for admission (Rule 36) -- no timely response is deemed admitted (36(a)(3))",
+        "q": -1050,
+        "to": "discovery-open"
+      },
+      {
+        "from": "discovery-open",
+        "label": "Serve requests for production (Rule 34)",
+        "q": -1600,
+        "to": "discovery-open"
+      },
+      {
+        "from": "discovery-open",
+        "label": "Serve Rule 30(b)(6) deposition notice on an organization",
+        "q": -2500,
+        "to": "discovery-open"
+      },
+      {
+        "from": "discovery-open",
+        "label": "Take deposition (Rule 30) -- 10 depositions per side and 1 day of 7 hours absent stipulation or leave (Rule 30(a)(2)(A)(i); 30(d)(1))",
+        "q": -8000,
+        "to": "discovery-open"
+      },
+      {
+        "from": "discovery-open",
+        "label": "Meet and confer on a discovery dispute",
+        "q": -1500,
+        "to": "meet-and-confer"
+      },
+      {
+        "from": "discovery-open",
+        "label": "Move for a protective order",
+        "q": -11000,
+        "to": "protective-order-motion"
+      },
+      {
+        "from": "discovery-open",
+        "label": "Parties settle -- file stipulation of dismissal",
+        "q": -2000,
+        "to": "voluntary-dismissal"
+      },
+      {
+        "from": "final-judgment-entered",
+        "label": "No post-trial motion -- proceed directly toward appeal",
+        "q": 0,
+        "to": "notice-of-appeal-window"
+      },
+      {
+        "from": "final-judgment-entered",
+        "label": "28-day post-trial motion window opens",
+        "q": 0,
+        "to": "post-trial-motion-window"
+      },
+      {
+        "from": "final-pretrial-conference",
+        "label": "Court enters final pretrial order",
+        "q": 0,
+        "to": "trial-commences"
+      },
+      {
+        "from": "initial-disclosures",
+        "label": "Exchange Rule 26(a)(1) initial disclosures",
+        "q": -5000,
+        "to": "scheduling-order-issued"
+      },
+      {
+        "from": "joinder-decision",
+        "label": "Join a required party (Rule 19) or a permissive party (Rule 20)",
+        "q": -14500,
+        "to": "parties-joined"
+      },
+      {
+        "from": "joinder-decision",
+        "label": "Nonparty intervenes as of right or permissively",
+        "q": -14500,
+        "to": "parties-joined"
+      },
+      {
+        "from": "joinder-decision",
+        "label": "No joinder -- proceed to discovery planning",
+        "q": -8000,
+        "to": "rule26f-conference"
+      },
+      {
+        "from": "jurisdiction-venue-check",
+        "label": "File complaint establishing subject-matter jurisdiction and venue",
+        "q": -5405,
+        "to": "complaint-filed"
+      },
+      {
+        "from": "jury-demand-decision",
+        "label": "Fail to demand within 14 days -- jury trial waived",
+        "q": -6500,
+        "to": "amendment-as-of-right-window"
+      },
+      {
+        "from": "jury-demand-decision",
+        "label": "Serve and file timely written jury demand",
+        "q": -6750,
+        "to": "amendment-as-of-right-window"
+      },
+      {
+        "from": "leave-to-amend-motion",
+        "label": "Complete Rule 15(a)(2) motion briefing",
+        "q": -4500,
+        "to": "leave-to-amend-ruling"
+      },
+      {
+        "from": "leave-to-amend-ruling",
+        "label": "Leave granted -- justice so requires",
+        "q": 0,
+        "to": "amended-complaint-filed"
+      },
+      {
+        "from": "leave-to-amend-ruling",
+        "label": "Leave denied",
+        "q": -8000,
+        "to": "joinder-decision"
+      },
+      {
+        "from": "meet-and-confer",
+        "label": "Dispute resolved informally -- discovery resumes",
+        "q": -500,
+        "to": "discovery-open"
+      },
+      {
+        "from": "meet-and-confer",
+        "label": "File motion to compel after good-faith conferral fails",
+        "q": -11000,
+        "to": "motion-to-compel-ruling"
+      },
+      {
+        "from": "motion-to-compel-ruling",
+        "label": "Motion denied -- movant's fees shifted absent substantial justification (Rule 37(a)(5)(B))",
+        "q": 0,
+        "to": "discovery-open"
+      },
+      {
+        "from": "motion-to-compel-ruling",
+        "label": "Motion granted -- movant's fees shifted to the noncompliant party (Rule 37(a)(5)(A))",
+        "q": 0,
+        "to": "discovery-open"
+      },
+      {
+        "from": "motion-to-compel-ruling",
+        "label": "Party still fails to obey the compel order -- Rule 37(b) sanctions considered",
+        "q": 0,
+        "to": "rule37-sanctions-ruling"
+      },
+      {
+        "from": "motion-to-dismiss-filed",
+        "label": "Complete Rule 12(b) briefing",
+        "q": -18925,
+        "to": "mtd-ruling"
+      },
+      {
+        "from": "motions-in-limine-filed",
+        "label": "Complete motions in limine (FRE 103(d))",
+        "q": -9000,
+        "to": "final-pretrial-conference"
+      },
+      {
+        "from": "mtd-ruling",
+        "label": "Motion granted with leave to amend",
+        "q": 0,
+        "to": "amended-complaint-filed"
+      },
+      {
+        "from": "mtd-ruling",
+        "label": "Motion denied -- answer due within 14 days",
+        "q": -6500,
+        "to": "answer-filed"
+      },
+      {
+        "from": "mtd-ruling",
+        "label": "Motion granted without leave to amend -- futility",
+        "q": 0,
+        "to": "dismissed-with-prejudice"
+      },
+      {
+        "from": "notice-of-appeal-filed",
+        "label": "Notice served on all parties",
+        "q": -125000,
+        "to": "cross-appeal-window"
+      },
+      {
+        "from": "notice-of-appeal-window",
+        "label": "Miss the FRAP 4(a) deadline -- no timely extension sought",
+        "q": 0,
+        "to": "appeal-window-blown"
+      },
+      {
+        "from": "notice-of-appeal-window",
+        "label": "Elect not to appeal -- judgment becomes final",
+        "q": 0,
+        "to": "judgment-final-no-appeal"
+      },
+      {
+        "from": "notice-of-appeal-window",
+        "label": "File notice of appeal within 30 days of entry of judgment",
+        "q": -127505,
+        "to": "notice-of-appeal-filed"
+      },
+      {
+        "from": "partial-summary-judgment",
+        "label": "Proceed toward trial on the remaining claims",
+        "q": -19000,
+        "to": "daubert-motion-filed"
+      },
+      {
+        "from": "parties-joined",
+        "label": "Case proceeds toward discovery planning with joined parties",
+        "q": -8000,
+        "to": "rule26f-conference"
+      },
+      {
+        "from": "post-trial-motion-window",
+        "label": "No post-trial motion -- proceed to appeal",
+        "q": 0,
+        "to": "notice-of-appeal-window"
+      },
+      {
+        "from": "post-trial-motion-window",
+        "label": "Renew motion for JMOL (requires a preceding Rule 50(a) motion)",
+        "q": -28000,
+        "to": "rule50b-jmol-filed"
+      },
+      {
+        "from": "post-trial-motion-window",
+        "label": "Move for a new trial",
+        "q": -25500,
+        "to": "rule59-new-trial-filed"
+      },
+      {
+        "from": "post-trial-motion-window",
+        "label": "Move to alter or amend the judgment",
+        "q": -20000,
+        "to": "rule59e-amend-filed"
+      },
+      {
+        "from": "post-trial-motion-window",
+        "label": "Move for relief from judgment",
+        "q": -24500,
+        "to": "rule60-relief-filed"
+      },
+      {
+        "from": "post-trial-ruling",
+        "label": "Post-trial motion granted -- amended or new judgment entered",
+        "q": 0,
+        "to": "final-judgment-entered"
+      },
+      {
+        "from": "post-trial-ruling",
+        "label": "Post-trial motion denied -- FRAP 4(a)(4) tolling ends, appeal clock now runs",
+        "q": 0,
+        "to": "notice-of-appeal-window"
+      },
+      {
+        "from": "pre-filing",
+        "label": "Conduct Rule 11 pre-filing investigation",
+        "q": -12905,
+        "to": "jurisdiction-venue-check"
+      },
+      {
+        "from": "protective-order-motion",
+        "label": "Complete Rule 26(c) briefing -- good-cause showing",
+        "q": -3000,
+        "to": "protective-order-ruling"
+      },
+      {
+        "from": "protective-order-ruling",
+        "label": "Protective order denied -- discovery proceeds unrestricted",
+        "q": 0,
+        "to": "discovery-open"
+      },
+      {
+        "from": "protective-order-ruling",
+        "label": "Protective order granted",
+        "q": 0,
+        "to": "discovery-open"
+      },
+      {
+        "from": "remand-ruling",
+        "label": "Court grants remand -- lack of subject-matter jurisdiction or removal defect",
+        "q": 0,
+        "to": "remand-ordered"
+      },
+      {
+        "from": "remand-ruling",
+        "label": "Court denies remand -- federal forum retained",
+        "q": 0,
+        "to": "rule12-response-window"
+      },
+      {
+        "from": "removal-window",
+        "label": "File notice of removal within 30 days of formal service",
+        "q": -3405,
+        "to": "removed-to-federal"
+      },
+      {
+        "from": "removal-window",
+        "label": "Decline removal -- remain in the original forum",
+        "q": 0,
+        "to": "rule12-response-window"
+      },
+      {
+        "from": "removed-to-federal",
+        "label": "Plaintiff moves to remand",
+        "q": -8000,
+        "to": "remand-ruling"
+      },
+      {
+        "from": "removed-to-federal",
+        "label": "No remand motion -- case proceeds in federal court",
+        "q": 0,
+        "to": "rule12-response-window"
+      },
+      {
+        "from": "rule12-response-window",
+        "label": "File answer within 21 days (baseline)",
+        "q": -18000,
+        "to": "answer-filed"
+      },
+      {
+        "from": "rule12-response-window",
+        "label": "Fail to answer or move -- default exposure",
+        "q": 0,
+        "to": "default-entered"
+      },
+      {
+        "from": "rule12-response-window",
+        "label": "File pre-answer Rule 12(b) motion instead of answering",
+        "q": -41925,
+        "to": "motion-to-dismiss-filed"
+      },
+      {
+        "from": "rule26f-conference",
+        "label": "Conduct Rule 26(f) conference and submit discovery plan",
+        "q": -8000,
+        "to": "initial-disclosures"
+      },
+      {
+        "from": "rule37-sanctions-ruling",
+        "label": "Lesser sanction imposed -- adverse inference, fee-shifting, or evidence preclusion (Rule 37(b)(2)(A)(i)-(iv))",
+        "q": 0,
+        "to": "discovery-open"
+      },
+      {
+        "from": "rule37-sanctions-ruling",
+        "label": "Case-dispositive sanction -- default judgment against the disobedient defendant",
+        "q": 0,
+        "to": "discovery-sanctions-default"
+      },
+      {
+        "from": "rule37-sanctions-ruling",
+        "label": "Case-dispositive sanction -- dismissal for willful noncompliance or spoliation",
+        "q": 0,
+        "to": "discovery-sanctions-dismissal"
+      },
+      {
+        "from": "rule50b-jmol-filed",
+        "label": "Complete Rule 50(b) briefing",
+        "q": -5000,
+        "to": "post-trial-ruling"
+      },
+      {
+        "from": "rule59-new-trial-filed",
+        "label": "Complete Rule 59 briefing",
+        "q": -5000,
+        "to": "post-trial-ruling"
+      },
+      {
+        "from": "rule59e-amend-filed",
+        "label": "Complete Rule 59(e) briefing",
+        "q": -4000,
+        "to": "post-trial-ruling"
+      },
+      {
+        "from": "rule60-relief-filed",
+        "label": "Complete Rule 60(b) briefing",
+        "q": -5000,
+        "to": "post-trial-ruling"
+      },
+      {
+        "from": "scheduling-order-issued",
+        "label": "Court issues Rule 16(b) scheduling order",
+        "q": 0,
+        "to": "discovery-open"
+      },
+      {
+        "from": "service-completed",
+        "label": "Defendant considers removal to federal court",
+        "q": -1000,
+        "to": "removal-window"
+      },
+      {
+        "from": "service-completed",
+        "label": "No removal -- Rule 12 response clock runs in the original forum",
+        "q": 0,
+        "to": "rule12-response-window"
+      },
+      {
+        "from": "service-completed",
+        "label": "Plaintiff dismisses by notice before an answer or SJ motion is served",
+        "q": -500,
+        "to": "voluntary-dismissal"
+      },
+      {
+        "from": "service-window",
+        "label": "Serve defendant via formal process",
+        "q": -1650,
+        "to": "service-completed"
+      },
+      {
+        "from": "service-window",
+        "label": "Fail to serve within 90 days -- no good cause shown",
+        "q": 0,
+        "to": "service-window-blown"
+      },
+      {
+        "from": "service-window",
+        "label": "Request waiver of service instead of formal process",
+        "q": -1520,
+        "to": "waiver-requested"
+      },
+      {
+        "from": "sj-briefing-complete",
+        "label": "Motion taken under submission",
+        "q": -14250,
+        "to": "sj-ruling"
+      },
+      {
+        "from": "sj-ruling",
+        "label": "Denied -- genuine dispute of material fact; case proceeds toward trial",
+        "q": -19000,
+        "to": "daubert-motion-filed"
+      },
+      {
+        "from": "sj-ruling",
+        "label": "Granted in part -- remaining claims proceed to trial",
+        "q": -19000,
+        "to": "partial-summary-judgment"
+      },
+      {
+        "from": "sj-ruling",
+        "label": "Granted in full -- no genuine dispute of material fact",
+        "q": 0,
+        "to": "summary-judgment-granted"
+      },
+      {
+        "from": "summary-judgment-motion",
+        "label": "Complete Rule 56 briefing",
+        "q": -56250,
+        "to": "sj-briefing-complete"
+      },
+      {
+        "from": "trial-commences",
+        "label": "Evidence closed -- case submitted to the factfinder",
+        "q": 0,
+        "to": "verdict-rendered"
+      },
+      {
+        "from": "verdict-rendered",
+        "label": "Verdict / findings for defendant",
+        "q": 0,
+        "to": "final-judgment-entered"
+      },
+      {
+        "from": "verdict-rendered",
+        "label": "Verdict / findings for plaintiff",
+        "q": 0,
+        "to": "final-judgment-entered"
+      },
+      {
+        "from": "waiver-requested",
+        "label": "Defendant returns executed waiver",
+        "q": -500,
+        "to": "rule12-response-window"
+      },
+      {
+        "from": "waiver-requested",
+        "label": "Defendant refuses waiver without good cause -- formal service completed, costs shift under Rule 4(d)(2)",
+        "q": -1650,
+        "to": "service-completed"
+      }
+    ],
+    "iterations": 8,
+    "policy": {
+      "amendment-as-of-right-window": {
+        "from": "amendment-as-of-right-window",
+        "label": "Amend as of right within the 21-day matter-of-course window",
+        "to": "amended-complaint-filed"
+      },
+      "answer-filed": {
+        "from": "answer-filed",
+        "label": "Last pleading directed to the issue served -- 14-day jury demand clock starts",
+        "to": "jury-demand-decision"
+      },
+      "appellate-briefing": {
+        "from": "appellate-briefing",
+        "label": "Complete FRAP 28 briefing and oral argument",
+        "to": "court-of-appeals-decision"
+      },
+      "cross-appeal-window": {
+        "from": "cross-appeal-window",
+        "label": "No cross-appeal -- appellee will defend the judgment on the existing record",
+        "to": "appellate-briefing"
+      },
+      "daubert-motion-filed": {
+        "from": "daubert-motion-filed",
+        "label": "Complete FRE 702 gatekeeping briefing (FRE 104(a))",
+        "to": "daubert-ruling"
+      },
+      "default-entered": {
+        "from": "default-entered",
+        "label": "Clerk or court enters default judgment",
+        "to": "default-judgment-entered"
+      },
+      "discovery-closed": {
+        "from": "discovery-closed",
+        "label": "No dispositive or Daubert motion -- proceed to final pretrial conference",
+        "to": "final-pretrial-conference"
+      },
+      "discovery-open": {
+        "from": "discovery-open",
+        "label": "Discovery record complete -- proceed toward dispositive motions",
+        "to": "discovery-closed"
+      },
+      "final-judgment-entered": {
+        "from": "final-judgment-entered",
+        "label": "28-day post-trial motion window opens",
+        "to": "post-trial-motion-window"
+      },
+      "initial-disclosures": {
+        "from": "initial-disclosures",
+        "label": "Exchange Rule 26(a)(1) initial disclosures",
+        "to": "scheduling-order-issued"
+      },
+      "joinder-decision": {
+        "from": "joinder-decision",
+        "label": "No joinder -- proceed to discovery planning",
+        "to": "rule26f-conference"
+      },
+      "jurisdiction-venue-check": {
+        "from": "jurisdiction-venue-check",
+        "label": "File complaint establishing subject-matter jurisdiction and venue",
+        "to": "complaint-filed"
+      },
+      "jury-demand-decision": {
+        "from": "jury-demand-decision",
+        "label": "Fail to demand within 14 days -- jury trial waived",
+        "to": "amendment-as-of-right-window"
+      },
+      "leave-to-amend-motion": {
+        "from": "leave-to-amend-motion",
+        "label": "Complete Rule 15(a)(2) motion briefing",
+        "to": "leave-to-amend-ruling"
+      },
+      "meet-and-confer": {
+        "from": "meet-and-confer",
+        "label": "Dispute resolved informally -- discovery resumes",
+        "to": "discovery-open"
+      },
+      "motion-to-dismiss-filed": {
+        "from": "motion-to-dismiss-filed",
+        "label": "Complete Rule 12(b) briefing",
+        "to": "mtd-ruling"
+      },
+      "motions-in-limine-filed": {
+        "from": "motions-in-limine-filed",
+        "label": "Complete motions in limine (FRE 103(d))",
+        "to": "final-pretrial-conference"
+      },
+      "notice-of-appeal-window": {
+        "from": "notice-of-appeal-window",
+        "label": "Miss the FRAP 4(a) deadline -- no timely extension sought",
+        "to": "appeal-window-blown"
+      },
+      "partial-summary-judgment": {
+        "from": "partial-summary-judgment",
+        "label": "Proceed toward trial on the remaining claims",
+        "to": "daubert-motion-filed"
+      },
+      "post-trial-motion-window": {
+        "from": "post-trial-motion-window",
+        "label": "No post-trial motion -- proceed to appeal",
+        "to": "notice-of-appeal-window"
+      },
+      "pre-filing": {
+        "from": "pre-filing",
+        "label": "Conduct Rule 11 pre-filing investigation",
+        "to": "jurisdiction-venue-check"
+      },
+      "protective-order-motion": {
+        "from": "protective-order-motion",
+        "label": "Complete Rule 26(c) briefing -- good-cause showing",
+        "to": "protective-order-ruling"
+      },
+      "removal-window": {
+        "from": "removal-window",
+        "label": "Decline removal -- remain in the original forum",
+        "to": "rule12-response-window"
+      },
+      "removed-to-federal": {
+        "from": "removed-to-federal",
+        "label": "No remand motion -- case proceeds in federal court",
+        "to": "rule12-response-window"
+      },
+      "rule12-response-window": {
+        "from": "rule12-response-window",
+        "label": "Fail to answer or move -- default exposure",
+        "to": "default-entered"
+      },
+      "rule26f-conference": {
+        "from": "rule26f-conference",
+        "label": "Conduct Rule 26(f) conference and submit discovery plan",
+        "to": "initial-disclosures"
+      },
+      "rule50b-jmol-filed": {
+        "from": "rule50b-jmol-filed",
+        "label": "Complete Rule 50(b) briefing",
+        "to": "post-trial-ruling"
+      },
+      "rule59-new-trial-filed": {
+        "from": "rule59-new-trial-filed",
+        "label": "Complete Rule 59 briefing",
+        "to": "post-trial-ruling"
+      },
+      "rule59e-amend-filed": {
+        "from": "rule59e-amend-filed",
+        "label": "Complete Rule 59(e) briefing",
+        "to": "post-trial-ruling"
+      },
+      "rule60-relief-filed": {
+        "from": "rule60-relief-filed",
+        "label": "Complete Rule 60(b) briefing",
+        "to": "post-trial-ruling"
+      },
+      "service-completed": {
+        "from": "service-completed",
+        "label": "No removal -- Rule 12 response clock runs in the original forum",
+        "to": "rule12-response-window"
+      },
+      "service-window": {
+        "from": "service-window",
+        "label": "Fail to serve within 90 days -- no good cause shown",
+        "to": "service-window-blown"
+      },
+      "summary-judgment-motion": {
+        "from": "summary-judgment-motion",
+        "label": "Complete Rule 56 briefing",
+        "to": "sj-briefing-complete"
+      },
+      "waiver-requested": {
+        "from": "waiver-requested",
+        "label": "Defendant returns executed waiver",
+        "to": "rule12-response-window"
+      }
+    },
+    "qValue": {
+      "amended-complaint-filed→rule12-response-window": 0,
+      "amendment-as-of-right-window→amended-complaint-filed": -6500,
+      "amendment-as-of-right-window→joinder-decision": -8000,
+      "amendment-as-of-right-window→leave-to-amend-motion": -10500,
+      "answer-filed→jury-demand-decision": -6500,
+      "appellate-briefing→court-of-appeals-decision": -125000,
+      "complaint-filed→service-window": 0,
+      "court-of-appeals-decision→judgment-affirmed": 0,
+      "court-of-appeals-decision→judgment-reversed-remanded": 0,
+      "cross-appeal-filed→appellate-briefing": -125000,
+      "cross-appeal-window→appellate-briefing": -125000,
+      "cross-appeal-window→cross-appeal-filed": -128505,
+      "daubert-motion-filed→daubert-ruling": -19000,
+      "daubert-ruling→motions-in-limine-filed": -9000,
+      "default-entered→answer-filed": -15000,
+      "default-entered→default-judgment-entered": 0,
+      "discovery-closed→daubert-motion-filed": -51500,
+      "discovery-closed→final-pretrial-conference": 0,
+      "discovery-closed→summary-judgment-motion": -116250,
+      "discovery-open→discovery-closed": 0,
+      "discovery-open→discovery-open": -1800,
+      "discovery-open→meet-and-confer": -1500,
+      "discovery-open→protective-order-motion": -11000,
+      "discovery-open→voluntary-dismissal": -2000,
+      "final-judgment-entered→notice-of-appeal-window": 0,
+      "final-judgment-entered→post-trial-motion-window": 0,
+      "final-pretrial-conference→trial-commences": 0,
+      "initial-disclosures→scheduling-order-issued": -5000,
+      "joinder-decision→parties-joined": -14500,
+      "joinder-decision→rule26f-conference": -8000,
+      "jurisdiction-venue-check→complaint-filed": -5405,
+      "jury-demand-decision→amendment-as-of-right-window": -6500,
+      "leave-to-amend-motion→leave-to-amend-ruling": -4500,
+      "leave-to-amend-ruling→amended-complaint-filed": 0,
+      "leave-to-amend-ruling→joinder-decision": -8000,
+      "meet-and-confer→discovery-open": -500,
+      "meet-and-confer→motion-to-compel-ruling": -11000,
+      "motion-to-compel-ruling→discovery-open": 0,
+      "motion-to-compel-ruling→rule37-sanctions-ruling": 0,
+      "motion-to-dismiss-filed→mtd-ruling": -18925,
+      "motions-in-limine-filed→final-pretrial-conference": -9000,
+      "mtd-ruling→amended-complaint-filed": 0,
+      "mtd-ruling→answer-filed": -6500,
+      "mtd-ruling→dismissed-with-prejudice": 0,
+      "notice-of-appeal-filed→cross-appeal-window": -125000,
+      "notice-of-appeal-window→appeal-window-blown": 0,
+      "notice-of-appeal-window→judgment-final-no-appeal": 0,
+      "notice-of-appeal-window→notice-of-appeal-filed": -127505,
+      "partial-summary-judgment→daubert-motion-filed": -19000,
+      "parties-joined→rule26f-conference": -8000,
+      "post-trial-motion-window→notice-of-appeal-window": 0,
+      "post-trial-motion-window→rule50b-jmol-filed": -28000,
+      "post-trial-motion-window→rule59-new-trial-filed": -25500,
+      "post-trial-motion-window→rule59e-amend-filed": -20000,
+      "post-trial-motion-window→rule60-relief-filed": -24500,
+      "post-trial-ruling→final-judgment-entered": 0,
+      "post-trial-ruling→notice-of-appeal-window": 0,
+      "pre-filing→jurisdiction-venue-check": -12905,
+      "protective-order-motion→protective-order-ruling": -3000,
+      "protective-order-ruling→discovery-open": 0,
+      "remand-ruling→remand-ordered": 0,
+      "remand-ruling→rule12-response-window": 0,
+      "removal-window→removed-to-federal": -3405,
+      "removal-window→rule12-response-window": 0,
+      "removed-to-federal→remand-ruling": -8000,
+      "removed-to-federal→rule12-response-window": 0,
+      "rule12-response-window→answer-filed": -18000,
+      "rule12-response-window→default-entered": 0,
+      "rule12-response-window→motion-to-dismiss-filed": -41925,
+      "rule26f-conference→initial-disclosures": -8000,
+      "rule37-sanctions-ruling→discovery-open": 0,
+      "rule37-sanctions-ruling→discovery-sanctions-default": 0,
+      "rule37-sanctions-ruling→discovery-sanctions-dismissal": 0,
+      "rule50b-jmol-filed→post-trial-ruling": -5000,
+      "rule59-new-trial-filed→post-trial-ruling": -5000,
+      "rule59e-amend-filed→post-trial-ruling": -4000,
+      "rule60-relief-filed→post-trial-ruling": -5000,
+      "scheduling-order-issued→discovery-open": 0,
+      "service-completed→removal-window": -1000,
+      "service-completed→rule12-response-window": 0,
+      "service-completed→voluntary-dismissal": -500,
+      "service-window→service-completed": -1650,
+      "service-window→service-window-blown": 0,
+      "service-window→waiver-requested": -1520,
+      "sj-briefing-complete→sj-ruling": -14250,
+      "sj-ruling→daubert-motion-filed": -19000,
+      "sj-ruling→partial-summary-judgment": -19000,
+      "sj-ruling→summary-judgment-granted": 0,
+      "summary-judgment-motion→sj-briefing-complete": -56250,
+      "trial-commences→verdict-rendered": 0,
+      "verdict-rendered→final-judgment-entered": 0,
+      "waiver-requested→rule12-response-window": -500,
+      "waiver-requested→service-completed": -1650
+    },
+    "qValueNote": "qValue is keyed 'from→to' (StatechartEdge.qKey) and COLLIDES on parallel edges (same from/to, different label) — last-write-wins from the source Map iteration order. Use edgeQ for a collision-free per-edge view.",
+    "value": {
+      "amended-complaint-filed": 0,
+      "amendment-as-of-right-window": -6500,
+      "answer-filed": -6500,
+      "appeal-window-blown": 0,
+      "appellate-briefing": -125000,
+      "complaint-filed": 0,
+      "court-of-appeals-decision": 0,
+      "cross-appeal-filed": -125000,
+      "cross-appeal-window": -125000,
+      "daubert-motion-filed": -19000,
+      "daubert-ruling": -9000,
+      "default-entered": 0,
+      "default-judgment-entered": 0,
+      "discovery-closed": 0,
+      "discovery-open": 0,
+      "discovery-sanctions-default": 0,
+      "discovery-sanctions-dismissal": 0,
+      "dismissed-with-prejudice": 0,
+      "final-judgment-entered": 0,
+      "final-pretrial-conference": 0,
+      "initial-disclosures": -5000,
+      "joinder-decision": -8000,
+      "judgment-affirmed": 0,
+      "judgment-final-no-appeal": 0,
+      "judgment-reversed-remanded": 0,
+      "jurisdiction-venue-check": -5405,
+      "jury-demand-decision": -6500,
+      "leave-to-amend-motion": -4500,
+      "leave-to-amend-ruling": -2000,
+      "meet-and-confer": -500,
+      "motion-to-compel-ruling": 0,
+      "motion-to-dismiss-filed": -18925,
+      "motions-in-limine-filed": -9000,
+      "mtd-ruling": -2925,
+      "notice-of-appeal-filed": -125000,
+      "notice-of-appeal-window": 0,
+      "partial-summary-judgment": -19000,
+      "parties-joined": -8000,
+      "post-trial-motion-window": 0,
+      "post-trial-ruling": 0,
+      "pre-filing": -12905,
+      "protective-order-motion": -3000,
+      "protective-order-ruling": 0,
+      "remand-ordered": 0,
+      "remand-ruling": 0,
+      "removal-window": 0,
+      "removed-to-federal": 0,
+      "rule12-response-window": 0,
+      "rule26f-conference": -8000,
+      "rule37-sanctions-ruling": 0,
+      "rule50b-jmol-filed": -5000,
+      "rule59-new-trial-filed": -5000,
+      "rule59e-amend-filed": -4000,
+      "rule60-relief-filed": -5000,
+      "scheduling-order-issued": 0,
+      "service-completed": 0,
+      "service-window": 0,
+      "service-window-blown": 0,
+      "sj-briefing-complete": -14250,
+      "sj-ruling": -14250,
+      "summary-judgment-granted": 0,
+      "summary-judgment-motion": -56250,
+      "trial-commences": 0,
+      "verdict-rendered": 0,
+      "voluntary-dismissal": 0,
+      "waiver-requested": -500
+    }
+  },
+  "weightedGraph500": {
+    "edges": [
+      {
+        "benefit": 0,
+        "days": 14,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "amended-complaint-filed",
+        "hours": 0,
+        "label": "Responsive-pleading window reopens for the amended pleading",
+        "probability": null,
+        "to": "rule12-response-window"
+      },
+      {
+        "benefit": 0,
+        "days": 21,
+        "dollarCost": 6500,
+        "fees": 2500,
+        "from": "amendment-as-of-right-window",
+        "hours": 8,
+        "label": "Amend as of right within the 21-day matter-of-course window",
+        "probability": null,
+        "to": "amended-complaint-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "amendment-as-of-right-window",
+        "hours": 0,
+        "label": "No amendment -- proceed; consider joinder of parties",
+        "probability": null,
+        "to": "joinder-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 6000,
+        "fees": 3000,
+        "from": "amendment-as-of-right-window",
+        "hours": 6,
+        "label": "Seek leave to amend outside the matter-of-course window",
+        "probability": null,
+        "to": "leave-to-amend-motion"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "answer-filed",
+        "hours": 0,
+        "label": "Last pleading directed to the issue served -- 14-day jury demand clock starts",
+        "probability": null,
+        "to": "jury-demand-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 125000,
+        "fees": 45000,
+        "from": "appellate-briefing",
+        "hours": 160,
+        "label": "Complete FRAP 28 briefing and oral argument",
+        "probability": null,
+        "to": "court-of-appeals-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "complaint-filed",
+        "hours": 0,
+        "label": "Clerk signs, seals, and issues the summons",
+        "probability": null,
+        "to": "service-window"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "court-of-appeals-decision",
+        "hours": 0,
+        "label": "Affirmed in part, reversed in part -- net affirmance for appellee",
+        "probability": 0.1,
+        "to": "judgment-affirmed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "court-of-appeals-decision",
+        "hours": 0,
+        "label": "Court of appeals affirms",
+        "probability": 0.55,
+        "to": "judgment-affirmed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "court-of-appeals-decision",
+        "hours": 0,
+        "label": "Court of appeals reverses or vacates and remands",
+        "probability": 0.35,
+        "to": "judgment-reversed-remanded"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "cross-appeal-filed",
+        "hours": 0,
+        "label": "Cross-appeal docketed with the lead appeal",
+        "probability": null,
+        "to": "appellate-briefing"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "cross-appeal-window",
+        "hours": 0,
+        "label": "No cross-appeal -- appellee will defend the judgment on the existing record",
+        "probability": null,
+        "to": "appellate-briefing"
+      },
+      {
+        "benefit": 0,
+        "days": 14,
+        "dollarCost": 3505,
+        "fees": 505,
+        "from": "cross-appeal-window",
+        "hours": 6,
+        "label": "File cross-appeal",
+        "probability": null,
+        "to": "cross-appeal-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 10000,
+        "fees": 0,
+        "from": "daubert-motion-filed",
+        "hours": 20,
+        "label": "Complete FRE 702 gatekeeping briefing (FRE 104(a))",
+        "probability": null,
+        "to": "daubert-ruling"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "daubert-ruling",
+        "hours": 0,
+        "label": "Expert testimony admitted -- reliability and fit satisfied",
+        "probability": 0.6,
+        "to": "motions-in-limine-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "daubert-ruling",
+        "hours": 0,
+        "label": "Expert testimony excluded in whole or in part",
+        "probability": 0.4,
+        "to": "motions-in-limine-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 8500,
+        "fees": 3500,
+        "from": "default-entered",
+        "hours": 10,
+        "label": "Move to set aside entry of default for good cause",
+        "probability": null,
+        "to": "answer-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "default-entered",
+        "hours": 0,
+        "label": "Clerk or court enters default judgment",
+        "probability": null,
+        "to": "default-judgment-entered"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 32500,
+        "fees": 15000,
+        "from": "discovery-closed",
+        "hours": 35,
+        "label": "Move to exclude opposing expert testimony pretrial",
+        "probability": null,
+        "to": "daubert-motion-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "discovery-closed",
+        "hours": 0,
+        "label": "No dispositive or Daubert motion -- proceed to final pretrial conference",
+        "probability": null,
+        "to": "final-pretrial-conference"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 60000,
+        "fees": 20000,
+        "from": "discovery-closed",
+        "hours": 80,
+        "label": "Move for summary judgment",
+        "probability": null,
+        "to": "summary-judgment-motion"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "discovery-open",
+        "hours": 0,
+        "label": "Discovery record complete -- proceed toward dispositive motions",
+        "probability": null,
+        "to": "discovery-closed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 2100,
+        "fees": 100,
+        "from": "discovery-open",
+        "hours": 4,
+        "label": "Serve interrogatories (max 25 including discrete subparts, Rule 33(a)(1))",
+        "probability": null,
+        "to": "discovery-open"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 1800,
+        "fees": 300,
+        "from": "discovery-open",
+        "hours": 3,
+        "label": "Serve nonparty subpoena (Rule 45)",
+        "probability": null,
+        "to": "discovery-open"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 1050,
+        "fees": 50,
+        "from": "discovery-open",
+        "hours": 2,
+        "label": "Serve requests for admission (Rule 36) -- no timely response is deemed admitted (36(a)(3))",
+        "probability": null,
+        "to": "discovery-open"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 1600,
+        "fees": 100,
+        "from": "discovery-open",
+        "hours": 3,
+        "label": "Serve requests for production (Rule 34)",
+        "probability": null,
+        "to": "discovery-open"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 2500,
+        "fees": 500,
+        "from": "discovery-open",
+        "hours": 4,
+        "label": "Serve Rule 30(b)(6) deposition notice on an organization",
+        "probability": null,
+        "to": "discovery-open"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 8000,
+        "fees": 3000,
+        "from": "discovery-open",
+        "hours": 10,
+        "label": "Take deposition (Rule 30) -- 10 depositions per side and 1 day of 7 hours absent stipulation or leave (Rule 30(a)(2)(A)(i); 30(d)(1))",
+        "probability": null,
+        "to": "discovery-open"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 1000,
+        "fees": 0,
+        "from": "discovery-open",
+        "hours": 2,
+        "label": "Meet and confer on a discovery dispute",
+        "probability": null,
+        "to": "meet-and-confer"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 8000,
+        "fees": 4000,
+        "from": "discovery-open",
+        "hours": 8,
+        "label": "Move for a protective order",
+        "probability": null,
+        "to": "protective-order-motion"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 2000,
+        "fees": 0,
+        "from": "discovery-open",
+        "hours": 4,
+        "label": "Parties settle -- file stipulation of dismissal",
+        "probability": null,
+        "to": "voluntary-dismissal"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "final-judgment-entered",
+        "hours": 0,
+        "label": "No post-trial motion -- proceed directly toward appeal",
+        "probability": null,
+        "to": "notice-of-appeal-window"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "final-judgment-entered",
+        "hours": 0,
+        "label": "28-day post-trial motion window opens",
+        "probability": null,
+        "to": "post-trial-motion-window"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "final-pretrial-conference",
+        "hours": 0,
+        "label": "Court enters final pretrial order",
+        "probability": null,
+        "to": "trial-commences"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 5000,
+        "fees": 0,
+        "from": "initial-disclosures",
+        "hours": 10,
+        "label": "Exchange Rule 26(a)(1) initial disclosures",
+        "probability": null,
+        "to": "scheduling-order-issued"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 6500,
+        "fees": 2500,
+        "from": "joinder-decision",
+        "hours": 8,
+        "label": "Join a required party (Rule 19) or a permissive party (Rule 20)",
+        "probability": null,
+        "to": "parties-joined"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 6500,
+        "fees": 2500,
+        "from": "joinder-decision",
+        "hours": 8,
+        "label": "Nonparty intervenes as of right or permissively",
+        "probability": null,
+        "to": "parties-joined"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "joinder-decision",
+        "hours": 0,
+        "label": "No joinder -- proceed to discovery planning",
+        "probability": null,
+        "to": "rule26f-conference"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 5405,
+        "fees": 405,
+        "from": "jurisdiction-venue-check",
+        "hours": 10,
+        "label": "File complaint establishing subject-matter jurisdiction and venue",
+        "probability": null,
+        "to": "complaint-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "jury-demand-decision",
+        "hours": 0,
+        "label": "Fail to demand within 14 days -- jury trial waived",
+        "probability": null,
+        "to": "amendment-as-of-right-window"
+      },
+      {
+        "benefit": 0,
+        "days": 14,
+        "dollarCost": 250,
+        "fees": 0,
+        "from": "jury-demand-decision",
+        "hours": 0.5,
+        "label": "Serve and file timely written jury demand",
+        "probability": null,
+        "to": "amendment-as-of-right-window"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 2500,
+        "fees": 0,
+        "from": "leave-to-amend-motion",
+        "hours": 5,
+        "label": "Complete Rule 15(a)(2) motion briefing",
+        "probability": null,
+        "to": "leave-to-amend-ruling"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "leave-to-amend-ruling",
+        "hours": 0,
+        "label": "Leave granted -- justice so requires",
+        "probability": 0.75,
+        "to": "amended-complaint-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "leave-to-amend-ruling",
+        "hours": 0,
+        "label": "Leave denied",
+        "probability": 0.25,
+        "to": "joinder-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 500,
+        "fees": 0,
+        "from": "meet-and-confer",
+        "hours": 1,
+        "label": "Dispute resolved informally -- discovery resumes",
+        "probability": null,
+        "to": "discovery-open"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 11000,
+        "fees": 5000,
+        "from": "meet-and-confer",
+        "hours": 12,
+        "label": "File motion to compel after good-faith conferral fails",
+        "probability": null,
+        "to": "motion-to-compel-ruling"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "motion-to-compel-ruling",
+        "hours": 0,
+        "label": "Motion denied -- movant's fees shifted absent substantial justification (Rule 37(a)(5)(B))",
+        "probability": 0.15,
+        "to": "discovery-open"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "motion-to-compel-ruling",
+        "hours": 0,
+        "label": "Motion granted -- movant's fees shifted to the noncompliant party (Rule 37(a)(5)(A))",
+        "probability": 0.65,
+        "to": "discovery-open"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "motion-to-compel-ruling",
+        "hours": 0,
+        "label": "Party still fails to obey the compel order -- Rule 37(b) sanctions considered",
+        "probability": 0.2,
+        "to": "rule37-sanctions-ruling"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 16000,
+        "fees": 6000,
+        "from": "motion-to-dismiss-filed",
+        "hours": 20,
+        "label": "Complete Rule 12(b) briefing",
+        "probability": null,
+        "to": "mtd-ruling"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 9000,
+        "fees": 4000,
+        "from": "motions-in-limine-filed",
+        "hours": 10,
+        "label": "Complete motions in limine (FRE 103(d))",
+        "probability": null,
+        "to": "final-pretrial-conference"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "mtd-ruling",
+        "hours": 0,
+        "label": "Motion granted with leave to amend",
+        "probability": 0.35,
+        "to": "amended-complaint-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 14,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "mtd-ruling",
+        "hours": 0,
+        "label": "Motion denied -- answer due within 14 days",
+        "probability": 0.45,
+        "to": "answer-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "mtd-ruling",
+        "hours": 0,
+        "label": "Motion granted without leave to amend -- futility",
+        "probability": 0.2,
+        "to": "dismissed-with-prejudice"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "notice-of-appeal-filed",
+        "hours": 0,
+        "label": "Notice served on all parties",
+        "probability": null,
+        "to": "cross-appeal-window"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "notice-of-appeal-window",
+        "hours": 0,
+        "label": "Miss the FRAP 4(a) deadline -- no timely extension sought",
+        "probability": null,
+        "to": "appeal-window-blown"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "notice-of-appeal-window",
+        "hours": 0,
+        "label": "Elect not to appeal -- judgment becomes final",
+        "probability": null,
+        "to": "judgment-final-no-appeal"
+      },
+      {
+        "benefit": 0,
+        "days": 30,
+        "dollarCost": 2505,
+        "fees": 505,
+        "from": "notice-of-appeal-window",
+        "hours": 4,
+        "label": "File notice of appeal within 30 days of entry of judgment",
+        "probability": null,
+        "to": "notice-of-appeal-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "partial-summary-judgment",
+        "hours": 0,
+        "label": "Proceed toward trial on the remaining claims",
+        "probability": null,
+        "to": "daubert-motion-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "parties-joined",
+        "hours": 0,
+        "label": "Case proceeds toward discovery planning with joined parties",
+        "probability": null,
+        "to": "rule26f-conference"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "post-trial-motion-window",
+        "hours": 0,
+        "label": "No post-trial motion -- proceed to appeal",
+        "probability": null,
+        "to": "notice-of-appeal-window"
+      },
+      {
+        "benefit": 0,
+        "days": 28,
+        "dollarCost": 23000,
+        "fees": 8000,
+        "from": "post-trial-motion-window",
+        "hours": 30,
+        "label": "Renew motion for JMOL (requires a preceding Rule 50(a) motion)",
+        "probability": null,
+        "to": "rule50b-jmol-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 28,
+        "dollarCost": 20500,
+        "fees": 8000,
+        "from": "post-trial-motion-window",
+        "hours": 25,
+        "label": "Move for a new trial",
+        "probability": null,
+        "to": "rule59-new-trial-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 28,
+        "dollarCost": 16000,
+        "fees": 6000,
+        "from": "post-trial-motion-window",
+        "hours": 20,
+        "label": "Move to alter or amend the judgment",
+        "probability": null,
+        "to": "rule59e-amend-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 365,
+        "dollarCost": 19500,
+        "fees": 7000,
+        "from": "post-trial-motion-window",
+        "hours": 25,
+        "label": "Move for relief from judgment",
+        "probability": null,
+        "to": "rule60-relief-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "post-trial-ruling",
+        "hours": 0,
+        "label": "Post-trial motion granted -- amended or new judgment entered",
+        "probability": 0.3,
+        "to": "final-judgment-entered"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "post-trial-ruling",
+        "hours": 0,
+        "label": "Post-trial motion denied -- FRAP 4(a)(4) tolling ends, appeal clock now runs",
+        "probability": 0.7,
+        "to": "notice-of-appeal-window"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 7500,
+        "fees": 0,
+        "from": "pre-filing",
+        "hours": 15,
+        "label": "Conduct Rule 11 pre-filing investigation",
+        "probability": null,
+        "to": "jurisdiction-venue-check"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 3000,
+        "fees": 0,
+        "from": "protective-order-motion",
+        "hours": 6,
+        "label": "Complete Rule 26(c) briefing -- good-cause showing",
+        "probability": null,
+        "to": "protective-order-ruling"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "protective-order-ruling",
+        "hours": 0,
+        "label": "Protective order denied -- discovery proceeds unrestricted",
+        "probability": 0.2,
+        "to": "discovery-open"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "protective-order-ruling",
+        "hours": 0,
+        "label": "Protective order granted",
+        "probability": 0.8,
+        "to": "discovery-open"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "remand-ruling",
+        "hours": 0,
+        "label": "Court grants remand -- lack of subject-matter jurisdiction or removal defect",
+        "probability": 0.3,
+        "to": "remand-ordered"
+      },
+      {
+        "benefit": 0,
+        "days": 21,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "remand-ruling",
+        "hours": 0,
+        "label": "Court denies remand -- federal forum retained",
+        "probability": 0.7,
+        "to": "rule12-response-window"
+      },
+      {
+        "benefit": 0,
+        "days": 30,
+        "dollarCost": 3405,
+        "fees": 405,
+        "from": "removal-window",
+        "hours": 6,
+        "label": "File notice of removal within 30 days of formal service",
+        "probability": null,
+        "to": "removed-to-federal"
+      },
+      {
+        "benefit": 0,
+        "days": 21,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "removal-window",
+        "hours": 0,
+        "label": "Decline removal -- remain in the original forum",
+        "probability": null,
+        "to": "rule12-response-window"
+      },
+      {
+        "benefit": 0,
+        "days": 30,
+        "dollarCost": 8000,
+        "fees": 3000,
+        "from": "removed-to-federal",
+        "hours": 10,
+        "label": "Plaintiff moves to remand",
+        "probability": null,
+        "to": "remand-ruling"
+      },
+      {
+        "benefit": 0,
+        "days": 21,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "removed-to-federal",
+        "hours": 0,
+        "label": "No remand motion -- case proceeds in federal court",
+        "probability": null,
+        "to": "rule12-response-window"
+      },
+      {
+        "benefit": 0,
+        "days": 21,
+        "dollarCost": 11500,
+        "fees": 4000,
+        "from": "rule12-response-window",
+        "hours": 15,
+        "label": "File answer within 21 days (baseline)",
+        "probability": null,
+        "to": "answer-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rule12-response-window",
+        "hours": 0,
+        "label": "Fail to answer or move -- default exposure",
+        "probability": null,
+        "to": "default-entered"
+      },
+      {
+        "benefit": 0,
+        "days": 21,
+        "dollarCost": 23000,
+        "fees": 8000,
+        "from": "rule12-response-window",
+        "hours": 30,
+        "label": "File pre-answer Rule 12(b) motion instead of answering",
+        "probability": null,
+        "to": "motion-to-dismiss-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 14,
+        "dollarCost": 3000,
+        "fees": 0,
+        "from": "rule26f-conference",
+        "hours": 6,
+        "label": "Conduct Rule 26(f) conference and submit discovery plan",
+        "probability": null,
+        "to": "initial-disclosures"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rule37-sanctions-ruling",
+        "hours": 0,
+        "label": "Lesser sanction imposed -- adverse inference, fee-shifting, or evidence preclusion (Rule 37(b)(2)(A)(i)-(iv))",
+        "probability": 0.7,
+        "to": "discovery-open"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rule37-sanctions-ruling",
+        "hours": 0,
+        "label": "Case-dispositive sanction -- default judgment against the disobedient defendant",
+        "probability": 0.15,
+        "to": "discovery-sanctions-default"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rule37-sanctions-ruling",
+        "hours": 0,
+        "label": "Case-dispositive sanction -- dismissal for willful noncompliance or spoliation",
+        "probability": 0.15,
+        "to": "discovery-sanctions-dismissal"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 5000,
+        "fees": 0,
+        "from": "rule50b-jmol-filed",
+        "hours": 10,
+        "label": "Complete Rule 50(b) briefing",
+        "probability": null,
+        "to": "post-trial-ruling"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 5000,
+        "fees": 0,
+        "from": "rule59-new-trial-filed",
+        "hours": 10,
+        "label": "Complete Rule 59 briefing",
+        "probability": null,
+        "to": "post-trial-ruling"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 4000,
+        "fees": 0,
+        "from": "rule59e-amend-filed",
+        "hours": 8,
+        "label": "Complete Rule 59(e) briefing",
+        "probability": null,
+        "to": "post-trial-ruling"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 5000,
+        "fees": 0,
+        "from": "rule60-relief-filed",
+        "hours": 10,
+        "label": "Complete Rule 60(b) briefing",
+        "probability": null,
+        "to": "post-trial-ruling"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "scheduling-order-issued",
+        "hours": 0,
+        "label": "Court issues Rule 16(b) scheduling order",
+        "probability": null,
+        "to": "discovery-open"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 1000,
+        "fees": 0,
+        "from": "service-completed",
+        "hours": 2,
+        "label": "Defendant considers removal to federal court",
+        "probability": null,
+        "to": "removal-window"
+      },
+      {
+        "benefit": 0,
+        "days": 21,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "service-completed",
+        "hours": 0,
+        "label": "No removal -- Rule 12 response clock runs in the original forum",
+        "probability": null,
+        "to": "rule12-response-window"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 500,
+        "fees": 0,
+        "from": "service-completed",
+        "hours": 1,
+        "label": "Plaintiff dismisses by notice before an answer or SJ motion is served",
+        "probability": null,
+        "to": "voluntary-dismissal"
+      },
+      {
+        "benefit": 0,
+        "days": 90,
+        "dollarCost": 1650,
+        "fees": 150,
+        "from": "service-window",
+        "hours": 3,
+        "label": "Serve defendant via formal process",
+        "probability": null,
+        "to": "service-completed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "service-window",
+        "hours": 0,
+        "label": "Fail to serve within 90 days -- no good cause shown",
+        "probability": null,
+        "to": "service-window-blown"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 1020,
+        "fees": 20,
+        "from": "service-window",
+        "hours": 2,
+        "label": "Request waiver of service instead of formal process",
+        "probability": null,
+        "to": "waiver-requested"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "sj-briefing-complete",
+        "hours": 0,
+        "label": "Motion taken under submission",
+        "probability": null,
+        "to": "sj-ruling"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "sj-ruling",
+        "hours": 0,
+        "label": "Denied -- genuine dispute of material fact; case proceeds toward trial",
+        "probability": 0.55,
+        "to": "daubert-motion-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "sj-ruling",
+        "hours": 0,
+        "label": "Granted in part -- remaining claims proceed to trial",
+        "probability": 0.2,
+        "to": "partial-summary-judgment"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "sj-ruling",
+        "hours": 0,
+        "label": "Granted in full -- no genuine dispute of material fact",
+        "probability": 0.25,
+        "to": "summary-judgment-granted"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 42000,
+        "fees": 12000,
+        "from": "summary-judgment-motion",
+        "hours": 60,
+        "label": "Complete Rule 56 briefing",
+        "probability": null,
+        "to": "sj-briefing-complete"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "trial-commences",
+        "hours": 0,
+        "label": "Evidence closed -- case submitted to the factfinder",
+        "probability": null,
+        "to": "verdict-rendered"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "verdict-rendered",
+        "hours": 0,
+        "label": "Verdict / findings for defendant",
+        "probability": 0.5,
+        "to": "final-judgment-entered"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "verdict-rendered",
+        "hours": 0,
+        "label": "Verdict / findings for plaintiff",
+        "probability": 0.5,
+        "to": "final-judgment-entered"
+      },
+      {
+        "benefit": 0,
+        "days": 60,
+        "dollarCost": 500,
+        "fees": 0,
+        "from": "waiver-requested",
+        "hours": 1,
+        "label": "Defendant returns executed waiver",
+        "probability": null,
+        "to": "rule12-response-window"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 1650,
+        "fees": 150,
+        "from": "waiver-requested",
+        "hours": 3,
+        "label": "Defendant refuses waiver without good cause -- formal service completed, costs shift under Rule 4(d)(2)",
+        "probability": null,
+        "to": "service-completed"
+      }
+    ],
+    "terminalValue": {
+      "amended-complaint-filed": 0,
+      "amendment-as-of-right-window": 0,
+      "answer-filed": 0,
+      "appeal-window-blown": 0,
+      "appellate-briefing": 0,
+      "complaint-filed": 0,
+      "court-of-appeals-decision": 0,
+      "cross-appeal-filed": 0,
+      "cross-appeal-window": 0,
+      "daubert-motion-filed": 0,
+      "daubert-ruling": 0,
+      "default-entered": 0,
+      "default-judgment-entered": 0,
+      "discovery-closed": 0,
+      "discovery-open": 0,
+      "discovery-sanctions-default": 0,
+      "discovery-sanctions-dismissal": 0,
+      "dismissed-with-prejudice": 0,
+      "final-judgment-entered": 0,
+      "final-pretrial-conference": 0,
+      "initial-disclosures": 0,
+      "joinder-decision": 0,
+      "judgment-affirmed": 0,
+      "judgment-final-no-appeal": 0,
+      "judgment-reversed-remanded": 0,
+      "jurisdiction-venue-check": 0,
+      "jury-demand-decision": 0,
+      "leave-to-amend-motion": 0,
+      "leave-to-amend-ruling": 0,
+      "meet-and-confer": 0,
+      "motion-to-compel-ruling": 0,
+      "motion-to-dismiss-filed": 0,
+      "motions-in-limine-filed": 0,
+      "mtd-ruling": 0,
+      "notice-of-appeal-filed": 0,
+      "notice-of-appeal-window": 0,
+      "partial-summary-judgment": 0,
+      "parties-joined": 0,
+      "post-trial-motion-window": 0,
+      "post-trial-ruling": 0,
+      "pre-filing": 0,
+      "protective-order-motion": 0,
+      "protective-order-ruling": 0,
+      "remand-ordered": 0,
+      "remand-ruling": 0,
+      "removal-window": 0,
+      "removed-to-federal": 0,
+      "rule12-response-window": 0,
+      "rule26f-conference": 0,
+      "rule37-sanctions-ruling": 0,
+      "rule50b-jmol-filed": 0,
+      "rule59-new-trial-filed": 0,
+      "rule59e-amend-filed": 0,
+      "rule60-relief-filed": 0,
+      "scheduling-order-issued": 0,
+      "service-completed": 0,
+      "service-window": 0,
+      "service-window-blown": 0,
+      "sj-briefing-complete": 0,
+      "sj-ruling": 0,
+      "summary-judgment-granted": 0,
+      "summary-judgment-motion": 0,
+      "trial-commences": 0,
+      "verdict-rendered": 0,
+      "voluntary-dismissal": 0,
+      "waiver-requested": 0
+    }
+  }
+}

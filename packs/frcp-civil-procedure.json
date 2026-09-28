@@ -1,0 +1,1563 @@
+{
+  "schemaVersion": 1,
+  "id": "frcp-civil-procedure",
+  "title": "Federal Civil Litigation Under the FRCP",
+  "description": "Pre-filing/jurisdiction & venue -> pleading (service, Rule 12 responses, default) -> amendment & joinder -> discovery (Rule 26 conference through Rule 37 sanctions and CBI-style protective orders) -> pretrial motions (summary judgment, Daubert, motions in limine) -> trial -> post-trial motions (Rule 50/59/60) -> judgment & appeal (28 U.S.C. 1291/1292, FRAP 4, cross-appeal). Citations checked against the FRCP, FRAP, and Title 28 as reflected in content/rulepacks/frcp-fragment.json and the situations corpus; approximate figures (filing fees) are flagged inline. Direct structural counterpart to content/statecharts/mpep-prosecution.json and content/statecharts/itc-337.json for the FRCP pack. Walk mode teaches the FRAP 4(a)(4) tolling trap, the unextendable Rule 59(e)/60(b) and removal clocks, and the jurisdictional (Bowles v. Russell) character of the notice-of-appeal deadline.",
+  "jurisdiction": "Federal Rules of Civil Procedure / U.S. District Courts",
+  "startNodeId": "pre-filing",
+  "groups": [
+    { "id": "pre-filing-group", "label": "Pre-Filing, Jurisdiction & Venue" },
+    { "id": "pleading-group", "label": "Pleading" },
+    { "id": "amendment-joinder-group", "label": "Amendment & Joinder" },
+    { "id": "discovery-group", "label": "Discovery" },
+    { "id": "pretrial-motions-group", "label": "Pretrial Motions" },
+    { "id": "trial-group", "label": "Trial" },
+    { "id": "post-trial-motions-group", "label": "Post-Trial Motions" },
+    { "id": "judgment-appeal-group", "label": "Judgment & Appeal" }
+  ],
+  "nodes": [
+    {
+      "id": "pre-filing",
+      "label": "Pre-Filing Investigation",
+      "kind": "state",
+      "cite": "FRCP 11(b)",
+      "note": "Before signing any pleading, motion, or paper, counsel certifies (Rule 11(b)) that it is not presented for an improper purpose, the legal contentions are warranted, and the factual contentions have (or will likely have) evidentiary support after reasonable inquiry. Rule 11(c)(2) gives the recipient of a Rule 11 motion a 21-day safe harbor to withdraw or correct the challenged paper before the motion may be filed with the court -- skipping the safe harbor makes the motion itself improper.",
+      "group": "pre-filing-group"
+    },
+    {
+      "id": "jurisdiction-venue-check",
+      "label": "Subject-Matter Jurisdiction & Venue Assessment",
+      "kind": "state",
+      "cite": "28 U.S.C. 1331; 1332(a); 1391(b)",
+      "note": "Federal question jurisdiction (28 U.S.C. 1331) or diversity jurisdiction (1332(a): complete diversity of citizenship under Strawbridge v. Curtiss, 7 U.S. 267 (1806), plus an amount in controversy exceeding $75,000). Venue lies where a substantial part of the events occurred or where any defendant resides if all defendants reside in the same state (1391(b)(1)-(2)). Unlike personal jurisdiction and venue, subject-matter jurisdiction can never be waived or conferred by consent -- Rule 12(h)(3) requires dismissal the moment the court determines it is lacking, even post-judgment.",
+      "group": "pre-filing-group",
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/84812/strawbridge-v-curtiss/"
+    },
+    {
+      "id": "complaint-filed",
+      "label": "Complaint Filed",
+      "kind": "state",
+      "cite": "FRCP 3; 8(a); 28 U.S.C. 1914(a)",
+      "note": "An action is commenced by filing a complaint with the court (Rule 3) -- this is what stops the statute of limitations clock. Rule 8(a) requires a short and plain statement of the grounds for jurisdiction, the claim showing entitlement to relief, and a demand for judgment. The district-court civil filing fee is a fixed statutory amount under 28 U.S.C. 1914(a) plus an administrative fee set by the Judicial Conference.",
+      "group": "pre-filing-group"
+    },
+    {
+      "id": "service-window",
+      "label": "Rule 4(m) Service Window",
+      "kind": "decision",
+      "cite": "FRCP 4(m)",
+      "note": "Plaintiff has 90 days after filing to serve the summons and complaint. If service is not made within that window, the court -- on motion or on its own after notice -- must dismiss the action without prejudice against that defendant OR order that service be made within a specified time. If plaintiff shows good cause for the failure, the court MUST extend the time for an appropriate period; the 90 days is extendable on that showing but is not self-extending.",
+      "group": "pleading-group"
+    },
+    {
+      "id": "waiver-requested",
+      "label": "Waiver of Service Requested",
+      "kind": "decision",
+      "cite": "FRCP 4(d)(1)",
+      "note": "Plaintiff may notify a defendant subject to service under Rule 4(e), (f), or (h) of the action and request a waiver, giving the defendant a reasonable time to return it -- at least 30 days after the request was sent, or at least 60 days if sent outside any U.S. judicial district. A defendant located in the U.S. who fails without good cause to waive must be charged the later costs of formal service and the fees of any motion required to collect them (Rule 4(d)(2)). Waiving service does NOT waive any defense or objection to personal jurisdiction or venue (Rule 4(d)(5)).",
+      "group": "pleading-group"
+    },
+    {
+      "id": "service-completed",
+      "label": "Service of Process Completed",
+      "kind": "decision",
+      "cite": "FRCP 4(c); 4(e); 4(h)",
+      "note": "Formal service accomplished under Rule 4(e) (individuals), 4(h) (corporations/associations), or 4(f) (foreign defendants). Service triggers both the defendant's responsive-pleading clock and, if the case is removable, the defendant's independent 30-day removal clock under 28 U.S.C. 1446(b)(1) -- these two clocks run in parallel, not in sequence.",
+      "group": "pleading-group"
+    },
+    {
+      "id": "service-window-blown",
+      "label": "DISMISSED WITHOUT PREJUDICE -- No Timely Service",
+      "kind": "terminal",
+      "cite": "FRCP 4(m)",
+      "note": "PERMADEATH for this action. No service within 90 days and no good-cause showing: the court must dismiss without prejudice as to the unserved defendant (or order service by a date certain). Dismissal without prejudice preserves the underlying claim if the statute of limitations has not since expired -- but for a claim near its limitations period, an unexcused blown Rule 4(m) window can be functionally fatal even though the dismissal itself is nominally 'without prejudice.'",
+      "group": "pleading-group",
+      "valence": "bad"
+    },
+    {
+      "id": "removal-window",
+      "label": "Removal Window (Defendant's Election)",
+      "kind": "decision",
+      "cite": "28 U.S.C. 1441; 1446(b)(1)",
+      "note": "A defendant sued in state court on a removable claim (federal question, or diversity absent an in-state defendant under the forum-defendant rule, 1441(b)(2)) has 30 days from formal service to remove -- not from informal receipt of a courtesy copy. Murphy Bros., Inc. v. Michetti Pipe Stringing, Inc., 526 U.S. 344 (1999): the clock runs from service, not notice. Where there are multiple defendants, all who have been served must join in or consent to removal (the 'rule of unanimity,' 1446(b)(2)(A)).",
+      "group": "pleading-group"
+    },
+    {
+      "id": "removed-to-federal",
+      "label": "Case Removed to Federal Court",
+      "kind": "decision",
+      "cite": "28 U.S.C. 1441; 1446(a)",
+      "note": "Notice of removal filed in the federal district embracing the state action, with a copy promptly filed in state court (which then loses jurisdiction to proceed further, 1446(d)). Under FRCP 81(c)(2), a defendant who has not yet answered when the case is removed has the longer of: the time remaining under state practice, 21 days after receipt of the initial pleading, or 7 days after the removal notice is filed.",
+      "group": "pleading-group"
+    },
+    {
+      "id": "remand-ruling",
+      "label": "Court Rules on Motion to Remand",
+      "kind": "decision",
+      "cite": "28 U.S.C. 1447(c)",
+      "note": "A motion to remand for a procedural defect in removal must be made within 30 days after the notice of removal; a motion to remand for lack of subject-matter jurisdiction may be made at any time before final judgment, and the court must remand sua sponte if it discovers the jurisdictional defect itself. Remand probability authored at 0.3 grant / 0.7 deny -- APPROXIMATE, not a live empirical figure; removal is upheld more often than not when the removing defendant has correctly diagnosed diversity or federal-question jurisdiction, but improvidently removed cases (missing an in-state defendant's forum-defendant bar, incomplete diversity) are a recurring plaintiff win.",
+      "group": "pleading-group"
+    },
+    {
+      "id": "remand-ordered",
+      "label": "Remanded to State Court",
+      "kind": "terminal",
+      "cite": "28 U.S.C. 1447(c); 1447(d)",
+      "note": "Case returns to state court; the federal action ends. A remand order based on a 1447(c) defect (lack of subject-matter jurisdiction or timely-raised procedural defect) is generally NOT reviewable on appeal or otherwise, 1447(d) -- one of the few genuinely unreviewable orders in federal practice. Exits the FRCP track modeled by this chart.",
+      "group": "pleading-group",
+      "valence": "caution"
+    },
+    {
+      "id": "rule12-response-window",
+      "label": "Rule 12 Response Window",
+      "kind": "decision",
+      "cite": "FRCP 12(a)(1)(A)(i)",
+      "note": "Baseline: defendant must serve an answer within 21 days after being served with the summons and complaint. This node is reached from several different tracks with different actual clock lengths -- 60/90 days after a returned waiver (Rule 4(d)(3)), Rule 81(c)(2)'s removal-specific clock, or 14 days after a court denies/postpones a Rule 12(b)/(e)/(f) motion (Rule 12(a)(4)(A)) -- the 21-day edges below model the default case; the deadline note on each entry edge carries the actual applicable period. Filing ANY Rule 12(b) motion before answering extends the responsive-pleading deadline to 14 days after the court rules.",
+      "group": "pleading-group"
+    },
+    {
+      "id": "answer-filed",
+      "label": "Answer Filed",
+      "kind": "state",
+      "cite": "FRCP 8(b); 8(c); 12(a)(4)(A); 13",
+      "note": "The answer admits, denies, or states lack of knowledge as to each allegation (Rule 8(b)), affirmatively pleads any avoidance or affirmative defense such as statute of limitations, waiver, or accord and satisfaction (Rule 8(c)(1)) -- omitting one without later amendment forfeits it -- and may assert compulsory counterclaims arising from the same transaction or occurrence (Rule 13(a)) or permissive counterclaims (Rule 13(b)). Compulsory counterclaims not pleaded here are generally barred from later, separate litigation.",
+      "group": "pleading-group"
+    },
+    {
+      "id": "motion-to-dismiss-filed",
+      "label": "Rule 12(b) Motion Filed",
+      "kind": "state",
+      "cite": "FRCP 12(b)",
+      "note": "Seven enumerated defenses may be raised by motion instead of the answer: (1) lack of subject-matter jurisdiction, (2) lack of personal jurisdiction, (3) improper venue, (4) insufficient process, (5) insufficient service of process, (6) failure to state a claim, (7) failure to join a required party. THE OMNIBUS TRAP: Rule 12(g)(2) bars a second Rule 12 motion raising a defense that was available but omitted from the first; Rule 12(h)(1) then WAIVES defenses (2)-(5) if omitted from both the first motion and the answer. Defenses (6) and (7) survive through trial (Rule 12(h)(2)); lack of subject-matter jurisdiction (1) can never be waived (Rule 12(h)(3)).",
+      "group": "pleading-group",
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/145730/bell-atlantic-corp-v-twombly/"
+    },
+    {
+      "id": "mtd-ruling",
+      "label": "Court Rules on Motion to Dismiss",
+      "kind": "decision",
+      "cite": "FRCP 12(b)(6); 12(d)",
+      "note": "Outcome distribution authored at 0.45 deny / 0.35 grant-with-leave / 0.20 grant-without-leave -- APPROXIMATE, not a live empirical figure; district courts deny more 12(b)(6) motions than they grant outright, and leave to amend is the norm rather than the exception on a first dismissal (Foman v. Davis, 371 U.S. 178 (1962): leave should be 'freely given'). If matters outside the pleadings are presented and not excluded, the motion converts to one for summary judgment under Rule 56 (Rule 12(d)) -- not separately modeled here.",
+      "group": "pleading-group",
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/145875/ashcroft-v-iqbal/"
+    },
+    {
+      "id": "dismissed-with-prejudice",
+      "label": "DISMISSED WITH PREJUDICE",
+      "kind": "terminal",
+      "cite": "FRCP 12(b)(6); 41(b)",
+      "note": "PERMADEATH. The complaint fails to state a claim and the court concludes amendment would be futile -- dismissal without leave to amend. Rule 41(b)'s final sentence extends beyond its own subdivision: unless the dismissal order states otherwise, 'any dismissal not under this rule -- except one for lack of jurisdiction, improper venue, or failure to join a party under Rule 19 -- operates as an adjudication on the merits,' which is what makes a with-prejudice 12(b)(6) dismissal claim-preclusive.",
+      "group": "pleading-group",
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/769838/john-andrew-cuoco-v-kenneth-moritsugu/",
+      "valence": "bad"
+    },
+    {
+      "id": "default-entered",
+      "label": "Clerk's Entry of Default",
+      "kind": "decision",
+      "cite": "FRCP 55(a)",
+      "note": "When a party against whom relief is sought has failed to plead or otherwise defend, and that failure is shown by affidavit or otherwise, the clerk MUST enter default. This is purely clerical and does not itself award judgment. A defaulted defendant may move to set aside the entry for good cause (Rule 55(c)) -- courts apply a lenient standard here, distinct from the stricter Rule 60(b) standard for setting aside a final default JUDGMENT.",
+      "group": "pleading-group"
+    },
+    {
+      "id": "default-judgment-entered",
+      "label": "DEFAULT JUDGMENT ENTERED",
+      "kind": "terminal",
+      "cite": "FRCP 55(b)(1); 55(b)(2)",
+      "note": "PERMADEATH (absent a successful Rule 60(b) motion, not separately modeled from this terminal). The clerk enters judgment for a sum certain if the defendant has not appeared and is not a minor or incompetent (55(b)(1)); otherwise the court enters it, and may hold a hearing to determine damages, establish the truth of an allegation, or investigate any other matter (55(b)(2)). Well-pleaded factual allegations (other than damages) are taken as true against the defaulting party -- damages must still be proven.",
+      "group": "pleading-group",
+      "valence": "bad"
+    },
+    {
+      "id": "voluntary-dismissal",
+      "label": "VOLUNTARY / STIPULATED DISMISSAL",
+      "kind": "terminal",
+      "cite": "FRCP 41(a)",
+      "note": "Plaintiff may dismiss without a court order by filing a notice of dismissal before the opposing party serves either an answer or a summary-judgment motion (41(a)(1)(A)(i)), or by a stipulation signed by all parties who have appeared (41(a)(1)(A)(ii)) -- the common vehicle for a negotiated settlement. Otherwise dismissal requires a court order, typically on terms the court considers proper (41(a)(2)). A first 41(a)(1) dismissal is without prejudice unless the notice/stipulation states otherwise; a SECOND dismissal of the same claim operates as an adjudication on the merits (the 'two-dismissal rule,' 41(a)(1)(B)) -- not itself further modeled here.",
+      "group": "pleading-group",
+      "valence": "good"
+    },
+    {
+      "id": "amendment-as-of-right-window",
+      "label": "Rule 15(a)(1) Amendment-as-of-Right Window",
+      "kind": "decision",
+      "cite": "FRCP 15(a)(1)(B)",
+      "note": "A party may amend once as a matter of course no later than 21 days after service of a responsive pleading, or 21 days after service of a Rule 12(b), (e), or (f) motion, whichever is earlier -- the two triggers run independently and the earlier one controls. Miss both 21-day windows and Rule 15(a)(1) is exhausted; amendment thereafter requires the opposing party's written consent or the court's leave, which the court 'should freely give ... when justice so requires' (15(a)(2)).",
+      "group": "amendment-joinder-group"
+    },
+    {
+      "id": "amended-complaint-filed",
+      "label": "Amended Complaint Filed",
+      "kind": "state",
+      "cite": "FRCP 15(a); 15(c)(1)(C)",
+      "note": "An amendment changing the party against whom a claim is asserted relates back to the original filing date only if it arises from the same conduct/transaction/occurrence AND, within the Rule 4(m) service period, the new party received notice avoiding prejudice and knew or should have known the action would have been brought against it but for a mistake concerning identity (Rule 15(c)(1)(C)). Krupski v. Costa Crociere S.p.A., 560 U.S. 538 (2010): relation-back turns on what the NEW PARTY knew or should have known, not on the diligence of the amending plaintiff.",
+      "group": "amendment-joinder-group",
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/147952/krupski-v-costa-crociere-s-p-a/"
+    },
+    {
+      "id": "leave-to-amend-motion",
+      "label": "Motion for Leave to Amend Filed",
+      "kind": "state",
+      "cite": "FRCP 15(a)(2)",
+      "note": "Outside the matter-of-course windows, amendment requires written consent or the court's leave. The 'freely give' standard is not automatic: undue delay, bad faith, repeated failure to cure deficiencies by prior amendment, undue prejudice to the opposing party, or futility of the amendment are all recognized grounds to deny leave (Foman v. Davis, 371 U.S. 178 (1962)).",
+      "group": "amendment-joinder-group"
+    },
+    {
+      "id": "leave-to-amend-ruling",
+      "label": "Court Rules on Leave to Amend",
+      "kind": "decision",
+      "cite": "FRCP 15(a)(2)",
+      "note": "Outcome distribution authored at 0.75 granted / 0.25 denied -- APPROXIMATE; leave is granted in the substantial majority of contested motions given the 'freely give' standard, but is meaningfully more often denied late in the case (near a scheduling-order cutoff) or after repeated prior amendments.",
+      "group": "amendment-joinder-group",
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/106497/foman-v-davis/"
+    },
+    {
+      "id": "joinder-decision",
+      "label": "Joinder of Parties",
+      "kind": "decision",
+      "cite": "FRCP 19; 20; 24",
+      "note": "Rule 19 requires joinder of a party whose absence would prevent complete relief, impair that party's ability to protect its interest, or expose an existing party to a substantial risk of multiple or inconsistent obligations -- if joinder is not feasible (e.g., destroys diversity), the court weighs Rule 19(b) factors to decide whether the action can proceed 'in equity and good conscience.' Rule 20 permits joinder of parties whose claims/defenses arise from the same transaction and share a common question. Rule 24 lets a nonparty intervene as of right (an unprotected interest relating to the property/transaction) or permissively (a common claim/defense and no undue delay/prejudice).",
+      "group": "amendment-joinder-group",
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/107609/provident-tradesmens-bank-trust-co-v-patterson/"
+    },
+    {
+      "id": "parties-joined",
+      "label": "Additional Parties Joined",
+      "kind": "state",
+      "cite": "FRCP 19; 20; 21; 24",
+      "note": "Misjoinder of a party is never itself grounds to dismiss the action -- the court may add or drop a party, or sever any claim, on just terms at any time (Rule 21).",
+      "group": "amendment-joinder-group"
+    },
+    {
+      "id": "rule26f-conference",
+      "label": "Rule 26(f) Conference",
+      "kind": "state",
+      "cite": "FRCP 26(f); 26(d)(1)",
+      "note": "THE DISCOVERY MORATORIUM: Rule 26(d)(1) bars seeking discovery 'from any source' before the parties confer under Rule 26(f), absent a Rule 26(a)(1)(B) exemption, stipulation, or court order -- no one has to wait for opposing counsel to propose the conference, since 26(f)(1) makes both sides' attorneys jointly responsible for arranging it. The conference must occur as soon as practicable, and in any event at least 21 days before a scheduling conference is held or a Rule 16(b) scheduling order is due.",
+      "group": "discovery-group"
+    },
+    {
+      "id": "initial-disclosures",
+      "label": "Rule 26(a)(1) Initial Disclosures",
+      "kind": "state",
+      "cite": "FRCP 26(a)(1)(A); 26(a)(1)(C)",
+      "note": "Without awaiting a discovery request, each party must disclose the individuals likely to have discoverable information the disclosing party may use, a copy or description of documents/ESI/tangible things it may use, a computation of each category of damages, and any applicable insurance agreement. Due at or within 14 days after the Rule 26(f) conference unless the parties stipulate or the court orders otherwise.",
+      "group": "discovery-group"
+    },
+    {
+      "id": "scheduling-order-issued",
+      "label": "Rule 16(b) Scheduling Order",
+      "kind": "state",
+      "cite": "FRCP 16(b)",
+      "note": "The scheduling order must limit the time to join parties, amend pleadings, complete discovery, and file motions -- the deadlines governing the amendment-and-joinder branch above are typically already fixed by the time this order issues, not open-ended. A schedule may be modified only for good cause and with the judge's consent (16(b)(4)) -- 'good cause' focuses on the DILIGENCE of the party seeking the change, not merely on the absence of prejudice to the other side.",
+      "group": "discovery-group"
+    },
+    {
+      "id": "discovery-open",
+      "label": "Discovery Open",
+      "kind": "decision",
+      "cite": "FRCP 26(b)(1); 26(d)(1)",
+      "note": "Parties may discover any nonprivileged matter relevant to a claim or defense and PROPORTIONAL to the needs of the case, weighing the importance of the issues, the amount in controversy, the parties' relative access to information and resources, the importance of the discovery, and whether burden/expense outweighs likely benefit (Rule 26(b)(1)). This hub node is the pure player-choice cycle -- the direct structural analog of mpep-prosecution.json's RCE churn and itc-337.json's discovery-open SCC -- where time, fees, and sanction exposure accumulate before the case can graduate toward dispositive motions.",
+      "group": "discovery-group"
+    },
+    {
+      "id": "meet-and-confer",
+      "label": "Meet-and-Confer on Discovery Dispute",
+      "kind": "decision",
+      "cite": "FRCP 37(a)(1)",
+      "note": "A motion to compel MUST include a certification that the movant has in good faith conferred or attempted to confer with the noncompliant party in an effort to obtain the discovery without court action. Skipping this step is itself a basis to deny the motion regardless of its merits.",
+      "group": "discovery-group"
+    },
+    {
+      "id": "motion-to-compel-ruling",
+      "label": "Court Rules on Motion to Compel",
+      "kind": "decision",
+      "cite": "FRCP 37(a)(3); 37(a)(5)",
+      "note": "Outcome distribution authored at 0.65 granted / 0.20 granted-but-still-noncompliant / 0.15 denied -- APPROXIMATE. Fee-shifting is close to automatic on the two-way street Rule 37(a)(5) creates: if the motion is granted (or discovery is produced only after the motion was filed), the court MUST require the losing party to pay the movant's reasonable expenses including attorney's fees, unless the opposition was substantially justified; if denied, the same mandatory fee-shifting runs the other way against the movant.",
+      "group": "discovery-group"
+    },
+    {
+      "id": "protective-order-motion",
+      "label": "Motion for Protective Order",
+      "kind": "state",
+      "cite": "FRCP 26(c)",
+      "note": "On a showing of good cause, the court may issue an order 'to protect a party or person from annoyance, embarrassment, oppression, or undue burden or expense' -- forbidding the discovery, limiting its scope, specifying terms, or designating confidentiality treatment for sensitive material.",
+      "group": "discovery-group"
+    },
+    {
+      "id": "protective-order-ruling",
+      "label": "Court Rules on Protective-Order Motion",
+      "kind": "decision",
+      "cite": "FRCP 26(c)",
+      "note": "Outcome distribution authored at 0.8 granted / 0.2 denied -- APPROXIMATE; courts routinely issue confidentiality protective orders on the good-cause showing a discovery dispute over sensitive business or personal information almost always makes, mirroring the near-automatic grant rate modeled for the analogous CBI protective-order fork in itc-337.json.",
+      "group": "discovery-group"
+    },
+    {
+      "id": "rule37-sanctions-ruling",
+      "label": "Court Rules on Rule 37 Sanctions",
+      "kind": "decision",
+      "cite": "FRCP 37(b)(2); 37(e)",
+      "note": "If a party disobeys a discovery order, the court may issue further just orders, including: directing that facts be taken as established, prohibiting the disobedient party from supporting or opposing designated claims/defenses, striking pleadings, staying proceedings, dismissing the action, or rendering a default judgment (37(b)(2)(A)). For lost electronically stored information, Rule 37(e)(2)'s severe measures (adverse-inference instruction, dismissal, default) require a finding of INTENT to deprive -- mere negligence supports only 37(e)(1)'s narrower 'no greater than necessary' curative measures. Case-dispositive sanction authored at 0.15 dismissal / 0.15 default -- APPROXIMATE but grounded: Certain Opaque Polymers (ITC Inv. No. 337-TA-883) is the paradigm case for this exact branch, where the Federal Circuit affirmed a case-dispositive default sanction for 'spoliation on a staggering scale.'",
+      "group": "discovery-group",
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/8757285/zubulake-v-ubs-warburg-llc/"
+    },
+    {
+      "id": "discovery-sanctions-dismissal",
+      "label": "CASE DISMISSED -- Discovery Sanction",
+      "kind": "terminal",
+      "cite": "FRCP 37(b)(2)(A)(v); 37(e)(2)(C)",
+      "note": "PERMADEATH. The plaintiff's own noncompliance or spoliation was severe enough, and sufficiently willful, bad-faith, or intentional, to warrant the case-dispositive sanction of dismissal rather than a lesser remedy -- courts apply heightened scrutiny before imposing this sanction precisely because it forecloses adjudication on the merits.",
+      "group": "discovery-group",
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/775569/mark-n-silvestri-v-general-motors-corporation-dfendant-appellee/",
+      "valence": "bad"
+    },
+    {
+      "id": "discovery-sanctions-default",
+      "label": "DEFAULT JUDGMENT -- Discovery Sanction",
+      "kind": "terminal",
+      "cite": "FRCP 37(b)(2)(A)(vi)",
+      "note": "PERMADEATH for the defendant. The defendant's discovery misconduct (disobeying a compel order, spoliating evidence with intent to deprive) was severe enough to warrant default judgment as a sanction -- the adversarial mirror image of dismissal, and equally disfavored absent a clear showing of willfulness or bad faith.",
+      "group": "discovery-group",
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/8776470/victor-stanley-inc-v-creative-pipe-inc/",
+      "valence": "bad"
+    },
+    {
+      "id": "discovery-closed",
+      "label": "Discovery Closed",
+      "kind": "decision",
+      "cite": "FRCP 16(b)(3)",
+      "note": "The scheduling order's discovery cutoff has passed. Rule 56(b) lets a party move for summary judgment at any time until 30 days after the close of all discovery absent a different time set by local rule or court order -- so the SJ clock is anchored to this node, not to trial.",
+      "group": "discovery-group"
+    },
+    {
+      "id": "summary-judgment-motion",
+      "label": "Motion for Summary Judgment Filed",
+      "kind": "state",
+      "cite": "FRCP 56(a); 56(b)",
+      "note": "The movant must show there is no genuine dispute as to any material fact and that it is entitled to judgment as a matter of law. A party may move for summary judgment on the whole case or on any claim, defense, or part of either. If the nonmovant shows by affidavit that it cannot present facts essential to justify its opposition, the court may defer or deny the motion, allow more discovery, or issue another appropriate order (Rule 56(d)).",
+      "group": "pretrial-motions-group",
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/111722/celotex-corp-v-catrett-administratrix-of-the-estate-of-catrett/"
+    },
+    {
+      "id": "sj-briefing-complete",
+      "label": "Summary Judgment Briefing Complete",
+      "kind": "state",
+      "cite": "FRCP 56(c)",
+      "note": "A party asserting a fact is genuinely disputed or undisputed must support it with citations to particular parts of the record, or show the cited materials do not establish an absence/presence of dispute. The court need consider only the cited materials, though it may consider other materials in the record (Rule 56(c)(3)).",
+      "group": "pretrial-motions-group"
+    },
+    {
+      "id": "sj-ruling",
+      "label": "Court Rules on Summary Judgment",
+      "kind": "decision",
+      "cite": "FRCP 56(a)",
+      "note": "Outcome distribution authored at 0.25 granted-in-full / 0.20 granted-in-part / 0.55 denied -- APPROXIMATE; wholesale grants are the minority outcome because the standard requires viewing evidence and drawing all reasonable inferences in the nonmovant's favor (Anderson v. Liberty Lobby, Inc., 477 U.S. 242 (1986); Matsushita Elec. Indus. Co. v. Zenith Radio Corp., 475 U.S. 574 (1986)) -- a genuine factual dispute on any material element sends that claim to trial regardless of the movant's confidence.",
+      "group": "pretrial-motions-group",
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/111719/anderson-v-liberty-lobby-inc/"
+    },
+    {
+      "id": "summary-judgment-granted",
+      "label": "SUMMARY JUDGMENT ENTERED",
+      "kind": "terminal",
+      "cite": "FRCP 56(a)",
+      "note": "PERMADEATH for the losing party's claims/defenses on the merits (subject to appeal). No genuine dispute of material fact exists and the movant -- plaintiff or defendant -- is entitled to judgment as a matter of law on the full case. A grant of summary judgment is reviewed de novo on appeal, unlike a jury verdict's deferential review.",
+      "group": "pretrial-motions-group",
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/145738/scott-v-harris/",
+      "valence": "good"
+    },
+    {
+      "id": "partial-summary-judgment",
+      "label": "Partial Summary Judgment",
+      "kind": "state",
+      "cite": "FRCP 56(a); 56(g)",
+      "note": "Some claims or defenses are resolved as a matter of law; the remainder proceeds toward trial. If the court does not grant all requested relief, it may enter an order stating any material fact -- including an item of damages or other relief -- that is not genuinely in dispute, treating that fact as established for the rest of the case (Rule 56(g)).",
+      "group": "pretrial-motions-group"
+    },
+    {
+      "id": "daubert-motion-filed",
+      "label": "Daubert / Rule 702 Motion Filed",
+      "kind": "state",
+      "cite": "FRE 702; FRE 104(a)",
+      "note": "The proponent of expert testimony must show by a preponderance of the evidence (2023 amendment to FRE 702 made this explicit) that the witness's specialized knowledge will help the trier of fact, the testimony is based on sufficient facts/data, is the product of reliable principles/methods, and reflects a reliable application of those principles to the case's facts. The court decides this preliminary admissibility question itself under FRE 104(a), not the jury -- a pretrial gatekeeping motion, not a trial objection.",
+      "group": "pretrial-motions-group"
+    },
+    {
+      "id": "daubert-ruling",
+      "label": "Court Rules on Daubert Motion",
+      "kind": "decision",
+      "cite": "FRE 702",
+      "note": "Outcome distribution authored at 0.6 admitted / 0.4 excluded-in-whole-or-part -- APPROXIMATE. Missing the scheduling-order's expert-motion cutoff forfeits a pretrial Daubert challenge entirely -- a mid-trial objection to qualified expert testimony is ordinarily too late and the jury has already heard the opinion, the trap this pack's frcp-fragment rulepack flags as fre/daubert-not-moved.",
+      "group": "pretrial-motions-group"
+    },
+    {
+      "id": "motions-in-limine-filed",
+      "label": "Motions in Limine",
+      "kind": "state",
+      "cite": "FRE 103(d)",
+      "note": "Pretrial motions to admit or exclude specific categories of evidence before trial begins, avoiding prejudicial suggestion to the jury. A ruling on a motion in limine is often preliminary and non-definitive; FRE 103(b) requires the losing party to RENEW its objection when the evidence is actually offered at trial to preserve the issue for appeal absent a definitive ruling on the record (Luce v. United States, 469 U.S. 38 (1984)) -- failing to renew forfeits appellate review of a non-definitive ruling.",
+      "group": "pretrial-motions-group",
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/111284/luce-v-united-states/"
+    },
+    {
+      "id": "final-pretrial-conference",
+      "label": "Final Pretrial Conference",
+      "kind": "state",
+      "cite": "FRCP 16(e)",
+      "note": "The court holds a final pretrial conference to formulate a trial plan, including a plan for admitting evidence. The resulting pretrial order controls the course of the action thereafter and may be modified only to prevent manifest injustice.",
+      "group": "pretrial-motions-group"
+    },
+    {
+      "id": "jury-demand-decision",
+      "label": "Jury Demand Window",
+      "kind": "decision",
+      "cite": "FRCP 38(b); 38(d)",
+      "note": "Any party may demand a jury trial by serving a written demand no later than 14 days after the last pleading directed to the triable issue is served. THE TRAP: a party waives a jury trial unless the demand is properly served AND filed (38(d)) -- this fires right after the answer, well before discovery closes, and is easy to let lapse while attention is on the merits. Only Rule 39(b) discretionary relief remains after a lapse, and courts are not required to grant it.",
+      "group": "trial-group",
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/105889/beacon-theatres-inc-v-westover/"
+    },
+    {
+      "id": "trial-commences",
+      "label": "Trial Commences",
+      "kind": "state",
+      "cite": "FRCP 43; 50(a)",
+      "note": "Witness testimony is taken in open court unless a federal statute, the Federal Rules of Evidence, or another FRCP provision provides otherwise. At the close of the evidence on an issue (or of all the evidence), any party may move for judgment as a matter of law under Rule 50(a) -- a Rule 50(a) motion made BEFORE the case is submitted to the jury is the mandatory prerequisite for later renewing the motion under Rule 50(b); skipping it forecloses post-trial JMOL entirely, though a Rule 59 new-trial motion remains available.",
+      "group": "trial-group"
+    },
+    {
+      "id": "verdict-rendered",
+      "label": "Verdict / Findings Rendered",
+      "kind": "decision",
+      "cite": "FRCP 52(a); 58",
+      "note": "For a bench trial, the court must find the facts specially and state its conclusions of law separately (Rule 52(a)(1)). For a jury trial, the jury returns its verdict. Either way, judgment must be set out in a separate document (Rule 58(a)) -- the FRAP 4 appeal clock and the Rule 50(b)/59 clocks both run from ENTRY of that judgment, with a 150-day backstop under FRAP 4(a)(7)(A)(ii) if no separate document is ever entered.",
+      "group": "trial-group"
+    },
+    {
+      "id": "final-judgment-entered",
+      "label": "Final Judgment Entered",
+      "kind": "decision",
+      "cite": "FRCP 58; 28 U.S.C. 1291",
+      "note": "28 U.S.C. 1291 gives the courts of appeals jurisdiction over 'final decisions' of the district courts -- the bedrock final-judgment rule. Narrow exceptions exist: 28 U.S.C. 1292(a)(1) permits immediate appeal of orders granting, denying, or modifying injunctions; 1292(b) lets a district court certify an otherwise-interlocutory order for immediate appeal on a controlling question of law with substantial ground for difference of opinion, if an immediate appeal may materially advance the litigation (the court of appeals must still accept the certified appeal). Neither exception is separately modeled here -- this chart follows the ordinary post-final-judgment path.",
+      "group": "post-trial-motions-group"
+    },
+    {
+      "id": "post-trial-motion-window",
+      "label": "Post-Trial Motion Window",
+      "kind": "decision",
+      "cite": "FRCP 50(b); 52(b); 59(b); 59(e); 60(b)",
+      "note": "Several distinct post-judgment motions are available, most on a strict 28-day clock that Rule 6(b)(2) forbids the court from extending under any circumstance: renewed JMOL (50(b)), amended findings (52(b)), new trial (59(b)), and to alter/amend the judgment (59(e)). Rule 60(b) relief runs on a longer, more flexible 'reasonable time' standard (capped at one year for mistake/newly-discovered-evidence/fraud grounds, Rule 60(c)(1)). FRAP 4(a)(4) TOLLS the notice-of-appeal clock entirely while a timely 50(b), 52(b), 59, or (in-time) 60 motion is pending -- the appeal clock does not even start running until the last such motion is resolved.",
+      "group": "post-trial-motions-group"
+    },
+    {
+      "id": "rule50b-jmol-filed",
+      "label": "Renewed Motion for JMOL Filed",
+      "kind": "state",
+      "cite": "FRCP 50(b)",
+      "note": "Available only to a party who moved for JMOL under Rule 50(a) before the case was submitted to the jury -- the renewed motion cannot raise grounds not raised in the original Rule 50(a) motion. The court may allow judgment on the verdict, order a new trial, or direct entry of judgment as a matter of law.",
+      "group": "post-trial-motions-group"
+    },
+    {
+      "id": "rule59-new-trial-filed",
+      "label": "Motion for New Trial Filed",
+      "kind": "state",
+      "cite": "FRCP 59(a); 59(b)",
+      "note": "Grounds include a verdict against the clear weight of the evidence, newly discovered evidence, misconduct, or a legal error affecting substantial rights -- broader and more discretionary than JMOL, and (unlike JMOL) does not require a prior Rule 50(a) motion.",
+      "group": "post-trial-motions-group"
+    },
+    {
+      "id": "rule59e-amend-filed",
+      "label": "Motion to Alter/Amend Judgment Filed",
+      "kind": "state",
+      "cite": "FRCP 59(e)",
+      "note": "Recognized grounds include an intervening change in CONTROLLING law, newly discovered evidence, clear error, or manifest injustice. Exxon Shipping Co. v. Baker, 554 U.S. 471, 485 n.5 (2008): an intervening change in controlling law is a legitimate 59(e) ground -- but 'controlling' means binding on this court, not merely persuasive authority from another circuit. Miss the 28 days and Rule 60(b) is not a safe fallback: Gonzalez v. Crosby, 545 U.S. 524 (2005), holds a mere change in decisional law is not, by itself, the kind of extraordinary circumstance Rule 60(b)(6) requires.",
+      "group": "post-trial-motions-group",
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/145779/exxon-shipping-co-v-baker/"
+    },
+    {
+      "id": "rule60-relief-filed",
+      "label": "Motion for Relief from Judgment Filed",
+      "kind": "state",
+      "cite": "FRCP 60(b); 60(c)(1)",
+      "note": "Six grounds: (1) mistake, inadvertence, surprise, or excusable neglect; (2) newly discovered evidence that could not have been discovered in time for a 59(b) motion; (3) fraud, misrepresentation, or misconduct by an opposing party; (4) the judgment is void; (5) the judgment has been satisfied, released, or discharged; (6) any other reason justifying relief. Grounds (1)-(3) must be raised within a reasonable time and no more than a year after entry of judgment; grounds (4)-(6) require only a reasonable time, with no fixed outer limit.",
+      "group": "post-trial-motions-group",
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/799985/gonzalez-v-crosby/"
+    },
+    {
+      "id": "post-trial-ruling",
+      "label": "Court Rules on Post-Trial Motion",
+      "kind": "decision",
+      "cite": "FRCP 50(b); 59; 60(b)",
+      "note": "Outcome distribution authored at 0.7 denied / 0.3 granted -- APPROXIMATE; post-trial motions asking a judge to overturn a jury's own verdict or the court's own prior ruling face real institutional headwind, though far from a rubber stamp given the wide range of triggering grounds pooled into this single fork.",
+      "group": "post-trial-motions-group"
+    },
+    {
+      "id": "notice-of-appeal-window",
+      "label": "Notice of Appeal Window",
+      "kind": "decision",
+      "cite": "FRAP 4(a)(1)(A); 4(a)(1)(B)",
+      "note": "30 days after entry of judgment (60 days if the United States or its officer/agency is a party). Bowles v. Russell, 551 U.S. 205 (2007): this statutory appeal deadline (rooted in 28 U.S.C. 2107) is JURISDICTIONAL, not a mere claim-processing rule -- unlike most deadlines in this chart, no equitable exception (excusable neglect, unique circumstances, waiver by the opposing party) can revive it once blown, though FRAP 4(a)(5) allows a district court to grant a limited extension (excusable neglect or good cause, capped at 30 days past the original deadline or 14 days after the extension order, whichever is later) if sought BEFORE the original deadline expires or shortly after.",
+      "group": "judgment-appeal-group"
+    },
+    {
+      "id": "notice-of-appeal-filed",
+      "label": "Notice of Appeal Filed",
+      "kind": "state",
+      "cite": "FRAP 3; 4(a)(1)(A)",
+      "note": "Filed with the district clerk, specifying the party taking the appeal, the judgment/order appealed from, and the court to which the appeal is taken. The district court retains jurisdiction over matters not involved in the appeal, but generally loses jurisdiction over the merits of what is on appeal.",
+      "group": "judgment-appeal-group"
+    },
+    {
+      "id": "appeal-window-blown",
+      "label": "APPEAL FORFEITED -- Judgment Final",
+      "kind": "terminal",
+      "cite": "FRAP 4(a)(1)(A); Bowles v. Russell, 551 U.S. 205 (2007)",
+      "note": "PERMADEATH. No notice of appeal within 30 days (60 if the U.S. is a party) and no timely FRAP 4(a)(5) extension motion. Because the deadline is jurisdictional rather than a claim-processing rule, the court of appeals lacks power to hear the appeal even if the appellee never objects to its untimeliness -- the single most consequential deadline-as-permadeath trap in federal civil practice, the direct analog of the MPEP pack's 35 U.S.C. 133 six-month abandonment ceiling.",
+      "group": "judgment-appeal-group",
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/145714/bowles-v-russell/",
+      "valence": "bad"
+    },
+    {
+      "id": "judgment-final-no-appeal",
+      "label": "JUDGMENT FINAL -- No Appeal Taken",
+      "kind": "terminal",
+      "cite": "28 U.S.C. 1291",
+      "note": "The losing party had a live right to appeal and elected not to exercise it within the FRAP 4(a) window. The judgment becomes final and, subject to any available collateral remedies (a Rule 60(b) motion in the district court, not further modeled here), is no longer open to challenge in this action.",
+      "group": "judgment-appeal-group",
+      "valence": "good"
+    },
+    {
+      "id": "cross-appeal-window",
+      "label": "Cross-Appeal Window",
+      "kind": "decision",
+      "cite": "FRAP 4(a)(3)",
+      "note": "A party who wants to challenge a different part of the same judgment -- not merely defend the judgment on alternative grounds -- must file its own notice of appeal within 14 days after the first notice of appeal was filed, or within the time otherwise prescribed by Rule 4(a)(1), whichever period ends later.",
+      "group": "judgment-appeal-group"
+    },
+    {
+      "id": "cross-appeal-filed",
+      "label": "Cross-Appeal Filed",
+      "kind": "state",
+      "cite": "FRAP 4(a)(3); 28",
+      "note": "The cross-appeal is docketed together with the lead appeal; briefing order and page limits under FRAP 28.1 are adjusted to account for both parties' status as appellant and appellee.",
+      "group": "judgment-appeal-group"
+    },
+    {
+      "id": "appellate-briefing",
+      "label": "Appellate Briefing & Argument",
+      "kind": "state",
+      "cite": "FRAP 28; 34",
+      "note": "Principal brief, response brief, and reply brief (FRAP 28), followed by oral argument unless the panel unanimously agrees it is unnecessary (FRAP 34(a)(2)). Standard of review varies sharply by issue: de novo for pure legal conclusions (including summary judgment grants and 12(b)(6) dismissals), clear error for a bench trial's factual findings (Rule 52(a)(6)), and highly deferential abuse-of-discretion review for most evidentiary and case-management rulings (protective orders, sanctions, motions in limine).",
+      "group": "judgment-appeal-group"
+    },
+    {
+      "id": "court-of-appeals-decision",
+      "label": "Court of Appeals Decision",
+      "kind": "decision",
+      "cite": "28 U.S.C. 1291",
+      "note": "Outcome distribution authored at 0.55 affirmed / 0.35 reversed-or-vacated-and-remanded / 0.10 affirmed-in-part-reversed-in-part -- APPROXIMATE, not a live empirical figure, but consistent with the well-documented general pattern that civil appeals are affirmed considerably more often than reversed given deferential standards of review on most issues.",
+      "group": "judgment-appeal-group"
+    },
+    {
+      "id": "judgment-affirmed",
+      "label": "JUDGMENT AFFIRMED ON APPEAL",
+      "kind": "terminal",
+      "cite": "28 U.S.C. 1291",
+      "note": "The district court's judgment stands. Subject only to the narrow, discretionary avenue of a petition for certiorari to the Supreme Court (28 U.S.C. 1254(1); not separately modeled in this chart), the case is over.",
+      "group": "judgment-appeal-group",
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/9395291/epic-games-inc-v-apple-inc/",
+      "valence": "good"
+    },
+    {
+      "id": "judgment-reversed-remanded",
+      "label": "JUDGMENT REVERSED / VACATED AND REMANDED",
+      "kind": "terminal",
+      "cite": "28 U.S.C. 2106",
+      "note": "The court of appeals may affirm, modify, vacate, set aside, or reverse any judgment and remand the case with instructions as just under the circumstances (28 U.S.C. 2106). Marks the end of THIS chart's walk -- the remanded case re-enters district-court proceedings at whatever posture the mandate specifies (a new trial, reconsideration of a single ruling, or entry of a different judgment), which this pack does not separately re-model to avoid an unbounded loop back through the whole procedural history.",
+      "group": "judgment-appeal-group",
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/779367/residential-funding-corporation-v-degeorge-financial-corp-degeorge-home/",
+      "valence": "caution"
+    }
+  ],
+  "edges": [
+    {
+      "from": "pre-filing",
+      "to": "jurisdiction-venue-check",
+      "label": "Conduct Rule 11 pre-filing investigation",
+      "actor": "applicant",
+      "authority": "FRCP 11(b)",
+      "hours": 15
+    },
+    {
+      "from": "jurisdiction-venue-check",
+      "to": "complaint-filed",
+      "label": "File complaint establishing subject-matter jurisdiction and venue",
+      "actor": "applicant",
+      "authority": "28 U.S.C. 1331; 1332(a); 1391(b); FRCP 3",
+      "cost": 405,
+      "note": "Filing fee APPROXIMATE (28 U.S.C. 1914(a) base fee plus the Judicial Conference administrative fee; current published fee schedule not in local corpus).",
+      "hours": 10
+    },
+    {
+      "from": "complaint-filed",
+      "to": "service-window",
+      "label": "Clerk signs, seals, and issues the summons",
+      "actor": "office",
+      "authority": "FRCP 4(b)"
+    },
+    {
+      "from": "service-window",
+      "to": "service-completed",
+      "label": "Serve defendant via formal process",
+      "actor": "applicant",
+      "authority": "FRCP 4(e); 4(h); 4(f)",
+      "cost": 150,
+      "deadline": {
+        "length": 90,
+        "extendable": true,
+        "extensionAuthority": "FRCP 4(m) good-cause showing",
+        "note": "90 days after filing. The court must extend for an appropriate period on a good-cause showing; absent good cause the court has discretion to extend or dismiss without prejudice."
+      },
+      "hours": 3,
+      "valence": "good"
+    },
+    {
+      "from": "service-window",
+      "to": "waiver-requested",
+      "label": "Request waiver of service instead of formal process",
+      "actor": "applicant",
+      "authority": "FRCP 4(d)(1)",
+      "cost": 20,
+      "hours": 2
+    },
+    {
+      "from": "service-window",
+      "to": "service-window-blown",
+      "label": "Fail to serve within 90 days -- no good cause shown",
+      "actor": "applicant",
+      "authority": "FRCP 4(m)",
+      "hours": 0,
+      "valence": "bad"
+    },
+    {
+      "from": "waiver-requested",
+      "to": "rule12-response-window",
+      "label": "Defendant returns executed waiver",
+      "actor": "applicant",
+      "authority": "FRCP 4(d)(3)",
+      "deadline": {
+        "length": 60,
+        "extendable": false,
+        "note": "60 days after the waiver request was sent (90 days if sent to a defendant outside any U.S. judicial district) -- longer than the bare 21-day Rule 12(a)(1)(A)(i) clock, the incentive for waiving."
+      },
+      "hours": 1
+    },
+    {
+      "from": "waiver-requested",
+      "to": "service-completed",
+      "label": "Defendant refuses waiver without good cause -- formal service completed, costs shift under Rule 4(d)(2)",
+      "actor": "applicant",
+      "authority": "FRCP 4(d)(2)",
+      "cost": 150,
+      "hours": 3
+    },
+    {
+      "from": "service-completed",
+      "to": "removal-window",
+      "label": "Defendant considers removal to federal court",
+      "actor": "applicant",
+      "authority": "28 U.S.C. 1441",
+      "hours": 2
+    },
+    {
+      "from": "service-completed",
+      "to": "rule12-response-window",
+      "label": "No removal -- Rule 12 response clock runs in the original forum",
+      "actor": "applicant",
+      "authority": "FRCP 12(a)(1)(A)(i)",
+      "deadline": {
+        "length": 21,
+        "extendable": true,
+        "extensionAuthority": "FRCP 6(b) stipulation or court order",
+        "note": "21 days after service of the summons and complaint."
+      }
+    },
+    {
+      "from": "service-completed",
+      "to": "voluntary-dismissal",
+      "label": "Plaintiff dismisses by notice before an answer or SJ motion is served",
+      "actor": "applicant",
+      "authority": "FRCP 41(a)(1)(A)(i)",
+      "hours": 1
+    },
+    {
+      "from": "removal-window",
+      "to": "removed-to-federal",
+      "label": "File notice of removal within 30 days of formal service",
+      "actor": "applicant",
+      "authority": "28 U.S.C. 1446(a); 1446(b)(1)",
+      "cost": 405,
+      "note": "Fee APPROXIMATE -- civil filing fee equivalent under 28 U.S.C. 1914(a).",
+      "deadline": {
+        "length": 30,
+        "extendable": false,
+        "note": "30 days from formal service, running from service under Murphy Bros., Inc. v. Michetti Pipe Stringing, Inc., 526 U.S. 344 (1999), not from informal receipt. Not extendable by stipulation or court order."
+      },
+      "hours": 6,
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/118279/murphy-brothers-inc-v-michetti-pipe-stringing-inc/"
+    },
+    {
+      "from": "removal-window",
+      "to": "rule12-response-window",
+      "label": "Decline removal -- remain in the original forum",
+      "actor": "applicant",
+      "authority": "28 U.S.C. 1446(b)",
+      "deadline": {
+        "length": 21,
+        "extendable": true,
+        "extensionAuthority": "FRCP 6(b) stipulation or court order",
+        "note": "The removal option itself is unextendable and lapses at 30 days; the underlying Rule 12(a)(1)(A)(i) response clock is unaffected by declining to remove."
+      }
+    },
+    {
+      "from": "removed-to-federal",
+      "to": "remand-ruling",
+      "label": "Plaintiff moves to remand",
+      "actor": "applicant",
+      "authority": "28 U.S.C. 1447(c)",
+      "cost": 3000,
+      "deadline": {
+        "length": 30,
+        "extendable": false,
+        "note": "A motion to remand for a procedural defect must be made within 30 days after the notice of removal is filed; a motion (or the court's own initiative) based on lack of subject-matter jurisdiction has no outer time limit and may be raised at any time before final judgment."
+      },
+      "hours": 10
+    },
+    {
+      "from": "removed-to-federal",
+      "to": "rule12-response-window",
+      "label": "No remand motion -- case proceeds in federal court",
+      "actor": "applicant",
+      "authority": "FRCP 81(c)(2)",
+      "deadline": {
+        "length": 21,
+        "extendable": true,
+        "extensionAuthority": "FRCP 6(b) stipulation or court order",
+        "note": "Rule 81(c)(2) gives the longer of: time remaining under state practice, 21 days after receipt of the initial pleading, or 7 days after the removal notice is filed."
+      }
+    },
+    {
+      "from": "remand-ruling",
+      "to": "remand-ordered",
+      "label": "Court grants remand -- lack of subject-matter jurisdiction or removal defect",
+      "actor": "examiner",
+      "authority": "28 U.S.C. 1447(c)",
+      "probability": 0.3
+    },
+    {
+      "from": "remand-ruling",
+      "to": "rule12-response-window",
+      "label": "Court denies remand -- federal forum retained",
+      "actor": "examiner",
+      "authority": "28 U.S.C. 1447(c)",
+      "probability": 0.7,
+      "deadline": {
+        "length": 21,
+        "extendable": true,
+        "extensionAuthority": "FRCP 6(b) stipulation or court order"
+      }
+    },
+    {
+      "from": "rule12-response-window",
+      "to": "answer-filed",
+      "label": "File answer within 21 days (baseline)",
+      "actor": "applicant",
+      "authority": "FRCP 12(a)(1)(A)(i)",
+      "cost": 4000,
+      "deadline": {
+        "length": 21,
+        "extendable": true,
+        "extensionAuthority": "FRCP 6(b) stipulation or court order",
+        "note": "Baseline Rule 12(a)(1)(A)(i) clock -- see this node's own note for how the actual applicable length varies by entry path (waiver, removal, or a denied Rule 12 motion)."
+      },
+      "hours": 15,
+      "valence": "good"
+    },
+    {
+      "from": "rule12-response-window",
+      "to": "motion-to-dismiss-filed",
+      "label": "File pre-answer Rule 12(b) motion instead of answering",
+      "actor": "applicant",
+      "authority": "FRCP 12(b)",
+      "cost": 8000,
+      "deadline": {
+        "length": 21,
+        "extendable": true,
+        "extensionAuthority": "FRCP 6(b) stipulation or court order",
+        "note": "Filing the motion extends the responsive-pleading deadline to 14 days after the court denies or postpones disposition (Rule 12(a)(4)(A))."
+      },
+      "hours": 30
+    },
+    {
+      "from": "rule12-response-window",
+      "to": "default-entered",
+      "label": "Fail to answer or move -- default exposure",
+      "actor": "applicant",
+      "authority": "FRCP 55(a)",
+      "hours": 0,
+      "valence": "bad"
+    },
+    {
+      "from": "motion-to-dismiss-filed",
+      "to": "mtd-ruling",
+      "label": "Complete Rule 12(b) briefing",
+      "actor": "applicant",
+      "authority": "FRCP 12(b)",
+      "cost": 6000,
+      "hours": 20
+    },
+    {
+      "from": "mtd-ruling",
+      "to": "answer-filed",
+      "label": "Motion denied -- answer due within 14 days",
+      "actor": "examiner",
+      "authority": "FRCP 12(a)(4)(A)",
+      "probability": 0.45,
+      "deadline": {
+        "length": 14,
+        "extendable": true,
+        "extensionAuthority": "FRCP 6(b) stipulation or court order"
+      }
+    },
+    {
+      "from": "mtd-ruling",
+      "to": "amended-complaint-filed",
+      "label": "Motion granted with leave to amend",
+      "actor": "examiner",
+      "authority": "FRCP 15(a)(2)",
+      "probability": 0.35
+    },
+    {
+      "from": "mtd-ruling",
+      "to": "dismissed-with-prejudice",
+      "label": "Motion granted without leave to amend -- futility",
+      "actor": "examiner",
+      "authority": "FRCP 12(b)(6); 41(b)",
+      "probability": 0.2
+    },
+    {
+      "from": "default-entered",
+      "to": "answer-filed",
+      "label": "Move to set aside entry of default for good cause",
+      "actor": "applicant",
+      "authority": "FRCP 55(c)",
+      "cost": 3500,
+      "hours": 10,
+      "valence": "good"
+    },
+    {
+      "from": "default-entered",
+      "to": "default-judgment-entered",
+      "label": "Clerk or court enters default judgment",
+      "actor": "office",
+      "authority": "FRCP 55(b)(1); 55(b)(2)"
+    },
+    {
+      "from": "answer-filed",
+      "to": "jury-demand-decision",
+      "label": "Last pleading directed to the issue served -- 14-day jury demand clock starts",
+      "actor": "applicant",
+      "authority": "FRCP 38(b)"
+    },
+    {
+      "from": "jury-demand-decision",
+      "to": "amendment-as-of-right-window",
+      "label": "Serve and file timely written jury demand",
+      "actor": "applicant",
+      "authority": "FRCP 38(b)",
+      "deadline": {
+        "length": 14,
+        "extendable": true,
+        "extensionAuthority": "FRCP 6(b) good cause",
+        "note": "14 days after the last pleading directed to the issue is served."
+      },
+      "cost": 0,
+      "hours": 0.5,
+      "valence": "good"
+    },
+    {
+      "from": "jury-demand-decision",
+      "to": "amendment-as-of-right-window",
+      "label": "Fail to demand within 14 days -- jury trial waived",
+      "actor": "applicant",
+      "authority": "FRCP 38(d)",
+      "hours": 0,
+      "valence": "bad"
+    },
+    {
+      "from": "amendment-as-of-right-window",
+      "to": "amended-complaint-filed",
+      "label": "Amend as of right within the 21-day matter-of-course window",
+      "actor": "applicant",
+      "authority": "FRCP 15(a)(1)(B)",
+      "cost": 2500,
+      "deadline": {
+        "length": 21,
+        "extendable": false,
+        "note": "21 days after service of the responsive pleading, or 21 days after service of a Rule 12(b)/(e)/(f) motion, whichever is earlier. Not extendable -- missing it forfeits the matter-of-course right; only consent or leave under Rule 15(a)(2) remains."
+      },
+      "hours": 8
+    },
+    {
+      "from": "amendment-as-of-right-window",
+      "to": "leave-to-amend-motion",
+      "label": "Seek leave to amend outside the matter-of-course window",
+      "actor": "applicant",
+      "authority": "FRCP 15(a)(2)",
+      "cost": 3000,
+      "hours": 6
+    },
+    {
+      "from": "amendment-as-of-right-window",
+      "to": "joinder-decision",
+      "label": "No amendment -- proceed; consider joinder of parties",
+      "actor": "applicant",
+      "authority": "FRCP 19; 20; 24"
+    },
+    {
+      "from": "amended-complaint-filed",
+      "to": "rule12-response-window",
+      "label": "Responsive-pleading window reopens for the amended pleading",
+      "actor": "office",
+      "authority": "FRCP 15(a)(3)",
+      "deadline": {
+        "length": 14,
+        "extendable": true,
+        "extensionAuthority": "FRCP 6(b) stipulation or court order",
+        "note": "Response due within the time remaining to respond to the original pleading, or 14 days after service of the amended pleading, whichever is LATER."
+      }
+    },
+    {
+      "from": "leave-to-amend-motion",
+      "to": "leave-to-amend-ruling",
+      "label": "Complete Rule 15(a)(2) motion briefing",
+      "actor": "applicant",
+      "authority": "FRCP 15(a)(2)",
+      "hours": 5
+    },
+    {
+      "from": "leave-to-amend-ruling",
+      "to": "amended-complaint-filed",
+      "label": "Leave granted -- justice so requires",
+      "actor": "examiner",
+      "authority": "FRCP 15(a)(2)",
+      "probability": 0.75
+    },
+    {
+      "from": "leave-to-amend-ruling",
+      "to": "joinder-decision",
+      "label": "Leave denied",
+      "actor": "examiner",
+      "authority": "FRCP 15(a)(2)",
+      "probability": 0.25
+    },
+    {
+      "from": "joinder-decision",
+      "to": "parties-joined",
+      "label": "Join a required party (Rule 19) or a permissive party (Rule 20)",
+      "actor": "applicant",
+      "authority": "FRCP 19(a); 20(a)",
+      "cost": 2500,
+      "hours": 8
+    },
+    {
+      "from": "joinder-decision",
+      "to": "parties-joined",
+      "label": "Nonparty intervenes as of right or permissively",
+      "actor": "applicant",
+      "authority": "FRCP 24(a); 24(b)",
+      "cost": 2500,
+      "hours": 8
+    },
+    {
+      "from": "joinder-decision",
+      "to": "rule26f-conference",
+      "label": "No joinder -- proceed to discovery planning",
+      "actor": "applicant",
+      "authority": "FRCP 26(f)"
+    },
+    {
+      "from": "parties-joined",
+      "to": "rule26f-conference",
+      "label": "Case proceeds toward discovery planning with joined parties",
+      "actor": "office",
+      "authority": "FRCP 16(b)"
+    },
+    {
+      "from": "rule26f-conference",
+      "to": "initial-disclosures",
+      "label": "Conduct Rule 26(f) conference and submit discovery plan",
+      "actor": "applicant",
+      "authority": "FRCP 26(f)(1); 26(f)(2)",
+      "deadline": {
+        "length": 14,
+        "extendable": true,
+        "extensionAuthority": "court order",
+        "note": "Initial disclosures due at or within 14 days after the Rule 26(f) conference unless the parties stipulate or the court sets a different time."
+      },
+      "hours": 6
+    },
+    {
+      "from": "initial-disclosures",
+      "to": "scheduling-order-issued",
+      "label": "Exchange Rule 26(a)(1) initial disclosures",
+      "actor": "applicant",
+      "authority": "FRCP 26(a)(1)(A); 26(a)(1)(C)",
+      "hours": 10
+    },
+    {
+      "from": "scheduling-order-issued",
+      "to": "discovery-open",
+      "label": "Court issues Rule 16(b) scheduling order",
+      "actor": "office",
+      "authority": "FRCP 16(b)"
+    },
+    {
+      "from": "discovery-open",
+      "to": "discovery-open",
+      "label": "Serve interrogatories (max 25 including discrete subparts, Rule 33(a)(1))",
+      "actor": "applicant",
+      "authority": "FRCP 33(a)(1)",
+      "cost": 100,
+      "hours": 4
+    },
+    {
+      "from": "discovery-open",
+      "to": "discovery-open",
+      "label": "Serve requests for production (Rule 34)",
+      "actor": "applicant",
+      "authority": "FRCP 34(a)(1)",
+      "cost": 100,
+      "hours": 3
+    },
+    {
+      "from": "discovery-open",
+      "to": "discovery-open",
+      "label": "Serve requests for admission (Rule 36) -- no timely response is deemed admitted (36(a)(3))",
+      "actor": "applicant",
+      "authority": "FRCP 36(a); 36(a)(3)",
+      "cost": 50,
+      "hours": 2
+    },
+    {
+      "from": "discovery-open",
+      "to": "discovery-open",
+      "label": "Take deposition (Rule 30) -- 10 depositions per side and 1 day of 7 hours absent stipulation or leave (Rule 30(a)(2)(A)(i); 30(d)(1))",
+      "actor": "applicant",
+      "authority": "FRCP 30(a); 30(d)(1)",
+      "cost": 3000,
+      "hours": 10
+    },
+    {
+      "from": "discovery-open",
+      "to": "discovery-open",
+      "label": "Serve Rule 30(b)(6) deposition notice on an organization",
+      "actor": "applicant",
+      "authority": "FRCP 30(b)(6)",
+      "cost": 500,
+      "hours": 4
+    },
+    {
+      "from": "discovery-open",
+      "to": "discovery-open",
+      "label": "Serve nonparty subpoena (Rule 45)",
+      "actor": "applicant",
+      "authority": "FRCP 45(a)",
+      "cost": 300,
+      "hours": 3
+    },
+    {
+      "from": "discovery-open",
+      "to": "meet-and-confer",
+      "label": "Meet and confer on a discovery dispute",
+      "actor": "applicant",
+      "authority": "FRCP 37(a)(1)",
+      "hours": 2
+    },
+    {
+      "from": "discovery-open",
+      "to": "protective-order-motion",
+      "label": "Move for a protective order",
+      "actor": "either",
+      "authority": "FRCP 26(c)",
+      "cost": 4000,
+      "hours": 8
+    },
+    {
+      "from": "discovery-open",
+      "to": "voluntary-dismissal",
+      "label": "Parties settle -- file stipulation of dismissal",
+      "actor": "either",
+      "authority": "FRCP 41(a)(1)(A)(ii)",
+      "hours": 4
+    },
+    {
+      "from": "discovery-open",
+      "to": "discovery-closed",
+      "label": "Discovery record complete -- proceed toward dispositive motions",
+      "actor": "applicant",
+      "authority": "FRCP 16(b)(3)"
+    },
+    {
+      "from": "meet-and-confer",
+      "to": "motion-to-compel-ruling",
+      "label": "File motion to compel after good-faith conferral fails",
+      "actor": "applicant",
+      "authority": "FRCP 37(a)(1); 37(a)(3)",
+      "cost": 5000,
+      "hours": 12
+    },
+    {
+      "from": "meet-and-confer",
+      "to": "discovery-open",
+      "label": "Dispute resolved informally -- discovery resumes",
+      "actor": "applicant",
+      "authority": "FRCP 37(a)(1)",
+      "hours": 1
+    },
+    {
+      "from": "motion-to-compel-ruling",
+      "to": "discovery-open",
+      "label": "Motion granted -- movant's fees shifted to the noncompliant party (Rule 37(a)(5)(A))",
+      "actor": "examiner",
+      "authority": "FRCP 37(a)(5)(A)",
+      "probability": 0.65
+    },
+    {
+      "from": "motion-to-compel-ruling",
+      "to": "rule37-sanctions-ruling",
+      "label": "Party still fails to obey the compel order -- Rule 37(b) sanctions considered",
+      "actor": "examiner",
+      "authority": "FRCP 37(b)(2)",
+      "probability": 0.2
+    },
+    {
+      "from": "motion-to-compel-ruling",
+      "to": "discovery-open",
+      "label": "Motion denied -- movant's fees shifted absent substantial justification (Rule 37(a)(5)(B))",
+      "actor": "examiner",
+      "authority": "FRCP 37(a)(5)(B)",
+      "probability": 0.15
+    },
+    {
+      "from": "protective-order-motion",
+      "to": "protective-order-ruling",
+      "label": "Complete Rule 26(c) briefing -- good-cause showing",
+      "actor": "applicant",
+      "authority": "FRCP 26(c)",
+      "hours": 6
+    },
+    {
+      "from": "protective-order-ruling",
+      "to": "discovery-open",
+      "label": "Protective order granted",
+      "actor": "examiner",
+      "authority": "FRCP 26(c)",
+      "probability": 0.8
+    },
+    {
+      "from": "protective-order-ruling",
+      "to": "discovery-open",
+      "label": "Protective order denied -- discovery proceeds unrestricted",
+      "actor": "examiner",
+      "authority": "FRCP 26(c)",
+      "probability": 0.2
+    },
+    {
+      "from": "rule37-sanctions-ruling",
+      "to": "discovery-open",
+      "label": "Lesser sanction imposed -- adverse inference, fee-shifting, or evidence preclusion (Rule 37(b)(2)(A)(i)-(iv))",
+      "actor": "examiner",
+      "authority": "FRCP 37(b)(2)(A)",
+      "probability": 0.7
+    },
+    {
+      "from": "rule37-sanctions-ruling",
+      "to": "discovery-sanctions-dismissal",
+      "label": "Case-dispositive sanction -- dismissal for willful noncompliance or spoliation",
+      "actor": "examiner",
+      "authority": "FRCP 37(b)(2)(A)(v); 37(e)(2)(C)",
+      "probability": 0.15
+    },
+    {
+      "from": "rule37-sanctions-ruling",
+      "to": "discovery-sanctions-default",
+      "label": "Case-dispositive sanction -- default judgment against the disobedient defendant",
+      "actor": "examiner",
+      "authority": "FRCP 37(b)(2)(A)(vi)",
+      "probability": 0.15
+    },
+    {
+      "from": "discovery-closed",
+      "to": "summary-judgment-motion",
+      "label": "Move for summary judgment",
+      "actor": "either",
+      "authority": "FRCP 56(a); 56(b)",
+      "cost": 20000,
+      "hours": 80
+    },
+    {
+      "from": "discovery-closed",
+      "to": "daubert-motion-filed",
+      "label": "Move to exclude opposing expert testimony pretrial",
+      "actor": "either",
+      "authority": "FRE 702",
+      "cost": 15000,
+      "hours": 35
+    },
+    {
+      "from": "discovery-closed",
+      "to": "final-pretrial-conference",
+      "label": "No dispositive or Daubert motion -- proceed to final pretrial conference",
+      "actor": "applicant",
+      "authority": "FRCP 16(e)"
+    },
+    {
+      "from": "summary-judgment-motion",
+      "to": "sj-briefing-complete",
+      "label": "Complete Rule 56 briefing",
+      "actor": "applicant",
+      "authority": "FRCP 56(c)",
+      "cost": 12000,
+      "hours": 60
+    },
+    {
+      "from": "sj-briefing-complete",
+      "to": "sj-ruling",
+      "label": "Motion taken under submission",
+      "actor": "office",
+      "authority": "FRCP 56(a)"
+    },
+    {
+      "from": "sj-ruling",
+      "to": "summary-judgment-granted",
+      "label": "Granted in full -- no genuine dispute of material fact",
+      "actor": "examiner",
+      "authority": "FRCP 56(a)",
+      "probability": 0.25
+    },
+    {
+      "from": "sj-ruling",
+      "to": "partial-summary-judgment",
+      "label": "Granted in part -- remaining claims proceed to trial",
+      "actor": "examiner",
+      "authority": "FRCP 56(a)",
+      "probability": 0.2
+    },
+    {
+      "from": "sj-ruling",
+      "to": "daubert-motion-filed",
+      "label": "Denied -- genuine dispute of material fact; case proceeds toward trial",
+      "actor": "examiner",
+      "authority": "FRCP 56(a)",
+      "probability": 0.55
+    },
+    {
+      "from": "partial-summary-judgment",
+      "to": "daubert-motion-filed",
+      "label": "Proceed toward trial on the remaining claims",
+      "actor": "applicant",
+      "authority": "FRE 702"
+    },
+    {
+      "from": "daubert-motion-filed",
+      "to": "daubert-ruling",
+      "label": "Complete FRE 702 gatekeeping briefing (FRE 104(a))",
+      "actor": "applicant",
+      "authority": "FRE 702; FRE 104(a)",
+      "hours": 20
+    },
+    {
+      "from": "daubert-ruling",
+      "to": "motions-in-limine-filed",
+      "label": "Expert testimony admitted -- reliability and fit satisfied",
+      "actor": "examiner",
+      "authority": "FRE 702",
+      "probability": 0.6
+    },
+    {
+      "from": "daubert-ruling",
+      "to": "motions-in-limine-filed",
+      "label": "Expert testimony excluded in whole or in part",
+      "actor": "examiner",
+      "authority": "FRE 702",
+      "probability": 0.4
+    },
+    {
+      "from": "motions-in-limine-filed",
+      "to": "final-pretrial-conference",
+      "label": "Complete motions in limine (FRE 103(d))",
+      "actor": "applicant",
+      "authority": "FRE 103(d)",
+      "cost": 4000,
+      "hours": 10
+    },
+    {
+      "from": "final-pretrial-conference",
+      "to": "trial-commences",
+      "label": "Court enters final pretrial order",
+      "actor": "office",
+      "authority": "FRCP 16(e)"
+    },
+    {
+      "from": "trial-commences",
+      "to": "verdict-rendered",
+      "label": "Evidence closed -- case submitted to the factfinder",
+      "actor": "office",
+      "authority": "FRCP 50(a)"
+    },
+    {
+      "from": "verdict-rendered",
+      "to": "final-judgment-entered",
+      "label": "Verdict / findings for plaintiff",
+      "actor": "examiner",
+      "authority": "FRCP 52(a); 58",
+      "probability": 0.5
+    },
+    {
+      "from": "verdict-rendered",
+      "to": "final-judgment-entered",
+      "label": "Verdict / findings for defendant",
+      "actor": "examiner",
+      "authority": "FRCP 52(a); 58",
+      "probability": 0.5
+    },
+    {
+      "from": "final-judgment-entered",
+      "to": "post-trial-motion-window",
+      "label": "28-day post-trial motion window opens",
+      "actor": "applicant",
+      "authority": "FRCP 50(b); 59(b); 59(e)"
+    },
+    {
+      "from": "final-judgment-entered",
+      "to": "notice-of-appeal-window",
+      "label": "No post-trial motion -- proceed directly toward appeal",
+      "actor": "applicant",
+      "authority": "FRAP 4(a)(1)(A)"
+    },
+    {
+      "from": "post-trial-motion-window",
+      "to": "rule50b-jmol-filed",
+      "label": "Renew motion for JMOL (requires a preceding Rule 50(a) motion)",
+      "actor": "applicant",
+      "authority": "FRCP 50(b)",
+      "cost": 8000,
+      "deadline": {
+        "length": 28,
+        "extendable": false,
+        "note": "28 days after entry of judgment. Rule 6(b)(2) forbids any extension of this deadline."
+      },
+      "hours": 30
+    },
+    {
+      "from": "post-trial-motion-window",
+      "to": "rule59-new-trial-filed",
+      "label": "Move for a new trial",
+      "actor": "applicant",
+      "authority": "FRCP 59(b)",
+      "cost": 8000,
+      "deadline": {
+        "length": 28,
+        "extendable": false,
+        "note": "28 days after entry of judgment. Rule 6(b)(2) forbids any extension of this deadline."
+      },
+      "hours": 25
+    },
+    {
+      "from": "post-trial-motion-window",
+      "to": "rule59e-amend-filed",
+      "label": "Move to alter or amend the judgment",
+      "actor": "applicant",
+      "authority": "FRCP 59(e)",
+      "cost": 6000,
+      "deadline": {
+        "length": 28,
+        "extendable": false,
+        "note": "28 days after entry of judgment. Excluded from Rule 6(b) extension entirely -- no good-cause or excusable-neglect relief is available."
+      },
+      "hours": 20
+    },
+    {
+      "from": "post-trial-motion-window",
+      "to": "rule60-relief-filed",
+      "label": "Move for relief from judgment",
+      "actor": "applicant",
+      "authority": "FRCP 60(b)",
+      "cost": 7000,
+      "deadline": {
+        "length": 365,
+        "extendable": false,
+        "note": "Grounds (1)-(3) (mistake, newly discovered evidence, fraud) must be raised within a reasonable time and no more than one year after entry of judgment; grounds (4)-(6) require only a reasonable time with no fixed outer cap."
+      },
+      "hours": 25
+    },
+    {
+      "from": "post-trial-motion-window",
+      "to": "notice-of-appeal-window",
+      "label": "No post-trial motion -- proceed to appeal",
+      "actor": "applicant",
+      "authority": "FRAP 4(a)(1)(A)"
+    },
+    {
+      "from": "rule50b-jmol-filed",
+      "to": "post-trial-ruling",
+      "label": "Complete Rule 50(b) briefing",
+      "actor": "applicant",
+      "authority": "FRCP 50(b)",
+      "hours": 10
+    },
+    {
+      "from": "rule59-new-trial-filed",
+      "to": "post-trial-ruling",
+      "label": "Complete Rule 59 briefing",
+      "actor": "applicant",
+      "authority": "FRCP 59(b)",
+      "hours": 10
+    },
+    {
+      "from": "rule59e-amend-filed",
+      "to": "post-trial-ruling",
+      "label": "Complete Rule 59(e) briefing",
+      "actor": "applicant",
+      "authority": "FRCP 59(e)",
+      "hours": 8
+    },
+    {
+      "from": "rule60-relief-filed",
+      "to": "post-trial-ruling",
+      "label": "Complete Rule 60(b) briefing",
+      "actor": "applicant",
+      "authority": "FRCP 60(b)",
+      "hours": 10
+    },
+    {
+      "from": "post-trial-ruling",
+      "to": "notice-of-appeal-window",
+      "label": "Post-trial motion denied -- FRAP 4(a)(4) tolling ends, appeal clock now runs",
+      "actor": "examiner",
+      "authority": "FRAP 4(a)(4)",
+      "probability": 0.7
+    },
+    {
+      "from": "post-trial-ruling",
+      "to": "final-judgment-entered",
+      "label": "Post-trial motion granted -- amended or new judgment entered",
+      "actor": "examiner",
+      "authority": "FRCP 50(b); 59(a); 59(e)",
+      "probability": 0.3
+    },
+    {
+      "from": "notice-of-appeal-window",
+      "to": "notice-of-appeal-filed",
+      "label": "File notice of appeal within 30 days of entry of judgment",
+      "actor": "applicant",
+      "authority": "FRAP 4(a)(1)(A)",
+      "cost": 505,
+      "note": "Courts-of-appeals filing fee APPROXIMATE (docketing fee plus notice-of-appeal fee under 28 U.S.C. 1913 and the accompanying fee schedule; current published amount not in local corpus).",
+      "deadline": {
+        "length": 30,
+        "extendable": true,
+        "extensionAuthority": "FRAP 4(a)(5) excusable neglect or good cause, sought before or shortly after the deadline",
+        "note": "30 days after entry of judgment (60 if the United States is a party). JURISDICTIONAL under Bowles v. Russell, 551 U.S. 205 (2007) -- not subject to equitable exceptions once actually blown, unlike most deadlines in this chart."
+      },
+      "hours": 4,
+      "valence": "good"
+    },
+    {
+      "from": "notice-of-appeal-window",
+      "to": "appeal-window-blown",
+      "label": "Miss the FRAP 4(a) deadline -- no timely extension sought",
+      "actor": "applicant",
+      "authority": "FRAP 4(a)(1)(A); Bowles v. Russell, 551 U.S. 205 (2007)",
+      "hours": 0,
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/145714/bowles-v-russell/",
+      "valence": "bad"
+    },
+    {
+      "from": "notice-of-appeal-window",
+      "to": "judgment-final-no-appeal",
+      "label": "Elect not to appeal -- judgment becomes final",
+      "actor": "applicant",
+      "authority": "28 U.S.C. 1291",
+      "hours": 0
+    },
+    {
+      "from": "notice-of-appeal-filed",
+      "to": "cross-appeal-window",
+      "label": "Notice served on all parties",
+      "actor": "office",
+      "authority": "FRAP 3(d)"
+    },
+    {
+      "from": "cross-appeal-window",
+      "to": "cross-appeal-filed",
+      "label": "File cross-appeal",
+      "actor": "applicant",
+      "authority": "FRAP 4(a)(3)",
+      "cost": 505,
+      "note": "Fee APPROXIMATE, same schedule as the lead notice of appeal.",
+      "deadline": {
+        "length": 14,
+        "extendable": false,
+        "note": "14 days after the first notice of appeal, or within the original FRAP 4(a)(1) period, whichever ends LATER."
+      },
+      "hours": 6
+    },
+    {
+      "from": "cross-appeal-window",
+      "to": "appellate-briefing",
+      "label": "No cross-appeal -- appellee will defend the judgment on the existing record",
+      "actor": "applicant",
+      "authority": "FRAP 28.1"
+    },
+    {
+      "from": "cross-appeal-filed",
+      "to": "appellate-briefing",
+      "label": "Cross-appeal docketed with the lead appeal",
+      "actor": "office",
+      "authority": "FRAP 3; 28.1"
+    },
+    {
+      "from": "appellate-briefing",
+      "to": "court-of-appeals-decision",
+      "label": "Complete FRAP 28 briefing and oral argument",
+      "actor": "applicant",
+      "authority": "FRAP 28; 34",
+      "cost": 45000,
+      "hours": 160
+    },
+    {
+      "from": "court-of-appeals-decision",
+      "to": "judgment-affirmed",
+      "label": "Court of appeals affirms",
+      "actor": "examiner",
+      "authority": "28 U.S.C. 1291",
+      "probability": 0.55
+    },
+    {
+      "from": "court-of-appeals-decision",
+      "to": "judgment-reversed-remanded",
+      "label": "Court of appeals reverses or vacates and remands",
+      "actor": "examiner",
+      "authority": "28 U.S.C. 2106",
+      "probability": 0.35
+    },
+    {
+      "from": "court-of-appeals-decision",
+      "to": "judgment-affirmed",
+      "label": "Affirmed in part, reversed in part -- net affirmance for appellee",
+      "actor": "examiner",
+      "authority": "28 U.S.C. 1291; 2106",
+      "probability": 0.1
+    }
+  ]
+}

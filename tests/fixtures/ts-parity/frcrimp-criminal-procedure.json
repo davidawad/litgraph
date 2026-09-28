@@ -1,0 +1,4842 @@
+{
+  "absorbingChain500": {
+    "absorptionProbabilityAtStart": {
+      "acquittal-verdict": 0.06501811594202898,
+      "indictment-dismissed-defective": 0.07275,
+      "judgment-entered": 0.39877777777777773,
+      "no-bill": 0.03,
+      "rule29-granted": 0.4334541062801932
+    },
+    "dataQuality": "partial",
+    "expectedCostAtStart": 0,
+    "expectedDaysAtStart": 115.56940821256038,
+    "expectedStepsAtStart": 18.12051522342995,
+    "ok": true,
+    "policy": {
+      "arraignment": {
+        "from": "arraignment",
+        "label": "Enter not guilty plea",
+        "to": "not-guilty-plea"
+      },
+      "arrest": {
+        "from": "arrest",
+        "label": "File information",
+        "to": "information-filed"
+      },
+      "detained-pretrial": {
+        "from": "detained-pretrial",
+        "label": "Move to reopen detention hearing",
+        "to": "detention-hearing"
+      },
+      "guilty-verdict": {
+        "from": "guilty-verdict",
+        "label": "Renew acquittal motion post-verdict",
+        "to": "rule29-motion"
+      },
+      "investigation": {
+        "from": "investigation",
+        "label": "Present case to grand jury",
+        "to": "grand-jury-convened"
+      },
+      "mistrial-hung-jury": {
+        "from": "mistrial-hung-jury",
+        "label": "Retry the case",
+        "to": "jury-selection"
+      },
+      "notice-of-appeal-window": {
+        "from": "notice-of-appeal-window",
+        "label": "File notice of appeal",
+        "to": "notice-of-appeal-filed"
+      },
+      "plea-agreement-reached": {
+        "from": "plea-agreement-reached",
+        "label": "Withdraw from plea deal",
+        "to": "proceed-to-trial"
+      },
+      "plea-rejected-by-court": {
+        "from": "plea-rejected-by-court",
+        "label": "Withdraw guilty plea",
+        "to": "proceed-to-trial"
+      },
+      "pretrial-motions-window": {
+        "from": "pretrial-motions-window",
+        "label": "File motion to dismiss indictment",
+        "to": "motion-to-dismiss-filed"
+      },
+      "rule16-discovery": {
+        "from": "rule16-discovery",
+        "label": "Disclose Brady/Giglio material",
+        "to": "brady-giglio-disclosure"
+      },
+      "suppression-granted": {
+        "from": "suppression-granted",
+        "label": "Move to dismiss after suppression",
+        "to": "indictment-dismissed-defective"
+      },
+      "trial-in-progress": {
+        "from": "trial-in-progress",
+        "label": "Move for judgment of acquittal",
+        "to": "rule29-motion"
+      }
+    }
+  },
+  "dijkstra500": {
+    "cheapestByDollars": {
+      "acquittal-verdict": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arraignment",
+          "not-guilty-plea",
+          "rule12-deadline-set",
+          "pretrial-motions-window",
+          "rule16-discovery",
+          "brady-giglio-disclosure",
+          "proceed-to-trial",
+          "jury-selection",
+          "trial-in-progress",
+          "rule29-motion",
+          "rule29-denied",
+          "verdict-returned",
+          "acquittal-verdict"
+        ],
+        "target": "acquittal-verdict",
+        "total": 0
+      },
+      "appeal-window-missed": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arraignment",
+          "not-guilty-plea",
+          "plea-negotiations",
+          "plea-agreement-reached",
+          "change-of-plea-hearing",
+          "plea-accepted",
+          "presentence-report",
+          "sentencing-hearing",
+          "guidelines-calculation",
+          "departure-variance",
+          "judgment-entered",
+          "notice-of-appeal-window",
+          "appeal-window-missed"
+        ],
+        "target": "appeal-window-missed",
+        "total": 0
+      },
+      "case-dismissed-after-hung-jury": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arraignment",
+          "not-guilty-plea",
+          "rule12-deadline-set",
+          "pretrial-motions-window",
+          "rule16-discovery",
+          "brady-giglio-disclosure",
+          "proceed-to-trial",
+          "jury-selection",
+          "trial-in-progress",
+          "rule29-motion",
+          "rule29-denied",
+          "verdict-returned",
+          "mistrial-hung-jury",
+          "case-dismissed-after-hung-jury"
+        ],
+        "target": "case-dismissed-after-hung-jury",
+        "total": 0
+      },
+      "complaint-dismissed-no-pc": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arrest",
+          "initial-appearance",
+          "preliminary-hearing",
+          "complaint-dismissed-no-pc"
+        ],
+        "target": "complaint-dismissed-no-pc",
+        "total": 0
+      },
+      "conviction-affirmed": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arraignment",
+          "not-guilty-plea",
+          "plea-negotiations",
+          "plea-agreement-reached",
+          "change-of-plea-hearing",
+          "plea-accepted",
+          "presentence-report",
+          "sentencing-hearing",
+          "guidelines-calculation",
+          "departure-variance",
+          "judgment-entered",
+          "notice-of-appeal-window",
+          "notice-of-appeal-filed",
+          "appellate-briefing",
+          "appellate-decision",
+          "conviction-affirmed"
+        ],
+        "target": "conviction-affirmed",
+        "total": 0
+      },
+      "conviction-final-no-appeal": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arraignment",
+          "not-guilty-plea",
+          "plea-negotiations",
+          "plea-agreement-reached",
+          "change-of-plea-hearing",
+          "plea-accepted",
+          "presentence-report",
+          "sentencing-hearing",
+          "guidelines-calculation",
+          "departure-variance",
+          "judgment-entered",
+          "notice-of-appeal-window",
+          "conviction-final-no-appeal"
+        ],
+        "target": "conviction-final-no-appeal",
+        "total": 0
+      },
+      "indictment-dismissed-defective": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arraignment",
+          "not-guilty-plea",
+          "rule12-deadline-set",
+          "pretrial-motions-window",
+          "motion-to-dismiss-filed",
+          "indictment-dismissed-defective"
+        ],
+        "target": "indictment-dismissed-defective",
+        "total": 0
+      },
+      "judgment-entered": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arraignment",
+          "not-guilty-plea",
+          "plea-negotiations",
+          "plea-agreement-reached",
+          "change-of-plea-hearing",
+          "plea-accepted",
+          "presentence-report",
+          "sentencing-hearing",
+          "guidelines-calculation",
+          "departure-variance",
+          "judgment-entered"
+        ],
+        "target": "judgment-entered",
+        "total": 0
+      },
+      "no-bill": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "no-bill"
+        ],
+        "target": "no-bill",
+        "total": 0
+      },
+      "rule12c-waiver-trap": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arraignment",
+          "not-guilty-plea",
+          "rule12-deadline-set",
+          "pretrial-motions-window",
+          "rule12c-waiver-trap"
+        ],
+        "target": "rule12c-waiver-trap",
+        "total": 0
+      },
+      "rule29-granted": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arraignment",
+          "not-guilty-plea",
+          "rule12-deadline-set",
+          "pretrial-motions-window",
+          "rule16-discovery",
+          "brady-giglio-disclosure",
+          "proceed-to-trial",
+          "jury-selection",
+          "trial-in-progress",
+          "rule29-motion",
+          "rule29-granted"
+        ],
+        "target": "rule29-granted",
+        "total": 0
+      },
+      "speedy-trial-dismissal": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arraignment",
+          "not-guilty-plea",
+          "rule12-deadline-set",
+          "pretrial-motions-window",
+          "speedy-trial-dismissal"
+        ],
+        "target": "speedy-trial-dismissal",
+        "total": 0
+      }
+    },
+    "fastestByDays": {
+      "acquittal-verdict": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arrest",
+          "information-filed",
+          "arraignment",
+          "not-guilty-plea",
+          "plea-negotiations",
+          "plea-agreement-reached",
+          "change-of-plea-hearing",
+          "plea-accepted",
+          "presentence-report",
+          "sentencing-hearing",
+          "guidelines-calculation",
+          "departure-variance",
+          "judgment-entered",
+          "notice-of-appeal-window",
+          "notice-of-appeal-filed",
+          "appellate-briefing",
+          "appellate-decision",
+          "conviction-reversed-remanded",
+          "jury-selection",
+          "trial-in-progress",
+          "rule29-motion",
+          "rule29-denied",
+          "verdict-returned",
+          "acquittal-verdict"
+        ],
+        "target": "acquittal-verdict",
+        "total": 63
+      },
+      "appeal-window-missed": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arrest",
+          "information-filed",
+          "arraignment",
+          "not-guilty-plea",
+          "plea-negotiations",
+          "plea-agreement-reached",
+          "change-of-plea-hearing",
+          "plea-accepted",
+          "presentence-report",
+          "sentencing-hearing",
+          "guidelines-calculation",
+          "departure-variance",
+          "judgment-entered",
+          "notice-of-appeal-window",
+          "appeal-window-missed"
+        ],
+        "target": "appeal-window-missed",
+        "total": 63
+      },
+      "case-dismissed-after-hung-jury": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arrest",
+          "information-filed",
+          "arraignment",
+          "not-guilty-plea",
+          "plea-negotiations",
+          "plea-agreement-reached",
+          "change-of-plea-hearing",
+          "plea-accepted",
+          "presentence-report",
+          "sentencing-hearing",
+          "guidelines-calculation",
+          "departure-variance",
+          "judgment-entered",
+          "notice-of-appeal-window",
+          "notice-of-appeal-filed",
+          "appellate-briefing",
+          "appellate-decision",
+          "conviction-reversed-remanded",
+          "jury-selection",
+          "trial-in-progress",
+          "rule29-motion",
+          "rule29-denied",
+          "verdict-returned",
+          "mistrial-hung-jury",
+          "case-dismissed-after-hung-jury"
+        ],
+        "target": "case-dismissed-after-hung-jury",
+        "total": 63
+      },
+      "complaint-dismissed-no-pc": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arrest",
+          "initial-appearance",
+          "preliminary-hearing",
+          "complaint-dismissed-no-pc"
+        ],
+        "target": "complaint-dismissed-no-pc",
+        "total": 17
+      },
+      "conviction-affirmed": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arrest",
+          "information-filed",
+          "arraignment",
+          "not-guilty-plea",
+          "plea-negotiations",
+          "plea-agreement-reached",
+          "change-of-plea-hearing",
+          "plea-accepted",
+          "presentence-report",
+          "sentencing-hearing",
+          "guidelines-calculation",
+          "departure-variance",
+          "judgment-entered",
+          "notice-of-appeal-window",
+          "notice-of-appeal-filed",
+          "appellate-briefing",
+          "appellate-decision",
+          "conviction-affirmed"
+        ],
+        "target": "conviction-affirmed",
+        "total": 63
+      },
+      "conviction-final-no-appeal": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arrest",
+          "information-filed",
+          "arraignment",
+          "not-guilty-plea",
+          "plea-negotiations",
+          "plea-agreement-reached",
+          "change-of-plea-hearing",
+          "plea-accepted",
+          "presentence-report",
+          "sentencing-hearing",
+          "guidelines-calculation",
+          "departure-variance",
+          "judgment-entered",
+          "notice-of-appeal-window",
+          "conviction-final-no-appeal"
+        ],
+        "target": "conviction-final-no-appeal",
+        "total": 49
+      },
+      "indictment-dismissed-defective": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arrest",
+          "information-filed",
+          "arraignment",
+          "not-guilty-plea",
+          "rule12-deadline-set",
+          "pretrial-motions-window",
+          "motion-to-dismiss-filed",
+          "indictment-dismissed-defective"
+        ],
+        "target": "indictment-dismissed-defective",
+        "total": 0
+      },
+      "judgment-entered": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arrest",
+          "information-filed",
+          "arraignment",
+          "not-guilty-plea",
+          "plea-negotiations",
+          "plea-agreement-reached",
+          "change-of-plea-hearing",
+          "plea-accepted",
+          "presentence-report",
+          "sentencing-hearing",
+          "guidelines-calculation",
+          "departure-variance",
+          "judgment-entered"
+        ],
+        "target": "judgment-entered",
+        "total": 35
+      },
+      "no-bill": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "no-bill"
+        ],
+        "target": "no-bill",
+        "total": 0
+      },
+      "rule12c-waiver-trap": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arrest",
+          "information-filed",
+          "arraignment",
+          "not-guilty-plea",
+          "rule12-deadline-set",
+          "pretrial-motions-window",
+          "rule12c-waiver-trap"
+        ],
+        "target": "rule12c-waiver-trap",
+        "total": 0
+      },
+      "rule29-granted": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arrest",
+          "information-filed",
+          "arraignment",
+          "not-guilty-plea",
+          "plea-negotiations",
+          "plea-agreement-reached",
+          "change-of-plea-hearing",
+          "plea-accepted",
+          "presentence-report",
+          "sentencing-hearing",
+          "guidelines-calculation",
+          "departure-variance",
+          "judgment-entered",
+          "notice-of-appeal-window",
+          "notice-of-appeal-filed",
+          "appellate-briefing",
+          "appellate-decision",
+          "conviction-reversed-remanded",
+          "jury-selection",
+          "trial-in-progress",
+          "rule29-motion",
+          "rule29-granted"
+        ],
+        "target": "rule29-granted",
+        "total": 63
+      },
+      "speedy-trial-dismissal": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arrest",
+          "information-filed",
+          "arraignment",
+          "not-guilty-plea",
+          "rule12-deadline-set",
+          "pretrial-motions-window",
+          "speedy-trial-dismissal"
+        ],
+        "target": "speedy-trial-dismissal",
+        "total": 0
+      }
+    },
+    "leastHours": {
+      "acquittal-verdict": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arraignment",
+          "not-guilty-plea",
+          "rule12-deadline-set",
+          "pretrial-motions-window",
+          "rule16-discovery",
+          "brady-giglio-disclosure",
+          "proceed-to-trial",
+          "jury-selection",
+          "trial-in-progress",
+          "rule29-motion",
+          "rule29-denied",
+          "verdict-returned",
+          "acquittal-verdict"
+        ],
+        "target": "acquittal-verdict",
+        "total": 0
+      },
+      "appeal-window-missed": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arraignment",
+          "not-guilty-plea",
+          "plea-negotiations",
+          "plea-agreement-reached",
+          "change-of-plea-hearing",
+          "plea-accepted",
+          "presentence-report",
+          "sentencing-hearing",
+          "guidelines-calculation",
+          "departure-variance",
+          "judgment-entered",
+          "notice-of-appeal-window",
+          "appeal-window-missed"
+        ],
+        "target": "appeal-window-missed",
+        "total": 0
+      },
+      "case-dismissed-after-hung-jury": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arraignment",
+          "not-guilty-plea",
+          "rule12-deadline-set",
+          "pretrial-motions-window",
+          "rule16-discovery",
+          "brady-giglio-disclosure",
+          "proceed-to-trial",
+          "jury-selection",
+          "trial-in-progress",
+          "rule29-motion",
+          "rule29-denied",
+          "verdict-returned",
+          "mistrial-hung-jury",
+          "case-dismissed-after-hung-jury"
+        ],
+        "target": "case-dismissed-after-hung-jury",
+        "total": 0
+      },
+      "complaint-dismissed-no-pc": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arrest",
+          "initial-appearance",
+          "preliminary-hearing",
+          "complaint-dismissed-no-pc"
+        ],
+        "target": "complaint-dismissed-no-pc",
+        "total": 0
+      },
+      "conviction-affirmed": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arraignment",
+          "not-guilty-plea",
+          "plea-negotiations",
+          "plea-agreement-reached",
+          "change-of-plea-hearing",
+          "plea-accepted",
+          "presentence-report",
+          "sentencing-hearing",
+          "guidelines-calculation",
+          "departure-variance",
+          "judgment-entered",
+          "notice-of-appeal-window",
+          "notice-of-appeal-filed",
+          "appellate-briefing",
+          "appellate-decision",
+          "conviction-affirmed"
+        ],
+        "target": "conviction-affirmed",
+        "total": 0
+      },
+      "conviction-final-no-appeal": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arraignment",
+          "not-guilty-plea",
+          "plea-negotiations",
+          "plea-agreement-reached",
+          "change-of-plea-hearing",
+          "plea-accepted",
+          "presentence-report",
+          "sentencing-hearing",
+          "guidelines-calculation",
+          "departure-variance",
+          "judgment-entered",
+          "notice-of-appeal-window",
+          "conviction-final-no-appeal"
+        ],
+        "target": "conviction-final-no-appeal",
+        "total": 0
+      },
+      "indictment-dismissed-defective": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arraignment",
+          "not-guilty-plea",
+          "rule12-deadline-set",
+          "pretrial-motions-window",
+          "motion-to-dismiss-filed",
+          "indictment-dismissed-defective"
+        ],
+        "target": "indictment-dismissed-defective",
+        "total": 0
+      },
+      "judgment-entered": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arraignment",
+          "not-guilty-plea",
+          "plea-negotiations",
+          "plea-agreement-reached",
+          "change-of-plea-hearing",
+          "plea-accepted",
+          "presentence-report",
+          "sentencing-hearing",
+          "guidelines-calculation",
+          "departure-variance",
+          "judgment-entered"
+        ],
+        "target": "judgment-entered",
+        "total": 0
+      },
+      "no-bill": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "no-bill"
+        ],
+        "target": "no-bill",
+        "total": 0
+      },
+      "rule12c-waiver-trap": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arraignment",
+          "not-guilty-plea",
+          "rule12-deadline-set",
+          "pretrial-motions-window",
+          "rule12c-waiver-trap"
+        ],
+        "target": "rule12c-waiver-trap",
+        "total": 0
+      },
+      "rule29-granted": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arraignment",
+          "not-guilty-plea",
+          "rule12-deadline-set",
+          "pretrial-motions-window",
+          "rule16-discovery",
+          "brady-giglio-disclosure",
+          "proceed-to-trial",
+          "jury-selection",
+          "trial-in-progress",
+          "rule29-motion",
+          "rule29-granted"
+        ],
+        "target": "rule29-granted",
+        "total": 0
+      },
+      "speedy-trial-dismissal": {
+        "nodes": [
+          "investigation",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "indictment-returned",
+          "arraignment",
+          "not-guilty-plea",
+          "rule12-deadline-set",
+          "pretrial-motions-window",
+          "speedy-trial-dismissal"
+        ],
+        "target": "speedy-trial-dismissal",
+        "total": 0
+      }
+    }
+  },
+  "dominators": {
+    "idom": {
+      "acquittal-verdict": "verdict-returned",
+      "appeal-window-missed": "notice-of-appeal-window",
+      "appellate-briefing": "notice-of-appeal-filed",
+      "appellate-decision": "appellate-briefing",
+      "arraignment": "investigation",
+      "arrest": "investigation",
+      "bound-over-grand-jury": "preliminary-hearing",
+      "brady-giglio-disclosure": "rule16-discovery",
+      "case-dismissed-after-hung-jury": "mistrial-hung-jury",
+      "change-of-plea-hearing": "plea-agreement-reached",
+      "complaint-dismissed-no-pc": "preliminary-hearing",
+      "complaint-filed": "investigation",
+      "conviction-affirmed": "appellate-decision",
+      "conviction-final-no-appeal": "notice-of-appeal-window",
+      "conviction-reversed-remanded": "appellate-decision",
+      "departure-variance": "guidelines-calculation",
+      "detained-pretrial": "detention-hearing",
+      "detention-hearing": "initial-appearance",
+      "discovery-dispute": "rule16-discovery",
+      "discovery-sanction": "discovery-dispute",
+      "grand-jury-convened": "investigation",
+      "grand-jury-vote": "grand-jury-convened",
+      "guidelines-calculation": "sentencing-hearing",
+      "guilty-verdict": "verdict-returned",
+      "indictment-dismissed-defective": "not-guilty-plea",
+      "indictment-returned": "investigation",
+      "information-filed": "arrest",
+      "initial-appearance": "arrest",
+      "investigation": "investigation",
+      "judgment-entered": "departure-variance",
+      "jury-selection": "not-guilty-plea",
+      "mistrial-hung-jury": "verdict-returned",
+      "motion-to-dismiss-filed": "pretrial-motions-window",
+      "motion-to-suppress-filed": "pretrial-motions-window",
+      "no-bill": "grand-jury-vote",
+      "not-guilty-plea": "arraignment",
+      "notice-of-appeal-filed": "notice-of-appeal-window",
+      "notice-of-appeal-window": "judgment-entered",
+      "plea-accepted": "change-of-plea-hearing",
+      "plea-agreement-reached": "plea-negotiations",
+      "plea-negotiations": "not-guilty-plea",
+      "plea-rejected-by-court": "change-of-plea-hearing",
+      "preliminary-hearing": "initial-appearance",
+      "presentence-report": "not-guilty-plea",
+      "pretrial-motions-window": "rule12-deadline-set",
+      "proceed-to-trial": "not-guilty-plea",
+      "released-on-conditions": "detention-hearing",
+      "rule12-deadline-set": "not-guilty-plea",
+      "rule12c-waiver-trap": "pretrial-motions-window",
+      "rule16-discovery": "pretrial-motions-window",
+      "rule29-denied": "rule29-motion",
+      "rule29-granted": "rule29-motion",
+      "rule29-motion": "trial-in-progress",
+      "rule33-motion": "rule29-motion",
+      "rule35-motion": "judgment-entered",
+      "sentencing-hearing": "presentence-report",
+      "speedy-trial-dismissal": "pretrial-motions-window",
+      "suppression-denied": "motion-to-suppress-filed",
+      "suppression-granted": "motion-to-suppress-filed",
+      "trial-in-progress": "jury-selection",
+      "verdict-returned": "rule29-denied"
+    },
+    "root": "investigation"
+  },
+  "minCut500": {
+    "acquittal-verdict": {
+      "cutEdges": [
+        {
+          "from": "arraignment",
+          "label": "Enter not guilty plea",
+          "to": "not-guilty-plea"
+        }
+      ],
+      "value": 1
+    },
+    "appeal-window-missed": {
+      "cutEdges": [
+        {
+          "from": "arraignment",
+          "label": "Enter not guilty plea",
+          "to": "not-guilty-plea"
+        }
+      ],
+      "value": 1
+    },
+    "case-dismissed-after-hung-jury": {
+      "cutEdges": [
+        {
+          "from": "arraignment",
+          "label": "Enter not guilty plea",
+          "to": "not-guilty-plea"
+        }
+      ],
+      "value": 1
+    },
+    "complaint-dismissed-no-pc": {
+      "cutEdges": [
+        {
+          "from": "arrest",
+          "label": "Bring defendant before magistrate",
+          "to": "initial-appearance"
+        }
+      ],
+      "value": 1
+    },
+    "conviction-affirmed": {
+      "cutEdges": [
+        {
+          "from": "arraignment",
+          "label": "Enter not guilty plea",
+          "to": "not-guilty-plea"
+        }
+      ],
+      "value": 1
+    },
+    "conviction-final-no-appeal": {
+      "cutEdges": [
+        {
+          "from": "arraignment",
+          "label": "Enter not guilty plea",
+          "to": "not-guilty-plea"
+        }
+      ],
+      "value": 1
+    },
+    "indictment-dismissed-defective": {
+      "cutEdges": [
+        {
+          "from": "arraignment",
+          "label": "Enter not guilty plea",
+          "to": "not-guilty-plea"
+        }
+      ],
+      "value": 1
+    },
+    "judgment-entered": {
+      "cutEdges": [
+        {
+          "from": "arraignment",
+          "label": "Enter not guilty plea",
+          "to": "not-guilty-plea"
+        }
+      ],
+      "value": 1
+    },
+    "no-bill": {
+      "cutEdges": [
+        {
+          "from": "grand-jury-convened",
+          "label": "Grand jury votes",
+          "to": "grand-jury-vote"
+        }
+      ],
+      "value": 1
+    },
+    "rule12c-waiver-trap": {
+      "cutEdges": [
+        {
+          "from": "arraignment",
+          "label": "Enter not guilty plea",
+          "to": "not-guilty-plea"
+        }
+      ],
+      "value": 1
+    },
+    "rule29-granted": {
+      "cutEdges": [
+        {
+          "from": "arraignment",
+          "label": "Enter not guilty plea",
+          "to": "not-guilty-plea"
+        }
+      ],
+      "value": 1
+    },
+    "speedy-trial-dismissal": {
+      "cutEdges": [
+        {
+          "from": "arraignment",
+          "label": "Enter not guilty plea",
+          "to": "not-guilty-plea"
+        }
+      ],
+      "value": 1
+    }
+  },
+  "packId": "frcrimp-criminal-procedure",
+  "packTitle": "Federal Criminal Procedure Under the FRCrimP Rules",
+  "params": {
+    "paretoCappedMaxPaths": 20000,
+    "paretoDefaultOpts": {
+      "maxNodeVisits": 1,
+      "maxPaths": 50000
+    },
+    "paretoSlowThresholdMs": 20000,
+    "policyDiffRateA": 150,
+    "policyDiffRateB": 1500,
+    "rate": 500,
+    "rateLow": 250
+  },
+  "paretoPaths500": {
+    "acquittal-verdict": {
+      "enumeratedCount": 477,
+      "frontier": [
+        {
+          "nodes": [
+            "investigation",
+            "grand-jury-convened",
+            "grand-jury-vote",
+            "indictment-returned",
+            "arrest",
+            "information-filed",
+            "arraignment",
+            "not-guilty-plea",
+            "rule12-deadline-set",
+            "pretrial-motions-window",
+            "motion-to-dismiss-filed",
+            "rule16-discovery",
+            "brady-giglio-disclosure",
+            "plea-negotiations",
+            "plea-agreement-reached",
+            "change-of-plea-hearing",
+            "plea-accepted",
+            "presentence-report",
+            "sentencing-hearing",
+            "guidelines-calculation",
+            "departure-variance",
+            "judgment-entered",
+            "rule35-motion",
+            "notice-of-appeal-window",
+            "notice-of-appeal-filed",
+            "appellate-briefing",
+            "appellate-decision",
+            "conviction-reversed-remanded",
+            "jury-selection",
+            "trial-in-progress",
+            "rule29-motion",
+            "rule29-denied",
+            "verdict-returned",
+            "acquittal-verdict"
+          ],
+          "totalCost": 0,
+          "totalDays": 63
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "appeal-window-missed": {
+      "enumeratedCount": 1422,
+      "frontier": [
+        {
+          "nodes": [
+            "investigation",
+            "grand-jury-convened",
+            "grand-jury-vote",
+            "indictment-returned",
+            "arrest",
+            "information-filed",
+            "arraignment",
+            "not-guilty-plea",
+            "rule12-deadline-set",
+            "pretrial-motions-window",
+            "motion-to-dismiss-filed",
+            "rule16-discovery",
+            "brady-giglio-disclosure",
+            "plea-negotiations",
+            "plea-agreement-reached",
+            "change-of-plea-hearing",
+            "plea-accepted",
+            "presentence-report",
+            "sentencing-hearing",
+            "guidelines-calculation",
+            "departure-variance",
+            "judgment-entered",
+            "rule35-motion",
+            "notice-of-appeal-window",
+            "appeal-window-missed"
+          ],
+          "totalCost": 0,
+          "totalDays": 63
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "case-dismissed-after-hung-jury": {
+      "enumeratedCount": 477,
+      "frontier": [
+        {
+          "nodes": [
+            "investigation",
+            "grand-jury-convened",
+            "grand-jury-vote",
+            "indictment-returned",
+            "arrest",
+            "information-filed",
+            "arraignment",
+            "not-guilty-plea",
+            "rule12-deadline-set",
+            "pretrial-motions-window",
+            "motion-to-dismiss-filed",
+            "rule16-discovery",
+            "brady-giglio-disclosure",
+            "plea-negotiations",
+            "plea-agreement-reached",
+            "change-of-plea-hearing",
+            "plea-accepted",
+            "presentence-report",
+            "sentencing-hearing",
+            "guidelines-calculation",
+            "departure-variance",
+            "judgment-entered",
+            "rule35-motion",
+            "notice-of-appeal-window",
+            "notice-of-appeal-filed",
+            "appellate-briefing",
+            "appellate-decision",
+            "conviction-reversed-remanded",
+            "jury-selection",
+            "trial-in-progress",
+            "rule29-motion",
+            "rule29-denied",
+            "verdict-returned",
+            "mistrial-hung-jury",
+            "case-dismissed-after-hung-jury"
+          ],
+          "totalCost": 0,
+          "totalDays": 63
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "complaint-dismissed-no-pc": {
+      "enumeratedCount": 2,
+      "frontier": [
+        {
+          "nodes": [
+            "investigation",
+            "grand-jury-convened",
+            "grand-jury-vote",
+            "indictment-returned",
+            "arrest",
+            "initial-appearance",
+            "preliminary-hearing",
+            "complaint-dismissed-no-pc"
+          ],
+          "totalCost": 0,
+          "totalDays": 17
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "conviction-affirmed": {
+      "enumeratedCount": 1422,
+      "frontier": [
+        {
+          "nodes": [
+            "investigation",
+            "grand-jury-convened",
+            "grand-jury-vote",
+            "indictment-returned",
+            "arrest",
+            "information-filed",
+            "arraignment",
+            "not-guilty-plea",
+            "rule12-deadline-set",
+            "pretrial-motions-window",
+            "motion-to-dismiss-filed",
+            "rule16-discovery",
+            "brady-giglio-disclosure",
+            "plea-negotiations",
+            "plea-agreement-reached",
+            "change-of-plea-hearing",
+            "plea-accepted",
+            "presentence-report",
+            "sentencing-hearing",
+            "guidelines-calculation",
+            "departure-variance",
+            "judgment-entered",
+            "rule35-motion",
+            "notice-of-appeal-window",
+            "notice-of-appeal-filed",
+            "appellate-briefing",
+            "appellate-decision",
+            "conviction-affirmed"
+          ],
+          "totalCost": 0,
+          "totalDays": 63
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "conviction-final-no-appeal": {
+      "enumeratedCount": 1422,
+      "frontier": [
+        {
+          "nodes": [
+            "investigation",
+            "grand-jury-convened",
+            "grand-jury-vote",
+            "indictment-returned",
+            "arrest",
+            "information-filed",
+            "arraignment",
+            "not-guilty-plea",
+            "rule12-deadline-set",
+            "pretrial-motions-window",
+            "motion-to-dismiss-filed",
+            "rule16-discovery",
+            "brady-giglio-disclosure",
+            "plea-negotiations",
+            "plea-agreement-reached",
+            "change-of-plea-hearing",
+            "plea-accepted",
+            "presentence-report",
+            "sentencing-hearing",
+            "guidelines-calculation",
+            "departure-variance",
+            "judgment-entered",
+            "rule35-motion",
+            "notice-of-appeal-window",
+            "conviction-final-no-appeal"
+          ],
+          "totalCost": 0,
+          "totalDays": 49
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "indictment-dismissed-defective": {
+      "enumeratedCount": 1440,
+      "frontier": [
+        {
+          "nodes": [
+            "investigation",
+            "grand-jury-convened",
+            "grand-jury-vote",
+            "indictment-returned",
+            "arrest",
+            "information-filed",
+            "arraignment",
+            "not-guilty-plea",
+            "rule12-deadline-set",
+            "pretrial-motions-window",
+            "motion-to-dismiss-filed",
+            "indictment-dismissed-defective"
+          ],
+          "totalCost": 0,
+          "totalDays": 0
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "judgment-entered": {
+      "enumeratedCount": 711,
+      "frontier": [
+        {
+          "nodes": [
+            "investigation",
+            "grand-jury-convened",
+            "grand-jury-vote",
+            "indictment-returned",
+            "arrest",
+            "information-filed",
+            "arraignment",
+            "not-guilty-plea",
+            "rule12-deadline-set",
+            "pretrial-motions-window",
+            "motion-to-dismiss-filed",
+            "rule16-discovery",
+            "brady-giglio-disclosure",
+            "plea-negotiations",
+            "plea-agreement-reached",
+            "change-of-plea-hearing",
+            "plea-accepted",
+            "presentence-report",
+            "sentencing-hearing",
+            "guidelines-calculation",
+            "departure-variance",
+            "judgment-entered"
+          ],
+          "totalCost": 0,
+          "totalDays": 35
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "no-bill": {
+      "enumeratedCount": 642,
+      "frontier": [
+        {
+          "nodes": [
+            "investigation",
+            "grand-jury-convened",
+            "grand-jury-vote",
+            "no-bill"
+          ],
+          "totalCost": 0,
+          "totalDays": 0
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "rule12c-waiver-trap": {
+      "enumeratedCount": 9,
+      "frontier": [
+        {
+          "nodes": [
+            "investigation",
+            "grand-jury-convened",
+            "grand-jury-vote",
+            "indictment-returned",
+            "arrest",
+            "information-filed",
+            "arraignment",
+            "not-guilty-plea",
+            "rule12-deadline-set",
+            "pretrial-motions-window",
+            "rule12c-waiver-trap"
+          ],
+          "totalCost": 0,
+          "totalDays": 0
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "rule29-granted": {
+      "enumeratedCount": 477,
+      "frontier": [
+        {
+          "nodes": [
+            "investigation",
+            "grand-jury-convened",
+            "grand-jury-vote",
+            "indictment-returned",
+            "arrest",
+            "information-filed",
+            "arraignment",
+            "not-guilty-plea",
+            "rule12-deadline-set",
+            "pretrial-motions-window",
+            "motion-to-dismiss-filed",
+            "rule16-discovery",
+            "brady-giglio-disclosure",
+            "plea-negotiations",
+            "plea-agreement-reached",
+            "change-of-plea-hearing",
+            "plea-accepted",
+            "presentence-report",
+            "sentencing-hearing",
+            "guidelines-calculation",
+            "departure-variance",
+            "judgment-entered",
+            "rule35-motion",
+            "notice-of-appeal-window",
+            "notice-of-appeal-filed",
+            "appellate-briefing",
+            "appellate-decision",
+            "conviction-reversed-remanded",
+            "jury-selection",
+            "trial-in-progress",
+            "rule29-motion",
+            "rule29-granted"
+          ],
+          "totalCost": 0,
+          "totalDays": 63
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "speedy-trial-dismissal": {
+      "enumeratedCount": 9,
+      "frontier": [
+        {
+          "nodes": [
+            "investigation",
+            "grand-jury-convened",
+            "grand-jury-vote",
+            "indictment-returned",
+            "arrest",
+            "information-filed",
+            "arraignment",
+            "not-guilty-plea",
+            "rule12-deadline-set",
+            "pretrial-motions-window",
+            "speedy-trial-dismissal"
+          ],
+          "totalCost": 0,
+          "totalDays": 0
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    }
+  },
+  "policyDiff_150_1500": {
+    "flips": [],
+    "rateA": 150,
+    "rateB": 1500
+  },
+  "scc": {
+    "absorbingComponents": [
+      [
+        "complaint-dismissed-no-pc"
+      ],
+      [
+        "conviction-affirmed"
+      ],
+      [
+        "rule29-granted"
+      ],
+      [
+        "acquittal-verdict"
+      ],
+      [
+        "case-dismissed-after-hung-jury"
+      ],
+      [
+        "appeal-window-missed"
+      ],
+      [
+        "conviction-final-no-appeal"
+      ],
+      [
+        "speedy-trial-dismissal"
+      ],
+      [
+        "rule12c-waiver-trap"
+      ]
+    ],
+    "componentOf": {
+      "acquittal-verdict": 3,
+      "appeal-window-missed": 5,
+      "appellate-briefing": 9,
+      "appellate-decision": 9,
+      "arraignment": 9,
+      "arrest": 9,
+      "bound-over-grand-jury": 9,
+      "brady-giglio-disclosure": 9,
+      "case-dismissed-after-hung-jury": 4,
+      "change-of-plea-hearing": 9,
+      "complaint-dismissed-no-pc": 0,
+      "complaint-filed": 10,
+      "conviction-affirmed": 1,
+      "conviction-final-no-appeal": 6,
+      "conviction-reversed-remanded": 9,
+      "departure-variance": 9,
+      "detained-pretrial": 9,
+      "detention-hearing": 9,
+      "discovery-dispute": 9,
+      "discovery-sanction": 9,
+      "grand-jury-convened": 9,
+      "grand-jury-vote": 9,
+      "guidelines-calculation": 9,
+      "guilty-verdict": 9,
+      "indictment-dismissed-defective": 9,
+      "indictment-returned": 9,
+      "information-filed": 9,
+      "initial-appearance": 9,
+      "investigation": 11,
+      "judgment-entered": 9,
+      "jury-selection": 9,
+      "mistrial-hung-jury": 9,
+      "motion-to-dismiss-filed": 9,
+      "motion-to-suppress-filed": 9,
+      "no-bill": 9,
+      "not-guilty-plea": 9,
+      "notice-of-appeal-filed": 9,
+      "notice-of-appeal-window": 9,
+      "plea-accepted": 9,
+      "plea-agreement-reached": 9,
+      "plea-negotiations": 9,
+      "plea-rejected-by-court": 9,
+      "preliminary-hearing": 9,
+      "presentence-report": 9,
+      "pretrial-motions-window": 9,
+      "proceed-to-trial": 9,
+      "released-on-conditions": 9,
+      "rule12-deadline-set": 9,
+      "rule12c-waiver-trap": 8,
+      "rule16-discovery": 9,
+      "rule29-denied": 9,
+      "rule29-granted": 2,
+      "rule29-motion": 9,
+      "rule33-motion": 9,
+      "rule35-motion": 9,
+      "sentencing-hearing": 9,
+      "speedy-trial-dismissal": 7,
+      "suppression-denied": 9,
+      "suppression-granted": 9,
+      "trial-in-progress": 9,
+      "verdict-returned": 9
+    },
+    "components": [
+      [
+        "complaint-dismissed-no-pc"
+      ],
+      [
+        "conviction-affirmed"
+      ],
+      [
+        "rule29-granted"
+      ],
+      [
+        "acquittal-verdict"
+      ],
+      [
+        "case-dismissed-after-hung-jury"
+      ],
+      [
+        "appeal-window-missed"
+      ],
+      [
+        "conviction-final-no-appeal"
+      ],
+      [
+        "speedy-trial-dismissal"
+      ],
+      [
+        "rule12c-waiver-trap"
+      ],
+      [
+        "appellate-briefing",
+        "appellate-decision",
+        "arraignment",
+        "arrest",
+        "bound-over-grand-jury",
+        "brady-giglio-disclosure",
+        "change-of-plea-hearing",
+        "conviction-reversed-remanded",
+        "departure-variance",
+        "detained-pretrial",
+        "detention-hearing",
+        "discovery-dispute",
+        "discovery-sanction",
+        "grand-jury-convened",
+        "grand-jury-vote",
+        "guidelines-calculation",
+        "guilty-verdict",
+        "indictment-dismissed-defective",
+        "indictment-returned",
+        "information-filed",
+        "initial-appearance",
+        "judgment-entered",
+        "jury-selection",
+        "mistrial-hung-jury",
+        "motion-to-dismiss-filed",
+        "motion-to-suppress-filed",
+        "no-bill",
+        "not-guilty-plea",
+        "notice-of-appeal-filed",
+        "notice-of-appeal-window",
+        "plea-accepted",
+        "plea-agreement-reached",
+        "plea-negotiations",
+        "plea-rejected-by-court",
+        "preliminary-hearing",
+        "presentence-report",
+        "pretrial-motions-window",
+        "proceed-to-trial",
+        "released-on-conditions",
+        "rule12-deadline-set",
+        "rule16-discovery",
+        "rule29-denied",
+        "rule29-motion",
+        "rule33-motion",
+        "rule35-motion",
+        "sentencing-hearing",
+        "suppression-denied",
+        "suppression-granted",
+        "trial-in-progress",
+        "verdict-returned"
+      ],
+      [
+        "complaint-filed"
+      ],
+      [
+        "investigation"
+      ]
+    ],
+    "condensation": {
+      "edges": [
+        {
+          "from": 9,
+          "to": 0
+        },
+        {
+          "from": 9,
+          "to": 1
+        },
+        {
+          "from": 9,
+          "to": 2
+        },
+        {
+          "from": 9,
+          "to": 3
+        },
+        {
+          "from": 9,
+          "to": 4
+        },
+        {
+          "from": 9,
+          "to": 5
+        },
+        {
+          "from": 9,
+          "to": 6
+        },
+        {
+          "from": 9,
+          "to": 7
+        },
+        {
+          "from": 9,
+          "to": 8
+        },
+        {
+          "from": 10,
+          "to": 9
+        },
+        {
+          "from": 11,
+          "to": 9
+        },
+        {
+          "from": 11,
+          "to": 10
+        }
+      ],
+      "nodes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    "cyclicComponents": [
+      [
+        "appellate-briefing",
+        "appellate-decision",
+        "arraignment",
+        "arrest",
+        "bound-over-grand-jury",
+        "brady-giglio-disclosure",
+        "change-of-plea-hearing",
+        "conviction-reversed-remanded",
+        "departure-variance",
+        "detained-pretrial",
+        "detention-hearing",
+        "discovery-dispute",
+        "discovery-sanction",
+        "grand-jury-convened",
+        "grand-jury-vote",
+        "guidelines-calculation",
+        "guilty-verdict",
+        "indictment-dismissed-defective",
+        "indictment-returned",
+        "information-filed",
+        "initial-appearance",
+        "judgment-entered",
+        "jury-selection",
+        "mistrial-hung-jury",
+        "motion-to-dismiss-filed",
+        "motion-to-suppress-filed",
+        "no-bill",
+        "not-guilty-plea",
+        "notice-of-appeal-filed",
+        "notice-of-appeal-window",
+        "plea-accepted",
+        "plea-agreement-reached",
+        "plea-negotiations",
+        "plea-rejected-by-court",
+        "preliminary-hearing",
+        "presentence-report",
+        "pretrial-motions-window",
+        "proceed-to-trial",
+        "released-on-conditions",
+        "rule12-deadline-set",
+        "rule16-discovery",
+        "rule29-denied",
+        "rule29-motion",
+        "rule33-motion",
+        "rule35-motion",
+        "sentencing-hearing",
+        "suppression-denied",
+        "suppression-granted",
+        "trial-in-progress",
+        "verdict-returned"
+      ]
+    ],
+    "cyclicLoops": [
+      {
+        "escapeEdges": [
+          {
+            "from": "appellate-decision",
+            "label": "Affirm conviction",
+            "to": "conviction-affirmed"
+          },
+          {
+            "from": "mistrial-hung-jury",
+            "label": "Decline to retry",
+            "to": "case-dismissed-after-hung-jury"
+          },
+          {
+            "from": "notice-of-appeal-window",
+            "label": "Miss appeal deadline",
+            "to": "appeal-window-missed"
+          },
+          {
+            "from": "notice-of-appeal-window",
+            "label": "Waive right to appeal",
+            "to": "conviction-final-no-appeal"
+          },
+          {
+            "from": "preliminary-hearing",
+            "label": "Find no probable cause",
+            "to": "complaint-dismissed-no-pc"
+          },
+          {
+            "from": "pretrial-motions-window",
+            "label": "Miss pretrial motions deadline",
+            "to": "rule12c-waiver-trap"
+          },
+          {
+            "from": "pretrial-motions-window",
+            "label": "Move to dismiss for speedy trial",
+            "to": "speedy-trial-dismissal"
+          },
+          {
+            "from": "rule29-motion",
+            "label": "Grant judgment of acquittal",
+            "to": "rule29-granted"
+          },
+          {
+            "from": "verdict-returned",
+            "label": "Return not guilty verdict",
+            "to": "acquittal-verdict"
+          }
+        ],
+        "internalEdges": [
+          {
+            "from": "appellate-briefing",
+            "label": "Submit case for decision",
+            "to": "appellate-decision"
+          },
+          {
+            "from": "appellate-decision",
+            "label": "Reverse or remand conviction",
+            "to": "conviction-reversed-remanded"
+          },
+          {
+            "from": "arraignment",
+            "label": "Enter not guilty plea",
+            "to": "not-guilty-plea"
+          },
+          {
+            "from": "arrest",
+            "label": "File information",
+            "to": "information-filed"
+          },
+          {
+            "from": "arrest",
+            "label": "Bring defendant before magistrate",
+            "to": "initial-appearance"
+          },
+          {
+            "from": "bound-over-grand-jury",
+            "label": "Refer case to grand jury",
+            "to": "grand-jury-convened"
+          },
+          {
+            "from": "brady-giglio-disclosure",
+            "label": "Continue plea negotiations",
+            "to": "plea-negotiations"
+          },
+          {
+            "from": "brady-giglio-disclosure",
+            "label": "Set case for trial",
+            "to": "proceed-to-trial"
+          },
+          {
+            "from": "change-of-plea-hearing",
+            "label": "Accept guilty plea",
+            "to": "plea-accepted"
+          },
+          {
+            "from": "change-of-plea-hearing",
+            "label": "Reject plea agreement",
+            "to": "plea-rejected-by-court"
+          },
+          {
+            "from": "conviction-reversed-remanded",
+            "label": "Remand with instructions to dismiss",
+            "to": "indictment-dismissed-defective"
+          },
+          {
+            "from": "conviction-reversed-remanded",
+            "label": "Remand for new trial",
+            "to": "jury-selection"
+          },
+          {
+            "from": "conviction-reversed-remanded",
+            "label": "Remand for resentencing",
+            "to": "sentencing-hearing"
+          },
+          {
+            "from": "departure-variance",
+            "label": "Impose sentence, enter judgment",
+            "to": "judgment-entered"
+          },
+          {
+            "from": "detained-pretrial",
+            "label": "Proceed to arraignment",
+            "to": "arraignment"
+          },
+          {
+            "from": "detained-pretrial",
+            "label": "Move to reopen detention hearing",
+            "to": "detention-hearing"
+          },
+          {
+            "from": "detention-hearing",
+            "label": "Order pretrial detention",
+            "to": "detained-pretrial"
+          },
+          {
+            "from": "detention-hearing",
+            "label": "Order release on conditions",
+            "to": "released-on-conditions"
+          },
+          {
+            "from": "discovery-dispute",
+            "label": "Impose discovery sanction",
+            "to": "discovery-sanction"
+          },
+          {
+            "from": "discovery-sanction",
+            "label": "Discovery dispute resolved",
+            "to": "brady-giglio-disclosure"
+          },
+          {
+            "from": "grand-jury-convened",
+            "label": "Grand jury votes",
+            "to": "grand-jury-vote"
+          },
+          {
+            "from": "grand-jury-vote",
+            "label": "Return true bill",
+            "to": "indictment-returned"
+          },
+          {
+            "from": "grand-jury-vote",
+            "label": "Return no bill",
+            "to": "no-bill"
+          },
+          {
+            "from": "guidelines-calculation",
+            "label": "Consider departure or variance",
+            "to": "departure-variance"
+          },
+          {
+            "from": "guilty-verdict",
+            "label": "Renew acquittal motion post-verdict",
+            "to": "rule29-motion"
+          },
+          {
+            "from": "guilty-verdict",
+            "label": "Move for new trial",
+            "to": "rule33-motion"
+          },
+          {
+            "from": "indictment-dismissed-defective",
+            "label": "Re-indict after dismissal",
+            "to": "grand-jury-convened"
+          },
+          {
+            "from": "indictment-returned",
+            "label": "Schedule arraignment on indictment",
+            "to": "arraignment"
+          },
+          {
+            "from": "indictment-returned",
+            "label": "Execute arrest warrant on indictment",
+            "to": "arrest"
+          },
+          {
+            "from": "information-filed",
+            "label": "Schedule arraignment on information",
+            "to": "arraignment"
+          },
+          {
+            "from": "initial-appearance",
+            "label": "Hold detention hearing",
+            "to": "detention-hearing"
+          },
+          {
+            "from": "initial-appearance",
+            "label": "Set preliminary hearing",
+            "to": "preliminary-hearing"
+          },
+          {
+            "from": "judgment-entered",
+            "label": "Start appeal clock",
+            "to": "notice-of-appeal-window"
+          },
+          {
+            "from": "judgment-entered",
+            "label": "Consider Rule 35 relief",
+            "to": "rule35-motion"
+          },
+          {
+            "from": "jury-selection",
+            "label": "Complete voir dire",
+            "to": "trial-in-progress"
+          },
+          {
+            "from": "mistrial-hung-jury",
+            "label": "Retry the case",
+            "to": "jury-selection"
+          },
+          {
+            "from": "motion-to-dismiss-filed",
+            "label": "Grant motion to dismiss",
+            "to": "indictment-dismissed-defective"
+          },
+          {
+            "from": "motion-to-dismiss-filed",
+            "label": "Deny motion to dismiss",
+            "to": "rule16-discovery"
+          },
+          {
+            "from": "motion-to-suppress-filed",
+            "label": "Deny suppression motion",
+            "to": "suppression-denied"
+          },
+          {
+            "from": "motion-to-suppress-filed",
+            "label": "Grant suppression motion",
+            "to": "suppression-granted"
+          },
+          {
+            "from": "no-bill",
+            "label": "Re-present to new grand jury",
+            "to": "grand-jury-convened"
+          },
+          {
+            "from": "not-guilty-plea",
+            "label": "Begin plea negotiations",
+            "to": "plea-negotiations"
+          },
+          {
+            "from": "not-guilty-plea",
+            "label": "Set pretrial motions schedule",
+            "to": "rule12-deadline-set"
+          },
+          {
+            "from": "notice-of-appeal-filed",
+            "label": "Complete appellate briefing",
+            "to": "appellate-briefing"
+          },
+          {
+            "from": "notice-of-appeal-window",
+            "label": "File notice of appeal",
+            "to": "notice-of-appeal-filed"
+          },
+          {
+            "from": "plea-accepted",
+            "label": "Proceed to sentencing",
+            "to": "presentence-report"
+          },
+          {
+            "from": "plea-agreement-reached",
+            "label": "Schedule change-of-plea hearing",
+            "to": "change-of-plea-hearing"
+          },
+          {
+            "from": "plea-agreement-reached",
+            "label": "Withdraw from plea deal",
+            "to": "proceed-to-trial"
+          },
+          {
+            "from": "plea-negotiations",
+            "label": "Reach plea agreement",
+            "to": "plea-agreement-reached"
+          },
+          {
+            "from": "plea-negotiations",
+            "label": "Negotiations fail",
+            "to": "proceed-to-trial"
+          },
+          {
+            "from": "plea-rejected-by-court",
+            "label": "Renegotiate plea agreement",
+            "to": "plea-negotiations"
+          },
+          {
+            "from": "plea-rejected-by-court",
+            "label": "Withdraw guilty plea",
+            "to": "proceed-to-trial"
+          },
+          {
+            "from": "preliminary-hearing",
+            "label": "Find probable cause",
+            "to": "bound-over-grand-jury"
+          },
+          {
+            "from": "preliminary-hearing",
+            "label": "Grand jury indicts first",
+            "to": "indictment-returned"
+          },
+          {
+            "from": "presentence-report",
+            "label": "Finalize PSR",
+            "to": "sentencing-hearing"
+          },
+          {
+            "from": "pretrial-motions-window",
+            "label": "File motion to dismiss indictment",
+            "to": "motion-to-dismiss-filed"
+          },
+          {
+            "from": "pretrial-motions-window",
+            "label": "File motion to suppress evidence",
+            "to": "motion-to-suppress-filed"
+          },
+          {
+            "from": "pretrial-motions-window",
+            "label": "No pretrial motions filed",
+            "to": "rule16-discovery"
+          },
+          {
+            "from": "proceed-to-trial",
+            "label": "Empanel jury",
+            "to": "jury-selection"
+          },
+          {
+            "from": "released-on-conditions",
+            "label": "Proceed to arraignment",
+            "to": "arraignment"
+          },
+          {
+            "from": "rule12-deadline-set",
+            "label": "Motions deadline arrives",
+            "to": "pretrial-motions-window"
+          },
+          {
+            "from": "rule12-deadline-set",
+            "label": "Grant continuance",
+            "to": "rule12-deadline-set"
+          },
+          {
+            "from": "rule16-discovery",
+            "label": "Disclose Brady/Giglio material",
+            "to": "brady-giglio-disclosure"
+          },
+          {
+            "from": "rule16-discovery",
+            "label": "Move to compel discovery",
+            "to": "discovery-dispute"
+          },
+          {
+            "from": "rule29-denied",
+            "label": "Submit case to jury",
+            "to": "verdict-returned"
+          },
+          {
+            "from": "rule29-motion",
+            "label": "Deny motion, proceed to jury",
+            "to": "rule29-denied"
+          },
+          {
+            "from": "rule29-motion",
+            "label": "Deny post-verdict acquittal motion",
+            "to": "rule33-motion"
+          },
+          {
+            "from": "rule33-motion",
+            "label": "Grant new trial",
+            "to": "jury-selection"
+          },
+          {
+            "from": "rule33-motion",
+            "label": "Deny new trial motion",
+            "to": "presentence-report"
+          },
+          {
+            "from": "rule35-motion",
+            "label": "Correct or reduce sentence",
+            "to": "judgment-entered"
+          },
+          {
+            "from": "rule35-motion",
+            "label": "No Rule 35 relief granted",
+            "to": "notice-of-appeal-window"
+          },
+          {
+            "from": "sentencing-hearing",
+            "label": "Calculate Guidelines range",
+            "to": "guidelines-calculation"
+          },
+          {
+            "from": "suppression-denied",
+            "label": "Proceed to discovery",
+            "to": "rule16-discovery"
+          },
+          {
+            "from": "suppression-granted",
+            "label": "Move to dismiss after suppression",
+            "to": "indictment-dismissed-defective"
+          },
+          {
+            "from": "suppression-granted",
+            "label": "Proceed without suppressed evidence",
+            "to": "rule16-discovery"
+          },
+          {
+            "from": "trial-in-progress",
+            "label": "Move for judgment of acquittal",
+            "to": "rule29-motion"
+          },
+          {
+            "from": "verdict-returned",
+            "label": "Return guilty verdict",
+            "to": "guilty-verdict"
+          },
+          {
+            "from": "verdict-returned",
+            "label": "Jury deadlocks",
+            "to": "mistrial-hung-jury"
+          }
+        ],
+        "nodes": [
+          "appellate-briefing",
+          "appellate-decision",
+          "arraignment",
+          "arrest",
+          "bound-over-grand-jury",
+          "brady-giglio-disclosure",
+          "change-of-plea-hearing",
+          "conviction-reversed-remanded",
+          "departure-variance",
+          "detained-pretrial",
+          "detention-hearing",
+          "discovery-dispute",
+          "discovery-sanction",
+          "grand-jury-convened",
+          "grand-jury-vote",
+          "guidelines-calculation",
+          "guilty-verdict",
+          "indictment-dismissed-defective",
+          "indictment-returned",
+          "information-filed",
+          "initial-appearance",
+          "judgment-entered",
+          "jury-selection",
+          "mistrial-hung-jury",
+          "motion-to-dismiss-filed",
+          "motion-to-suppress-filed",
+          "no-bill",
+          "not-guilty-plea",
+          "notice-of-appeal-filed",
+          "notice-of-appeal-window",
+          "plea-accepted",
+          "plea-agreement-reached",
+          "plea-negotiations",
+          "plea-rejected-by-court",
+          "preliminary-hearing",
+          "presentence-report",
+          "pretrial-motions-window",
+          "proceed-to-trial",
+          "released-on-conditions",
+          "rule12-deadline-set",
+          "rule16-discovery",
+          "rule29-denied",
+          "rule29-motion",
+          "rule33-motion",
+          "rule35-motion",
+          "sentencing-hearing",
+          "suppression-denied",
+          "suppression-granted",
+          "trial-in-progress",
+          "verdict-returned"
+        ]
+      }
+    ]
+  },
+  "schemaVersion": 1,
+  "startNodeId": "investigation",
+  "terminals": [
+    "acquittal-verdict",
+    "appeal-window-missed",
+    "case-dismissed-after-hung-jury",
+    "complaint-dismissed-no-pc",
+    "conviction-affirmed",
+    "conviction-final-no-appeal",
+    "indictment-dismissed-defective",
+    "judgment-entered",
+    "no-bill",
+    "rule12c-waiver-trap",
+    "rule29-granted",
+    "speedy-trial-dismissal"
+  ],
+  "valueIteration250": {
+    "converged": true,
+    "edgeQ": [
+      {
+        "from": "appellate-briefing",
+        "label": "Submit case for decision",
+        "q": 0,
+        "to": "appellate-decision"
+      },
+      {
+        "from": "appellate-decision",
+        "label": "Affirm conviction",
+        "q": 0,
+        "to": "conviction-affirmed"
+      },
+      {
+        "from": "appellate-decision",
+        "label": "Reverse or remand conviction",
+        "q": 0,
+        "to": "conviction-reversed-remanded"
+      },
+      {
+        "from": "arraignment",
+        "label": "Enter not guilty plea",
+        "q": 0,
+        "to": "not-guilty-plea"
+      },
+      {
+        "from": "arrest",
+        "label": "File information",
+        "q": 0,
+        "to": "information-filed"
+      },
+      {
+        "from": "arrest",
+        "label": "Bring defendant before magistrate",
+        "q": 0,
+        "to": "initial-appearance"
+      },
+      {
+        "from": "bound-over-grand-jury",
+        "label": "Refer case to grand jury",
+        "q": 0,
+        "to": "grand-jury-convened"
+      },
+      {
+        "from": "brady-giglio-disclosure",
+        "label": "Continue plea negotiations",
+        "q": 0,
+        "to": "plea-negotiations"
+      },
+      {
+        "from": "brady-giglio-disclosure",
+        "label": "Set case for trial",
+        "q": 0,
+        "to": "proceed-to-trial"
+      },
+      {
+        "from": "change-of-plea-hearing",
+        "label": "Accept guilty plea",
+        "q": 0,
+        "to": "plea-accepted"
+      },
+      {
+        "from": "change-of-plea-hearing",
+        "label": "Reject plea agreement",
+        "q": 0,
+        "to": "plea-rejected-by-court"
+      },
+      {
+        "from": "complaint-filed",
+        "label": "Execute arrest warrant or summons",
+        "q": 0,
+        "to": "arrest"
+      },
+      {
+        "from": "conviction-reversed-remanded",
+        "label": "Remand with instructions to dismiss",
+        "q": 0,
+        "to": "indictment-dismissed-defective"
+      },
+      {
+        "from": "conviction-reversed-remanded",
+        "label": "Remand for new trial",
+        "q": 0,
+        "to": "jury-selection"
+      },
+      {
+        "from": "conviction-reversed-remanded",
+        "label": "Remand for resentencing",
+        "q": 0,
+        "to": "sentencing-hearing"
+      },
+      {
+        "from": "departure-variance",
+        "label": "Impose sentence, enter judgment",
+        "q": 0,
+        "to": "judgment-entered"
+      },
+      {
+        "from": "detained-pretrial",
+        "label": "Proceed to arraignment",
+        "q": 0,
+        "to": "arraignment"
+      },
+      {
+        "from": "detained-pretrial",
+        "label": "Move to reopen detention hearing",
+        "q": 0,
+        "to": "detention-hearing"
+      },
+      {
+        "from": "detention-hearing",
+        "label": "Order pretrial detention",
+        "q": 0,
+        "to": "detained-pretrial"
+      },
+      {
+        "from": "detention-hearing",
+        "label": "Order release on conditions",
+        "q": 0,
+        "to": "released-on-conditions"
+      },
+      {
+        "from": "discovery-dispute",
+        "label": "Impose discovery sanction",
+        "q": 0,
+        "to": "discovery-sanction"
+      },
+      {
+        "from": "discovery-sanction",
+        "label": "Discovery dispute resolved",
+        "q": 0,
+        "to": "brady-giglio-disclosure"
+      },
+      {
+        "from": "grand-jury-convened",
+        "label": "Grand jury votes",
+        "q": 0,
+        "to": "grand-jury-vote"
+      },
+      {
+        "from": "grand-jury-vote",
+        "label": "Return true bill",
+        "q": 0,
+        "to": "indictment-returned"
+      },
+      {
+        "from": "grand-jury-vote",
+        "label": "Return no bill",
+        "q": 0,
+        "to": "no-bill"
+      },
+      {
+        "from": "guidelines-calculation",
+        "label": "Consider departure or variance",
+        "q": 0,
+        "to": "departure-variance"
+      },
+      {
+        "from": "guilty-verdict",
+        "label": "Renew acquittal motion post-verdict",
+        "q": 0,
+        "to": "rule29-motion"
+      },
+      {
+        "from": "guilty-verdict",
+        "label": "Move for new trial",
+        "q": 0,
+        "to": "rule33-motion"
+      },
+      {
+        "from": "indictment-dismissed-defective",
+        "label": "Re-indict after dismissal",
+        "q": 0,
+        "to": "grand-jury-convened"
+      },
+      {
+        "from": "indictment-returned",
+        "label": "Schedule arraignment on indictment",
+        "q": 0,
+        "to": "arraignment"
+      },
+      {
+        "from": "indictment-returned",
+        "label": "Execute arrest warrant on indictment",
+        "q": 0,
+        "to": "arrest"
+      },
+      {
+        "from": "information-filed",
+        "label": "Schedule arraignment on information",
+        "q": 0,
+        "to": "arraignment"
+      },
+      {
+        "from": "initial-appearance",
+        "label": "Hold detention hearing",
+        "q": 0,
+        "to": "detention-hearing"
+      },
+      {
+        "from": "initial-appearance",
+        "label": "Set preliminary hearing",
+        "q": 0,
+        "to": "preliminary-hearing"
+      },
+      {
+        "from": "investigation",
+        "label": "File criminal complaint",
+        "q": 0,
+        "to": "complaint-filed"
+      },
+      {
+        "from": "investigation",
+        "label": "Present case to grand jury",
+        "q": 0,
+        "to": "grand-jury-convened"
+      },
+      {
+        "from": "judgment-entered",
+        "label": "Start appeal clock",
+        "q": 0,
+        "to": "notice-of-appeal-window"
+      },
+      {
+        "from": "judgment-entered",
+        "label": "Consider Rule 35 relief",
+        "q": 0,
+        "to": "rule35-motion"
+      },
+      {
+        "from": "jury-selection",
+        "label": "Complete voir dire",
+        "q": 0,
+        "to": "trial-in-progress"
+      },
+      {
+        "from": "mistrial-hung-jury",
+        "label": "Decline to retry",
+        "q": 0,
+        "to": "case-dismissed-after-hung-jury"
+      },
+      {
+        "from": "mistrial-hung-jury",
+        "label": "Retry the case",
+        "q": 0,
+        "to": "jury-selection"
+      },
+      {
+        "from": "motion-to-dismiss-filed",
+        "label": "Grant motion to dismiss",
+        "q": 0,
+        "to": "indictment-dismissed-defective"
+      },
+      {
+        "from": "motion-to-dismiss-filed",
+        "label": "Deny motion to dismiss",
+        "q": 0,
+        "to": "rule16-discovery"
+      },
+      {
+        "from": "motion-to-suppress-filed",
+        "label": "Deny suppression motion",
+        "q": 0,
+        "to": "suppression-denied"
+      },
+      {
+        "from": "motion-to-suppress-filed",
+        "label": "Grant suppression motion",
+        "q": 0,
+        "to": "suppression-granted"
+      },
+      {
+        "from": "no-bill",
+        "label": "Re-present to new grand jury",
+        "q": 0,
+        "to": "grand-jury-convened"
+      },
+      {
+        "from": "not-guilty-plea",
+        "label": "Begin plea negotiations",
+        "q": 0,
+        "to": "plea-negotiations"
+      },
+      {
+        "from": "not-guilty-plea",
+        "label": "Set pretrial motions schedule",
+        "q": 0,
+        "to": "rule12-deadline-set"
+      },
+      {
+        "from": "notice-of-appeal-filed",
+        "label": "Complete appellate briefing",
+        "q": 0,
+        "to": "appellate-briefing"
+      },
+      {
+        "from": "notice-of-appeal-window",
+        "label": "Miss appeal deadline",
+        "q": 0,
+        "to": "appeal-window-missed"
+      },
+      {
+        "from": "notice-of-appeal-window",
+        "label": "Waive right to appeal",
+        "q": 0,
+        "to": "conviction-final-no-appeal"
+      },
+      {
+        "from": "notice-of-appeal-window",
+        "label": "File notice of appeal",
+        "q": 0,
+        "to": "notice-of-appeal-filed"
+      },
+      {
+        "from": "plea-accepted",
+        "label": "Proceed to sentencing",
+        "q": 0,
+        "to": "presentence-report"
+      },
+      {
+        "from": "plea-agreement-reached",
+        "label": "Schedule change-of-plea hearing",
+        "q": 0,
+        "to": "change-of-plea-hearing"
+      },
+      {
+        "from": "plea-agreement-reached",
+        "label": "Withdraw from plea deal",
+        "q": 0,
+        "to": "proceed-to-trial"
+      },
+      {
+        "from": "plea-negotiations",
+        "label": "Reach plea agreement",
+        "q": 0,
+        "to": "plea-agreement-reached"
+      },
+      {
+        "from": "plea-negotiations",
+        "label": "Negotiations fail",
+        "q": 0,
+        "to": "proceed-to-trial"
+      },
+      {
+        "from": "plea-rejected-by-court",
+        "label": "Renegotiate plea agreement",
+        "q": 0,
+        "to": "plea-negotiations"
+      },
+      {
+        "from": "plea-rejected-by-court",
+        "label": "Withdraw guilty plea",
+        "q": 0,
+        "to": "proceed-to-trial"
+      },
+      {
+        "from": "preliminary-hearing",
+        "label": "Find probable cause",
+        "q": 0,
+        "to": "bound-over-grand-jury"
+      },
+      {
+        "from": "preliminary-hearing",
+        "label": "Find no probable cause",
+        "q": 0,
+        "to": "complaint-dismissed-no-pc"
+      },
+      {
+        "from": "preliminary-hearing",
+        "label": "Grand jury indicts first",
+        "q": 0,
+        "to": "indictment-returned"
+      },
+      {
+        "from": "presentence-report",
+        "label": "Finalize PSR",
+        "q": 0,
+        "to": "sentencing-hearing"
+      },
+      {
+        "from": "pretrial-motions-window",
+        "label": "File motion to dismiss indictment",
+        "q": 0,
+        "to": "motion-to-dismiss-filed"
+      },
+      {
+        "from": "pretrial-motions-window",
+        "label": "File motion to suppress evidence",
+        "q": 0,
+        "to": "motion-to-suppress-filed"
+      },
+      {
+        "from": "pretrial-motions-window",
+        "label": "Miss pretrial motions deadline",
+        "q": 0,
+        "to": "rule12c-waiver-trap"
+      },
+      {
+        "from": "pretrial-motions-window",
+        "label": "No pretrial motions filed",
+        "q": 0,
+        "to": "rule16-discovery"
+      },
+      {
+        "from": "pretrial-motions-window",
+        "label": "Move to dismiss for speedy trial",
+        "q": 0,
+        "to": "speedy-trial-dismissal"
+      },
+      {
+        "from": "proceed-to-trial",
+        "label": "Empanel jury",
+        "q": 0,
+        "to": "jury-selection"
+      },
+      {
+        "from": "released-on-conditions",
+        "label": "Proceed to arraignment",
+        "q": 0,
+        "to": "arraignment"
+      },
+      {
+        "from": "rule12-deadline-set",
+        "label": "Motions deadline arrives",
+        "q": 0,
+        "to": "pretrial-motions-window"
+      },
+      {
+        "from": "rule12-deadline-set",
+        "label": "Grant continuance",
+        "q": 0,
+        "to": "rule12-deadline-set"
+      },
+      {
+        "from": "rule16-discovery",
+        "label": "Disclose Brady/Giglio material",
+        "q": 0,
+        "to": "brady-giglio-disclosure"
+      },
+      {
+        "from": "rule16-discovery",
+        "label": "Move to compel discovery",
+        "q": 0,
+        "to": "discovery-dispute"
+      },
+      {
+        "from": "rule29-denied",
+        "label": "Submit case to jury",
+        "q": 0,
+        "to": "verdict-returned"
+      },
+      {
+        "from": "rule29-motion",
+        "label": "Deny motion, proceed to jury",
+        "q": 0,
+        "to": "rule29-denied"
+      },
+      {
+        "from": "rule29-motion",
+        "label": "Grant judgment of acquittal",
+        "q": 0,
+        "to": "rule29-granted"
+      },
+      {
+        "from": "rule29-motion",
+        "label": "Deny post-verdict acquittal motion",
+        "q": 0,
+        "to": "rule33-motion"
+      },
+      {
+        "from": "rule33-motion",
+        "label": "Grant new trial",
+        "q": 0,
+        "to": "jury-selection"
+      },
+      {
+        "from": "rule33-motion",
+        "label": "Deny new trial motion",
+        "q": 0,
+        "to": "presentence-report"
+      },
+      {
+        "from": "rule35-motion",
+        "label": "Correct or reduce sentence",
+        "q": 0,
+        "to": "judgment-entered"
+      },
+      {
+        "from": "rule35-motion",
+        "label": "No Rule 35 relief granted",
+        "q": 0,
+        "to": "notice-of-appeal-window"
+      },
+      {
+        "from": "sentencing-hearing",
+        "label": "Calculate Guidelines range",
+        "q": 0,
+        "to": "guidelines-calculation"
+      },
+      {
+        "from": "suppression-denied",
+        "label": "Proceed to discovery",
+        "q": 0,
+        "to": "rule16-discovery"
+      },
+      {
+        "from": "suppression-granted",
+        "label": "Move to dismiss after suppression",
+        "q": 0,
+        "to": "indictment-dismissed-defective"
+      },
+      {
+        "from": "suppression-granted",
+        "label": "Proceed without suppressed evidence",
+        "q": 0,
+        "to": "rule16-discovery"
+      },
+      {
+        "from": "trial-in-progress",
+        "label": "Move for judgment of acquittal",
+        "q": 0,
+        "to": "rule29-motion"
+      },
+      {
+        "from": "verdict-returned",
+        "label": "Return not guilty verdict",
+        "q": 0,
+        "to": "acquittal-verdict"
+      },
+      {
+        "from": "verdict-returned",
+        "label": "Return guilty verdict",
+        "q": 0,
+        "to": "guilty-verdict"
+      },
+      {
+        "from": "verdict-returned",
+        "label": "Jury deadlocks",
+        "q": 0,
+        "to": "mistrial-hung-jury"
+      }
+    ],
+    "iterations": 1,
+    "policy": {
+      "arraignment": {
+        "from": "arraignment",
+        "label": "Enter not guilty plea",
+        "to": "not-guilty-plea"
+      },
+      "arrest": {
+        "from": "arrest",
+        "label": "Bring defendant before magistrate",
+        "to": "initial-appearance"
+      },
+      "detained-pretrial": {
+        "from": "detained-pretrial",
+        "label": "Proceed to arraignment",
+        "to": "arraignment"
+      },
+      "guilty-verdict": {
+        "from": "guilty-verdict",
+        "label": "Renew acquittal motion post-verdict",
+        "to": "rule29-motion"
+      },
+      "investigation": {
+        "from": "investigation",
+        "label": "Present case to grand jury",
+        "to": "grand-jury-convened"
+      },
+      "mistrial-hung-jury": {
+        "from": "mistrial-hung-jury",
+        "label": "Retry the case",
+        "to": "jury-selection"
+      },
+      "notice-of-appeal-window": {
+        "from": "notice-of-appeal-window",
+        "label": "File notice of appeal",
+        "to": "notice-of-appeal-filed"
+      },
+      "plea-agreement-reached": {
+        "from": "plea-agreement-reached",
+        "label": "Schedule change-of-plea hearing",
+        "to": "change-of-plea-hearing"
+      },
+      "plea-rejected-by-court": {
+        "from": "plea-rejected-by-court",
+        "label": "Withdraw guilty plea",
+        "to": "proceed-to-trial"
+      },
+      "pretrial-motions-window": {
+        "from": "pretrial-motions-window",
+        "label": "File motion to dismiss indictment",
+        "to": "motion-to-dismiss-filed"
+      },
+      "rule16-discovery": {
+        "from": "rule16-discovery",
+        "label": "Disclose Brady/Giglio material",
+        "to": "brady-giglio-disclosure"
+      },
+      "suppression-granted": {
+        "from": "suppression-granted",
+        "label": "Move to dismiss after suppression",
+        "to": "indictment-dismissed-defective"
+      },
+      "trial-in-progress": {
+        "from": "trial-in-progress",
+        "label": "Move for judgment of acquittal",
+        "to": "rule29-motion"
+      }
+    },
+    "qValue": {
+      "appellate-briefing→appellate-decision": 0,
+      "appellate-decision→conviction-affirmed": 0,
+      "appellate-decision→conviction-reversed-remanded": 0,
+      "arraignment→not-guilty-plea": 0,
+      "arrest→information-filed": 0,
+      "arrest→initial-appearance": 0,
+      "bound-over-grand-jury→grand-jury-convened": 0,
+      "brady-giglio-disclosure→plea-negotiations": 0,
+      "brady-giglio-disclosure→proceed-to-trial": 0,
+      "change-of-plea-hearing→plea-accepted": 0,
+      "change-of-plea-hearing→plea-rejected-by-court": 0,
+      "complaint-filed→arrest": 0,
+      "conviction-reversed-remanded→indictment-dismissed-defective": 0,
+      "conviction-reversed-remanded→jury-selection": 0,
+      "conviction-reversed-remanded→sentencing-hearing": 0,
+      "departure-variance→judgment-entered": 0,
+      "detained-pretrial→arraignment": 0,
+      "detained-pretrial→detention-hearing": 0,
+      "detention-hearing→detained-pretrial": 0,
+      "detention-hearing→released-on-conditions": 0,
+      "discovery-dispute→discovery-sanction": 0,
+      "discovery-sanction→brady-giglio-disclosure": 0,
+      "grand-jury-convened→grand-jury-vote": 0,
+      "grand-jury-vote→indictment-returned": 0,
+      "grand-jury-vote→no-bill": 0,
+      "guidelines-calculation→departure-variance": 0,
+      "guilty-verdict→rule29-motion": 0,
+      "guilty-verdict→rule33-motion": 0,
+      "indictment-returned→arraignment": 0,
+      "indictment-returned→arrest": 0,
+      "information-filed→arraignment": 0,
+      "initial-appearance→detention-hearing": 0,
+      "initial-appearance→preliminary-hearing": 0,
+      "investigation→complaint-filed": 0,
+      "investigation→grand-jury-convened": 0,
+      "jury-selection→trial-in-progress": 0,
+      "mistrial-hung-jury→case-dismissed-after-hung-jury": 0,
+      "mistrial-hung-jury→jury-selection": 0,
+      "motion-to-dismiss-filed→indictment-dismissed-defective": 0,
+      "motion-to-dismiss-filed→rule16-discovery": 0,
+      "motion-to-suppress-filed→suppression-denied": 0,
+      "motion-to-suppress-filed→suppression-granted": 0,
+      "not-guilty-plea→plea-negotiations": 0,
+      "not-guilty-plea→rule12-deadline-set": 0,
+      "notice-of-appeal-filed→appellate-briefing": 0,
+      "notice-of-appeal-window→appeal-window-missed": 0,
+      "notice-of-appeal-window→conviction-final-no-appeal": 0,
+      "notice-of-appeal-window→notice-of-appeal-filed": 0,
+      "plea-accepted→presentence-report": 0,
+      "plea-agreement-reached→change-of-plea-hearing": 0,
+      "plea-agreement-reached→proceed-to-trial": 0,
+      "plea-negotiations→plea-agreement-reached": 0,
+      "plea-negotiations→proceed-to-trial": 0,
+      "plea-rejected-by-court→plea-negotiations": 0,
+      "plea-rejected-by-court→proceed-to-trial": 0,
+      "preliminary-hearing→bound-over-grand-jury": 0,
+      "preliminary-hearing→complaint-dismissed-no-pc": 0,
+      "preliminary-hearing→indictment-returned": 0,
+      "presentence-report→sentencing-hearing": 0,
+      "pretrial-motions-window→motion-to-dismiss-filed": 0,
+      "pretrial-motions-window→motion-to-suppress-filed": 0,
+      "pretrial-motions-window→rule12c-waiver-trap": 0,
+      "pretrial-motions-window→rule16-discovery": 0,
+      "pretrial-motions-window→speedy-trial-dismissal": 0,
+      "proceed-to-trial→jury-selection": 0,
+      "released-on-conditions→arraignment": 0,
+      "rule12-deadline-set→pretrial-motions-window": 0,
+      "rule12-deadline-set→rule12-deadline-set": 0,
+      "rule16-discovery→brady-giglio-disclosure": 0,
+      "rule16-discovery→discovery-dispute": 0,
+      "rule29-denied→verdict-returned": 0,
+      "rule29-motion→rule29-denied": 0,
+      "rule29-motion→rule29-granted": 0,
+      "rule29-motion→rule33-motion": 0,
+      "rule33-motion→jury-selection": 0,
+      "rule33-motion→presentence-report": 0,
+      "rule35-motion→judgment-entered": 0,
+      "rule35-motion→notice-of-appeal-window": 0,
+      "sentencing-hearing→guidelines-calculation": 0,
+      "suppression-denied→rule16-discovery": 0,
+      "suppression-granted→indictment-dismissed-defective": 0,
+      "suppression-granted→rule16-discovery": 0,
+      "trial-in-progress→rule29-motion": 0,
+      "verdict-returned→acquittal-verdict": 0,
+      "verdict-returned→guilty-verdict": 0,
+      "verdict-returned→mistrial-hung-jury": 0
+    },
+    "qValueNote": "qValue is keyed 'from→to' (StatechartEdge.qKey) and COLLIDES on parallel edges (same from/to, different label) — last-write-wins from the source Map iteration order. Use edgeQ for a collision-free per-edge view.",
+    "value": {
+      "acquittal-verdict": 0,
+      "appeal-window-missed": 0,
+      "appellate-briefing": 0,
+      "appellate-decision": 0,
+      "arraignment": 0,
+      "arrest": 0,
+      "bound-over-grand-jury": 0,
+      "brady-giglio-disclosure": 0,
+      "case-dismissed-after-hung-jury": 0,
+      "change-of-plea-hearing": 0,
+      "complaint-dismissed-no-pc": 0,
+      "complaint-filed": 0,
+      "conviction-affirmed": 0,
+      "conviction-final-no-appeal": 0,
+      "conviction-reversed-remanded": 0,
+      "departure-variance": 0,
+      "detained-pretrial": 0,
+      "detention-hearing": 0,
+      "discovery-dispute": 0,
+      "discovery-sanction": 0,
+      "grand-jury-convened": 0,
+      "grand-jury-vote": 0,
+      "guidelines-calculation": 0,
+      "guilty-verdict": 0,
+      "indictment-dismissed-defective": 0,
+      "indictment-returned": 0,
+      "information-filed": 0,
+      "initial-appearance": 0,
+      "investigation": 0,
+      "judgment-entered": 0,
+      "jury-selection": 0,
+      "mistrial-hung-jury": 0,
+      "motion-to-dismiss-filed": 0,
+      "motion-to-suppress-filed": 0,
+      "no-bill": 0,
+      "not-guilty-plea": 0,
+      "notice-of-appeal-filed": 0,
+      "notice-of-appeal-window": 0,
+      "plea-accepted": 0,
+      "plea-agreement-reached": 0,
+      "plea-negotiations": 0,
+      "plea-rejected-by-court": 0,
+      "preliminary-hearing": 0,
+      "presentence-report": 0,
+      "pretrial-motions-window": 0,
+      "proceed-to-trial": 0,
+      "released-on-conditions": 0,
+      "rule12-deadline-set": 0,
+      "rule12c-waiver-trap": 0,
+      "rule16-discovery": 0,
+      "rule29-denied": 0,
+      "rule29-granted": 0,
+      "rule29-motion": 0,
+      "rule33-motion": 0,
+      "rule35-motion": 0,
+      "sentencing-hearing": 0,
+      "speedy-trial-dismissal": 0,
+      "suppression-denied": 0,
+      "suppression-granted": 0,
+      "trial-in-progress": 0,
+      "verdict-returned": 0
+    }
+  },
+  "valueIteration500": {
+    "converged": true,
+    "edgeQ": [
+      {
+        "from": "appellate-briefing",
+        "label": "Submit case for decision",
+        "q": 0,
+        "to": "appellate-decision"
+      },
+      {
+        "from": "appellate-decision",
+        "label": "Affirm conviction",
+        "q": 0,
+        "to": "conviction-affirmed"
+      },
+      {
+        "from": "appellate-decision",
+        "label": "Reverse or remand conviction",
+        "q": 0,
+        "to": "conviction-reversed-remanded"
+      },
+      {
+        "from": "arraignment",
+        "label": "Enter not guilty plea",
+        "q": 0,
+        "to": "not-guilty-plea"
+      },
+      {
+        "from": "arrest",
+        "label": "File information",
+        "q": 0,
+        "to": "information-filed"
+      },
+      {
+        "from": "arrest",
+        "label": "Bring defendant before magistrate",
+        "q": 0,
+        "to": "initial-appearance"
+      },
+      {
+        "from": "bound-over-grand-jury",
+        "label": "Refer case to grand jury",
+        "q": 0,
+        "to": "grand-jury-convened"
+      },
+      {
+        "from": "brady-giglio-disclosure",
+        "label": "Continue plea negotiations",
+        "q": 0,
+        "to": "plea-negotiations"
+      },
+      {
+        "from": "brady-giglio-disclosure",
+        "label": "Set case for trial",
+        "q": 0,
+        "to": "proceed-to-trial"
+      },
+      {
+        "from": "change-of-plea-hearing",
+        "label": "Accept guilty plea",
+        "q": 0,
+        "to": "plea-accepted"
+      },
+      {
+        "from": "change-of-plea-hearing",
+        "label": "Reject plea agreement",
+        "q": 0,
+        "to": "plea-rejected-by-court"
+      },
+      {
+        "from": "complaint-filed",
+        "label": "Execute arrest warrant or summons",
+        "q": 0,
+        "to": "arrest"
+      },
+      {
+        "from": "conviction-reversed-remanded",
+        "label": "Remand with instructions to dismiss",
+        "q": 0,
+        "to": "indictment-dismissed-defective"
+      },
+      {
+        "from": "conviction-reversed-remanded",
+        "label": "Remand for new trial",
+        "q": 0,
+        "to": "jury-selection"
+      },
+      {
+        "from": "conviction-reversed-remanded",
+        "label": "Remand for resentencing",
+        "q": 0,
+        "to": "sentencing-hearing"
+      },
+      {
+        "from": "departure-variance",
+        "label": "Impose sentence, enter judgment",
+        "q": 0,
+        "to": "judgment-entered"
+      },
+      {
+        "from": "detained-pretrial",
+        "label": "Proceed to arraignment",
+        "q": 0,
+        "to": "arraignment"
+      },
+      {
+        "from": "detained-pretrial",
+        "label": "Move to reopen detention hearing",
+        "q": 0,
+        "to": "detention-hearing"
+      },
+      {
+        "from": "detention-hearing",
+        "label": "Order pretrial detention",
+        "q": 0,
+        "to": "detained-pretrial"
+      },
+      {
+        "from": "detention-hearing",
+        "label": "Order release on conditions",
+        "q": 0,
+        "to": "released-on-conditions"
+      },
+      {
+        "from": "discovery-dispute",
+        "label": "Impose discovery sanction",
+        "q": 0,
+        "to": "discovery-sanction"
+      },
+      {
+        "from": "discovery-sanction",
+        "label": "Discovery dispute resolved",
+        "q": 0,
+        "to": "brady-giglio-disclosure"
+      },
+      {
+        "from": "grand-jury-convened",
+        "label": "Grand jury votes",
+        "q": 0,
+        "to": "grand-jury-vote"
+      },
+      {
+        "from": "grand-jury-vote",
+        "label": "Return true bill",
+        "q": 0,
+        "to": "indictment-returned"
+      },
+      {
+        "from": "grand-jury-vote",
+        "label": "Return no bill",
+        "q": 0,
+        "to": "no-bill"
+      },
+      {
+        "from": "guidelines-calculation",
+        "label": "Consider departure or variance",
+        "q": 0,
+        "to": "departure-variance"
+      },
+      {
+        "from": "guilty-verdict",
+        "label": "Renew acquittal motion post-verdict",
+        "q": 0,
+        "to": "rule29-motion"
+      },
+      {
+        "from": "guilty-verdict",
+        "label": "Move for new trial",
+        "q": 0,
+        "to": "rule33-motion"
+      },
+      {
+        "from": "indictment-dismissed-defective",
+        "label": "Re-indict after dismissal",
+        "q": 0,
+        "to": "grand-jury-convened"
+      },
+      {
+        "from": "indictment-returned",
+        "label": "Schedule arraignment on indictment",
+        "q": 0,
+        "to": "arraignment"
+      },
+      {
+        "from": "indictment-returned",
+        "label": "Execute arrest warrant on indictment",
+        "q": 0,
+        "to": "arrest"
+      },
+      {
+        "from": "information-filed",
+        "label": "Schedule arraignment on information",
+        "q": 0,
+        "to": "arraignment"
+      },
+      {
+        "from": "initial-appearance",
+        "label": "Hold detention hearing",
+        "q": 0,
+        "to": "detention-hearing"
+      },
+      {
+        "from": "initial-appearance",
+        "label": "Set preliminary hearing",
+        "q": 0,
+        "to": "preliminary-hearing"
+      },
+      {
+        "from": "investigation",
+        "label": "File criminal complaint",
+        "q": 0,
+        "to": "complaint-filed"
+      },
+      {
+        "from": "investigation",
+        "label": "Present case to grand jury",
+        "q": 0,
+        "to": "grand-jury-convened"
+      },
+      {
+        "from": "judgment-entered",
+        "label": "Start appeal clock",
+        "q": 0,
+        "to": "notice-of-appeal-window"
+      },
+      {
+        "from": "judgment-entered",
+        "label": "Consider Rule 35 relief",
+        "q": 0,
+        "to": "rule35-motion"
+      },
+      {
+        "from": "jury-selection",
+        "label": "Complete voir dire",
+        "q": 0,
+        "to": "trial-in-progress"
+      },
+      {
+        "from": "mistrial-hung-jury",
+        "label": "Decline to retry",
+        "q": 0,
+        "to": "case-dismissed-after-hung-jury"
+      },
+      {
+        "from": "mistrial-hung-jury",
+        "label": "Retry the case",
+        "q": 0,
+        "to": "jury-selection"
+      },
+      {
+        "from": "motion-to-dismiss-filed",
+        "label": "Grant motion to dismiss",
+        "q": 0,
+        "to": "indictment-dismissed-defective"
+      },
+      {
+        "from": "motion-to-dismiss-filed",
+        "label": "Deny motion to dismiss",
+        "q": 0,
+        "to": "rule16-discovery"
+      },
+      {
+        "from": "motion-to-suppress-filed",
+        "label": "Deny suppression motion",
+        "q": 0,
+        "to": "suppression-denied"
+      },
+      {
+        "from": "motion-to-suppress-filed",
+        "label": "Grant suppression motion",
+        "q": 0,
+        "to": "suppression-granted"
+      },
+      {
+        "from": "no-bill",
+        "label": "Re-present to new grand jury",
+        "q": 0,
+        "to": "grand-jury-convened"
+      },
+      {
+        "from": "not-guilty-plea",
+        "label": "Begin plea negotiations",
+        "q": 0,
+        "to": "plea-negotiations"
+      },
+      {
+        "from": "not-guilty-plea",
+        "label": "Set pretrial motions schedule",
+        "q": 0,
+        "to": "rule12-deadline-set"
+      },
+      {
+        "from": "notice-of-appeal-filed",
+        "label": "Complete appellate briefing",
+        "q": 0,
+        "to": "appellate-briefing"
+      },
+      {
+        "from": "notice-of-appeal-window",
+        "label": "Miss appeal deadline",
+        "q": 0,
+        "to": "appeal-window-missed"
+      },
+      {
+        "from": "notice-of-appeal-window",
+        "label": "Waive right to appeal",
+        "q": 0,
+        "to": "conviction-final-no-appeal"
+      },
+      {
+        "from": "notice-of-appeal-window",
+        "label": "File notice of appeal",
+        "q": 0,
+        "to": "notice-of-appeal-filed"
+      },
+      {
+        "from": "plea-accepted",
+        "label": "Proceed to sentencing",
+        "q": 0,
+        "to": "presentence-report"
+      },
+      {
+        "from": "plea-agreement-reached",
+        "label": "Schedule change-of-plea hearing",
+        "q": 0,
+        "to": "change-of-plea-hearing"
+      },
+      {
+        "from": "plea-agreement-reached",
+        "label": "Withdraw from plea deal",
+        "q": 0,
+        "to": "proceed-to-trial"
+      },
+      {
+        "from": "plea-negotiations",
+        "label": "Reach plea agreement",
+        "q": 0,
+        "to": "plea-agreement-reached"
+      },
+      {
+        "from": "plea-negotiations",
+        "label": "Negotiations fail",
+        "q": 0,
+        "to": "proceed-to-trial"
+      },
+      {
+        "from": "plea-rejected-by-court",
+        "label": "Renegotiate plea agreement",
+        "q": 0,
+        "to": "plea-negotiations"
+      },
+      {
+        "from": "plea-rejected-by-court",
+        "label": "Withdraw guilty plea",
+        "q": 0,
+        "to": "proceed-to-trial"
+      },
+      {
+        "from": "preliminary-hearing",
+        "label": "Find probable cause",
+        "q": 0,
+        "to": "bound-over-grand-jury"
+      },
+      {
+        "from": "preliminary-hearing",
+        "label": "Find no probable cause",
+        "q": 0,
+        "to": "complaint-dismissed-no-pc"
+      },
+      {
+        "from": "preliminary-hearing",
+        "label": "Grand jury indicts first",
+        "q": 0,
+        "to": "indictment-returned"
+      },
+      {
+        "from": "presentence-report",
+        "label": "Finalize PSR",
+        "q": 0,
+        "to": "sentencing-hearing"
+      },
+      {
+        "from": "pretrial-motions-window",
+        "label": "File motion to dismiss indictment",
+        "q": 0,
+        "to": "motion-to-dismiss-filed"
+      },
+      {
+        "from": "pretrial-motions-window",
+        "label": "File motion to suppress evidence",
+        "q": 0,
+        "to": "motion-to-suppress-filed"
+      },
+      {
+        "from": "pretrial-motions-window",
+        "label": "Miss pretrial motions deadline",
+        "q": 0,
+        "to": "rule12c-waiver-trap"
+      },
+      {
+        "from": "pretrial-motions-window",
+        "label": "No pretrial motions filed",
+        "q": 0,
+        "to": "rule16-discovery"
+      },
+      {
+        "from": "pretrial-motions-window",
+        "label": "Move to dismiss for speedy trial",
+        "q": 0,
+        "to": "speedy-trial-dismissal"
+      },
+      {
+        "from": "proceed-to-trial",
+        "label": "Empanel jury",
+        "q": 0,
+        "to": "jury-selection"
+      },
+      {
+        "from": "released-on-conditions",
+        "label": "Proceed to arraignment",
+        "q": 0,
+        "to": "arraignment"
+      },
+      {
+        "from": "rule12-deadline-set",
+        "label": "Motions deadline arrives",
+        "q": 0,
+        "to": "pretrial-motions-window"
+      },
+      {
+        "from": "rule12-deadline-set",
+        "label": "Grant continuance",
+        "q": 0,
+        "to": "rule12-deadline-set"
+      },
+      {
+        "from": "rule16-discovery",
+        "label": "Disclose Brady/Giglio material",
+        "q": 0,
+        "to": "brady-giglio-disclosure"
+      },
+      {
+        "from": "rule16-discovery",
+        "label": "Move to compel discovery",
+        "q": 0,
+        "to": "discovery-dispute"
+      },
+      {
+        "from": "rule29-denied",
+        "label": "Submit case to jury",
+        "q": 0,
+        "to": "verdict-returned"
+      },
+      {
+        "from": "rule29-motion",
+        "label": "Deny motion, proceed to jury",
+        "q": 0,
+        "to": "rule29-denied"
+      },
+      {
+        "from": "rule29-motion",
+        "label": "Grant judgment of acquittal",
+        "q": 0,
+        "to": "rule29-granted"
+      },
+      {
+        "from": "rule29-motion",
+        "label": "Deny post-verdict acquittal motion",
+        "q": 0,
+        "to": "rule33-motion"
+      },
+      {
+        "from": "rule33-motion",
+        "label": "Grant new trial",
+        "q": 0,
+        "to": "jury-selection"
+      },
+      {
+        "from": "rule33-motion",
+        "label": "Deny new trial motion",
+        "q": 0,
+        "to": "presentence-report"
+      },
+      {
+        "from": "rule35-motion",
+        "label": "Correct or reduce sentence",
+        "q": 0,
+        "to": "judgment-entered"
+      },
+      {
+        "from": "rule35-motion",
+        "label": "No Rule 35 relief granted",
+        "q": 0,
+        "to": "notice-of-appeal-window"
+      },
+      {
+        "from": "sentencing-hearing",
+        "label": "Calculate Guidelines range",
+        "q": 0,
+        "to": "guidelines-calculation"
+      },
+      {
+        "from": "suppression-denied",
+        "label": "Proceed to discovery",
+        "q": 0,
+        "to": "rule16-discovery"
+      },
+      {
+        "from": "suppression-granted",
+        "label": "Move to dismiss after suppression",
+        "q": 0,
+        "to": "indictment-dismissed-defective"
+      },
+      {
+        "from": "suppression-granted",
+        "label": "Proceed without suppressed evidence",
+        "q": 0,
+        "to": "rule16-discovery"
+      },
+      {
+        "from": "trial-in-progress",
+        "label": "Move for judgment of acquittal",
+        "q": 0,
+        "to": "rule29-motion"
+      },
+      {
+        "from": "verdict-returned",
+        "label": "Return not guilty verdict",
+        "q": 0,
+        "to": "acquittal-verdict"
+      },
+      {
+        "from": "verdict-returned",
+        "label": "Return guilty verdict",
+        "q": 0,
+        "to": "guilty-verdict"
+      },
+      {
+        "from": "verdict-returned",
+        "label": "Jury deadlocks",
+        "q": 0,
+        "to": "mistrial-hung-jury"
+      }
+    ],
+    "iterations": 1,
+    "policy": {
+      "arraignment": {
+        "from": "arraignment",
+        "label": "Enter not guilty plea",
+        "to": "not-guilty-plea"
+      },
+      "arrest": {
+        "from": "arrest",
+        "label": "Bring defendant before magistrate",
+        "to": "initial-appearance"
+      },
+      "detained-pretrial": {
+        "from": "detained-pretrial",
+        "label": "Proceed to arraignment",
+        "to": "arraignment"
+      },
+      "guilty-verdict": {
+        "from": "guilty-verdict",
+        "label": "Renew acquittal motion post-verdict",
+        "to": "rule29-motion"
+      },
+      "investigation": {
+        "from": "investigation",
+        "label": "Present case to grand jury",
+        "to": "grand-jury-convened"
+      },
+      "mistrial-hung-jury": {
+        "from": "mistrial-hung-jury",
+        "label": "Retry the case",
+        "to": "jury-selection"
+      },
+      "notice-of-appeal-window": {
+        "from": "notice-of-appeal-window",
+        "label": "File notice of appeal",
+        "to": "notice-of-appeal-filed"
+      },
+      "plea-agreement-reached": {
+        "from": "plea-agreement-reached",
+        "label": "Schedule change-of-plea hearing",
+        "to": "change-of-plea-hearing"
+      },
+      "plea-rejected-by-court": {
+        "from": "plea-rejected-by-court",
+        "label": "Withdraw guilty plea",
+        "to": "proceed-to-trial"
+      },
+      "pretrial-motions-window": {
+        "from": "pretrial-motions-window",
+        "label": "File motion to dismiss indictment",
+        "to": "motion-to-dismiss-filed"
+      },
+      "rule16-discovery": {
+        "from": "rule16-discovery",
+        "label": "Disclose Brady/Giglio material",
+        "to": "brady-giglio-disclosure"
+      },
+      "suppression-granted": {
+        "from": "suppression-granted",
+        "label": "Move to dismiss after suppression",
+        "to": "indictment-dismissed-defective"
+      },
+      "trial-in-progress": {
+        "from": "trial-in-progress",
+        "label": "Move for judgment of acquittal",
+        "to": "rule29-motion"
+      }
+    },
+    "qValue": {
+      "appellate-briefing→appellate-decision": 0,
+      "appellate-decision→conviction-affirmed": 0,
+      "appellate-decision→conviction-reversed-remanded": 0,
+      "arraignment→not-guilty-plea": 0,
+      "arrest→information-filed": 0,
+      "arrest→initial-appearance": 0,
+      "bound-over-grand-jury→grand-jury-convened": 0,
+      "brady-giglio-disclosure→plea-negotiations": 0,
+      "brady-giglio-disclosure→proceed-to-trial": 0,
+      "change-of-plea-hearing→plea-accepted": 0,
+      "change-of-plea-hearing→plea-rejected-by-court": 0,
+      "complaint-filed→arrest": 0,
+      "conviction-reversed-remanded→indictment-dismissed-defective": 0,
+      "conviction-reversed-remanded→jury-selection": 0,
+      "conviction-reversed-remanded→sentencing-hearing": 0,
+      "departure-variance→judgment-entered": 0,
+      "detained-pretrial→arraignment": 0,
+      "detained-pretrial→detention-hearing": 0,
+      "detention-hearing→detained-pretrial": 0,
+      "detention-hearing→released-on-conditions": 0,
+      "discovery-dispute→discovery-sanction": 0,
+      "discovery-sanction→brady-giglio-disclosure": 0,
+      "grand-jury-convened→grand-jury-vote": 0,
+      "grand-jury-vote→indictment-returned": 0,
+      "grand-jury-vote→no-bill": 0,
+      "guidelines-calculation→departure-variance": 0,
+      "guilty-verdict→rule29-motion": 0,
+      "guilty-verdict→rule33-motion": 0,
+      "indictment-returned→arraignment": 0,
+      "indictment-returned→arrest": 0,
+      "information-filed→arraignment": 0,
+      "initial-appearance→detention-hearing": 0,
+      "initial-appearance→preliminary-hearing": 0,
+      "investigation→complaint-filed": 0,
+      "investigation→grand-jury-convened": 0,
+      "jury-selection→trial-in-progress": 0,
+      "mistrial-hung-jury→case-dismissed-after-hung-jury": 0,
+      "mistrial-hung-jury→jury-selection": 0,
+      "motion-to-dismiss-filed→indictment-dismissed-defective": 0,
+      "motion-to-dismiss-filed→rule16-discovery": 0,
+      "motion-to-suppress-filed→suppression-denied": 0,
+      "motion-to-suppress-filed→suppression-granted": 0,
+      "not-guilty-plea→plea-negotiations": 0,
+      "not-guilty-plea→rule12-deadline-set": 0,
+      "notice-of-appeal-filed→appellate-briefing": 0,
+      "notice-of-appeal-window→appeal-window-missed": 0,
+      "notice-of-appeal-window→conviction-final-no-appeal": 0,
+      "notice-of-appeal-window→notice-of-appeal-filed": 0,
+      "plea-accepted→presentence-report": 0,
+      "plea-agreement-reached→change-of-plea-hearing": 0,
+      "plea-agreement-reached→proceed-to-trial": 0,
+      "plea-negotiations→plea-agreement-reached": 0,
+      "plea-negotiations→proceed-to-trial": 0,
+      "plea-rejected-by-court→plea-negotiations": 0,
+      "plea-rejected-by-court→proceed-to-trial": 0,
+      "preliminary-hearing→bound-over-grand-jury": 0,
+      "preliminary-hearing→complaint-dismissed-no-pc": 0,
+      "preliminary-hearing→indictment-returned": 0,
+      "presentence-report→sentencing-hearing": 0,
+      "pretrial-motions-window→motion-to-dismiss-filed": 0,
+      "pretrial-motions-window→motion-to-suppress-filed": 0,
+      "pretrial-motions-window→rule12c-waiver-trap": 0,
+      "pretrial-motions-window→rule16-discovery": 0,
+      "pretrial-motions-window→speedy-trial-dismissal": 0,
+      "proceed-to-trial→jury-selection": 0,
+      "released-on-conditions→arraignment": 0,
+      "rule12-deadline-set→pretrial-motions-window": 0,
+      "rule12-deadline-set→rule12-deadline-set": 0,
+      "rule16-discovery→brady-giglio-disclosure": 0,
+      "rule16-discovery→discovery-dispute": 0,
+      "rule29-denied→verdict-returned": 0,
+      "rule29-motion→rule29-denied": 0,
+      "rule29-motion→rule29-granted": 0,
+      "rule29-motion→rule33-motion": 0,
+      "rule33-motion→jury-selection": 0,
+      "rule33-motion→presentence-report": 0,
+      "rule35-motion→judgment-entered": 0,
+      "rule35-motion→notice-of-appeal-window": 0,
+      "sentencing-hearing→guidelines-calculation": 0,
+      "suppression-denied→rule16-discovery": 0,
+      "suppression-granted→indictment-dismissed-defective": 0,
+      "suppression-granted→rule16-discovery": 0,
+      "trial-in-progress→rule29-motion": 0,
+      "verdict-returned→acquittal-verdict": 0,
+      "verdict-returned→guilty-verdict": 0,
+      "verdict-returned→mistrial-hung-jury": 0
+    },
+    "qValueNote": "qValue is keyed 'from→to' (StatechartEdge.qKey) and COLLIDES on parallel edges (same from/to, different label) — last-write-wins from the source Map iteration order. Use edgeQ for a collision-free per-edge view.",
+    "value": {
+      "acquittal-verdict": 0,
+      "appeal-window-missed": 0,
+      "appellate-briefing": 0,
+      "appellate-decision": 0,
+      "arraignment": 0,
+      "arrest": 0,
+      "bound-over-grand-jury": 0,
+      "brady-giglio-disclosure": 0,
+      "case-dismissed-after-hung-jury": 0,
+      "change-of-plea-hearing": 0,
+      "complaint-dismissed-no-pc": 0,
+      "complaint-filed": 0,
+      "conviction-affirmed": 0,
+      "conviction-final-no-appeal": 0,
+      "conviction-reversed-remanded": 0,
+      "departure-variance": 0,
+      "detained-pretrial": 0,
+      "detention-hearing": 0,
+      "discovery-dispute": 0,
+      "discovery-sanction": 0,
+      "grand-jury-convened": 0,
+      "grand-jury-vote": 0,
+      "guidelines-calculation": 0,
+      "guilty-verdict": 0,
+      "indictment-dismissed-defective": 0,
+      "indictment-returned": 0,
+      "information-filed": 0,
+      "initial-appearance": 0,
+      "investigation": 0,
+      "judgment-entered": 0,
+      "jury-selection": 0,
+      "mistrial-hung-jury": 0,
+      "motion-to-dismiss-filed": 0,
+      "motion-to-suppress-filed": 0,
+      "no-bill": 0,
+      "not-guilty-plea": 0,
+      "notice-of-appeal-filed": 0,
+      "notice-of-appeal-window": 0,
+      "plea-accepted": 0,
+      "plea-agreement-reached": 0,
+      "plea-negotiations": 0,
+      "plea-rejected-by-court": 0,
+      "preliminary-hearing": 0,
+      "presentence-report": 0,
+      "pretrial-motions-window": 0,
+      "proceed-to-trial": 0,
+      "released-on-conditions": 0,
+      "rule12-deadline-set": 0,
+      "rule12c-waiver-trap": 0,
+      "rule16-discovery": 0,
+      "rule29-denied": 0,
+      "rule29-granted": 0,
+      "rule29-motion": 0,
+      "rule33-motion": 0,
+      "rule35-motion": 0,
+      "sentencing-hearing": 0,
+      "speedy-trial-dismissal": 0,
+      "suppression-denied": 0,
+      "suppression-granted": 0,
+      "trial-in-progress": 0,
+      "verdict-returned": 0
+    }
+  },
+  "weightedGraph500": {
+    "edges": [
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "appellate-briefing",
+        "hours": 0,
+        "label": "Submit case for decision",
+        "probability": null,
+        "to": "appellate-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "appellate-decision",
+        "hours": 0,
+        "label": "Affirm conviction",
+        "probability": 0.78,
+        "to": "conviction-affirmed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "appellate-decision",
+        "hours": 0,
+        "label": "Reverse or remand conviction",
+        "probability": 0.22,
+        "to": "conviction-reversed-remanded"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "arraignment",
+        "hours": 0,
+        "label": "Enter not guilty plea",
+        "probability": null,
+        "to": "not-guilty-plea"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "arrest",
+        "hours": 0,
+        "label": "File information",
+        "probability": null,
+        "to": "information-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 3,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "arrest",
+        "hours": 0,
+        "label": "Bring defendant before magistrate",
+        "probability": null,
+        "to": "initial-appearance"
+      },
+      {
+        "benefit": 0,
+        "days": 30,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "bound-over-grand-jury",
+        "hours": 0,
+        "label": "Refer case to grand jury",
+        "probability": null,
+        "to": "grand-jury-convened"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "brady-giglio-disclosure",
+        "hours": 0,
+        "label": "Continue plea negotiations",
+        "probability": 0.65,
+        "to": "plea-negotiations"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "brady-giglio-disclosure",
+        "hours": 0,
+        "label": "Set case for trial",
+        "probability": 0.35,
+        "to": "proceed-to-trial"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "change-of-plea-hearing",
+        "hours": 0,
+        "label": "Accept guilty plea",
+        "probability": 0.95,
+        "to": "plea-accepted"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "change-of-plea-hearing",
+        "hours": 0,
+        "label": "Reject plea agreement",
+        "probability": 0.05,
+        "to": "plea-rejected-by-court"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "complaint-filed",
+        "hours": 0,
+        "label": "Execute arrest warrant or summons",
+        "probability": null,
+        "to": "arrest"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "conviction-reversed-remanded",
+        "hours": 0,
+        "label": "Remand with instructions to dismiss",
+        "probability": 0.15,
+        "to": "indictment-dismissed-defective"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "conviction-reversed-remanded",
+        "hours": 0,
+        "label": "Remand for new trial",
+        "probability": 0.4,
+        "to": "jury-selection"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "conviction-reversed-remanded",
+        "hours": 0,
+        "label": "Remand for resentencing",
+        "probability": 0.45,
+        "to": "sentencing-hearing"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "departure-variance",
+        "hours": 0,
+        "label": "Impose sentence, enter judgment",
+        "probability": null,
+        "to": "judgment-entered"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "detained-pretrial",
+        "hours": 0,
+        "label": "Proceed to arraignment",
+        "probability": null,
+        "to": "arraignment"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "detained-pretrial",
+        "hours": 0,
+        "label": "Move to reopen detention hearing",
+        "probability": null,
+        "to": "detention-hearing"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "detention-hearing",
+        "hours": 0,
+        "label": "Order pretrial detention",
+        "probability": 0.65,
+        "to": "detained-pretrial"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "detention-hearing",
+        "hours": 0,
+        "label": "Order release on conditions",
+        "probability": 0.35,
+        "to": "released-on-conditions"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "discovery-dispute",
+        "hours": 0,
+        "label": "Impose discovery sanction",
+        "probability": null,
+        "to": "discovery-sanction"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "discovery-sanction",
+        "hours": 0,
+        "label": "Discovery dispute resolved",
+        "probability": null,
+        "to": "brady-giglio-disclosure"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "grand-jury-convened",
+        "hours": 0,
+        "label": "Grand jury votes",
+        "probability": null,
+        "to": "grand-jury-vote"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "grand-jury-vote",
+        "hours": 0,
+        "label": "Return true bill",
+        "probability": 0.97,
+        "to": "indictment-returned"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "grand-jury-vote",
+        "hours": 0,
+        "label": "Return no bill",
+        "probability": 0.03,
+        "to": "no-bill"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "guidelines-calculation",
+        "hours": 0,
+        "label": "Consider departure or variance",
+        "probability": null,
+        "to": "departure-variance"
+      },
+      {
+        "benefit": 0,
+        "days": 14,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "guilty-verdict",
+        "hours": 0,
+        "label": "Renew acquittal motion post-verdict",
+        "probability": null,
+        "to": "rule29-motion"
+      },
+      {
+        "benefit": 0,
+        "days": 14,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "guilty-verdict",
+        "hours": 0,
+        "label": "Move for new trial",
+        "probability": null,
+        "to": "rule33-motion"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "indictment-dismissed-defective",
+        "hours": 0,
+        "label": "Re-indict after dismissal",
+        "probability": null,
+        "to": "grand-jury-convened"
+      },
+      {
+        "benefit": 0,
+        "days": 70,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "indictment-returned",
+        "hours": 0,
+        "label": "Schedule arraignment on indictment",
+        "probability": null,
+        "to": "arraignment"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "indictment-returned",
+        "hours": 0,
+        "label": "Execute arrest warrant on indictment",
+        "probability": null,
+        "to": "arrest"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "information-filed",
+        "hours": 0,
+        "label": "Schedule arraignment on information",
+        "probability": null,
+        "to": "arraignment"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "initial-appearance",
+        "hours": 0,
+        "label": "Hold detention hearing",
+        "probability": null,
+        "to": "detention-hearing"
+      },
+      {
+        "benefit": 0,
+        "days": 14,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "initial-appearance",
+        "hours": 0,
+        "label": "Set preliminary hearing",
+        "probability": null,
+        "to": "preliminary-hearing"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "investigation",
+        "hours": 0,
+        "label": "File criminal complaint",
+        "probability": null,
+        "to": "complaint-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "investigation",
+        "hours": 0,
+        "label": "Present case to grand jury",
+        "probability": null,
+        "to": "grand-jury-convened"
+      },
+      {
+        "benefit": 0,
+        "days": 14,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "judgment-entered",
+        "hours": 0,
+        "label": "Start appeal clock",
+        "probability": null,
+        "to": "notice-of-appeal-window"
+      },
+      {
+        "benefit": 0,
+        "days": 14,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "judgment-entered",
+        "hours": 0,
+        "label": "Consider Rule 35 relief",
+        "probability": null,
+        "to": "rule35-motion"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "jury-selection",
+        "hours": 0,
+        "label": "Complete voir dire",
+        "probability": null,
+        "to": "trial-in-progress"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "mistrial-hung-jury",
+        "hours": 0,
+        "label": "Decline to retry",
+        "probability": null,
+        "to": "case-dismissed-after-hung-jury"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "mistrial-hung-jury",
+        "hours": 0,
+        "label": "Retry the case",
+        "probability": null,
+        "to": "jury-selection"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "motion-to-dismiss-filed",
+        "hours": 0,
+        "label": "Grant motion to dismiss",
+        "probability": 0.15,
+        "to": "indictment-dismissed-defective"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "motion-to-dismiss-filed",
+        "hours": 0,
+        "label": "Deny motion to dismiss",
+        "probability": 0.85,
+        "to": "rule16-discovery"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "motion-to-suppress-filed",
+        "hours": 0,
+        "label": "Deny suppression motion",
+        "probability": 0.8,
+        "to": "suppression-denied"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "motion-to-suppress-filed",
+        "hours": 0,
+        "label": "Grant suppression motion",
+        "probability": 0.2,
+        "to": "suppression-granted"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "no-bill",
+        "hours": 0,
+        "label": "Re-present to new grand jury",
+        "probability": null,
+        "to": "grand-jury-convened"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "not-guilty-plea",
+        "hours": 0,
+        "label": "Begin plea negotiations",
+        "probability": null,
+        "to": "plea-negotiations"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "not-guilty-plea",
+        "hours": 0,
+        "label": "Set pretrial motions schedule",
+        "probability": null,
+        "to": "rule12-deadline-set"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "notice-of-appeal-filed",
+        "hours": 0,
+        "label": "Complete appellate briefing",
+        "probability": null,
+        "to": "appellate-briefing"
+      },
+      {
+        "benefit": 0,
+        "days": 14,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "notice-of-appeal-window",
+        "hours": 0,
+        "label": "Miss appeal deadline",
+        "probability": null,
+        "to": "appeal-window-missed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "notice-of-appeal-window",
+        "hours": 0,
+        "label": "Waive right to appeal",
+        "probability": null,
+        "to": "conviction-final-no-appeal"
+      },
+      {
+        "benefit": 0,
+        "days": 14,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "notice-of-appeal-window",
+        "hours": 0,
+        "label": "File notice of appeal",
+        "probability": null,
+        "to": "notice-of-appeal-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "plea-accepted",
+        "hours": 0,
+        "label": "Proceed to sentencing",
+        "probability": null,
+        "to": "presentence-report"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "plea-agreement-reached",
+        "hours": 0,
+        "label": "Schedule change-of-plea hearing",
+        "probability": null,
+        "to": "change-of-plea-hearing"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "plea-agreement-reached",
+        "hours": 0,
+        "label": "Withdraw from plea deal",
+        "probability": null,
+        "to": "proceed-to-trial"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "plea-negotiations",
+        "hours": 0,
+        "label": "Reach plea agreement",
+        "probability": 0.9,
+        "to": "plea-agreement-reached"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "plea-negotiations",
+        "hours": 0,
+        "label": "Negotiations fail",
+        "probability": 0.1,
+        "to": "proceed-to-trial"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "plea-rejected-by-court",
+        "hours": 0,
+        "label": "Renegotiate plea agreement",
+        "probability": null,
+        "to": "plea-negotiations"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "plea-rejected-by-court",
+        "hours": 0,
+        "label": "Withdraw guilty plea",
+        "probability": null,
+        "to": "proceed-to-trial"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "preliminary-hearing",
+        "hours": 0,
+        "label": "Find probable cause",
+        "probability": 0.7,
+        "to": "bound-over-grand-jury"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "preliminary-hearing",
+        "hours": 0,
+        "label": "Find no probable cause",
+        "probability": 0.05,
+        "to": "complaint-dismissed-no-pc"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "preliminary-hearing",
+        "hours": 0,
+        "label": "Grand jury indicts first",
+        "probability": 0.25,
+        "to": "indictment-returned"
+      },
+      {
+        "benefit": 0,
+        "days": 35,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "presentence-report",
+        "hours": 0,
+        "label": "Finalize PSR",
+        "probability": null,
+        "to": "sentencing-hearing"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "pretrial-motions-window",
+        "hours": 0,
+        "label": "File motion to dismiss indictment",
+        "probability": null,
+        "to": "motion-to-dismiss-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "pretrial-motions-window",
+        "hours": 0,
+        "label": "File motion to suppress evidence",
+        "probability": null,
+        "to": "motion-to-suppress-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "pretrial-motions-window",
+        "hours": 0,
+        "label": "Miss pretrial motions deadline",
+        "probability": null,
+        "to": "rule12c-waiver-trap"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "pretrial-motions-window",
+        "hours": 0,
+        "label": "No pretrial motions filed",
+        "probability": null,
+        "to": "rule16-discovery"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "pretrial-motions-window",
+        "hours": 0,
+        "label": "Move to dismiss for speedy trial",
+        "probability": null,
+        "to": "speedy-trial-dismissal"
+      },
+      {
+        "benefit": 0,
+        "days": 70,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "proceed-to-trial",
+        "hours": 0,
+        "label": "Empanel jury",
+        "probability": null,
+        "to": "jury-selection"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "released-on-conditions",
+        "hours": 0,
+        "label": "Proceed to arraignment",
+        "probability": null,
+        "to": "arraignment"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rule12-deadline-set",
+        "hours": 0,
+        "label": "Motions deadline arrives",
+        "probability": 0.75,
+        "to": "pretrial-motions-window"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rule12-deadline-set",
+        "hours": 0,
+        "label": "Grant continuance",
+        "probability": 0.25,
+        "to": "rule12-deadline-set"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rule16-discovery",
+        "hours": 0,
+        "label": "Disclose Brady/Giglio material",
+        "probability": null,
+        "to": "brady-giglio-disclosure"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rule16-discovery",
+        "hours": 0,
+        "label": "Move to compel discovery",
+        "probability": null,
+        "to": "discovery-dispute"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rule29-denied",
+        "hours": 0,
+        "label": "Submit case to jury",
+        "probability": null,
+        "to": "verdict-returned"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rule29-motion",
+        "hours": 0,
+        "label": "Deny motion, proceed to jury",
+        "probability": null,
+        "to": "rule29-denied"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rule29-motion",
+        "hours": 0,
+        "label": "Grant judgment of acquittal",
+        "probability": null,
+        "to": "rule29-granted"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rule29-motion",
+        "hours": 0,
+        "label": "Deny post-verdict acquittal motion",
+        "probability": null,
+        "to": "rule33-motion"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rule33-motion",
+        "hours": 0,
+        "label": "Grant new trial",
+        "probability": 0.08,
+        "to": "jury-selection"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rule33-motion",
+        "hours": 0,
+        "label": "Deny new trial motion",
+        "probability": 0.92,
+        "to": "presentence-report"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rule35-motion",
+        "hours": 0,
+        "label": "Correct or reduce sentence",
+        "probability": 0.1,
+        "to": "judgment-entered"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rule35-motion",
+        "hours": 0,
+        "label": "No Rule 35 relief granted",
+        "probability": 0.9,
+        "to": "notice-of-appeal-window"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "sentencing-hearing",
+        "hours": 0,
+        "label": "Calculate Guidelines range",
+        "probability": null,
+        "to": "guidelines-calculation"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "suppression-denied",
+        "hours": 0,
+        "label": "Proceed to discovery",
+        "probability": null,
+        "to": "rule16-discovery"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "suppression-granted",
+        "hours": 0,
+        "label": "Move to dismiss after suppression",
+        "probability": null,
+        "to": "indictment-dismissed-defective"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "suppression-granted",
+        "hours": 0,
+        "label": "Proceed without suppressed evidence",
+        "probability": null,
+        "to": "rule16-discovery"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "trial-in-progress",
+        "hours": 0,
+        "label": "Move for judgment of acquittal",
+        "probability": null,
+        "to": "rule29-motion"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "verdict-returned",
+        "hours": 0,
+        "label": "Return not guilty verdict",
+        "probability": 0.15,
+        "to": "acquittal-verdict"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "verdict-returned",
+        "hours": 0,
+        "label": "Return guilty verdict",
+        "probability": 0.8,
+        "to": "guilty-verdict"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "verdict-returned",
+        "hours": 0,
+        "label": "Jury deadlocks",
+        "probability": 0.05,
+        "to": "mistrial-hung-jury"
+      }
+    ],
+    "terminalValue": {
+      "acquittal-verdict": 0,
+      "appeal-window-missed": 0,
+      "appellate-briefing": 0,
+      "appellate-decision": 0,
+      "arraignment": 0,
+      "arrest": 0,
+      "bound-over-grand-jury": 0,
+      "brady-giglio-disclosure": 0,
+      "case-dismissed-after-hung-jury": 0,
+      "change-of-plea-hearing": 0,
+      "complaint-dismissed-no-pc": 0,
+      "complaint-filed": 0,
+      "conviction-affirmed": 0,
+      "conviction-final-no-appeal": 0,
+      "conviction-reversed-remanded": 0,
+      "departure-variance": 0,
+      "detained-pretrial": 0,
+      "detention-hearing": 0,
+      "discovery-dispute": 0,
+      "discovery-sanction": 0,
+      "grand-jury-convened": 0,
+      "grand-jury-vote": 0,
+      "guidelines-calculation": 0,
+      "guilty-verdict": 0,
+      "indictment-dismissed-defective": 0,
+      "indictment-returned": 0,
+      "information-filed": 0,
+      "initial-appearance": 0,
+      "investigation": 0,
+      "judgment-entered": 0,
+      "jury-selection": 0,
+      "mistrial-hung-jury": 0,
+      "motion-to-dismiss-filed": 0,
+      "motion-to-suppress-filed": 0,
+      "no-bill": 0,
+      "not-guilty-plea": 0,
+      "notice-of-appeal-filed": 0,
+      "notice-of-appeal-window": 0,
+      "plea-accepted": 0,
+      "plea-agreement-reached": 0,
+      "plea-negotiations": 0,
+      "plea-rejected-by-court": 0,
+      "preliminary-hearing": 0,
+      "presentence-report": 0,
+      "pretrial-motions-window": 0,
+      "proceed-to-trial": 0,
+      "released-on-conditions": 0,
+      "rule12-deadline-set": 0,
+      "rule12c-waiver-trap": 0,
+      "rule16-discovery": 0,
+      "rule29-denied": 0,
+      "rule29-granted": 0,
+      "rule29-motion": 0,
+      "rule33-motion": 0,
+      "rule35-motion": 0,
+      "sentencing-hearing": 0,
+      "speedy-trial-dismissal": 0,
+      "suppression-denied": 0,
+      "suppression-granted": 0,
+      "trial-in-progress": 0,
+      "verdict-returned": 0
+    }
+  }
+}

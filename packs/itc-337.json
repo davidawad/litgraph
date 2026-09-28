@@ -1,0 +1,1106 @@
+{
+  "schemaVersion": 1,
+  "id": "itc-337",
+  "title": "ITC Section 337 Unfair Import Investigation",
+  "description": "Institution → response/default → discovery (incl. CBI protective-order posture) → prehearing/summary determination → evidentiary hearing → Initial Determination → Commission petition-for-review → Commission Final Determination/remedy → Presidential (USTR) review → remedy enforcement → optional Federal Circuit appeal, under 19 U.S.C. § 1337 and 19 CFR Part 210. Direct structural counterpart to content/statecharts/mpep-prosecution.json for the non-FRCP ITC pack. Stage ids and rule refs are drawn verbatim from content/rulepacks/itc-337-pack.json.",
+  "jurisdiction": "USITC / 19 CFR Part 210",
+  "startNodeId": "complaint-filed",
+  "groups": [
+    { "id": "pre-institution-group", "label": "Pre-Institution" },
+    { "id": "instituted-group", "label": "Institution" },
+    { "id": "response-period-group", "label": "Response Period" },
+    { "id": "discovery-group", "label": "Discovery & CBI" },
+    { "id": "prehearing-group", "label": "Prehearing" },
+    { "id": "evidentiary-hearing-group", "label": "Evidentiary Hearing" },
+    { "id": "post-hearing-briefing-group", "label": "Post-Hearing Briefing" },
+    { "id": "initial-determination-group", "label": "Initial Determination" },
+    { "id": "commission-review-group", "label": "Commission Review & Remedy" },
+    { "id": "presidential-review-group", "label": "Presidential (USTR) Review" },
+    { "id": "remedy-enforcement-group", "label": "Remedy Enforcement" },
+    { "id": "federal-circuit-appeal-group", "label": "Federal Circuit Appeal" }
+  ],
+  "nodes": [
+    {
+      "id": "complaint-filed",
+      "label": "Complaint Filed",
+      "kind": "state",
+      "cite": "cfr210.10.a",
+      "note": "Complainant files a Section 337 complaint with the Commission seeking a limited exclusion order, general exclusion order, and/or cease-and-desist order (19 CFR 210.12; only a complainant may file — a named respondent cannot initiate the investigation it defends). The Commission must decide within 30 days whether to institute, absent exceptional circumstances (preinstitution temporary-relief motions, complainant-requested postponement, withdrawal, or excessive confidentiality designations).",
+      "group": "pre-institution-group"
+    },
+    {
+      "id": "institution-decision",
+      "label": "Institution Decision",
+      "kind": "decision",
+      "cite": "cfr210.10.a",
+      "note": "Institution rate authored at 0.85 / declination at 0.15 — APPROXIMATE, not a live USITC figure; a properly pleaded, properly noticed complaint is instituted in the great majority of cases, but declination for pleading defects or excessive confidentiality designations is real and recurring.",
+      "group": "pre-institution-group"
+    },
+    {
+      "id": "complaint-dismissed",
+      "label": "Complaint Dismissed — Not Instituted",
+      "kind": "terminal",
+      "cite": "cfr210.10.c",
+      "note": "The complaint is dismissed and complainant and all proposed respondents receive written notice of the reason(s). No investigation number is ever assigned. A fresh complaint curing the defect is a new matter, not modeled as a re-entry here.",
+      "group": "pre-institution-group",
+      "valence": "bad"
+    },
+    {
+      "id": "instituted",
+      "label": "Investigation Instituted",
+      "kind": "state",
+      "cite": "cfr210.10.b",
+      "note": "Federal Register notice publishes, defining the accused-product scope in plain language; the investigation is numbered 'Inv. No. 337-TA-XXXX.' Within 45 days the ALJ must issue a target-date order (19 CFR 210.51(a)) — if the target date does not exceed 16 months from institution the order is final and not subject to interlocutory review. Discovery formally opens on this publication (signal itc337/discovery-open), running CONCURRENTLY with the response period modeled downstream — the response-then-discovery sequencing below is a teaching linearization, not a claim that discovery waits for the response.",
+      "group": "instituted-group"
+    },
+    {
+      "id": "response-period-open",
+      "label": "Response Window Open",
+      "kind": "decision",
+      "cite": "cfr210.13.a",
+      "note": "Respondent has 20 days from service of the complaint and notice of investigation to answer under oath, admitting/denying/explaining each allegation (10 days if a temporary-relief motion is pending in an uncomplicated investigation). Direct structural analog of mpep-prosecution.json's applicant-response-window: the canonical player node opening this pack's response fork.",
+      "group": "response-period-group"
+    },
+    {
+      "id": "response-filed",
+      "label": "Response Filed",
+      "kind": "state",
+      "cite": "cfr210.13.a",
+      "note": "Written response under oath addressing each allegation; for patent complaints, non-infringement claim charts and, if invalidity is asserted, its basis and prior art.",
+      "group": "response-period-group"
+    },
+    {
+      "id": "default-track",
+      "label": "Default Exposure — No Timely Response",
+      "kind": "state",
+      "cite": "cfr210.16.a",
+      "note": "Failure to respond in the manner 19 CFR 210.13 prescribes (or otherwise failing to answer and to show cause). Default may also arise from abuse of process or discovery non-cooperation (see discovery-sanctions below, which can also route here).",
+      "group": "response-period-group"
+    },
+    {
+      "id": "show-cause-order",
+      "label": "Order to Show Cause (Default)",
+      "kind": "decision",
+      "cite": "cfr210.16.b",
+      "note": "The ALJ may issue a show-cause order sua sponte; a proposed respondent may instead file a Notice of Intent to Default at any time before the final Initial Determination, skipping the show-cause exchange entirely. Both are respondent choices, not ALJ determinations — modeled as a pure player node.",
+      "group": "response-period-group"
+    },
+    {
+      "id": "default-found",
+      "label": "Default Entered",
+      "kind": "state",
+      "cite": "cfr210.16.b.4",
+      "note": "Respondent is deemed to waive its right to appear, to be served with documents, and to contest the allegations at issue. Reached either from the response-window default track or from a case-dispositive discovery sanction below (cf. Certain Opaque Polymers, 337-TA-883 — Organik Kimya's spoliation drew case-dispositive default, affirmed by the Federal Circuit).",
+      "group": "response-period-group"
+    },
+    {
+      "id": "default-relief-determination",
+      "label": "Default Relief Determination",
+      "kind": "state",
+      "cite": "usc1337.g",
+      "note": "Facts alleged in the complaint are presumed true as to the defaulting respondent. Default is not a free exit for the complainant's adversary: the Commission may still issue an exclusion order or cease-and-desist order against the defaulting respondent's imports, after considering public health and welfare, competitive conditions, and consumer interests (19 CFR 210.16(c)).",
+      "group": "response-period-group"
+    },
+    {
+      "id": "discovery-open",
+      "label": "Discovery Open",
+      "kind": "decision",
+      "cite": "cfr210.27.b",
+      "note": "Parties discover matters 'not privileged, that is proportional to the needs of the investigation' — broadly FRCP-26(b)(1)-shaped, but scoped to a 45-day-post-institution target date rather than a multi-year docket, with compressed 10-day response windows throughout. This hub node is a pure player node (every outgoing edge, including its self-loops, is an applicant choice) — the direct structural analog of mpep-prosecution.json's RCE-churn cycle: the SCC where time, money, and CBI risk accumulate before the case can graduate to prehearing.",
+      "group": "discovery-group"
+    },
+    {
+      "id": "order-compelling-discovery",
+      "label": "ALJ Rules on Motion to Compel",
+      "kind": "decision",
+      "cite": "cfr210.33.a",
+      "note": "Grant rate authored at 0.7 / noncompliance-continues at 0.3 — APPROXIMATE.",
+      "group": "discovery-group"
+    },
+    {
+      "id": "discovery-sanctions",
+      "label": "ALJ Rules on Discovery Sanctions",
+      "kind": "decision",
+      "cite": "cfr210.33.b",
+      "note": "Non-monetary sanctions include an adverse inference, treating disputed matters as resolved against the non-compliant party, evidence preclusion, striking filings, and 'other sanctions under Federal Rule of Civil Procedure 37(b)' — one of the few places Part 210 explicitly imports an FRCP provision by name. Monetary sanctions (attorney's fees) run under 210.33(c), except never against the United States, the Commission, or Commission investigative attorneys. Case-dispositive default authored at 0.15 — APPROXIMATE but grounded: Certain Opaque Polymers (337-TA-883) is the teaching case for this exact branch (Chief ALJ Pender: 'spoliation on a staggering scale'; Federal Circuit affirmed both the default sanction and the resulting 25-year exclusion order).",
+      "group": "discovery-group"
+    },
+    {
+      "id": "cbi-designated",
+      "label": "Material Designated CBI",
+      "kind": "state",
+      "cite": "cfr210.5.disclosure",
+      "note": "Confidential business information is defined per 19 CFR 201.6(a),(c). Properly designated CBI cannot be disclosed without submitter consent except to persons granted access under a 210.34(a) protective order, Commission staff directly administering the investigation, U.S. officers conducting § 1337(j) review, or CBP officers administering an exclusion.",
+      "group": "discovery-group"
+    },
+    {
+      "id": "protective-order-ruling",
+      "label": "ALJ Rules on Protective-Order Motion",
+      "kind": "decision",
+      "cite": "cfr210.34.a",
+      "note": "Grant rate authored at 0.9 / denial at 0.1 — APPROXIMATE; ALJs routinely issue CBI protective orders on the good-cause showing this fact pattern almost always makes. A denial leaves discovery to proceed under 210.5's default confidentiality treatment rather than a case-specific order.",
+      "group": "discovery-group"
+    },
+    {
+      "id": "protective-order-issued",
+      "label": "Protective Order Issued",
+      "kind": "state",
+      "cite": "cfr210.34.a",
+      "note": "Restrictions on discovery scope, confidentiality designations for trade secrets, sealed depositions — issued 'for the protection of the public interest or that justice requires' on good cause shown.",
+      "group": "discovery-group"
+    },
+    {
+      "id": "public-version-filed",
+      "label": "Public (Redacted) Version Filed",
+      "kind": "decision",
+      "cite": "cfr210.5.public-version",
+      "note": "Properly-redacted acceptance authored at 0.92 / still-unredacted-CBI at 0.08 — APPROXIMATE, modeling the authoring-error case the pack's own flagRules target (file.public-version with params.unredactedCbiIncluded=true raises the violation flag below).",
+      "group": "discovery-group"
+    },
+    {
+      "id": "cbi-violation-found",
+      "label": "CBI Protective-Order Violation Found",
+      "kind": "state",
+      "cite": "cfr210.34.b",
+      "note": "A nominally 'public version' that still contains unredacted CBI is the unauthorized-disclosure event 19 CFR 210.34(b) requires immediately reporting to both the submitter and the ALJ. Flag itc337/cbi-protective-order-violated is raised — no FRCP analog exists; this is a disqualification risk for the individual attorney, not merely a discovery-sanction risk.",
+      "group": "discovery-group"
+    },
+    {
+      "id": "counsel-disqualified",
+      "label": "Counsel Disqualified from the Investigation",
+      "kind": "terminal",
+      "cite": "cfr210.34.c",
+      "note": "Official Commission reprimand, disqualification from further participation in the investigation, potential permanent disqualification from Commission practice, and referral to state licensing authorities. A genuine ITC-specific permadeath terminal with no FRCP counterpart — mishandling CBI ends the responsible lawyer's role in the matter, not just the client's discovery position.",
+      "group": "discovery-group",
+      "valence": "bad"
+    },
+    {
+      "id": "prehearing",
+      "label": "Prehearing — Summary-Determination Window",
+      "kind": "decision",
+      "cite": "cfr210.18.a",
+      "note": "The ITC's summary-judgment analog, but on a backward-counted deadline: the motion must be filed at least 60 days BEFORE the hearing, not within a fixed period after a trigger event — the mirror image of every other deadline in this pack. If the 60th day before the hearing falls on a weekend or holiday, the period rolls FORWARD to the next business day (toward the hearing, shrinking the buffer), not backward. The counterclaim window also closes around this point in the case: a counterclaim must be filed as a separate document at least ten business days before the evidentiary hearing (19 CFR 210.14); missing that window raises flag itc337/counterclaim-window-closed and forecloses bringing the counterclaim in this investigation.",
+      "group": "prehearing-group"
+    },
+    {
+      "id": "summary-determination-motion-filed",
+      "label": "Motion for Summary Determination Filed",
+      "kind": "state",
+      "cite": "cfr210.18.a",
+      "note": "Any party may move for summary determination on all or any part of the issues. ALJs may grant exceptions to the 60-day-before-hearing rule for good cause.",
+      "group": "prehearing-group"
+    },
+    {
+      "id": "summary-determination-opposition",
+      "label": "Opposing Affidavits Filed",
+      "kind": "state",
+      "cite": "cfr210.18.b",
+      "note": "Opposing party has 10 days to file opposing affidavits; the ALJ may permit oral argument and briefs. Granted only where 'there is no genuine issue as to any material fact and the moving party is entitled to a summary determination as a matter of law.'",
+      "group": "prehearing-group"
+    },
+    {
+      "id": "summary-determination-ruling",
+      "label": "ALJ Rules on Summary Determination",
+      "kind": "decision",
+      "cite": "cfr210.18.b",
+      "note": "Full or partial grant authored at 0.25 / denial (or partial-only, remaining issues proceed) at 0.75 — APPROXIMATE.",
+      "group": "prehearing-group"
+    },
+    {
+      "id": "summary-determination-id",
+      "label": "Summary Determination Order (= an Initial Determination)",
+      "kind": "state",
+      "cite": "cfr210.18.f",
+      "note": "'A summary determination order constitutes an initial administrative law judge determination.' It is therefore subject to the same 210.43 petition-for-review track as a merits Initial Determination — but on the SHORTENED 10-day timer reserved for a summary determination that would terminate the investigation entirely, rather than the ordinary 12-day violation-ID window. Same downstream machinery, different clock: the teaching point this node exists to carry.",
+      "group": "prehearing-group"
+    },
+    {
+      "id": "evidentiary-hearing",
+      "label": "Evidentiary Hearing",
+      "kind": "state",
+      "cite": "cfr210.37.b",
+      "note": "'Relevant, material, and reliable evidence shall be admitted. Irrelevant, immaterial, unreliable, or unduly repetitious evidence shall be excluded' — the controlling admissibility standard, NOT the Federal Rules of Evidence. Tracks 5 U.S.C. § 556(d)'s APA formal-adjudication standard ('reliable, probative, and substantial evidence') almost word for word; the ALJ is an APA-556 presiding officer, not an Article III judge bound by the FRE. The proponent of any factual proposition bears the burden of proof (210.37(a)); objections must be timely and briefly state their grounds, with rulings on the record (210.37(e)); no formal exception to an adverse ruling is required (210.37(f)).",
+      "group": "evidentiary-hearing-group"
+    },
+    {
+      "id": "post-hearing-briefing",
+      "label": "Post-Hearing Briefing",
+      "kind": "state",
+      "cite": "cfr210.37.b",
+      "note": "Post-hearing and reply briefs filed on the evidentiary record built at the hearing.",
+      "group": "post-hearing-briefing-group"
+    },
+    {
+      "id": "initial-determination",
+      "label": "ALJ Issues Initial Determination on Violation",
+      "kind": "decision",
+      "cite": "cfr210.42.a.1",
+      "note": "Must be filed no later than 4 months before the target date. Violation-found authored at 0.55 / no-violation at 0.45 — APPROXIMATE. This is the single dominator gateway every non-default path to a Commission Final Determination must pass through — the ITC analog of mpep-prosecution.json's noa-received dominating patent-issued.",
+      "group": "initial-determination-group"
+    },
+    {
+      "id": "violation-id",
+      "label": "ID: Violation Found",
+      "kind": "state",
+      "cite": "cfr210.42.a.1",
+      "note": "Also the rejoin point for the default track: a defaulting respondent's presumed-true facts feed directly into a violation finding here (usc1337.g).",
+      "group": "initial-determination-group"
+    },
+    {
+      "id": "no-violation-id",
+      "label": "ID: No Violation Found",
+      "kind": "state",
+      "cite": "cfr210.42.a.1",
+      "note": "Complainant's case fails on the merits before the ALJ; still subject to petition for Commission review like any other ID.",
+      "group": "initial-determination-group"
+    },
+    {
+      "id": "recommended-determination",
+      "label": "Recommended Determination on Remedy",
+      "kind": "state",
+      "cite": "cfr210.42.rd",
+      "note": "Within 14 days after the violation ID, the ALJ issues findings and recommendations on the appropriate remedy, bonding amount, and public-interest matters. The RD is ADVISORY to the Commission — it is not itself the remedy order; the Commission sets the actual remedy in its Final Determination downstream.",
+      "group": "initial-determination-group"
+    },
+    {
+      "id": "petition-for-review-window",
+      "label": "Petition-for-Review Window",
+      "kind": "decision",
+      "cite": "cfr210.43.a.1",
+      "note": "12 days after service for a violation ID; 10 days for a terminating summary determination (see summary-determination-id above); 5 business days for other 210.42(c) determinations. A pure player node — file, or let the window close.",
+      "group": "commission-review-group"
+    },
+    {
+      "id": "petition-filed",
+      "label": "Petition for Commission Review Filed",
+      "kind": "state",
+      "cite": "cfr210.43.a.1",
+      "note": "Must identify the seeking party, specify the issues for review, and cite clearly-erroneous-fact, erroneous-legal-conclusion, or Commission-policy grounds; concise statement of facts and argument capped at 100 pages (summary required past 50, capped at 10). Unraised issues are deemed abandoned.",
+      "group": "commission-review-group"
+    },
+    {
+      "id": "petition-response",
+      "label": "Response to Petition Filed",
+      "kind": "state",
+      "cite": "cfr210.43.c",
+      "note": "8 days to respond to a § 210.42(a)(1) violation-ID petition, 5 business days for other petition types. A party in default may not respond on issues where it defaulted.",
+      "group": "commission-review-group"
+    },
+    {
+      "id": "commission-review-decision",
+      "label": "Commission Decides Whether to Grant Review",
+      "kind": "decision",
+      "cite": "cfr210.43.d",
+      "note": "Grant rate authored at 0.35 / denial at 0.65 — APPROXIMATE. Granted 'if it appears that an error or abuse... is present or if the petition raises a policy matter... which the Commission thinks it necessary or appropriate to address' — decided 'based upon the petition and response thereto, without oral argument or further written submissions unless the Commission shall order otherwise.'",
+      "group": "commission-review-group"
+    },
+    {
+      "id": "review-granted",
+      "label": "Commission Review Granted",
+      "kind": "state",
+      "cite": "cfr210.43.d",
+      "note": "The Commission decides within 45 days for a potentially investigation-terminating summary determination, 30 days for other determinations.",
+      "group": "commission-review-group"
+    },
+    {
+      "id": "id-becomes-commission-determination",
+      "label": "ID Matures into the Commission's Determination",
+      "kind": "state",
+      "cite": "cfr210.42.a.1",
+      "note": "Reached either because no petition was timely filed (flag itc337/petition-review-abandoned raised as to the adversely-decided issues, per the abandonment-of-issues-not-of-case principle: 'a party's failure to file a petition for review shall constitute abandonment of all issues decided adversely to that party') or because the Commission declined to order review. By operation of 210.42(a)(1), the ALJ's Initial Determination becomes the Commission's own final determination 60 days after service, with no separate Commission opinion ever written — the ITC's version of a magistrate's R&R adopted by non-objection (cf. Certain Automated Mechanical Transmission Systems, 337-TA-503).",
+      "group": "commission-review-group"
+    },
+    {
+      "id": "commission-opinion",
+      "label": "Commission Reviews on the Merits",
+      "kind": "state",
+      "cite": "cfr210.43.d",
+      "note": "The Commission decides the petition 'based upon the petition and response thereto, without oral argument or further written submissions unless the Commission shall order otherwise' — granted where 'an error or abuse... is present' or the petition 'raises a policy matter... which the Commission thinks it necessary or appropriate to address.' Decision due within 45 days for a potentially investigation-terminating summary determination, 30 days otherwise. The Commission may affirm, reverse, or modify the ALJ in whole or in part (cf. the Samsung/Apple pair, 337-TA-794 and 337-TA-796, and Certain Footwear Products, 337-TA-936, where review genuinely changed the outcome).",
+      "group": "commission-review-group"
+    },
+    {
+      "id": "commission-final-determination",
+      "label": "Commission Final Determination",
+      "kind": "decision",
+      "cite": "usc1337.b.1",
+      "note": "The § 1337(b)(1) 'earliest practicable time' mandate resolves here, whether the determination arrived by non-reviewed ID maturation, Commission opinion, or (see cafc-remanded below) a Federal Circuit remand. No-violation authored at 0.35 / violation-with-remedy at 0.65 — APPROXIMATE.",
+      "group": "commission-review-group"
+    },
+    {
+      "id": "no-violation-outcome",
+      "label": "Commission Determination: No Violation",
+      "kind": "state",
+      "cite": "usc1337.b.1",
+      "note": "Complainant's investigation concludes without relief. Still a 'final determination' any adversely affected person — including the complainant — may appeal under § 1337(c).",
+      "group": "commission-review-group"
+    },
+    {
+      "id": "remedy-determined",
+      "label": "Commission Determines Remedy",
+      "kind": "state",
+      "cite": "usc1337.d",
+      "note": "A limited exclusion order (LEO) runs only against adjudicated respondents' imports. A general exclusion order (GEO) runs against the article itself regardless of source, and is available only on the heightened Certain Airless Paint Spray Pumps (337-TA-90) showing — now codified at § 1337(d)(2) — of a widespread pattern of unauthorized use plus business conditions suggesting other, not-yet-identified foreign manufacturers may enter the market (cf. Certain Height-Adjustable Desk Platforms, 337-TA-1125, a clean textbook GEO grant). In addition to, or instead of, an exclusion order, the Commission may issue a cease-and-desist order (CDO) reaching domestic conduct — sales of existing U.S. inventory — that an exclusion order cannot touch (§ 1337(f)).",
+      "group": "commission-review-group"
+    },
+    {
+      "id": "presidential-review-window",
+      "label": "Presidential (USTR) Review Window",
+      "kind": "decision",
+      "cite": "usc1337.j",
+      "note": "A 60-day window, delegated in practice to the U.S. Trade Representative (Presidential Memorandum of July 21, 2005, 70 Fed. Reg. 43,251), during which a Commission remedy is not yet enforceable as a final matter. Approval-by-silence authored at 0.9 / disapproval at 0.1 — APPROXIMATE and deliberately skewed toward approval: the veto is rare enough that its two confirmed modern instances (Certain Electronic Devices..., 337-TA-794 — the Samsung/Apple FRAND-SEP veto, August 2013, the first since 1987; and the 1987 DRAM veto candidate flagged in design/itc-classic-cases.md §2.10) are each individually notable. Contrast Certain Baseband Processor Chips, 337-TA-543, and Certain Tobacco Heating Articles, 337-TA-1199, where the same 60-day window ran and the remedy simply took effect — the ordinary case this node models most of the time.",
+      "group": "presidential-review-group"
+    },
+    {
+      "id": "determination-vetoed",
+      "label": "Presidential/USTR Disapproval — No Force or Effect",
+      "kind": "terminal",
+      "cite": "usc1337.j",
+      "note": "'[S]uch determination and the action taken... shall have no force or effect.' Not merely the remedy — the DETERMINATION ITSELF is voided, which is why this is modeled as a clean terminal with no onward Federal Circuit appeal edge: there is nothing left to appeal. A governor's-clemency-style override of what looked like a final civil judgment, with no FRCP analog.",
+      "group": "presidential-review-group",
+      "valence": "good"
+    },
+    {
+      "id": "remedy-in-effect",
+      "label": "Remedy Takes Effect",
+      "kind": "state",
+      "cite": "usc1337.j",
+      "note": "The exclusion order and/or cease-and-desist order become enforceable; U.S. Customs and Border Protection administers exclusion at the border. Post-order enforcement mechanics (advisory opinions, modification/enforcement proceedings under 19 CFR 210.75-210.79, and redesign-around fights like Certain Robotic Vacuum Cleaning Devices, 337-TA-1252, or the Masimo/Apple Watch saga, 337-TA-1276) are OUT OF SCOPE for this pack per its own scope note and are not modeled downstream of this node — a deliberate boundary matching content/rulepacks/itc-337-pack.json's stated first-pass limits, not an oversight.",
+      "group": "remedy-enforcement-group"
+    },
+    {
+      "id": "federal-circuit-appeal-window",
+      "label": "Federal Circuit Appeal Window",
+      "kind": "decision",
+      "cite": "usc1337.c",
+      "note": "Any person adversely affected by a final Commission determination may appeal — reachable from BOTH a no-violation outcome (complainant appeals) and a remedy-in-effect outcome (respondent appeals), the same fork viewed from either side of the caption.",
+      "group": "federal-circuit-appeal-group"
+    },
+    {
+      "id": "appeal-filed",
+      "label": "Notice of Appeal Filed (Federal Circuit)",
+      "kind": "state",
+      "cite": "usc1337.c",
+      "note": "28 U.S.C. § 1295(a)(6) vests the Federal Circuit with exclusive jurisdiction over Section 337 appeals, reviewed 'in accordance with chapter 7 of title 5' (the APA).",
+      "group": "federal-circuit-appeal-group"
+    },
+    {
+      "id": "determination-final-unappealed",
+      "label": "Commission Determination Stands — Unappealed",
+      "kind": "terminal",
+      "cite": "usc1337.c",
+      "note": "The 60-day window closes with no notice of appeal; flag itc337/fedcir-appeal-forfeited raised. The Commission's determination and remedy (or its absence) stand unreviewed.",
+      "group": "federal-circuit-appeal-group",
+      "valence": "bad"
+    },
+    {
+      "id": "federal-circuit-review",
+      "label": "Federal Circuit Reviews the Determination",
+      "kind": "decision",
+      "cite": "usc1337.c",
+      "note": "Affirmance authored at 0.7 / reversal-or-remand at 0.3 — APPROXIMATE. Standard of review tracks APA § 706 (substantial evidence for Commission fact-finding, de novo for legal conclusions) — see e.g. TianRui Group Co. v. ITC (337-TA-655, extraterritorial trade-secret jurisdiction affirmed) and ClearCorrect Operating v. ITC (337-TA-833, 'articles' jurisdiction REVERSED as to purely digital transmissions).",
+      "group": "federal-circuit-appeal-group"
+    },
+    {
+      "id": "cafc-affirmed",
+      "label": "Federal Circuit Affirms",
+      "kind": "terminal",
+      "cite": "usc1337.c",
+      "note": "The Commission's determination and remedy stand as issued.",
+      "group": "federal-circuit-appeal-group",
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/615096/tianrui-group-co-v-international-trade-commission/",
+      "valence": "good"
+    },
+    {
+      "id": "cafc-remanded",
+      "label": "Federal Circuit Reverses or Remands",
+      "kind": "state",
+      "cite": "usc1337.c",
+      "note": "Remand does not simply 'send the case back' — it can produce a genuinely different final answer (cf. Certain Sleep-Disordered Breathing Treatment Systems, 337-TA-890: ALJ Pender's remand determination reversed the original violation finding to no violation, followed by a separate Commission Advisory Opinion in the same investigation number under 19 CFR 210.79). Closes a deliberate cycle back into commission-final-determination — the ITC analog of mpep-prosecution.json's RCE loop, except the 'loop' here is judicial rather than administrative.",
+      "group": "federal-circuit-appeal-group",
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/3153481/clearcorrect-operating-llc-v-international-trade-commission/"
+    }
+  ],
+  "edges": [
+    {
+      "from": "complaint-filed",
+      "to": "institution-decision",
+      "label": "Commission reviews the complaint for institution (30-day clock, Rule 210.10(a))",
+      "actor": "office",
+      "authority": "cfr210.10.a"
+    },
+    {
+      "from": "institution-decision",
+      "to": "instituted",
+      "label": "Commission institutes — Federal Register notice published (Rule 210.10(b))",
+      "actor": "office",
+      "authority": "cfr210.10.b",
+      "probability": 0.85
+    },
+    {
+      "from": "institution-decision",
+      "to": "complaint-dismissed",
+      "label": "Commission declines to institute — complaint dismissed with written reasons (Rule 210.10(c))",
+      "actor": "office",
+      "authority": "cfr210.10.c",
+      "probability": 0.15
+    },
+    {
+      "from": "instituted",
+      "to": "response-period-open",
+      "label": "Notice of investigation served on respondent(s) — 20-day response clock begins (Rule 210.13(a))",
+      "actor": "office",
+      "authority": "cfr210.13.a"
+    },
+    {
+      "from": "response-period-open",
+      "to": "response-filed",
+      "label": "File response to the complaint and notice of investigation (Rule 210.13(a))",
+      "actor": "applicant",
+      "authority": "cfr210.13.a",
+      "actionId": "file.response",
+      "cost": 20000,
+      "hours": 90,
+      "deadline": {
+        "length": 20,
+        "extendable": true,
+        "extensionAuthority": "ALJ good-cause order (Rule 210.6(a))",
+        "note": "20 days from service of the complaint and notice of investigation; 10 days if a motion for temporary relief is pending in an uncomplicated investigation (19 CFR 210.13(a))."
+      },
+      "valence": "good"
+    },
+    {
+      "from": "response-period-open",
+      "to": "default-track",
+      "label": "Fail to respond within 20 days — default exposure (Rule 210.13(default); 210.16(a))",
+      "actor": "applicant",
+      "authority": "cfr210.13.default",
+      "hours": 0,
+      "valence": "bad"
+    },
+    {
+      "from": "default-track",
+      "to": "show-cause-order",
+      "label": "ALJ issues sua sponte order to show cause why respondent should not be found in default (Rule 210.16(b))",
+      "actor": "examiner",
+      "authority": "cfr210.16.b"
+    },
+    {
+      "from": "show-cause-order",
+      "to": "response-filed",
+      "label": "Respond to the show-cause order — cure the default with a belated response (Rule 210.16(b))",
+      "actor": "applicant",
+      "authority": "cfr210.16.b",
+      "actionId": "respond.show-cause",
+      "cost": 2000,
+      "hours": 10,
+      "valence": "good"
+    },
+    {
+      "from": "show-cause-order",
+      "to": "default-found",
+      "label": "File Notice of Intent to Default, or fail to show cause (Rule 210.16(b))",
+      "actor": "applicant",
+      "authority": "cfr210.16.b",
+      "actionId": "file.notice.default",
+      "hours": 2,
+      "valence": "bad"
+    },
+    {
+      "from": "default-found",
+      "to": "default-relief-determination",
+      "label": "Facts alleged in the complaint presumed true as to the defaulting respondent (Rule 210.16(c); § 1337(g))",
+      "actor": "office",
+      "authority": "cfr210.16.c"
+    },
+    {
+      "from": "default-relief-determination",
+      "to": "violation-id",
+      "label": "ALJ issues a violation ID on the presumed-true facts, after considering public health, competitive effects, and consumer interests (§ 1337(g))",
+      "actor": "examiner",
+      "authority": "usc1337.g"
+    },
+    {
+      "from": "response-filed",
+      "to": "discovery-open",
+      "label": "Discovery is open (Federal Register publication triggers it — modeled here as concurrent with the response period, see instituted's note) (Rule 210.27(b))",
+      "actor": "office",
+      "authority": "cfr210.27.b"
+    },
+    {
+      "from": "discovery-open",
+      "to": "discovery-open",
+      "label": "Serve Interrogatories (≤175 including discrete subparts, Rule 210.29)",
+      "actor": "applicant",
+      "authority": "cfr210.29.limits",
+      "actionId": "serve.discovery.interrogatories",
+      "cost": 200,
+      "hours": 8
+    },
+    {
+      "from": "discovery-open",
+      "to": "discovery-open",
+      "label": "Respond to interrogatories or requests for production within 10 days — or risk sanction exposure (Rule 210.29; 210.30(b); 210.33(a))",
+      "actor": "applicant",
+      "authority": "cfr210.29.limits",
+      "cost": 1000,
+      "hours": 35,
+      "deadline": {
+        "length": 10,
+        "extendable": true,
+        "extensionAuthority": "ALJ-specified period",
+        "note": "19 CFR 210.29/210.30(b): 10 days to answer interrogatories or respond to document requests unless the ALJ specifies otherwise. A miss is sanction exposure under 210.33(a) — the pack does not assert an automatic waiver here, contrast the RFA trap below."
+      }
+    },
+    {
+      "from": "discovery-open",
+      "to": "discovery-open",
+      "label": "Serve Requests for Production (Rule 210.30)",
+      "actor": "applicant",
+      "authority": "cfr210.30.b",
+      "actionId": "serve.discovery.rfp",
+      "cost": 150,
+      "hours": 5
+    },
+    {
+      "from": "discovery-open",
+      "to": "discovery-open",
+      "label": "Serve Requests for Admission (Rule 210.31)",
+      "actor": "applicant",
+      "authority": "cfr210.31.b",
+      "actionId": "serve.discovery.rfa",
+      "cost": 100,
+      "hours": 3
+    },
+    {
+      "from": "discovery-open",
+      "to": "discovery-open",
+      "label": "Fail to timely answer or object to a Request for Admission — deemed admitted (Rule 210.31(b))",
+      "actor": "applicant",
+      "authority": "cfr210.31.b",
+      "hours": 0,
+      "deadline": {
+        "length": 10,
+        "extendable": true,
+        "extensionAuthority": "ALJ-specified period",
+        "note": "19 CFR 210.31(b): deemed admitted absent a sworn answer or objection within 10 days or the ALJ-specified period. Flag itc337/rfa-deemed-admitted raised — the matter is conclusively established absent ALJ leave to withdraw or amend, and the respond.rfa action itself becomes illegal once the window closes."
+      },
+      "valence": "bad"
+    },
+    {
+      "from": "discovery-open",
+      "to": "discovery-open",
+      "label": "Serve Subpoena (Rule 210.32)",
+      "actor": "applicant",
+      "authority": "cfr210.32.a",
+      "actionId": "serve.subpoena",
+      "cost": 250,
+      "hours": 4
+    },
+    {
+      "from": "discovery-open",
+      "to": "discovery-open",
+      "label": "File Motion to Quash or Modify a Subpoena — within the later of 10 days after receipt or an ALJ-extended period (Rule 210.32(d))",
+      "actor": "applicant",
+      "authority": "cfr210.32.d",
+      "actionId": "file.motion.quash",
+      "cost": 5000,
+      "hours": 12,
+      "deadline": {
+        "length": 10,
+        "extendable": true,
+        "extensionAuthority": "ALJ-extended period",
+        "note": "19 CFR 210.32(d). The rule text does not itself state an automatic waiver-on-lateness consequence, so no waiver flag is asserted for a late motion to quash — contrast the RFA trap above."
+      }
+    },
+    {
+      "from": "discovery-open",
+      "to": "discovery-open",
+      "label": "Take Deposition (7-hour day cap; 20 fact depositions per side, 10 for Commission staff, Rule 210.28)",
+      "actor": "applicant",
+      "authority": "cfr210.28.limits",
+      "actionId": "take.deposition",
+      "cost": 3500,
+      "hours": 12
+    },
+    {
+      "from": "discovery-open",
+      "to": "discovery-open",
+      "label": "File Privilege Log for withheld material within 10 days (Rule 210.27(e))",
+      "actor": "applicant",
+      "authority": "cfr210.27.e",
+      "actionId": "file.privilege-log",
+      "cost": 300,
+      "hours": 4,
+      "deadline": {
+        "length": 10,
+        "extendable": true,
+        "extensionAuthority": "good cause",
+        "note": "19 CFR 210.27(e): privilege log due 10 days after the response listing each withheld item's date, authors, recipients, subject matter, and privilege type. A missed log is sanction exposure under 210.33(a), not an automatic waiver — the pack deliberately declines to invent a hard waiver flag the regulatory text does not itself state."
+      }
+    },
+    {
+      "from": "discovery-open",
+      "to": "discovery-open",
+      "label": "Meet and Confer on Discovery Dispute",
+      "actor": "applicant",
+      "authority": "cfr210.33.a",
+      "actionId": "confer.meet-and-confer",
+      "cost": 800,
+      "hours": 2
+    },
+    {
+      "from": "discovery-open",
+      "to": "order-compelling-discovery",
+      "label": "File Motion to Compel Discovery (Rule 210.33(a))",
+      "actor": "applicant",
+      "authority": "cfr210.33.a",
+      "actionId": "file.motion.compel",
+      "cost": 5000,
+      "hours": 14
+    },
+    {
+      "from": "order-compelling-discovery",
+      "to": "discovery-open",
+      "label": "ALJ grants the motion — opposing party complies with compelled discovery",
+      "actor": "examiner",
+      "authority": "cfr210.33.a",
+      "probability": 0.7
+    },
+    {
+      "from": "order-compelling-discovery",
+      "to": "discovery-sanctions",
+      "label": "Noncompliance continues — ALJ proceeds to sanctions (Rule 210.33(b)-(c))",
+      "actor": "examiner",
+      "authority": "cfr210.33.b",
+      "probability": 0.3
+    },
+    {
+      "from": "discovery-sanctions",
+      "to": "discovery-open",
+      "label": "Non-case-dispositive sanction imposed — adverse inference, evidence preclusion, or fee-shift (Rule 210.33(b)-(c)); discovery continues",
+      "actor": "examiner",
+      "authority": "cfr210.33.b",
+      "probability": 0.85
+    },
+    {
+      "from": "discovery-sanctions",
+      "to": "default-found",
+      "label": "Case-dispositive default sanction for egregious noncompliance (Rule 210.33(b)) — cf. Organik Kimya spoliation, 337-TA-883",
+      "actor": "examiner",
+      "authority": "cfr210.33.b",
+      "probability": 0.15,
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/4348900/organik-kimya-san-ve-tic-as-v-international-trade-commission/",
+      "valence": "bad"
+    },
+    {
+      "from": "discovery-open",
+      "to": "cbi-designated",
+      "label": "Designate Material as Confidential Business Information (Rule 210.5)",
+      "actor": "applicant",
+      "authority": "cfr210.5.disclosure",
+      "actionId": "designate.cbi",
+      "cost": 0,
+      "hours": 1
+    },
+    {
+      "from": "cbi-designated",
+      "to": "protective-order-ruling",
+      "label": "Move for a Protective Order (Rule 210.34(a))",
+      "actor": "applicant",
+      "authority": "cfr210.34.a",
+      "actionId": "file.motion.protective-order",
+      "cost": 4000,
+      "hours": 10,
+      "valence": "good"
+    },
+    {
+      "from": "protective-order-ruling",
+      "to": "protective-order-issued",
+      "label": "ALJ issues the protective order on a good-cause showing (Rule 210.34(a))",
+      "actor": "examiner",
+      "authority": "cfr210.34.a",
+      "probability": 0.9
+    },
+    {
+      "from": "protective-order-ruling",
+      "to": "discovery-open",
+      "label": "ALJ denies the motion — default 210.5 confidentiality treatment applies instead",
+      "actor": "examiner",
+      "authority": "cfr210.34.a",
+      "probability": 0.1
+    },
+    {
+      "from": "protective-order-issued",
+      "to": "discovery-open",
+      "label": "Protective order in effect — discovery continues under its terms",
+      "actor": "examiner",
+      "authority": "cfr210.34.a"
+    },
+    {
+      "from": "discovery-open",
+      "to": "public-version-filed",
+      "label": "File Public (Redacted) Version of a confidential submission within 30 days (Rule 210.5)",
+      "actor": "applicant",
+      "authority": "cfr210.5.public-version",
+      "actionId": "file.public-version",
+      "cost": 500,
+      "hours": 5,
+      "deadline": {
+        "length": 30,
+        "extendable": true,
+        "extensionAuthority": "good cause",
+        "note": "19 CFR 210.5: public version due within 30 days of the confidential filing absent a good-cause extension."
+      },
+      "valence": "good"
+    },
+    {
+      "from": "public-version-filed",
+      "to": "discovery-open",
+      "label": "Public version properly redacted — accepted",
+      "actor": "examiner",
+      "authority": "cfr210.5.public-version",
+      "probability": 0.92
+    },
+    {
+      "from": "public-version-filed",
+      "to": "cbi-violation-found",
+      "label": "Public version still contains unredacted CBI — unauthorized disclosure (Rule 210.34(b))",
+      "actor": "examiner",
+      "authority": "cfr210.34.b",
+      "probability": 0.08,
+      "valence": "bad"
+    },
+    {
+      "from": "cbi-violation-found",
+      "to": "counsel-disqualified",
+      "label": "Commission imposes reprimand, disqualification from the investigation, and referral to licensing authorities (Rule 210.34(c))",
+      "actor": "office",
+      "authority": "cfr210.34.c"
+    },
+    {
+      "from": "discovery-open",
+      "to": "prehearing",
+      "label": "Discovery record complete — case proceeds toward the summary-determination window and hearing (Rule 210.51(a))",
+      "actor": "applicant",
+      "authority": "cfr210.51.a",
+      "hours": 0
+    },
+    {
+      "from": "prehearing",
+      "to": "summary-determination-motion-filed",
+      "label": "File Motion for Summary Determination — at least 60 days before the evidentiary hearing (Rule 210.18(a))",
+      "actor": "applicant",
+      "authority": "cfr210.18.a",
+      "actionId": "file.motion.summary-determination",
+      "cost": 12000,
+      "hours": 70,
+      "deadline": {
+        "length": 60,
+        "extendable": true,
+        "extensionAuthority": "ALJ good-cause exception",
+        "note": "19 CFR 210.18(a): must be filed at least 60 days BEFORE the hearing — a backward-counted deadline. If the 60th day before the hearing falls on a weekend/holiday, the period rolls FORWARD (toward the hearing), not backward. Missing this window raises flag itc337/summary-determination-untimely — the avenue for pretrial disposition on the merits closes and the issue proceeds to hearing."
+      }
+    },
+    {
+      "from": "prehearing",
+      "to": "evidentiary-hearing",
+      "label": "No dispositive motion filed, or the 60-day pre-hearing window is missed — all issues proceed to hearing",
+      "actor": "applicant",
+      "authority": "cfr210.18.a",
+      "hours": 0
+    },
+    {
+      "from": "summary-determination-motion-filed",
+      "to": "summary-determination-opposition",
+      "label": "Opposing party files affidavits within 10 days (Rule 210.18(b))",
+      "actor": "either",
+      "authority": "cfr210.18.b",
+      "actionId": "oppose.summary-determination",
+      "cost": 9000,
+      "deadline": {
+        "length": 10,
+        "extendable": true,
+        "extensionAuthority": "ALJ discretion",
+        "note": "19 CFR 210.18(b): 10 days to file opposing affidavits; the ALJ may permit oral argument and briefs."
+      }
+    },
+    {
+      "from": "summary-determination-opposition",
+      "to": "summary-determination-ruling",
+      "label": "ALJ rules whether there is a genuine issue of material fact (Rule 210.18(b))",
+      "actor": "examiner",
+      "authority": "cfr210.18.b"
+    },
+    {
+      "from": "summary-determination-ruling",
+      "to": "summary-determination-id",
+      "label": "Summary determination granted in whole or in part — the order constitutes an Initial Determination (Rule 210.18(f))",
+      "actor": "examiner",
+      "authority": "cfr210.18.f",
+      "probability": 0.25
+    },
+    {
+      "from": "summary-determination-ruling",
+      "to": "evidentiary-hearing",
+      "label": "Summary determination denied, or granted only as to some issues — remaining issues proceed to hearing",
+      "actor": "examiner",
+      "authority": "cfr210.18.b",
+      "probability": 0.75
+    },
+    {
+      "from": "summary-determination-id",
+      "to": "petition-for-review-window",
+      "label": "ID served — the shortened 10-day terminating-summary-determination petition clock begins (Rule 210.43(a)(1))",
+      "actor": "office",
+      "authority": "cfr210.43.a.1"
+    },
+    {
+      "from": "evidentiary-hearing",
+      "to": "post-hearing-briefing",
+      "label": "Hearing concludes — evidence closed under the 'relevant, material, and reliable' standard (Rule 210.37(b); APA 556(d))",
+      "actor": "either",
+      "authority": "cfr210.37.b"
+    },
+    {
+      "from": "post-hearing-briefing",
+      "to": "initial-determination",
+      "label": "ALJ issues the violation Initial Determination — no later than 4 months before the target date (Rule 210.42(a)(1))",
+      "actor": "examiner",
+      "authority": "cfr210.42.a.1"
+    },
+    {
+      "from": "initial-determination",
+      "to": "violation-id",
+      "label": "ID finds a violation of Section 337",
+      "actor": "examiner",
+      "authority": "cfr210.42.a.1",
+      "probability": 0.55
+    },
+    {
+      "from": "initial-determination",
+      "to": "no-violation-id",
+      "label": "ID finds no violation",
+      "actor": "examiner",
+      "authority": "cfr210.42.a.1",
+      "probability": 0.45
+    },
+    {
+      "from": "violation-id",
+      "to": "recommended-determination",
+      "label": "ALJ issues the Recommended Determination on remedy, bonding, and public interest within 14 days (Rule 210.42(rd))",
+      "actor": "examiner",
+      "authority": "cfr210.42.rd"
+    },
+    {
+      "from": "recommended-determination",
+      "to": "petition-for-review-window",
+      "label": "ID and RD served — 12-day petition clock begins (Rule 210.43(a)(1))",
+      "actor": "office",
+      "authority": "cfr210.43.a.1"
+    },
+    {
+      "from": "no-violation-id",
+      "to": "petition-for-review-window",
+      "label": "ID served — same petition-for-review track applies to a no-violation ID",
+      "actor": "office",
+      "authority": "cfr210.43.a.1"
+    },
+    {
+      "from": "petition-for-review-window",
+      "to": "petition-filed",
+      "label": "File Petition for Commission Review (Rule 210.43(a)(1))",
+      "actor": "applicant",
+      "authority": "cfr210.43.a.1",
+      "actionId": "file.petition.review",
+      "cost": 3000,
+      "hours": 45,
+      "deadline": {
+        "length": 12,
+        "extendable": true,
+        "extensionAuthority": "good cause",
+        "note": "19 CFR 210.43(a)(1): 12 days after service for a § 210.42(a)(1) violation ID; 10 days for a terminating summary determination; 5 business days for other 210.42(c) determinations. Missing the applicable window abandons the adversely-decided issues — flag itc337/petition-review-abandoned raised."
+      },
+      "valence": "good"
+    },
+    {
+      "from": "petition-for-review-window",
+      "to": "id-becomes-commission-determination",
+      "label": "No petition filed — issues decided adversely are abandoned (Rule 210.43(a)(4))",
+      "actor": "applicant",
+      "authority": "cfr210.43.a.4",
+      "hours": 0,
+      "valence": "bad"
+    },
+    {
+      "from": "petition-filed",
+      "to": "petition-response",
+      "label": "Opposing party responds — 8 days for a violation-ID petition, 5 business days otherwise (Rule 210.43(c))",
+      "actor": "either",
+      "authority": "cfr210.43.c",
+      "actionId": "respond.petition.review",
+      "cost": 2500,
+      "deadline": {
+        "length": 8,
+        "extendable": true,
+        "extensionAuthority": "good cause",
+        "note": "19 CFR 210.43(c): 8 days for a § 210.42(a)(1) violation-ID petition response, 5 business days for other petition types. A party in default may not respond on issues where it defaulted."
+      }
+    },
+    {
+      "from": "petition-response",
+      "to": "commission-review-decision",
+      "label": "Commission decides whether to grant the petition — 45 days for a terminating summary determination, 30 days otherwise (Rule 210.43(d))",
+      "actor": "office",
+      "authority": "cfr210.43.d"
+    },
+    {
+      "from": "commission-review-decision",
+      "to": "review-granted",
+      "label": "Petition granted — error/abuse present, or a policy matter the Commission wishes to address (Rule 210.43(d))",
+      "actor": "office",
+      "authority": "cfr210.43.d",
+      "probability": 0.35
+    },
+    {
+      "from": "commission-review-decision",
+      "to": "id-becomes-commission-determination",
+      "label": "Petition denied — the ID becomes the Commission's final determination",
+      "actor": "office",
+      "authority": "cfr210.42.a.1",
+      "probability": 0.65
+    },
+    {
+      "from": "review-granted",
+      "to": "commission-opinion",
+      "label": "Commission reviews on the merits and issues its opinion",
+      "actor": "office",
+      "authority": "cfr210.43.d"
+    },
+    {
+      "from": "commission-opinion",
+      "to": "commission-final-determination",
+      "label": "Commission's opinion becomes the Commission's Final Determination",
+      "actor": "office",
+      "authority": "cfr210.43.d"
+    },
+    {
+      "from": "id-becomes-commission-determination",
+      "to": "commission-final-determination",
+      "label": "Non-reviewed ID matures into the Commission's Final Determination by operation of Rule 210.42(a)(1)",
+      "actor": "office",
+      "authority": "cfr210.42.a.1"
+    },
+    {
+      "from": "commission-final-determination",
+      "to": "no-violation-outcome",
+      "label": "Commission's Final Determination: no violation",
+      "actor": "office",
+      "authority": "usc1337.b.1",
+      "probability": 0.35
+    },
+    {
+      "from": "commission-final-determination",
+      "to": "remedy-determined",
+      "label": "Commission's Final Determination: violation found — Commission determines remedy",
+      "actor": "office",
+      "authority": "usc1337.d",
+      "probability": 0.65
+    },
+    {
+      "from": "remedy-determined",
+      "to": "presidential-review-window",
+      "label": "Commission serves the determination — the 60-day Presidential (USTR) disapproval window begins (§ 1337(j))",
+      "actor": "office",
+      "authority": "usc1337.j"
+    },
+    {
+      "from": "presidential-review-window",
+      "to": "determination-vetoed",
+      "label": "President/USTR disapproves within 60 days for policy reasons — determination and remedy have no force or effect (§ 1337(j))",
+      "actor": "office",
+      "authority": "usc1337.j",
+      "probability": 0.1
+    },
+    {
+      "from": "presidential-review-window",
+      "to": "remedy-in-effect",
+      "label": "60 days elapse without disapproval — the remedy takes effect (§ 1337(j))",
+      "actor": "office",
+      "authority": "usc1337.j",
+      "probability": 0.9
+    },
+    {
+      "from": "no-violation-outcome",
+      "to": "federal-circuit-appeal-window",
+      "label": "Complainant (or another adversely affected person) considers appeal of the no-violation determination",
+      "actor": "applicant",
+      "authority": "usc1337.c",
+      "hours": 0
+    },
+    {
+      "from": "remedy-in-effect",
+      "to": "federal-circuit-appeal-window",
+      "label": "Respondent (or another adversely affected person) considers appeal of the violation determination and remedy",
+      "actor": "applicant",
+      "authority": "usc1337.c",
+      "hours": 0
+    },
+    {
+      "from": "federal-circuit-appeal-window",
+      "to": "appeal-filed",
+      "label": "File Notice of Appeal to the Federal Circuit — 60 days after the determination becomes final (§ 1337(c); 28 U.S.C. § 1295(a)(6))",
+      "actor": "applicant",
+      "authority": "usc1337.c",
+      "actionId": "file.appeal.fedcir",
+      "cost": 3000,
+      "hours": 6,
+      "deadline": {
+        "length": 60,
+        "extendable": false,
+        "note": "19 U.S.C. § 1337(c): 60 days, unextendable. Missing it raises flag itc337/fedcir-appeal-forfeited."
+      },
+      "valence": "good"
+    },
+    {
+      "from": "federal-circuit-appeal-window",
+      "to": "determination-final-unappealed",
+      "label": "No appeal filed within 60 days — the Commission's determination stands (§ 1337(c))",
+      "actor": "applicant",
+      "authority": "usc1337.c",
+      "hours": 0,
+      "valence": "bad"
+    },
+    {
+      "from": "appeal-filed",
+      "to": "federal-circuit-review",
+      "label": "Federal Circuit reviews the Commission's determination",
+      "actor": "office",
+      "authority": "usc1337.c"
+    },
+    {
+      "from": "federal-circuit-review",
+      "to": "cafc-affirmed",
+      "label": "Federal Circuit affirms the Commission",
+      "actor": "office",
+      "authority": "usc1337.c",
+      "probability": 0.7,
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/615096/tianrui-group-co-v-international-trade-commission/"
+    },
+    {
+      "from": "federal-circuit-review",
+      "to": "cafc-remanded",
+      "label": "Federal Circuit reverses or remands to the Commission for further proceedings",
+      "actor": "office",
+      "authority": "usc1337.c",
+      "probability": 0.3,
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/3153481/clearcorrect-operating-llc-v-international-trade-commission/"
+    },
+    {
+      "from": "cafc-remanded",
+      "to": "commission-final-determination",
+      "label": "Commission reconsiders on remand — a remand determination can genuinely change the outcome (cf. Certain Sleep-Disordered Breathing Treatment Systems, 337-TA-890)",
+      "actor": "office",
+      "authority": "usc1337.c"
+    }
+  ]
+}

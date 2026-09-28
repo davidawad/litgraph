@@ -1,0 +1,4707 @@
+{
+  "absorbingChain500": {
+    "absorptionProbabilityAtStart": {
+      "patent-issued": 0.9999999999999998
+    },
+    "dataQuality": "partial",
+    "expectedCostAtStart": 52007.25,
+    "expectedDaysAtStart": 192.74999999999997,
+    "expectedStepsAtStart": 17.65,
+    "ok": true,
+    "policy": {
+      "advisory-action": {
+        "from": "advisory-action",
+        "label": "Advisory Action received — reassess (clock still running, MPEP 714.13)",
+        "to": "after-final-decision"
+      },
+      "after-final-amendment": {
+        "from": "after-final-amendment",
+        "label": "Amendment not entered — file RCE",
+        "to": "rce-filed"
+      },
+      "after-final-decision": {
+        "from": "after-final-decision",
+        "label": "File after-final amendment (37 CFR 1.116)",
+        "to": "after-final-amendment"
+      },
+      "applicant-response-window": {
+        "from": "applicant-response-window",
+        "label": "Request examiner interview",
+        "to": "interview-conducted"
+      },
+      "election-made": {
+        "from": "election-made",
+        "label": "File divisional for non-elected invention (35 U.S.C. 121 shield)",
+        "to": "divisional-filed"
+      },
+      "epr-ordered": {
+        "from": "epr-ordered",
+        "label": "File Patent Owner Statement (35 U.S.C. 304) — opens requester reply [TRAP]",
+        "to": "epr-examination"
+      },
+      "examiners-answer": {
+        "from": "examiners-answer",
+        "label": "Reopen prosecution via RCE (new grounds in Answer)",
+        "to": "rce-filed"
+      },
+      "extension-taken": {
+        "from": "extension-taken",
+        "label": "File amendment within extended period",
+        "to": "amendment-filed"
+      },
+      "federal-circuit-appeal": {
+        "from": "federal-circuit-appeal",
+        "label": "Federal Circuit affirms — no further appeal",
+        "to": "abandoned-no-reply"
+      },
+      "final-rejection": {
+        "from": "final-rejection",
+        "label": "Receive and docket Final Rejection",
+        "to": "after-final-decision"
+      },
+      "interview-conducted": {
+        "from": "interview-conducted",
+        "label": "Follow up interview with amendment",
+        "to": "amendment-filed"
+      },
+      "ipr-petition-filed": {
+        "from": "ipr-petition-filed",
+        "label": "File Patent Owner Preliminary Response (POPR)",
+        "to": "ipr-institution-decision"
+      },
+      "ipr-trial-instituted": {
+        "from": "ipr-trial-instituted",
+        "label": "Settle before final written decision (35 U.S.C. 317) — avoid estoppel",
+        "to": "claims-confirmed"
+      },
+      "maintenance-due": {
+        "from": "maintenance-due",
+        "label": "Fail to pay maintenance fee — patent expires",
+        "to": "patent-expired"
+      },
+      "missing-parts": {
+        "from": "missing-parts",
+        "label": "File missing parts + surcharge",
+        "to": "pre-examination"
+      },
+      "noa-received": {
+        "from": "noa-received",
+        "label": "Pay issue fee within 3 months",
+        "to": "issue-fee-paid"
+      },
+      "non-final-oa": {
+        "from": "non-final-oa",
+        "label": "Receive and docket Office Action",
+        "to": "applicant-response-window"
+      },
+      "notice-of-appeal": {
+        "from": "notice-of-appeal",
+        "label": "File Appeal Brief (within 2 months)",
+        "to": "appeal-brief-filed"
+      },
+      "pgr-petition-filed": {
+        "from": "pgr-petition-filed",
+        "label": "File Patent Owner Preliminary Response (POPR)",
+        "to": "pgr-institution-decision"
+      },
+      "pgr-trial-instituted": {
+        "from": "pgr-trial-instituted",
+        "label": "Settle before final written decision (35 U.S.C. 327) — avoid estoppel",
+        "to": "claims-confirmed"
+      },
+      "pre-filing": {
+        "from": "pre-filing",
+        "label": "File nonprovisional directly (no provisional)",
+        "to": "nonprovisional-filed"
+      },
+      "provisional-filed": {
+        "from": "provisional-filed",
+        "label": "File nonprovisional within 12-month window",
+        "to": "nonprovisional-filed"
+      },
+      "ptab-affirmed": {
+        "from": "ptab-affirmed",
+        "label": "Appeal to Federal Circuit (35 U.S.C. 141)",
+        "to": "federal-circuit-appeal"
+      },
+      "restriction-requirement": {
+        "from": "restriction-requirement",
+        "label": "Elect invention WITHOUT traverse",
+        "to": "election-made"
+      },
+      "sec145-action": {
+        "from": "sec145-action",
+        "label": "District court affirms — abandoned",
+        "to": "abandoned-no-reply"
+      }
+    }
+  },
+  "dijkstra500": {
+    "cheapestByDollars": {
+      "abandoned-issue-fee": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "pre-examination",
+          "allowance",
+          "noa-received",
+          "abandoned-issue-fee"
+        ],
+        "target": "abandoned-issue-fee",
+        "total": 21820
+      },
+      "abandoned-no-reply": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "missing-parts",
+          "abandoned-no-reply"
+        ],
+        "target": "abandoned-no-reply",
+        "total": 21820
+      },
+      "claims-amended": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "pre-examination",
+          "allowance",
+          "noa-received",
+          "issue-fee-paid",
+          "patent-issued",
+          "patent-challenged",
+          "epr-requested",
+          "epr-ordered",
+          "epr-examination",
+          "claims-amended"
+        ],
+        "target": "claims-amended",
+        "total": 36370
+      },
+      "claims-cancelled": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "pre-examination",
+          "allowance",
+          "noa-received",
+          "issue-fee-paid",
+          "patent-issued",
+          "patent-challenged",
+          "epr-requested",
+          "epr-ordered",
+          "epr-examination",
+          "claims-cancelled"
+        ],
+        "target": "claims-cancelled",
+        "total": 36370
+      },
+      "claims-confirmed": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "pre-examination",
+          "allowance",
+          "noa-received",
+          "issue-fee-paid",
+          "patent-issued",
+          "patent-challenged",
+          "epr-requested",
+          "claims-confirmed"
+        ],
+        "target": "claims-confirmed",
+        "total": 36120
+      },
+      "patent-expired": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "pre-examination",
+          "allowance",
+          "noa-received",
+          "issue-fee-paid",
+          "patent-issued",
+          "maintenance-due",
+          "patent-expired"
+        ],
+        "target": "patent-expired",
+        "total": 23620
+      },
+      "patent-issued": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "pre-examination",
+          "allowance",
+          "noa-received",
+          "issue-fee-paid",
+          "patent-issued"
+        ],
+        "target": "patent-issued",
+        "total": 23520
+      },
+      "reissue-abandoned": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "pre-examination",
+          "allowance",
+          "noa-received",
+          "issue-fee-paid",
+          "patent-issued",
+          "reissue-pending",
+          "reissue-abandoned"
+        ],
+        "target": "reissue-abandoned",
+        "total": 35340
+      },
+      "reissue-granted": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "pre-examination",
+          "allowance",
+          "noa-received",
+          "issue-fee-paid",
+          "patent-issued",
+          "reissue-pending",
+          "reissue-granted"
+        ],
+        "target": "reissue-granted",
+        "total": 35340
+      }
+    },
+    "fastestByDays": {
+      "abandoned-issue-fee": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "pre-examination",
+          "allowance",
+          "noa-received",
+          "abandoned-issue-fee"
+        ],
+        "target": "abandoned-issue-fee",
+        "total": 0
+      },
+      "abandoned-no-reply": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "missing-parts",
+          "abandoned-no-reply"
+        ],
+        "target": "abandoned-no-reply",
+        "total": 0
+      },
+      "claims-amended": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "pre-examination",
+          "allowance",
+          "noa-received",
+          "issue-fee-paid",
+          "patent-issued",
+          "patent-challenged",
+          "epr-requested",
+          "epr-ordered",
+          "epr-examination",
+          "claims-amended"
+        ],
+        "target": "claims-amended",
+        "total": 90
+      },
+      "claims-cancelled": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "pre-examination",
+          "allowance",
+          "noa-received",
+          "issue-fee-paid",
+          "patent-issued",
+          "patent-challenged",
+          "epr-requested",
+          "epr-ordered",
+          "epr-examination",
+          "claims-cancelled"
+        ],
+        "target": "claims-cancelled",
+        "total": 90
+      },
+      "claims-confirmed": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "pre-examination",
+          "allowance",
+          "noa-received",
+          "issue-fee-paid",
+          "patent-issued",
+          "patent-challenged",
+          "epr-requested",
+          "claims-confirmed"
+        ],
+        "target": "claims-confirmed",
+        "total": 90
+      },
+      "patent-expired": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "pre-examination",
+          "allowance",
+          "noa-received",
+          "issue-fee-paid",
+          "patent-issued",
+          "maintenance-due",
+          "patent-expired"
+        ],
+        "target": "patent-expired",
+        "total": 90
+      },
+      "patent-issued": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "pre-examination",
+          "allowance",
+          "noa-received",
+          "issue-fee-paid",
+          "patent-issued"
+        ],
+        "target": "patent-issued",
+        "total": 90
+      },
+      "reissue-abandoned": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "pre-examination",
+          "allowance",
+          "noa-received",
+          "issue-fee-paid",
+          "patent-issued",
+          "reissue-pending",
+          "reissue-abandoned"
+        ],
+        "target": "reissue-abandoned",
+        "total": 90
+      },
+      "reissue-granted": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "pre-examination",
+          "allowance",
+          "noa-received",
+          "issue-fee-paid",
+          "patent-issued",
+          "reissue-pending",
+          "reissue-granted"
+        ],
+        "target": "reissue-granted",
+        "total": 90
+      }
+    },
+    "leastHours": {
+      "abandoned-issue-fee": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "pre-examination",
+          "allowance",
+          "noa-received",
+          "abandoned-issue-fee"
+        ],
+        "target": "abandoned-issue-fee",
+        "total": 40
+      },
+      "abandoned-no-reply": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "missing-parts",
+          "abandoned-no-reply"
+        ],
+        "target": "abandoned-no-reply",
+        "total": 40
+      },
+      "claims-amended": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "pre-examination",
+          "allowance",
+          "noa-received",
+          "issue-fee-paid",
+          "patent-issued",
+          "patent-challenged",
+          "epr-requested",
+          "epr-ordered",
+          "epr-examination",
+          "claims-amended"
+        ],
+        "target": "claims-amended",
+        "total": 41.5
+      },
+      "claims-cancelled": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "pre-examination",
+          "allowance",
+          "noa-received",
+          "issue-fee-paid",
+          "patent-issued",
+          "patent-challenged",
+          "epr-requested",
+          "epr-ordered",
+          "epr-examination",
+          "claims-cancelled"
+        ],
+        "target": "claims-cancelled",
+        "total": 41.5
+      },
+      "claims-confirmed": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "pre-examination",
+          "allowance",
+          "noa-received",
+          "issue-fee-paid",
+          "patent-issued",
+          "patent-challenged",
+          "epr-requested",
+          "claims-confirmed"
+        ],
+        "target": "claims-confirmed",
+        "total": 41
+      },
+      "patent-expired": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "pre-examination",
+          "allowance",
+          "noa-received",
+          "issue-fee-paid",
+          "patent-issued",
+          "maintenance-due",
+          "patent-expired"
+        ],
+        "target": "patent-expired",
+        "total": 41.2
+      },
+      "patent-issued": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "pre-examination",
+          "allowance",
+          "noa-received",
+          "issue-fee-paid",
+          "patent-issued"
+        ],
+        "target": "patent-issued",
+        "total": 41
+      },
+      "reissue-abandoned": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "pre-examination",
+          "allowance",
+          "noa-received",
+          "issue-fee-paid",
+          "patent-issued",
+          "reissue-pending",
+          "reissue-abandoned"
+        ],
+        "target": "reissue-abandoned",
+        "total": 61
+      },
+      "reissue-granted": {
+        "nodes": [
+          "pre-filing",
+          "nonprovisional-filed",
+          "pre-examination",
+          "allowance",
+          "noa-received",
+          "issue-fee-paid",
+          "patent-issued",
+          "reissue-pending",
+          "reissue-granted"
+        ],
+        "target": "reissue-granted",
+        "total": 61
+      }
+    }
+  },
+  "dominators": {
+    "idom": {
+      "abandoned-issue-fee": "noa-received",
+      "abandoned-no-reply": "nonprovisional-filed",
+      "advisory-action": "after-final-amendment",
+      "after-final-amendment": "after-final-decision",
+      "after-final-decision": "final-rejection",
+      "allowance": "nonprovisional-filed",
+      "amendment-filed": "applicant-response-window",
+      "appeal-brief-filed": "notice-of-appeal",
+      "appeal-dismissed": "notice-of-appeal",
+      "applicant-response-window": "nonprovisional-filed",
+      "claims-amended": "patent-challenged",
+      "claims-cancelled": "patent-challenged",
+      "claims-confirmed": "patent-challenged",
+      "continuation-filed": "after-final-decision",
+      "divisional-filed": "election-made",
+      "election-made": "restriction-requirement",
+      "epr-examination": "epr-ordered",
+      "epr-ordered": "epr-requested",
+      "epr-requested": "patent-challenged",
+      "examiners-answer": "appeal-brief-filed",
+      "extension-taken": "applicant-response-window",
+      "federal-circuit-appeal": "ptab-affirmed",
+      "final-rejection": "amendment-filed",
+      "interview-conducted": "applicant-response-window",
+      "ipr-final-written-decision": "ipr-trial-instituted",
+      "ipr-institution-decision": "ipr-petition-filed",
+      "ipr-petition-filed": "patent-challenged",
+      "ipr-trial-instituted": "ipr-institution-decision",
+      "issue-fee-paid": "noa-received",
+      "maintenance-due": "patent-issued",
+      "missing-parts": "nonprovisional-filed",
+      "noa-received": "allowance",
+      "non-final-oa": "nonprovisional-filed",
+      "nonprovisional-filed": "pre-filing",
+      "notice-of-appeal": "after-final-decision",
+      "patent-challenged": "patent-issued",
+      "patent-expired": "maintenance-due",
+      "patent-issued": "nonprovisional-filed",
+      "pgr-final-written-decision": "pgr-trial-instituted",
+      "pgr-institution-decision": "pgr-petition-filed",
+      "pgr-petition-filed": "patent-challenged",
+      "pgr-trial-instituted": "pgr-institution-decision",
+      "pre-examination": "nonprovisional-filed",
+      "pre-filing": "pre-filing",
+      "provisional-filed": "pre-filing",
+      "ptab-affirmed": "ptab-decision",
+      "ptab-decision": "examiners-answer",
+      "ptab-reversal": "ptab-decision",
+      "rce-filed": "after-final-decision",
+      "reissue-abandoned": "reissue-pending",
+      "reissue-granted": "reissue-pending",
+      "reissue-pending": "patent-issued",
+      "restriction-requirement": "pre-examination",
+      "sec145-action": "ptab-affirmed"
+    },
+    "root": "pre-filing"
+  },
+  "minCut500": {
+    "abandoned-issue-fee": {
+      "cutEdges": [
+        {
+          "from": "allowance",
+          "label": "Notice of Allowance mailed",
+          "to": "noa-received"
+        }
+      ],
+      "value": 1
+    },
+    "abandoned-no-reply": {
+      "cutEdges": [
+        {
+          "from": "pre-filing",
+          "label": "File nonprovisional directly (no provisional)",
+          "to": "nonprovisional-filed"
+        },
+        {
+          "from": "pre-filing",
+          "label": "File provisional application",
+          "to": "provisional-filed"
+        }
+      ],
+      "value": 2
+    },
+    "claims-amended": {
+      "cutEdges": [
+        {
+          "from": "patent-issued",
+          "label": "Third party challenges the issued patent (post-grant)",
+          "to": "patent-challenged"
+        }
+      ],
+      "value": 1
+    },
+    "claims-cancelled": {
+      "cutEdges": [
+        {
+          "from": "patent-issued",
+          "label": "Third party challenges the issued patent (post-grant)",
+          "to": "patent-challenged"
+        }
+      ],
+      "value": 1
+    },
+    "claims-confirmed": {
+      "cutEdges": [
+        {
+          "from": "patent-issued",
+          "label": "Third party challenges the issued patent (post-grant)",
+          "to": "patent-challenged"
+        }
+      ],
+      "value": 1
+    },
+    "patent-expired": {
+      "cutEdges": [
+        {
+          "from": "patent-issued",
+          "label": "Maintenance fees become due (3.5 / 7.5 / 11.5 years)",
+          "to": "maintenance-due"
+        }
+      ],
+      "value": 1
+    },
+    "patent-issued": {
+      "cutEdges": [
+        {
+          "from": "pre-filing",
+          "label": "File nonprovisional directly (no provisional)",
+          "to": "nonprovisional-filed"
+        },
+        {
+          "from": "pre-filing",
+          "label": "File provisional application",
+          "to": "provisional-filed"
+        }
+      ],
+      "value": 2
+    },
+    "reissue-abandoned": {
+      "cutEdges": [
+        {
+          "from": "reissue-pending",
+          "label": "Reissue abandoned (failure to reply or rejection sustained)",
+          "to": "reissue-abandoned"
+        }
+      ],
+      "value": 1
+    },
+    "reissue-granted": {
+      "cutEdges": [
+        {
+          "from": "reissue-pending",
+          "label": "Reissue examination completes — reissue patent granted",
+          "to": "reissue-granted"
+        }
+      ],
+      "value": 1
+    }
+  },
+  "packId": "mpep-prosecution",
+  "packTitle": "U.S. Utility Patent Prosecution",
+  "params": {
+    "paretoCappedMaxPaths": 20000,
+    "paretoDefaultOpts": {
+      "maxNodeVisits": 1,
+      "maxPaths": 50000
+    },
+    "paretoSlowThresholdMs": 20000,
+    "policyDiffRateA": 150,
+    "policyDiffRateB": 1500,
+    "rate": 500,
+    "rateLow": 250
+  },
+  "paretoPaths500": {
+    "abandoned-issue-fee": {
+      "enumeratedCount": 514,
+      "frontier": [
+        {
+          "nodes": [
+            "pre-filing",
+            "nonprovisional-filed",
+            "pre-examination",
+            "allowance",
+            "noa-received",
+            "abandoned-issue-fee"
+          ],
+          "totalCost": 21820,
+          "totalDays": 0
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "abandoned-no-reply": {
+      "enumeratedCount": 338,
+      "frontier": [
+        {
+          "nodes": [
+            "pre-filing",
+            "nonprovisional-filed",
+            "missing-parts",
+            "abandoned-no-reply"
+          ],
+          "totalCost": 21820,
+          "totalDays": 0
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "claims-amended": {
+      "enumeratedCount": 5980,
+      "frontier": [
+        {
+          "nodes": [
+            "pre-filing",
+            "nonprovisional-filed",
+            "pre-examination",
+            "allowance",
+            "noa-received",
+            "issue-fee-paid",
+            "patent-issued",
+            "patent-challenged",
+            "epr-requested",
+            "epr-ordered",
+            "epr-examination",
+            "claims-amended"
+          ],
+          "totalCost": 36370,
+          "totalDays": 90
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "claims-cancelled": {
+      "enumeratedCount": 5980,
+      "frontier": [
+        {
+          "nodes": [
+            "pre-filing",
+            "nonprovisional-filed",
+            "pre-examination",
+            "allowance",
+            "noa-received",
+            "issue-fee-paid",
+            "patent-issued",
+            "patent-challenged",
+            "epr-requested",
+            "epr-ordered",
+            "epr-examination",
+            "claims-cancelled"
+          ],
+          "totalCost": 36370,
+          "totalDays": 90
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "claims-confirmed": {
+      "enumeratedCount": 11362,
+      "frontier": [
+        {
+          "nodes": [
+            "pre-filing",
+            "nonprovisional-filed",
+            "pre-examination",
+            "allowance",
+            "noa-received",
+            "issue-fee-paid",
+            "patent-issued",
+            "patent-challenged",
+            "epr-requested",
+            "claims-confirmed"
+          ],
+          "totalCost": 36120,
+          "totalDays": 90
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "patent-expired": {
+      "enumeratedCount": 598,
+      "frontier": [
+        {
+          "nodes": [
+            "pre-filing",
+            "nonprovisional-filed",
+            "pre-examination",
+            "allowance",
+            "noa-received",
+            "issue-fee-paid",
+            "patent-issued",
+            "maintenance-due",
+            "patent-expired"
+          ],
+          "totalCost": 23620,
+          "totalDays": 90
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "patent-issued": {
+      "enumeratedCount": 598,
+      "frontier": [
+        {
+          "nodes": [
+            "pre-filing",
+            "nonprovisional-filed",
+            "pre-examination",
+            "allowance",
+            "noa-received",
+            "issue-fee-paid",
+            "patent-issued"
+          ],
+          "totalCost": 23520,
+          "totalDays": 90
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "reissue-abandoned": {
+      "enumeratedCount": 1196,
+      "frontier": [
+        {
+          "nodes": [
+            "pre-filing",
+            "nonprovisional-filed",
+            "pre-examination",
+            "allowance",
+            "noa-received",
+            "issue-fee-paid",
+            "patent-issued",
+            "reissue-pending",
+            "reissue-abandoned"
+          ],
+          "totalCost": 35340,
+          "totalDays": 90
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "reissue-granted": {
+      "enumeratedCount": 1196,
+      "frontier": [
+        {
+          "nodes": [
+            "pre-filing",
+            "nonprovisional-filed",
+            "pre-examination",
+            "allowance",
+            "noa-received",
+            "issue-fee-paid",
+            "patent-issued",
+            "reissue-pending",
+            "reissue-granted"
+          ],
+          "totalCost": 35340,
+          "totalDays": 90
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    }
+  },
+  "policyDiff_150_1500": {
+    "flips": [],
+    "rateA": 150,
+    "rateB": 1500
+  },
+  "scc": {
+    "absorbingComponents": [
+      [
+        "patent-expired"
+      ],
+      [
+        "claims-cancelled"
+      ],
+      [
+        "claims-confirmed"
+      ],
+      [
+        "claims-amended"
+      ],
+      [
+        "reissue-granted"
+      ],
+      [
+        "reissue-abandoned"
+      ]
+    ],
+    "componentOf": {
+      "abandoned-issue-fee": 22,
+      "abandoned-no-reply": 25,
+      "advisory-action": 25,
+      "after-final-amendment": 25,
+      "after-final-decision": 25,
+      "allowance": 23,
+      "amendment-filed": 25,
+      "appeal-brief-filed": 25,
+      "appeal-dismissed": 25,
+      "applicant-response-window": 25,
+      "claims-amended": 4,
+      "claims-cancelled": 2,
+      "claims-confirmed": 3,
+      "continuation-filed": 25,
+      "divisional-filed": 25,
+      "election-made": 25,
+      "epr-examination": 13,
+      "epr-ordered": 14,
+      "epr-requested": 15,
+      "examiners-answer": 25,
+      "extension-taken": 25,
+      "federal-circuit-appeal": 25,
+      "final-rejection": 25,
+      "interview-conducted": 25,
+      "ipr-final-written-decision": 5,
+      "ipr-institution-decision": 7,
+      "ipr-petition-filed": 8,
+      "ipr-trial-instituted": 6,
+      "issue-fee-paid": 21,
+      "maintenance-due": 1,
+      "missing-parts": 26,
+      "noa-received": 22,
+      "non-final-oa": 25,
+      "nonprovisional-filed": 27,
+      "notice-of-appeal": 25,
+      "patent-challenged": 16,
+      "patent-expired": 0,
+      "patent-issued": 20,
+      "pgr-final-written-decision": 9,
+      "pgr-institution-decision": 11,
+      "pgr-petition-filed": 12,
+      "pgr-trial-instituted": 10,
+      "pre-examination": 25,
+      "pre-filing": 29,
+      "provisional-filed": 28,
+      "ptab-affirmed": 25,
+      "ptab-decision": 25,
+      "ptab-reversal": 24,
+      "rce-filed": 25,
+      "reissue-abandoned": 18,
+      "reissue-granted": 17,
+      "reissue-pending": 19,
+      "restriction-requirement": 25,
+      "sec145-action": 25
+    },
+    "components": [
+      [
+        "patent-expired"
+      ],
+      [
+        "maintenance-due"
+      ],
+      [
+        "claims-cancelled"
+      ],
+      [
+        "claims-confirmed"
+      ],
+      [
+        "claims-amended"
+      ],
+      [
+        "ipr-final-written-decision"
+      ],
+      [
+        "ipr-trial-instituted"
+      ],
+      [
+        "ipr-institution-decision"
+      ],
+      [
+        "ipr-petition-filed"
+      ],
+      [
+        "pgr-final-written-decision"
+      ],
+      [
+        "pgr-trial-instituted"
+      ],
+      [
+        "pgr-institution-decision"
+      ],
+      [
+        "pgr-petition-filed"
+      ],
+      [
+        "epr-examination"
+      ],
+      [
+        "epr-ordered"
+      ],
+      [
+        "epr-requested"
+      ],
+      [
+        "patent-challenged"
+      ],
+      [
+        "reissue-granted"
+      ],
+      [
+        "reissue-abandoned"
+      ],
+      [
+        "reissue-pending"
+      ],
+      [
+        "patent-issued"
+      ],
+      [
+        "issue-fee-paid"
+      ],
+      [
+        "abandoned-issue-fee",
+        "noa-received"
+      ],
+      [
+        "allowance"
+      ],
+      [
+        "ptab-reversal"
+      ],
+      [
+        "abandoned-no-reply",
+        "advisory-action",
+        "after-final-amendment",
+        "after-final-decision",
+        "amendment-filed",
+        "appeal-brief-filed",
+        "appeal-dismissed",
+        "applicant-response-window",
+        "continuation-filed",
+        "divisional-filed",
+        "election-made",
+        "examiners-answer",
+        "extension-taken",
+        "federal-circuit-appeal",
+        "final-rejection",
+        "interview-conducted",
+        "non-final-oa",
+        "notice-of-appeal",
+        "pre-examination",
+        "ptab-affirmed",
+        "ptab-decision",
+        "rce-filed",
+        "restriction-requirement",
+        "sec145-action"
+      ],
+      [
+        "missing-parts"
+      ],
+      [
+        "nonprovisional-filed"
+      ],
+      [
+        "provisional-filed"
+      ],
+      [
+        "pre-filing"
+      ]
+    ],
+    "condensation": {
+      "edges": [
+        {
+          "from": 1,
+          "to": 0
+        },
+        {
+          "from": 5,
+          "to": 2
+        },
+        {
+          "from": 5,
+          "to": 3
+        },
+        {
+          "from": 5,
+          "to": 4
+        },
+        {
+          "from": 6,
+          "to": 3
+        },
+        {
+          "from": 6,
+          "to": 5
+        },
+        {
+          "from": 7,
+          "to": 3
+        },
+        {
+          "from": 7,
+          "to": 6
+        },
+        {
+          "from": 8,
+          "to": 7
+        },
+        {
+          "from": 9,
+          "to": 2
+        },
+        {
+          "from": 9,
+          "to": 3
+        },
+        {
+          "from": 9,
+          "to": 4
+        },
+        {
+          "from": 10,
+          "to": 3
+        },
+        {
+          "from": 10,
+          "to": 9
+        },
+        {
+          "from": 11,
+          "to": 3
+        },
+        {
+          "from": 11,
+          "to": 10
+        },
+        {
+          "from": 12,
+          "to": 11
+        },
+        {
+          "from": 13,
+          "to": 2
+        },
+        {
+          "from": 13,
+          "to": 3
+        },
+        {
+          "from": 13,
+          "to": 4
+        },
+        {
+          "from": 14,
+          "to": 13
+        },
+        {
+          "from": 15,
+          "to": 3
+        },
+        {
+          "from": 15,
+          "to": 14
+        },
+        {
+          "from": 16,
+          "to": 8
+        },
+        {
+          "from": 16,
+          "to": 12
+        },
+        {
+          "from": 16,
+          "to": 15
+        },
+        {
+          "from": 19,
+          "to": 17
+        },
+        {
+          "from": 19,
+          "to": 18
+        },
+        {
+          "from": 20,
+          "to": 1
+        },
+        {
+          "from": 20,
+          "to": 16
+        },
+        {
+          "from": 20,
+          "to": 19
+        },
+        {
+          "from": 21,
+          "to": 20
+        },
+        {
+          "from": 22,
+          "to": 21
+        },
+        {
+          "from": 23,
+          "to": 22
+        },
+        {
+          "from": 24,
+          "to": 23
+        },
+        {
+          "from": 25,
+          "to": 20
+        },
+        {
+          "from": 25,
+          "to": 23
+        },
+        {
+          "from": 25,
+          "to": 24
+        },
+        {
+          "from": 26,
+          "to": 25
+        },
+        {
+          "from": 27,
+          "to": 25
+        },
+        {
+          "from": 27,
+          "to": 26
+        },
+        {
+          "from": 28,
+          "to": 27
+        },
+        {
+          "from": 29,
+          "to": 27
+        },
+        {
+          "from": 29,
+          "to": 28
+        }
+      ],
+      "nodes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ]
+    },
+    "cyclicComponents": [
+      [
+        "maintenance-due"
+      ],
+      [
+        "patent-issued"
+      ],
+      [
+        "abandoned-issue-fee",
+        "noa-received"
+      ],
+      [
+        "abandoned-no-reply",
+        "advisory-action",
+        "after-final-amendment",
+        "after-final-decision",
+        "amendment-filed",
+        "appeal-brief-filed",
+        "appeal-dismissed",
+        "applicant-response-window",
+        "continuation-filed",
+        "divisional-filed",
+        "election-made",
+        "examiners-answer",
+        "extension-taken",
+        "federal-circuit-appeal",
+        "final-rejection",
+        "interview-conducted",
+        "non-final-oa",
+        "notice-of-appeal",
+        "pre-examination",
+        "ptab-affirmed",
+        "ptab-decision",
+        "rce-filed",
+        "restriction-requirement",
+        "sec145-action"
+      ]
+    ],
+    "cyclicLoops": [
+      {
+        "escapeEdges": [
+          {
+            "from": "maintenance-due",
+            "label": "Fail to pay maintenance fee — patent expires",
+            "to": "patent-expired"
+          }
+        ],
+        "internalEdges": [
+          {
+            "from": "maintenance-due",
+            "label": "Pay maintenance fee on time",
+            "to": "maintenance-due"
+          }
+        ],
+        "nodes": [
+          "maintenance-due"
+        ]
+      },
+      {
+        "escapeEdges": [
+          {
+            "from": "patent-issued",
+            "label": "Maintenance fees become due (3.5 / 7.5 / 11.5 years)",
+            "to": "maintenance-due"
+          },
+          {
+            "from": "patent-issued",
+            "label": "Third party challenges the issued patent (post-grant)",
+            "to": "patent-challenged"
+          },
+          {
+            "from": "patent-issued",
+            "label": "File broadening reissue application — MUST be within 2 years of grant (§ 251)",
+            "to": "reissue-pending"
+          },
+          {
+            "from": "patent-issued",
+            "label": "File narrowing reissue application (§ 251; any time during enforceable term)",
+            "to": "reissue-pending"
+          }
+        ],
+        "internalEdges": [
+          {
+            "from": "patent-issued",
+            "label": "Miss 2-year broadening reissue window — broadening permanently barred",
+            "to": "patent-issued"
+          }
+        ],
+        "nodes": [
+          "patent-issued"
+        ]
+      },
+      {
+        "escapeEdges": [
+          {
+            "from": "noa-received",
+            "label": "Pay issue fee within 3 months",
+            "to": "issue-fee-paid"
+          }
+        ],
+        "internalEdges": [
+          {
+            "from": "abandoned-issue-fee",
+            "label": "Petition to revive — pay issue fee late (37 CFR 1.137)",
+            "to": "noa-received"
+          },
+          {
+            "from": "noa-received",
+            "label": "Fail to pay issue fee — abandonment",
+            "to": "abandoned-issue-fee"
+          }
+        ],
+        "nodes": [
+          "abandoned-issue-fee",
+          "noa-received"
+        ]
+      },
+      {
+        "escapeEdges": [
+          {
+            "from": "after-final-amendment",
+            "label": "Examiner enters amendment and allows",
+            "to": "allowance"
+          },
+          {
+            "from": "amendment-filed",
+            "label": "Examiner allows all claims",
+            "to": "allowance"
+          },
+          {
+            "from": "appeal-dismissed",
+            "label": "Allowed claim(s) exist — examiner cancels rejected claims and issues",
+            "to": "patent-issued"
+          },
+          {
+            "from": "federal-circuit-appeal",
+            "label": "Federal Circuit reverses — allowance ordered",
+            "to": "allowance"
+          },
+          {
+            "from": "pre-examination",
+            "label": "Examiner allows on first action (FAOM)",
+            "to": "allowance"
+          },
+          {
+            "from": "ptab-decision",
+            "label": "PTAB reverses examiner",
+            "to": "ptab-reversal"
+          },
+          {
+            "from": "rce-filed",
+            "label": "Examiner allows after RCE submission",
+            "to": "allowance"
+          },
+          {
+            "from": "sec145-action",
+            "label": "District court orders allowance",
+            "to": "allowance"
+          }
+        ],
+        "internalEdges": [
+          {
+            "from": "abandoned-no-reply",
+            "label": "Petition to revive — unintentional delay (37 CFR 1.137)",
+            "to": "applicant-response-window"
+          },
+          {
+            "from": "advisory-action",
+            "label": "Advisory Action received — reassess (clock still running, MPEP 714.13)",
+            "to": "after-final-decision"
+          },
+          {
+            "from": "after-final-amendment",
+            "label": "Examiner issues Advisory Action (amendment not entered)",
+            "to": "advisory-action"
+          },
+          {
+            "from": "after-final-amendment",
+            "label": "Amendment not entered — appeal",
+            "to": "notice-of-appeal"
+          },
+          {
+            "from": "after-final-amendment",
+            "label": "Amendment not entered — file RCE",
+            "to": "rce-filed"
+          },
+          {
+            "from": "after-final-decision",
+            "label": "Fail to reply after final — abandonment",
+            "to": "abandoned-no-reply"
+          },
+          {
+            "from": "after-final-decision",
+            "label": "File after-final amendment (37 CFR 1.116)",
+            "to": "after-final-amendment"
+          },
+          {
+            "from": "after-final-decision",
+            "label": "File continuation to pursue additional claims (37 CFR 1.53(b))",
+            "to": "continuation-filed"
+          },
+          {
+            "from": "after-final-decision",
+            "label": "File Notice of Appeal to PTAB",
+            "to": "notice-of-appeal"
+          },
+          {
+            "from": "after-final-decision",
+            "label": "File RCE — restart prosecution",
+            "to": "rce-filed"
+          },
+          {
+            "from": "amendment-filed",
+            "label": "Examiner issues Final Rejection",
+            "to": "final-rejection"
+          },
+          {
+            "from": "amendment-filed",
+            "label": "Examiner issues new Non-Final OA",
+            "to": "non-final-oa"
+          },
+          {
+            "from": "appeal-brief-filed",
+            "label": "Examiner files Answer",
+            "to": "examiners-answer"
+          },
+          {
+            "from": "appeal-dismissed",
+            "label": "No allowed claims — application abandoned",
+            "to": "abandoned-no-reply"
+          },
+          {
+            "from": "applicant-response-window",
+            "label": "Fail to reply within 6-month statutory ceiling",
+            "to": "abandoned-no-reply"
+          },
+          {
+            "from": "applicant-response-window",
+            "label": "File amendment/response within SSP (3 months)",
+            "to": "amendment-filed"
+          },
+          {
+            "from": "applicant-response-window",
+            "label": "File extension of time (1-month)",
+            "to": "extension-taken"
+          },
+          {
+            "from": "applicant-response-window",
+            "label": "Request examiner interview",
+            "to": "interview-conducted"
+          },
+          {
+            "from": "continuation-filed",
+            "label": "Continuation docketed — enters examination",
+            "to": "pre-examination"
+          },
+          {
+            "from": "divisional-filed",
+            "label": "Divisional docketed — enters examination",
+            "to": "pre-examination"
+          },
+          {
+            "from": "election-made",
+            "label": "File divisional for non-elected invention (35 U.S.C. 121 shield)",
+            "to": "divisional-filed"
+          },
+          {
+            "from": "election-made",
+            "label": "Examiner examines elected claims — issues Office Action",
+            "to": "non-final-oa"
+          },
+          {
+            "from": "examiners-answer",
+            "label": "Pay appeal forwarding fee — appeal forwarded to PTAB",
+            "to": "ptab-decision"
+          },
+          {
+            "from": "examiners-answer",
+            "label": "Reopen prosecution via RCE (new grounds in Answer)",
+            "to": "rce-filed"
+          },
+          {
+            "from": "extension-taken",
+            "label": "File amendment within extended period",
+            "to": "amendment-filed"
+          },
+          {
+            "from": "extension-taken",
+            "label": "Take additional extension of time",
+            "to": "extension-taken"
+          },
+          {
+            "from": "federal-circuit-appeal",
+            "label": "Federal Circuit affirms — no further appeal",
+            "to": "abandoned-no-reply"
+          },
+          {
+            "from": "final-rejection",
+            "label": "Receive and docket Final Rejection",
+            "to": "after-final-decision"
+          },
+          {
+            "from": "interview-conducted",
+            "label": "Follow up interview with amendment",
+            "to": "amendment-filed"
+          },
+          {
+            "from": "non-final-oa",
+            "label": "Receive and docket Office Action",
+            "to": "applicant-response-window"
+          },
+          {
+            "from": "notice-of-appeal",
+            "label": "File Appeal Brief (within 2 months)",
+            "to": "appeal-brief-filed"
+          },
+          {
+            "from": "notice-of-appeal",
+            "label": "Fail to file appeal brief — appeal dismissed",
+            "to": "appeal-dismissed"
+          },
+          {
+            "from": "pre-examination",
+            "label": "Examiner issues Non-Final Office Action",
+            "to": "non-final-oa"
+          },
+          {
+            "from": "pre-examination",
+            "label": "Examiner issues Restriction / Election Requirement",
+            "to": "restriction-requirement"
+          },
+          {
+            "from": "ptab-affirmed",
+            "label": "Take no further action — application abandoned",
+            "to": "abandoned-no-reply"
+          },
+          {
+            "from": "ptab-affirmed",
+            "label": "Appeal to Federal Circuit (35 U.S.C. 141)",
+            "to": "federal-circuit-appeal"
+          },
+          {
+            "from": "ptab-affirmed",
+            "label": "File civil action in E.D. Va. (35 U.S.C. 145)",
+            "to": "sec145-action"
+          },
+          {
+            "from": "ptab-decision",
+            "label": "PTAB affirms examiner",
+            "to": "ptab-affirmed"
+          },
+          {
+            "from": "rce-filed",
+            "label": "Examiner issues new Non-Final OA after RCE",
+            "to": "non-final-oa"
+          },
+          {
+            "from": "restriction-requirement",
+            "label": "Elect invention WITH traverse (preserve 37 CFR 1.144 petition)",
+            "to": "election-made"
+          },
+          {
+            "from": "restriction-requirement",
+            "label": "Elect invention WITHOUT traverse",
+            "to": "election-made"
+          },
+          {
+            "from": "sec145-action",
+            "label": "District court affirms — abandoned",
+            "to": "abandoned-no-reply"
+          }
+        ],
+        "nodes": [
+          "abandoned-no-reply",
+          "advisory-action",
+          "after-final-amendment",
+          "after-final-decision",
+          "amendment-filed",
+          "appeal-brief-filed",
+          "appeal-dismissed",
+          "applicant-response-window",
+          "continuation-filed",
+          "divisional-filed",
+          "election-made",
+          "examiners-answer",
+          "extension-taken",
+          "federal-circuit-appeal",
+          "final-rejection",
+          "interview-conducted",
+          "non-final-oa",
+          "notice-of-appeal",
+          "pre-examination",
+          "ptab-affirmed",
+          "ptab-decision",
+          "rce-filed",
+          "restriction-requirement",
+          "sec145-action"
+        ]
+      }
+    ]
+  },
+  "schemaVersion": 1,
+  "startNodeId": "pre-filing",
+  "terminals": [
+    "abandoned-issue-fee",
+    "abandoned-no-reply",
+    "claims-amended",
+    "claims-cancelled",
+    "claims-confirmed",
+    "patent-expired",
+    "patent-issued",
+    "reissue-abandoned",
+    "reissue-granted"
+  ],
+  "valueIteration250": {
+    "converged": true,
+    "edgeQ": [
+      {
+        "from": "abandoned-issue-fee",
+        "label": "Petition to revive — pay issue fee late (37 CFR 1.137)",
+        "q": 145450,
+        "to": "noa-received"
+      },
+      {
+        "from": "abandoned-no-reply",
+        "label": "Petition to revive — unintentional delay (37 CFR 1.137)",
+        "q": 139766.1764705819,
+        "to": "applicant-response-window"
+      },
+      {
+        "from": "advisory-action",
+        "label": "Advisory Action received — reassess (clock still running, MPEP 714.13)",
+        "q": 145800,
+        "to": "after-final-decision"
+      },
+      {
+        "from": "after-final-amendment",
+        "label": "Examiner issues Advisory Action (amendment not entered)",
+        "q": 145800,
+        "to": "advisory-action"
+      },
+      {
+        "from": "after-final-amendment",
+        "label": "Examiner enters amendment and allows",
+        "q": 148550,
+        "to": "allowance"
+      },
+      {
+        "from": "after-final-amendment",
+        "label": "Amendment not entered — appeal",
+        "q": 127823.82352938241,
+        "to": "notice-of-appeal"
+      },
+      {
+        "from": "after-final-amendment",
+        "label": "Amendment not entered — file RCE",
+        "q": 140123.82352940735,
+        "to": "rce-filed"
+      },
+      {
+        "from": "after-final-decision",
+        "label": "Fail to reply after final — abandonment",
+        "q": -75000,
+        "to": "abandoned-no-reply"
+      },
+      {
+        "from": "after-final-decision",
+        "label": "File after-final amendment (37 CFR 1.116)",
+        "q": 146050,
+        "to": "after-final-amendment"
+      },
+      {
+        "from": "after-final-decision",
+        "label": "File continuation to pursue additional claims (37 CFR 1.53(b))",
+        "q": 135102.05882349145,
+        "to": "continuation-filed"
+      },
+      {
+        "from": "after-final-decision",
+        "label": "File Notice of Appeal to PTAB",
+        "q": 127823.82352938241,
+        "to": "notice-of-appeal"
+      },
+      {
+        "from": "after-final-decision",
+        "label": "File RCE — restart prosecution",
+        "q": 140123.82352940735,
+        "to": "rce-filed"
+      },
+      {
+        "from": "allowance",
+        "label": "Notice of Allowance mailed",
+        "q": 148550,
+        "to": "noa-received"
+      },
+      {
+        "from": "amendment-filed",
+        "label": "Examiner allows all claims",
+        "q": 148550,
+        "to": "allowance"
+      },
+      {
+        "from": "amendment-filed",
+        "label": "Examiner issues Final Rejection",
+        "q": 145925,
+        "to": "final-rejection"
+      },
+      {
+        "from": "amendment-filed",
+        "label": "Examiner issues new Non-Final OA",
+        "q": 142741.17647058194,
+        "to": "non-final-oa"
+      },
+      {
+        "from": "appeal-brief-filed",
+        "label": "Examiner files Answer",
+        "q": 140123.82352940735,
+        "to": "examiners-answer"
+      },
+      {
+        "from": "appeal-dismissed",
+        "label": "No allowed claims — application abandoned",
+        "q": -75000,
+        "to": "abandoned-no-reply"
+      },
+      {
+        "from": "appeal-dismissed",
+        "label": "Allowed claim(s) exist — examiner cancels rejected claims and issues",
+        "q": 150000,
+        "to": "patent-issued"
+      },
+      {
+        "from": "applicant-response-window",
+        "label": "Fail to reply within 6-month statutory ceiling",
+        "q": -75000,
+        "to": "abandoned-no-reply"
+      },
+      {
+        "from": "applicant-response-window",
+        "label": "File amendment/response within SSP (3 months)",
+        "q": 142616.1764705873,
+        "to": "amendment-filed"
+      },
+      {
+        "from": "applicant-response-window",
+        "label": "File extension of time (1-month)",
+        "q": 142251.1764705819,
+        "to": "extension-taken"
+      },
+      {
+        "from": "applicant-response-window",
+        "label": "Request examiner interview",
+        "q": 142866.1764705873,
+        "to": "interview-conducted"
+      },
+      {
+        "from": "continuation-filed",
+        "label": "Continuation docketed — enters examination",
+        "q": 143172.05882349145,
+        "to": "pre-examination"
+      },
+      {
+        "from": "divisional-filed",
+        "label": "Divisional docketed — enters examination",
+        "q": 143172.05882349145,
+        "to": "pre-examination"
+      },
+      {
+        "from": "election-made",
+        "label": "File divisional for non-elected invention (35 U.S.C. 121 shield)",
+        "q": 133852.05882349145,
+        "to": "divisional-filed"
+      },
+      {
+        "from": "election-made",
+        "label": "Examiner examines elected claims — issues Office Action",
+        "q": 142741.17647058194,
+        "to": "non-final-oa"
+      },
+      {
+        "from": "epr-examination",
+        "label": "Reexam certificate: claims amended / narrowed",
+        "q": 75000,
+        "to": "claims-amended"
+      },
+      {
+        "from": "epr-examination",
+        "label": "Reexam certificate: claims cancelled",
+        "q": -100000,
+        "to": "claims-cancelled"
+      },
+      {
+        "from": "epr-examination",
+        "label": "Reexam certificate: claims confirmed as patentable",
+        "q": 150000,
+        "to": "claims-confirmed"
+      },
+      {
+        "from": "epr-ordered",
+        "label": "Decline owner statement — reserve for first Office action (recommended)",
+        "q": 70375,
+        "to": "epr-examination"
+      },
+      {
+        "from": "epr-ordered",
+        "label": "File Patent Owner Statement (35 U.S.C. 304) — opens requester reply [TRAP]",
+        "q": 60500,
+        "to": "epr-examination"
+      },
+      {
+        "from": "epr-requested",
+        "label": "Request denied — no substantial new question",
+        "q": 150000,
+        "to": "claims-confirmed"
+      },
+      {
+        "from": "epr-requested",
+        "label": "Director grants reexam — SNQ found (35 U.S.C. 303)",
+        "q": 70375,
+        "to": "epr-ordered"
+      },
+      {
+        "from": "examiners-answer",
+        "label": "Pay appeal forwarding fee — appeal forwarded to PTAB",
+        "q": 131940,
+        "to": "ptab-decision"
+      },
+      {
+        "from": "examiners-answer",
+        "label": "Reopen prosecution via RCE (new grounds in Answer)",
+        "q": 140123.82352940735,
+        "to": "rce-filed"
+      },
+      {
+        "from": "extension-taken",
+        "label": "File amendment within extended period",
+        "q": 142616.1764705873,
+        "to": "amendment-filed"
+      },
+      {
+        "from": "extension-taken",
+        "label": "Take additional extension of time",
+        "q": 142011.1764705819,
+        "to": "extension-taken"
+      },
+      {
+        "from": "federal-circuit-appeal",
+        "label": "Federal Circuit affirms — no further appeal",
+        "q": -75000,
+        "to": "abandoned-no-reply"
+      },
+      {
+        "from": "federal-circuit-appeal",
+        "label": "Federal Circuit reverses — allowance ordered",
+        "q": 148550,
+        "to": "allowance"
+      },
+      {
+        "from": "final-rejection",
+        "label": "Receive and docket Final Rejection",
+        "q": 145925,
+        "to": "after-final-decision"
+      },
+      {
+        "from": "interview-conducted",
+        "label": "Follow up interview with amendment",
+        "q": 143366.1764705873,
+        "to": "amendment-filed"
+      },
+      {
+        "from": "ipr-final-written-decision",
+        "label": "FWD: mixed — substitute claims entered (intervening rights)",
+        "q": 75000,
+        "to": "claims-amended"
+      },
+      {
+        "from": "ipr-final-written-decision",
+        "label": "FWD: all instituted claims held unpatentable",
+        "q": -100000,
+        "to": "claims-cancelled"
+      },
+      {
+        "from": "ipr-final-written-decision",
+        "label": "FWD: claims upheld (patentability confirmed)",
+        "q": 150000,
+        "to": "claims-confirmed"
+      },
+      {
+        "from": "ipr-institution-decision",
+        "label": "PTAB denies institution (Fintiv / 325(d) / merits)",
+        "q": 150000,
+        "to": "claims-confirmed"
+      },
+      {
+        "from": "ipr-institution-decision",
+        "label": "PTAB institutes trial (35 U.S.C. 314(a))",
+        "q": 145000,
+        "to": "ipr-trial-instituted"
+      },
+      {
+        "from": "ipr-petition-filed",
+        "label": "File Patent Owner Preliminary Response (POPR)",
+        "q": 131750,
+        "to": "ipr-institution-decision"
+      },
+      {
+        "from": "ipr-petition-filed",
+        "label": "Waive POPR — reserve arguments for trial",
+        "q": 146625,
+        "to": "ipr-institution-decision"
+      },
+      {
+        "from": "ipr-trial-instituted",
+        "label": "Settle before final written decision (35 U.S.C. 317) — avoid estoppel",
+        "q": 145000,
+        "to": "claims-confirmed"
+      },
+      {
+        "from": "ipr-trial-instituted",
+        "label": "File Motion to Amend (substitute claims, 35 U.S.C. 316(d))",
+        "q": -43750,
+        "to": "ipr-final-written-decision"
+      },
+      {
+        "from": "ipr-trial-instituted",
+        "label": "File Patent Owner Response",
+        "q": -46250,
+        "to": "ipr-final-written-decision"
+      },
+      {
+        "from": "issue-fee-paid",
+        "label": "Patent issues",
+        "q": 150000,
+        "to": "patent-issued"
+      },
+      {
+        "from": "maintenance-due",
+        "label": "Pay maintenance fee on time",
+        "q": -2125,
+        "to": "maintenance-due"
+      },
+      {
+        "from": "maintenance-due",
+        "label": "Fail to pay maintenance fee — patent expires",
+        "q": 0,
+        "to": "patent-expired"
+      },
+      {
+        "from": "missing-parts",
+        "label": "Fail to supply missing parts",
+        "q": -75000,
+        "to": "abandoned-no-reply"
+      },
+      {
+        "from": "missing-parts",
+        "label": "File missing parts + surcharge",
+        "q": 142432.05882349145,
+        "to": "pre-examination"
+      },
+      {
+        "from": "noa-received",
+        "label": "Fail to pay issue fee — abandonment",
+        "q": -75000,
+        "to": "abandoned-issue-fee"
+      },
+      {
+        "from": "noa-received",
+        "label": "Pay issue fee within 3 months",
+        "q": 148550,
+        "to": "issue-fee-paid"
+      },
+      {
+        "from": "non-final-oa",
+        "label": "Receive and docket Office Action",
+        "q": 142741.1764705819,
+        "to": "applicant-response-window"
+      },
+      {
+        "from": "nonprovisional-filed",
+        "label": "USPTO issues Notice to File Missing Parts",
+        "q": 142432.05882344372,
+        "to": "missing-parts"
+      },
+      {
+        "from": "nonprovisional-filed",
+        "label": "Application complete — assigned to examiner",
+        "q": 143172.05882349145,
+        "to": "pre-examination"
+      },
+      {
+        "from": "notice-of-appeal",
+        "label": "File Appeal Brief (within 2 months)",
+        "q": 130123.82352938218,
+        "to": "appeal-brief-filed"
+      },
+      {
+        "from": "notice-of-appeal",
+        "label": "Fail to file appeal brief — appeal dismissed",
+        "q": -30000,
+        "to": "appeal-dismissed"
+      },
+      {
+        "from": "patent-challenged",
+        "label": "Requester files ex parte reexam request (35 U.S.C. 302)",
+        "q": 64145,
+        "to": "epr-requested"
+      },
+      {
+        "from": "patent-challenged",
+        "label": "Challenger files IPR petition (35 U.S.C. 311)",
+        "q": 122875,
+        "to": "ipr-petition-filed"
+      },
+      {
+        "from": "patent-challenged",
+        "label": "Challenger files PGR petition within 9 months (35 U.S.C. 321)",
+        "q": 123375,
+        "to": "pgr-petition-filed"
+      },
+      {
+        "from": "patent-issued",
+        "label": "Maintenance fees become due (3.5 / 7.5 / 11.5 years)",
+        "q": -50,
+        "to": "maintenance-due"
+      },
+      {
+        "from": "patent-issued",
+        "label": "Third party challenges the issued patent (post-grant)",
+        "q": 103465,
+        "to": "patent-challenged"
+      },
+      {
+        "from": "patent-issued",
+        "label": "Miss 2-year broadening reissue window — broadening permanently barred",
+        "q": 150000,
+        "to": "patent-issued"
+      },
+      {
+        "from": "patent-issued",
+        "label": "File broadening reissue application — MUST be within 2 years of grant (§ 251)",
+        "q": -30570,
+        "to": "reissue-pending"
+      },
+      {
+        "from": "patent-issued",
+        "label": "File narrowing reissue application (§ 251; any time during enforceable term)",
+        "q": -29320,
+        "to": "reissue-pending"
+      },
+      {
+        "from": "pgr-final-written-decision",
+        "label": "FWD: mixed — substitute claims entered (intervening rights)",
+        "q": 75000,
+        "to": "claims-amended"
+      },
+      {
+        "from": "pgr-final-written-decision",
+        "label": "FWD: claims held unpatentable (incl. 101/112 grounds)",
+        "q": -100000,
+        "to": "claims-cancelled"
+      },
+      {
+        "from": "pgr-final-written-decision",
+        "label": "FWD: claims upheld",
+        "q": 150000,
+        "to": "claims-confirmed"
+      },
+      {
+        "from": "pgr-institution-decision",
+        "label": "PTAB denies institution",
+        "q": 150000,
+        "to": "claims-confirmed"
+      },
+      {
+        "from": "pgr-institution-decision",
+        "label": "PTAB institutes PGR (35 U.S.C. 324(a))",
+        "q": 145000,
+        "to": "pgr-trial-instituted"
+      },
+      {
+        "from": "pgr-petition-filed",
+        "label": "File Patent Owner Preliminary Response (POPR)",
+        "q": 132250,
+        "to": "pgr-institution-decision"
+      },
+      {
+        "from": "pgr-petition-filed",
+        "label": "Waive POPR — reserve arguments for trial",
+        "q": 147125,
+        "to": "pgr-institution-decision"
+      },
+      {
+        "from": "pgr-trial-instituted",
+        "label": "Settle before final written decision (35 U.S.C. 327) — avoid estoppel",
+        "q": 145000,
+        "to": "claims-confirmed"
+      },
+      {
+        "from": "pgr-trial-instituted",
+        "label": "File Motion to Amend (substitute claims, 35 U.S.C. 326(d))",
+        "q": -31250,
+        "to": "pgr-final-written-decision"
+      },
+      {
+        "from": "pgr-trial-instituted",
+        "label": "File Patent Owner Response",
+        "q": -33750,
+        "to": "pgr-final-written-decision"
+      },
+      {
+        "from": "pre-examination",
+        "label": "Examiner allows on first action (FAOM)",
+        "q": 148550,
+        "to": "allowance"
+      },
+      {
+        "from": "pre-examination",
+        "label": "Examiner issues Non-Final Office Action",
+        "q": 142741.17647058194,
+        "to": "non-final-oa"
+      },
+      {
+        "from": "pre-examination",
+        "label": "Examiner issues Restriction / Election Requirement",
+        "q": 141991.176470546,
+        "to": "restriction-requirement"
+      },
+      {
+        "from": "pre-filing",
+        "label": "File nonprovisional directly (no provisional)",
+        "q": 131241.0588234186,
+        "to": "nonprovisional-filed"
+      },
+      {
+        "from": "pre-filing",
+        "label": "File provisional application",
+        "q": 128921.05882322858,
+        "to": "provisional-filed"
+      },
+      {
+        "from": "provisional-filed",
+        "label": "File nonprovisional within 12-month window",
+        "q": 131241.0588234186,
+        "to": "nonprovisional-filed"
+      },
+      {
+        "from": "ptab-affirmed",
+        "label": "Take no further action — application abandoned",
+        "q": -75000,
+        "to": "abandoned-no-reply"
+      },
+      {
+        "from": "ptab-affirmed",
+        "label": "Appeal to Federal Circuit (35 U.S.C. 141)",
+        "q": 128550,
+        "to": "federal-circuit-appeal"
+      },
+      {
+        "from": "ptab-affirmed",
+        "label": "File civil action in E.D. Va. (35 U.S.C. 145)",
+        "q": 118550,
+        "to": "sec145-action"
+      },
+      {
+        "from": "ptab-decision",
+        "label": "PTAB affirms examiner",
+        "q": 128550,
+        "to": "ptab-affirmed"
+      },
+      {
+        "from": "ptab-decision",
+        "label": "PTAB reverses examiner",
+        "q": 148550,
+        "to": "ptab-reversal"
+      },
+      {
+        "from": "ptab-reversal",
+        "label": "Examiner processes allowance after reversal",
+        "q": 148550,
+        "to": "allowance"
+      },
+      {
+        "from": "rce-filed",
+        "label": "Examiner allows after RCE submission",
+        "q": 148550,
+        "to": "allowance"
+      },
+      {
+        "from": "rce-filed",
+        "label": "Examiner issues new Non-Final OA after RCE",
+        "q": 142741.17647058194,
+        "to": "non-final-oa"
+      },
+      {
+        "from": "reissue-pending",
+        "label": "Reissue abandoned (failure to reply or rejection sustained)",
+        "q": -75000,
+        "to": "reissue-abandoned"
+      },
+      {
+        "from": "reissue-pending",
+        "label": "Reissue examination completes — reissue patent granted",
+        "q": 0,
+        "to": "reissue-granted"
+      },
+      {
+        "from": "restriction-requirement",
+        "label": "Elect invention WITH traverse (preserve 37 CFR 1.144 petition)",
+        "q": 141491.17647058194,
+        "to": "election-made"
+      },
+      {
+        "from": "restriction-requirement",
+        "label": "Elect invention WITHOUT traverse",
+        "q": 141991.17647058194,
+        "to": "election-made"
+      },
+      {
+        "from": "sec145-action",
+        "label": "District court affirms — abandoned",
+        "q": -75000,
+        "to": "abandoned-no-reply"
+      },
+      {
+        "from": "sec145-action",
+        "label": "District court orders allowance",
+        "q": 148550,
+        "to": "allowance"
+      }
+    ],
+    "iterations": 38,
+    "policy": {
+      "advisory-action": {
+        "from": "advisory-action",
+        "label": "Advisory Action received — reassess (clock still running, MPEP 714.13)",
+        "to": "after-final-decision"
+      },
+      "after-final-amendment": {
+        "from": "after-final-amendment",
+        "label": "Examiner enters amendment and allows",
+        "to": "allowance"
+      },
+      "after-final-decision": {
+        "from": "after-final-decision",
+        "label": "File after-final amendment (37 CFR 1.116)",
+        "to": "after-final-amendment"
+      },
+      "applicant-response-window": {
+        "from": "applicant-response-window",
+        "label": "Request examiner interview",
+        "to": "interview-conducted"
+      },
+      "election-made": {
+        "from": "election-made",
+        "label": "Examiner examines elected claims — issues Office Action",
+        "to": "non-final-oa"
+      },
+      "epr-ordered": {
+        "from": "epr-ordered",
+        "label": "Decline owner statement — reserve for first Office action (recommended)",
+        "to": "epr-examination"
+      },
+      "examiners-answer": {
+        "from": "examiners-answer",
+        "label": "Reopen prosecution via RCE (new grounds in Answer)",
+        "to": "rce-filed"
+      },
+      "extension-taken": {
+        "from": "extension-taken",
+        "label": "File amendment within extended period",
+        "to": "amendment-filed"
+      },
+      "federal-circuit-appeal": {
+        "from": "federal-circuit-appeal",
+        "label": "Federal Circuit reverses — allowance ordered",
+        "to": "allowance"
+      },
+      "final-rejection": {
+        "from": "final-rejection",
+        "label": "Receive and docket Final Rejection",
+        "to": "after-final-decision"
+      },
+      "interview-conducted": {
+        "from": "interview-conducted",
+        "label": "Follow up interview with amendment",
+        "to": "amendment-filed"
+      },
+      "ipr-petition-filed": {
+        "from": "ipr-petition-filed",
+        "label": "Waive POPR — reserve arguments for trial",
+        "to": "ipr-institution-decision"
+      },
+      "ipr-trial-instituted": {
+        "from": "ipr-trial-instituted",
+        "label": "Settle before final written decision (35 U.S.C. 317) — avoid estoppel",
+        "to": "claims-confirmed"
+      },
+      "maintenance-due": {
+        "from": "maintenance-due",
+        "label": "Fail to pay maintenance fee — patent expires",
+        "to": "patent-expired"
+      },
+      "missing-parts": {
+        "from": "missing-parts",
+        "label": "File missing parts + surcharge",
+        "to": "pre-examination"
+      },
+      "noa-received": {
+        "from": "noa-received",
+        "label": "Pay issue fee within 3 months",
+        "to": "issue-fee-paid"
+      },
+      "non-final-oa": {
+        "from": "non-final-oa",
+        "label": "Receive and docket Office Action",
+        "to": "applicant-response-window"
+      },
+      "notice-of-appeal": {
+        "from": "notice-of-appeal",
+        "label": "File Appeal Brief (within 2 months)",
+        "to": "appeal-brief-filed"
+      },
+      "pgr-petition-filed": {
+        "from": "pgr-petition-filed",
+        "label": "Waive POPR — reserve arguments for trial",
+        "to": "pgr-institution-decision"
+      },
+      "pgr-trial-instituted": {
+        "from": "pgr-trial-instituted",
+        "label": "Settle before final written decision (35 U.S.C. 327) — avoid estoppel",
+        "to": "claims-confirmed"
+      },
+      "pre-filing": {
+        "from": "pre-filing",
+        "label": "File nonprovisional directly (no provisional)",
+        "to": "nonprovisional-filed"
+      },
+      "provisional-filed": {
+        "from": "provisional-filed",
+        "label": "File nonprovisional within 12-month window",
+        "to": "nonprovisional-filed"
+      },
+      "ptab-affirmed": {
+        "from": "ptab-affirmed",
+        "label": "Appeal to Federal Circuit (35 U.S.C. 141)",
+        "to": "federal-circuit-appeal"
+      },
+      "restriction-requirement": {
+        "from": "restriction-requirement",
+        "label": "Elect invention WITHOUT traverse",
+        "to": "election-made"
+      },
+      "sec145-action": {
+        "from": "sec145-action",
+        "label": "District court orders allowance",
+        "to": "allowance"
+      }
+    },
+    "qValue": {
+      "advisory-action→after-final-decision": 145800,
+      "after-final-amendment→advisory-action": 145800,
+      "after-final-amendment→allowance": 148550,
+      "after-final-amendment→notice-of-appeal": 127823.82352938241,
+      "after-final-amendment→rce-filed": 140123.82352940735,
+      "after-final-decision→abandoned-no-reply": -75000,
+      "after-final-decision→after-final-amendment": 146050,
+      "after-final-decision→continuation-filed": 135102.05882349145,
+      "after-final-decision→notice-of-appeal": 127823.82352938241,
+      "after-final-decision→rce-filed": 140123.82352940735,
+      "allowance→noa-received": 148550,
+      "amendment-filed→allowance": 148550,
+      "amendment-filed→final-rejection": 145925,
+      "amendment-filed→non-final-oa": 142741.17647058194,
+      "appeal-brief-filed→examiners-answer": 140123.82352940735,
+      "appeal-dismissed→abandoned-no-reply": -75000,
+      "appeal-dismissed→patent-issued": 150000,
+      "applicant-response-window→abandoned-no-reply": -75000,
+      "applicant-response-window→amendment-filed": 142616.1764705873,
+      "applicant-response-window→extension-taken": 142251.1764705819,
+      "applicant-response-window→interview-conducted": 142866.1764705873,
+      "continuation-filed→pre-examination": 143172.05882349145,
+      "divisional-filed→pre-examination": 143172.05882349145,
+      "election-made→divisional-filed": 133852.05882349145,
+      "election-made→non-final-oa": 142741.17647058194,
+      "epr-examination→claims-amended": 75000,
+      "epr-examination→claims-cancelled": -100000,
+      "epr-examination→claims-confirmed": 150000,
+      "epr-ordered→epr-examination": 70375,
+      "epr-requested→claims-confirmed": 150000,
+      "epr-requested→epr-ordered": 70375,
+      "examiners-answer→ptab-decision": 131940,
+      "examiners-answer→rce-filed": 140123.82352940735,
+      "extension-taken→amendment-filed": 142616.1764705873,
+      "extension-taken→extension-taken": 142011.1764705819,
+      "federal-circuit-appeal→abandoned-no-reply": -75000,
+      "federal-circuit-appeal→allowance": 148550,
+      "final-rejection→after-final-decision": 145925,
+      "interview-conducted→amendment-filed": 143366.1764705873,
+      "ipr-final-written-decision→claims-amended": 75000,
+      "ipr-final-written-decision→claims-cancelled": -100000,
+      "ipr-final-written-decision→claims-confirmed": 150000,
+      "ipr-institution-decision→claims-confirmed": 150000,
+      "ipr-institution-decision→ipr-trial-instituted": 145000,
+      "ipr-petition-filed→ipr-institution-decision": 146625,
+      "ipr-trial-instituted→claims-confirmed": 145000,
+      "ipr-trial-instituted→ipr-final-written-decision": -43750,
+      "issue-fee-paid→patent-issued": 150000,
+      "maintenance-due→maintenance-due": -2125,
+      "maintenance-due→patent-expired": 0,
+      "missing-parts→abandoned-no-reply": -75000,
+      "missing-parts→pre-examination": 142432.05882349145,
+      "noa-received→abandoned-issue-fee": -75000,
+      "noa-received→issue-fee-paid": 148550,
+      "non-final-oa→applicant-response-window": 142741.1764705819,
+      "nonprovisional-filed→missing-parts": 142432.05882344372,
+      "nonprovisional-filed→pre-examination": 143172.05882349145,
+      "notice-of-appeal→appeal-brief-filed": 130123.82352938218,
+      "notice-of-appeal→appeal-dismissed": -30000,
+      "patent-challenged→epr-requested": 64145,
+      "patent-challenged→ipr-petition-filed": 122875,
+      "patent-challenged→pgr-petition-filed": 123375,
+      "pgr-final-written-decision→claims-amended": 75000,
+      "pgr-final-written-decision→claims-cancelled": -100000,
+      "pgr-final-written-decision→claims-confirmed": 150000,
+      "pgr-institution-decision→claims-confirmed": 150000,
+      "pgr-institution-decision→pgr-trial-instituted": 145000,
+      "pgr-petition-filed→pgr-institution-decision": 147125,
+      "pgr-trial-instituted→claims-confirmed": 145000,
+      "pgr-trial-instituted→pgr-final-written-decision": -31250,
+      "pre-examination→allowance": 148550,
+      "pre-examination→non-final-oa": 142741.17647058194,
+      "pre-examination→restriction-requirement": 141991.176470546,
+      "pre-filing→nonprovisional-filed": 131241.0588234186,
+      "pre-filing→provisional-filed": 128921.05882322858,
+      "provisional-filed→nonprovisional-filed": 131241.0588234186,
+      "ptab-affirmed→abandoned-no-reply": -75000,
+      "ptab-affirmed→federal-circuit-appeal": 128550,
+      "ptab-affirmed→sec145-action": 118550,
+      "ptab-decision→ptab-affirmed": 128550,
+      "ptab-decision→ptab-reversal": 148550,
+      "ptab-reversal→allowance": 148550,
+      "rce-filed→allowance": 148550,
+      "rce-filed→non-final-oa": 142741.17647058194,
+      "reissue-pending→reissue-abandoned": -75000,
+      "reissue-pending→reissue-granted": 0,
+      "restriction-requirement→election-made": 141491.17647058194,
+      "sec145-action→abandoned-no-reply": -75000,
+      "sec145-action→allowance": 148550
+    },
+    "qValueNote": "qValue is keyed 'from→to' (StatechartEdge.qKey) and COLLIDES on parallel edges (same from/to, different label) — last-write-wins from the source Map iteration order. Use edgeQ for a collision-free per-edge view.",
+    "value": {
+      "abandoned-issue-fee": -75000,
+      "abandoned-no-reply": -75000,
+      "advisory-action": 145800,
+      "after-final-amendment": 148550,
+      "after-final-decision": 146050,
+      "allowance": 148550,
+      "amendment-filed": 146366.1764705873,
+      "appeal-brief-filed": 140123.82352938218,
+      "appeal-dismissed": -30000,
+      "applicant-response-window": 142866.1764705819,
+      "claims-amended": 75000,
+      "claims-cancelled": -100000,
+      "claims-confirmed": 150000,
+      "continuation-filed": 143172.05882349145,
+      "divisional-filed": 143172.05882349145,
+      "election-made": 142741.17647058194,
+      "epr-examination": 70500,
+      "epr-ordered": 70375,
+      "epr-requested": 76745,
+      "examiners-answer": 140123.82352940735,
+      "extension-taken": 142616.1764705819,
+      "federal-circuit-appeal": 148550,
+      "final-rejection": 145925,
+      "interview-conducted": 143366.1764705873,
+      "ipr-final-written-decision": -23750,
+      "ipr-institution-decision": 146750,
+      "ipr-petition-filed": 146625,
+      "ipr-trial-instituted": 145000,
+      "issue-fee-paid": 150000,
+      "maintenance-due": 0,
+      "missing-parts": 142432.05882344372,
+      "noa-received": 148550,
+      "non-final-oa": 142741.17647058194,
+      "nonprovisional-filed": 143061.0588234186,
+      "notice-of-appeal": 130123.82352938241,
+      "patent-challenged": 103465,
+      "patent-expired": 0,
+      "patent-issued": 150000,
+      "pgr-final-written-decision": -11250,
+      "pgr-institution-decision": 147250,
+      "pgr-petition-filed": 147125,
+      "pgr-trial-instituted": 145000,
+      "pre-examination": 143172.05882349145,
+      "pre-filing": 131241.05882322858,
+      "provisional-filed": 131241.05882322858,
+      "ptab-affirmed": 128550,
+      "ptab-decision": 134550,
+      "ptab-reversal": 148550,
+      "rce-filed": 144483.82352940735,
+      "reissue-abandoned": -75000,
+      "reissue-granted": 0,
+      "reissue-pending": -22500,
+      "restriction-requirement": 141991.176470546,
+      "sec145-action": 148550
+    }
+  },
+  "valueIteration500": {
+    "converged": true,
+    "edgeQ": [
+      {
+        "from": "abandoned-issue-fee",
+        "label": "Petition to revive — pay issue fee late (37 CFR 1.137)",
+        "q": 144200,
+        "to": "noa-received"
+      },
+      {
+        "from": "abandoned-no-reply",
+        "label": "Petition to revive — unintentional delay (37 CFR 1.137)",
+        "q": 132832.35294117022,
+        "to": "applicant-response-window"
+      },
+      {
+        "from": "advisory-action",
+        "label": "Advisory Action received — reassess (clock still running, MPEP 714.13)",
+        "q": 142800,
+        "to": "after-final-decision"
+      },
+      {
+        "from": "after-final-amendment",
+        "label": "Examiner issues Advisory Action (amendment not entered)",
+        "q": 142800,
+        "to": "advisory-action"
+      },
+      {
+        "from": "after-final-amendment",
+        "label": "Examiner enters amendment and allows",
+        "q": 148300,
+        "to": "allowance"
+      },
+      {
+        "from": "after-final-amendment",
+        "label": "Amendment not entered — appeal",
+        "q": 109007.6470587946,
+        "to": "notice-of-appeal"
+      },
+      {
+        "from": "after-final-amendment",
+        "label": "Amendment not entered — file RCE",
+        "q": 132807.6470588192,
+        "to": "rce-filed"
+      },
+      {
+        "from": "after-final-decision",
+        "label": "Fail to reply after final — abandonment",
+        "q": -75000,
+        "to": "abandoned-no-reply"
+      },
+      {
+        "from": "after-final-decision",
+        "label": "File after-final amendment (37 CFR 1.116)",
+        "q": 143300,
+        "to": "after-final-amendment"
+      },
+      {
+        "from": "after-final-decision",
+        "label": "File continuation to pursue additional claims (37 CFR 1.53(b))",
+        "q": 123224.11764702131,
+        "to": "continuation-filed"
+      },
+      {
+        "from": "after-final-decision",
+        "label": "File Notice of Appeal to PTAB",
+        "q": 109007.6470587946,
+        "to": "notice-of-appeal"
+      },
+      {
+        "from": "after-final-decision",
+        "label": "File RCE — restart prosecution",
+        "q": 132807.6470588192,
+        "to": "rce-filed"
+      },
+      {
+        "from": "allowance",
+        "label": "Notice of Allowance mailed",
+        "q": 148300,
+        "to": "noa-received"
+      },
+      {
+        "from": "amendment-filed",
+        "label": "Examiner allows all claims",
+        "q": 148300,
+        "to": "allowance"
+      },
+      {
+        "from": "amendment-filed",
+        "label": "Examiner issues Final Rejection",
+        "q": 143050,
+        "to": "final-rejection"
+      },
+      {
+        "from": "amendment-filed",
+        "label": "Examiner issues new Non-Final OA",
+        "q": 136682.35294117028,
+        "to": "non-final-oa"
+      },
+      {
+        "from": "appeal-brief-filed",
+        "label": "Examiner files Answer",
+        "q": 132807.6470588192,
+        "to": "examiners-answer"
+      },
+      {
+        "from": "appeal-dismissed",
+        "label": "No allowed claims — application abandoned",
+        "q": -75000,
+        "to": "abandoned-no-reply"
+      },
+      {
+        "from": "appeal-dismissed",
+        "label": "Allowed claim(s) exist — examiner cancels rejected claims and issues",
+        "q": 150000,
+        "to": "patent-issued"
+      },
+      {
+        "from": "applicant-response-window",
+        "label": "Fail to reply within 6-month statutory ceiling",
+        "q": -75000,
+        "to": "abandoned-no-reply"
+      },
+      {
+        "from": "applicant-response-window",
+        "label": "File amendment/response within SSP (3 months)",
+        "q": 136432.35294117554,
+        "to": "amendment-filed"
+      },
+      {
+        "from": "applicant-response-window",
+        "label": "File extension of time (1-month)",
+        "q": 135942.35294117022,
+        "to": "extension-taken"
+      },
+      {
+        "from": "applicant-response-window",
+        "label": "Request examiner interview",
+        "q": 136932.35294117554,
+        "to": "interview-conducted"
+      },
+      {
+        "from": "continuation-filed",
+        "label": "Continuation docketed — enters examination",
+        "q": 137544.1176470213,
+        "to": "pre-examination"
+      },
+      {
+        "from": "divisional-filed",
+        "label": "Divisional docketed — enters examination",
+        "q": 137544.1176470213,
+        "to": "pre-examination"
+      },
+      {
+        "from": "election-made",
+        "label": "File divisional for non-elected invention (35 U.S.C. 121 shield)",
+        "q": 120724.11764702131,
+        "to": "divisional-filed"
+      },
+      {
+        "from": "election-made",
+        "label": "Examiner examines elected claims — issues Office Action",
+        "q": 136682.35294117028,
+        "to": "non-final-oa"
+      },
+      {
+        "from": "epr-examination",
+        "label": "Reexam certificate: claims amended / narrowed",
+        "q": 75000,
+        "to": "claims-amended"
+      },
+      {
+        "from": "epr-examination",
+        "label": "Reexam certificate: claims cancelled",
+        "q": -100000,
+        "to": "claims-cancelled"
+      },
+      {
+        "from": "epr-examination",
+        "label": "Reexam certificate: claims confirmed as patentable",
+        "q": 150000,
+        "to": "claims-confirmed"
+      },
+      {
+        "from": "epr-ordered",
+        "label": "Decline owner statement — reserve for first Office action (recommended)",
+        "q": 70250,
+        "to": "epr-examination"
+      },
+      {
+        "from": "epr-ordered",
+        "label": "File Patent Owner Statement (35 U.S.C. 304) — opens requester reply [TRAP]",
+        "q": 50500,
+        "to": "epr-examination"
+      },
+      {
+        "from": "epr-requested",
+        "label": "Request denied — no substantial new question",
+        "q": 150000,
+        "to": "claims-confirmed"
+      },
+      {
+        "from": "epr-requested",
+        "label": "Director grants reexam — SNQ found (35 U.S.C. 303)",
+        "q": 70250,
+        "to": "epr-ordered"
+      },
+      {
+        "from": "examiners-answer",
+        "label": "Pay appeal forwarding fee — appeal forwarded to PTAB",
+        "q": 117440,
+        "to": "ptab-decision"
+      },
+      {
+        "from": "examiners-answer",
+        "label": "Reopen prosecution via RCE (new grounds in Answer)",
+        "q": 132807.6470588192,
+        "to": "rce-filed"
+      },
+      {
+        "from": "extension-taken",
+        "label": "File amendment within extended period",
+        "q": 136432.35294117554,
+        "to": "amendment-filed"
+      },
+      {
+        "from": "extension-taken",
+        "label": "Take additional extension of time",
+        "q": 135702.35294117022,
+        "to": "extension-taken"
+      },
+      {
+        "from": "federal-circuit-appeal",
+        "label": "Federal Circuit affirms — no further appeal",
+        "q": -75000,
+        "to": "abandoned-no-reply"
+      },
+      {
+        "from": "federal-circuit-appeal",
+        "label": "Federal Circuit reverses — allowance ordered",
+        "q": 148300,
+        "to": "allowance"
+      },
+      {
+        "from": "final-rejection",
+        "label": "Receive and docket Final Rejection",
+        "q": 143050,
+        "to": "after-final-decision"
+      },
+      {
+        "from": "interview-conducted",
+        "label": "Follow up interview with amendment",
+        "q": 137932.35294117554,
+        "to": "amendment-filed"
+      },
+      {
+        "from": "ipr-final-written-decision",
+        "label": "FWD: mixed — substitute claims entered (intervening rights)",
+        "q": 75000,
+        "to": "claims-amended"
+      },
+      {
+        "from": "ipr-final-written-decision",
+        "label": "FWD: all instituted claims held unpatentable",
+        "q": -100000,
+        "to": "claims-cancelled"
+      },
+      {
+        "from": "ipr-final-written-decision",
+        "label": "FWD: claims upheld (patentability confirmed)",
+        "q": 150000,
+        "to": "claims-confirmed"
+      },
+      {
+        "from": "ipr-institution-decision",
+        "label": "PTAB denies institution (Fintiv / 325(d) / merits)",
+        "q": 150000,
+        "to": "claims-confirmed"
+      },
+      {
+        "from": "ipr-institution-decision",
+        "label": "PTAB institutes trial (35 U.S.C. 314(a))",
+        "q": 140000,
+        "to": "ipr-trial-instituted"
+      },
+      {
+        "from": "ipr-petition-filed",
+        "label": "File Patent Owner Preliminary Response (POPR)",
+        "q": 113500,
+        "to": "ipr-institution-decision"
+      },
+      {
+        "from": "ipr-petition-filed",
+        "label": "Waive POPR — reserve arguments for trial",
+        "q": 143250,
+        "to": "ipr-institution-decision"
+      },
+      {
+        "from": "ipr-trial-instituted",
+        "label": "Settle before final written decision (35 U.S.C. 317) — avoid estoppel",
+        "q": 140000,
+        "to": "claims-confirmed"
+      },
+      {
+        "from": "ipr-trial-instituted",
+        "label": "File Motion to Amend (substitute claims, 35 U.S.C. 316(d))",
+        "q": -63750,
+        "to": "ipr-final-written-decision"
+      },
+      {
+        "from": "ipr-trial-instituted",
+        "label": "File Patent Owner Response",
+        "q": -68750,
+        "to": "ipr-final-written-decision"
+      },
+      {
+        "from": "issue-fee-paid",
+        "label": "Patent issues",
+        "q": 150000,
+        "to": "patent-issued"
+      },
+      {
+        "from": "maintenance-due",
+        "label": "Pay maintenance fee on time",
+        "q": -2250,
+        "to": "maintenance-due"
+      },
+      {
+        "from": "maintenance-due",
+        "label": "Fail to pay maintenance fee — patent expires",
+        "q": 0,
+        "to": "patent-expired"
+      },
+      {
+        "from": "missing-parts",
+        "label": "Fail to supply missing parts",
+        "q": -75000,
+        "to": "abandoned-no-reply"
+      },
+      {
+        "from": "missing-parts",
+        "label": "File missing parts + surcharge",
+        "q": 136304.1176470213,
+        "to": "pre-examination"
+      },
+      {
+        "from": "noa-received",
+        "label": "Fail to pay issue fee — abandonment",
+        "q": -75000,
+        "to": "abandoned-issue-fee"
+      },
+      {
+        "from": "noa-received",
+        "label": "Pay issue fee within 3 months",
+        "q": 148300,
+        "to": "issue-fee-paid"
+      },
+      {
+        "from": "non-final-oa",
+        "label": "Receive and docket Office Action",
+        "q": 136682.35294117022,
+        "to": "applicant-response-window"
+      },
+      {
+        "from": "nonprovisional-filed",
+        "label": "USPTO issues Notice to File Missing Parts",
+        "q": 136304.11764697422,
+        "to": "missing-parts"
+      },
+      {
+        "from": "nonprovisional-filed",
+        "label": "Application complete — assigned to examiner",
+        "q": 137544.1176470213,
+        "to": "pre-examination"
+      },
+      {
+        "from": "notice-of-appeal",
+        "label": "File Appeal Brief (within 2 months)",
+        "q": 112807.64705879427,
+        "to": "appeal-brief-filed"
+      },
+      {
+        "from": "notice-of-appeal",
+        "label": "Fail to file appeal brief — appeal dismissed",
+        "q": -30000,
+        "to": "appeal-dismissed"
+      },
+      {
+        "from": "patent-challenged",
+        "label": "Requester files ex parte reexam request (35 U.S.C. 302)",
+        "q": 64030,
+        "to": "epr-requested"
+      },
+      {
+        "from": "patent-challenged",
+        "label": "Challenger files IPR petition (35 U.S.C. 311)",
+        "q": 119500,
+        "to": "ipr-petition-filed"
+      },
+      {
+        "from": "patent-challenged",
+        "label": "Challenger files PGR petition within 9 months (35 U.S.C. 321)",
+        "q": 120500,
+        "to": "pgr-petition-filed"
+      },
+      {
+        "from": "patent-issued",
+        "label": "Maintenance fees become due (3.5 / 7.5 / 11.5 years)",
+        "q": -100,
+        "to": "maintenance-due"
+      },
+      {
+        "from": "patent-issued",
+        "label": "Third party challenges the issued patent (post-grant)",
+        "q": 101343.33333333333,
+        "to": "patent-challenged"
+      },
+      {
+        "from": "patent-issued",
+        "label": "Miss 2-year broadening reissue window — broadening permanently barred",
+        "q": 150000,
+        "to": "patent-issued"
+      },
+      {
+        "from": "patent-issued",
+        "label": "File broadening reissue application — MUST be within 2 years of grant (§ 251)",
+        "q": -36820,
+        "to": "reissue-pending"
+      },
+      {
+        "from": "patent-issued",
+        "label": "File narrowing reissue application (§ 251; any time during enforceable term)",
+        "q": -34320,
+        "to": "reissue-pending"
+      },
+      {
+        "from": "pgr-final-written-decision",
+        "label": "FWD: mixed — substitute claims entered (intervening rights)",
+        "q": 75000,
+        "to": "claims-amended"
+      },
+      {
+        "from": "pgr-final-written-decision",
+        "label": "FWD: claims held unpatentable (incl. 101/112 grounds)",
+        "q": -100000,
+        "to": "claims-cancelled"
+      },
+      {
+        "from": "pgr-final-written-decision",
+        "label": "FWD: claims upheld",
+        "q": 150000,
+        "to": "claims-confirmed"
+      },
+      {
+        "from": "pgr-institution-decision",
+        "label": "PTAB denies institution",
+        "q": 150000,
+        "to": "claims-confirmed"
+      },
+      {
+        "from": "pgr-institution-decision",
+        "label": "PTAB institutes PGR (35 U.S.C. 324(a))",
+        "q": 140000,
+        "to": "pgr-trial-instituted"
+      },
+      {
+        "from": "pgr-petition-filed",
+        "label": "File Patent Owner Preliminary Response (POPR)",
+        "q": 114500,
+        "to": "pgr-institution-decision"
+      },
+      {
+        "from": "pgr-petition-filed",
+        "label": "Waive POPR — reserve arguments for trial",
+        "q": 144250,
+        "to": "pgr-institution-decision"
+      },
+      {
+        "from": "pgr-trial-instituted",
+        "label": "Settle before final written decision (35 U.S.C. 327) — avoid estoppel",
+        "q": 140000,
+        "to": "claims-confirmed"
+      },
+      {
+        "from": "pgr-trial-instituted",
+        "label": "File Motion to Amend (substitute claims, 35 U.S.C. 326(d))",
+        "q": -51250,
+        "to": "pgr-final-written-decision"
+      },
+      {
+        "from": "pgr-trial-instituted",
+        "label": "File Patent Owner Response",
+        "q": -56250,
+        "to": "pgr-final-written-decision"
+      },
+      {
+        "from": "pre-examination",
+        "label": "Examiner allows on first action (FAOM)",
+        "q": 148300,
+        "to": "allowance"
+      },
+      {
+        "from": "pre-examination",
+        "label": "Examiner issues Non-Final Office Action",
+        "q": 136682.35294117028,
+        "to": "non-final-oa"
+      },
+      {
+        "from": "pre-examination",
+        "label": "Examiner issues Restriction / Election Requirement",
+        "q": 135182.3529411347,
+        "to": "restriction-requirement"
+      },
+      {
+        "from": "pre-filing",
+        "label": "File nonprovisional directly (no provisional)",
+        "q": 115538.1176469494,
+        "to": "nonprovisional-filed"
+      },
+      {
+        "from": "pre-filing",
+        "label": "File provisional application",
+        "q": 111218.11764676168,
+        "to": "provisional-filed"
+      },
+      {
+        "from": "provisional-filed",
+        "label": "File nonprovisional within 12-month window",
+        "q": 115538.1176469494,
+        "to": "nonprovisional-filed"
+      },
+      {
+        "from": "ptab-affirmed",
+        "label": "Take no further action — application abandoned",
+        "q": -75000,
+        "to": "abandoned-no-reply"
+      },
+      {
+        "from": "ptab-affirmed",
+        "label": "Appeal to Federal Circuit (35 U.S.C. 141)",
+        "q": 108300,
+        "to": "federal-circuit-appeal"
+      },
+      {
+        "from": "ptab-affirmed",
+        "label": "File civil action in E.D. Va. (35 U.S.C. 145)",
+        "q": 88300,
+        "to": "sec145-action"
+      },
+      {
+        "from": "ptab-decision",
+        "label": "PTAB affirms examiner",
+        "q": 108300,
+        "to": "ptab-affirmed"
+      },
+      {
+        "from": "ptab-decision",
+        "label": "PTAB reverses examiner",
+        "q": 148300,
+        "to": "ptab-reversal"
+      },
+      {
+        "from": "ptab-reversal",
+        "label": "Examiner processes allowance after reversal",
+        "q": 148300,
+        "to": "allowance"
+      },
+      {
+        "from": "rce-filed",
+        "label": "Examiner allows after RCE submission",
+        "q": 148300,
+        "to": "allowance"
+      },
+      {
+        "from": "rce-filed",
+        "label": "Examiner issues new Non-Final OA after RCE",
+        "q": 136682.35294117028,
+        "to": "non-final-oa"
+      },
+      {
+        "from": "reissue-pending",
+        "label": "Reissue abandoned (failure to reply or rejection sustained)",
+        "q": -75000,
+        "to": "reissue-abandoned"
+      },
+      {
+        "from": "reissue-pending",
+        "label": "Reissue examination completes — reissue patent granted",
+        "q": 0,
+        "to": "reissue-granted"
+      },
+      {
+        "from": "restriction-requirement",
+        "label": "Elect invention WITH traverse (preserve 37 CFR 1.144 petition)",
+        "q": 134182.35294117028,
+        "to": "election-made"
+      },
+      {
+        "from": "restriction-requirement",
+        "label": "Elect invention WITHOUT traverse",
+        "q": 135182.35294117028,
+        "to": "election-made"
+      },
+      {
+        "from": "sec145-action",
+        "label": "District court affirms — abandoned",
+        "q": -75000,
+        "to": "abandoned-no-reply"
+      },
+      {
+        "from": "sec145-action",
+        "label": "District court orders allowance",
+        "q": 148300,
+        "to": "allowance"
+      }
+    ],
+    "iterations": 38,
+    "policy": {
+      "advisory-action": {
+        "from": "advisory-action",
+        "label": "Advisory Action received — reassess (clock still running, MPEP 714.13)",
+        "to": "after-final-decision"
+      },
+      "after-final-amendment": {
+        "from": "after-final-amendment",
+        "label": "Examiner enters amendment and allows",
+        "to": "allowance"
+      },
+      "after-final-decision": {
+        "from": "after-final-decision",
+        "label": "File after-final amendment (37 CFR 1.116)",
+        "to": "after-final-amendment"
+      },
+      "applicant-response-window": {
+        "from": "applicant-response-window",
+        "label": "Request examiner interview",
+        "to": "interview-conducted"
+      },
+      "election-made": {
+        "from": "election-made",
+        "label": "Examiner examines elected claims — issues Office Action",
+        "to": "non-final-oa"
+      },
+      "epr-ordered": {
+        "from": "epr-ordered",
+        "label": "Decline owner statement — reserve for first Office action (recommended)",
+        "to": "epr-examination"
+      },
+      "examiners-answer": {
+        "from": "examiners-answer",
+        "label": "Reopen prosecution via RCE (new grounds in Answer)",
+        "to": "rce-filed"
+      },
+      "extension-taken": {
+        "from": "extension-taken",
+        "label": "File amendment within extended period",
+        "to": "amendment-filed"
+      },
+      "federal-circuit-appeal": {
+        "from": "federal-circuit-appeal",
+        "label": "Federal Circuit reverses — allowance ordered",
+        "to": "allowance"
+      },
+      "final-rejection": {
+        "from": "final-rejection",
+        "label": "Receive and docket Final Rejection",
+        "to": "after-final-decision"
+      },
+      "interview-conducted": {
+        "from": "interview-conducted",
+        "label": "Follow up interview with amendment",
+        "to": "amendment-filed"
+      },
+      "ipr-petition-filed": {
+        "from": "ipr-petition-filed",
+        "label": "Waive POPR — reserve arguments for trial",
+        "to": "ipr-institution-decision"
+      },
+      "ipr-trial-instituted": {
+        "from": "ipr-trial-instituted",
+        "label": "Settle before final written decision (35 U.S.C. 317) — avoid estoppel",
+        "to": "claims-confirmed"
+      },
+      "maintenance-due": {
+        "from": "maintenance-due",
+        "label": "Fail to pay maintenance fee — patent expires",
+        "to": "patent-expired"
+      },
+      "missing-parts": {
+        "from": "missing-parts",
+        "label": "File missing parts + surcharge",
+        "to": "pre-examination"
+      },
+      "noa-received": {
+        "from": "noa-received",
+        "label": "Pay issue fee within 3 months",
+        "to": "issue-fee-paid"
+      },
+      "non-final-oa": {
+        "from": "non-final-oa",
+        "label": "Receive and docket Office Action",
+        "to": "applicant-response-window"
+      },
+      "notice-of-appeal": {
+        "from": "notice-of-appeal",
+        "label": "File Appeal Brief (within 2 months)",
+        "to": "appeal-brief-filed"
+      },
+      "pgr-petition-filed": {
+        "from": "pgr-petition-filed",
+        "label": "Waive POPR — reserve arguments for trial",
+        "to": "pgr-institution-decision"
+      },
+      "pgr-trial-instituted": {
+        "from": "pgr-trial-instituted",
+        "label": "Settle before final written decision (35 U.S.C. 327) — avoid estoppel",
+        "to": "claims-confirmed"
+      },
+      "pre-filing": {
+        "from": "pre-filing",
+        "label": "File nonprovisional directly (no provisional)",
+        "to": "nonprovisional-filed"
+      },
+      "provisional-filed": {
+        "from": "provisional-filed",
+        "label": "File nonprovisional within 12-month window",
+        "to": "nonprovisional-filed"
+      },
+      "ptab-affirmed": {
+        "from": "ptab-affirmed",
+        "label": "Appeal to Federal Circuit (35 U.S.C. 141)",
+        "to": "federal-circuit-appeal"
+      },
+      "restriction-requirement": {
+        "from": "restriction-requirement",
+        "label": "Elect invention WITHOUT traverse",
+        "to": "election-made"
+      },
+      "sec145-action": {
+        "from": "sec145-action",
+        "label": "District court orders allowance",
+        "to": "allowance"
+      }
+    },
+    "qValue": {
+      "advisory-action→after-final-decision": 142800,
+      "after-final-amendment→advisory-action": 142800,
+      "after-final-amendment→allowance": 148300,
+      "after-final-amendment→notice-of-appeal": 109007.6470587946,
+      "after-final-amendment→rce-filed": 132807.6470588192,
+      "after-final-decision→abandoned-no-reply": -75000,
+      "after-final-decision→after-final-amendment": 143300,
+      "after-final-decision→continuation-filed": 123224.11764702131,
+      "after-final-decision→notice-of-appeal": 109007.6470587946,
+      "after-final-decision→rce-filed": 132807.6470588192,
+      "allowance→noa-received": 148300,
+      "amendment-filed→allowance": 148300,
+      "amendment-filed→final-rejection": 143050,
+      "amendment-filed→non-final-oa": 136682.35294117028,
+      "appeal-brief-filed→examiners-answer": 132807.6470588192,
+      "appeal-dismissed→abandoned-no-reply": -75000,
+      "appeal-dismissed→patent-issued": 150000,
+      "applicant-response-window→abandoned-no-reply": -75000,
+      "applicant-response-window→amendment-filed": 136432.35294117554,
+      "applicant-response-window→extension-taken": 135942.35294117022,
+      "applicant-response-window→interview-conducted": 136932.35294117554,
+      "continuation-filed→pre-examination": 137544.1176470213,
+      "divisional-filed→pre-examination": 137544.1176470213,
+      "election-made→divisional-filed": 120724.11764702131,
+      "election-made→non-final-oa": 136682.35294117028,
+      "epr-examination→claims-amended": 75000,
+      "epr-examination→claims-cancelled": -100000,
+      "epr-examination→claims-confirmed": 150000,
+      "epr-ordered→epr-examination": 70250,
+      "epr-requested→claims-confirmed": 150000,
+      "epr-requested→epr-ordered": 70250,
+      "examiners-answer→ptab-decision": 117440,
+      "examiners-answer→rce-filed": 132807.6470588192,
+      "extension-taken→amendment-filed": 136432.35294117554,
+      "extension-taken→extension-taken": 135702.35294117022,
+      "federal-circuit-appeal→abandoned-no-reply": -75000,
+      "federal-circuit-appeal→allowance": 148300,
+      "final-rejection→after-final-decision": 143050,
+      "interview-conducted→amendment-filed": 137932.35294117554,
+      "ipr-final-written-decision→claims-amended": 75000,
+      "ipr-final-written-decision→claims-cancelled": -100000,
+      "ipr-final-written-decision→claims-confirmed": 150000,
+      "ipr-institution-decision→claims-confirmed": 150000,
+      "ipr-institution-decision→ipr-trial-instituted": 140000,
+      "ipr-petition-filed→ipr-institution-decision": 143250,
+      "ipr-trial-instituted→claims-confirmed": 140000,
+      "ipr-trial-instituted→ipr-final-written-decision": -63750,
+      "issue-fee-paid→patent-issued": 150000,
+      "maintenance-due→maintenance-due": -2250,
+      "maintenance-due→patent-expired": 0,
+      "missing-parts→abandoned-no-reply": -75000,
+      "missing-parts→pre-examination": 136304.1176470213,
+      "noa-received→abandoned-issue-fee": -75000,
+      "noa-received→issue-fee-paid": 148300,
+      "non-final-oa→applicant-response-window": 136682.35294117022,
+      "nonprovisional-filed→missing-parts": 136304.11764697422,
+      "nonprovisional-filed→pre-examination": 137544.1176470213,
+      "notice-of-appeal→appeal-brief-filed": 112807.64705879427,
+      "notice-of-appeal→appeal-dismissed": -30000,
+      "patent-challenged→epr-requested": 64030,
+      "patent-challenged→ipr-petition-filed": 119500,
+      "patent-challenged→pgr-petition-filed": 120500,
+      "pgr-final-written-decision→claims-amended": 75000,
+      "pgr-final-written-decision→claims-cancelled": -100000,
+      "pgr-final-written-decision→claims-confirmed": 150000,
+      "pgr-institution-decision→claims-confirmed": 150000,
+      "pgr-institution-decision→pgr-trial-instituted": 140000,
+      "pgr-petition-filed→pgr-institution-decision": 144250,
+      "pgr-trial-instituted→claims-confirmed": 140000,
+      "pgr-trial-instituted→pgr-final-written-decision": -51250,
+      "pre-examination→allowance": 148300,
+      "pre-examination→non-final-oa": 136682.35294117028,
+      "pre-examination→restriction-requirement": 135182.3529411347,
+      "pre-filing→nonprovisional-filed": 115538.1176469494,
+      "pre-filing→provisional-filed": 111218.11764676168,
+      "provisional-filed→nonprovisional-filed": 115538.1176469494,
+      "ptab-affirmed→abandoned-no-reply": -75000,
+      "ptab-affirmed→federal-circuit-appeal": 108300,
+      "ptab-affirmed→sec145-action": 88300,
+      "ptab-decision→ptab-affirmed": 108300,
+      "ptab-decision→ptab-reversal": 148300,
+      "ptab-reversal→allowance": 148300,
+      "rce-filed→allowance": 148300,
+      "rce-filed→non-final-oa": 136682.35294117028,
+      "reissue-pending→reissue-abandoned": -75000,
+      "reissue-pending→reissue-granted": 0,
+      "restriction-requirement→election-made": 134182.35294117028,
+      "sec145-action→abandoned-no-reply": -75000,
+      "sec145-action→allowance": 148300
+    },
+    "qValueNote": "qValue is keyed 'from→to' (StatechartEdge.qKey) and COLLIDES on parallel edges (same from/to, different label) — last-write-wins from the source Map iteration order. Use edgeQ for a collision-free per-edge view.",
+    "value": {
+      "abandoned-issue-fee": -75000,
+      "abandoned-no-reply": -75000,
+      "advisory-action": 142800,
+      "after-final-amendment": 148300,
+      "after-final-decision": 143300,
+      "allowance": 148300,
+      "amendment-filed": 143932.35294117554,
+      "appeal-brief-filed": 132807.64705879427,
+      "appeal-dismissed": -30000,
+      "applicant-response-window": 136932.35294117022,
+      "claims-amended": 75000,
+      "claims-cancelled": -100000,
+      "claims-confirmed": 150000,
+      "continuation-filed": 137544.1176470213,
+      "divisional-filed": 137544.1176470213,
+      "election-made": 136682.35294117028,
+      "epr-examination": 70500,
+      "epr-ordered": 70250,
+      "epr-requested": 76630,
+      "examiners-answer": 132807.6470588192,
+      "extension-taken": 136432.35294117022,
+      "federal-circuit-appeal": 148300,
+      "final-rejection": 143050,
+      "interview-conducted": 137932.35294117554,
+      "ipr-final-written-decision": -23750,
+      "ipr-institution-decision": 143500,
+      "ipr-petition-filed": 143250,
+      "ipr-trial-instituted": 140000,
+      "issue-fee-paid": 150000,
+      "maintenance-due": 0,
+      "missing-parts": 136304.11764697422,
+      "noa-received": 148300,
+      "non-final-oa": 136682.35294117028,
+      "nonprovisional-filed": 137358.1176469494,
+      "notice-of-appeal": 112807.6470587946,
+      "patent-challenged": 101343.33333333333,
+      "patent-expired": 0,
+      "patent-issued": 150000,
+      "pgr-final-written-decision": -11250,
+      "pgr-institution-decision": 144500,
+      "pgr-petition-filed": 144250,
+      "pgr-trial-instituted": 140000,
+      "pre-examination": 137544.1176470213,
+      "pre-filing": 115538.11764676168,
+      "provisional-filed": 115538.11764676168,
+      "ptab-affirmed": 108300,
+      "ptab-decision": 120300,
+      "ptab-reversal": 148300,
+      "rce-filed": 140167.6470588192,
+      "reissue-abandoned": -75000,
+      "reissue-granted": 0,
+      "reissue-pending": -22500,
+      "restriction-requirement": 135182.3529411347,
+      "sec145-action": 148300
+    }
+  },
+  "weightedGraph500": {
+    "edges": [
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 4100,
+        "fees": 2100,
+        "from": "abandoned-issue-fee",
+        "hours": 4,
+        "label": "Petition to revive — pay issue fee late (37 CFR 1.137)",
+        "probability": null,
+        "to": "noa-received"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 4100,
+        "fees": 2100,
+        "from": "abandoned-no-reply",
+        "hours": 4,
+        "label": "Petition to revive — unintentional delay (37 CFR 1.137)",
+        "probability": null,
+        "to": "applicant-response-window"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 500,
+        "fees": 0,
+        "from": "advisory-action",
+        "hours": 1,
+        "label": "Advisory Action received — reassess (clock still running, MPEP 714.13)",
+        "probability": null,
+        "to": "after-final-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "after-final-amendment",
+        "hours": 0,
+        "label": "Examiner issues Advisory Action (amendment not entered)",
+        "probability": null,
+        "to": "advisory-action"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "after-final-amendment",
+        "hours": 0,
+        "label": "Examiner enters amendment and allows",
+        "probability": null,
+        "to": "allowance"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 3800,
+        "fees": 800,
+        "from": "after-final-amendment",
+        "hours": 6,
+        "label": "Amendment not entered — appeal",
+        "probability": null,
+        "to": "notice-of-appeal"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 7360,
+        "fees": 1360,
+        "from": "after-final-amendment",
+        "hours": 12,
+        "label": "Amendment not entered — file RCE",
+        "probability": null,
+        "to": "rce-filed"
+      },
+      {
+        "benefit": -75000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "after-final-decision",
+        "hours": 0,
+        "label": "Fail to reply after final — abandonment",
+        "probability": null,
+        "to": "abandoned-no-reply"
+      },
+      {
+        "benefit": 0,
+        "days": 90,
+        "dollarCost": 5000,
+        "fees": 0,
+        "from": "after-final-decision",
+        "hours": 10,
+        "label": "File after-final amendment (37 CFR 1.116)",
+        "probability": null,
+        "to": "after-final-amendment"
+      },
+      {
+        "benefit": 0,
+        "days": 90,
+        "dollarCost": 14320,
+        "fees": 1820,
+        "from": "after-final-decision",
+        "hours": 25,
+        "label": "File continuation to pursue additional claims (37 CFR 1.53(b))",
+        "probability": null,
+        "to": "continuation-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 90,
+        "dollarCost": 3800,
+        "fees": 800,
+        "from": "after-final-decision",
+        "hours": 6,
+        "label": "File Notice of Appeal to PTAB",
+        "probability": null,
+        "to": "notice-of-appeal"
+      },
+      {
+        "benefit": 0,
+        "days": 90,
+        "dollarCost": 7360,
+        "fees": 1360,
+        "from": "after-final-decision",
+        "hours": 12,
+        "label": "File RCE — restart prosecution",
+        "probability": null,
+        "to": "rce-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "allowance",
+        "hours": 0,
+        "label": "Notice of Allowance mailed",
+        "probability": null,
+        "to": "noa-received"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "amendment-filed",
+        "hours": 0,
+        "label": "Examiner allows all claims",
+        "probability": 0.35,
+        "to": "allowance"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "amendment-filed",
+        "hours": 0,
+        "label": "Examiner issues Final Rejection",
+        "probability": 0.5,
+        "to": "final-rejection"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "amendment-filed",
+        "hours": 0,
+        "label": "Examiner issues new Non-Final OA",
+        "probability": 0.15,
+        "to": "non-final-oa"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "appeal-brief-filed",
+        "hours": 0,
+        "label": "Examiner files Answer",
+        "probability": null,
+        "to": "examiners-answer"
+      },
+      {
+        "benefit": -75000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "appeal-dismissed",
+        "hours": 0,
+        "label": "No allowed claims — application abandoned",
+        "probability": 0.8,
+        "to": "abandoned-no-reply"
+      },
+      {
+        "benefit": 150000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "appeal-dismissed",
+        "hours": 0,
+        "label": "Allowed claim(s) exist — examiner cancels rejected claims and issues",
+        "probability": 0.2,
+        "to": "patent-issued"
+      },
+      {
+        "benefit": -75000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "applicant-response-window",
+        "hours": 0,
+        "label": "Fail to reply within 6-month statutory ceiling",
+        "probability": null,
+        "to": "abandoned-no-reply"
+      },
+      {
+        "benefit": 0,
+        "days": 90,
+        "dollarCost": 7500,
+        "fees": 0,
+        "from": "applicant-response-window",
+        "hours": 15,
+        "label": "File amendment/response within SSP (3 months)",
+        "probability": null,
+        "to": "amendment-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 30,
+        "dollarCost": 490,
+        "fees": 240,
+        "from": "applicant-response-window",
+        "hours": 0.5,
+        "label": "File extension of time (1-month)",
+        "probability": null,
+        "to": "extension-taken"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 1000,
+        "fees": 0,
+        "from": "applicant-response-window",
+        "hours": 2,
+        "label": "Request examiner interview",
+        "probability": null,
+        "to": "interview-conducted"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "continuation-filed",
+        "hours": 0,
+        "label": "Continuation docketed — enters examination",
+        "probability": null,
+        "to": "pre-examination"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "divisional-filed",
+        "hours": 0,
+        "label": "Divisional docketed — enters examination",
+        "probability": null,
+        "to": "pre-examination"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 16820,
+        "fees": 1820,
+        "from": "election-made",
+        "hours": 30,
+        "label": "File divisional for non-elected invention (35 U.S.C. 121 shield)",
+        "probability": null,
+        "to": "divisional-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "election-made",
+        "hours": 0,
+        "label": "Examiner examines elected claims — issues Office Action",
+        "probability": null,
+        "to": "non-final-oa"
+      },
+      {
+        "benefit": 75000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "epr-examination",
+        "hours": 0,
+        "label": "Reexam certificate: claims amended / narrowed",
+        "probability": 0.66,
+        "to": "claims-amended"
+      },
+      {
+        "benefit": -100000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "epr-examination",
+        "hours": 0,
+        "label": "Reexam certificate: claims cancelled",
+        "probability": 0.12,
+        "to": "claims-cancelled"
+      },
+      {
+        "benefit": 150000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "epr-examination",
+        "hours": 0,
+        "label": "Reexam certificate: claims confirmed as patentable",
+        "probability": 0.22,
+        "to": "claims-confirmed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 250,
+        "fees": 0,
+        "from": "epr-ordered",
+        "hours": 0.5,
+        "label": "Decline owner statement — reserve for first Office action (recommended)",
+        "probability": null,
+        "to": "epr-examination"
+      },
+      {
+        "benefit": 0,
+        "days": 60,
+        "dollarCost": 20000,
+        "fees": 0,
+        "from": "epr-ordered",
+        "hours": 40,
+        "label": "File Patent Owner Statement (35 U.S.C. 304) — opens requester reply [TRAP]",
+        "probability": null,
+        "to": "epr-examination"
+      },
+      {
+        "benefit": 150000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "epr-requested",
+        "hours": 0,
+        "label": "Request denied — no substantial new question",
+        "probability": 0.08,
+        "to": "claims-confirmed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "epr-requested",
+        "hours": 0,
+        "label": "Director grants reexam — SNQ found (35 U.S.C. 303)",
+        "probability": 0.92,
+        "to": "epr-ordered"
+      },
+      {
+        "benefit": 0,
+        "days": 60,
+        "dollarCost": 2860,
+        "fees": 2360,
+        "from": "examiners-answer",
+        "hours": 1,
+        "label": "Pay appeal forwarding fee — appeal forwarded to PTAB",
+        "probability": null,
+        "to": "ptab-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 7360,
+        "fees": 1360,
+        "from": "examiners-answer",
+        "hours": 12,
+        "label": "Reopen prosecution via RCE (new grounds in Answer)",
+        "probability": null,
+        "to": "rce-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 30,
+        "dollarCost": 7500,
+        "fees": 0,
+        "from": "extension-taken",
+        "hours": 15,
+        "label": "File amendment within extended period",
+        "probability": null,
+        "to": "amendment-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 30,
+        "dollarCost": 730,
+        "fees": 480,
+        "from": "extension-taken",
+        "hours": 0.5,
+        "label": "Take additional extension of time",
+        "probability": null,
+        "to": "extension-taken"
+      },
+      {
+        "benefit": -75000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "federal-circuit-appeal",
+        "hours": 0,
+        "label": "Federal Circuit affirms — no further appeal",
+        "probability": null,
+        "to": "abandoned-no-reply"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "federal-circuit-appeal",
+        "hours": 0,
+        "label": "Federal Circuit reverses — allowance ordered",
+        "probability": null,
+        "to": "allowance"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 250,
+        "fees": 0,
+        "from": "final-rejection",
+        "hours": 0.5,
+        "label": "Receive and docket Final Rejection",
+        "probability": null,
+        "to": "after-final-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 6000,
+        "fees": 0,
+        "from": "interview-conducted",
+        "hours": 12,
+        "label": "Follow up interview with amendment",
+        "probability": null,
+        "to": "amendment-filed"
+      },
+      {
+        "benefit": 75000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "ipr-final-written-decision",
+        "hours": 0,
+        "label": "FWD: mixed — substitute claims entered (intervening rights)",
+        "probability": 0.15,
+        "to": "claims-amended"
+      },
+      {
+        "benefit": -100000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "ipr-final-written-decision",
+        "hours": 0,
+        "label": "FWD: all instituted claims held unpatentable",
+        "probability": 0.65,
+        "to": "claims-cancelled"
+      },
+      {
+        "benefit": 150000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "ipr-final-written-decision",
+        "hours": 0,
+        "label": "FWD: claims upheld (patentability confirmed)",
+        "probability": 0.2,
+        "to": "claims-confirmed"
+      },
+      {
+        "benefit": 150000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "ipr-institution-decision",
+        "hours": 0,
+        "label": "PTAB denies institution (Fintiv / 325(d) / merits)",
+        "probability": 0.35,
+        "to": "claims-confirmed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "ipr-institution-decision",
+        "hours": 0,
+        "label": "PTAB institutes trial (35 U.S.C. 314(a))",
+        "probability": 0.65,
+        "to": "ipr-trial-instituted"
+      },
+      {
+        "benefit": 0,
+        "days": 90,
+        "dollarCost": 30000,
+        "fees": 0,
+        "from": "ipr-petition-filed",
+        "hours": 60,
+        "label": "File Patent Owner Preliminary Response (POPR)",
+        "probability": null,
+        "to": "ipr-institution-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 250,
+        "fees": 0,
+        "from": "ipr-petition-filed",
+        "hours": 0.5,
+        "label": "Waive POPR — reserve arguments for trial",
+        "probability": null,
+        "to": "ipr-institution-decision"
+      },
+      {
+        "benefit": 150000,
+        "days": 0,
+        "dollarCost": 10000,
+        "fees": 0,
+        "from": "ipr-trial-instituted",
+        "hours": 20,
+        "label": "Settle before final written decision (35 U.S.C. 317) — avoid estoppel",
+        "probability": null,
+        "to": "claims-confirmed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 40000,
+        "fees": 0,
+        "from": "ipr-trial-instituted",
+        "hours": 80,
+        "label": "File Motion to Amend (substitute claims, 35 U.S.C. 316(d))",
+        "probability": null,
+        "to": "ipr-final-written-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 45000,
+        "fees": 0,
+        "from": "ipr-trial-instituted",
+        "hours": 90,
+        "label": "File Patent Owner Response",
+        "probability": null,
+        "to": "ipr-final-written-decision"
+      },
+      {
+        "benefit": 150000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "issue-fee-paid",
+        "hours": 0,
+        "label": "Patent issues",
+        "probability": null,
+        "to": "patent-issued"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 2250,
+        "fees": 2000,
+        "from": "maintenance-due",
+        "hours": 0.5,
+        "label": "Pay maintenance fee on time",
+        "probability": null,
+        "to": "maintenance-due"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "maintenance-due",
+        "hours": 0,
+        "label": "Fail to pay maintenance fee — patent expires",
+        "probability": null,
+        "to": "patent-expired"
+      },
+      {
+        "benefit": -75000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "missing-parts",
+        "hours": 0,
+        "label": "Fail to supply missing parts",
+        "probability": null,
+        "to": "abandoned-no-reply"
+      },
+      {
+        "benefit": 0,
+        "days": 60,
+        "dollarCost": 1240,
+        "fees": 240,
+        "from": "missing-parts",
+        "hours": 2,
+        "label": "File missing parts + surcharge",
+        "probability": null,
+        "to": "pre-examination"
+      },
+      {
+        "benefit": -75000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "noa-received",
+        "hours": 0,
+        "label": "Fail to pay issue fee — abandonment",
+        "probability": null,
+        "to": "abandoned-issue-fee"
+      },
+      {
+        "benefit": 0,
+        "days": 90,
+        "dollarCost": 1700,
+        "fees": 1200,
+        "from": "noa-received",
+        "hours": 1,
+        "label": "Pay issue fee within 3 months",
+        "probability": null,
+        "to": "issue-fee-paid"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 250,
+        "fees": 0,
+        "from": "non-final-oa",
+        "hours": 0.5,
+        "label": "Receive and docket Office Action",
+        "probability": null,
+        "to": "applicant-response-window"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "nonprovisional-filed",
+        "hours": 0,
+        "label": "USPTO issues Notice to File Missing Parts",
+        "probability": 0.15,
+        "to": "missing-parts"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "nonprovisional-filed",
+        "hours": 0,
+        "label": "Application complete — assigned to examiner",
+        "probability": 0.85,
+        "to": "pre-examination"
+      },
+      {
+        "benefit": 0,
+        "days": 60,
+        "dollarCost": 20000,
+        "fees": 0,
+        "from": "notice-of-appeal",
+        "hours": 40,
+        "label": "File Appeal Brief (within 2 months)",
+        "probability": null,
+        "to": "appeal-brief-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 60,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "notice-of-appeal",
+        "hours": 0,
+        "label": "Fail to file appeal brief — appeal dismissed",
+        "probability": null,
+        "to": "appeal-dismissed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 12600,
+        "fees": 12600,
+        "from": "patent-challenged",
+        "hours": 0,
+        "label": "Requester files ex parte reexam request (35 U.S.C. 302)",
+        "probability": null,
+        "to": "epr-requested"
+      },
+      {
+        "benefit": 0,
+        "days": 365,
+        "dollarCost": 23750,
+        "fees": 23750,
+        "from": "patent-challenged",
+        "hours": 0,
+        "label": "Challenger files IPR petition (35 U.S.C. 311)",
+        "probability": null,
+        "to": "ipr-petition-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 270,
+        "dollarCost": 23750,
+        "fees": 23750,
+        "from": "patent-challenged",
+        "hours": 0,
+        "label": "Challenger files PGR petition within 9 months (35 U.S.C. 321)",
+        "probability": null,
+        "to": "pgr-petition-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 100,
+        "fees": 0,
+        "from": "patent-issued",
+        "hours": 0.2,
+        "label": "Maintenance fees become due (3.5 / 7.5 / 11.5 years)",
+        "probability": null,
+        "to": "maintenance-due"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "patent-issued",
+        "hours": 0,
+        "label": "Third party challenges the issued patent (post-grant)",
+        "probability": null,
+        "to": "patent-challenged"
+      },
+      {
+        "benefit": 150000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "patent-issued",
+        "hours": 0,
+        "label": "Miss 2-year broadening reissue window — broadening permanently barred",
+        "probability": null,
+        "to": "patent-issued"
+      },
+      {
+        "benefit": 0,
+        "days": 730,
+        "dollarCost": 14320,
+        "fees": 1820,
+        "from": "patent-issued",
+        "hours": 25,
+        "label": "File broadening reissue application — MUST be within 2 years of grant (§ 251)",
+        "probability": null,
+        "to": "reissue-pending"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 11820,
+        "fees": 1820,
+        "from": "patent-issued",
+        "hours": 20,
+        "label": "File narrowing reissue application (§ 251; any time during enforceable term)",
+        "probability": null,
+        "to": "reissue-pending"
+      },
+      {
+        "benefit": 75000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "pgr-final-written-decision",
+        "hours": 0,
+        "label": "FWD: mixed — substitute claims entered (intervening rights)",
+        "probability": 0.15,
+        "to": "claims-amended"
+      },
+      {
+        "benefit": -100000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "pgr-final-written-decision",
+        "hours": 0,
+        "label": "FWD: claims held unpatentable (incl. 101/112 grounds)",
+        "probability": 0.6,
+        "to": "claims-cancelled"
+      },
+      {
+        "benefit": 150000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "pgr-final-written-decision",
+        "hours": 0,
+        "label": "FWD: claims upheld",
+        "probability": 0.25,
+        "to": "claims-confirmed"
+      },
+      {
+        "benefit": 150000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "pgr-institution-decision",
+        "hours": 0,
+        "label": "PTAB denies institution",
+        "probability": 0.45,
+        "to": "claims-confirmed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "pgr-institution-decision",
+        "hours": 0,
+        "label": "PTAB institutes PGR (35 U.S.C. 324(a))",
+        "probability": 0.55,
+        "to": "pgr-trial-instituted"
+      },
+      {
+        "benefit": 0,
+        "days": 90,
+        "dollarCost": 30000,
+        "fees": 0,
+        "from": "pgr-petition-filed",
+        "hours": 60,
+        "label": "File Patent Owner Preliminary Response (POPR)",
+        "probability": null,
+        "to": "pgr-institution-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 250,
+        "fees": 0,
+        "from": "pgr-petition-filed",
+        "hours": 0.5,
+        "label": "Waive POPR — reserve arguments for trial",
+        "probability": null,
+        "to": "pgr-institution-decision"
+      },
+      {
+        "benefit": 150000,
+        "days": 0,
+        "dollarCost": 10000,
+        "fees": 0,
+        "from": "pgr-trial-instituted",
+        "hours": 20,
+        "label": "Settle before final written decision (35 U.S.C. 327) — avoid estoppel",
+        "probability": null,
+        "to": "claims-confirmed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 40000,
+        "fees": 0,
+        "from": "pgr-trial-instituted",
+        "hours": 80,
+        "label": "File Motion to Amend (substitute claims, 35 U.S.C. 326(d))",
+        "probability": null,
+        "to": "pgr-final-written-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 45000,
+        "fees": 0,
+        "from": "pgr-trial-instituted",
+        "hours": 90,
+        "label": "File Patent Owner Response",
+        "probability": null,
+        "to": "pgr-final-written-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "pre-examination",
+        "hours": 0,
+        "label": "Examiner allows on first action (FAOM)",
+        "probability": 0.1,
+        "to": "allowance"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "pre-examination",
+        "hours": 0,
+        "label": "Examiner issues Non-Final Office Action",
+        "probability": 0.7,
+        "to": "non-final-oa"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "pre-examination",
+        "hours": 0,
+        "label": "Examiner issues Restriction / Election Requirement",
+        "probability": 0.2,
+        "to": "restriction-requirement"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 21820,
+        "fees": 1820,
+        "from": "pre-filing",
+        "hours": 40,
+        "label": "File nonprovisional directly (no provisional)",
+        "probability": null,
+        "to": "nonprovisional-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 365,
+        "dollarCost": 4320,
+        "fees": 320,
+        "from": "pre-filing",
+        "hours": 8,
+        "label": "File provisional application",
+        "probability": null,
+        "to": "provisional-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 365,
+        "dollarCost": 21820,
+        "fees": 1820,
+        "from": "provisional-filed",
+        "hours": 40,
+        "label": "File nonprovisional within 12-month window",
+        "probability": null,
+        "to": "nonprovisional-filed"
+      },
+      {
+        "benefit": -75000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "ptab-affirmed",
+        "hours": 0,
+        "label": "Take no further action — application abandoned",
+        "probability": null,
+        "to": "abandoned-no-reply"
+      },
+      {
+        "benefit": 0,
+        "days": 63,
+        "dollarCost": 40000,
+        "fees": 0,
+        "from": "ptab-affirmed",
+        "hours": 80,
+        "label": "Appeal to Federal Circuit (35 U.S.C. 141)",
+        "probability": null,
+        "to": "federal-circuit-appeal"
+      },
+      {
+        "benefit": 0,
+        "days": 63,
+        "dollarCost": 60000,
+        "fees": 0,
+        "from": "ptab-affirmed",
+        "hours": 120,
+        "label": "File civil action in E.D. Va. (35 U.S.C. 145)",
+        "probability": null,
+        "to": "sec145-action"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "ptab-decision",
+        "hours": 0,
+        "label": "PTAB affirms examiner",
+        "probability": 0.7,
+        "to": "ptab-affirmed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "ptab-decision",
+        "hours": 0,
+        "label": "PTAB reverses examiner",
+        "probability": 0.3,
+        "to": "ptab-reversal"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "ptab-reversal",
+        "hours": 0,
+        "label": "Examiner processes allowance after reversal",
+        "probability": null,
+        "to": "allowance"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rce-filed",
+        "hours": 0,
+        "label": "Examiner allows after RCE submission",
+        "probability": 0.3,
+        "to": "allowance"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rce-filed",
+        "hours": 0,
+        "label": "Examiner issues new Non-Final OA after RCE",
+        "probability": 0.7,
+        "to": "non-final-oa"
+      },
+      {
+        "benefit": -75000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "reissue-pending",
+        "hours": 0,
+        "label": "Reissue abandoned (failure to reply or rejection sustained)",
+        "probability": 0.3,
+        "to": "reissue-abandoned"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "reissue-pending",
+        "hours": 0,
+        "label": "Reissue examination completes — reissue patent granted",
+        "probability": 0.7,
+        "to": "reissue-granted"
+      },
+      {
+        "benefit": 0,
+        "days": 60,
+        "dollarCost": 2500,
+        "fees": 0,
+        "from": "restriction-requirement",
+        "hours": 5,
+        "label": "Elect invention WITH traverse (preserve 37 CFR 1.144 petition)",
+        "probability": null,
+        "to": "election-made"
+      },
+      {
+        "benefit": 0,
+        "days": 60,
+        "dollarCost": 1500,
+        "fees": 0,
+        "from": "restriction-requirement",
+        "hours": 3,
+        "label": "Elect invention WITHOUT traverse",
+        "probability": null,
+        "to": "election-made"
+      },
+      {
+        "benefit": -75000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "sec145-action",
+        "hours": 0,
+        "label": "District court affirms — abandoned",
+        "probability": null,
+        "to": "abandoned-no-reply"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "sec145-action",
+        "hours": 0,
+        "label": "District court orders allowance",
+        "probability": null,
+        "to": "allowance"
+      }
+    ],
+    "terminalValue": {
+      "abandoned-issue-fee": -75000,
+      "abandoned-no-reply": -75000,
+      "advisory-action": 0,
+      "after-final-amendment": 0,
+      "after-final-decision": 0,
+      "allowance": 0,
+      "amendment-filed": 0,
+      "appeal-brief-filed": 0,
+      "appeal-dismissed": 0,
+      "applicant-response-window": 0,
+      "claims-amended": 75000,
+      "claims-cancelled": -100000,
+      "claims-confirmed": 150000,
+      "continuation-filed": 0,
+      "divisional-filed": 0,
+      "election-made": 0,
+      "epr-examination": 0,
+      "epr-ordered": 0,
+      "epr-requested": 0,
+      "examiners-answer": 0,
+      "extension-taken": 0,
+      "federal-circuit-appeal": 0,
+      "final-rejection": 0,
+      "interview-conducted": 0,
+      "ipr-final-written-decision": 0,
+      "ipr-institution-decision": 0,
+      "ipr-petition-filed": 0,
+      "ipr-trial-instituted": 0,
+      "issue-fee-paid": 0,
+      "maintenance-due": 0,
+      "missing-parts": 0,
+      "noa-received": 0,
+      "non-final-oa": 0,
+      "nonprovisional-filed": 0,
+      "notice-of-appeal": 0,
+      "patent-challenged": 0,
+      "patent-expired": 0,
+      "patent-issued": 150000,
+      "pgr-final-written-decision": 0,
+      "pgr-institution-decision": 0,
+      "pgr-petition-filed": 0,
+      "pgr-trial-instituted": 0,
+      "pre-examination": 0,
+      "pre-filing": 0,
+      "provisional-filed": 0,
+      "ptab-affirmed": 0,
+      "ptab-decision": 0,
+      "ptab-reversal": 0,
+      "rce-filed": 0,
+      "reissue-abandoned": -75000,
+      "reissue-granted": 0,
+      "reissue-pending": 0,
+      "restriction-requirement": 0,
+      "sec145-action": 0
+    }
+  }
+}

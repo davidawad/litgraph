@@ -1,0 +1,1434 @@
+{
+  "schemaVersion": 2,
+  "id": "cafc",
+  "title": "U.S. Court of Appeals for the Federal Circuit — Appellate Procedure",
+  "description": "Federal Circuit appellate procedure from four origin tribunals (district court patent judgments, PTAB final written decisions, ITC final determinations, and Court of Federal Claims judgments) through docketing, the mediation program, motions practice, briefing, the joint appendix, oral argument or submission without argument, panel decision (including Fed. Cir. R. 36 judgments of affirmance without opinion), rehearing/rehearing en banc, mandate and costs, and certiorari to the Supreme Court. This is the Federal-Circuit-specific counterpart to frap-appellate-procedure.json (general FRAP flow) and the terminal that ptab-patent-trial-appeal-board.json and itc-337.json link into via their federal-circuit-window / federal-circuit-appeal-window edges.",
+  "jurisdiction": "U.S. Court of Appeals for the Federal Circuit / Fed. Cir. R. / FRAP / 28 U.S.C. Ch. 83",
+  "forum": "cafc",
+  "startNodeId": "appeal-origin",
+  "groups": [
+    {
+      "id": "entry-group",
+      "label": "Entry — Four Origin Tribunals"
+    },
+    {
+      "id": "docketing-group",
+      "label": "Docketing & Early CAFC Steps"
+    },
+    {
+      "id": "mediation-group",
+      "label": "Appellate Mediation Program"
+    },
+    {
+      "id": "motions-group",
+      "label": "Motions Practice (Stay Pending Appeal)"
+    },
+    {
+      "id": "cross-appeal-group",
+      "label": "Cross-Appeals"
+    },
+    {
+      "id": "briefing-group",
+      "label": "Briefing"
+    },
+    {
+      "id": "appendix-group",
+      "label": "Joint Appendix"
+    },
+    {
+      "id": "argument-group",
+      "label": "Oral Argument / Submission Without Argument"
+    },
+    {
+      "id": "decision-group",
+      "label": "Panel Decision"
+    },
+    {
+      "id": "rehearing-group",
+      "label": "Rehearing & Rehearing En Banc"
+    },
+    {
+      "id": "mandate-group",
+      "label": "Mandate & Costs"
+    },
+    {
+      "id": "cert-group",
+      "label": "Certiorari to the Supreme Court"
+    }
+  ],
+  "roles": {
+    "applicant": "self",
+    "examiner": "opponent",
+    "office": "nature",
+    "either": "nature"
+  },
+  "sources": [
+    {
+      "id": "fedcir-rules",
+      "title": "Federal Circuit Rules of Practice (FRAP + Federal Circuit Rules + Practice Notes + Attorney Discipline Rules, combined)",
+      "path": "/Users/david/Knowledge/Lawyering/Litigation/Books/Federal Rules/Federal Circuit/federal-circuit-rules-of-practice-2025-12-01.pdf",
+      "sha256": "b6346ed56a0ef66e8a681765873caf69239cda273f8946f1625571e013712c05",
+      "asOf": "2025-12-01"
+    },
+    {
+      "id": "fedcir-iops",
+      "title": "Federal Circuit Internal Operating Procedures",
+      "path": "/Users/david/Knowledge/Lawyering/Litigation/Books/Federal Rules/Federal Circuit/federal-circuit-internal-operating-procedures-2026-06-09.pdf",
+      "sha256": "0529dbba781897e83ed617af7a603f7fdaf7ac4af1278d035a378c5699172397",
+      "asOf": "2026-06-09"
+    },
+    {
+      "id": "fedcir-mediation-guidelines",
+      "title": "Appellate Mediation Program Guidelines",
+      "path": "/Users/david/Knowledge/Lawyering/Litigation/Books/Federal Rules/Federal Circuit/appellate-mediation-program-guidelines-2013-12-06.pdf",
+      "sha256": "b70b1463ebd122dbe3287d5c7117e822f5bfe32a59a53bb9b5b5e000b7a1dfb0",
+      "asOf": "2013-12-06"
+    },
+    {
+      "id": "cafc-fee-schedule",
+      "title": "United States Court of Appeals for the Federal Circuit — Fee Schedule",
+      "url": "https://www.cafc.uscourts.gov/wp-content/uploads/FeeSchedule.pdf",
+      "asOf": "2023-12-01"
+    },
+    {
+      "id": "patentlyo-2024-datapack",
+      "title": "Federal Circuit Decisions - 2024 Stats and Datapack (Patently-O / Jason Rantanen)",
+      "url": "https://patentlyo.com/patent/2025/06/federal-circuit-decisions-datapack.html",
+      "asOf": "2025-06"
+    },
+    {
+      "id": "frap-pack",
+      "title": "frap-appellate-procedure.json (model pack; source of the reused rehearing/en banc and cert grant-rate teaching estimates)",
+      "path": "packs/frap-appellate-procedure.json"
+    },
+    {
+      "id": "ptab-pack",
+      "title": "ptab-patent-trial-appeal-board.json (links into entry-ptab / remanded-to-ptab)",
+      "path": "packs/ptab-patent-trial-appeal-board.json"
+    },
+    {
+      "id": "itc-pack",
+      "title": "itc-337.json (links into entry-itc / remanded-to-itc)",
+      "path": "packs/itc-337.json"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "appeal-origin",
+      "kind": "decision",
+      "label": "Adverse Ruling From an Origin Tribunal",
+      "group": "entry-group",
+      "cite": "28 U.S.C. § 1295(a)",
+      "note": "Router node. The Federal Circuit has exclusive jurisdiction over appeals from these four tribunals (among others not modeled here, e.g. MSPB, Court of International Trade, Board of Contract Appeals) under 28 U.S.C. § 1295(a)'s various subsections."
+    },
+    {
+      "id": "entry-district-court",
+      "kind": "state",
+      "label": "District Court Patent Judgment Entered",
+      "group": "entry-group",
+      "cite": "28 U.S.C. § 1295(a)(1)",
+      "note": "Final judgment (or an appealable interlocutory order under 28 U.S.C. § 1292(c)(1)-(2)) in a civil action arising under an Act of Congress relating to patents or plant variety protection, or in which a party asserted a compulsory patent counterclaim. Non-patent district-court appeals with a patent counterclaim removed on appeal still route here; purely non-patent district-court appeals go to the regional circuit, not modeled in this pack."
+    },
+    {
+      "id": "entry-ptab",
+      "kind": "state",
+      "label": "PTAB Final Written Decision (or Operative Post-FWD Decision)",
+      "group": "entry-group",
+      "cite": "28 U.S.C. § 1295(a)(4)(A); 35 U.S.C. §§ 141-144, 319",
+      "note": "Reached from ptab-patent-trial-appeal-board.json's fwd-all-unpatentable / fwd-all-confirmed / fwd-mixed terminals, or from a later rehearing/Director-review decision if one was sought. Only actual trial participants may appeal (35 U.S.C. § 319) — no § 145 civil-action alternative exists for AIA trials, unlike ex parte prosecution appeals under § 145."
+    },
+    {
+      "id": "entry-itc",
+      "kind": "state",
+      "label": "ITC Final Determination — Presidential (USTR) Review Period Expired",
+      "group": "entry-group",
+      "cite": "28 U.S.C. § 1295(a)(6); 19 U.S.C. § 1337(c), (j)",
+      "note": "Reached from itc-337.json's no-violation-outcome or remedy-in-effect nodes, i.e. only after the 60-day § 1337(j) Presidential/USTR disapproval window has run without a veto (a veto is itc-337.json's determination-vetoed terminal — no force or effect, nothing to appeal). Any person adversely affected, including the complainant on a no-violation determination, may appeal."
+    },
+    {
+      "id": "entry-cofc",
+      "kind": "state",
+      "label": "Court of Federal Claims Judgment Entered",
+      "group": "entry-group",
+      "cite": "28 U.S.C. § 1295(a)(3); 28 U.S.C. § 2522",
+      "note": "Final judgment of the U.S. Court of Federal Claims, including patent/copyright takings (28 U.S.C. § 1498) and other CoFC matters within Federal Circuit jurisdiction."
+    },
+    {
+      "id": "window-blown-district-court",
+      "kind": "terminal",
+      "label": "District-Court-Origin Notice of Appeal Untimely — Window Blown",
+      "group": "entry-group",
+      "payoff": 0,
+      "outcome": [
+        "loss",
+        "procedural-default"
+      ],
+      "valence": "bad",
+      "tags": [
+        "waiver-trap"
+      ],
+      "note": "PERMADEATH. Each origin's notice-of-appeal deadline is jurisdictional and, on this record, effectively unextendable once it lapses (see the edge authority for the specific unextendability rule for this origin). No equitable exception restores appellate jurisdiction."
+    },
+    {
+      "id": "window-blown-ptab",
+      "kind": "terminal",
+      "label": "PTAB-Origin Notice of Appeal Untimely — Window Blown",
+      "group": "entry-group",
+      "payoff": 0,
+      "outcome": [
+        "loss",
+        "procedural-default"
+      ],
+      "valence": "bad",
+      "tags": [
+        "waiver-trap"
+      ],
+      "note": "PERMADEATH. Each origin's notice-of-appeal deadline is jurisdictional and, on this record, effectively unextendable once it lapses (see the edge authority for the specific unextendability rule for this origin). No equitable exception restores appellate jurisdiction."
+    },
+    {
+      "id": "window-blown-itc",
+      "kind": "terminal",
+      "label": "ITC-Origin Notice of Appeal Untimely — Window Blown",
+      "group": "entry-group",
+      "payoff": 0,
+      "outcome": [
+        "loss",
+        "procedural-default"
+      ],
+      "valence": "bad",
+      "tags": [
+        "waiver-trap"
+      ],
+      "note": "PERMADEATH. Each origin's notice-of-appeal deadline is jurisdictional and, on this record, effectively unextendable once it lapses (see the edge authority for the specific unextendability rule for this origin). No equitable exception restores appellate jurisdiction."
+    },
+    {
+      "id": "window-blown-cofc",
+      "kind": "terminal",
+      "label": "CoFC-Origin Notice of Appeal Untimely — Window Blown",
+      "group": "entry-group",
+      "payoff": 0,
+      "outcome": [
+        "loss",
+        "procedural-default"
+      ],
+      "valence": "bad",
+      "tags": [
+        "waiver-trap"
+      ],
+      "note": "PERMADEATH. Each origin's notice-of-appeal deadline is jurisdictional and, on this record, effectively unextendable once it lapses (see the edge authority for the specific unextendability rule for this origin). No equitable exception restores appellate jurisdiction."
+    },
+    {
+      "id": "notice-of-appeal-filed",
+      "kind": "state",
+      "label": "Notice of Appeal Filed (Convergence)",
+      "group": "docketing-group",
+      "cite": "FRAP 3; FRAP 4",
+      "note": "All four origins converge here once their own deadline is met; downstream docketing, certificate-of-interest, briefing, and decision mechanics are uniform across origins except where a specific rule/edge below says otherwise."
+    },
+    {
+      "id": "docketed",
+      "kind": "state",
+      "label": "Appeal Docketed at the Federal Circuit",
+      "group": "docketing-group",
+      "cite": "FRAP 12(a)"
+    },
+    {
+      "id": "appearance-and-coi-filed",
+      "kind": "state",
+      "label": "Entry of Appearance & Certificate of Interest Filed",
+      "group": "docketing-group",
+      "cite": "Fed. Cir. R. 47.3(b)(1); Fed. Cir. R. 47.4(a)-(b)",
+      "note": "Certificate of interest must be filed contemporaneously with the first-filed entry of appearance (Fed. Cir. R. 47.4(b)) and satisfies the FRAP 26.1 disclosure-statement requirement (Fed. Cir. R. 26.1). United States and unrepresented individuals are exempt absent Rule 47.4(a)(6) organizational-victim/bankruptcy disclosures. An amended certificate is due within 7 days of any change (Fed. Cir. R. 47.4(c))."
+    },
+    {
+      "id": "docketing-statement-filed",
+      "kind": "state",
+      "label": "Docketing Statement Filed",
+      "group": "docketing-group",
+      "cite": "Fed. Cir. R. 47.6",
+      "note": "Except for unrepresented parties, each appellant/cross-appellant/petitioner files a docketing statement on Form 26 within 14 days of docketing; it satisfies the FRAP 10(b)(3)(A) statement-of-issues requirement. Also the document the Office of General Counsel screens (together with the briefs, once filed) to select cases for mediation."
+    },
+    {
+      "id": "mediation-screening",
+      "kind": "decision",
+      "label": "OGC Screens for the Mediation Program",
+      "group": "mediation-group",
+      "cite": "Appellate Mediation Program Guidelines §§ 2-3 (2013-12-06); Fed. Cir. R. 33(b)",
+      "note": "Participation is mandatory for cases the Office of General Counsel selects; OGC contacts principal counsel, reviews the docketing statement and briefs, and determines whether a case is a good mediation candidate. If counsel represents to OGC that mediation would not be fruitful, efforts cease. No published selection rate exists — probability deliberately left unauthored on both outgoing edges (see cafc-SOURCES-NOTES.md) rather than invented; the engine's uniform-draw fallback applies if this node is queried numerically."
+    },
+    {
+      "id": "mediation-conference",
+      "kind": "state",
+      "label": "Mediation Conference Held",
+      "group": "mediation-group",
+      "cite": "Appellate Mediation Program Guidelines §§ 1, 4-6",
+      "note": "Confidential, risk-free settlement discussion before a volunteer mediator, outside mediator, or magistrate judge. Mediation committee members do not discuss the substance with the deciding judges."
+    },
+    {
+      "id": "mediation-outcome",
+      "kind": "decision",
+      "label": "Mediation Concludes",
+      "group": "mediation-group",
+      "cite": "Appellate Mediation Program Guidelines § 7",
+      "note": "No published settlement rate for the program — probability deliberately left unauthored on both outgoing edges rather than invented."
+    },
+    {
+      "id": "settled-in-mediation",
+      "kind": "terminal",
+      "label": "Case Settled Through Mediation",
+      "group": "mediation-group",
+      "payoff": 350000,
+      "outcome": [
+        "settlement"
+      ],
+      "valence": "good",
+      "tags": [
+        "settlement"
+      ],
+      "note": "Illustrative payoff only (per the $1,000,000-stake authoring convention): mediated settlements plausibly land well above 0 (affirmance) and below the full-reversal value, but no published average settlement value exists for this program. UNVERIFIED dollar figure."
+    },
+    {
+      "id": "mediation-unsuccessful",
+      "kind": "state",
+      "label": "Mediation Unsuccessful — Appeal Proceeds",
+      "group": "mediation-group",
+      "cite": "Appellate Mediation Program Guidelines § 7"
+    },
+    {
+      "id": "motions-fork",
+      "kind": "decision",
+      "label": "Move to Stay Judgment Pending Appeal?",
+      "group": "motions-group",
+      "cite": "FRAP 8(a); Fed. Cir. R. 8",
+      "note": "FRAP 8(a)(1) requires moving in the trial tribunal first unless that would be impracticable or relief was denied/not afforded; only then may the movant apply to this court (Fed. Cir. R. 8(c) requires a statement explaining why). A Fed. Cir. R. 8(a) motion must attach the notice of appeal, the judgment below, any trial-court stay order, and a certificate of interest."
+    },
+    {
+      "id": "stay-granted",
+      "kind": "state",
+      "label": "Stay Granted — Judgment/Remedy Suspended",
+      "group": "motions-group",
+      "cite": "FRAP 8(a)(1); Fed. Cir. R. 8",
+      "note": "Typically conditioned on a bond or other security (FRAP 8(a)(1)(E))."
+    },
+    {
+      "id": "stay-denied",
+      "kind": "state",
+      "label": "Stay Denied — Judgment/Remedy Enforceable",
+      "group": "motions-group",
+      "cite": "FRAP 8(a)"
+    },
+    {
+      "id": "cross-appeal-fork",
+      "kind": "decision",
+      "label": "Appellee Considers a Cross-Appeal",
+      "group": "cross-appeal-group",
+      "cite": "FRAP 4(a)(3); Fed. Cir. R. 28.1",
+      "note": "A cross-appeal is proper only where the appellee seeks to modify or overturn the judgment, not merely to defend it on alternative grounds — Bailey v. Dart Container Corp., 292 F.3d 1360 (Fed. Cir. 2002). Fed. Cir. R. 28.1 sets Federal-Circuit-specific page/word/color-cover limits and the four-brief sequence for cross-appeals; the 14-day filing deadline itself is the general FRAP 4(a)(3) deadline, not separately shortened by a Federal Circuit rule."
+    },
+    {
+      "id": "cross-appeal-filed",
+      "kind": "state",
+      "label": "Notice of Cross-Appeal Filed",
+      "group": "cross-appeal-group",
+      "cite": "FRAP 4(a)(3); Fed. Cir. R. 28.1"
+    },
+    {
+      "id": "no-cross-appeal",
+      "kind": "state",
+      "label": "No Cross-Appeal — Judgment Defended Only",
+      "group": "cross-appeal-group",
+      "cite": "FRAP 4(a)(3)"
+    },
+    {
+      "id": "appellant-brief-window",
+      "kind": "decision",
+      "label": "Appellant's Principal Brief Due",
+      "group": "briefing-group",
+      "cite": "Fed. Cir. R. 31(a)(1)(A)-(B)",
+      "note": "60 days after docketing (appeal from a court) or after the certified list/index is served (appeal from an agency, e.g. PTAB/ITC) — this court's local extension of the FRAP 31(a)(1) default 40-day period. Word limit 14,000 words (Fed. Cir. R. 32(b)(1)), or the Fed. Cir. R. 28.1(b)/(e) cross-appeal limits (14,000/16,500/7,000 across the four briefs) if a cross-appeal is pending."
+    },
+    {
+      "id": "appellant-brief-filed",
+      "kind": "state",
+      "label": "Opening Brief Filed",
+      "group": "briefing-group",
+      "cite": "Fed. Cir. R. 31(a)(1); Fed. Cir. R. 32(b)(1)"
+    },
+    {
+      "id": "dismissed-failure-to-prosecute",
+      "kind": "terminal",
+      "label": "DISMISSED — Failure to Prosecute (No Opening Brief)",
+      "group": "briefing-group",
+      "cite": "Fed. Cir. R. 31(d)",
+      "payoff": 0,
+      "outcome": [
+        "loss",
+        "procedural-default"
+      ],
+      "valence": "bad",
+      "tags": [
+        "waiver-trap"
+      ],
+      "note": "'If the appellant or petitioner fails to file a principal brief, the clerk of court is authorized to dismiss the case.' Fed. Cir. R. 31(d). A timely extension motion filed at least 7 days before the due date generally forestalls dismissal even if unruled-on by the due date (Practice Notes to Fed. Cir. R. 26)."
+    },
+    {
+      "id": "appellee-brief-filed",
+      "kind": "state",
+      "label": "Appellee's Principal/Response Brief Filed",
+      "group": "briefing-group",
+      "cite": "Fed. Cir. R. 31(a)(2)"
+    },
+    {
+      "id": "reply-brief-filed",
+      "kind": "state",
+      "label": "Appellant's Reply Brief Filed",
+      "group": "briefing-group",
+      "cite": "FRAP 31(a)(1)",
+      "note": "Reply brief deadline is the unmodified FRAP default (Fed. Cir. R. 31 does not extend it): 21 days after the appellee's brief is served, but must be filed at least 7 days before argument. Word limit 7,000 words (Fed. Cir. R. 32(b)(1))."
+    },
+    {
+      "id": "briefing-complete",
+      "kind": "state",
+      "label": "Briefing Closed",
+      "group": "briefing-group",
+      "cite": "Fed. Cir. R. 31"
+    },
+    {
+      "id": "joint-appendix-filed",
+      "kind": "state",
+      "label": "Joint Appendix Served and Filed",
+      "group": "appendix-group",
+      "cite": "Fed. Cir. R. 30(a)(1)-(2)",
+      "note": "Beyond FRAP 30(a)(1)(A)-(C), the appendix must include the entire docket sheet/certified list/index, jury materials in a jury case, and (in a patent case) the patents/applications at issue in their entirety (Fed. Cir. R. 30(a)(1)(A)). Parties must attempt to agree on the designation 45 days before the appellant's principal-brief deadline (Fed. Cir. R. 30(b)(1)(A)); appellant's unilateral designation is due 30 days before that deadline if no agreement, with a 14-day appellee counter-designation window."
+    },
+    {
+      "id": "oral-argument-fork",
+      "kind": "decision",
+      "label": "Oral Argument or Submission Without Argument?",
+      "group": "argument-group",
+      "cite": "FRAP 34(a); Fed. Cir. IOP #7",
+      "note": "Argument is allowed unless a three-judge panel unanimously finds the appeal frivolous, the dispositive issue authoritatively decided, or the briefs/record adequately present the case (FRAP 34(a)(2); IOP #7 ¶ 2). No CAFC-specific published argument/no-argument split was located (general cross-circuit AO data puts ~19-25% of all federal appeals at oral argument, not Federal-Circuit-specific) — probability intentionally left unauthored on both edges."
+    },
+    {
+      "id": "oral-argument-held",
+      "kind": "state",
+      "label": "Oral Argument Held",
+      "group": "argument-group",
+      "cite": "FRAP 34(c)-(d); Fed. Cir. IOP #7",
+      "note": "15 minutes per side is the court's normal allocation, up to 30 minutes normal maximum (IOP #7 ¶ 1)."
+    },
+    {
+      "id": "submitted-without-argument",
+      "kind": "state",
+      "label": "Submitted Without Oral Argument",
+      "group": "argument-group",
+      "cite": "FRAP 34(a)(2); Fed. Cir. R. 34(a)"
+    },
+    {
+      "id": "panel-decision",
+      "kind": "decision",
+      "label": "Panel Decides the Appeal",
+      "group": "decision-group",
+      "cite": "Fed. Cir. IOP #8-#9; FRAP 36",
+      "note": "Straw vote in reverse seniority order on outcome and disposition vehicle (precedential opinion, nonprecedential opinion, or Rule 36 judgment) — IOP #8 ¶ 1; IOP #9 ¶ 1. Probability basis: the Federal Circuit issued Rule 36 summary affirmances in ~20% of merits terminations in 2024 (Jason Rantanen, 'Federal Circuit Decisions - 2024 Stats and Datapack,' Patently-O, June 2025) — the only figure on this node's edges independently sourced to a cited statistic; note the same source finds the Rule 36 rate is far higher in PTAB-origin appeals specifically (43% of PTAB appeals 2011-2024, and 67% vs 18% depending on whether the patent owner or the petitioner is the appellant) — not separately modeled here since this pack does not branch panel-decision by origin. The remaining five splits (opinion-affirmed, reversed outright, vacated/remanded, mixed, dismissed) apportion the balance as teaching estimates and are NOT independently sourced — flagged APPROXIMATE, consistent with ptab-patent-trial-appeal-board.json's and itc-337.json's own convention for unsourced splits."
+    },
+    {
+      "id": "rule36-affirmance",
+      "kind": "terminal",
+      "label": "Rule 36 Judgment of Affirmance Without Opinion",
+      "group": "decision-group",
+      "cite": "Fed. Cir. R. 36(a)-(b)",
+      "payoff": 0,
+      "outcome": [
+        "loss"
+      ],
+      "valence": "bad",
+      "note": "Entered when an opinion would have no precedential value and one of Rule 36(a)(1)-(5) applies (findings not clearly erroneous; sufficient evidence for a jury verdict; record supports SJ/directed verdict/JOP; agency decision warrants affirmance under its governing standard of review; or no error of law). No separate judgment is prepared — the order is the judgment (Fed. Cir. R. 36(b)). Payoff 0 per the authoring brief's convention (affirmed-for-appellee)."
+    },
+    {
+      "id": "affirmed",
+      "kind": "terminal",
+      "label": "Affirmed (With Opinion)",
+      "group": "decision-group",
+      "cite": "FRAP 36(a)",
+      "payoff": 0,
+      "outcome": [
+        "loss"
+      ],
+      "valence": "bad"
+    },
+    {
+      "id": "reversed",
+      "kind": "terminal",
+      "label": "Reversed (No Remand)",
+      "group": "decision-group",
+      "cite": "FRAP 36(a)",
+      "payoff": 1000000,
+      "outcome": [
+        "win"
+      ],
+      "valence": "good",
+      "note": "Relatively rare outright disposition — most reversals on questions requiring further fact-finding or application of law route through vacatur-and-remand instead."
+    },
+    {
+      "id": "affirmed-in-part-reversed-in-part",
+      "kind": "terminal",
+      "label": "Affirmed in Part, Reversed in Part",
+      "group": "decision-group",
+      "cite": "FRAP 36(a)",
+      "payoff": 250000,
+      "outcome": [
+        "remand"
+      ],
+      "valence": "caution",
+      "tags": [
+        "mixed"
+      ],
+      "note": "Illustrative mixed-result payoff (between the 0 affirmance and 1,000,000 reversal anchors); in practice a mixed disposition often carries its own remand on the reversed portion, not separately modeled as a route into the remand-destination node to keep the graph tractable."
+    },
+    {
+      "id": "dismissed-jurisdictional-defect",
+      "kind": "terminal",
+      "label": "Dismissed — Jurisdictional/Mootness Defect Found on Appeal",
+      "group": "decision-group",
+      "cite": "28 U.S.C. § 1295; FRAP 3",
+      "payoff": 0,
+      "outcome": [
+        "procedural-default"
+      ],
+      "valence": "bad",
+      "note": "E.g., prematurity, mootness, or a defect in the judgment appealed from discovered at the merits stage rather than screened out earlier."
+    },
+    {
+      "id": "remand-destination",
+      "kind": "decision",
+      "label": "Vacated/Remanded — Destination Tribunal",
+      "group": "decision-group",
+      "cite": "FRAP 36(a)",
+      "note": "Structural router, not an independent statistical draw: which of the four remand terminals applies is determined entirely by which entry-* node this playthrough started from, not by chance. The 0.25/0.25/0.25/0.25 split exists only because the engine's schema requires probabilities on a chance node's out-edges to sum to 1 — see cafc-SOURCES-NOTES.md."
+    },
+    {
+      "id": "remanded-to-district-court",
+      "kind": "terminal",
+      "label": "Remanded to the District Court",
+      "group": "decision-group",
+      "payoff": 400000,
+      "outcome": [
+        "remand"
+      ],
+      "valence": "caution",
+      "note": "Illustrative payoff per the authoring brief (~40% of the full-reversal value — a real but incomplete win; the case is not over). This terminal's id is deliberately stable so packs/links.json composition can link it back into the corresponding origin pack's post-remand posture (e.g. mpep-prosecution.json for PTAB, itc-337.json's commission-final-determination for a remand, frcp-civil-procedure.json for district court)."
+    },
+    {
+      "id": "remanded-to-ptab",
+      "kind": "terminal",
+      "label": "Remanded to the PTAB",
+      "group": "decision-group",
+      "payoff": 400000,
+      "outcome": [
+        "remand"
+      ],
+      "valence": "caution",
+      "note": "Illustrative payoff per the authoring brief (~40% of the full-reversal value — a real but incomplete win; the case is not over). This terminal's id is deliberately stable so packs/links.json composition can link it back into the corresponding origin pack's post-remand posture (e.g. mpep-prosecution.json for PTAB, itc-337.json's commission-final-determination for a remand, frcp-civil-procedure.json for district court)."
+    },
+    {
+      "id": "remanded-to-itc",
+      "kind": "terminal",
+      "label": "Remanded to the ITC",
+      "group": "decision-group",
+      "payoff": 400000,
+      "outcome": [
+        "remand"
+      ],
+      "valence": "caution",
+      "note": "Illustrative payoff per the authoring brief (~40% of the full-reversal value — a real but incomplete win; the case is not over). This terminal's id is deliberately stable so packs/links.json composition can link it back into the corresponding origin pack's post-remand posture (e.g. mpep-prosecution.json for PTAB, itc-337.json's commission-final-determination for a remand, frcp-civil-procedure.json for district court)."
+    },
+    {
+      "id": "remanded-to-cofc",
+      "kind": "terminal",
+      "label": "Remanded to the Court of Federal Claims",
+      "group": "decision-group",
+      "payoff": 400000,
+      "outcome": [
+        "remand"
+      ],
+      "valence": "caution",
+      "note": "Illustrative payoff per the authoring brief (~40% of the full-reversal value — a real but incomplete win; the case is not over). This terminal's id is deliberately stable so packs/links.json composition can link it back into the corresponding origin pack's post-remand posture (e.g. mpep-prosecution.json for PTAB, itc-337.json's commission-final-determination for a remand, frcp-civil-procedure.json for district court)."
+    },
+    {
+      "id": "rehearing-window",
+      "kind": "decision",
+      "label": "Losing Party Weighs Rehearing",
+      "group": "rehearing-group",
+      "cite": "Fed. Cir. R. 40(a)(1), (f)"
+    },
+    {
+      "id": "rehearing-petition-filed",
+      "kind": "state",
+      "label": "Petition for Panel Rehearing / Rehearing En Banc / Combined Petition Filed",
+      "group": "rehearing-group",
+      "cite": "Fed. Cir. R. 40(a)(1)-(2), (b)",
+      "note": "Panel rehearing is the ordinary means of reconsideration; rehearing en banc 'is not favored' (Rule 40(a)(1)). A party seeking both must combine them in a single document unless a local rule says otherwise."
+    },
+    {
+      "id": "panel-en-banc-rehearing-decision",
+      "kind": "decision",
+      "label": "Panel (and, if Combined, the Full Court) Rules on the Petition",
+      "group": "rehearing-group",
+      "cite": "Fed. Cir. R. 40(a)(1)-(4), (c)"
+    },
+    {
+      "id": "rehearing-denied",
+      "kind": "state",
+      "label": "Rehearing Denied — Panel Decision Stands",
+      "group": "rehearing-group",
+      "cite": "Fed. Cir. R. 40(a)(4)"
+    },
+    {
+      "id": "rehearing-relief-granted",
+      "kind": "state",
+      "label": "Rehearing Granted — Panel Modifies, or Case Reheard En Banc",
+      "group": "rehearing-group",
+      "cite": "Fed. Cir. R. 40(e)",
+      "note": "For a granted en banc petition, the panel opinion is vacated and the case is reargued before the full active court; the case is modeled here as looping back into panel-decision to represent the fresh disposition that follows."
+    },
+    {
+      "id": "mandate-issued",
+      "kind": "state",
+      "label": "Mandate Issues",
+      "group": "mandate-group",
+      "cite": "FRAP 41; Fed. Cir. R. 41",
+      "note": "Formal order returning jurisdiction to the origin tribunal; distinct from the opinion. 'An order granting an unopposed motion to dismiss or remand a case will constitute the mandate.' Fed. Cir. R. 41. Interest on an affirmed money judgment runs under FRAP 37(a) (and, against the United States, 28 U.S.C. § 1961's post-judgment-interest rate) from the date the judgment below was entered; on reversal, the mandate must instruct on interest (FRAP 37(b))."
+    },
+    {
+      "id": "costs-bill-filed",
+      "kind": "state",
+      "label": "Bill of Costs Filed and Taxed",
+      "group": "mandate-group",
+      "cite": "FRAP 39; Fed. Cir. R. 39",
+      "note": "Costs generally follow the result (FRAP 39(a)): against the appellant on dismissal or affirmance, against the appellee on reversal, each side bears its own on a mixed disposition. Taxable court-of-appeals costs are limited to brief/appendix copying, the docketing fee, and any CAFC filing fee (FRAP 39(e)(1)). Filing does not delay the mandate (FRAP 39(e)(3)(C))."
+    },
+    {
+      "id": "cert-petition-window",
+      "kind": "decision",
+      "label": "Certiorari Petition Window",
+      "group": "cert-group",
+      "cite": "28 U.S.C. § 2101(c); Sup. Ct. R. 13.1, 13.3"
+    },
+    {
+      "id": "cert-not-sought",
+      "kind": "terminal",
+      "label": "FINAL — Certiorari Not Sought",
+      "group": "cert-group",
+      "cite": "Sup. Ct. R. 13.1",
+      "payoff": 0,
+      "outcome": [
+        "final"
+      ],
+      "valence": "good",
+      "note": "This pack does not carry the upstream panel-decision payoff forward through the rehearing/mandate/cert branch; the 0 here means 'no additional value beyond what was already realized at the earlier terminal,' not that the appeal was worthless. See cafc-SOURCES-NOTES.md."
+    },
+    {
+      "id": "cert-petition-filed",
+      "kind": "state",
+      "label": "Petition for Certiorari Filed",
+      "group": "cert-group",
+      "cite": "Sup. Ct. R. 10; 28 U.S.C. § 1254(1)"
+    },
+    {
+      "id": "cert-review-decision",
+      "kind": "decision",
+      "label": "Supreme Court Grants or Denies Certiorari",
+      "group": "cert-group",
+      "cite": "Sup. Ct. R. 10"
+    },
+    {
+      "id": "cert-denied",
+      "kind": "terminal",
+      "label": "CERT DENIED (Final)",
+      "group": "cert-group",
+      "cite": "Sup. Ct. R. 10",
+      "payoff": 0,
+      "outcome": [
+        "final"
+      ],
+      "valence": "good",
+      "note": "Not a ruling on the merits; carries zero precedential weight. Same non-carry-forward convention as cert-not-sought."
+    },
+    {
+      "id": "cert-granted",
+      "kind": "terminal",
+      "label": "CERT GRANTED — Case Transfers to the Supreme Court",
+      "group": "cert-group",
+      "cite": "28 U.S.C. § 1254(1); Sup. Ct. R. 10",
+      "payoff": 0,
+      "outcome": [
+        "remand"
+      ],
+      "valence": "good",
+      "note": "This pack's jurisdiction over the case ends here; payoff is a neutral placeholder, not a merits prediction about the eventual Supreme Court disposition."
+    }
+  ],
+  "edges": [
+    {
+      "id": "origin-to-district-court",
+      "from": "appeal-origin",
+      "to": "entry-district-court",
+      "label": "Judgment below is a district-court patent judgment",
+      "actor": "either",
+      "authority": "28 U.S.C. § 1295(a)(1)"
+    },
+    {
+      "id": "origin-to-ptab",
+      "from": "appeal-origin",
+      "to": "entry-ptab",
+      "label": "Judgment below is a PTAB final written decision",
+      "actor": "either",
+      "authority": "28 U.S.C. § 1295(a)(4)(A)"
+    },
+    {
+      "id": "origin-to-itc",
+      "from": "appeal-origin",
+      "to": "entry-itc",
+      "label": "Judgment below is an ITC final determination",
+      "actor": "either",
+      "authority": "28 U.S.C. § 1295(a)(6)"
+    },
+    {
+      "id": "origin-to-cofc",
+      "from": "appeal-origin",
+      "to": "entry-cofc",
+      "label": "Judgment below is a CoFC judgment",
+      "actor": "either",
+      "authority": "28 U.S.C. § 1295(a)(3)"
+    },
+    {
+      "id": "district-court-file-noa",
+      "from": "entry-district-court",
+      "to": "notice-of-appeal-filed",
+      "label": "File notice of appeal with the district clerk",
+      "actor": "applicant",
+      "authority": "FRAP 4(a)(1)(A)-(B); 28 U.S.C. § 1295(a)(1)",
+      "cost": 605,
+      "hours": 3,
+      "deadline": {
+        "length": 30,
+        "extendable": true,
+        "extensionAuthority": "FRAP 4(a)(5) (up to 30 additional days, excusable neglect/good cause)",
+        "note": "30 days; 60 days if the United States or a U.S. officer/agency/employee is a party (FRAP 4(a)(1)(B)). Jurisdictional under Bowles v. Russell, 551 U.S. 205 (2007) as applied by the regional circuits and this court alike; 28 U.S.C. § 2107."
+      },
+      "tags": [
+        "appeal"
+      ]
+    },
+    {
+      "id": "district-court-window-blown",
+      "from": "entry-district-court",
+      "to": "window-blown-district-court",
+      "label": "Let the 30/60-day window lapse",
+      "actor": "applicant",
+      "authority": "Bowles v. Russell, 551 U.S. 205 (2007); 28 U.S.C. § 2107; FRAP 4(a)"
+    },
+    {
+      "id": "ptab-file-noa",
+      "from": "entry-ptab",
+      "to": "notice-of-appeal-filed",
+      "label": "File notice of appeal with the Director (USPTO)",
+      "actor": "applicant",
+      "authority": "37 C.F.R. § 90.3(a); 35 U.S.C. § 142",
+      "cost": 600,
+      "hours": 4,
+      "deadline": {
+        "length": 63,
+        "extendable": true,
+        "extensionAuthority": "37 C.F.R. § 90.3(c) (Director may extend on a timely, good-cause request filed before expiration, or post-expiration on a showing of excusable neglect)",
+        "note": "63 days after the date of the final Board decision (or 63 days after action on a timely rehearing request). Filed with the Director, not directly with the Federal Circuit clerk — mirrors ptab-patent-trial-appeal-board.json's federal-circuit-window node, modeled here as the CAFC-side counterpart."
+      },
+      "tags": [
+        "appeal"
+      ]
+    },
+    {
+      "id": "ptab-window-blown",
+      "from": "entry-ptab",
+      "to": "window-blown-ptab",
+      "label": "Let the 63-day window lapse",
+      "actor": "applicant",
+      "authority": "37 C.F.R. § 90.3(a); 35 U.S.C. § 319"
+    },
+    {
+      "id": "itc-file-noa",
+      "from": "entry-itc",
+      "to": "notice-of-appeal-filed",
+      "label": "File notice of appeal to the Federal Circuit",
+      "actor": "applicant",
+      "authority": "19 U.S.C. § 1337(c); 28 U.S.C. § 1295(a)(6)",
+      "cost": 600,
+      "hours": 6,
+      "deadline": {
+        "length": 60,
+        "extendable": false,
+        "note": "60 days, unextendable per 19 U.S.C. § 1337(c) — mirrors itc-337.json's appeal-filed edge (flag itc337/fedcir-appeal-forfeited on a miss)."
+      },
+      "tags": [
+        "appeal"
+      ]
+    },
+    {
+      "id": "itc-window-blown",
+      "from": "entry-itc",
+      "to": "window-blown-itc",
+      "label": "Let the 60-day window lapse",
+      "actor": "applicant",
+      "authority": "19 U.S.C. § 1337(c)"
+    },
+    {
+      "id": "cofc-file-noa",
+      "from": "entry-cofc",
+      "to": "notice-of-appeal-filed",
+      "label": "File notice of appeal with the CoFC clerk",
+      "actor": "applicant",
+      "authority": "28 U.S.C. § 2522; 28 U.S.C. § 1295(a)(3); FRAP 4(a)(1)(B)",
+      "cost": 605,
+      "hours": 3,
+      "deadline": {
+        "length": 60,
+        "extendable": true,
+        "extensionAuthority": "FRAP 4(a)(5) (up to 30 additional days, excusable neglect/good cause)",
+        "note": "60 days after CoFC entry of judgment — the United States is necessarily a party to every CoFC judgment, so the FRAP 4(a)(1)(B) 60-day (not 30-day) period governs as a matter of course. Jurisdictional; cannot be waived even for excusable neglect in most circumstances."
+      },
+      "tags": [
+        "appeal"
+      ],
+      "note": "Docketing fee for a CoFC-origin appeal is not separately itemized on the CAFC fee schedule reviewed (which lists 'appeal from a district court' at $605 and 'petition for review' at $600); $605 used here as a reasonable proxy since both are Judicial-Conference-set fees under 28 U.S.C. § 1913 collected on filing the notice of appeal — UNVERIFIED to the exact cent."
+    },
+    {
+      "id": "cofc-window-blown",
+      "from": "entry-cofc",
+      "to": "window-blown-cofc",
+      "label": "Let the 60-day window lapse",
+      "actor": "applicant",
+      "authority": "28 U.S.C. § 2522; Bowles v. Russell, 551 U.S. 205 (2007)"
+    },
+    {
+      "id": "noa-to-docketed",
+      "from": "notice-of-appeal-filed",
+      "to": "docketed",
+      "label": "Clerk dockets the appeal, assigns case number",
+      "actor": "office",
+      "authority": "FRAP 12(a)"
+    },
+    {
+      "id": "docketed-to-appearance",
+      "from": "docketed",
+      "to": "appearance-and-coi-filed",
+      "label": "File entry of appearance and certificate of interest",
+      "actor": "applicant",
+      "authority": "Fed. Cir. R. 47.3(b)(1); Fed. Cir. R. 47.4(b)",
+      "cost": 0,
+      "hours": 2,
+      "deadline": {
+        "length": 14,
+        "extendable": false,
+        "note": "14 days after docketing (counsel retained before docketing); 14 days after retention/bar admission if later."
+      },
+      "tags": [
+        "appeal"
+      ]
+    },
+    {
+      "id": "appearance-to-docketing-statement",
+      "from": "appearance-and-coi-filed",
+      "to": "docketing-statement-filed",
+      "label": "File docketing statement (Form 26)",
+      "actor": "applicant",
+      "authority": "Fed. Cir. R. 47.6",
+      "cost": 0,
+      "hours": 3,
+      "deadline": {
+        "length": 14,
+        "extendable": true,
+        "extensionAuthority": "Fed. Cir. R. 26(b)",
+        "note": "14 days after the case is docketed. Except for unrepresented parties."
+      }
+    },
+    {
+      "id": "docketing-statement-to-screening",
+      "from": "docketing-statement-filed",
+      "to": "mediation-screening",
+      "label": "OGC reviews docketing statement and briefs for mediation candidacy",
+      "actor": "office",
+      "authority": "Appellate Mediation Program Guidelines §§ 2-3"
+    },
+    {
+      "id": "screening-to-conference",
+      "from": "mediation-screening",
+      "to": "mediation-conference",
+      "label": "Case selected — mediation is mandatory for the parties",
+      "actor": "office",
+      "authority": "Appellate Mediation Program Guidelines § 2",
+      "note": "No published selection rate; probability intentionally unauthored."
+    },
+    {
+      "id": "screening-to-motions",
+      "from": "mediation-screening",
+      "to": "motions-fork",
+      "label": "Case not selected for mediation, or counsel represents mediation would not be fruitful",
+      "actor": "office",
+      "authority": "Appellate Mediation Program Guidelines §§ 2, 7",
+      "note": "No published selection rate; probability intentionally unauthored."
+    },
+    {
+      "id": "conference-to-outcome",
+      "from": "mediation-conference",
+      "to": "mediation-outcome",
+      "label": "Mediation concludes",
+      "actor": "either",
+      "authority": "Appellate Mediation Program Guidelines § 7"
+    },
+    {
+      "id": "outcome-to-settled",
+      "from": "mediation-outcome",
+      "to": "settled-in-mediation",
+      "label": "Parties reach a settlement",
+      "actor": "either",
+      "authority": "Appellate Mediation Program Guidelines § 7",
+      "note": "No published settlement rate; probability intentionally unauthored.",
+      "tags": [
+        "settlement"
+      ]
+    },
+    {
+      "id": "outcome-to-unsuccessful",
+      "from": "mediation-outcome",
+      "to": "mediation-unsuccessful",
+      "label": "Mediation does not produce a settlement",
+      "actor": "either",
+      "authority": "Appellate Mediation Program Guidelines § 7",
+      "note": "No published settlement rate; probability intentionally unauthored."
+    },
+    {
+      "id": "unsuccessful-to-motions",
+      "from": "mediation-unsuccessful",
+      "to": "motions-fork",
+      "label": "Appeal proceeds",
+      "actor": "office",
+      "authority": "Appellate Mediation Program Guidelines § 7"
+    },
+    {
+      "id": "motions-grant",
+      "from": "motions-fork",
+      "to": "stay-granted",
+      "label": "Move for a stay — granted",
+      "actor": "applicant",
+      "authority": "FRAP 8(a)(1); Fed. Cir. R. 8",
+      "cost": 8000,
+      "hours": 25,
+      "tags": [
+        "appeal"
+      ]
+    },
+    {
+      "id": "motions-deny",
+      "from": "motions-fork",
+      "to": "stay-denied",
+      "label": "Move for a stay — denied",
+      "actor": "applicant",
+      "authority": "FRAP 8(a)",
+      "cost": 8000,
+      "hours": 25
+    },
+    {
+      "id": "motions-decline",
+      "from": "motions-fork",
+      "to": "cross-appeal-fork",
+      "label": "Decline to seek a stay — proceed",
+      "actor": "applicant",
+      "authority": "FRAP 8(a)"
+    },
+    {
+      "id": "stay-granted-to-cross-appeal",
+      "from": "stay-granted",
+      "to": "cross-appeal-fork",
+      "label": "Proceed to cross-appeal consideration",
+      "actor": "office",
+      "authority": "FRAP 8(a)(1)"
+    },
+    {
+      "id": "stay-denied-to-cross-appeal",
+      "from": "stay-denied",
+      "to": "cross-appeal-fork",
+      "label": "Proceed to cross-appeal consideration",
+      "actor": "office",
+      "authority": "FRAP 8(a)"
+    },
+    {
+      "id": "cross-appeal-file",
+      "from": "cross-appeal-fork",
+      "to": "cross-appeal-filed",
+      "label": "File notice of cross-appeal",
+      "actor": "applicant",
+      "authority": "FRAP 4(a)(3); Fed. Cir. R. 28.1",
+      "cost": 605,
+      "hours": 10,
+      "deadline": {
+        "length": 14,
+        "extendable": false,
+        "note": "14 days after the first notice of appeal, or the otherwise-applicable FRAP 4(a)(1) period, whichever is later. Not extendable."
+      },
+      "tags": [
+        "appeal"
+      ]
+    },
+    {
+      "id": "cross-appeal-decline",
+      "from": "cross-appeal-fork",
+      "to": "no-cross-appeal",
+      "label": "Decline to cross-appeal",
+      "actor": "applicant",
+      "authority": "FRAP 4(a)(3)"
+    },
+    {
+      "id": "cross-appeal-filed-to-briefing",
+      "from": "cross-appeal-filed",
+      "to": "appellant-brief-window",
+      "label": "Cross-appeal docketed — briefing under Fed. Cir. R. 31(a)(1)(C)-(D)/28.1",
+      "actor": "office",
+      "authority": "Fed. Cir. R. 28.1; Fed. Cir. R. 31(a)(1)(D)"
+    },
+    {
+      "id": "no-cross-appeal-to-briefing",
+      "from": "no-cross-appeal",
+      "to": "appellant-brief-window",
+      "label": "Proceed to ordinary briefing",
+      "actor": "office",
+      "authority": "Fed. Cir. R. 31(a)(1)"
+    },
+    {
+      "id": "appellant-brief-file",
+      "from": "appellant-brief-window",
+      "to": "appellant-brief-filed",
+      "label": "File opening brief",
+      "actor": "applicant",
+      "authority": "Fed. Cir. R. 31(a)(1)(A)-(B)",
+      "cost": 0,
+      "hours": 220,
+      "deadline": {
+        "length": 60,
+        "extendable": true,
+        "extensionAuthority": "Fed. Cir. R. 26(b)",
+        "note": "60 days after docketing (court appeal) or service of the certified list/index (agency appeal)."
+      },
+      "tags": [
+        "appeal",
+        "dispositive"
+      ]
+    },
+    {
+      "id": "appellant-brief-fail",
+      "from": "appellant-brief-window",
+      "to": "dismissed-failure-to-prosecute",
+      "label": "Fail to file the opening brief",
+      "actor": "applicant",
+      "authority": "Fed. Cir. R. 31(d)"
+    },
+    {
+      "id": "appellee-brief-file",
+      "from": "appellant-brief-filed",
+      "to": "appellee-brief-filed",
+      "label": "File response brief",
+      "actor": "examiner",
+      "authority": "Fed. Cir. R. 31(a)(2)",
+      "hours": 200,
+      "deadline": {
+        "length": 40,
+        "extendable": true,
+        "extensionAuthority": "Fed. Cir. R. 26(b)",
+        "note": "40 days after the appellant's brief is served (this court's local extension of the FRAP 31(a)(1) default 30 days)."
+      }
+    },
+    {
+      "id": "reply-brief-file",
+      "from": "appellee-brief-filed",
+      "to": "reply-brief-filed",
+      "label": "File reply brief",
+      "actor": "applicant",
+      "authority": "FRAP 31(a)(1)",
+      "cost": 0,
+      "hours": 90,
+      "deadline": {
+        "length": 21,
+        "extendable": true,
+        "extensionAuthority": "Fed. Cir. R. 26(b)",
+        "note": "21 days after service of the appellee's brief, but must be filed at least 7 days before oral argument absent good cause."
+      }
+    },
+    {
+      "id": "reply-brief-waive",
+      "from": "appellee-brief-filed",
+      "to": "briefing-complete",
+      "label": "Waive reply brief",
+      "actor": "applicant",
+      "authority": "Fed. Cir. R. 34(a)",
+      "note": "Fed. Cir. R. 34(a) lets an appellant who declined to reply in writing file a reply brief within 14 days of notice the appeal is submitted on the briefs, in lieu of oral reply."
+    },
+    {
+      "id": "reply-brief-closes",
+      "from": "reply-brief-filed",
+      "to": "briefing-complete",
+      "label": "Briefing closes",
+      "actor": "office",
+      "authority": "Fed. Cir. R. 31"
+    },
+    {
+      "id": "briefing-to-appendix",
+      "from": "briefing-complete",
+      "to": "joint-appendix-filed",
+      "label": "Serve and file the joint appendix",
+      "actor": "applicant",
+      "authority": "Fed. Cir. R. 30(a)(2)",
+      "cost": 6000,
+      "hours": 60,
+      "deadline": {
+        "length": 7,
+        "extendable": true,
+        "extensionAuthority": "Fed. Cir. R. 26(b)",
+        "note": "7 days after the last reply brief is served and filed (or, if no reply brief, within the time the reply brief would have been due). Failure to file authorizes the clerk to dismiss the case (Fed. Cir. R. 30(a)(5))."
+      },
+      "tags": [
+        "appeal"
+      ]
+    },
+    {
+      "id": "appendix-to-argument-fork",
+      "from": "joint-appendix-filed",
+      "to": "oral-argument-fork",
+      "label": "Clerk calendars the argument decision",
+      "actor": "office",
+      "authority": "FRAP 34(a); Fed. Cir. IOP #7"
+    },
+    {
+      "id": "argument-granted",
+      "from": "oral-argument-fork",
+      "to": "oral-argument-held",
+      "label": "Panel grants oral argument",
+      "actor": "office",
+      "authority": "FRAP 34(a)(1); Fed. Cir. IOP #7",
+      "note": "No CAFC-specific split published; probability intentionally unauthored."
+    },
+    {
+      "id": "argument-dispensed",
+      "from": "oral-argument-fork",
+      "to": "submitted-without-argument",
+      "label": "Panel dispenses with argument",
+      "actor": "office",
+      "authority": "FRAP 34(a)(2); Fed. Cir. R. 34(a)",
+      "note": "No CAFC-specific split published; probability intentionally unauthored."
+    },
+    {
+      "id": "argument-held-to-decision",
+      "from": "oral-argument-held",
+      "to": "panel-decision",
+      "label": "Argument concludes — panel confers (IOP #8)",
+      "actor": "office",
+      "authority": "Fed. Cir. IOP #8"
+    },
+    {
+      "id": "submitted-to-decision",
+      "from": "submitted-without-argument",
+      "to": "panel-decision",
+      "label": "Panel confers on the papers (IOP #8)",
+      "actor": "office",
+      "authority": "Fed. Cir. IOP #8"
+    },
+    {
+      "id": "panel-to-rule36",
+      "from": "panel-decision",
+      "to": "rule36-affirmance",
+      "label": "Panel enters a Rule 36 judgment of affirmance without opinion",
+      "actor": "office",
+      "authority": "Fed. Cir. R. 36(a)",
+      "probability": 0.2,
+      "note": "~20% of 2024 merits terminations per patentlyo-2024-datapack."
+    },
+    {
+      "id": "panel-to-affirmed",
+      "from": "panel-decision",
+      "to": "affirmed",
+      "label": "Panel affirms with an opinion",
+      "actor": "office",
+      "authority": "FRAP 36(a)",
+      "probability": 0.28,
+      "note": "Teaching estimate apportioning the non-Rule-36 balance — not independently sourced."
+    },
+    {
+      "id": "panel-to-reversed",
+      "from": "panel-decision",
+      "to": "reversed",
+      "label": "Panel reverses outright, no remand",
+      "actor": "office",
+      "authority": "FRAP 36(a)",
+      "probability": 0.1,
+      "note": "Teaching estimate — not independently sourced."
+    },
+    {
+      "id": "panel-to-remand",
+      "from": "panel-decision",
+      "to": "remand-destination",
+      "label": "Panel vacates and remands",
+      "actor": "office",
+      "authority": "FRAP 36(a)",
+      "probability": 0.2,
+      "note": "Teaching estimate — not independently sourced."
+    },
+    {
+      "id": "panel-to-mixed",
+      "from": "panel-decision",
+      "to": "affirmed-in-part-reversed-in-part",
+      "label": "Panel splits the result",
+      "actor": "office",
+      "authority": "FRAP 36(a)",
+      "probability": 0.17,
+      "note": "Teaching estimate — not independently sourced."
+    },
+    {
+      "id": "panel-to-dismissed",
+      "from": "panel-decision",
+      "to": "dismissed-jurisdictional-defect",
+      "label": "Panel dismisses for a jurisdictional/mootness defect",
+      "actor": "office",
+      "authority": "28 U.S.C. § 1295; FRAP 3",
+      "probability": 0.05,
+      "note": "Teaching estimate — not independently sourced."
+    },
+    {
+      "id": "remand-route-district-court",
+      "from": "remand-destination",
+      "to": "remanded-to-district-court",
+      "label": "Case originated at the district court",
+      "actor": "office",
+      "authority": "FRAP 36(a)",
+      "probability": 0.25,
+      "note": "Structural, not statistical — see remand-destination's note."
+    },
+    {
+      "id": "remand-route-ptab",
+      "from": "remand-destination",
+      "to": "remanded-to-ptab",
+      "label": "Case originated at the PTAB",
+      "actor": "office",
+      "authority": "FRAP 36(a)",
+      "probability": 0.25,
+      "note": "Structural, not statistical — see remand-destination's note."
+    },
+    {
+      "id": "remand-route-itc",
+      "from": "remand-destination",
+      "to": "remanded-to-itc",
+      "label": "Case originated at the ITC",
+      "actor": "office",
+      "authority": "FRAP 36(a)",
+      "probability": 0.25,
+      "note": "Structural, not statistical — see remand-destination's note."
+    },
+    {
+      "id": "remand-route-cofc",
+      "from": "remand-destination",
+      "to": "remanded-to-cofc",
+      "label": "Case originated at the CoFC",
+      "actor": "office",
+      "authority": "FRAP 36(a)",
+      "probability": 0.25,
+      "note": "Structural, not statistical — see remand-destination's note."
+    },
+    {
+      "id": "rule36-to-rehearing",
+      "from": "rule36-affirmance",
+      "to": "rehearing-window",
+      "label": "Losing party weighs rehearing",
+      "actor": "applicant",
+      "authority": "Fed. Cir. R. 40(a)(1)"
+    },
+    {
+      "id": "affirmed-to-rehearing",
+      "from": "affirmed",
+      "to": "rehearing-window",
+      "label": "Losing party weighs rehearing",
+      "actor": "applicant",
+      "authority": "Fed. Cir. R. 40(a)(1)"
+    },
+    {
+      "id": "reversed-to-rehearing",
+      "from": "reversed",
+      "to": "rehearing-window",
+      "label": "Losing party weighs rehearing",
+      "actor": "applicant",
+      "authority": "Fed. Cir. R. 40(a)(1)"
+    },
+    {
+      "id": "mixed-to-rehearing",
+      "from": "affirmed-in-part-reversed-in-part",
+      "to": "rehearing-window",
+      "label": "Either party weighs rehearing",
+      "actor": "applicant",
+      "authority": "Fed. Cir. R. 40(a)(1)"
+    },
+    {
+      "id": "rehearing-file",
+      "from": "rehearing-window",
+      "to": "rehearing-petition-filed",
+      "label": "File petition for panel rehearing/rehearing en banc/combined petition",
+      "actor": "applicant",
+      "authority": "Fed. Cir. R. 40(a)-(b), (f)",
+      "cost": 0,
+      "hours": 90,
+      "deadline": {
+        "length": 30,
+        "extendable": false,
+        "note": "30 days after entry of judgment on the panel decision; 45 days if the United States or its officer/agency is a party (Fed. Cir. R. 40(f)(1))."
+      },
+      "tags": [
+        "appeal"
+      ]
+    },
+    {
+      "id": "rehearing-time-expires",
+      "from": "rehearing-window",
+      "to": "mandate-issued",
+      "label": "No rehearing sought — time expires",
+      "actor": "applicant",
+      "authority": "FRAP 41(b); Fed. Cir. R. 41",
+      "deadline": {
+        "length": 30,
+        "note": "If no petition is timely filed (30/45 days), the mandate issues 7 days after that period expires."
+      }
+    },
+    {
+      "id": "rehearing-panel-considers",
+      "from": "rehearing-petition-filed",
+      "to": "panel-en-banc-rehearing-decision",
+      "label": "Panel (and full court, if en banc sought) considers the petition",
+      "actor": "office",
+      "authority": "Fed. Cir. R. 40(a)(1)-(4)"
+    },
+    {
+      "id": "rehearing-denied-edge",
+      "from": "panel-en-banc-rehearing-decision",
+      "to": "rehearing-denied",
+      "label": "Deny rehearing and rehearing en banc",
+      "actor": "office",
+      "authority": "Fed. Cir. R. 40(a)(1)",
+      "probability": 0.93,
+      "note": "No CAFC-specific published combined grant rate located. Estimate carried over from frap-appellate-procedure.json's panel-rehearing (0.05 grant) and en-banc-poll (0.02 grant) figures, combined and complemented here — 'rehearing en banc is not favored' (Rule 40(a)(1)) and grant rates are exceptionally low across circuits. Flagged APPROXIMATE."
+    },
+    {
+      "id": "rehearing-granted-edge",
+      "from": "panel-en-banc-rehearing-decision",
+      "to": "rehearing-relief-granted",
+      "label": "Grant panel rehearing, or grant rehearing en banc",
+      "actor": "office",
+      "authority": "Fed. Cir. R. 40(e)",
+      "probability": 0.07,
+      "note": "See rehearing-denied-edge's note — same combined-estimate basis, flagged APPROXIMATE."
+    },
+    {
+      "id": "rehearing-denied-to-mandate",
+      "from": "rehearing-denied",
+      "to": "mandate-issued",
+      "label": "Mandate clock resumes",
+      "actor": "office",
+      "authority": "FRAP 41(b); Fed. Cir. R. 41",
+      "deadline": {
+        "length": 7,
+        "note": "Mandate issues 7 days after entry of the order denying a timely petition for panel rehearing and/or rehearing en banc."
+      }
+    },
+    {
+      "id": "rehearing-granted-to-decision",
+      "from": "rehearing-relief-granted",
+      "to": "panel-decision",
+      "label": "Case reheard/modified — fresh disposition",
+      "actor": "office",
+      "authority": "Fed. Cir. R. 40(e)"
+    },
+    {
+      "id": "mandate-to-costs",
+      "from": "mandate-issued",
+      "to": "costs-bill-filed",
+      "label": "File itemized, verified bill of costs",
+      "actor": "either",
+      "authority": "FRAP 39(e)(3)(A); Fed. Cir. R. 39(b)",
+      "cost": 800,
+      "hours": 3,
+      "deadline": {
+        "length": 14,
+        "extendable": true,
+        "extensionAuthority": "Fed. Cir. R. 26(b)",
+        "note": "14 days after judgment is entered; objections due within 14 days after the bill of costs is served."
+      }
+    },
+    {
+      "id": "costs-to-cert-window",
+      "from": "costs-bill-filed",
+      "to": "cert-petition-window",
+      "label": "Costs determination does not delay the certiorari clock",
+      "actor": "office",
+      "authority": "FRAP 39(e)(3)(C); Sup. Ct. R. 13.3"
+    },
+    {
+      "id": "cert-window-file",
+      "from": "cert-petition-window",
+      "to": "cert-petition-filed",
+      "label": "File petition for certiorari",
+      "actor": "applicant",
+      "authority": "28 U.S.C. § 2101(c); Sup. Ct. R. 13.1, 13.3",
+      "cost": 15000,
+      "hours": 150,
+      "deadline": {
+        "length": 90,
+        "extendable": true,
+        "extensionAuthority": "Sup. Ct. R. 13.5 (single application to a Circuit Justice, before the deadline, for good cause)",
+        "note": "90 days from entry of judgment or from denial of a timely rehearing petition."
+      },
+      "tags": [
+        "appeal"
+      ]
+    },
+    {
+      "id": "cert-window-lapse",
+      "from": "cert-petition-window",
+      "to": "cert-not-sought",
+      "label": "90-day window lapses",
+      "actor": "applicant",
+      "authority": "Sup. Ct. R. 13.1"
+    },
+    {
+      "id": "cert-filed-to-review",
+      "from": "cert-petition-filed",
+      "to": "cert-review-decision",
+      "label": "Supreme Court considers the petition",
+      "actor": "office",
+      "authority": "Sup. Ct. R. 10"
+    },
+    {
+      "id": "cert-review-deny",
+      "from": "cert-review-decision",
+      "to": "cert-denied",
+      "label": "Certiorari denied",
+      "actor": "office",
+      "authority": "Sup. Ct. R. 10",
+      "probability": 0.99,
+      "note": "Widely cited SCOTUS-wide grant rate of roughly 1% of petitions (rule of four, Sup. Ct. R. 10); not Federal-Circuit-specific. Carried over from frap-appellate-procedure.json's identical figure."
+    },
+    {
+      "id": "cert-review-grant",
+      "from": "cert-review-decision",
+      "to": "cert-granted",
+      "label": "Certiorari granted",
+      "actor": "office",
+      "authority": "28 U.S.C. § 1254(1); Sup. Ct. R. 10",
+      "probability": 0.01,
+      "note": "See cert-review-deny's note — same source and basis."
+    }
+  ]
+}

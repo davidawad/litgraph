@@ -1,0 +1,4369 @@
+{
+  "absorbingChain500": {
+    "absorptionProbabilityAtStart": {
+      "adverse-judgment-terminal": 0.3189300411522633,
+      "fwd-all-confirmed": 0.09053497942386829,
+      "fwd-all-unpatentable": 0.19917695473251026,
+      "fwd-mixed": 0.07242798353909463,
+      "ipr-terminated-settlement": 0.3189300411522633
+    },
+    "dataQuality": "partial",
+    "expectedCostAtStart": 0,
+    "expectedDaysAtStart": 48.703703703703695,
+    "expectedStepsAtStart": 7.8199588477366255,
+    "ok": true,
+    "policy": {
+      "challenge-vehicle-decision": {
+        "from": "challenge-vehicle-decision",
+        "label": "File IPR petition",
+        "to": "ipr-petition-filed"
+      },
+      "infringement-complaint-served": {
+        "from": "infringement-complaint-served",
+        "label": "Evaluate IPR/PGR after being sued",
+        "to": "challenge-vehicle-decision"
+      },
+      "ipr-petition-filed": {
+        "from": "ipr-petition-filed",
+        "label": "Move for joinder to pending IPR",
+        "to": "institution-granted"
+      },
+      "mta-revised-filed": {
+        "from": "mta-revised-filed",
+        "label": "Petitioner opposes revised amendment",
+        "to": "petitioner-opposition-mta"
+      },
+      "patent-granted": {
+        "from": "patent-granted",
+        "label": "Consider challenging without suit",
+        "to": "challenge-vehicle-decision"
+      },
+      "patent-owner-response-filed": {
+        "from": "patent-owner-response-filed",
+        "label": "File Petitioner Reply",
+        "to": "petitioner-reply-brief"
+      },
+      "petition-threshold-review": {
+        "from": "petition-threshold-review",
+        "label": "Correct petition defect and refile",
+        "to": "ipr-petition-filed"
+      }
+    }
+  },
+  "dijkstra500": {
+    "cheapestByDollars": {
+      "adverse-judgment-terminal": {
+        "nodes": [
+          "patent-granted",
+          "infringement-complaint-served",
+          "ipr-petition-filed",
+          "institution-granted",
+          "settlement-decision",
+          "adverse-judgment-request",
+          "adverse-judgment-terminal"
+        ],
+        "target": "adverse-judgment-terminal",
+        "total": 0
+      },
+      "appeal-forfeited-unappealed": {
+        "nodes": [
+          "patent-granted",
+          "infringement-complaint-served",
+          "ipr-petition-filed",
+          "institution-granted",
+          "scheduling-order-issued",
+          "mandatory-disclosures",
+          "patent-owner-response-window",
+          "patent-owner-no-response",
+          "oral-hearing-request",
+          "fwd-issued",
+          "fwd-all-unpatentable",
+          "post-fwd-options",
+          "federal-circuit-window",
+          "appeal-forfeited-unappealed"
+        ],
+        "target": "appeal-forfeited-unappealed",
+        "total": 0
+      },
+      "cafc-affirms": {
+        "nodes": [
+          "patent-granted",
+          "infringement-complaint-served",
+          "ipr-petition-filed",
+          "institution-granted",
+          "scheduling-order-issued",
+          "mandatory-disclosures",
+          "patent-owner-response-window",
+          "patent-owner-no-response",
+          "oral-hearing-request",
+          "fwd-issued",
+          "fwd-all-unpatentable",
+          "post-fwd-options",
+          "federal-circuit-window",
+          "federal-circuit-notice-of-appeal",
+          "federal-circuit-review",
+          "cafc-affirms"
+        ],
+        "target": "cafc-affirms",
+        "total": 0
+      },
+      "cafc-vacates-remands": {
+        "nodes": [
+          "patent-granted",
+          "infringement-complaint-served",
+          "ipr-petition-filed",
+          "institution-granted",
+          "scheduling-order-issued",
+          "mandatory-disclosures",
+          "patent-owner-response-window",
+          "patent-owner-no-response",
+          "oral-hearing-request",
+          "fwd-issued",
+          "fwd-all-unpatentable",
+          "post-fwd-options",
+          "federal-circuit-window",
+          "federal-circuit-notice-of-appeal",
+          "federal-circuit-review",
+          "cafc-vacates-remands"
+        ],
+        "target": "cafc-vacates-remands",
+        "total": 0
+      },
+      "claims-disclaimed-preinstitution": {
+        "nodes": [
+          "patent-granted",
+          "infringement-complaint-served",
+          "ipr-petition-filed",
+          "petition-threshold-review",
+          "petition-filing-date-accorded",
+          "popr-window",
+          "claims-disclaimed-preinstitution"
+        ],
+        "target": "claims-disclaimed-preinstitution",
+        "total": 0
+      },
+      "fwd-all-confirmed": {
+        "nodes": [
+          "patent-granted",
+          "infringement-complaint-served",
+          "ipr-petition-filed",
+          "institution-granted",
+          "scheduling-order-issued",
+          "mandatory-disclosures",
+          "patent-owner-response-window",
+          "patent-owner-no-response",
+          "oral-hearing-request",
+          "fwd-issued",
+          "fwd-all-confirmed"
+        ],
+        "target": "fwd-all-confirmed",
+        "total": 0
+      },
+      "fwd-all-unpatentable": {
+        "nodes": [
+          "patent-granted",
+          "infringement-complaint-served",
+          "ipr-petition-filed",
+          "institution-granted",
+          "scheduling-order-issued",
+          "mandatory-disclosures",
+          "patent-owner-response-window",
+          "patent-owner-no-response",
+          "oral-hearing-request",
+          "fwd-issued",
+          "fwd-all-unpatentable"
+        ],
+        "target": "fwd-all-unpatentable",
+        "total": 0
+      },
+      "fwd-mixed": {
+        "nodes": [
+          "patent-granted",
+          "infringement-complaint-served",
+          "ipr-petition-filed",
+          "institution-granted",
+          "scheduling-order-issued",
+          "mandatory-disclosures",
+          "patent-owner-response-window",
+          "patent-owner-no-response",
+          "oral-hearing-request",
+          "fwd-issued",
+          "fwd-mixed"
+        ],
+        "target": "fwd-mixed",
+        "total": 0
+      },
+      "institution-denied-fintiv": {
+        "nodes": [
+          "patent-granted",
+          "infringement-complaint-served",
+          "ipr-petition-filed",
+          "petition-threshold-review",
+          "petition-filing-date-accorded",
+          "popr-window",
+          "popr-filed",
+          "institution-decision",
+          "institution-denied-fintiv"
+        ],
+        "target": "institution-denied-fintiv",
+        "total": 0
+      },
+      "institution-denied-merits": {
+        "nodes": [
+          "patent-granted",
+          "infringement-complaint-served",
+          "ipr-petition-filed",
+          "petition-threshold-review",
+          "petition-filing-date-accorded",
+          "popr-window",
+          "popr-filed",
+          "institution-decision",
+          "institution-denied-merits"
+        ],
+        "target": "institution-denied-merits",
+        "total": 0
+      },
+      "ipr-terminated-settlement": {
+        "nodes": [
+          "patent-granted",
+          "infringement-complaint-served",
+          "ipr-petition-filed",
+          "institution-granted",
+          "settlement-decision",
+          "ipr-terminated-settlement"
+        ],
+        "target": "ipr-terminated-settlement",
+        "total": 0
+      },
+      "ipr-time-barred": {
+        "nodes": [
+          "patent-granted",
+          "infringement-complaint-served",
+          "ipr-petition-filed",
+          "petition-threshold-review",
+          "ipr-time-barred"
+        ],
+        "target": "ipr-time-barred",
+        "total": 0
+      }
+    },
+    "fastestByDays": {
+      "adverse-judgment-terminal": {
+        "nodes": [
+          "patent-granted",
+          "challenge-vehicle-decision",
+          "ipr-petition-filed",
+          "institution-granted",
+          "settlement-decision",
+          "adverse-judgment-request",
+          "adverse-judgment-terminal"
+        ],
+        "target": "adverse-judgment-terminal",
+        "total": 0
+      },
+      "appeal-forfeited-unappealed": {
+        "nodes": [
+          "patent-granted",
+          "challenge-vehicle-decision",
+          "ipr-petition-filed",
+          "institution-granted",
+          "settlement-decision",
+          "oral-hearing-request",
+          "fwd-issued",
+          "fwd-all-unpatentable",
+          "post-fwd-options",
+          "federal-circuit-window",
+          "appeal-forfeited-unappealed"
+        ],
+        "target": "appeal-forfeited-unappealed",
+        "total": 63
+      },
+      "cafc-affirms": {
+        "nodes": [
+          "patent-granted",
+          "challenge-vehicle-decision",
+          "ipr-petition-filed",
+          "institution-granted",
+          "settlement-decision",
+          "oral-hearing-request",
+          "fwd-issued",
+          "fwd-all-unpatentable",
+          "post-fwd-options",
+          "federal-circuit-window",
+          "federal-circuit-notice-of-appeal",
+          "federal-circuit-review",
+          "cafc-affirms"
+        ],
+        "target": "cafc-affirms",
+        "total": 63
+      },
+      "cafc-vacates-remands": {
+        "nodes": [
+          "patent-granted",
+          "challenge-vehicle-decision",
+          "ipr-petition-filed",
+          "institution-granted",
+          "settlement-decision",
+          "oral-hearing-request",
+          "fwd-issued",
+          "fwd-all-unpatentable",
+          "post-fwd-options",
+          "federal-circuit-window",
+          "federal-circuit-notice-of-appeal",
+          "federal-circuit-review",
+          "cafc-vacates-remands"
+        ],
+        "target": "cafc-vacates-remands",
+        "total": 63
+      },
+      "claims-disclaimed-preinstitution": {
+        "nodes": [
+          "patent-granted",
+          "challenge-vehicle-decision",
+          "ipr-petition-filed",
+          "petition-threshold-review",
+          "petition-filing-date-accorded",
+          "popr-window",
+          "claims-disclaimed-preinstitution"
+        ],
+        "target": "claims-disclaimed-preinstitution",
+        "total": 0
+      },
+      "fwd-all-confirmed": {
+        "nodes": [
+          "patent-granted",
+          "challenge-vehicle-decision",
+          "ipr-petition-filed",
+          "institution-granted",
+          "settlement-decision",
+          "oral-hearing-request",
+          "fwd-issued",
+          "fwd-all-confirmed"
+        ],
+        "target": "fwd-all-confirmed",
+        "total": 0
+      },
+      "fwd-all-unpatentable": {
+        "nodes": [
+          "patent-granted",
+          "challenge-vehicle-decision",
+          "ipr-petition-filed",
+          "institution-granted",
+          "settlement-decision",
+          "oral-hearing-request",
+          "fwd-issued",
+          "fwd-all-unpatentable"
+        ],
+        "target": "fwd-all-unpatentable",
+        "total": 0
+      },
+      "fwd-mixed": {
+        "nodes": [
+          "patent-granted",
+          "challenge-vehicle-decision",
+          "ipr-petition-filed",
+          "institution-granted",
+          "settlement-decision",
+          "oral-hearing-request",
+          "fwd-issued",
+          "fwd-mixed"
+        ],
+        "target": "fwd-mixed",
+        "total": 0
+      },
+      "institution-denied-fintiv": {
+        "nodes": [
+          "patent-granted",
+          "challenge-vehicle-decision",
+          "ipr-petition-filed",
+          "petition-threshold-review",
+          "petition-filing-date-accorded",
+          "popr-window",
+          "popr-waived",
+          "institution-decision",
+          "institution-denied-fintiv"
+        ],
+        "target": "institution-denied-fintiv",
+        "total": 90
+      },
+      "institution-denied-merits": {
+        "nodes": [
+          "patent-granted",
+          "challenge-vehicle-decision",
+          "ipr-petition-filed",
+          "petition-threshold-review",
+          "petition-filing-date-accorded",
+          "popr-window",
+          "popr-waived",
+          "institution-decision",
+          "institution-denied-merits"
+        ],
+        "target": "institution-denied-merits",
+        "total": 90
+      },
+      "ipr-terminated-settlement": {
+        "nodes": [
+          "patent-granted",
+          "challenge-vehicle-decision",
+          "ipr-petition-filed",
+          "institution-granted",
+          "settlement-decision",
+          "ipr-terminated-settlement"
+        ],
+        "target": "ipr-terminated-settlement",
+        "total": 0
+      },
+      "ipr-time-barred": {
+        "nodes": [
+          "patent-granted",
+          "challenge-vehicle-decision",
+          "ipr-petition-filed",
+          "petition-threshold-review",
+          "ipr-time-barred"
+        ],
+        "target": "ipr-time-barred",
+        "total": 365
+      }
+    },
+    "leastHours": {
+      "adverse-judgment-terminal": {
+        "nodes": [
+          "patent-granted",
+          "infringement-complaint-served",
+          "ipr-petition-filed",
+          "institution-granted",
+          "settlement-decision",
+          "adverse-judgment-request",
+          "adverse-judgment-terminal"
+        ],
+        "target": "adverse-judgment-terminal",
+        "total": 0
+      },
+      "appeal-forfeited-unappealed": {
+        "nodes": [
+          "patent-granted",
+          "infringement-complaint-served",
+          "ipr-petition-filed",
+          "institution-granted",
+          "scheduling-order-issued",
+          "mandatory-disclosures",
+          "patent-owner-response-window",
+          "patent-owner-no-response",
+          "oral-hearing-request",
+          "fwd-issued",
+          "fwd-all-unpatentable",
+          "post-fwd-options",
+          "federal-circuit-window",
+          "appeal-forfeited-unappealed"
+        ],
+        "target": "appeal-forfeited-unappealed",
+        "total": 0
+      },
+      "cafc-affirms": {
+        "nodes": [
+          "patent-granted",
+          "infringement-complaint-served",
+          "ipr-petition-filed",
+          "institution-granted",
+          "scheduling-order-issued",
+          "mandatory-disclosures",
+          "patent-owner-response-window",
+          "patent-owner-no-response",
+          "oral-hearing-request",
+          "fwd-issued",
+          "fwd-all-unpatentable",
+          "post-fwd-options",
+          "federal-circuit-window",
+          "federal-circuit-notice-of-appeal",
+          "federal-circuit-review",
+          "cafc-affirms"
+        ],
+        "target": "cafc-affirms",
+        "total": 0
+      },
+      "cafc-vacates-remands": {
+        "nodes": [
+          "patent-granted",
+          "infringement-complaint-served",
+          "ipr-petition-filed",
+          "institution-granted",
+          "scheduling-order-issued",
+          "mandatory-disclosures",
+          "patent-owner-response-window",
+          "patent-owner-no-response",
+          "oral-hearing-request",
+          "fwd-issued",
+          "fwd-all-unpatentable",
+          "post-fwd-options",
+          "federal-circuit-window",
+          "federal-circuit-notice-of-appeal",
+          "federal-circuit-review",
+          "cafc-vacates-remands"
+        ],
+        "target": "cafc-vacates-remands",
+        "total": 0
+      },
+      "claims-disclaimed-preinstitution": {
+        "nodes": [
+          "patent-granted",
+          "infringement-complaint-served",
+          "ipr-petition-filed",
+          "petition-threshold-review",
+          "petition-filing-date-accorded",
+          "popr-window",
+          "claims-disclaimed-preinstitution"
+        ],
+        "target": "claims-disclaimed-preinstitution",
+        "total": 0
+      },
+      "fwd-all-confirmed": {
+        "nodes": [
+          "patent-granted",
+          "infringement-complaint-served",
+          "ipr-petition-filed",
+          "institution-granted",
+          "scheduling-order-issued",
+          "mandatory-disclosures",
+          "patent-owner-response-window",
+          "patent-owner-no-response",
+          "oral-hearing-request",
+          "fwd-issued",
+          "fwd-all-confirmed"
+        ],
+        "target": "fwd-all-confirmed",
+        "total": 0
+      },
+      "fwd-all-unpatentable": {
+        "nodes": [
+          "patent-granted",
+          "infringement-complaint-served",
+          "ipr-petition-filed",
+          "institution-granted",
+          "scheduling-order-issued",
+          "mandatory-disclosures",
+          "patent-owner-response-window",
+          "patent-owner-no-response",
+          "oral-hearing-request",
+          "fwd-issued",
+          "fwd-all-unpatentable"
+        ],
+        "target": "fwd-all-unpatentable",
+        "total": 0
+      },
+      "fwd-mixed": {
+        "nodes": [
+          "patent-granted",
+          "infringement-complaint-served",
+          "ipr-petition-filed",
+          "institution-granted",
+          "scheduling-order-issued",
+          "mandatory-disclosures",
+          "patent-owner-response-window",
+          "patent-owner-no-response",
+          "oral-hearing-request",
+          "fwd-issued",
+          "fwd-mixed"
+        ],
+        "target": "fwd-mixed",
+        "total": 0
+      },
+      "institution-denied-fintiv": {
+        "nodes": [
+          "patent-granted",
+          "infringement-complaint-served",
+          "ipr-petition-filed",
+          "petition-threshold-review",
+          "petition-filing-date-accorded",
+          "popr-window",
+          "popr-filed",
+          "institution-decision",
+          "institution-denied-fintiv"
+        ],
+        "target": "institution-denied-fintiv",
+        "total": 0
+      },
+      "institution-denied-merits": {
+        "nodes": [
+          "patent-granted",
+          "infringement-complaint-served",
+          "ipr-petition-filed",
+          "petition-threshold-review",
+          "petition-filing-date-accorded",
+          "popr-window",
+          "popr-filed",
+          "institution-decision",
+          "institution-denied-merits"
+        ],
+        "target": "institution-denied-merits",
+        "total": 0
+      },
+      "ipr-terminated-settlement": {
+        "nodes": [
+          "patent-granted",
+          "infringement-complaint-served",
+          "ipr-petition-filed",
+          "institution-granted",
+          "settlement-decision",
+          "ipr-terminated-settlement"
+        ],
+        "target": "ipr-terminated-settlement",
+        "total": 0
+      },
+      "ipr-time-barred": {
+        "nodes": [
+          "patent-granted",
+          "infringement-complaint-served",
+          "ipr-petition-filed",
+          "petition-threshold-review",
+          "ipr-time-barred"
+        ],
+        "target": "ipr-time-barred",
+        "total": 0
+      }
+    }
+  },
+  "dominators": {
+    "idom": {
+      "additional-discovery-motion": "mandatory-disclosures",
+      "adverse-judgment-request": "settlement-decision",
+      "adverse-judgment-terminal": "adverse-judgment-request",
+      "appeal-forfeited-unappealed": "federal-circuit-window",
+      "cafc-affirms": "federal-circuit-review",
+      "cafc-vacates-remands": "federal-circuit-review",
+      "challenge-vehicle-decision": "patent-granted",
+      "claims-disclaimed-preinstitution": "popr-window",
+      "director-review-affirmed": "director-review-decision",
+      "director-review-decision": "director-review-request-filed",
+      "director-review-modified": "director-review-decision",
+      "director-review-request-filed": "post-fwd-options",
+      "federal-circuit-notice-of-appeal": "federal-circuit-window",
+      "federal-circuit-review": "federal-circuit-notice-of-appeal",
+      "federal-circuit-window": "post-fwd-options",
+      "fwd-all-confirmed": "fwd-issued",
+      "fwd-all-unpatentable": "fwd-issued",
+      "fwd-issued": "oral-hearing-request",
+      "fwd-mixed": "fwd-issued",
+      "infringement-complaint-served": "patent-granted",
+      "institution-decision": "popr-window",
+      "institution-denied-fintiv": "institution-decision",
+      "institution-denied-merits": "institution-decision",
+      "institution-granted": "patent-granted",
+      "ipr-petition-filed": "patent-granted",
+      "ipr-terminated-settlement": "settlement-decision",
+      "ipr-time-barred": "petition-threshold-review",
+      "mandatory-disclosures": "scheduling-order-issued",
+      "motion-to-amend-decision": "patent-owner-sur-reply",
+      "mta-filed": "motion-to-amend-decision",
+      "mta-preliminary-guidance": "mta-filed",
+      "mta-revised-filed": "mta-preliminary-guidance",
+      "oral-hearing-held": "oral-hearing-request",
+      "oral-hearing-request": "institution-granted",
+      "patent-granted": "patent-granted",
+      "patent-owner-no-response": "patent-owner-response-window",
+      "patent-owner-response-filed": "patent-owner-response-window",
+      "patent-owner-response-window": "institution-granted",
+      "patent-owner-sur-reply": "petitioner-reply-brief",
+      "petition-filing-date-accorded": "petition-threshold-review",
+      "petition-threshold-review": "patent-granted",
+      "petitioner-opposition-mta": "mta-preliminary-guidance",
+      "petitioner-reply-brief": "patent-owner-response-filed",
+      "pgr-petition-filed": "patent-granted",
+      "popr-filed": "popr-window",
+      "popr-waived": "popr-window",
+      "popr-window": "petition-filing-date-accorded",
+      "post-fwd-options": "fwd-issued",
+      "protective-order-ipr": "mandatory-disclosures",
+      "rehearing-decision": "rehearing-request-filed",
+      "rehearing-denied-affirmed": "rehearing-decision",
+      "rehearing-granted-modified": "rehearing-decision",
+      "rehearing-request-filed": "post-fwd-options",
+      "scheduling-order-issued": "institution-granted",
+      "settlement-decision": "institution-granted"
+    },
+    "root": "patent-granted"
+  },
+  "minCut500": {
+    "adverse-judgment-terminal": {
+      "cutEdges": [
+        {
+          "from": "settlement-decision",
+          "label": "Request adverse judgment instead",
+          "to": "adverse-judgment-request"
+        }
+      ],
+      "value": 1
+    },
+    "appeal-forfeited-unappealed": {
+      "cutEdges": [
+        {
+          "from": "federal-circuit-window",
+          "label": "Let the 63-day window lapse",
+          "to": "appeal-forfeited-unappealed"
+        }
+      ],
+      "value": 1
+    },
+    "cafc-affirms": {
+      "cutEdges": [
+        {
+          "from": "federal-circuit-window",
+          "label": "File notice of appeal",
+          "to": "federal-circuit-notice-of-appeal"
+        }
+      ],
+      "value": 1
+    },
+    "cafc-vacates-remands": {
+      "cutEdges": [
+        {
+          "from": "federal-circuit-window",
+          "label": "File notice of appeal",
+          "to": "federal-circuit-notice-of-appeal"
+        }
+      ],
+      "value": 1
+    },
+    "claims-disclaimed-preinstitution": {
+      "cutEdges": [
+        {
+          "from": "petition-threshold-review",
+          "label": "Petition meets fee/word-count/form",
+          "to": "petition-filing-date-accorded"
+        }
+      ],
+      "value": 1
+    },
+    "fwd-all-confirmed": {
+      "cutEdges": [
+        {
+          "from": "fwd-issued",
+          "label": "Confirm all instituted claims patentable",
+          "to": "fwd-all-confirmed"
+        }
+      ],
+      "value": 1
+    },
+    "fwd-all-unpatentable": {
+      "cutEdges": [
+        {
+          "from": "fwd-issued",
+          "label": "Hold all instituted claims unpatentable",
+          "to": "fwd-all-unpatentable"
+        }
+      ],
+      "value": 1
+    },
+    "fwd-mixed": {
+      "cutEdges": [
+        {
+          "from": "fwd-issued",
+          "label": "Cancel some claims, confirm others",
+          "to": "fwd-mixed"
+        }
+      ],
+      "value": 1
+    },
+    "institution-denied-fintiv": {
+      "cutEdges": [
+        {
+          "from": "petition-threshold-review",
+          "label": "Petition meets fee/word-count/form",
+          "to": "petition-filing-date-accorded"
+        }
+      ],
+      "value": 1
+    },
+    "institution-denied-merits": {
+      "cutEdges": [
+        {
+          "from": "petition-threshold-review",
+          "label": "Petition meets fee/word-count/form",
+          "to": "petition-filing-date-accorded"
+        }
+      ],
+      "value": 1
+    },
+    "ipr-terminated-settlement": {
+      "cutEdges": [
+        {
+          "from": "settlement-decision",
+          "label": "Settle before final written decision",
+          "to": "ipr-terminated-settlement"
+        }
+      ],
+      "value": 1
+    },
+    "ipr-time-barred": {
+      "cutEdges": [
+        {
+          "from": "petition-threshold-review",
+          "label": "Board finds petition time-barred",
+          "to": "ipr-time-barred"
+        }
+      ],
+      "value": 1
+    }
+  },
+  "packId": "ptab-patent-trial-appeal-board",
+  "packTitle": "PTAB Patent Trial and Appeal Board Proceedings",
+  "params": {
+    "paretoCappedMaxPaths": 20000,
+    "paretoDefaultOpts": {
+      "maxNodeVisits": 1,
+      "maxPaths": 50000
+    },
+    "paretoSlowThresholdMs": 20000,
+    "policyDiffRateA": 150,
+    "policyDiffRateB": 1500,
+    "rate": 500,
+    "rateLow": 250
+  },
+  "paretoPaths500": {
+    "adverse-judgment-terminal": {
+      "enumeratedCount": 770,
+      "frontier": [
+        {
+          "nodes": [
+            "patent-granted",
+            "infringement-complaint-served",
+            "challenge-vehicle-decision",
+            "ipr-petition-filed",
+            "institution-granted",
+            "settlement-decision",
+            "adverse-judgment-request",
+            "adverse-judgment-terminal"
+          ],
+          "totalCost": 0,
+          "totalDays": 0
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "appeal-forfeited-unappealed": {
+      "enumeratedCount": 43428,
+      "frontier": [
+        {
+          "nodes": [
+            "patent-granted",
+            "infringement-complaint-served",
+            "challenge-vehicle-decision",
+            "ipr-petition-filed",
+            "institution-granted",
+            "settlement-decision",
+            "oral-hearing-request",
+            "oral-hearing-held",
+            "fwd-issued",
+            "fwd-all-unpatentable",
+            "post-fwd-options",
+            "federal-circuit-window",
+            "appeal-forfeited-unappealed"
+          ],
+          "totalCost": 0,
+          "totalDays": 63
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "cafc-affirms": {
+      "enumeratedCount": 43428,
+      "frontier": [
+        {
+          "nodes": [
+            "patent-granted",
+            "infringement-complaint-served",
+            "challenge-vehicle-decision",
+            "ipr-petition-filed",
+            "institution-granted",
+            "settlement-decision",
+            "oral-hearing-request",
+            "oral-hearing-held",
+            "fwd-issued",
+            "fwd-all-unpatentable",
+            "post-fwd-options",
+            "federal-circuit-window",
+            "federal-circuit-notice-of-appeal",
+            "federal-circuit-review",
+            "cafc-affirms"
+          ],
+          "totalCost": 0,
+          "totalDays": 63
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "cafc-vacates-remands": {
+      "enumeratedCount": 43428,
+      "frontier": [
+        {
+          "nodes": [
+            "patent-granted",
+            "infringement-complaint-served",
+            "challenge-vehicle-decision",
+            "ipr-petition-filed",
+            "institution-granted",
+            "settlement-decision",
+            "oral-hearing-request",
+            "oral-hearing-held",
+            "fwd-issued",
+            "fwd-all-unpatentable",
+            "post-fwd-options",
+            "federal-circuit-window",
+            "federal-circuit-notice-of-appeal",
+            "federal-circuit-review",
+            "cafc-vacates-remands"
+          ],
+          "totalCost": 0,
+          "totalDays": 63
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "claims-disclaimed-preinstitution": {
+      "enumeratedCount": 6,
+      "frontier": [
+        {
+          "nodes": [
+            "patent-granted",
+            "infringement-complaint-served",
+            "challenge-vehicle-decision",
+            "ipr-petition-filed",
+            "petition-threshold-review",
+            "petition-filing-date-accorded",
+            "popr-window",
+            "claims-disclaimed-preinstitution"
+          ],
+          "totalCost": 0,
+          "totalDays": 0
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "fwd-all-confirmed": {
+      "enumeratedCount": 2068,
+      "frontier": [
+        {
+          "nodes": [
+            "patent-granted",
+            "infringement-complaint-served",
+            "challenge-vehicle-decision",
+            "ipr-petition-filed",
+            "institution-granted",
+            "settlement-decision",
+            "oral-hearing-request",
+            "oral-hearing-held",
+            "fwd-issued",
+            "fwd-all-confirmed"
+          ],
+          "totalCost": 0,
+          "totalDays": 0
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "fwd-all-unpatentable": {
+      "enumeratedCount": 2068,
+      "frontier": [
+        {
+          "nodes": [
+            "patent-granted",
+            "infringement-complaint-served",
+            "challenge-vehicle-decision",
+            "ipr-petition-filed",
+            "institution-granted",
+            "settlement-decision",
+            "oral-hearing-request",
+            "oral-hearing-held",
+            "fwd-issued",
+            "fwd-all-unpatentable"
+          ],
+          "totalCost": 0,
+          "totalDays": 0
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "fwd-mixed": {
+      "enumeratedCount": 2068,
+      "frontier": [
+        {
+          "nodes": [
+            "patent-granted",
+            "infringement-complaint-served",
+            "challenge-vehicle-decision",
+            "ipr-petition-filed",
+            "institution-granted",
+            "settlement-decision",
+            "oral-hearing-request",
+            "oral-hearing-held",
+            "fwd-issued",
+            "fwd-mixed"
+          ],
+          "totalCost": 0,
+          "totalDays": 0
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "institution-denied-fintiv": {
+      "enumeratedCount": 12,
+      "frontier": [
+        {
+          "nodes": [
+            "patent-granted",
+            "infringement-complaint-served",
+            "challenge-vehicle-decision",
+            "ipr-petition-filed",
+            "petition-threshold-review",
+            "petition-filing-date-accorded",
+            "popr-window",
+            "popr-waived",
+            "institution-decision",
+            "institution-denied-fintiv"
+          ],
+          "totalCost": 0,
+          "totalDays": 90
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "institution-denied-merits": {
+      "enumeratedCount": 12,
+      "frontier": [
+        {
+          "nodes": [
+            "patent-granted",
+            "infringement-complaint-served",
+            "challenge-vehicle-decision",
+            "ipr-petition-filed",
+            "petition-threshold-review",
+            "petition-filing-date-accorded",
+            "popr-window",
+            "popr-waived",
+            "institution-decision",
+            "institution-denied-merits"
+          ],
+          "totalCost": 0,
+          "totalDays": 90
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "ipr-terminated-settlement": {
+      "enumeratedCount": 770,
+      "frontier": [
+        {
+          "nodes": [
+            "patent-granted",
+            "infringement-complaint-served",
+            "challenge-vehicle-decision",
+            "ipr-petition-filed",
+            "institution-granted",
+            "settlement-decision",
+            "ipr-terminated-settlement"
+          ],
+          "totalCost": 0,
+          "totalDays": 0
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    },
+    "ipr-time-barred": {
+      "enumeratedCount": 6,
+      "frontier": [
+        {
+          "nodes": [
+            "patent-granted",
+            "infringement-complaint-served",
+            "challenge-vehicle-decision",
+            "ipr-petition-filed",
+            "petition-threshold-review",
+            "ipr-time-barred"
+          ],
+          "totalCost": 0,
+          "totalDays": 365
+        }
+      ],
+      "optionsUsed": {},
+      "truncated": false
+    }
+  },
+  "policyDiff_150_1500": {
+    "flips": [],
+    "rateA": 150,
+    "rateB": 1500
+  },
+  "scc": {
+    "absorbingComponents": [
+      [
+        "ipr-terminated-settlement"
+      ],
+      [
+        "adverse-judgment-terminal"
+      ],
+      [
+        "cafc-affirms"
+      ],
+      [
+        "appeal-forfeited-unappealed"
+      ],
+      [
+        "claims-disclaimed-preinstitution"
+      ],
+      [
+        "ipr-time-barred"
+      ]
+    ],
+    "componentOf": {
+      "additional-discovery-motion": 7,
+      "adverse-judgment-request": 2,
+      "adverse-judgment-terminal": 1,
+      "appeal-forfeited-unappealed": 4,
+      "cafc-affirms": 3,
+      "cafc-vacates-remands": 5,
+      "challenge-vehicle-decision": 13,
+      "claims-disclaimed-preinstitution": 11,
+      "director-review-affirmed": 5,
+      "director-review-decision": 5,
+      "director-review-modified": 5,
+      "director-review-request-filed": 5,
+      "federal-circuit-notice-of-appeal": 5,
+      "federal-circuit-review": 5,
+      "federal-circuit-window": 5,
+      "fwd-all-confirmed": 5,
+      "fwd-all-unpatentable": 5,
+      "fwd-issued": 5,
+      "fwd-mixed": 5,
+      "infringement-complaint-served": 14,
+      "institution-decision": 13,
+      "institution-denied-fintiv": 13,
+      "institution-denied-merits": 13,
+      "institution-granted": 10,
+      "ipr-petition-filed": 13,
+      "ipr-terminated-settlement": 0,
+      "ipr-time-barred": 12,
+      "mandatory-disclosures": 8,
+      "motion-to-amend-decision": 5,
+      "mta-filed": 5,
+      "mta-preliminary-guidance": 5,
+      "mta-revised-filed": 5,
+      "oral-hearing-held": 5,
+      "oral-hearing-request": 5,
+      "patent-granted": 15,
+      "patent-owner-no-response": 5,
+      "patent-owner-response-filed": 5,
+      "patent-owner-response-window": 5,
+      "patent-owner-sur-reply": 5,
+      "petition-filing-date-accorded": 13,
+      "petition-threshold-review": 13,
+      "petitioner-opposition-mta": 5,
+      "petitioner-reply-brief": 5,
+      "pgr-petition-filed": 13,
+      "popr-filed": 13,
+      "popr-waived": 13,
+      "popr-window": 13,
+      "post-fwd-options": 5,
+      "protective-order-ipr": 6,
+      "rehearing-decision": 5,
+      "rehearing-denied-affirmed": 5,
+      "rehearing-granted-modified": 5,
+      "rehearing-request-filed": 5,
+      "scheduling-order-issued": 9,
+      "settlement-decision": 5
+    },
+    "components": [
+      [
+        "ipr-terminated-settlement"
+      ],
+      [
+        "adverse-judgment-terminal"
+      ],
+      [
+        "adverse-judgment-request"
+      ],
+      [
+        "cafc-affirms"
+      ],
+      [
+        "appeal-forfeited-unappealed"
+      ],
+      [
+        "cafc-vacates-remands",
+        "director-review-affirmed",
+        "director-review-decision",
+        "director-review-modified",
+        "director-review-request-filed",
+        "federal-circuit-notice-of-appeal",
+        "federal-circuit-review",
+        "federal-circuit-window",
+        "fwd-all-confirmed",
+        "fwd-all-unpatentable",
+        "fwd-issued",
+        "fwd-mixed",
+        "motion-to-amend-decision",
+        "mta-filed",
+        "mta-preliminary-guidance",
+        "mta-revised-filed",
+        "oral-hearing-held",
+        "oral-hearing-request",
+        "patent-owner-no-response",
+        "patent-owner-response-filed",
+        "patent-owner-response-window",
+        "patent-owner-sur-reply",
+        "petitioner-opposition-mta",
+        "petitioner-reply-brief",
+        "post-fwd-options",
+        "rehearing-decision",
+        "rehearing-denied-affirmed",
+        "rehearing-granted-modified",
+        "rehearing-request-filed",
+        "settlement-decision"
+      ],
+      [
+        "protective-order-ipr"
+      ],
+      [
+        "additional-discovery-motion"
+      ],
+      [
+        "mandatory-disclosures"
+      ],
+      [
+        "scheduling-order-issued"
+      ],
+      [
+        "institution-granted"
+      ],
+      [
+        "claims-disclaimed-preinstitution"
+      ],
+      [
+        "ipr-time-barred"
+      ],
+      [
+        "challenge-vehicle-decision",
+        "institution-decision",
+        "institution-denied-fintiv",
+        "institution-denied-merits",
+        "ipr-petition-filed",
+        "petition-filing-date-accorded",
+        "petition-threshold-review",
+        "pgr-petition-filed",
+        "popr-filed",
+        "popr-waived",
+        "popr-window"
+      ],
+      [
+        "infringement-complaint-served"
+      ],
+      [
+        "patent-granted"
+      ]
+    ],
+    "condensation": {
+      "edges": [
+        {
+          "from": 2,
+          "to": 1
+        },
+        {
+          "from": 5,
+          "to": 0
+        },
+        {
+          "from": 5,
+          "to": 2
+        },
+        {
+          "from": 5,
+          "to": 3
+        },
+        {
+          "from": 5,
+          "to": 4
+        },
+        {
+          "from": 6,
+          "to": 5
+        },
+        {
+          "from": 7,
+          "to": 5
+        },
+        {
+          "from": 7,
+          "to": 6
+        },
+        {
+          "from": 8,
+          "to": 5
+        },
+        {
+          "from": 8,
+          "to": 6
+        },
+        {
+          "from": 8,
+          "to": 7
+        },
+        {
+          "from": 9,
+          "to": 5
+        },
+        {
+          "from": 9,
+          "to": 8
+        },
+        {
+          "from": 10,
+          "to": 5
+        },
+        {
+          "from": 10,
+          "to": 9
+        },
+        {
+          "from": 13,
+          "to": 10
+        },
+        {
+          "from": 13,
+          "to": 11
+        },
+        {
+          "from": 13,
+          "to": 12
+        },
+        {
+          "from": 14,
+          "to": 13
+        },
+        {
+          "from": 15,
+          "to": 13
+        },
+        {
+          "from": 15,
+          "to": 14
+        }
+      ],
+      "nodes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    "cyclicComponents": [
+      [
+        "cafc-vacates-remands",
+        "director-review-affirmed",
+        "director-review-decision",
+        "director-review-modified",
+        "director-review-request-filed",
+        "federal-circuit-notice-of-appeal",
+        "federal-circuit-review",
+        "federal-circuit-window",
+        "fwd-all-confirmed",
+        "fwd-all-unpatentable",
+        "fwd-issued",
+        "fwd-mixed",
+        "motion-to-amend-decision",
+        "mta-filed",
+        "mta-preliminary-guidance",
+        "mta-revised-filed",
+        "oral-hearing-held",
+        "oral-hearing-request",
+        "patent-owner-no-response",
+        "patent-owner-response-filed",
+        "patent-owner-response-window",
+        "patent-owner-sur-reply",
+        "petitioner-opposition-mta",
+        "petitioner-reply-brief",
+        "post-fwd-options",
+        "rehearing-decision",
+        "rehearing-denied-affirmed",
+        "rehearing-granted-modified",
+        "rehearing-request-filed",
+        "settlement-decision"
+      ],
+      [
+        "additional-discovery-motion"
+      ],
+      [
+        "challenge-vehicle-decision",
+        "institution-decision",
+        "institution-denied-fintiv",
+        "institution-denied-merits",
+        "ipr-petition-filed",
+        "petition-filing-date-accorded",
+        "petition-threshold-review",
+        "pgr-petition-filed",
+        "popr-filed",
+        "popr-waived",
+        "popr-window"
+      ]
+    ],
+    "cyclicLoops": [
+      {
+        "escapeEdges": [
+          {
+            "from": "federal-circuit-review",
+            "label": "Affirm the Board",
+            "to": "cafc-affirms"
+          },
+          {
+            "from": "federal-circuit-window",
+            "label": "Let the 63-day window lapse",
+            "to": "appeal-forfeited-unappealed"
+          },
+          {
+            "from": "settlement-decision",
+            "label": "Request adverse judgment instead",
+            "to": "adverse-judgment-request"
+          },
+          {
+            "from": "settlement-decision",
+            "label": "Settle before final written decision",
+            "to": "ipr-terminated-settlement"
+          }
+        ],
+        "internalEdges": [
+          {
+            "from": "cafc-vacates-remands",
+            "label": "Board reconsiders on remand",
+            "to": "fwd-issued"
+          },
+          {
+            "from": "director-review-affirmed",
+            "label": "Proceed to the appeal window",
+            "to": "federal-circuit-window"
+          },
+          {
+            "from": "director-review-decision",
+            "label": "Director affirms the panel",
+            "to": "director-review-affirmed"
+          },
+          {
+            "from": "director-review-decision",
+            "label": "Director modifies the decision",
+            "to": "director-review-modified"
+          },
+          {
+            "from": "director-review-decision",
+            "label": "Director remands for further proceedings",
+            "to": "patent-owner-response-window"
+          },
+          {
+            "from": "director-review-modified",
+            "label": "Proceed to the appeal window",
+            "to": "federal-circuit-window"
+          },
+          {
+            "from": "director-review-request-filed",
+            "label": "Director reviews the decision",
+            "to": "director-review-decision"
+          },
+          {
+            "from": "federal-circuit-notice-of-appeal",
+            "label": "Federal Circuit reviews the decision",
+            "to": "federal-circuit-review"
+          },
+          {
+            "from": "federal-circuit-review",
+            "label": "Vacate or remand to the Board",
+            "to": "cafc-vacates-remands"
+          },
+          {
+            "from": "federal-circuit-window",
+            "label": "File notice of appeal",
+            "to": "federal-circuit-notice-of-appeal"
+          },
+          {
+            "from": "fwd-all-confirmed",
+            "label": "Petitioner considers post-FWD relief",
+            "to": "post-fwd-options"
+          },
+          {
+            "from": "fwd-all-unpatentable",
+            "label": "Patent owner considers post-FWD relief",
+            "to": "post-fwd-options"
+          },
+          {
+            "from": "fwd-issued",
+            "label": "Confirm all instituted claims patentable",
+            "to": "fwd-all-confirmed"
+          },
+          {
+            "from": "fwd-issued",
+            "label": "Hold all instituted claims unpatentable",
+            "to": "fwd-all-unpatentable"
+          },
+          {
+            "from": "fwd-issued",
+            "label": "Cancel some claims, confirm others",
+            "to": "fwd-mixed"
+          },
+          {
+            "from": "fwd-mixed",
+            "label": "Either party considers post-FWD relief",
+            "to": "post-fwd-options"
+          },
+          {
+            "from": "motion-to-amend-decision",
+            "label": "File contingent motion to amend",
+            "to": "mta-filed"
+          },
+          {
+            "from": "motion-to-amend-decision",
+            "label": "No motion to amend — proceed",
+            "to": "settlement-decision"
+          },
+          {
+            "from": "mta-filed",
+            "label": "Board issues preliminary guidance",
+            "to": "mta-preliminary-guidance"
+          },
+          {
+            "from": "mta-filed",
+            "label": "Settle while amendment is pending",
+            "to": "settlement-decision"
+          },
+          {
+            "from": "mta-preliminary-guidance",
+            "label": "File a revised motion to amend",
+            "to": "mta-revised-filed"
+          },
+          {
+            "from": "mta-preliminary-guidance",
+            "label": "Proceed without revising",
+            "to": "petitioner-opposition-mta"
+          },
+          {
+            "from": "mta-preliminary-guidance",
+            "label": "Settle after unfavorable guidance",
+            "to": "settlement-decision"
+          },
+          {
+            "from": "mta-revised-filed",
+            "label": "Petitioner opposes revised amendment",
+            "to": "petitioner-opposition-mta"
+          },
+          {
+            "from": "oral-hearing-held",
+            "label": "Hearing concludes — case submitted",
+            "to": "fwd-issued"
+          },
+          {
+            "from": "oral-hearing-request",
+            "label": "Waive oral argument",
+            "to": "fwd-issued"
+          },
+          {
+            "from": "oral-hearing-request",
+            "label": "Request oral argument",
+            "to": "oral-hearing-held"
+          },
+          {
+            "from": "patent-owner-no-response",
+            "label": "No response — still may request hearing",
+            "to": "oral-hearing-request"
+          },
+          {
+            "from": "patent-owner-no-response",
+            "label": "Proceed toward settlement",
+            "to": "settlement-decision"
+          },
+          {
+            "from": "patent-owner-response-filed",
+            "label": "File Petitioner Reply",
+            "to": "petitioner-reply-brief"
+          },
+          {
+            "from": "patent-owner-response-filed",
+            "label": "Settle after filing response",
+            "to": "settlement-decision"
+          },
+          {
+            "from": "patent-owner-response-window",
+            "label": "Elect not to respond",
+            "to": "patent-owner-no-response"
+          },
+          {
+            "from": "patent-owner-response-window",
+            "label": "File Patent Owner Response",
+            "to": "patent-owner-response-filed"
+          },
+          {
+            "from": "patent-owner-response-window",
+            "label": "Settle instead of responding",
+            "to": "settlement-decision"
+          },
+          {
+            "from": "patent-owner-sur-reply",
+            "label": "Briefing complete — assess amendment",
+            "to": "motion-to-amend-decision"
+          },
+          {
+            "from": "petitioner-opposition-mta",
+            "label": "MTA briefing closes — proceed to hearing",
+            "to": "oral-hearing-request"
+          },
+          {
+            "from": "petitioner-opposition-mta",
+            "label": "MTA briefing closes",
+            "to": "settlement-decision"
+          },
+          {
+            "from": "petitioner-reply-brief",
+            "label": "File Patent Owner Sur-Reply",
+            "to": "patent-owner-sur-reply"
+          },
+          {
+            "from": "post-fwd-options",
+            "label": "Request Director review",
+            "to": "director-review-request-filed"
+          },
+          {
+            "from": "post-fwd-options",
+            "label": "Skip rehearing — go straight to appeal",
+            "to": "federal-circuit-window"
+          },
+          {
+            "from": "post-fwd-options",
+            "label": "Request panel rehearing",
+            "to": "rehearing-request-filed"
+          },
+          {
+            "from": "rehearing-decision",
+            "label": "Escalate denied rehearing to Director",
+            "to": "director-review-request-filed"
+          },
+          {
+            "from": "rehearing-decision",
+            "label": "Deny rehearing — decision stands",
+            "to": "rehearing-denied-affirmed"
+          },
+          {
+            "from": "rehearing-decision",
+            "label": "Grant rehearing — modify decision",
+            "to": "rehearing-granted-modified"
+          },
+          {
+            "from": "rehearing-denied-affirmed",
+            "label": "Proceed to the appeal window",
+            "to": "federal-circuit-window"
+          },
+          {
+            "from": "rehearing-granted-modified",
+            "label": "Proceed to the appeal window",
+            "to": "federal-circuit-window"
+          },
+          {
+            "from": "rehearing-request-filed",
+            "label": "Panel considers rehearing request",
+            "to": "rehearing-decision"
+          },
+          {
+            "from": "settlement-decision",
+            "label": "No settlement — proceed to hearing",
+            "to": "oral-hearing-request"
+          }
+        ],
+        "nodes": [
+          "cafc-vacates-remands",
+          "director-review-affirmed",
+          "director-review-decision",
+          "director-review-modified",
+          "director-review-request-filed",
+          "federal-circuit-notice-of-appeal",
+          "federal-circuit-review",
+          "federal-circuit-window",
+          "fwd-all-confirmed",
+          "fwd-all-unpatentable",
+          "fwd-issued",
+          "fwd-mixed",
+          "motion-to-amend-decision",
+          "mta-filed",
+          "mta-preliminary-guidance",
+          "mta-revised-filed",
+          "oral-hearing-held",
+          "oral-hearing-request",
+          "patent-owner-no-response",
+          "patent-owner-response-filed",
+          "patent-owner-response-window",
+          "patent-owner-sur-reply",
+          "petitioner-opposition-mta",
+          "petitioner-reply-brief",
+          "post-fwd-options",
+          "rehearing-decision",
+          "rehearing-denied-affirmed",
+          "rehearing-granted-modified",
+          "rehearing-request-filed",
+          "settlement-decision"
+        ]
+      },
+      {
+        "escapeEdges": [
+          {
+            "from": "additional-discovery-motion",
+            "label": "Board denies additional discovery",
+            "to": "patent-owner-response-window"
+          },
+          {
+            "from": "additional-discovery-motion",
+            "label": "Board grants additional discovery",
+            "to": "protective-order-ipr"
+          },
+          {
+            "from": "additional-discovery-motion",
+            "label": "Settle rather than fight discovery",
+            "to": "settlement-decision"
+          }
+        ],
+        "internalEdges": [
+          {
+            "from": "additional-discovery-motion",
+            "label": "Renew motion for further discovery",
+            "to": "additional-discovery-motion"
+          }
+        ],
+        "nodes": [
+          "additional-discovery-motion"
+        ]
+      },
+      {
+        "escapeEdges": [
+          {
+            "from": "institution-decision",
+            "label": "Institute trial on all challenged claims",
+            "to": "institution-granted"
+          },
+          {
+            "from": "ipr-petition-filed",
+            "label": "Move for joinder to pending IPR",
+            "to": "institution-granted"
+          },
+          {
+            "from": "petition-threshold-review",
+            "label": "Board finds petition time-barred",
+            "to": "ipr-time-barred"
+          },
+          {
+            "from": "popr-window",
+            "label": "Disclaim all challenged claims",
+            "to": "claims-disclaimed-preinstitution"
+          }
+        ],
+        "internalEdges": [
+          {
+            "from": "challenge-vehicle-decision",
+            "label": "File IPR petition",
+            "to": "ipr-petition-filed"
+          },
+          {
+            "from": "challenge-vehicle-decision",
+            "label": "File PGR petition within 9 months",
+            "to": "pgr-petition-filed"
+          },
+          {
+            "from": "institution-decision",
+            "label": "Deny institution on discretionary grounds",
+            "to": "institution-denied-fintiv"
+          },
+          {
+            "from": "institution-decision",
+            "label": "Deny institution on the merits",
+            "to": "institution-denied-merits"
+          },
+          {
+            "from": "institution-denied-fintiv",
+            "label": "Refile after parallel case resolves",
+            "to": "challenge-vehicle-decision"
+          },
+          {
+            "from": "institution-denied-merits",
+            "label": "File a follow-on petition",
+            "to": "challenge-vehicle-decision"
+          },
+          {
+            "from": "ipr-petition-filed",
+            "label": "Office reviews petition compliance",
+            "to": "petition-threshold-review"
+          },
+          {
+            "from": "petition-filing-date-accorded",
+            "label": "Filing date accorded — POPR clock starts",
+            "to": "popr-window"
+          },
+          {
+            "from": "petition-threshold-review",
+            "label": "Correct petition defect and refile",
+            "to": "ipr-petition-filed"
+          },
+          {
+            "from": "petition-threshold-review",
+            "label": "Petition meets fee/word-count/form",
+            "to": "petition-filing-date-accorded"
+          },
+          {
+            "from": "pgr-petition-filed",
+            "label": "Office reviews petition compliance",
+            "to": "petition-threshold-review"
+          },
+          {
+            "from": "popr-filed",
+            "label": "POPR complete — Board decides institution",
+            "to": "institution-decision"
+          },
+          {
+            "from": "popr-waived",
+            "label": "POPR waived — Board decides institution",
+            "to": "institution-decision"
+          },
+          {
+            "from": "popr-window",
+            "label": "File Patent Owner Preliminary Response",
+            "to": "popr-filed"
+          },
+          {
+            "from": "popr-window",
+            "label": "Waive the preliminary response",
+            "to": "popr-waived"
+          }
+        ],
+        "nodes": [
+          "challenge-vehicle-decision",
+          "institution-decision",
+          "institution-denied-fintiv",
+          "institution-denied-merits",
+          "ipr-petition-filed",
+          "petition-filing-date-accorded",
+          "petition-threshold-review",
+          "pgr-petition-filed",
+          "popr-filed",
+          "popr-waived",
+          "popr-window"
+        ]
+      }
+    ]
+  },
+  "schemaVersion": 1,
+  "startNodeId": "patent-granted",
+  "terminals": [
+    "adverse-judgment-terminal",
+    "appeal-forfeited-unappealed",
+    "cafc-affirms",
+    "cafc-vacates-remands",
+    "claims-disclaimed-preinstitution",
+    "fwd-all-confirmed",
+    "fwd-all-unpatentable",
+    "fwd-mixed",
+    "institution-denied-fintiv",
+    "institution-denied-merits",
+    "ipr-terminated-settlement",
+    "ipr-time-barred"
+  ],
+  "valueIteration250": {
+    "converged": true,
+    "edgeQ": [
+      {
+        "from": "additional-discovery-motion",
+        "label": "Renew motion for further discovery",
+        "q": -13271.604938271936,
+        "to": "additional-discovery-motion"
+      },
+      {
+        "from": "additional-discovery-motion",
+        "label": "Board denies additional discovery",
+        "q": -9490.740740740737,
+        "to": "patent-owner-response-window"
+      },
+      {
+        "from": "additional-discovery-motion",
+        "label": "Board grants additional discovery",
+        "q": -9490.740740740737,
+        "to": "protective-order-ipr"
+      },
+      {
+        "from": "additional-discovery-motion",
+        "label": "Settle rather than fight discovery",
+        "q": -20833.33333333333,
+        "to": "settlement-decision"
+      },
+      {
+        "from": "adverse-judgment-request",
+        "label": "Board enters adverse judgment",
+        "q": -100000,
+        "to": "adverse-judgment-terminal"
+      },
+      {
+        "from": "cafc-vacates-remands",
+        "label": "Board reconsiders on remand",
+        "q": 37500,
+        "to": "fwd-issued"
+      },
+      {
+        "from": "challenge-vehicle-decision",
+        "label": "File IPR petition",
+        "q": 0,
+        "to": "ipr-petition-filed"
+      },
+      {
+        "from": "challenge-vehicle-decision",
+        "label": "File PGR petition within 9 months",
+        "q": 0,
+        "to": "pgr-petition-filed"
+      },
+      {
+        "from": "director-review-affirmed",
+        "label": "Proceed to the appeal window",
+        "q": 0,
+        "to": "federal-circuit-window"
+      },
+      {
+        "from": "director-review-decision",
+        "label": "Director affirms the panel",
+        "q": 0,
+        "to": "director-review-affirmed"
+      },
+      {
+        "from": "director-review-decision",
+        "label": "Director modifies the decision",
+        "q": 0,
+        "to": "director-review-modified"
+      },
+      {
+        "from": "director-review-decision",
+        "label": "Director remands for further proceedings",
+        "q": -9490.740740740737,
+        "to": "patent-owner-response-window"
+      },
+      {
+        "from": "director-review-modified",
+        "label": "Proceed to the appeal window",
+        "q": 0,
+        "to": "federal-circuit-window"
+      },
+      {
+        "from": "director-review-request-filed",
+        "label": "Director reviews the decision",
+        "q": -949.0740740740738,
+        "to": "director-review-decision"
+      },
+      {
+        "from": "federal-circuit-notice-of-appeal",
+        "label": "Federal Circuit reviews the decision",
+        "q": 0,
+        "to": "federal-circuit-review"
+      },
+      {
+        "from": "federal-circuit-review",
+        "label": "Affirm the Board",
+        "q": 0,
+        "to": "cafc-affirms"
+      },
+      {
+        "from": "federal-circuit-review",
+        "label": "Vacate or remand to the Board",
+        "q": 0,
+        "to": "cafc-vacates-remands"
+      },
+      {
+        "from": "federal-circuit-window",
+        "label": "Let the 63-day window lapse",
+        "q": 0,
+        "to": "appeal-forfeited-unappealed"
+      },
+      {
+        "from": "federal-circuit-window",
+        "label": "File notice of appeal",
+        "q": 0,
+        "to": "federal-circuit-notice-of-appeal"
+      },
+      {
+        "from": "fwd-all-confirmed",
+        "label": "Petitioner considers post-FWD relief",
+        "q": -421.8106995884772,
+        "to": "post-fwd-options"
+      },
+      {
+        "from": "fwd-all-unpatentable",
+        "label": "Patent owner considers post-FWD relief",
+        "q": -421.8106995884772,
+        "to": "post-fwd-options"
+      },
+      {
+        "from": "fwd-issued",
+        "label": "Confirm all instituted claims patentable",
+        "q": 150000,
+        "to": "fwd-all-confirmed"
+      },
+      {
+        "from": "fwd-issued",
+        "label": "Hold all instituted claims unpatentable",
+        "q": 0,
+        "to": "fwd-all-unpatentable"
+      },
+      {
+        "from": "fwd-issued",
+        "label": "Cancel some claims, confirm others",
+        "q": 0,
+        "to": "fwd-mixed"
+      },
+      {
+        "from": "fwd-mixed",
+        "label": "Either party considers post-FWD relief",
+        "q": -421.8106995884772,
+        "to": "post-fwd-options"
+      },
+      {
+        "from": "infringement-complaint-served",
+        "label": "Evaluate IPR/PGR after being sued",
+        "q": 0,
+        "to": "challenge-vehicle-decision"
+      },
+      {
+        "from": "infringement-complaint-served",
+        "label": "File IPR directly after being sued",
+        "q": 0,
+        "to": "ipr-petition-filed"
+      },
+      {
+        "from": "institution-decision",
+        "label": "Deny institution on discretionary grounds",
+        "q": 0,
+        "to": "institution-denied-fintiv"
+      },
+      {
+        "from": "institution-decision",
+        "label": "Deny institution on the merits",
+        "q": 0,
+        "to": "institution-denied-merits"
+      },
+      {
+        "from": "institution-decision",
+        "label": "Institute trial on all challenged claims",
+        "q": -18312.757201647877,
+        "to": "institution-granted"
+      },
+      {
+        "from": "institution-denied-fintiv",
+        "label": "Refile after parallel case resolves",
+        "q": 0,
+        "to": "challenge-vehicle-decision"
+      },
+      {
+        "from": "institution-denied-merits",
+        "label": "File a follow-on petition",
+        "q": 0,
+        "to": "challenge-vehicle-decision"
+      },
+      {
+        "from": "institution-granted",
+        "label": "Board issues scheduling order",
+        "q": -15792.181069959737,
+        "to": "scheduling-order-issued"
+      },
+      {
+        "from": "institution-granted",
+        "label": "Consider early settlement",
+        "q": -20833.33333333333,
+        "to": "settlement-decision"
+      },
+      {
+        "from": "ipr-petition-filed",
+        "label": "Move for joinder to pending IPR",
+        "q": -18312.757201647877,
+        "to": "institution-granted"
+      },
+      {
+        "from": "ipr-petition-filed",
+        "label": "Office reviews petition compliance",
+        "q": 0,
+        "to": "petition-threshold-review"
+      },
+      {
+        "from": "mandatory-disclosures",
+        "label": "Move for additional discovery",
+        "q": -13271.604938271936,
+        "to": "additional-discovery-motion"
+      },
+      {
+        "from": "mandatory-disclosures",
+        "label": "Disclosures complete — no motion needed",
+        "q": -9490.740740740737,
+        "to": "patent-owner-response-window"
+      },
+      {
+        "from": "mandatory-disclosures",
+        "label": "Designate exchanged material confidential",
+        "q": -9490.740740740737,
+        "to": "protective-order-ipr"
+      },
+      {
+        "from": "motion-to-amend-decision",
+        "label": "File contingent motion to amend",
+        "q": -11111.111111111108,
+        "to": "mta-filed"
+      },
+      {
+        "from": "motion-to-amend-decision",
+        "label": "No motion to amend — proceed",
+        "q": -20833.33333333333,
+        "to": "settlement-decision"
+      },
+      {
+        "from": "mta-filed",
+        "label": "Board issues preliminary guidance",
+        "q": -1388.888888888886,
+        "to": "mta-preliminary-guidance"
+      },
+      {
+        "from": "mta-filed",
+        "label": "Settle while amendment is pending",
+        "q": -20833.33333333333,
+        "to": "settlement-decision"
+      },
+      {
+        "from": "mta-preliminary-guidance",
+        "label": "File a revised motion to amend",
+        "q": 8333.333333333336,
+        "to": "mta-revised-filed"
+      },
+      {
+        "from": "mta-preliminary-guidance",
+        "label": "Proceed without revising",
+        "q": 8333.333333333336,
+        "to": "petitioner-opposition-mta"
+      },
+      {
+        "from": "mta-preliminary-guidance",
+        "label": "Settle after unfavorable guidance",
+        "q": -20833.33333333333,
+        "to": "settlement-decision"
+      },
+      {
+        "from": "mta-revised-filed",
+        "label": "Petitioner opposes revised amendment",
+        "q": 8333.333333333336,
+        "to": "petitioner-opposition-mta"
+      },
+      {
+        "from": "oral-hearing-held",
+        "label": "Hearing concludes — case submitted",
+        "q": 37500,
+        "to": "fwd-issued"
+      },
+      {
+        "from": "oral-hearing-request",
+        "label": "Waive oral argument",
+        "q": 37500,
+        "to": "fwd-issued"
+      },
+      {
+        "from": "oral-hearing-request",
+        "label": "Request oral argument",
+        "q": 37500,
+        "to": "oral-hearing-held"
+      },
+      {
+        "from": "patent-granted",
+        "label": "Consider challenging without suit",
+        "q": 0,
+        "to": "challenge-vehicle-decision"
+      },
+      {
+        "from": "patent-granted",
+        "label": "Get sued for infringement",
+        "q": 0,
+        "to": "infringement-complaint-served"
+      },
+      {
+        "from": "patent-granted",
+        "label": "File PGR petition directly",
+        "q": 0,
+        "to": "pgr-petition-filed"
+      },
+      {
+        "from": "patent-owner-no-response",
+        "label": "No response — still may request hearing",
+        "q": 37500,
+        "to": "oral-hearing-request"
+      },
+      {
+        "from": "patent-owner-no-response",
+        "label": "Proceed toward settlement",
+        "q": -20833.33333333333,
+        "to": "settlement-decision"
+      },
+      {
+        "from": "patent-owner-response-filed",
+        "label": "File Petitioner Reply",
+        "q": -15972.222222222219,
+        "to": "petitioner-reply-brief"
+      },
+      {
+        "from": "patent-owner-response-filed",
+        "label": "Settle after filing response",
+        "q": -20833.33333333333,
+        "to": "settlement-decision"
+      },
+      {
+        "from": "patent-owner-response-window",
+        "label": "Elect not to respond",
+        "q": 8333.333333333336,
+        "to": "patent-owner-no-response"
+      },
+      {
+        "from": "patent-owner-response-window",
+        "label": "File Patent Owner Response",
+        "q": -15972.222222222219,
+        "to": "patent-owner-response-filed"
+      },
+      {
+        "from": "patent-owner-response-window",
+        "label": "Settle instead of responding",
+        "q": -20833.33333333333,
+        "to": "settlement-decision"
+      },
+      {
+        "from": "patent-owner-sur-reply",
+        "label": "Briefing complete — assess amendment",
+        "q": -15972.222222222219,
+        "to": "motion-to-amend-decision"
+      },
+      {
+        "from": "petition-filing-date-accorded",
+        "label": "Filing date accorded — POPR clock starts",
+        "q": -7935.528120762957,
+        "to": "popr-window"
+      },
+      {
+        "from": "petition-threshold-review",
+        "label": "Correct petition defect and refile",
+        "q": 0,
+        "to": "ipr-petition-filed"
+      },
+      {
+        "from": "petition-threshold-review",
+        "label": "Board finds petition time-barred",
+        "q": 0,
+        "to": "ipr-time-barred"
+      },
+      {
+        "from": "petition-threshold-review",
+        "label": "Petition meets fee/word-count/form",
+        "q": -7935.528120911917,
+        "to": "petition-filing-date-accorded"
+      },
+      {
+        "from": "petitioner-opposition-mta",
+        "label": "MTA briefing closes — proceed to hearing",
+        "q": 37500,
+        "to": "oral-hearing-request"
+      },
+      {
+        "from": "petitioner-opposition-mta",
+        "label": "MTA briefing closes",
+        "q": -20833.33333333333,
+        "to": "settlement-decision"
+      },
+      {
+        "from": "petitioner-reply-brief",
+        "label": "File Patent Owner Sur-Reply",
+        "q": -15972.222222222219,
+        "to": "patent-owner-sur-reply"
+      },
+      {
+        "from": "pgr-petition-filed",
+        "label": "Office reviews petition compliance",
+        "q": 0,
+        "to": "petition-threshold-review"
+      },
+      {
+        "from": "popr-filed",
+        "label": "POPR complete — Board decides institution",
+        "q": -11903.29218107461,
+        "to": "institution-decision"
+      },
+      {
+        "from": "popr-waived",
+        "label": "POPR waived — Board decides institution",
+        "q": -11903.29218107461,
+        "to": "institution-decision"
+      },
+      {
+        "from": "popr-window",
+        "label": "Disclaim all challenged claims",
+        "q": 0,
+        "to": "claims-disclaimed-preinstitution"
+      },
+      {
+        "from": "popr-window",
+        "label": "File Patent Owner Preliminary Response",
+        "q": -11903.292181088576,
+        "to": "popr-filed"
+      },
+      {
+        "from": "popr-window",
+        "label": "Waive the preliminary response",
+        "q": -11903.292181088576,
+        "to": "popr-waived"
+      },
+      {
+        "from": "post-fwd-options",
+        "label": "Request Director review",
+        "q": -949.0740740740738,
+        "to": "director-review-request-filed"
+      },
+      {
+        "from": "post-fwd-options",
+        "label": "Skip rehearing — go straight to appeal",
+        "q": 0,
+        "to": "federal-circuit-window"
+      },
+      {
+        "from": "post-fwd-options",
+        "label": "Request panel rehearing",
+        "q": -316.3580246913579,
+        "to": "rehearing-request-filed"
+      },
+      {
+        "from": "protective-order-ipr",
+        "label": "Discovery proceeds under protective order",
+        "q": -9490.740740740737,
+        "to": "patent-owner-response-window"
+      },
+      {
+        "from": "rehearing-decision",
+        "label": "Escalate denied rehearing to Director",
+        "q": -949.0740740740738,
+        "to": "director-review-request-filed"
+      },
+      {
+        "from": "rehearing-decision",
+        "label": "Deny rehearing — decision stands",
+        "q": 0,
+        "to": "rehearing-denied-affirmed"
+      },
+      {
+        "from": "rehearing-decision",
+        "label": "Grant rehearing — modify decision",
+        "q": 0,
+        "to": "rehearing-granted-modified"
+      },
+      {
+        "from": "rehearing-denied-affirmed",
+        "label": "Proceed to the appeal window",
+        "q": 0,
+        "to": "federal-circuit-window"
+      },
+      {
+        "from": "rehearing-granted-modified",
+        "label": "Proceed to the appeal window",
+        "q": 0,
+        "to": "federal-circuit-window"
+      },
+      {
+        "from": "rehearing-request-filed",
+        "label": "Panel considers rehearing request",
+        "q": -316.3580246913579,
+        "to": "rehearing-decision"
+      },
+      {
+        "from": "scheduling-order-issued",
+        "label": "Exchange mandatory initial disclosures",
+        "q": -10751.028806584805,
+        "to": "mandatory-disclosures"
+      },
+      {
+        "from": "scheduling-order-issued",
+        "label": "Settle right after scheduling",
+        "q": -20833.33333333333,
+        "to": "settlement-decision"
+      },
+      {
+        "from": "settlement-decision",
+        "label": "Request adverse judgment instead",
+        "q": -100000,
+        "to": "adverse-judgment-request"
+      },
+      {
+        "from": "settlement-decision",
+        "label": "Settle before final written decision",
+        "q": 0,
+        "to": "ipr-terminated-settlement"
+      },
+      {
+        "from": "settlement-decision",
+        "label": "No settlement — proceed to hearing",
+        "q": 37500,
+        "to": "oral-hearing-request"
+      }
+    ],
+    "iterations": 33,
+    "policy": {
+      "challenge-vehicle-decision": {
+        "from": "challenge-vehicle-decision",
+        "label": "File IPR petition",
+        "to": "ipr-petition-filed"
+      },
+      "infringement-complaint-served": {
+        "from": "infringement-complaint-served",
+        "label": "Evaluate IPR/PGR after being sued",
+        "to": "challenge-vehicle-decision"
+      },
+      "ipr-petition-filed": {
+        "from": "ipr-petition-filed",
+        "label": "Office reviews petition compliance",
+        "to": "petition-threshold-review"
+      },
+      "mta-revised-filed": {
+        "from": "mta-revised-filed",
+        "label": "Petitioner opposes revised amendment",
+        "to": "petitioner-opposition-mta"
+      },
+      "patent-granted": {
+        "from": "patent-granted",
+        "label": "Get sued for infringement",
+        "to": "infringement-complaint-served"
+      },
+      "patent-owner-response-filed": {
+        "from": "patent-owner-response-filed",
+        "label": "File Petitioner Reply",
+        "to": "petitioner-reply-brief"
+      },
+      "petition-threshold-review": {
+        "from": "petition-threshold-review",
+        "label": "Correct petition defect and refile",
+        "to": "ipr-petition-filed"
+      }
+    },
+    "qValue": {
+      "additional-discovery-motion→additional-discovery-motion": -13271.604938271936,
+      "additional-discovery-motion→patent-owner-response-window": -9490.740740740737,
+      "additional-discovery-motion→protective-order-ipr": -9490.740740740737,
+      "additional-discovery-motion→settlement-decision": -20833.33333333333,
+      "adverse-judgment-request→adverse-judgment-terminal": -100000,
+      "challenge-vehicle-decision→ipr-petition-filed": 0,
+      "challenge-vehicle-decision→pgr-petition-filed": 0,
+      "director-review-affirmed→federal-circuit-window": 0,
+      "director-review-decision→director-review-affirmed": 0,
+      "director-review-decision→director-review-modified": 0,
+      "director-review-decision→patent-owner-response-window": -9490.740740740737,
+      "director-review-modified→federal-circuit-window": 0,
+      "director-review-request-filed→director-review-decision": -949.0740740740738,
+      "federal-circuit-notice-of-appeal→federal-circuit-review": 0,
+      "federal-circuit-review→cafc-affirms": 0,
+      "federal-circuit-review→cafc-vacates-remands": 0,
+      "federal-circuit-window→appeal-forfeited-unappealed": 0,
+      "federal-circuit-window→federal-circuit-notice-of-appeal": 0,
+      "fwd-issued→fwd-all-confirmed": 150000,
+      "fwd-issued→fwd-all-unpatentable": 0,
+      "fwd-issued→fwd-mixed": 0,
+      "infringement-complaint-served→challenge-vehicle-decision": 0,
+      "infringement-complaint-served→ipr-petition-filed": 0,
+      "institution-decision→institution-denied-fintiv": 0,
+      "institution-decision→institution-denied-merits": 0,
+      "institution-decision→institution-granted": -18312.757201647877,
+      "institution-granted→scheduling-order-issued": -15792.181069959737,
+      "institution-granted→settlement-decision": -20833.33333333333,
+      "ipr-petition-filed→institution-granted": -18312.757201647877,
+      "ipr-petition-filed→petition-threshold-review": 0,
+      "mandatory-disclosures→additional-discovery-motion": -13271.604938271936,
+      "mandatory-disclosures→patent-owner-response-window": -9490.740740740737,
+      "mandatory-disclosures→protective-order-ipr": -9490.740740740737,
+      "motion-to-amend-decision→mta-filed": -11111.111111111108,
+      "motion-to-amend-decision→settlement-decision": -20833.33333333333,
+      "mta-filed→mta-preliminary-guidance": -1388.888888888886,
+      "mta-filed→settlement-decision": -20833.33333333333,
+      "mta-preliminary-guidance→mta-revised-filed": 8333.333333333336,
+      "mta-preliminary-guidance→petitioner-opposition-mta": 8333.333333333336,
+      "mta-preliminary-guidance→settlement-decision": -20833.33333333333,
+      "mta-revised-filed→petitioner-opposition-mta": 8333.333333333336,
+      "oral-hearing-held→fwd-issued": 37500,
+      "oral-hearing-request→fwd-issued": 37500,
+      "oral-hearing-request→oral-hearing-held": 37500,
+      "patent-granted→challenge-vehicle-decision": 0,
+      "patent-granted→infringement-complaint-served": 0,
+      "patent-granted→pgr-petition-filed": 0,
+      "patent-owner-no-response→oral-hearing-request": 37500,
+      "patent-owner-no-response→settlement-decision": -20833.33333333333,
+      "patent-owner-response-filed→petitioner-reply-brief": -15972.222222222219,
+      "patent-owner-response-filed→settlement-decision": -20833.33333333333,
+      "patent-owner-response-window→patent-owner-no-response": 8333.333333333336,
+      "patent-owner-response-window→patent-owner-response-filed": -15972.222222222219,
+      "patent-owner-response-window→settlement-decision": -20833.33333333333,
+      "patent-owner-sur-reply→motion-to-amend-decision": -15972.222222222219,
+      "petition-filing-date-accorded→popr-window": -7935.528120762957,
+      "petition-threshold-review→ipr-petition-filed": 0,
+      "petition-threshold-review→ipr-time-barred": 0,
+      "petition-threshold-review→petition-filing-date-accorded": -7935.528120911917,
+      "petitioner-opposition-mta→oral-hearing-request": 37500,
+      "petitioner-opposition-mta→settlement-decision": -20833.33333333333,
+      "petitioner-reply-brief→patent-owner-sur-reply": -15972.222222222219,
+      "pgr-petition-filed→petition-threshold-review": 0,
+      "popr-filed→institution-decision": -11903.29218107461,
+      "popr-waived→institution-decision": -11903.29218107461,
+      "popr-window→claims-disclaimed-preinstitution": 0,
+      "popr-window→popr-filed": -11903.292181088576,
+      "popr-window→popr-waived": -11903.292181088576,
+      "post-fwd-options→director-review-request-filed": -949.0740740740738,
+      "post-fwd-options→federal-circuit-window": 0,
+      "post-fwd-options→rehearing-request-filed": -316.3580246913579,
+      "protective-order-ipr→patent-owner-response-window": -9490.740740740737,
+      "rehearing-decision→director-review-request-filed": -949.0740740740738,
+      "rehearing-decision→rehearing-denied-affirmed": 0,
+      "rehearing-decision→rehearing-granted-modified": 0,
+      "rehearing-denied-affirmed→federal-circuit-window": 0,
+      "rehearing-granted-modified→federal-circuit-window": 0,
+      "rehearing-request-filed→rehearing-decision": -316.3580246913579,
+      "scheduling-order-issued→mandatory-disclosures": -10751.028806584805,
+      "scheduling-order-issued→settlement-decision": -20833.33333333333,
+      "settlement-decision→adverse-judgment-request": -100000,
+      "settlement-decision→ipr-terminated-settlement": 0,
+      "settlement-decision→oral-hearing-request": 37500
+    },
+    "qValueNote": "qValue is keyed 'from→to' (StatechartEdge.qKey) and COLLIDES on parallel edges (same from/to, different label) — last-write-wins from the source Map iteration order. Use edgeQ for a collision-free per-edge view.",
+    "value": {
+      "additional-discovery-motion": -13271.604938271936,
+      "adverse-judgment-request": -100000,
+      "adverse-judgment-terminal": -100000,
+      "appeal-forfeited-unappealed": 0,
+      "cafc-affirms": 0,
+      "cafc-vacates-remands": 0,
+      "challenge-vehicle-decision": 0,
+      "claims-disclaimed-preinstitution": 0,
+      "director-review-affirmed": 0,
+      "director-review-decision": -949.0740740740738,
+      "director-review-modified": 0,
+      "director-review-request-filed": -949.0740740740738,
+      "federal-circuit-notice-of-appeal": 0,
+      "federal-circuit-review": 0,
+      "federal-circuit-window": 0,
+      "fwd-all-confirmed": 150000,
+      "fwd-all-unpatentable": 0,
+      "fwd-issued": 37500,
+      "fwd-mixed": 0,
+      "infringement-complaint-served": 0,
+      "institution-decision": -11903.29218107461,
+      "institution-denied-fintiv": 0,
+      "institution-denied-merits": 0,
+      "institution-granted": -18312.757201647877,
+      "ipr-petition-filed": 0,
+      "ipr-terminated-settlement": 0,
+      "ipr-time-barred": 0,
+      "mandatory-disclosures": -10751.028806584805,
+      "motion-to-amend-decision": -15972.222222222219,
+      "mta-filed": -11111.111111111108,
+      "mta-preliminary-guidance": -1388.888888888886,
+      "mta-revised-filed": 8333.333333333336,
+      "oral-hearing-held": 37500,
+      "oral-hearing-request": 37500,
+      "patent-granted": 0,
+      "patent-owner-no-response": 8333.333333333336,
+      "patent-owner-response-filed": -15972.222222222219,
+      "patent-owner-response-window": -9490.740740740737,
+      "patent-owner-sur-reply": -15972.222222222219,
+      "petition-filing-date-accorded": -7935.528120911917,
+      "petition-threshold-review": 0,
+      "petitioner-opposition-mta": 8333.333333333336,
+      "petitioner-reply-brief": -15972.222222222219,
+      "pgr-petition-filed": 0,
+      "popr-filed": -11903.292181088576,
+      "popr-waived": -11903.292181088576,
+      "popr-window": -7935.528120762957,
+      "post-fwd-options": -421.8106995884772,
+      "protective-order-ipr": -9490.740740740737,
+      "rehearing-decision": -316.3580246913579,
+      "rehearing-denied-affirmed": 0,
+      "rehearing-granted-modified": 0,
+      "rehearing-request-filed": -316.3580246913579,
+      "scheduling-order-issued": -15792.181069959737,
+      "settlement-decision": -20833.33333333333
+    }
+  },
+  "valueIteration500": {
+    "converged": true,
+    "edgeQ": [
+      {
+        "from": "additional-discovery-motion",
+        "label": "Renew motion for further discovery",
+        "q": -13271.604938271936,
+        "to": "additional-discovery-motion"
+      },
+      {
+        "from": "additional-discovery-motion",
+        "label": "Board denies additional discovery",
+        "q": -9490.740740740737,
+        "to": "patent-owner-response-window"
+      },
+      {
+        "from": "additional-discovery-motion",
+        "label": "Board grants additional discovery",
+        "q": -9490.740740740737,
+        "to": "protective-order-ipr"
+      },
+      {
+        "from": "additional-discovery-motion",
+        "label": "Settle rather than fight discovery",
+        "q": -20833.33333333333,
+        "to": "settlement-decision"
+      },
+      {
+        "from": "adverse-judgment-request",
+        "label": "Board enters adverse judgment",
+        "q": -100000,
+        "to": "adverse-judgment-terminal"
+      },
+      {
+        "from": "cafc-vacates-remands",
+        "label": "Board reconsiders on remand",
+        "q": 37500,
+        "to": "fwd-issued"
+      },
+      {
+        "from": "challenge-vehicle-decision",
+        "label": "File IPR petition",
+        "q": 0,
+        "to": "ipr-petition-filed"
+      },
+      {
+        "from": "challenge-vehicle-decision",
+        "label": "File PGR petition within 9 months",
+        "q": 0,
+        "to": "pgr-petition-filed"
+      },
+      {
+        "from": "director-review-affirmed",
+        "label": "Proceed to the appeal window",
+        "q": 0,
+        "to": "federal-circuit-window"
+      },
+      {
+        "from": "director-review-decision",
+        "label": "Director affirms the panel",
+        "q": 0,
+        "to": "director-review-affirmed"
+      },
+      {
+        "from": "director-review-decision",
+        "label": "Director modifies the decision",
+        "q": 0,
+        "to": "director-review-modified"
+      },
+      {
+        "from": "director-review-decision",
+        "label": "Director remands for further proceedings",
+        "q": -9490.740740740737,
+        "to": "patent-owner-response-window"
+      },
+      {
+        "from": "director-review-modified",
+        "label": "Proceed to the appeal window",
+        "q": 0,
+        "to": "federal-circuit-window"
+      },
+      {
+        "from": "director-review-request-filed",
+        "label": "Director reviews the decision",
+        "q": -949.0740740740738,
+        "to": "director-review-decision"
+      },
+      {
+        "from": "federal-circuit-notice-of-appeal",
+        "label": "Federal Circuit reviews the decision",
+        "q": 0,
+        "to": "federal-circuit-review"
+      },
+      {
+        "from": "federal-circuit-review",
+        "label": "Affirm the Board",
+        "q": 0,
+        "to": "cafc-affirms"
+      },
+      {
+        "from": "federal-circuit-review",
+        "label": "Vacate or remand to the Board",
+        "q": 0,
+        "to": "cafc-vacates-remands"
+      },
+      {
+        "from": "federal-circuit-window",
+        "label": "Let the 63-day window lapse",
+        "q": 0,
+        "to": "appeal-forfeited-unappealed"
+      },
+      {
+        "from": "federal-circuit-window",
+        "label": "File notice of appeal",
+        "q": 0,
+        "to": "federal-circuit-notice-of-appeal"
+      },
+      {
+        "from": "fwd-all-confirmed",
+        "label": "Petitioner considers post-FWD relief",
+        "q": -421.8106995884772,
+        "to": "post-fwd-options"
+      },
+      {
+        "from": "fwd-all-unpatentable",
+        "label": "Patent owner considers post-FWD relief",
+        "q": -421.8106995884772,
+        "to": "post-fwd-options"
+      },
+      {
+        "from": "fwd-issued",
+        "label": "Confirm all instituted claims patentable",
+        "q": 150000,
+        "to": "fwd-all-confirmed"
+      },
+      {
+        "from": "fwd-issued",
+        "label": "Hold all instituted claims unpatentable",
+        "q": 0,
+        "to": "fwd-all-unpatentable"
+      },
+      {
+        "from": "fwd-issued",
+        "label": "Cancel some claims, confirm others",
+        "q": 0,
+        "to": "fwd-mixed"
+      },
+      {
+        "from": "fwd-mixed",
+        "label": "Either party considers post-FWD relief",
+        "q": -421.8106995884772,
+        "to": "post-fwd-options"
+      },
+      {
+        "from": "infringement-complaint-served",
+        "label": "Evaluate IPR/PGR after being sued",
+        "q": 0,
+        "to": "challenge-vehicle-decision"
+      },
+      {
+        "from": "infringement-complaint-served",
+        "label": "File IPR directly after being sued",
+        "q": 0,
+        "to": "ipr-petition-filed"
+      },
+      {
+        "from": "institution-decision",
+        "label": "Deny institution on discretionary grounds",
+        "q": 0,
+        "to": "institution-denied-fintiv"
+      },
+      {
+        "from": "institution-decision",
+        "label": "Deny institution on the merits",
+        "q": 0,
+        "to": "institution-denied-merits"
+      },
+      {
+        "from": "institution-decision",
+        "label": "Institute trial on all challenged claims",
+        "q": -18312.757201647877,
+        "to": "institution-granted"
+      },
+      {
+        "from": "institution-denied-fintiv",
+        "label": "Refile after parallel case resolves",
+        "q": 0,
+        "to": "challenge-vehicle-decision"
+      },
+      {
+        "from": "institution-denied-merits",
+        "label": "File a follow-on petition",
+        "q": 0,
+        "to": "challenge-vehicle-decision"
+      },
+      {
+        "from": "institution-granted",
+        "label": "Board issues scheduling order",
+        "q": -15792.181069959737,
+        "to": "scheduling-order-issued"
+      },
+      {
+        "from": "institution-granted",
+        "label": "Consider early settlement",
+        "q": -20833.33333333333,
+        "to": "settlement-decision"
+      },
+      {
+        "from": "ipr-petition-filed",
+        "label": "Move for joinder to pending IPR",
+        "q": -18312.757201647877,
+        "to": "institution-granted"
+      },
+      {
+        "from": "ipr-petition-filed",
+        "label": "Office reviews petition compliance",
+        "q": 0,
+        "to": "petition-threshold-review"
+      },
+      {
+        "from": "mandatory-disclosures",
+        "label": "Move for additional discovery",
+        "q": -13271.604938271936,
+        "to": "additional-discovery-motion"
+      },
+      {
+        "from": "mandatory-disclosures",
+        "label": "Disclosures complete — no motion needed",
+        "q": -9490.740740740737,
+        "to": "patent-owner-response-window"
+      },
+      {
+        "from": "mandatory-disclosures",
+        "label": "Designate exchanged material confidential",
+        "q": -9490.740740740737,
+        "to": "protective-order-ipr"
+      },
+      {
+        "from": "motion-to-amend-decision",
+        "label": "File contingent motion to amend",
+        "q": -11111.111111111108,
+        "to": "mta-filed"
+      },
+      {
+        "from": "motion-to-amend-decision",
+        "label": "No motion to amend — proceed",
+        "q": -20833.33333333333,
+        "to": "settlement-decision"
+      },
+      {
+        "from": "mta-filed",
+        "label": "Board issues preliminary guidance",
+        "q": -1388.888888888886,
+        "to": "mta-preliminary-guidance"
+      },
+      {
+        "from": "mta-filed",
+        "label": "Settle while amendment is pending",
+        "q": -20833.33333333333,
+        "to": "settlement-decision"
+      },
+      {
+        "from": "mta-preliminary-guidance",
+        "label": "File a revised motion to amend",
+        "q": 8333.333333333336,
+        "to": "mta-revised-filed"
+      },
+      {
+        "from": "mta-preliminary-guidance",
+        "label": "Proceed without revising",
+        "q": 8333.333333333336,
+        "to": "petitioner-opposition-mta"
+      },
+      {
+        "from": "mta-preliminary-guidance",
+        "label": "Settle after unfavorable guidance",
+        "q": -20833.33333333333,
+        "to": "settlement-decision"
+      },
+      {
+        "from": "mta-revised-filed",
+        "label": "Petitioner opposes revised amendment",
+        "q": 8333.333333333336,
+        "to": "petitioner-opposition-mta"
+      },
+      {
+        "from": "oral-hearing-held",
+        "label": "Hearing concludes — case submitted",
+        "q": 37500,
+        "to": "fwd-issued"
+      },
+      {
+        "from": "oral-hearing-request",
+        "label": "Waive oral argument",
+        "q": 37500,
+        "to": "fwd-issued"
+      },
+      {
+        "from": "oral-hearing-request",
+        "label": "Request oral argument",
+        "q": 37500,
+        "to": "oral-hearing-held"
+      },
+      {
+        "from": "patent-granted",
+        "label": "Consider challenging without suit",
+        "q": 0,
+        "to": "challenge-vehicle-decision"
+      },
+      {
+        "from": "patent-granted",
+        "label": "Get sued for infringement",
+        "q": 0,
+        "to": "infringement-complaint-served"
+      },
+      {
+        "from": "patent-granted",
+        "label": "File PGR petition directly",
+        "q": 0,
+        "to": "pgr-petition-filed"
+      },
+      {
+        "from": "patent-owner-no-response",
+        "label": "No response — still may request hearing",
+        "q": 37500,
+        "to": "oral-hearing-request"
+      },
+      {
+        "from": "patent-owner-no-response",
+        "label": "Proceed toward settlement",
+        "q": -20833.33333333333,
+        "to": "settlement-decision"
+      },
+      {
+        "from": "patent-owner-response-filed",
+        "label": "File Petitioner Reply",
+        "q": -15972.222222222219,
+        "to": "petitioner-reply-brief"
+      },
+      {
+        "from": "patent-owner-response-filed",
+        "label": "Settle after filing response",
+        "q": -20833.33333333333,
+        "to": "settlement-decision"
+      },
+      {
+        "from": "patent-owner-response-window",
+        "label": "Elect not to respond",
+        "q": 8333.333333333336,
+        "to": "patent-owner-no-response"
+      },
+      {
+        "from": "patent-owner-response-window",
+        "label": "File Patent Owner Response",
+        "q": -15972.222222222219,
+        "to": "patent-owner-response-filed"
+      },
+      {
+        "from": "patent-owner-response-window",
+        "label": "Settle instead of responding",
+        "q": -20833.33333333333,
+        "to": "settlement-decision"
+      },
+      {
+        "from": "patent-owner-sur-reply",
+        "label": "Briefing complete — assess amendment",
+        "q": -15972.222222222219,
+        "to": "motion-to-amend-decision"
+      },
+      {
+        "from": "petition-filing-date-accorded",
+        "label": "Filing date accorded — POPR clock starts",
+        "q": -7935.528120762957,
+        "to": "popr-window"
+      },
+      {
+        "from": "petition-threshold-review",
+        "label": "Correct petition defect and refile",
+        "q": 0,
+        "to": "ipr-petition-filed"
+      },
+      {
+        "from": "petition-threshold-review",
+        "label": "Board finds petition time-barred",
+        "q": 0,
+        "to": "ipr-time-barred"
+      },
+      {
+        "from": "petition-threshold-review",
+        "label": "Petition meets fee/word-count/form",
+        "q": -7935.528120911917,
+        "to": "petition-filing-date-accorded"
+      },
+      {
+        "from": "petitioner-opposition-mta",
+        "label": "MTA briefing closes — proceed to hearing",
+        "q": 37500,
+        "to": "oral-hearing-request"
+      },
+      {
+        "from": "petitioner-opposition-mta",
+        "label": "MTA briefing closes",
+        "q": -20833.33333333333,
+        "to": "settlement-decision"
+      },
+      {
+        "from": "petitioner-reply-brief",
+        "label": "File Patent Owner Sur-Reply",
+        "q": -15972.222222222219,
+        "to": "patent-owner-sur-reply"
+      },
+      {
+        "from": "pgr-petition-filed",
+        "label": "Office reviews petition compliance",
+        "q": 0,
+        "to": "petition-threshold-review"
+      },
+      {
+        "from": "popr-filed",
+        "label": "POPR complete — Board decides institution",
+        "q": -11903.29218107461,
+        "to": "institution-decision"
+      },
+      {
+        "from": "popr-waived",
+        "label": "POPR waived — Board decides institution",
+        "q": -11903.29218107461,
+        "to": "institution-decision"
+      },
+      {
+        "from": "popr-window",
+        "label": "Disclaim all challenged claims",
+        "q": 0,
+        "to": "claims-disclaimed-preinstitution"
+      },
+      {
+        "from": "popr-window",
+        "label": "File Patent Owner Preliminary Response",
+        "q": -11903.292181088576,
+        "to": "popr-filed"
+      },
+      {
+        "from": "popr-window",
+        "label": "Waive the preliminary response",
+        "q": -11903.292181088576,
+        "to": "popr-waived"
+      },
+      {
+        "from": "post-fwd-options",
+        "label": "Request Director review",
+        "q": -949.0740740740738,
+        "to": "director-review-request-filed"
+      },
+      {
+        "from": "post-fwd-options",
+        "label": "Skip rehearing — go straight to appeal",
+        "q": 0,
+        "to": "federal-circuit-window"
+      },
+      {
+        "from": "post-fwd-options",
+        "label": "Request panel rehearing",
+        "q": -316.3580246913579,
+        "to": "rehearing-request-filed"
+      },
+      {
+        "from": "protective-order-ipr",
+        "label": "Discovery proceeds under protective order",
+        "q": -9490.740740740737,
+        "to": "patent-owner-response-window"
+      },
+      {
+        "from": "rehearing-decision",
+        "label": "Escalate denied rehearing to Director",
+        "q": -949.0740740740738,
+        "to": "director-review-request-filed"
+      },
+      {
+        "from": "rehearing-decision",
+        "label": "Deny rehearing — decision stands",
+        "q": 0,
+        "to": "rehearing-denied-affirmed"
+      },
+      {
+        "from": "rehearing-decision",
+        "label": "Grant rehearing — modify decision",
+        "q": 0,
+        "to": "rehearing-granted-modified"
+      },
+      {
+        "from": "rehearing-denied-affirmed",
+        "label": "Proceed to the appeal window",
+        "q": 0,
+        "to": "federal-circuit-window"
+      },
+      {
+        "from": "rehearing-granted-modified",
+        "label": "Proceed to the appeal window",
+        "q": 0,
+        "to": "federal-circuit-window"
+      },
+      {
+        "from": "rehearing-request-filed",
+        "label": "Panel considers rehearing request",
+        "q": -316.3580246913579,
+        "to": "rehearing-decision"
+      },
+      {
+        "from": "scheduling-order-issued",
+        "label": "Exchange mandatory initial disclosures",
+        "q": -10751.028806584805,
+        "to": "mandatory-disclosures"
+      },
+      {
+        "from": "scheduling-order-issued",
+        "label": "Settle right after scheduling",
+        "q": -20833.33333333333,
+        "to": "settlement-decision"
+      },
+      {
+        "from": "settlement-decision",
+        "label": "Request adverse judgment instead",
+        "q": -100000,
+        "to": "adverse-judgment-request"
+      },
+      {
+        "from": "settlement-decision",
+        "label": "Settle before final written decision",
+        "q": 0,
+        "to": "ipr-terminated-settlement"
+      },
+      {
+        "from": "settlement-decision",
+        "label": "No settlement — proceed to hearing",
+        "q": 37500,
+        "to": "oral-hearing-request"
+      }
+    ],
+    "iterations": 33,
+    "policy": {
+      "challenge-vehicle-decision": {
+        "from": "challenge-vehicle-decision",
+        "label": "File IPR petition",
+        "to": "ipr-petition-filed"
+      },
+      "infringement-complaint-served": {
+        "from": "infringement-complaint-served",
+        "label": "Evaluate IPR/PGR after being sued",
+        "to": "challenge-vehicle-decision"
+      },
+      "ipr-petition-filed": {
+        "from": "ipr-petition-filed",
+        "label": "Office reviews petition compliance",
+        "to": "petition-threshold-review"
+      },
+      "mta-revised-filed": {
+        "from": "mta-revised-filed",
+        "label": "Petitioner opposes revised amendment",
+        "to": "petitioner-opposition-mta"
+      },
+      "patent-granted": {
+        "from": "patent-granted",
+        "label": "Get sued for infringement",
+        "to": "infringement-complaint-served"
+      },
+      "patent-owner-response-filed": {
+        "from": "patent-owner-response-filed",
+        "label": "File Petitioner Reply",
+        "to": "petitioner-reply-brief"
+      },
+      "petition-threshold-review": {
+        "from": "petition-threshold-review",
+        "label": "Correct petition defect and refile",
+        "to": "ipr-petition-filed"
+      }
+    },
+    "qValue": {
+      "additional-discovery-motion→additional-discovery-motion": -13271.604938271936,
+      "additional-discovery-motion→patent-owner-response-window": -9490.740740740737,
+      "additional-discovery-motion→protective-order-ipr": -9490.740740740737,
+      "additional-discovery-motion→settlement-decision": -20833.33333333333,
+      "adverse-judgment-request→adverse-judgment-terminal": -100000,
+      "challenge-vehicle-decision→ipr-petition-filed": 0,
+      "challenge-vehicle-decision→pgr-petition-filed": 0,
+      "director-review-affirmed→federal-circuit-window": 0,
+      "director-review-decision→director-review-affirmed": 0,
+      "director-review-decision→director-review-modified": 0,
+      "director-review-decision→patent-owner-response-window": -9490.740740740737,
+      "director-review-modified→federal-circuit-window": 0,
+      "director-review-request-filed→director-review-decision": -949.0740740740738,
+      "federal-circuit-notice-of-appeal→federal-circuit-review": 0,
+      "federal-circuit-review→cafc-affirms": 0,
+      "federal-circuit-review→cafc-vacates-remands": 0,
+      "federal-circuit-window→appeal-forfeited-unappealed": 0,
+      "federal-circuit-window→federal-circuit-notice-of-appeal": 0,
+      "fwd-issued→fwd-all-confirmed": 150000,
+      "fwd-issued→fwd-all-unpatentable": 0,
+      "fwd-issued→fwd-mixed": 0,
+      "infringement-complaint-served→challenge-vehicle-decision": 0,
+      "infringement-complaint-served→ipr-petition-filed": 0,
+      "institution-decision→institution-denied-fintiv": 0,
+      "institution-decision→institution-denied-merits": 0,
+      "institution-decision→institution-granted": -18312.757201647877,
+      "institution-granted→scheduling-order-issued": -15792.181069959737,
+      "institution-granted→settlement-decision": -20833.33333333333,
+      "ipr-petition-filed→institution-granted": -18312.757201647877,
+      "ipr-petition-filed→petition-threshold-review": 0,
+      "mandatory-disclosures→additional-discovery-motion": -13271.604938271936,
+      "mandatory-disclosures→patent-owner-response-window": -9490.740740740737,
+      "mandatory-disclosures→protective-order-ipr": -9490.740740740737,
+      "motion-to-amend-decision→mta-filed": -11111.111111111108,
+      "motion-to-amend-decision→settlement-decision": -20833.33333333333,
+      "mta-filed→mta-preliminary-guidance": -1388.888888888886,
+      "mta-filed→settlement-decision": -20833.33333333333,
+      "mta-preliminary-guidance→mta-revised-filed": 8333.333333333336,
+      "mta-preliminary-guidance→petitioner-opposition-mta": 8333.333333333336,
+      "mta-preliminary-guidance→settlement-decision": -20833.33333333333,
+      "mta-revised-filed→petitioner-opposition-mta": 8333.333333333336,
+      "oral-hearing-held→fwd-issued": 37500,
+      "oral-hearing-request→fwd-issued": 37500,
+      "oral-hearing-request→oral-hearing-held": 37500,
+      "patent-granted→challenge-vehicle-decision": 0,
+      "patent-granted→infringement-complaint-served": 0,
+      "patent-granted→pgr-petition-filed": 0,
+      "patent-owner-no-response→oral-hearing-request": 37500,
+      "patent-owner-no-response→settlement-decision": -20833.33333333333,
+      "patent-owner-response-filed→petitioner-reply-brief": -15972.222222222219,
+      "patent-owner-response-filed→settlement-decision": -20833.33333333333,
+      "patent-owner-response-window→patent-owner-no-response": 8333.333333333336,
+      "patent-owner-response-window→patent-owner-response-filed": -15972.222222222219,
+      "patent-owner-response-window→settlement-decision": -20833.33333333333,
+      "patent-owner-sur-reply→motion-to-amend-decision": -15972.222222222219,
+      "petition-filing-date-accorded→popr-window": -7935.528120762957,
+      "petition-threshold-review→ipr-petition-filed": 0,
+      "petition-threshold-review→ipr-time-barred": 0,
+      "petition-threshold-review→petition-filing-date-accorded": -7935.528120911917,
+      "petitioner-opposition-mta→oral-hearing-request": 37500,
+      "petitioner-opposition-mta→settlement-decision": -20833.33333333333,
+      "petitioner-reply-brief→patent-owner-sur-reply": -15972.222222222219,
+      "pgr-petition-filed→petition-threshold-review": 0,
+      "popr-filed→institution-decision": -11903.29218107461,
+      "popr-waived→institution-decision": -11903.29218107461,
+      "popr-window→claims-disclaimed-preinstitution": 0,
+      "popr-window→popr-filed": -11903.292181088576,
+      "popr-window→popr-waived": -11903.292181088576,
+      "post-fwd-options→director-review-request-filed": -949.0740740740738,
+      "post-fwd-options→federal-circuit-window": 0,
+      "post-fwd-options→rehearing-request-filed": -316.3580246913579,
+      "protective-order-ipr→patent-owner-response-window": -9490.740740740737,
+      "rehearing-decision→director-review-request-filed": -949.0740740740738,
+      "rehearing-decision→rehearing-denied-affirmed": 0,
+      "rehearing-decision→rehearing-granted-modified": 0,
+      "rehearing-denied-affirmed→federal-circuit-window": 0,
+      "rehearing-granted-modified→federal-circuit-window": 0,
+      "rehearing-request-filed→rehearing-decision": -316.3580246913579,
+      "scheduling-order-issued→mandatory-disclosures": -10751.028806584805,
+      "scheduling-order-issued→settlement-decision": -20833.33333333333,
+      "settlement-decision→adverse-judgment-request": -100000,
+      "settlement-decision→ipr-terminated-settlement": 0,
+      "settlement-decision→oral-hearing-request": 37500
+    },
+    "qValueNote": "qValue is keyed 'from→to' (StatechartEdge.qKey) and COLLIDES on parallel edges (same from/to, different label) — last-write-wins from the source Map iteration order. Use edgeQ for a collision-free per-edge view.",
+    "value": {
+      "additional-discovery-motion": -13271.604938271936,
+      "adverse-judgment-request": -100000,
+      "adverse-judgment-terminal": -100000,
+      "appeal-forfeited-unappealed": 0,
+      "cafc-affirms": 0,
+      "cafc-vacates-remands": 0,
+      "challenge-vehicle-decision": 0,
+      "claims-disclaimed-preinstitution": 0,
+      "director-review-affirmed": 0,
+      "director-review-decision": -949.0740740740738,
+      "director-review-modified": 0,
+      "director-review-request-filed": -949.0740740740738,
+      "federal-circuit-notice-of-appeal": 0,
+      "federal-circuit-review": 0,
+      "federal-circuit-window": 0,
+      "fwd-all-confirmed": 150000,
+      "fwd-all-unpatentable": 0,
+      "fwd-issued": 37500,
+      "fwd-mixed": 0,
+      "infringement-complaint-served": 0,
+      "institution-decision": -11903.29218107461,
+      "institution-denied-fintiv": 0,
+      "institution-denied-merits": 0,
+      "institution-granted": -18312.757201647877,
+      "ipr-petition-filed": 0,
+      "ipr-terminated-settlement": 0,
+      "ipr-time-barred": 0,
+      "mandatory-disclosures": -10751.028806584805,
+      "motion-to-amend-decision": -15972.222222222219,
+      "mta-filed": -11111.111111111108,
+      "mta-preliminary-guidance": -1388.888888888886,
+      "mta-revised-filed": 8333.333333333336,
+      "oral-hearing-held": 37500,
+      "oral-hearing-request": 37500,
+      "patent-granted": 0,
+      "patent-owner-no-response": 8333.333333333336,
+      "patent-owner-response-filed": -15972.222222222219,
+      "patent-owner-response-window": -9490.740740740737,
+      "patent-owner-sur-reply": -15972.222222222219,
+      "petition-filing-date-accorded": -7935.528120911917,
+      "petition-threshold-review": 0,
+      "petitioner-opposition-mta": 8333.333333333336,
+      "petitioner-reply-brief": -15972.222222222219,
+      "pgr-petition-filed": 0,
+      "popr-filed": -11903.292181088576,
+      "popr-waived": -11903.292181088576,
+      "popr-window": -7935.528120762957,
+      "post-fwd-options": -421.8106995884772,
+      "protective-order-ipr": -9490.740740740737,
+      "rehearing-decision": -316.3580246913579,
+      "rehearing-denied-affirmed": 0,
+      "rehearing-granted-modified": 0,
+      "rehearing-request-filed": -316.3580246913579,
+      "scheduling-order-issued": -15792.181069959737,
+      "settlement-decision": -20833.33333333333
+    }
+  },
+  "weightedGraph500": {
+    "edges": [
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "additional-discovery-motion",
+        "hours": 0,
+        "label": "Renew motion for further discovery",
+        "probability": null,
+        "to": "additional-discovery-motion"
+      },
+      {
+        "benefit": 0,
+        "days": 90,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "additional-discovery-motion",
+        "hours": 0,
+        "label": "Board denies additional discovery",
+        "probability": 0.7,
+        "to": "patent-owner-response-window"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "additional-discovery-motion",
+        "hours": 0,
+        "label": "Board grants additional discovery",
+        "probability": 0.3,
+        "to": "protective-order-ipr"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "additional-discovery-motion",
+        "hours": 0,
+        "label": "Settle rather than fight discovery",
+        "probability": null,
+        "to": "settlement-decision"
+      },
+      {
+        "benefit": -100000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "adverse-judgment-request",
+        "hours": 0,
+        "label": "Board enters adverse judgment",
+        "probability": null,
+        "to": "adverse-judgment-terminal"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "cafc-vacates-remands",
+        "hours": 0,
+        "label": "Board reconsiders on remand",
+        "probability": null,
+        "to": "fwd-issued"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "challenge-vehicle-decision",
+        "hours": 0,
+        "label": "File IPR petition",
+        "probability": null,
+        "to": "ipr-petition-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 270,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "challenge-vehicle-decision",
+        "hours": 0,
+        "label": "File PGR petition within 9 months",
+        "probability": null,
+        "to": "pgr-petition-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "director-review-affirmed",
+        "hours": 0,
+        "label": "Proceed to the appeal window",
+        "probability": null,
+        "to": "federal-circuit-window"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "director-review-decision",
+        "hours": 0,
+        "label": "Director affirms the panel",
+        "probability": 0.75,
+        "to": "director-review-affirmed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "director-review-decision",
+        "hours": 0,
+        "label": "Director modifies the decision",
+        "probability": 0.15,
+        "to": "director-review-modified"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "director-review-decision",
+        "hours": 0,
+        "label": "Director remands for further proceedings",
+        "probability": 0.1,
+        "to": "patent-owner-response-window"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "director-review-modified",
+        "hours": 0,
+        "label": "Proceed to the appeal window",
+        "probability": null,
+        "to": "federal-circuit-window"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "director-review-request-filed",
+        "hours": 0,
+        "label": "Director reviews the decision",
+        "probability": null,
+        "to": "director-review-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "federal-circuit-notice-of-appeal",
+        "hours": 0,
+        "label": "Federal Circuit reviews the decision",
+        "probability": null,
+        "to": "federal-circuit-review"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "federal-circuit-review",
+        "hours": 0,
+        "label": "Affirm the Board",
+        "probability": 0.8,
+        "to": "cafc-affirms"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "federal-circuit-review",
+        "hours": 0,
+        "label": "Vacate or remand to the Board",
+        "probability": 0.2,
+        "to": "cafc-vacates-remands"
+      },
+      {
+        "benefit": 0,
+        "days": 63,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "federal-circuit-window",
+        "hours": 0,
+        "label": "Let the 63-day window lapse",
+        "probability": 0.08,
+        "to": "appeal-forfeited-unappealed"
+      },
+      {
+        "benefit": 0,
+        "days": 63,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "federal-circuit-window",
+        "hours": 0,
+        "label": "File notice of appeal",
+        "probability": 0.92,
+        "to": "federal-circuit-notice-of-appeal"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "fwd-all-confirmed",
+        "hours": 0,
+        "label": "Petitioner considers post-FWD relief",
+        "probability": null,
+        "to": "post-fwd-options"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "fwd-all-unpatentable",
+        "hours": 0,
+        "label": "Patent owner considers post-FWD relief",
+        "probability": null,
+        "to": "post-fwd-options"
+      },
+      {
+        "benefit": 150000,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "fwd-issued",
+        "hours": 0,
+        "label": "Confirm all instituted claims patentable",
+        "probability": 0.25,
+        "to": "fwd-all-confirmed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "fwd-issued",
+        "hours": 0,
+        "label": "Hold all instituted claims unpatentable",
+        "probability": 0.55,
+        "to": "fwd-all-unpatentable"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "fwd-issued",
+        "hours": 0,
+        "label": "Cancel some claims, confirm others",
+        "probability": 0.2,
+        "to": "fwd-mixed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "fwd-mixed",
+        "hours": 0,
+        "label": "Either party considers post-FWD relief",
+        "probability": null,
+        "to": "post-fwd-options"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "infringement-complaint-served",
+        "hours": 0,
+        "label": "Evaluate IPR/PGR after being sued",
+        "probability": null,
+        "to": "challenge-vehicle-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 365,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "infringement-complaint-served",
+        "hours": 0,
+        "label": "File IPR directly after being sued",
+        "probability": null,
+        "to": "ipr-petition-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "institution-decision",
+        "hours": 0,
+        "label": "Deny institution on discretionary grounds",
+        "probability": 0.15,
+        "to": "institution-denied-fintiv"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "institution-decision",
+        "hours": 0,
+        "label": "Deny institution on the merits",
+        "probability": 0.2,
+        "to": "institution-denied-merits"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "institution-decision",
+        "hours": 0,
+        "label": "Institute trial on all challenged claims",
+        "probability": 0.65,
+        "to": "institution-granted"
+      },
+      {
+        "benefit": 0,
+        "days": 365,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "institution-denied-fintiv",
+        "hours": 0,
+        "label": "Refile after parallel case resolves",
+        "probability": null,
+        "to": "challenge-vehicle-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 365,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "institution-denied-merits",
+        "hours": 0,
+        "label": "File a follow-on petition",
+        "probability": null,
+        "to": "challenge-vehicle-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 30,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "institution-granted",
+        "hours": 0,
+        "label": "Board issues scheduling order",
+        "probability": null,
+        "to": "scheduling-order-issued"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "institution-granted",
+        "hours": 0,
+        "label": "Consider early settlement",
+        "probability": null,
+        "to": "settlement-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "ipr-petition-filed",
+        "hours": 0,
+        "label": "Move for joinder to pending IPR",
+        "probability": null,
+        "to": "institution-granted"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "ipr-petition-filed",
+        "hours": 0,
+        "label": "Office reviews petition compliance",
+        "probability": null,
+        "to": "petition-threshold-review"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "mandatory-disclosures",
+        "hours": 0,
+        "label": "Move for additional discovery",
+        "probability": null,
+        "to": "additional-discovery-motion"
+      },
+      {
+        "benefit": 0,
+        "days": 90,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "mandatory-disclosures",
+        "hours": 0,
+        "label": "Disclosures complete — no motion needed",
+        "probability": null,
+        "to": "patent-owner-response-window"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "mandatory-disclosures",
+        "hours": 0,
+        "label": "Designate exchanged material confidential",
+        "probability": null,
+        "to": "protective-order-ipr"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "motion-to-amend-decision",
+        "hours": 0,
+        "label": "File contingent motion to amend",
+        "probability": null,
+        "to": "mta-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "motion-to-amend-decision",
+        "hours": 0,
+        "label": "No motion to amend — proceed",
+        "probability": null,
+        "to": "settlement-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "mta-filed",
+        "hours": 0,
+        "label": "Board issues preliminary guidance",
+        "probability": null,
+        "to": "mta-preliminary-guidance"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "mta-filed",
+        "hours": 0,
+        "label": "Settle while amendment is pending",
+        "probability": null,
+        "to": "settlement-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 30,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "mta-preliminary-guidance",
+        "hours": 0,
+        "label": "File a revised motion to amend",
+        "probability": null,
+        "to": "mta-revised-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "mta-preliminary-guidance",
+        "hours": 0,
+        "label": "Proceed without revising",
+        "probability": null,
+        "to": "petitioner-opposition-mta"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "mta-preliminary-guidance",
+        "hours": 0,
+        "label": "Settle after unfavorable guidance",
+        "probability": null,
+        "to": "settlement-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 30,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "mta-revised-filed",
+        "hours": 0,
+        "label": "Petitioner opposes revised amendment",
+        "probability": null,
+        "to": "petitioner-opposition-mta"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "oral-hearing-held",
+        "hours": 0,
+        "label": "Hearing concludes — case submitted",
+        "probability": null,
+        "to": "fwd-issued"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "oral-hearing-request",
+        "hours": 0,
+        "label": "Waive oral argument",
+        "probability": null,
+        "to": "fwd-issued"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "oral-hearing-request",
+        "hours": 0,
+        "label": "Request oral argument",
+        "probability": null,
+        "to": "oral-hearing-held"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "patent-granted",
+        "hours": 0,
+        "label": "Consider challenging without suit",
+        "probability": null,
+        "to": "challenge-vehicle-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "patent-granted",
+        "hours": 0,
+        "label": "Get sued for infringement",
+        "probability": null,
+        "to": "infringement-complaint-served"
+      },
+      {
+        "benefit": 0,
+        "days": 270,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "patent-granted",
+        "hours": 0,
+        "label": "File PGR petition directly",
+        "probability": null,
+        "to": "pgr-petition-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "patent-owner-no-response",
+        "hours": 0,
+        "label": "No response — still may request hearing",
+        "probability": null,
+        "to": "oral-hearing-request"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "patent-owner-no-response",
+        "hours": 0,
+        "label": "Proceed toward settlement",
+        "probability": null,
+        "to": "settlement-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 60,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "patent-owner-response-filed",
+        "hours": 0,
+        "label": "File Petitioner Reply",
+        "probability": null,
+        "to": "petitioner-reply-brief"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "patent-owner-response-filed",
+        "hours": 0,
+        "label": "Settle after filing response",
+        "probability": null,
+        "to": "settlement-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "patent-owner-response-window",
+        "hours": 0,
+        "label": "Elect not to respond",
+        "probability": null,
+        "to": "patent-owner-no-response"
+      },
+      {
+        "benefit": 0,
+        "days": 90,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "patent-owner-response-window",
+        "hours": 0,
+        "label": "File Patent Owner Response",
+        "probability": null,
+        "to": "patent-owner-response-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "patent-owner-response-window",
+        "hours": 0,
+        "label": "Settle instead of responding",
+        "probability": null,
+        "to": "settlement-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "patent-owner-sur-reply",
+        "hours": 0,
+        "label": "Briefing complete — assess amendment",
+        "probability": null,
+        "to": "motion-to-amend-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "petition-filing-date-accorded",
+        "hours": 0,
+        "label": "Filing date accorded — POPR clock starts",
+        "probability": null,
+        "to": "popr-window"
+      },
+      {
+        "benefit": 0,
+        "days": 14,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "petition-threshold-review",
+        "hours": 0,
+        "label": "Correct petition defect and refile",
+        "probability": null,
+        "to": "ipr-petition-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 365,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "petition-threshold-review",
+        "hours": 0,
+        "label": "Board finds petition time-barred",
+        "probability": null,
+        "to": "ipr-time-barred"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "petition-threshold-review",
+        "hours": 0,
+        "label": "Petition meets fee/word-count/form",
+        "probability": null,
+        "to": "petition-filing-date-accorded"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "petitioner-opposition-mta",
+        "hours": 0,
+        "label": "MTA briefing closes — proceed to hearing",
+        "probability": null,
+        "to": "oral-hearing-request"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "petitioner-opposition-mta",
+        "hours": 0,
+        "label": "MTA briefing closes",
+        "probability": null,
+        "to": "settlement-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 30,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "petitioner-reply-brief",
+        "hours": 0,
+        "label": "File Patent Owner Sur-Reply",
+        "probability": null,
+        "to": "patent-owner-sur-reply"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "pgr-petition-filed",
+        "hours": 0,
+        "label": "Office reviews petition compliance",
+        "probability": null,
+        "to": "petition-threshold-review"
+      },
+      {
+        "benefit": 0,
+        "days": 90,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "popr-filed",
+        "hours": 0,
+        "label": "POPR complete — Board decides institution",
+        "probability": null,
+        "to": "institution-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 90,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "popr-waived",
+        "hours": 0,
+        "label": "POPR waived — Board decides institution",
+        "probability": null,
+        "to": "institution-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "popr-window",
+        "hours": 0,
+        "label": "Disclaim all challenged claims",
+        "probability": null,
+        "to": "claims-disclaimed-preinstitution"
+      },
+      {
+        "benefit": 0,
+        "days": 90,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "popr-window",
+        "hours": 0,
+        "label": "File Patent Owner Preliminary Response",
+        "probability": null,
+        "to": "popr-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "popr-window",
+        "hours": 0,
+        "label": "Waive the preliminary response",
+        "probability": null,
+        "to": "popr-waived"
+      },
+      {
+        "benefit": 0,
+        "days": 30,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "post-fwd-options",
+        "hours": 0,
+        "label": "Request Director review",
+        "probability": null,
+        "to": "director-review-request-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "post-fwd-options",
+        "hours": 0,
+        "label": "Skip rehearing — go straight to appeal",
+        "probability": null,
+        "to": "federal-circuit-window"
+      },
+      {
+        "benefit": 0,
+        "days": 30,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "post-fwd-options",
+        "hours": 0,
+        "label": "Request panel rehearing",
+        "probability": null,
+        "to": "rehearing-request-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 90,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "protective-order-ipr",
+        "hours": 0,
+        "label": "Discovery proceeds under protective order",
+        "probability": null,
+        "to": "patent-owner-response-window"
+      },
+      {
+        "benefit": 0,
+        "days": 30,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rehearing-decision",
+        "hours": 0,
+        "label": "Escalate denied rehearing to Director",
+        "probability": null,
+        "to": "director-review-request-filed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rehearing-decision",
+        "hours": 0,
+        "label": "Deny rehearing — decision stands",
+        "probability": 0.9,
+        "to": "rehearing-denied-affirmed"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rehearing-decision",
+        "hours": 0,
+        "label": "Grant rehearing — modify decision",
+        "probability": 0.1,
+        "to": "rehearing-granted-modified"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rehearing-denied-affirmed",
+        "hours": 0,
+        "label": "Proceed to the appeal window",
+        "probability": null,
+        "to": "federal-circuit-window"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rehearing-granted-modified",
+        "hours": 0,
+        "label": "Proceed to the appeal window",
+        "probability": null,
+        "to": "federal-circuit-window"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "rehearing-request-filed",
+        "hours": 0,
+        "label": "Panel considers rehearing request",
+        "probability": null,
+        "to": "rehearing-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "scheduling-order-issued",
+        "hours": 0,
+        "label": "Exchange mandatory initial disclosures",
+        "probability": null,
+        "to": "mandatory-disclosures"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "scheduling-order-issued",
+        "hours": 0,
+        "label": "Settle right after scheduling",
+        "probability": null,
+        "to": "settlement-decision"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "settlement-decision",
+        "hours": 0,
+        "label": "Request adverse judgment instead",
+        "probability": null,
+        "to": "adverse-judgment-request"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "settlement-decision",
+        "hours": 0,
+        "label": "Settle before final written decision",
+        "probability": null,
+        "to": "ipr-terminated-settlement"
+      },
+      {
+        "benefit": 0,
+        "days": 0,
+        "dollarCost": 0,
+        "fees": 0,
+        "from": "settlement-decision",
+        "hours": 0,
+        "label": "No settlement — proceed to hearing",
+        "probability": null,
+        "to": "oral-hearing-request"
+      }
+    ],
+    "terminalValue": {
+      "additional-discovery-motion": 0,
+      "adverse-judgment-request": 0,
+      "adverse-judgment-terminal": -100000,
+      "appeal-forfeited-unappealed": 0,
+      "cafc-affirms": 0,
+      "cafc-vacates-remands": 0,
+      "challenge-vehicle-decision": 0,
+      "claims-disclaimed-preinstitution": 0,
+      "director-review-affirmed": 0,
+      "director-review-decision": 0,
+      "director-review-modified": 0,
+      "director-review-request-filed": 0,
+      "federal-circuit-notice-of-appeal": 0,
+      "federal-circuit-review": 0,
+      "federal-circuit-window": 0,
+      "fwd-all-confirmed": 150000,
+      "fwd-all-unpatentable": 0,
+      "fwd-issued": 0,
+      "fwd-mixed": 0,
+      "infringement-complaint-served": 0,
+      "institution-decision": 0,
+      "institution-denied-fintiv": 0,
+      "institution-denied-merits": 0,
+      "institution-granted": 0,
+      "ipr-petition-filed": 0,
+      "ipr-terminated-settlement": 0,
+      "ipr-time-barred": 0,
+      "mandatory-disclosures": 0,
+      "motion-to-amend-decision": 0,
+      "mta-filed": 0,
+      "mta-preliminary-guidance": 0,
+      "mta-revised-filed": 0,
+      "oral-hearing-held": 0,
+      "oral-hearing-request": 0,
+      "patent-granted": 0,
+      "patent-owner-no-response": 0,
+      "patent-owner-response-filed": 0,
+      "patent-owner-response-window": 0,
+      "patent-owner-sur-reply": 0,
+      "petition-filing-date-accorded": 0,
+      "petition-threshold-review": 0,
+      "petitioner-opposition-mta": 0,
+      "petitioner-reply-brief": 0,
+      "pgr-petition-filed": 0,
+      "popr-filed": 0,
+      "popr-waived": 0,
+      "popr-window": 0,
+      "post-fwd-options": 0,
+      "protective-order-ipr": 0,
+      "rehearing-decision": 0,
+      "rehearing-denied-affirmed": 0,
+      "rehearing-granted-modified": 0,
+      "rehearing-request-filed": 0,
+      "scheduling-order-issued": 0,
+      "settlement-decision": 0
+    }
+  }
+}
