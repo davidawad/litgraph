@@ -207,6 +207,98 @@ pub struct Cut {
     pub edges: Vec<usize>,
 }
 
+/// A directed residual network for Edmonds–Karp: `adj[u]` lists arc indices
+/// leaving `u`; arc `a` and its reverse `a ^ 1` are always adjacent pairs.
+struct Residual {
+    to: Vec<NodeIx>,
+    cap: Vec<f64>,
+    adj: Vec<Vec<usize>>,
+}
+
+/// Builds the residual network: one forward arc per active non-self-loop
+/// edge (capacity from `cap`, clamped to 0 if non-finite or negative) plus
+/// its zero-capacity reverse arc.
+fn build_residual(v: &View, cap: &[f64]) -> Residual {
+    let n = v.g.nodes.len();
+    let mut r = Residual { to: vec![], cap: vec![], adj: vec![vec![]; n] };
+    for (e, edge) in v.g.edges.iter().enumerate() {
+        if !v.active[e] || edge.from == edge.to {
+            continue;
+        }
+        let w = if cap[e].is_finite() && cap[e] > 0.0 { cap[e] } else { 0.0 };
+        r.adj[edge.from].push(r.to.len());
+        r.to.push(edge.to);
+        r.cap.push(w);
+        r.adj[edge.to].push(r.to.len());
+        r.to.push(edge.from);
+        r.cap.push(0.0);
+    }
+    r
+}
+
+/// One BFS augmenting step; returns the parent-arc map if `t` is reachable.
+fn augmenting_path(r: &Residual, n: usize, s: NodeIx, t: NodeIx) -> Option<Vec<Option<usize>>> {
+    let mut parent: Vec<Option<usize>> = vec![None; n];
+    let mut seen = vec![false; n];
+    seen[s] = true;
+    let mut q = VecDeque::from([s]);
+    while let Some(u) = q.pop_front() {
+        if u == t {
+            return Some(parent);
+        }
+        for &a in &r.adj[u] {
+            if r.cap[a] > 1e-12 && !seen[r.to[a]] {
+                seen[r.to[a]] = true;
+                parent[r.to[a]] = Some(a);
+                q.push_back(r.to[a]);
+            }
+        }
+    }
+    seen[t].then_some(parent)
+}
+
+/// Pushes the maximum flow the found augmenting path allows; returns the
+/// bottleneck capacity pushed (0 if the path is somehow already exhausted).
+fn push_flow(r: &mut Residual, parent: &[Option<usize>], s: NodeIx, t: NodeIx) -> f64 {
+    let mut bottleneck = f64::INFINITY;
+    let mut x = t;
+    while x != s {
+        // BFS already confirmed a path to `t`, so every node on it has a
+        // `parent`; if that ever fails, stop rather than panic.
+        let Some(a) = parent[x] else { break };
+        bottleneck = bottleneck.min(r.cap[a]);
+        x = r.to[a ^ 1];
+    }
+    if !bottleneck.is_finite() {
+        return 0.0;
+    }
+    let mut x = t;
+    while x != s {
+        let Some(a) = parent[x] else { break };
+        r.cap[a] -= bottleneck;
+        r.cap[a ^ 1] += bottleneck;
+        x = r.to[a ^ 1];
+    }
+    bottleneck
+}
+
+/// Nodes reachable from `s` in the final residual network: the source side
+/// of a minimum cut.
+fn source_side(r: &Residual, n: usize, s: NodeIx) -> Vec<bool> {
+    let mut in_s = vec![false; n];
+    in_s[s] = true;
+    let mut q = VecDeque::from([s]);
+    while let Some(u) = q.pop_front() {
+        for &a in &r.adj[u] {
+            if r.cap[a] > 1e-12 && !in_s[r.to[a]] {
+                in_s[r.to[a]] = true;
+                q.push_back(r.to[a]);
+            }
+        }
+    }
+    in_s
+}
+
 /// Min s–t cut with per-edge capacities (Edmonds–Karp). Capacity 1 on every
 /// edge = fewest edges whose loss disconnects t (v1 `minCut`). Capacities
 /// from a metric (e.g. `p`, `dollars`) give weighted chokepoints. Self-loops
@@ -214,82 +306,17 @@ pub struct Cut {
 #[must_use]
 pub fn min_cut(v: &View, s: NodeIx, t: NodeIx, cap: &[f64]) -> Cut {
     let n = v.g.nodes.len();
-    let mut to = vec![];
-    let mut c = vec![];
-    let mut orig: Vec<Option<usize>> = vec![];
-    let mut adj: Vec<Vec<usize>> = vec![vec![]; n];
-    for (e, edge) in v.g.edges.iter().enumerate() {
-        if !v.active[e] || edge.from == edge.to {
-            continue;
-        }
-        let w = if cap[e].is_finite() && cap[e] > 0.0 {
-            cap[e]
-        } else {
-            0.0
-        };
-        adj[edge.from].push(to.len());
-        to.push(edge.to);
-        c.push(w);
-        orig.push(Some(e));
-        adj[edge.to].push(to.len());
-        to.push(edge.from);
-        c.push(0.0);
-        orig.push(None);
-    }
+    let mut r = build_residual(v, cap);
     let mut flow = 0.0;
-    loop {
-        let mut parent: Vec<Option<usize>> = vec![None; n];
-        let mut seen = vec![false; n];
-        seen[s] = true;
-        let mut q = VecDeque::from([s]);
-        while let Some(u) = q.pop_front() {
-            if u == t {
-                break;
-            }
-            for &a in &adj[u] {
-                if c[a] > 1e-12 && !seen[to[a]] {
-                    seen[to[a]] = true;
-                    parent[to[a]] = Some(a);
-                    q.push_back(to[a]);
-                }
-            }
-        }
-        if !seen[t] || s == t {
+    while s != t {
+        let Some(parent) = augmenting_path(&r, n, s, t) else { break };
+        let pushed = push_flow(&mut r, &parent, s, t);
+        if pushed <= 0.0 {
             break;
         }
-        let mut bottleneck = f64::INFINITY;
-        let mut x = t;
-        while x != s {
-            // BFS above set `seen[t]`, so every node on the s→t path it
-            // found has a `parent`; if that ever fails, stop walking rather
-            // than panic (the cut below still reflects the state so far).
-            let Some(a) = parent[x] else { break };
-            bottleneck = bottleneck.min(c[a]);
-            x = to[a ^ 1];
-        }
-        if !bottleneck.is_finite() {
-            break;
-        }
-        let mut x = t;
-        while x != s {
-            let Some(a) = parent[x] else { break };
-            c[a] -= bottleneck;
-            c[a ^ 1] += bottleneck;
-            x = to[a ^ 1];
-        }
-        flow += bottleneck;
+        flow += pushed;
     }
-    let mut in_s = vec![false; n];
-    in_s[s] = true;
-    let mut q = VecDeque::from([s]);
-    while let Some(u) = q.pop_front() {
-        for &a in &adj[u] {
-            if c[a] > 1e-12 && !in_s[to[a]] {
-                in_s[to[a]] = true;
-                q.push_back(to[a]);
-            }
-        }
-    }
+    let in_s = source_side(&r, n, s);
     let edges = (0..v.g.edges.len())
         .filter(|&e| {
             v.active[e]
