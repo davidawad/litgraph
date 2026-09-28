@@ -2,3 +2,9 @@ target/
 .worktrees/
 .beads/
 .DS_Store
+
+# nix / devenv local state (flake.lock and devenv.lock ARE committed)
+result
+result-*
+.direnv/
+.devenv/
