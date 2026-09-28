@@ -124,6 +124,11 @@ fn triangular(rng: &mut ChaCha8Rng, a: f64, c: f64, b: f64) -> f64 {
     }
 }
 
+/// Monte Carlo-simulates `o.runs` trajectories under policy `sol` from
+/// `start`, sampling the given `metrics` alongside net outcome.
+///
+/// # Errors
+/// Propagates any error evaluating the fee-eligibility expression.
 pub fn simulate(
     v: &View,
     sol: &Solution,
