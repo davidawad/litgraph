@@ -176,6 +176,9 @@ pub struct Source {
     /// Official URL.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub url: Option<String>,
+    /// Repo-relative path (e.g. a sibling pack). Never an absolute/local path.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub path: Option<String>,
     /// SHA-256 of the document as retrieved.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub sha256: Option<String>,
