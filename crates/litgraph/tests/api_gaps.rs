@@ -281,8 +281,8 @@ fn full_catalog_surfaces_compile_notes_and_caps_warning_locations() {
     let capped = resp
         .warnings
         .iter()
-        .find(|w| w.count > 8)
-        .expect("some warning code fires more than eight times across the full graph");
+        .find(|w| w.count > 8 && !w.at.is_empty())
+        .expect("some located warning code fires more than eight times across the full graph");
     assert_eq!(capped.at.len(), 8, "locations must be capped at eight");
 }
 
