@@ -54,6 +54,15 @@ pub fn step_dist(v: &View, sol_choice: &BTreeMap<NodeIx, usize>, n: NodeIx) -> V
     d
 }
 
+/// Solves the absorbing chain induced by policy `sol` from `start`: exact
+/// absorption probabilities, expected visits, and expected totals for every
+/// metric in `metrics` (parallel arrays of per-edge values, indexed like `v.g.edges`).
+///
+/// # Errors
+/// `Numeric` if the induced transition matrix is singular — either some
+/// transient state's out-probabilities do not sum to 1, or (more commonly)
+/// the policy loops forever from some reachable state without ever
+/// absorbing at a terminal.
 pub fn chain(
     v: &View,
     sol: &Solution,
