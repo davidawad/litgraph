@@ -95,6 +95,10 @@ fn sssp(
         // Bellman–Ford.
         for round in 0..n {
             let mut changed = false;
+            // Relaxes every edge by index: `usable`, `w`, and `v.g.edges` are
+            // all indexed by the same edge id, so an iterator adapter would
+            // need to zip three parallel collections for no clarity gain.
+            #[allow(clippy::needless_range_loop)]
             for e in 0..v.g.edges.len() {
                 if !usable(e) {
                     continue;
