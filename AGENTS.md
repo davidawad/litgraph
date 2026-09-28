@@ -44,17 +44,18 @@ Every response: `{ok, op, result, warnings, provenance, elapsed_ms}` or
 
 ```
 crates/litgraph/src/
-  model.rs      packs → compiled graph (namespacing, links, continuations)
-  expr.rs       custom-function language
-  metrics.rs    built-in metrics/utilities/params (as expressions) + variable envs
-  scenario.rs   Scenario → View (roles, masks, probabilities, node plans, warnings)
-  algo/         mdp (solve), chain, sim, paths (dijkstra/yen/pareto), sweep (+tornado), structure
-  api.rs        JSON request/response, describe
-  lint.rs       content QA
+  model/      packs → compiled graph (schema, links, namespacing, continuations)
+  expr/       custom-function language (lexer, parser)
+  metrics.rs  built-in metrics/utilities/params (as expressions) + variable envs
+  scenario/   Scenario → View (roles, masks, probabilities, node plans, warnings)
+  algo/       mdp (solve), chain, sim, paths (dijkstra/yen/pareto), sweep (+tornado), structure
+  api/        JSON request/response, describe, op dispatch
+  lint.rs     content QA
 crates/litgraph-cli/   the `litgraph` binary
 packs/                 forum packs + links.json
 docs/                  ARCHITECTURE, PACK_SCHEMA, COST_FUNCTIONS, CRITIQUE
 tests/fixtures/ts-parity/   golden outputs from the original TS engine
 ```
 
-Issue tracking: `br` (beads_rust) in this repo — `br ready`, `br show <id>`.
+Issue tracking: [GitHub Issues](https://github.com/davidawad/litgraph/issues)
+on this repository.
