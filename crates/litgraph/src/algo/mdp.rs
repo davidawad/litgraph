@@ -380,7 +380,7 @@ pub fn solve(v: &View, opts: &SolveOptions) -> Result<Solution> {
                 payoff: v.payoff[n],
                 params: &v.params,
             })?;
-            Ok(if x != 0.0 { 1.0 } else { 0.0 })
+            Ok(if x == 0.0 { 0.0 } else { 1.0 })
         })
         .collect::<Result<_>>()?;
     let mut cost = base.clone();
