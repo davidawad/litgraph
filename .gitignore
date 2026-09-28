@@ -8,3 +8,12 @@ result
 result-*
 .direnv/
 .devenv/
+
+# env / secrets
+.env
+
+# claude code worktrees (EnterWorktree default)
+.claude/worktrees/
+
+# wasm build output (justfile `wasm` / `wasm-smoke`)
+dist/

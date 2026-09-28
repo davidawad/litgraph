@@ -174,6 +174,12 @@ jobs:
         with:
           fail_level: error
 
+  typos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: crate-ci/typos@v1.29.4
+
   wasm:
     runs-on: ubuntu-latest
     steps:
