@@ -174,4 +174,30 @@ mod tests {
         assert_eq!(fingerprint(b""), "fnv1a64:cbf29ce484222325");
         assert_ne!(fingerprint(b"a"), fingerprint(b"b"));
     }
+
+    /// `default_source` reads `$LITGRAPH_PACKS` when set (nextest gives every
+    /// test its own process, so mutating the env var here is isolated).
+    #[test]
+    fn default_source_honors_litgraph_packs_env_var() {
+        let dir = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../packs");
+        assert!(dir.is_dir(), "expected a packs/ dir at {}", dir.display());
+        std::env::set_var("LITGRAPH_PACKS", &dir);
+        let c = Catalog::default_source().expect("packs/ should load");
+        std::env::remove_var("LITGRAPH_PACKS");
+        assert_eq!(c.origin, dir.display().to_string());
+        assert!(!c.packs.is_empty());
+    }
+
+    /// `compile(.., links=false, ..)` drops the link file entirely: a graph
+    /// compiled without links has strictly fewer (or equal) nodes than one
+    /// compiled with them, since cross-forum link edges add `#end` twins.
+    #[test]
+    fn compile_without_links_uses_an_empty_link_file() -> Result<()> {
+        let c = Catalog::embedded()?;
+        let with_links = c.compile(&[], true, &CompileOptions::default())?;
+        let without_links = c.compile(&[], false, &CompileOptions::default())?;
+        assert!(without_links.nodes.len() <= with_links.nodes.len());
+        assert!(with_links.nodes.len() > without_links.nodes.len());
+        Ok(())
+    }
 }
