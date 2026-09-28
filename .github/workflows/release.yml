@@ -63,8 +63,38 @@ jobs:
             dist/*.tar.gz
             dist/*.tar.gz.sha256
 
+  wasm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - uses: Swatinem/rust-cache@v2
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: wasm-bindgen-cli@0.2.127
+      - run: cargo build --release --locked -p litgraph-wasm --target wasm32-unknown-unknown
+      - name: package
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dist/wasm/web dist/wasm/node
+          wasm-bindgen --target web --out-dir dist/wasm/web target/wasm32-unknown-unknown/release/litgraph_wasm.wasm
+          wasm-bindgen --target nodejs --out-dir dist/wasm/node target/wasm32-unknown-unknown/release/litgraph_wasm.wasm
+          tar -C dist/wasm/web -czf dist/litgraph-wasm-web.tar.gz .
+          tar -C dist/wasm/node -czf dist/litgraph-wasm-node.tar.gz .
+          ( cd dist && shasum -a 256 litgraph-wasm-web.tar.gz litgraph-wasm-node.tar.gz > litgraph-wasm.sha256 )
+      - uses: actions/upload-artifact@v4
+        with:
+          name: litgraph-wasm
+          path: |
+            dist/litgraph-wasm-web.tar.gz
+            dist/litgraph-wasm-node.tar.gz
+            dist/litgraph-wasm.sha256
+
   github-release:
-    needs: binaries
+    needs: [binaries, wasm]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
@@ -76,6 +106,7 @@ jobs:
           files: |
             dist/*.tar.gz
             dist/*.tar.gz.sha256
+            dist/litgraph-wasm.sha256
           generate_release_notes: true
 
   docker:
