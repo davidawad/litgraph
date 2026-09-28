@@ -124,6 +124,108 @@ fn triangular(rng: &mut ChaCha8Rng, a: f64, c: f64, b: f64) -> f64 {
     }
 }
 
+/// Outcome of one simulated trajectory.
+struct RunOutcome {
+    /// utility(terminal) − our cost + fee recovery (0 if truncated before a terminal).
+    net: f64,
+    /// Per-metric total along the trajectory, parallel to the caller's `metrics`.
+    per_metric: Vec<f64>,
+    /// False if the run hit `max_steps` without reaching a terminal/sink.
+    ended: bool,
+    /// The terminal reached, if any (sinks and truncated runs have none).
+    terminal: Option<NodeIx>,
+    /// The edge sequence, if this run's trajectory is being kept.
+    traj: Option<Vec<usize>>,
+}
+
+/// Simulates one trajectory from `start` under the precomputed step
+/// distributions `dists`, sampling every metric in `metrics`.
+#[allow(clippy::too_many_arguments)]
+fn simulate_run(
+    v: &View,
+    dists: &[Vec<(usize, f64)>],
+    fee: Option<&FeeShift>,
+    elig: &[bool],
+    metrics: &[(String, Vec<f64>)],
+    elapsed_ix: Option<usize>,
+    o: &SimOptions,
+    rng: &mut ChaCha8Rng,
+    keep_sample: bool,
+) -> RunOutcome {
+    let mut u = v.start;
+    let mut spent = 0.0;
+    let mut my_spent = 0.0;
+    let mut acc = vec![0.0; metrics.len()];
+    let mut traj = vec![];
+    let mut steps = 0;
+    let mut ended = true;
+    while !matches!(v.plan[u].control, Control::Terminal | Control::Sink) {
+        let d = &dists[u];
+        if d.is_empty() || steps >= o.max_steps {
+            ended = false;
+            break;
+        }
+        let total: f64 = d.iter().map(|x| x.1).sum();
+        let mut r = rng.gen::<f64>() * total;
+        let mut pick = d[d.len() - 1].0;
+        for &(e, p) in d {
+            if r < p {
+                pick = e;
+                break;
+            }
+            r -= p;
+        }
+        spent += v.cost[pick];
+        if v.role[pick] == Role::Me {
+            my_spent += v.cost[pick];
+        }
+        for (i, (_, vals)) in metrics.iter().enumerate() {
+            let mut x = vals[pick];
+            if Some(i) == elapsed_ix && o.sample_durations {
+                if let Some(du) = &v.g.edges[pick].duration {
+                    x = triangular(rng, du.min.unwrap_or(du.mode), du.mode, du.max.unwrap_or(du.mode));
+                }
+            }
+            if x.is_finite() {
+                acc[i] += x;
+            }
+        }
+        if keep_sample {
+            traj.push(pick);
+        }
+        u = v.g.edges[pick].to;
+        steps += 1;
+    }
+    let recovery = match fee {
+        Some(f) if elig[u] => f.fraction * my_spent,
+        _ => 0.0,
+    };
+    let terminal = (v.plan[u].control == Control::Terminal).then_some(u);
+    let term_value = terminal.map_or(0.0, |t| v.utility[t]);
+    RunOutcome {
+        net: term_value - spent + recovery,
+        per_metric: acc,
+        ended,
+        terminal,
+        traj: keep_sample.then_some(traj),
+    }
+}
+
+/// Builds the fee-eligibility indicator per node (true only for
+/// fee-eligible terminals), if the scenario has a `fee_shift`.
+fn fee_eligibility(v: &View, fee: Option<&FeeShift>) -> Result<Vec<bool>> {
+    let Some(f) = fee else {
+        return Ok(vec![false; v.g.nodes.len()]);
+    };
+    let ex = expr::parse(f.eligible.as_deref().unwrap_or("tag('fee-eligible')"))?;
+    (0..v.g.nodes.len())
+        .map(|n| {
+            Ok(v.g.nodes[n].is_terminal()
+                && ex.eval(&TerminalEnv { g: v.g, n, payoff: v.payoff[n], params: &v.params })? != 0.0)
+        })
+        .collect()
+}
+
 /// Monte Carlo-simulates `o.runs` trajectories under policy `sol` from
 /// `start`, sampling the given `metrics` alongside net outcome.
 ///
@@ -141,104 +243,48 @@ pub fn simulate(
         .map(|n| step_dist(v, &sol.choice, n))
         .collect();
     let fee = v.sc.fee_shift.clone();
-    let elig: Vec<bool> = match &fee {
-        None => vec![false; v.g.nodes.len()],
-        Some(f) => {
-            let ex = expr::parse(f.eligible.as_deref().unwrap_or("tag('fee-eligible')"))?;
-            (0..v.g.nodes.len())
-                .map(|n| {
-                    Ok(v.g.nodes[n].is_terminal()
-                        && ex.eval(&TerminalEnv {
-                            g: v.g,
-                            n,
-                            payoff: v.payoff[n],
-                            params: &v.params,
-                        })? != 0.0)
-                })
-                .collect::<Result<_>>()?
-        }
-    };
+    let elig = fee_eligibility(v, fee.as_ref())?;
     let mut nets = Vec::with_capacity(o.runs);
     let mut per_metric: Vec<Vec<f64>> = vec![Vec::with_capacity(o.runs); metrics.len()];
     let mut terms: BTreeMap<NodeIx, usize> = BTreeMap::new();
     let mut truncated = 0;
     let mut samples = vec![];
     let elapsed_ix = metrics.iter().position(|(k, _)| k == "elapsed");
+    // `v` is only used through `dists`/`v.start` etc. inside the run loop;
+    // rebind so each run starts fresh regardless of the caller's `start`.
+    let v_from_start = View { start, ..v.clone() };
     for run in 0..o.runs {
-        let mut u = start;
-        let mut spent = 0.0;
-        let mut my_spent = 0.0;
-        let mut acc = vec![0.0; metrics.len()];
-        let mut traj = vec![];
-        let mut steps = 0;
-        let mut ended = true;
-        while !matches!(v.plan[u].control, Control::Terminal | Control::Sink) {
-            let d = &dists[u];
-            if d.is_empty() || steps >= o.max_steps {
-                ended = false;
-                break;
-            }
-            let total: f64 = d.iter().map(|x| x.1).sum();
-            let mut r = rng.gen::<f64>() * total;
-            let mut pick = d[d.len() - 1].0;
-            for &(e, p) in d {
-                if r < p {
-                    pick = e;
-                    break;
-                }
-                r -= p;
-            }
-            spent += v.cost[pick];
-            if v.role[pick] == Role::Me {
-                my_spent += v.cost[pick];
-            }
-            for (i, (_, vals)) in metrics.iter().enumerate() {
-                let mut x = vals[pick];
-                if Some(i) == elapsed_ix && o.sample_durations {
-                    if let Some(du) = &v.g.edges[pick].duration {
-                        x = triangular(
-                            &mut rng,
-                            du.min.unwrap_or(du.mode),
-                            du.mode,
-                            du.max.unwrap_or(du.mode),
-                        );
-                    }
-                }
-                if x.is_finite() {
-                    acc[i] += x;
-                }
-            }
-            if run < o.keep_samples {
-                traj.push(pick);
-            }
-            u = v.g.edges[pick].to;
-            steps += 1;
-        }
-        if !ended {
+        let keep_sample = run < o.keep_samples;
+        let outcome = simulate_run(
+            &v_from_start,
+            &dists,
+            fee.as_ref(),
+            &elig,
+            metrics,
+            elapsed_ix,
+            o,
+            &mut rng,
+            keep_sample,
+        );
+        if !outcome.ended {
             truncated += 1;
         }
-        let recovery = match &fee {
-            Some(f) if elig[u] => f.fraction * my_spent,
-            _ => 0.0,
-        };
-        let term_value = if v.plan[u].control == Control::Terminal {
-            v.utility[u]
-        } else {
-            0.0
-        };
-        nets.push(term_value - spent + recovery);
-        if v.plan[u].control == Control::Terminal {
-            *terms.entry(u).or_default() += 1;
+        nets.push(outcome.net);
+        if let Some(t) = outcome.terminal {
+            *terms.entry(t).or_default() += 1;
         }
-        for (i, a) in acc.into_iter().enumerate() {
+        for (i, a) in outcome.per_metric.into_iter().enumerate() {
             per_metric[i].push(a);
         }
-        if run < o.keep_samples {
+        if let Some(traj) = outcome.traj {
             samples.push(traj);
         }
     }
     let mut sorted = nets.clone();
-    sorted.sort_by(|a, b| a.total_cmp(b));
+    sorted.sort_by(f64::total_cmp);
+    #[allow(clippy::cast_possible_truncation, clippy::cast_sign_loss)]
+    // `alpha` is a fraction in [0, 1] and `sorted` is non-empty (`o.runs >= 1`),
+    // so the ceil'd count is in `[0, sorted.len()]` before the clamp below.
     let k = ((o.alpha * sorted.len() as f64).ceil() as usize)
         .max(1)
         .min(sorted.len());
