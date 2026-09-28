@@ -251,9 +251,13 @@ impl Env for EdgeEnv<'_> {
 
 /// Terminal evaluation environment.
 pub struct TerminalEnv<'a> {
+    /// The compiled graph the terminal belongs to.
     pub g: &'a Graph,
+    /// Index of the terminal node being evaluated, into `g.nodes`.
     pub n: usize,
+    /// The terminal's payoff (protagonist perspective, after overrides).
     pub payoff: f64,
+    /// Resolved scenario parameters, visible to expressions by name.
     pub params: &'a BTreeMap<String, f64>,
 }
 
