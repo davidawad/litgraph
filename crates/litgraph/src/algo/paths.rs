@@ -168,6 +168,9 @@ pub fn shortest_to_any(v: &View, s: NodeIx, targets: &[NodeIx], w: &[f64]) -> Re
 }
 
 /// Yen's k shortest loopless paths.
+///
+/// # Errors
+/// [`Error::Numeric`] if `w` has a negative cycle reachable from `s`.
 pub fn k_shortest(v: &View, s: NodeIx, t: NodeIx, w: &[f64], k: usize) -> Result<Vec<Path>> {
     let mut found: Vec<Path> = vec![];
     let Some(first) = shortest(v, s, t, w)? else {
@@ -176,7 +179,11 @@ pub fn k_shortest(v: &View, s: NodeIx, t: NodeIx, w: &[f64], k: usize) -> Result
     found.push(first);
     let mut candidates: Vec<Path> = vec![];
     while found.len() < k {
-        let last = found.last().unwrap().clone();
+        // `found` always has at least one entry: `first` was pushed above
+        // and every loop iteration below only ever adds more.
+        let Some(last) = found.last().cloned() else {
+            break;
+        };
         for i in 0..last.edges.len() {
             let spur = last.nodes[i];
             let root_edges = &last.edges[..i];
