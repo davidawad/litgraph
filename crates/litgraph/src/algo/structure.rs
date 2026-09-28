@@ -154,13 +154,19 @@ pub fn dominators(v: &View, root: NodeIx) -> Vec<Option<NodeIx>> {
     }
     let mut idom: Vec<Option<NodeIx>> = vec![None; n];
     idom[root] = Some(root);
-    let intersect = |idom: &Vec<Option<NodeIx>>, mut a: NodeIx, mut b: NodeIx| {
+    // `a`/`b` always enter with a defined idom by construction (the caller
+    // only intersects nodes whose idom was already set this pass); if that
+    // invariant is ever violated, degrade to returning the last-known node
+    // rather than panicking.
+    let intersect = |idom: &[Option<NodeIx>], mut a: NodeIx, mut b: NodeIx| -> NodeIx {
         while a != b {
             while rpo[a] > rpo[b] {
-                a = idom[a].unwrap();
+                let Some(ia) = idom[a] else { return a };
+                a = ia;
             }
             while rpo[b] > rpo[a] {
-                b = idom[b].unwrap();
+                let Some(ib) = idom[b] else { return b };
+                b = ib;
             }
         }
         a
