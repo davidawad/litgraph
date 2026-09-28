@@ -57,6 +57,8 @@ pub fn handle_with_packs(request_json: &str, packs_json: &str) -> String {
 }
 
 /// Validate a document (pack, links, scenario or request); `kind` forces the kind.
+// `wasm_bindgen`'s JS-interop ABI needs owned `Option<String>` here, not `Option<&str>`.
+#[allow(clippy::needless_pass_by_value)]
 #[wasm_bindgen]
 #[must_use]
 pub fn validate(doc_json: &str, kind: Option<String>) -> String {
