@@ -305,7 +305,15 @@ fn run(req: &Request, catalog: &Catalog) -> Result<Out> {
         _ => {}
     }
     let view = View::new(&g, &req.scenario)?;
-    let (result, mut warns) = run_view(&view, &req.op, &req.scenario)?;
+    // Every `Op` that reaches here already survived the `match` above, so
+    // it can only be one of `as_view_op`'s `Some` variants — the `Lint` /
+    // `Packs` / `Batch` / `Compare` (and `Describe`, handled earlier still)
+    // cases all returned before this point.
+    let vop = req
+        .op
+        .as_view_op()
+        .expect("Describe/Lint/Packs/Batch/Compare all returned above");
+    let (result, mut warns) = run_view(&view, &vop, &req.scenario)?;
     warns.extend(view.warnings.iter().map(|w| Warn {
         code: w.code.into(),
         at: w.at.clone(),
