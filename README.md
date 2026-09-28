@@ -51,6 +51,7 @@ you can read exactly what "cost" means and write your own.
 | base scenario vs. a counterfactual, with deltas | `compare` |
 | several ops against one compiled graph | `batch` |
 | content QA: unsourced packs, missing payoffs, dead ends | `lint` |
+| resolve packs + scenario without running an analysis | `validate` |
 
 Every response is `{ok, api_version, op, result, warnings, provenance,
 elapsed_ms}` or `{ok:false, api_version, op, error:{code, message, hint},
