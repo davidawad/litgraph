@@ -20,8 +20,8 @@ fn toy() -> Graph {
         "nodes": [
             { "id": "start", "kind": "decision", "label": "Settle or litigate" },
             { "id": "trial", "kind": "state", "label": "Trial" },
-            { "id": "settled", "kind": "terminal", "label": "Settled", "payoff": 400000, "outcome": ["settlement"] },
-            { "id": "won", "kind": "terminal", "label": "Won", "payoff": 1000000, "outcome": ["win", "fee-eligible"] },
+            { "id": "settled", "kind": "terminal", "label": "Settled", "payoff": 400_000, "outcome": ["settlement"] },
+            { "id": "won", "kind": "terminal", "label": "Won", "payoff": 1_000_000, "outcome": ["win", "fee-eligible"] },
             { "id": "lost", "kind": "terminal", "label": "Lost", "payoff": 0, "outcome": ["loss"] }
         ],
         "edges": [
