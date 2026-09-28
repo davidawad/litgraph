@@ -325,6 +325,205 @@ impl Op {
             Op::Batch { .. } => "batch",
         }
     }
+
+    /// Borrows `self` as the narrower vocabulary `run_view` actually
+    /// dispatches on, or `None` for `Describe`/`Lint`/`Packs`/`Batch`/
+    /// `Compare` — the five ops `handle` always answers itself before a
+    /// [`crate::scenario::View`] would even exist. Exists so `run_view`'s
+    /// match can be exhaustive over exactly the ops it can receive, with no
+    /// "can't happen here" arm left for a wildcard to paper over.
+    #[must_use]
+    pub(super) fn as_view_op(&self) -> Option<ViewOp<'_>> {
+        Some(match self {
+            Op::Describe | Op::Lint | Op::Packs | Op::Batch { .. } | Op::Compare { .. } => {
+                return None
+            }
+            Op::Validate => ViewOp::Validate,
+            Op::Graph { node } => ViewOp::Graph { node },
+            Op::Metric { spec, top } => ViewOp::Metric { spec, top: *top },
+            Op::Explain { node, from } => ViewOp::Explain { node, from },
+            Op::Solve {
+                from,
+                full_policy,
+                all_values,
+                max_steps,
+            } => ViewOp::Solve {
+                from,
+                full_policy: *full_policy,
+                all_values: *all_values,
+                max_steps: *max_steps,
+            },
+            Op::Chain { from, metrics, top } => ViewOp::Chain {
+                from,
+                metrics,
+                top: *top,
+            },
+            Op::Simulate {
+                from,
+                runs,
+                seed,
+                metrics,
+                alpha,
+                max_steps,
+                sample_durations,
+                samples,
+            } => ViewOp::Simulate {
+                from,
+                runs: *runs,
+                seed: *seed,
+                metrics,
+                alpha: *alpha,
+                max_steps: *max_steps,
+                sample_durations: *sample_durations,
+                samples: *samples,
+            },
+            Op::Path {
+                from,
+                to,
+                metric,
+                k,
+                report,
+            } => ViewOp::Path {
+                from,
+                to,
+                metric,
+                k: *k,
+                report,
+            },
+            Op::Pareto {
+                from,
+                to,
+                objectives,
+                max_labels,
+                limit,
+            } => ViewOp::Pareto {
+                from,
+                to,
+                objectives,
+                max_labels: *max_labels,
+                limit: *limit,
+            },
+            Op::Sweep {
+                param,
+                lo,
+                hi,
+                steps,
+                watch,
+                tol,
+            } => ViewOp::Sweep {
+                param,
+                lo: *lo,
+                hi: *hi,
+                steps: *steps,
+                watch,
+                tol: *tol,
+            },
+            Op::Tornado {
+                params,
+                rel,
+                dp,
+                probabilities,
+                top,
+            } => ViewOp::Tornado {
+                params,
+                rel: *rel,
+                dp: *dp,
+                probabilities: *probabilities,
+                top: *top,
+            },
+            Op::Structure {
+                from,
+                what,
+                to,
+                capacity,
+                top,
+            } => ViewOp::Structure {
+                from,
+                what: *what,
+                to,
+                capacity,
+                top: *top,
+            },
+        })
+    }
+}
+
+/// The subset of [`Op`] that needs a resolved [`crate::scenario::View`] —
+/// borrowed out of an `&Op` by [`Op::as_view_op`]. `run_view` matches this
+/// exhaustively, so adding an `Op` variant that needs a view is a compile
+/// error here until it's threaded through, and one that doesn't need a view
+/// never has to be considered by `run_view` at all.
+#[derive(Debug, Clone, Copy)]
+pub(super) enum ViewOp<'a> {
+    Validate,
+    Graph {
+        node: &'a Option<String>,
+    },
+    Metric {
+        spec: &'a str,
+        top: usize,
+    },
+    Explain {
+        node: &'a Option<String>,
+        from: &'a Option<String>,
+    },
+    Solve {
+        from: &'a Option<String>,
+        full_policy: bool,
+        all_values: bool,
+        max_steps: usize,
+    },
+    Chain {
+        from: &'a Option<String>,
+        metrics: &'a [String],
+        top: usize,
+    },
+    Simulate {
+        from: &'a Option<String>,
+        runs: usize,
+        seed: u64,
+        metrics: &'a [String],
+        alpha: f64,
+        max_steps: usize,
+        sample_durations: bool,
+        samples: usize,
+    },
+    Path {
+        from: &'a Option<String>,
+        to: &'a str,
+        metric: &'a str,
+        k: usize,
+        report: &'a [String],
+    },
+    Pareto {
+        from: &'a Option<String>,
+        to: &'a str,
+        objectives: &'a [String],
+        max_labels: usize,
+        limit: usize,
+    },
+    Sweep {
+        param: &'a str,
+        lo: f64,
+        hi: f64,
+        steps: usize,
+        watch: &'a [String],
+        tol: f64,
+    },
+    Tornado {
+        params: &'a [String],
+        rel: f64,
+        dp: f64,
+        probabilities: bool,
+        top: usize,
+    },
+    Structure {
+        from: &'a Option<String>,
+        what: StructureWhat,
+        to: &'a Option<String>,
+        capacity: &'a str,
+        top: usize,
+    },
 }
 
 #[cfg(test)]
