@@ -79,7 +79,8 @@ clerk, `either` = either party / events not controlled by one side.
 
 ## Links (composition)
 
-`packs/links.json` joins packs into one multi-forum graph:
+`packs/links.json` joins packs into one multi-forum graph. Its top-level
+shape is `{"links": [...], "instances": {...}}`.
 
 ```json
 { "links": [
@@ -94,12 +95,67 @@ When composing, a terminal with outgoing link edges becomes a choice node with
 an implicit zero-cost `accept` edge to a copy of itself holding its payoff
 (for `self`-controlled links), so "stop here or appeal" is a real decision.
 
+A link edge only loads once both endpoints' packs are loaded; it's silently
+skipped otherwise, so a two-pack request never sees a link into a third,
+unloaded pack. A link can carry `replaces` (see the edge table above) to
+supersede a pack's own edge — for instance, a link representing "appeal to
+the Federal Circuit" superseding a same-pack placeholder terminal edge.
+
+## Instances (`links.json`, `"instances"`)
+
+A **pack instance** is a namespaced copy of a base pack that remembers *how
+it was entered* — the product-graph construction for one piece of history,
+expressed as data instead of code. The Federal Circuit is one pack (`cafc`)
+but four instances: entered from the Court of Federal Claims as the
+plaintiff-appellant (`cafc@cofc`), from the CoFC as the government-appellant
+(`cafc@cofc-gov`, perspective flipped), from the PTAB (`cafc@ptab`), and
+from the ITC (`cafc@itc`) — each remanding only back to its own origin
+forum, which the shared `cafc` pack alone can't express.
+
+```json
+{ "instances": {
+  "cafc@cofc-gov": {
+    "pack": "cafc",
+    "note": "Federal Circuit as entered by the United States appealing a CoFC plaintiff win. Perspective flipped: the government (appellant) is the opponent; payoffs are the plaintiff's (stake − appellant payoff, stake = $1M placeholder).",
+    "remove_edges": ["origin-to-district-court", "origin-to-ptab", "origin-to-itc",
+                      "remand-route-district-court", "remand-route-ptab", "remand-route-itc"],
+    "probabilities": { "remand-route-cofc": 1.0 },
+    "roles": { "applicant": "opponent", "examiner": "self" },
+    "payoff_transform": "1000000 - payoff",
+    "patch_edges": {
+      "rehearing-file": { "deadline": { "length": 45, "note": "45 days when the United States is a party (Fed. Cir. R. 40)." } }
+    }
+  }
+}}
+```
+
+| field | type | notes |
+|---|---|---|
+| `pack` | string | base pack id to copy |
+| `note` | string | why this instance exists — required in practice, since the whole point is to say what's different |
+| `remove_edges` | string[] | local edge ids (as the compiler derives them: authored `id`, else `from->to#n`) to drop from this instance |
+| `probabilities` | `{edge id: p}` | override/author a probability on a local edge in this instance only |
+| `roles` | `{actor: role}` | override the base pack's `roles` for this instance (a perspective flip) |
+| `payoff_transform` | expression over `payoff` | rewrites every terminal payoff, e.g. `"1000000 - payoff"` to convert an appellant's payoff into the original plaintiff's stake-relative payoff |
+| `patch_edges` | `{edge id: JSON merge-patch}` | RFC 7386 merge-patch applied to one local edge's fields (deadline, cost, hours, tags, ...) — `null` deletes a field, an object merges, anything else replaces |
+
+Referencing an edge id `remove_edges`/`probabilities`/`patch_edges` doesn't
+recognize is an error naming the unknown id — instances are checked at
+compile time, same as everything else.
+
 ## Authoring rules
 
 1. Every `cite` / `authority` must be checkable against a `sources` entry or a
-   public citation. No invented rule numbers.
+   public citation. No invented rule numbers. A `sources[].path` must be
+   repo-relative (or omitted) — never a local filesystem path; cite the
+   official `url` instead.
 2. Probabilities are optional. Where you author one, put the basis in `note`
    (statistic + vintage, or "teaching estimate"). Unauthored is better than
    invented; the engine reports unauthored chance nodes.
 3. Hours are BigLaw-honest estimates for the move; `cost` is cash only.
 4. Terminals should carry `payoff` and `outcome` in v2 packs.
+5. Parsing is strict: an unknown field anywhere in a pack, edge, source, or
+   instance is a hard error (not a silently-ignored typo). Check a file
+   before opening a PR: `litgraph validate packs/your-pack.json` (or
+   `--kind pack` to force detection), and `litgraph lint --packs your-pack`
+   for content diagnostics once it parses.
