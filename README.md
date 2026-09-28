@@ -122,10 +122,15 @@ Release tarballs (planned) will be attached to
 
 ### CLI
 
-`litgraph q '<json>'` or `litgraph q - < request.json` sends one request
-envelope and prints one response envelope. Shorthand subcommands (`describe`,
-`packs`, `lint`, `explain --packs ... --arg node=...`) build the envelope for
-you. `--packs` accepts pack ids or `all` (default all).
+`litgraph q '<json>'` or `litgraph q - < request.json` (equivalently
+`litgraph run request.json`) sends one request envelope and prints one
+response envelope. Shorthand subcommands (`describe`, `packs`, `lint`,
+`explain --packs ... --arg node=...`) build the envelope for you. `--packs`
+accepts pack ids or `all` (default all). `litgraph schema <kind>` prints a
+document's JSON Schema; `litgraph validate <file|->` checks a pack,
+`links.json`, scenario, or request file (kind auto-detected, or forced with
+`--kind`) and exits `2` if it's invalid. Exit codes throughout: `0` ok,
+`2` the request failed or the document is invalid, `1` usage/I/O error.
 
 ### Library
 
