@@ -309,8 +309,7 @@ pub fn min_cut(v: &View, s: NodeIx, t: NodeIx, cap: &[f64]) -> Cut {
     let mut r = build_residual(v, cap);
     let mut flow = 0.0;
     if s != t {
-        loop {
-            let Some(parent) = augmenting_path(&r, n, s, t) else { break };
+        while let Some(parent) = augmenting_path(&r, n, s, t) {
             let pushed = push_flow(&mut r, &parent, s, t);
             if pushed <= 0.0 {
                 break;
