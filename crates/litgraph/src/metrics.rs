@@ -160,11 +160,17 @@ fn contains_ci(hay: Option<&str>, needle: &str) -> bool {
 
 /// Edge evaluation environment.
 pub struct EdgeEnv<'a> {
+    /// The compiled graph the edge belongs to.
     pub g: &'a Graph,
+    /// Index of the edge being evaluated, into `g.edges`.
     pub e: usize,
+    /// The edge's role under the scenario's perspective (self/opponent/nature).
     pub role: Role,
+    /// Effective probability of the edge under the scenario (1 if not a chance edge).
     pub p: f64,
+    /// Resolved scenario parameters, visible to expressions by name.
     pub params: &'a BTreeMap<String, f64>,
+    /// Payoff of the edge's target, if it is a terminal (else unspecified).
     pub to_payoff: f64,
 }
 
