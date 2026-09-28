@@ -140,6 +140,11 @@ fn sssp(
     Ok((dist, prev))
 }
 
+/// Shortest path from `s` to `t` by metric `w` (Dijkstra, or Bellman–Ford if
+/// `w` goes negative on any active edge).
+///
+/// # Errors
+/// [`Error::Numeric`] if `w` has a negative cycle reachable from `s`.
 pub fn shortest(v: &View, s: NodeIx, t: NodeIx, w: &[f64]) -> Result<Option<Path>> {
     let (dist, prev) = sssp(v, s, w, &HashSet::new(), &HashSet::new())?;
     if !dist[t].is_finite() {
@@ -149,6 +154,9 @@ pub fn shortest(v: &View, s: NodeIx, t: NodeIx, w: &[f64]) -> Result<Option<Path
 }
 
 /// Shortest path to the nearest of several targets.
+///
+/// # Errors
+/// [`Error::Numeric`] if `w` has a negative cycle reachable from `s`.
 pub fn shortest_to_any(v: &View, s: NodeIx, targets: &[NodeIx], w: &[f64]) -> Result<Option<Path>> {
     let (dist, prev) = sssp(v, s, w, &HashSet::new(), &HashSet::new())?;
     let best = targets
