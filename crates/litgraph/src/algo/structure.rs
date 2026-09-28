@@ -56,8 +56,7 @@ pub fn scc(v: &View) -> Vec<Vec<NodeIx>> {
                 }
                 if low[u] == index[u] {
                     let mut comp = vec![];
-                    loop {
-                        let w = stack.pop().unwrap();
+                    while let Some(w) = stack.pop() {
                         on[w] = false;
                         comp.push(w);
                         if w == u {
