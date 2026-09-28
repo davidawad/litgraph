@@ -1,0 +1,155 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$(r=$(git rev-parse --show-toplevel 2>/dev/null); [ -f \"$r/.agent-hooks/ensure-agent-compatibility.sh\" ] || r=$CLAUDE_PROJECT_DIR; printf %s \"$r\")\"/.agent-hooks/ensure-agent-compatibility.sh"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c 'd=\"$HOME/.dotfiles/AI/skills/swe-repo/session-start-summary.sh\"; [ -x \"$d\" ] && \"$d\" || exit 0'"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$(r=$(git rev-parse --show-toplevel 2>/dev/null); [ -f \"$r/.agent-hooks/worktree-cleanup-on-merge.sh\" ] || r=$CLAUDE_PROJECT_DIR; printf %s \"$r\")\"/.agent-hooks/worktree-cleanup-on-merge.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$(r=$(git rev-parse --show-toplevel 2>/dev/null); [ -f \"$r/.agent-hooks/unsafe-block-doc-nudge.sh\" ] || r=$CLAUDE_PROJECT_DIR; printf %s \"$r\")\"/.agent-hooks/unsafe-block-doc-nudge.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$(r=$(git rev-parse --show-toplevel 2>/dev/null); [ -f \"$r/.agent-hooks/shfmt-autofix.sh\" ] || r=$CLAUDE_PROJECT_DIR; printf %s \"$r\")\"/.agent-hooks/shfmt-autofix.sh"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$(r=$(git rev-parse --show-toplevel 2>/dev/null); [ -f \"$r/.agent-hooks/conventional-commits-guard.sh\" ] || r=$CLAUDE_PROJECT_DIR; printf %s \"$r\")\"/.agent-hooks/conventional-commits-guard.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$(r=$(git rev-parse --show-toplevel 2>/dev/null); [ -f \"$r/.agent-hooks/semver-guard.sh\" ] || r=$CLAUDE_PROJECT_DIR; printf %s \"$r\")\"/.agent-hooks/semver-guard.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$(r=$(git rev-parse --show-toplevel 2>/dev/null); [ -f \"$r/.agent-hooks/credential-exfil-guard.sh\" ] || r=$CLAUDE_PROJECT_DIR; printf %s \"$r\")\"/.agent-hooks/credential-exfil-guard.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$(r=$(git rev-parse --show-toplevel 2>/dev/null); [ -f \"$r/.agent-hooks/semgrep-sast-gate.sh\" ] || r=$CLAUDE_PROJECT_DIR; printf %s \"$r\")\"/.agent-hooks/semgrep-sast-gate.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$(r=$(git rev-parse --show-toplevel 2>/dev/null); [ -f \"$r/.agent-hooks/osv-scanner-gate.sh\" ] || r=$CLAUDE_PROJECT_DIR; printf %s \"$r\")\"/.agent-hooks/osv-scanner-gate.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$(r=$(git rev-parse --show-toplevel 2>/dev/null); [ -f \"$r/.agent-hooks/snyk-gate.sh\" ] || r=$CLAUDE_PROJECT_DIR; printf %s \"$r\")\"/.agent-hooks/snyk-gate.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$(r=$(git rev-parse --show-toplevel 2>/dev/null); [ -f \"$r/.agent-hooks/primary-checkout-mutation-guard.sh\" ] || r=$CLAUDE_PROJECT_DIR; printf %s \"$r\")\"/.agent-hooks/primary-checkout-mutation-guard.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$(r=$(git rev-parse --show-toplevel 2>/dev/null); [ -f \"$r/.agent-hooks/cargo-fmt-check-gate.sh\" ] || r=$CLAUDE_PROJECT_DIR; printf %s \"$r\")\"/.agent-hooks/cargo-fmt-check-gate.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$(r=$(git rev-parse --show-toplevel 2>/dev/null); [ -f \"$r/.agent-hooks/cargo-machete-unused-deps-gate.sh\" ] || r=$CLAUDE_PROJECT_DIR; printf %s \"$r\")\"/.agent-hooks/cargo-machete-unused-deps-gate.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$(r=$(git rev-parse --show-toplevel 2>/dev/null); [ -f \"$r/.agent-hooks/package-freshness-guard.sh\" ] || r=$CLAUDE_PROJECT_DIR; printf %s \"$r\")\"/.agent-hooks/package-freshness-guard.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$(r=$(git rev-parse --show-toplevel 2>/dev/null); [ -f \"$r/.agent-hooks/cargo-publish-audit-gate.sh\" ] || r=$CLAUDE_PROJECT_DIR; printf %s \"$r\")\"/.agent-hooks/cargo-publish-audit-gate.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$(r=$(git rev-parse --show-toplevel 2>/dev/null); [ -f \"$r/.agent-hooks/cargo-semver-checks-publish-gate.sh\" ] || r=$CLAUDE_PROJECT_DIR; printf %s \"$r\")\"/.agent-hooks/cargo-semver-checks-publish-gate.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$(r=$(git rev-parse --show-toplevel 2>/dev/null); [ -f \"$r/.agent-hooks/rust-line-count-guard.sh\" ] || r=$CLAUDE_PROJECT_DIR; printf %s \"$r\")\"/.agent-hooks/rust-line-count-guard.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$(r=$(git rev-parse --show-toplevel 2>/dev/null); [ -f \"$r/.agent-hooks/tooling-coverage-gate.sh\" ] || r=$CLAUDE_PROJECT_DIR; printf %s \"$r\")\"/.agent-hooks/tooling-coverage-gate.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$(r=$(git rev-parse --show-toplevel 2>/dev/null); [ -f \"$r/.agent-hooks/pre-write-protected-branch-guard.sh\" ] || r=$CLAUDE_PROJECT_DIR; printf %s \"$r\")\"/.agent-hooks/pre-write-protected-branch-guard.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$(r=$(git rev-parse --show-toplevel 2>/dev/null); [ -f \"$r/.agent-hooks/shellcheck-gate.sh\" ] || r=$CLAUDE_PROJECT_DIR; printf %s \"$r\")\"/.agent-hooks/shellcheck-gate.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$(r=$(git rev-parse --show-toplevel 2>/dev/null); [ -f \"$r/.agent-hooks/shell-line-count-guard.sh\" ] || r=$CLAUDE_PROJECT_DIR; printf %s \"$r\")\"/.agent-hooks/shell-line-count-guard.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$(r=$(git rev-parse --show-toplevel 2>/dev/null); [ -f \"$r/.agent-hooks/shell-strict-mode-guard.sh\" ] || r=$CLAUDE_PROJECT_DIR; printf %s \"$r\")\"/.agent-hooks/shell-strict-mode-guard.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash \"$(r=$(git rev-parse --show-toplevel 2>/dev/null); [ -f \"$r/.agent-hooks/curl-pipe-shell-guard.sh\" ] || r=$CLAUDE_PROJECT_DIR; printf %s \"$r\")\"/.agent-hooks/curl-pipe-shell-guard.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "compound-engineering@compound-engineering-plugin": true
+  },
+  "extraKnownMarketplaces": {
+    "compound-engineering-plugin": {
+      "source": {
+        "source": "github",
+        "repo": "EveryInc/compound-engineering-plugin"
+      }
+    }
+  }
+}
