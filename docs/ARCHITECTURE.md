@@ -94,6 +94,45 @@ different set with `$LITGRAPH_PACKS` or `--packs-dir` (`Catalog::load`).
    modes and pinned by tests, so every semantic improvement is a visible,
    reversible choice.
 
+## Contract and versioning
+
+Every response is one envelope:
+
+```jsonc
+{
+  "ok": true,
+  "api_version": 1,
+  "op": "solve",
+  "result": { /* op-specific */ },
+  "warnings": [ { "code": "payoff-not-authored", "count": 12, "example": "...", "at": [] } ],
+  "provenance": { "engine": "litgraph 0.1.0", "packs": [...], "modes": {...} },
+  "elapsed_ms": 1.234
+}
+```
+
+or, on failure, `{"ok": false, "api_version": 1, "op": "...", "error":
+{"code", "message", "hint"}, "elapsed_ms": ...}`. `api_version` is the
+request/response *contract* version (currently `1`), bumped only when the
+shape of the envelope itself changes in a breaking way — separate from
+`litgraph`'s own semver release version (`provenance.engine`). `warnings`
+is always grouped by code (`{code, count, example, at}`, `at` capped at
+eight locations) rather than one entry per occurrence, so a graph with
+hundreds of unauthored edges doesn't drown the response.
+
+CLI exit codes: `0` the request ran and `ok: true` (or a `validate`
+document is valid); `2` the request ran and failed, or a `validate`
+document is invalid; `1` usage or I/O error (bad flags, unreadable file)
+before a request was even attempted.
+
+Every document kind in the contract — `Request`, `Response`, `Scenario`,
+`Pack`, `LinkFile` — has a generated JSON Schema (draft 2020-12) via
+`litgraph schema <kind>`, so a client can validate shapes without
+hand-maintaining a parallel schema. `litgraph validate` runs that parse
+plus, for packs and requests, the semantic checks (unresolved node/edge
+refs, bad expressions) that only show up once the document is resolved
+against a compiled graph — the same checks `api::handle` runs, without
+running an analysis.
+
 ## The agent loop
 
 ```
