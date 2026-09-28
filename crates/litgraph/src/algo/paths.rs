@@ -43,6 +43,8 @@ impl PartialOrd for Item {
     }
 }
 
+/// Product of draw probabilities along `edges` (1.0 for pure-choice edges).
+#[must_use]
 pub fn path_probability(v: &View, edges: &[usize]) -> f64 {
     edges.iter().map(|&e| v.prob[e].unwrap_or(1.0)).product()
 }
