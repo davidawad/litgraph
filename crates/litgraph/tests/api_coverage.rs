@@ -27,7 +27,8 @@ fn describe_lists_metrics_ops_and_schemas() {
     let resp = handle(&req(Op::Describe), &catalog());
     assert!(resp.ok);
     let r = resp.result.unwrap();
-    assert!(r["ops"].is_array());
+    assert!(r["ops"].is_object());
+    assert!(r["ops"]["solve"].is_string());
     assert!(r["metrics"].is_array());
     assert_eq!(r["schemas"], json!(SCHEMA_KINDS));
 }
