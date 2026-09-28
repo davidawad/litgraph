@@ -46,46 +46,50 @@
     {
       "id": "rcfc-rules",
       "title": "Rules of the United States Court of Federal Claims (RCFC), as amended through July 27, 2026",
-      "path": "/Users/david/Knowledge/Lawyering/Litigation/Books/Federal Rules/Court of Federal Claims/rcfc-rules-2026-07-27.pdf",
+      "url": "https://www.uscfc.uscourts.gov/sites/cfc/files/Rules%207.27.2026.pdf",
       "sha256": "ff02c342f055be5e5f51df4de1dcec3c1264bb9907895d379d5baa796ec30a97",
       "asOf": "2026-07-27"
     },
     {
       "id": "rcfc-app-j",
       "title": "RCFC Appendix J -- Patent Rules of the United States Court of Federal Claims, as amended through July 27, 2026",
-      "path": "/Users/david/Knowledge/Lawyering/Litigation/Books/Federal Rules/Court of Federal Claims/rcfc-appendix-j-patent-rules-2026-07-27.pdf",
+      "url": "https://www.uscfc.uscourts.gov/sites/cfc/files/Patent%20Rules%207.27.26.pdf",
       "sha256": "3abdbdd75b8b617b2f4dd43e14f4d09a7ef7322fb3575297ddf4a917f9bb451f",
       "asOf": "2026-07-27"
     },
     {
       "id": "rcfc-app-h",
       "title": "RCFC Appendix H -- Procedure for Alternative Dispute Resolution",
-      "path": "/Users/david/Knowledge/Lawyering/Litigation/Books/Federal Rules/Court of Federal Claims/adr-procedures-appendix-h.pdf",
+      "url": "https://www.uscfc.uscourts.gov/sites/cfc/files/23.%20Appendix%20H.pdf",
       "sha256": "41228005f2b5d60119d7b53f3bee122060a17f2234f91ab0b9cfa9f916b5ce2b",
       "asOf": "2026-07-27"
     },
     {
       "id": "rcfc-form-04",
       "title": "Appendix of Forms, Form 4 -- Bill of Costs",
-      "path": "/Users/david/Knowledge/Lawyering/Litigation/Books/Federal Rules/Court of Federal Claims/Appendix of Forms/form04.pdf",
+      "url": "https://www.uscfc.uscourts.gov/sites/cfc/files/form04.pdf",
+      "sha256": "06b21bd64f4cc45b46206eedac01bae528040fd5733b68e43e4f7dded9b63be8",
       "asOf": "2026-09-28"
     },
     {
       "id": "rcfc-form-05",
       "title": "Appendix of Forms, Form 5 -- Equal Access to Justice Act Application",
-      "path": "/Users/david/Knowledge/Lawyering/Litigation/Books/Federal Rules/Court of Federal Claims/Appendix of Forms/form05.pdf",
+      "url": "https://www.uscfc.uscourts.gov/sites/cfc/files/form05.pdf",
+      "sha256": "2f67be32fbdd58720d20e25c532f05b26e42cf8de9a2d136c1b2c24d48bf9681",
       "asOf": "2026-09-28"
     },
     {
       "id": "rcfc-form-08a",
       "title": "Appendix of Forms, Form 8A -- Protective Order in Patent Cases",
-      "path": "/Users/david/Knowledge/Lawyering/Litigation/Books/Federal Rules/Court of Federal Claims/Appendix of Forms/form08a.pdf",
+      "url": "https://www.uscfc.uscourts.gov/sites/cfc/files/form08a.pdf",
+      "sha256": "1e3feae3979d7389a62aa301fa57eeb7f9e453cf67e1367d37012b3ae3d77679",
       "asOf": "2026-09-28"
     },
     {
       "id": "rcfc-cmecf-filing-instructions",
       "title": "Attorney Guide / Instructions for Filing Complaints and Petitions in CM/ECF (Updated June 2026)",
-      "path": "/Users/david/Knowledge/Lawyering/Litigation/Books/Federal Rules/Court of Federal Claims/cmecf-attorney-complaint-filing-instructions-2026-06.pdf",
+      "url": "https://www.uscfc.uscourts.gov/sites/cfc/files/Attorney%20Complaint%20Filing%20Instructions%20Update.06.2026.Final_.pdf",
+      "sha256": "d9b26420ffd4af59ee15f555cf1733565f178cd3a73efe1f0784e55507f522eb",
       "asOf": "2026-06-01"
     },
     {
