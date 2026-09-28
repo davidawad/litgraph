@@ -157,7 +157,7 @@ pub enum Op {
         #[serde(default = "n::<15>")]
         top: usize,
     },
-    /// Monte Carlo outcome distribution, CVaR and P(loss).
+    /// Monte Carlo outcome distribution, `CVaR` and P(loss).
     Simulate {
         /// Start override.
         #[serde(default)]
