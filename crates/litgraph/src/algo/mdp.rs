@@ -343,6 +343,11 @@ pub fn absorb_prob(v: &View, choice: &BTreeMap<NodeIx, usize>, target: &[f64]) -
     p
 }
 
+/// Solves the stochastic game over `v`: values, optimal policy, and (if
+/// `v.sc.fee_shift` is set) the fee-shift-adjusted costs it converged on.
+///
+/// # Errors
+/// Propagates any error evaluating the fee-eligibility expression.
 pub fn solve(v: &View, opts: &SolveOptions) -> Result<Solution> {
     let base = v.cost.clone();
     let Some(fs) = v.sc.fee_shift.clone() else {
