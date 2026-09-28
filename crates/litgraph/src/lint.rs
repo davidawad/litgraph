@@ -35,6 +35,12 @@ pub fn lint(g: &Graph, packs: &[Pack]) -> Vec<Diagnostic> {
                     .into(),
             );
         }
+        for s in &p.sources {
+            let local = s.path.as_deref().is_some_and(|x| x.starts_with('/') || x.starts_with('~') || x.contains(":\\"));
+            if local {
+                push("error", "local-source-path", format!("{pid}::sources::{}", s.id), "source `path` must be repo-relative; cite the official `url` instead of a local file".into());
+            }
+        }
         if p.sources.is_empty() {
             push(
                 "warn",
