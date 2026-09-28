@@ -13,20 +13,27 @@ use crate::error::Result;
 use crate::model::{Graph, NodeIx};
 use crate::scenario::{Control, Scenario, View};
 
+/// A parameter value where a watched node's optimal choice flips.
 #[derive(Debug, Clone, Serialize)]
 pub struct Breakpoint {
+    /// The node whose optimal choice flips.
     pub node: NodeIx,
     /// Parameter value where the choice flips (± tolerance).
     pub at: f64,
+    /// Chosen out-edge index just before the flip.
     pub before: usize,
+    /// Chosen out-edge index just after the flip.
     pub after: usize,
 }
 
+/// Result of sweeping one parameter over a grid.
 #[derive(Debug, Clone, Serialize)]
 pub struct SweepResult {
+    /// The parameter that was swept.
     pub param: String,
     /// (param value, V(start)).
     pub curve: Vec<(f64, f64)>,
+    /// Every policy flip found, refined by bisection and sorted by `at`.
     pub breakpoints: Vec<Breakpoint>,
 }
 
