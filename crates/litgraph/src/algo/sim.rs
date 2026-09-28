@@ -251,13 +251,11 @@ pub fn simulate(
     let mut truncated = 0;
     let mut samples = vec![];
     let elapsed_ix = metrics.iter().position(|(k, _)| k == "elapsed");
-    // `v` is only used through `dists`/`v.start` etc. inside the run loop;
-    // rebind so each run starts fresh regardless of the caller's `start`.
-    let v_from_start = View { start, ..v.clone() };
     for run in 0..o.runs {
         let keep_sample = run < o.keep_samples;
         let outcome = simulate_run(
-            &v_from_start,
+            v,
+            start,
             &dists,
             fee.as_ref(),
             &elig,
