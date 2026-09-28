@@ -56,7 +56,12 @@ different set with `$LITGRAPH_PACKS` or `--packs-dir` (`Catalog::load`).
    CLI, library, and the planned MCP server are thin wrappers over
    `api::handle`. `describe` is the complete, machine-readable manual:
    ops, scenario fields, built-in metrics with their source expressions,
-   variables, functions, parameters and defaults.
+   variables, functions, parameters and defaults. `litgraph schema
+   <request|response|scenario|pack|links>` gives the JSON Schema (draft
+   2020-12) for any document kind — machine-checkable before you even run
+   anything; `litgraph validate <file|->` (or the `validate` op) resolves a
+   pack, `links.json`, scenario, or request without running an analysis,
+   reporting parse errors, unresolved references, and lint diagnostics.
 2. **No silent guesses.** Every inferred number (heuristic payoff, filled
    probability, deadline-as-duration, ignored interrupt at a mixed node,
    renormalized distribution, dead end) becomes a structured warning with a
