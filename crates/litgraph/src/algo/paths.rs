@@ -224,54 +224,40 @@ pub fn k_shortest(v: &View, s: NodeIx, t: NodeIx, w: &[f64], k: usize) -> Result
     Ok(found)
 }
 
+/// Result of a Pareto-frontier search.
 #[derive(Debug, Clone, Serialize)]
 pub struct Frontier {
+    /// Non-dominated paths, sorted lexicographically by `totals`.
     pub paths: Vec<Path>,
+    /// Total labels the search created (search-effort diagnostic).
     pub labels_created: usize,
+    /// True if `max_labels` was hit before the search exhausted itself
+    /// (the frontier may be incomplete).
     pub truncated: bool,
 }
 
-/// N-objective Pareto frontier from `s` to `t` (Martins). All objectives
-/// must be non-negative on active edges. Loopless by construction: a label
-/// may not revisit a node already on its own path.
-pub fn pareto(
-    v: &View,
-    s: NodeIx,
-    t: NodeIx,
-    ws: &[Vec<f64>],
-    max_labels: usize,
-) -> Result<Frontier> {
-    let k = ws.len();
-    if k == 0 {
-        return Err(Error::Invalid("pareto needs at least one objective".into()));
-    }
-    for w in ws {
-        if (0..v.g.edges.len()).any(|e| v.active[e] && w[e] < 0.0) {
-            return Err(Error::Invalid(
-                "pareto objectives must be non-negative (negate a reward into a cost first)".into(),
-            ));
-        }
-    }
-    struct Label {
-        node: NodeIx,
-        cost: Vec<f64>,
-        parent: Option<usize>,
-        edge: Option<usize>,
-    }
-    let dominated = |a: &[f64], b: &[f64]| {
-        a.iter().zip(b).all(|(x, y)| x <= y) && a.iter().zip(b).any(|(x, y)| x < y)
-    };
-    let equal = |a: &[f64], b: &[f64]| a.iter().zip(b).all(|(x, y)| (x - y).abs() < 1e-9);
-    let mut labels: Vec<Label> = vec![Label {
-        node: s,
-        cost: vec![0.0; k],
-        parent: None,
-        edge: None,
-    }];
-    let mut perm: Vec<Vec<usize>> = vec![vec![]; v.g.nodes.len()]; // permanent labels per node
-    let mut open: Vec<usize> = vec![0];
-    let mut truncated = false;
-    let on_path = |labels: &Vec<Label>, mut l: usize, n: NodeIx| loop {
+/// One partial path in the Martins label-setting search: its node, running
+/// cost vector, and a back-pointer to reconstruct the path.
+struct Label {
+    node: NodeIx,
+    cost: Vec<f64>,
+    parent: Option<usize>,
+    edge: Option<usize>,
+}
+
+/// True if `a` is component-wise ≤ `b` and strictly less in some component.
+fn dominates(a: &[f64], b: &[f64]) -> bool {
+    a.iter().zip(b).all(|(x, y)| x <= y) && a.iter().zip(b).any(|(x, y)| x < y)
+}
+
+/// True if `a` and `b` are equal within tolerance in every component.
+fn cost_eq(a: &[f64], b: &[f64]) -> bool {
+    a.iter().zip(b).all(|(x, y)| (x - y).abs() < 1e-9)
+}
+
+/// True if `n` already appears on the path ending at label `l` (loopless-ness check).
+fn on_path(labels: &[Label], mut l: usize, n: NodeIx) -> bool {
+    loop {
         if labels[l].node == n {
             return true;
         }
@@ -279,69 +265,83 @@ pub fn pareto(
             Some(p) => l = p,
             None => return false,
         }
-    };
-    while !open.is_empty() {
-        // Lexicographically smallest open label.
-        let (pos, _) = open
+    }
+}
+
+/// Index into `open` of the lexicographically smallest label's cost vector.
+///
+/// # Panics
+/// Never, for `open` non-empty (the only way this is called); returns 0
+/// for an empty `open` rather than panicking, which the caller never uses.
+fn min_open_pos(labels: &[Label], open: &[usize]) -> usize {
+    let mut best = 0;
+    for i in 1..open.len() {
+        let lex = labels[open[i]]
+            .cost
             .iter()
-            .enumerate()
-            .min_by(|(_, &a), (_, &b)| {
-                labels[a]
-                    .cost
-                    .iter()
-                    .zip(&labels[b].cost)
-                    .map(|(x, y)| x.total_cmp(y))
-                    .find(|o| *o != Ordering::Equal)
-                    .unwrap_or(Ordering::Equal)
-            })
-            .unwrap();
-        let l = open.swap_remove(pos);
-        let u = labels[l].node;
-        perm[u].push(l);
-        if u == t {
-            continue;
-        }
-        for &e in &v.g.out[u] {
-            if !v.active[e] {
-                continue;
-            }
-            let to = v.g.edges[e].to;
-            if on_path(&labels, l, to) {
-                continue;
-            }
-            let cost: Vec<f64> = (0..k).map(|i| labels[l].cost[i] + ws[i][e]).collect();
-            let beaten = perm[to]
-                .iter()
-                .chain(open.iter().filter(|&&o| labels[o].node == to))
-                .any(|&o| dominated(&labels[o].cost, &cost) || equal(&labels[o].cost, &cost));
-            if beaten {
-                continue;
-            }
-            open.retain(|&o| !(labels[o].node == to && dominated(&cost, &labels[o].cost)));
-            if labels.len() >= max_labels {
-                truncated = true;
-                break;
-            }
-            labels.push(Label {
-                node: to,
-                cost,
-                parent: Some(l),
-                edge: Some(e),
-            });
-            open.push(labels.len() - 1);
-        }
-        if truncated {
-            break;
+            .zip(&labels[open[best]].cost)
+            .map(|(x, y)| x.total_cmp(y))
+            .find(|o| *o != Ordering::Equal)
+            .unwrap_or(Ordering::Equal);
+        if lex == Ordering::Less {
+            best = i;
         }
     }
-    let mut paths: Vec<Path> = perm[t]
+    best
+}
+
+/// Expands label `l`'s out-edges into new non-dominated labels. Returns
+/// true if `max_labels` was hit (search should stop).
+fn expand_label(
+    v: &View,
+    ws: &[Vec<f64>],
+    labels: &mut Vec<Label>,
+    perm: &[Vec<usize>],
+    open: &mut Vec<usize>,
+    l: usize,
+    max_labels: usize,
+) -> bool {
+    let k = ws.len();
+    let u = labels[l].node;
+    for &e in &v.g.out[u] {
+        if !v.active[e] {
+            continue;
+        }
+        let to = v.g.edges[e].to;
+        if on_path(labels, l, to) {
+            continue;
+        }
+        let cost: Vec<f64> = (0..k).map(|i| labels[l].cost[i] + ws[i][e]).collect();
+        let beaten = perm[to]
+            .iter()
+            .chain(open.iter().filter(|&&o| labels[o].node == to))
+            .any(|&o| dominates(&labels[o].cost, &cost) || cost_eq(&labels[o].cost, &cost));
+        if beaten {
+            continue;
+        }
+        open.retain(|&o| !(labels[o].node == to && dominates(&cost, &labels[o].cost)));
+        if labels.len() >= max_labels {
+            return true;
+        }
+        labels.push(Label { node: to, cost, parent: Some(l), edge: Some(e) });
+        open.push(labels.len() - 1);
+    }
+    false
+}
+
+/// Reconstructs every permanent label at `t` into a sorted `Path` list.
+fn build_frontier_paths(v: &View, s: NodeIx, labels: &[Label], perm_t: &[usize]) -> Vec<Path> {
+    let mut paths: Vec<Path> = perm_t
         .iter()
         .map(|&l| {
             let mut edges = vec![];
             let mut cur = l;
+            // `edge` and `parent` are always set together (both `Some` for
+            // every non-root label), so this terminates at the root.
             while let Some(e) = labels[cur].edge {
                 edges.push(e);
-                cur = labels[cur].parent.unwrap();
+                let Some(p) = labels[cur].parent else { break };
+                cur = p;
             }
             edges.reverse();
             let mut nodes = vec![s];
@@ -362,9 +362,51 @@ pub fn pareto(
             .find(|o| *o != Ordering::Equal)
             .unwrap_or(Ordering::Equal)
     });
-    Ok(Frontier {
-        paths,
-        labels_created: labels.len(),
-        truncated,
-    })
+    paths
+}
+
+/// N-objective Pareto frontier from `s` to `t` (Martins). All objectives
+/// must be non-negative on active edges. Loopless by construction: a label
+/// may not revisit a node already on its own path.
+///
+/// # Errors
+/// [`Error::Invalid`] if `ws` is empty or any objective goes negative on an
+/// active edge.
+pub fn pareto(
+    v: &View,
+    s: NodeIx,
+    t: NodeIx,
+    ws: &[Vec<f64>],
+    max_labels: usize,
+) -> Result<Frontier> {
+    let k = ws.len();
+    if k == 0 {
+        return Err(Error::Invalid("pareto needs at least one objective".into()));
+    }
+    for w in ws {
+        if (0..v.g.edges.len()).any(|e| v.active[e] && w[e] < 0.0) {
+            return Err(Error::Invalid(
+                "pareto objectives must be non-negative (negate a reward into a cost first)".into(),
+            ));
+        }
+    }
+    let mut labels: Vec<Label> = vec![Label { node: s, cost: vec![0.0; k], parent: None, edge: None }];
+    let mut perm: Vec<Vec<usize>> = vec![vec![]; v.g.nodes.len()]; // permanent labels per node
+    let mut open: Vec<usize> = vec![0];
+    let mut truncated = false;
+    while !open.is_empty() {
+        let pos = min_open_pos(&labels, &open);
+        let l = open.swap_remove(pos);
+        let u = labels[l].node;
+        perm[u].push(l);
+        if u == t {
+            continue;
+        }
+        if expand_label(v, ws, &mut labels, &perm, &mut open, l, max_labels) {
+            truncated = true;
+            break;
+        }
+    }
+    let paths = build_frontier_paths(v, s, &labels, &perm[t]);
+    Ok(Frontier { paths, labels_created: labels.len(), truncated })
 }
