@@ -97,6 +97,7 @@ pub fn reachable(v: &View, from: NodeIx) -> Vec<bool> {
 }
 
 /// Nodes that can reach any node in `targets`.
+#[must_use]
 pub fn coreachable(v: &View, targets: &[NodeIx]) -> Vec<bool> {
     let mut seen = vec![false; v.g.nodes.len()];
     let mut q: VecDeque<NodeIx> = targets.iter().copied().collect();
