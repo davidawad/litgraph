@@ -2,6 +2,8 @@
 //! Semantics of the new (non-v1) capabilities on small hand-built graphs
 //! where the right answer can be computed by hand.
 
+#![allow(clippy::unwrap_used, clippy::expect_used)]
+
 use litgraph::algo::{chain, mdp, paths, sim, sweep};
 use litgraph::model::{CompileOptions, Graph, LinkFile, Pack};
 use litgraph::scenario::{FeeShift, Objective, OpponentMode, Scenario, View};
