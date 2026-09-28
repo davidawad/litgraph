@@ -137,12 +137,7 @@ fn absorbing_chain_matches() {
         let c = chain::chain(&vs, &sol, vs.start, &ms).unwrap_or_else(|e| panic!("{id}: {e}"));
         for (t, want) in ac["absorptionProbabilityAtStart"].as_object().unwrap() {
             let ti = g.node(t).unwrap();
-            let got = c
-                .absorption
-                .iter()
-                .find(|x| x.0 == ti)
-                .map(|x| x.1)
-                .unwrap_or(0.0);
+            let got = c.absorption.iter().find(|x| x.0 == ti).map_or(0.0, |x| x.1);
             close(got, want.as_f64().unwrap(), &format!("{id} P(absorb {t})"));
         }
         close(
