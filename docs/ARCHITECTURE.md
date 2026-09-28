@@ -28,6 +28,10 @@ layer and always find the next one up/down by id.
  L0  Sources        primary law (rules PDFs, statutes) with sha256, as-of dates
 ```
 
+Packs are compiled into the `litgraph` binary at build time (`Catalog::embedded`)
+so a released binary needs no `packs/` directory alongside it; point at a
+different set with `$LITGRAPH_PACKS` or `--packs-dir` (`Catalog::load`).
+
 - **L0 → L1**: every `cite`/`authority` in a pack should trace to a `sources`
   entry (sha256 + as-of). A pack is a claim about the law; sources make it
   checkable.
