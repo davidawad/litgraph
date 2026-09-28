@@ -286,6 +286,7 @@ fn solve_with(
 
 /// Probability of absorbing in a node with `target[n] = 1` from every node,
 /// under a fixed choice map (draws per plan, choices deterministic).
+#[must_use]
 pub fn absorb_prob(v: &View, choice: &BTreeMap<NodeIx, usize>, target: &[f64]) -> Vec<f64> {
     let n = v.g.nodes.len();
     let mut p = vec![0.0; n];
