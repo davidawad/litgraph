@@ -135,6 +135,24 @@ fn dist_to_terminal(g: &Graph, active: &[bool]) -> Vec<u32> {
 impl<'g> View<'g> {
     /// Resolve `sc` against `g`.
     ///
+    /// ```
+    /// use litgraph::model::{CompileOptions, Graph, LinkFile, Pack};
+    /// use litgraph::scenario::{Scenario, View};
+    /// let json = r#"{
+    ///     "schemaVersion": 2, "id": "demo", "title": "Demo", "startNodeId": "start",
+    ///     "nodes": [
+    ///         {"id": "start", "label": "Start"},
+    ///         {"id": "end", "label": "End", "kind": "terminal", "payoff": 100.0}
+    ///     ],
+    ///     "edges": [{"from": "start", "to": "end", "label": "go"}]
+    /// }"#;
+    /// let pack = Pack::from_json(json).unwrap();
+    /// let g = Graph::compile(&[pack], &LinkFile::default(), &CompileOptions::default()).unwrap();
+    /// let v = View::new(&g, &Scenario::default()).unwrap();
+    /// // The lone terminal's utility is its authored payoff (the default `ev` utility).
+    /// assert_eq!(v.utility[g.node("demo::end").unwrap()], 100.0);
+    /// ```
+    ///
     /// # Errors
     /// Unknown node/edge refs, bad expressions, out-of-range probabilities.
     pub fn new(g: &'g Graph, sc: &Scenario) -> Result<View<'g>> {
