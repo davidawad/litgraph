@@ -22,11 +22,24 @@ and verified against the original engine on all six original packs
 #### Engine
 
 - One request envelope (`{op, scenario, ...}`) → one response envelope
-  (`{ok, op, result, warnings, provenance, elapsed_ms}` or
-  `{ok:false, error}`), served identically by the CLI and the library crate.
-- Ops: `describe`, `packs`, `lint`, `graph`, `metric`, `explain`, `solve`,
-  `chain`, `simulate`, `path`, `pareto`, `sweep`, `tornado`, `structure`,
-  `compare`, `batch`.
+  (`{ok, api_version, op, result, warnings, provenance, elapsed_ms}` or
+  `{ok:false, api_version, op, error}`), served identically by the CLI and
+  the library crate. `warnings` is grouped by code
+  (`{code, count, example, at}`); `api_version` is the request/response
+  contract version, independent of the crate's own semver release.
+- Ops: `describe`, `packs`, `lint`, `validate`, `graph`, `metric`,
+  `explain`, `solve`, `chain`, `simulate`, `path`, `pareto`, `sweep`,
+  `tornado`, `structure`, `compare`, `batch`.
+- CLI: `litgraph schema <request|response|scenario|pack|links>` (JSON
+  Schema, draft 2020-12); `litgraph validate <file|->` (parses + resolves
+  a pack/links/scenario/request, auto-detecting kind, exit 2 if invalid);
+  `litgraph run <request.json>`; plus `q`, `describe`, and shorthand
+  `<op> --packs --set --arg --scenario`. Packs are embedded in the binary
+  at build time (`LITGRAPH_PACKS` or `--packs-dir` to override), so no
+  `packs/` directory is needed after install.
+- Parsing is strict everywhere (`deny_unknown_fields`): a typo in a
+  request, scenario, op, pack, or links document is an error listing the
+  valid fields, not a silently-ignored key.
 - Custom cost/utility/probability/weight functions via a small expression
   language, evaluated everywhere a number is consumed (cost, utility, mask,
   probability transform, path weight, Pareto objectives, cut capacity, fee
