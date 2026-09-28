@@ -138,6 +138,7 @@ section is the rules distilled.
 
 ## Getting started
 
-`br ready` or the GitHub Issues list for open work; `AGENTS.md` for the CLI
-commands and response contract; `docs/ARCHITECTURE.md` for how the pieces
-fit together before you change one of them.
+Check the [GitHub Issues](https://github.com/davidawad/litgraph/issues) list
+for open work; `AGENTS.md` for the CLI commands and response contract;
+`docs/ARCHITECTURE.md` for how the pieces fit together before you change one
+of them.
