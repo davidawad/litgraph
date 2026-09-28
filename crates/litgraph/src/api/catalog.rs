@@ -23,24 +23,39 @@ pub struct Catalog {
 /// pack changed between two analyses.
 #[must_use]
 pub fn fingerprint(bytes: &[u8]) -> String {
-    let h = bytes.iter().fold(0xcbf2_9ce4_8422_2325_u64, |h, &b| (h ^ u64::from(b)).wrapping_mul(0x0100_0000_01b3));
+    let h = bytes.iter().fold(0xcbf2_9ce4_8422_2325_u64, |h, &b| {
+        (h ^ u64::from(b)).wrapping_mul(0x0100_0000_01b3)
+    });
     format!("fnv1a64:{h:016x}")
 }
 
 impl Catalog {
-    fn from_files(origin: String, files: impl IntoIterator<Item = (String, String)>) -> Result<Catalog> {
+    /// Build a catalog from `(file name, JSON text)` pairs; `links.json` is the link file.
+    ///
+    /// # Errors
+    /// Malformed packs or links.
+    pub fn from_files(
+        origin: String,
+        files: impl IntoIterator<Item = (String, String)>,
+    ) -> Result<Catalog> {
         let mut packs = vec![];
         let mut links = LinkFile::default();
         for (name, text) in files {
             if name == "links.json" {
-                links = serde_json::from_str(&text).map_err(|e| Error::Parse(format!("links.json: {e}")))?;
+                links = serde_json::from_str(&text)
+                    .map_err(|e| Error::Parse(format!("links.json: {e}")))?;
             } else {
-                let pack = Pack::from_json(&text).map_err(|e| Error::Parse(format!("{name}: {e}")))?;
+                let pack =
+                    Pack::from_json(&text).map_err(|e| Error::Parse(format!("{name}: {e}")))?;
                 packs.push((name, pack, fingerprint(text.as_bytes())));
             }
         }
         packs.sort_by(|a, b| a.0.cmp(&b.0));
-        Ok(Catalog { origin, packs, links })
+        Ok(Catalog {
+            origin,
+            packs,
+            links,
+        })
     }
 
     /// The packs compiled into this build.
@@ -48,7 +63,12 @@ impl Catalog {
     /// # Errors
     /// Only if an embedded pack is malformed (caught by the test suite).
     pub fn embedded() -> Result<Catalog> {
-        Catalog::from_files("embedded".into(), EMBEDDED.iter().map(|(n, t)| ((*n).to_string(), (*t).to_string())))
+        Catalog::from_files(
+            "embedded".into(),
+            EMBEDDED
+                .iter()
+                .map(|(n, t)| ((*n).to_string(), (*t).to_string())),
+        )
     }
 
     /// Every `*.json` in `dir` (and `links.json` if present).
@@ -56,13 +76,18 @@ impl Catalog {
     /// # Errors
     /// Unreadable directory or malformed pack.
     pub fn load(dir: &Path) -> Result<Catalog> {
-        let read = std::fs::read_dir(dir).map_err(|e| Error::Io(format!("{}: {e}", dir.display())))?;
+        let read =
+            std::fs::read_dir(dir).map_err(|e| Error::Io(format!("{}: {e}", dir.display())))?;
         let mut files = vec![];
         for entry in read.filter_map(std::result::Result::ok) {
             let p = entry.path();
             if p.extension().is_some_and(|x| x == "json") {
-                let text = std::fs::read_to_string(&p).map_err(|e| Error::Io(format!("{}: {e}", p.display())))?;
-                let name = p.file_name().map(|n| n.to_string_lossy().to_string()).unwrap_or_default();
+                let text = std::fs::read_to_string(&p)
+                    .map_err(|e| Error::Io(format!("{}: {e}", p.display())))?;
+                let name = p
+                    .file_name()
+                    .map(|n| n.to_string_lossy().to_string())
+                    .unwrap_or_default();
                 files.push((name, text));
             }
         }
@@ -87,7 +112,11 @@ impl Catalog {
     /// `NotFound` listing the available ids.
     pub fn select(&self, refs: &[String]) -> Result<Vec<(Pack, String)>> {
         if refs.is_empty() || refs.iter().any(|r| r == "all") {
-            return Ok(self.packs.iter().map(|(_, p, h)| (p.clone(), h.clone())).collect());
+            return Ok(self
+                .packs
+                .iter()
+                .map(|(_, p, h)| (p.clone(), h.clone()))
+                .collect());
         }
         refs.iter().map(|r| self.select_one(r)).collect()
     }
@@ -99,7 +128,9 @@ impl Catalog {
         }
         self.packs
             .iter()
-            .find(|(file, p, _)| p.id == r || p.forum.as_deref() == Some(r) || file.strip_suffix(".json") == Some(r))
+            .find(|(file, p, _)| {
+                p.id == r || p.forum.as_deref() == Some(r) || file.strip_suffix(".json") == Some(r)
+            })
             .map(|(_, p, h)| (p.clone(), h.clone()))
             .ok_or_else(|| {
                 let ids: Vec<&str> = self.packs.iter().map(|(_, p, _)| p.id.as_str()).collect();
@@ -113,7 +144,11 @@ impl Catalog {
     /// Selection or compilation errors.
     pub fn compile(&self, refs: &[String], links: bool, opts: &CompileOptions) -> Result<Graph> {
         let packs: Vec<Pack> = self.select(refs)?.into_iter().map(|(p, _)| p).collect();
-        let lf = if links { self.links.clone() } else { LinkFile::default() };
+        let lf = if links {
+            self.links.clone()
+        } else {
+            LinkFile::default()
+        };
         Graph::compile(&packs, &lf, opts)
     }
 }

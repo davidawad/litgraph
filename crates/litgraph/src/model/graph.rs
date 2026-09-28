@@ -287,7 +287,10 @@ impl Graph {
             let kind = n.kind.unwrap_or(NodeKind::State);
             let (payoff, payoff_source) = match (n.payoff, kind == NodeKind::Terminal) {
                 (Some(p), _) => (p, PayoffSource::Authored),
-                (None, true) => heuristic_payoff(&n.id, &n.label).map_or((0.0, PayoffSource::Default), |p| (p, PayoffSource::Heuristic)),
+                (None, true) => heuristic_payoff(&n.id, &n.label)
+                    .map_or((0.0, PayoffSource::Default), |p| {
+                        (p, PayoffSource::Heuristic)
+                    }),
                 (None, false) => (0.0, PayoffSource::Default),
             };
             self.node_ix.insert(qid.clone(), self.nodes.len());
@@ -315,7 +318,10 @@ impl Graph {
         }
         let start = qualify(&pack.id, &pack.start_node_id);
         if !self.node_ix.contains_key(&start) {
-            return Err(Error::Invalid(format!("pack {}: startNodeId {start} not found", pack.id)));
+            return Err(Error::Invalid(format!(
+                "pack {}: startNodeId {start} not found",
+                pack.id
+            )));
         }
         self.packs.push(PackMeta {
             id: pack.id.clone(),
@@ -350,14 +356,34 @@ impl Graph {
             return Err(Error::Invalid(format!("link replaces unknown edge {r}")));
         }
         self.edges.retain(|e| !replaced.contains(&e.id));
-        self.edge_ix = self.edges.iter().enumerate().map(|(i, e)| (e.id.clone(), i)).collect();
-        self.notes.push(format!("links superseded {} pack edge(s): {}", replaced.len(), replaced.join(", ")));
+        self.edge_ix = self
+            .edges
+            .iter()
+            .enumerate()
+            .map(|(i, e)| (e.id.clone(), i))
+            .collect();
+        self.notes.push(format!(
+            "links superseded {} pack edge(s): {}",
+            replaced.len(),
+            replaced.join(", ")
+        ));
         Ok(())
     }
 
-    fn push_edge(&mut self, pack: &str, id: &str, from: &str, to: &str, e: &RawEdge, link: bool) -> Result<()> {
+    fn push_edge(
+        &mut self,
+        pack: &str,
+        id: &str,
+        from: &str,
+        to: &str,
+        e: &RawEdge,
+        link: bool,
+    ) -> Result<()> {
         let lookup = |n: &str, side: &str| {
-            self.node_ix.get(n).copied().ok_or_else(|| Error::Invalid(format!("edge {id}: unknown {side} node {n}")))
+            self.node_ix
+                .get(n)
+                .copied()
+                .ok_or_else(|| Error::Invalid(format!("edge {id}: unknown {side} node {n}")))
         };
         let (f, t) = (lookup(from, "from")?, lookup(to, "to")?);
         if self.edge_ix.contains_key(id) {
@@ -397,9 +423,18 @@ impl Graph {
             if !self.nodes[ix].is_terminal() {
                 continue;
             }
-            let v2 = self.packs.iter().any(|p| p.id == self.nodes[ix].pack && p.schema_version >= 2);
-            let all: Vec<EdgeIx> = (0..self.edges.len()).filter(|&e| self.edges[e].from == ix).collect();
-            let outs: Vec<EdgeIx> = all.iter().copied().filter(|&e| v2 || self.edges[e].link).collect();
+            let v2 = self
+                .packs
+                .iter()
+                .any(|p| p.id == self.nodes[ix].pack && p.schema_version >= 2);
+            let all: Vec<EdgeIx> = (0..self.edges.len())
+                .filter(|&e| self.edges[e].from == ix)
+                .collect();
+            let outs: Vec<EdgeIx> = all
+                .iter()
+                .copied()
+                .filter(|&e| v2 || self.edges[e].link)
+                .collect();
             if outs.is_empty() {
                 if !all.is_empty() {
                     self.notes.push(format!(
@@ -415,7 +450,11 @@ impl Graph {
 
     fn continue_terminal(&mut self, ix: NodeIx, outs: &[EdgeIx]) {
         let first = self.edges[outs[0]].actor.clone();
-        let actor = if outs.iter().all(|&e| self.edges[e].actor == first) { first } else { "either".to_string() };
+        let actor = if outs.iter().all(|&e| self.edges[e].actor == first) {
+            first
+        } else {
+            "either".to_string()
+        };
         let probability = outs
             .iter()
             .map(|&e| self.edges[e].probability)
@@ -424,7 +463,12 @@ impl Graph {
         let src = self.nodes[ix].clone();
         let end_ix = self.nodes.len();
         self.node_ix.insert(format!("{}#end", src.id), end_ix);
-        self.nodes.push(Node { id: format!("{}#end", src.id), local_id: format!("{}#end", src.local_id), synthetic: true, ..src.clone() });
+        self.nodes.push(Node {
+            id: format!("{}#end", src.id),
+            local_id: format!("{}#end", src.local_id),
+            synthetic: true,
+            ..src.clone()
+        });
         let node = &mut self.nodes[ix];
         node.kind = NodeKind::Decision;
         node.payoff = 0.0;
@@ -446,7 +490,9 @@ impl Graph {
             probability,
             valence: src.valence.clone(),
             action_id: None,
-            note: Some("engine-created: proceedings end here unless a continuation edge is taken".into()),
+            note: Some(
+                "engine-created: proceedings end here unless a continuation edge is taken".into(),
+            ),
             tags: vec!["accept".into()],
             attrs: BTreeMap::new(),
             link: false,

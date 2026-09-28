@@ -26,4 +26,4 @@ ci:
 	just ci
 
 clean:
-	bash scripts/reap-stale-branches.sh
+	just clean

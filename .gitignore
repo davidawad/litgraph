@@ -17,3 +17,16 @@ result-*
 
 # wasm build output (justfile `wasm` / `wasm-smoke`)
 dist/
+
+# Owner-local agent tooling (swe-project-plugin-pack-rust materialized by
+# swe-repo). Kept out of the public tree: it is personal workflow, not a
+# contributor requirement. CI and .pre-commit-config.yaml carry the real gates.
+.agent-hooks/
+.claude/hooks/
+.claude/settings.json
+.claude/settings.local.json
+scripts/reap-stale-branches.sh
+scripts/git-hooks/check-branch-worktree.sh
+scripts/git-hooks/push-after-commit.sh
+scripts/git-hooks/agent-context.sh
+dist/

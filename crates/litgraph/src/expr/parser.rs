@@ -6,7 +6,13 @@ use super::Expr;
 use crate::error::{Error, Result};
 
 /// Binary operator levels, lowest precedence first.
-const LEVELS: [&[&str]; 5] = [&["||"], &["&&"], &["==", "!=", "<", "<=", ">", ">="], &["+", "-"], &["*", "/", "%"]];
+const LEVELS: [&[&str]; 5] = [
+    &["||"],
+    &["&&"],
+    &["==", "!=", "<", "<=", ">", ">="],
+    &["+", "-"],
+    &["*", "/", "%"],
+];
 
 struct Parser {
     toks: Vec<Tok>,
@@ -132,9 +138,14 @@ pub fn parse(src: &str) -> Result<Expr> {
         return Err(Error::Expr("empty expression".into()));
     }
     let mut p = Parser { toks, pos: 0 };
-    let e = p.ternary().map_err(|e| Error::Expr(format!("{e} in `{src}`")))?;
+    let e = p
+        .ternary()
+        .map_err(|e| Error::Expr(format!("{e} in `{src}`")))?;
     if p.pos < p.toks.len() {
-        return Err(Error::Expr(format!("trailing input after token {} in `{src}`", p.pos)));
+        return Err(Error::Expr(format!(
+            "trailing input after token {} in `{src}`",
+            p.pos
+        )));
     }
     Ok(e)
 }

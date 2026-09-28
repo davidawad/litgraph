@@ -148,7 +148,9 @@ impl Expr {
         Ok(match self {
             Expr::Num(n) => *n,
             Expr::Str(s) => return Err(Error::Expr(format!("string \"{s}\" used as a number"))),
-            Expr::Var(name) => env.var(name).ok_or_else(|| Error::Expr(format!("unknown variable `{name}`")))?,
+            Expr::Var(name) => env
+                .var(name)
+                .ok_or_else(|| Error::Expr(format!("unknown variable `{name}`")))?,
             Expr::Unary('-', x) => -x.eval(env)?,
             Expr::Unary(_, x) => b(!truthy(x.eval(env)?)),
             Expr::Cond(c, a, e) => {
@@ -196,7 +198,11 @@ fn call(name: &str, args: &[Expr], env: &dyn Env) -> Result<f64> {
         let [c, a, e] = args else {
             return Err(Error::Expr("if(c, a, b) takes 3 arguments".into()));
         };
-        return if truthy(c.eval(env)?) { a.eval(env) } else { e.eval(env) };
+        return if truthy(c.eval(env)?) {
+            a.eval(env)
+        } else {
+            e.eval(env)
+        };
     }
     let vals: Vec<Arg> = args
         .iter()
@@ -213,7 +219,9 @@ fn call(name: &str, args: &[Expr], env: &dyn Env) -> Result<f64> {
 
 fn math(name: &str, vals: &[Arg]) -> Result<f64> {
     let n = |i: usize| -> Result<f64> {
-        vals.get(i).ok_or_else(|| Error::Expr(format!("{name}: missing argument {}", i + 1)))?.num()
+        vals.get(i)
+            .ok_or_else(|| Error::Expr(format!("{name}: missing argument {}", i + 1)))?
+            .num()
     };
     let all = || vals.iter().map(Arg::num).collect::<Result<Vec<_>>>();
     Ok(match name {

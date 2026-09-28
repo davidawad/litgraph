@@ -135,4 +135,5 @@ ci: fmt-check lint test doctest cov audit deny
     @echo "ci: all gates passed"
 
 clean:
-    bash scripts/reap-stale-branches.sh
+    cargo clean
+    rm -r -f dist result

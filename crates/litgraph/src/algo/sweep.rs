@@ -74,7 +74,14 @@ pub struct SweepSpec<'a> {
 /// # Errors
 /// View or solve errors at any grid point.
 pub fn sweep(g: &Graph, sc: &Scenario, spec: &SweepSpec<'_>) -> Result<SweepResult> {
-    let SweepSpec { param, lo, hi, steps, watch, tol } = *spec;
+    let SweepSpec {
+        param,
+        lo,
+        hi,
+        steps,
+        watch,
+        tol,
+    } = *spec;
     let steps = steps.max(2);
     let xs: Vec<f64> = (0..steps)
         .map(|i| lo + (hi - lo) * i as f64 / (steps - 1) as f64)

@@ -129,21 +129,55 @@ pub(crate) struct Warn {
 
 fn hint(e: &Error) -> &'static str {
     match e {
-        Error::NotFound(_) => r#"list ids with {"op":{"op":"graph"}} or {"op":{"op":"packs"}}; local ids work when unique"#,
-        Error::Expr(_) => r#"see {"op":{"op":"describe"}} for variables/functions; test with {"op":{"op":"metric","spec":"..."}}"#,
-        Error::Numeric(_) => "a forced or optimal choice loops forever; add a mask or policy to break the cycle",
-        Error::Parse(_) => "see `litgraph schema <request|scenario|pack|links>` for the exact shape",
+        Error::NotFound(_) => {
+            r#"list ids with {"op":{"op":"graph"}} or {"op":{"op":"packs"}}; local ids work when unique"#
+        }
+        Error::Expr(_) => {
+            r#"see {"op":{"op":"describe"}} for variables/functions; test with {"op":{"op":"metric","spec":"..."}}"#
+        }
+        Error::Numeric(_) => {
+            "a forced or optimal choice loops forever; add a mask or policy to break the cycle"
+        }
+        Error::Parse(_) => {
+            "see `litgraph schema <request|scenario|pack|links>` for the exact shape"
+        }
         _ => "",
+    }
+}
+
+/// Wall-clock timer. `std::time::Instant` panics on `wasm32-unknown-unknown`
+/// (no clock), so there the timer reports 0 instead of aborting the request.
+struct Stopwatch(
+    #[cfg(not(all(target_arch = "wasm32", target_os = "unknown")))] std::time::Instant,
+);
+
+impl Stopwatch {
+    fn start() -> Stopwatch {
+        Stopwatch(
+            #[cfg(not(all(target_arch = "wasm32", target_os = "unknown")))]
+            std::time::Instant::now(),
+        )
+    }
+
+    #[cfg(not(all(target_arch = "wasm32", target_os = "unknown")))]
+    fn elapsed_ms(&self) -> f64 {
+        (self.0.elapsed().as_secs_f64() * 1e6).round() / 1e3
+    }
+
+    #[cfg(all(target_arch = "wasm32", target_os = "unknown"))]
+    #[allow(clippy::unused_self)] // no clock on this target
+    fn elapsed_ms(&self) -> f64 {
+        0.0
     }
 }
 
 /// Run a request. Never panics or returns `Err`: failures are `ok: false` responses.
 #[must_use]
 pub fn handle(req: &Request, catalog: &Catalog) -> Response {
-    let t0 = std::time::Instant::now();
+    let t0 = Stopwatch::start();
     let op = req.op.name().to_string();
     let result = run(req, catalog);
-    let elapsed_ms = (t0.elapsed().as_secs_f64() * 1e6).round() / 1e3;
+    let elapsed_ms = t0.elapsed_ms();
     match result {
         Ok((result, warnings, provenance)) => Response {
             ok: true,
@@ -162,7 +196,11 @@ pub fn handle(req: &Request, catalog: &Catalog) -> Response {
             result: None,
             warnings: vec![],
             provenance: None,
-            error: Some(ApiError { code: e.code().into(), message: e.to_string(), hint: hint(&e).into() }),
+            error: Some(ApiError {
+                code: e.code().into(),
+                message: e.to_string(),
+                hint: hint(&e).into(),
+            }),
             elapsed_ms,
         },
     }
@@ -182,7 +220,11 @@ pub fn handle_json(text: &str, catalog: &Catalog) -> Response {
                 result: None,
                 warnings: vec![],
                 provenance: None,
-                error: Some(ApiError { code: e.code().into(), message: e.to_string(), hint: hint(&e).into() }),
+                error: Some(ApiError {
+                    code: e.code().into(),
+                    message: e.to_string(),
+                    hint: hint(&e).into(),
+                }),
                 elapsed_ms: 0.0,
             }
         }
@@ -211,30 +253,69 @@ type Out = (Value, Vec<Warn>, Value);
 
 fn run(req: &Request, catalog: &Catalog) -> Result<Out> {
     if req.op == Op::Describe {
-        return Ok((describe(catalog), vec![], json!({ "engine": ENGINE, "api_version": API_VERSION })));
+        return Ok((
+            describe(catalog),
+            vec![],
+            json!({ "engine": ENGINE, "api_version": API_VERSION }),
+        ));
     }
     let selected = catalog.select(&req.packs)?;
     let packs: Vec<Pack> = selected.iter().map(|(p, _)| p.clone()).collect();
-    let links = if req.links { catalog.links.clone() } else { LinkFile::default() };
-    let g = Graph::compile(&packs, &links, &CompileOptions { no_continuations: req.no_continuations })?;
+    let links = if req.links {
+        catalog.links.clone()
+    } else {
+        LinkFile::default()
+    };
+    let g = Graph::compile(
+        &packs,
+        &links,
+        &CompileOptions {
+            no_continuations: req.no_continuations,
+        },
+    )?;
     let prov = provenance(&g, &selected, &req.scenario);
     match &req.op {
         Op::Lint => {
             let diags = lint::lint(&g, &packs);
-            return Ok((json!({ "count": diags.len(), "diagnostics": diags }), vec![], prov));
+            return Ok((
+                json!({ "count": diags.len(), "diagnostics": diags }),
+                vec![],
+                prov,
+            ));
         }
         Op::Packs => return Ok((explore::packs_op(&g, &packs), vec![], prov)),
         Op::Batch { ops } => {
-            let results: Vec<Response> = ops.iter().map(|op| handle(&Request { op: op.clone(), ..req.clone() }, catalog)).collect();
+            let results: Vec<Response> = ops
+                .iter()
+                .map(|op| {
+                    handle(
+                        &Request {
+                            op: op.clone(),
+                            ..req.clone()
+                        },
+                        catalog,
+                    )
+                })
+                .collect();
             return Ok((json!(results), vec![], prov));
         }
-        Op::Compare { variant, inner } => return Ok((compare(req, catalog, variant, inner)?, vec![], prov)),
+        Op::Compare { variant, inner } => {
+            return Ok((compare(req, catalog, variant, inner)?, vec![], prov))
+        }
         _ => {}
     }
     let view = View::new(&g, &req.scenario)?;
     let (result, mut warns) = run_view(&view, &req.op, &req.scenario)?;
-    warns.extend(view.warnings.iter().map(|w| Warn { code: w.code.into(), at: w.at.clone(), message: w.message.clone() }));
-    warns.extend(g.notes.iter().map(|n| Warn { code: "compile".into(), at: None, message: n.clone() }));
+    warns.extend(view.warnings.iter().map(|w| Warn {
+        code: w.code.into(),
+        at: w.at.clone(),
+        message: w.message.clone(),
+    }));
+    warns.extend(g.notes.iter().map(|n| Warn {
+        code: "compile".into(),
+        at: None,
+        message: n.clone(),
+    }));
     Ok((result, warns, prov))
 }
 
@@ -243,11 +324,17 @@ fn start_of(v: &View, from: Option<&String>) -> Result<usize> {
 }
 
 fn run_view(v: &View, op: &Op, sc: &Scenario) -> Result<(Value, Vec<Warn>)> {
-    let plain = |r: Result<Value>| r.map(|x| (x, vec![]));
     match op {
-        Op::Validate => plain(Ok(json!({ "valid": true, "nodes": v.g.nodes.len(), "edges": v.g.edges.len(), "start": v.g.nodes[v.start].id }))),
-        Op::Graph { node } => plain(explore::graph_op(v, node.as_deref())),
-        Op::Metric { spec, top } => plain(explore::metric_op(v, spec, *top)),
+        Op::Explain { .. } | Op::Solve { .. } | Op::Chain { .. } | Op::Simulate { .. } => {
+            run_decision(v, op)
+        }
+        _ => run_explore(v, op, sc).map(|x| (x, vec![])),
+    }
+}
+
+/// Ops that solve the game and may warn about convergence.
+fn run_decision(v: &View, op: &Op) -> Result<(Value, Vec<Warn>)> {
+    match op {
         Op::Explain { node, from } => {
             let n = match node {
                 Some(x) => v.g.node(x)?,
@@ -255,28 +342,150 @@ fn run_view(v: &View, op: &Op, sc: &Scenario) -> Result<(Value, Vec<Warn>)> {
             };
             decide::explain_op(v, n)
         }
-        Op::Solve { from, full_policy, all_values, max_steps } => decide::solve_op(v, start_of(v, from.as_ref())?, *full_policy, *all_values, *max_steps),
-        Op::Chain { from, metrics, top } => decide::chain_op(v, start_of(v, from.as_ref())?, metrics, *top),
-        Op::Simulate { from, runs, seed, metrics, alpha, max_steps, sample_durations, samples } => {
-            let o = SimOptions { runs: *runs, seed: *seed, alpha: *alpha, max_steps: *max_steps, sample_durations: *sample_durations, keep_samples: *samples };
+        Op::Solve {
+            from,
+            full_policy,
+            all_values,
+            max_steps,
+        } => decide::solve_op(
+            v,
+            start_of(v, from.as_ref())?,
+            *full_policy,
+            *all_values,
+            *max_steps,
+        ),
+        Op::Chain { from, metrics, top } => {
+            decide::chain_op(v, start_of(v, from.as_ref())?, metrics, *top)
+        }
+        Op::Simulate {
+            from,
+            runs,
+            seed,
+            metrics,
+            alpha,
+            max_steps,
+            sample_durations,
+            samples,
+        } => {
+            let o = SimOptions {
+                runs: *runs,
+                seed: *seed,
+                alpha: *alpha,
+                max_steps: *max_steps,
+                sample_durations: *sample_durations,
+                keep_samples: *samples,
+            };
             decide::simulate_op(v, start_of(v, from.as_ref())?, metrics, &o)
         }
-        Op::Path { from, to, metric, k, report } => plain(explore::path_op(v, start_of(v, from.as_ref())?, to, metric, *k, report)),
-        Op::Pareto { from, to, objectives, max_labels, limit } => plain(explore::pareto_op(v, start_of(v, from.as_ref())?, to, objectives, *max_labels, *limit)),
-        Op::Sweep { param, lo, hi, steps, watch, tol } => plain(explore::sweep_op(v, sc, &explore::SweepArgs { param, lo: *lo, hi: *hi, steps: *steps, watch, tol: *tol })),
-        Op::Tornado { params, rel, dp, probabilities, top } => plain(explore::tornado_op(v.g, sc, params, *rel, *dp, *probabilities, *top)),
-        Op::Structure { from, what, to, capacity, top } => plain(explore::structure_op(v, start_of(v, from.as_ref())?, *what, to.as_deref(), capacity, *top)),
-        Op::Describe | Op::Packs | Op::Lint | Op::Batch { .. } | Op::Compare { .. } => Err(Error::Invalid(format!("op {} is handled before the view", op.name()))),
+        _ => Err(Error::Invalid(format!(
+            "op {} is not a decision op",
+            op.name()
+        ))),
+    }
+}
+
+/// Inspection and exploration ops.
+fn run_explore(v: &View, op: &Op, sc: &Scenario) -> Result<Value> {
+    match op {
+        Op::Validate => Ok(
+            json!({ "valid": true, "nodes": v.g.nodes.len(), "edges": v.g.edges.len(), "start": v.g.nodes[v.start].id }),
+        ),
+        Op::Graph { node } => explore::graph_op(v, node.as_deref()),
+        Op::Metric { spec, top } => explore::metric_op(v, spec, *top),
+        Op::Path {
+            from,
+            to,
+            metric,
+            k,
+            report,
+        } => explore::path_op(v, start_of(v, from.as_ref())?, to, metric, *k, report),
+        Op::Pareto {
+            from,
+            to,
+            objectives,
+            max_labels,
+            limit,
+        } => explore::pareto_op(
+            v,
+            start_of(v, from.as_ref())?,
+            to,
+            objectives,
+            *max_labels,
+            *limit,
+        ),
+        Op::Sweep {
+            param,
+            lo,
+            hi,
+            steps,
+            watch,
+            tol,
+        } => {
+            let args = explore::SweepArgs {
+                param,
+                lo: *lo,
+                hi: *hi,
+                steps: *steps,
+                watch,
+                tol: *tol,
+            };
+            explore::sweep_op(v, sc, &args)
+        }
+        Op::Tornado {
+            params,
+            rel,
+            dp,
+            probabilities,
+            top,
+        } => explore::tornado_op(v.g, sc, params, *rel, *dp, *probabilities, *top),
+        Op::Structure {
+            from,
+            what,
+            to,
+            capacity,
+            top,
+        } => explore::structure_op(
+            v,
+            start_of(v, from.as_ref())?,
+            *what,
+            to.as_deref(),
+            capacity,
+            *top,
+        ),
+        _ => Err(Error::Invalid(format!(
+            "op {} is handled before the view",
+            op.name()
+        ))),
     }
 }
 
 fn compare(req: &Request, catalog: &Catalog, variant: &Value, inner: &Op) -> Result<Value> {
-    let mut merged = serde_json::to_value(&req.scenario).map_err(|e| Error::Invalid(e.to_string()))?;
+    let mut merged =
+        serde_json::to_value(&req.scenario).map_err(|e| Error::Invalid(e.to_string()))?;
     merge_patch(&mut merged, variant);
-    let variant_sc: Scenario = serde_json::from_value(merged).map_err(|e| Error::Parse(format!("variant: {e}")))?;
-    let a = handle(&Request { op: inner.clone(), ..req.clone() }, catalog);
-    let b = handle(&Request { op: inner.clone(), scenario: variant_sc, ..req.clone() }, catalog);
-    let get = |r: &Response, k: &str| r.result.as_ref().and_then(|x| x.get(k)).and_then(Value::as_f64);
+    let variant_sc: Scenario =
+        serde_json::from_value(merged).map_err(|e| Error::Parse(format!("variant: {e}")))?;
+    let a = handle(
+        &Request {
+            op: inner.clone(),
+            ..req.clone()
+        },
+        catalog,
+    );
+    let b = handle(
+        &Request {
+            op: inner.clone(),
+            scenario: variant_sc,
+            ..req.clone()
+        },
+        catalog,
+    );
+    let get = |r: &Response, k: &str| {
+        r.result
+            .as_ref()
+            .and_then(|x| x.get(k))
+            .and_then(Value::as_f64)
+    };
     let delta = |k: &str| match (get(&a, k), get(&b, k)) {
         (Some(x), Some(y)) => json!(y - x),
         _ => Value::Null,

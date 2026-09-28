@@ -20,7 +20,11 @@ fn main() {
         println!("cargo:rerun-if-changed={}", p.display());
         let name = p.file_name().and_then(|n| n.to_str()).unwrap_or_default();
         let abs = p.canonicalize().unwrap_or_else(|_| p.clone());
-        let _ = writeln!(src, "    ({name:?}, include_str!({:?})),", abs.display().to_string());
+        let _ = writeln!(
+            src,
+            "    ({name:?}, include_str!({:?})),",
+            abs.display().to_string()
+        );
     }
     src.push_str("];\n");
     let out = PathBuf::from(std::env::var("OUT_DIR").unwrap_or_default()).join("embedded_packs.rs");

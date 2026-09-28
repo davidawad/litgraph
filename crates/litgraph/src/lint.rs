@@ -34,7 +34,12 @@ pub fn lint(g: &Graph, packs: &[Pack]) -> Vec<Diagnostic> {
     let mut d = vec![];
     {
         let mut push = |severity, code, at: String, message: String| {
-            d.push(Diagnostic { severity, code, at, message });
+            d.push(Diagnostic {
+                severity,
+                code,
+                at,
+                message,
+            });
         };
         for p in packs {
             lint_pack_sources(p, &mut push);

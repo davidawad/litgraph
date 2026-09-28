@@ -1,24 +1,5 @@
+# Contributor hooks: `pre-commit install --hook-type pre-commit --hook-type commit-msg`.
 repos:
-  - repo: local
-    hooks:
-      - id: check-branch-worktree
-        name: check branch/worktree (swe-engineering-standards)
-        entry: scripts/git-hooks/check-branch-worktree.sh
-        language: script
-        pass_filenames: false
-        always_run: true
-
-  - repo: local
-    hooks:
-      - id: push-after-commit
-        name: push after commit (swe-engineering-standards)
-        entry: scripts/git-hooks/push-after-commit.sh
-        language: script
-        pass_filenames: false
-        always_run: true
-        stages: [post-commit]
-        verbose: true
-
   - repo: local
     hooks:
       - id: dependency-freshness-check

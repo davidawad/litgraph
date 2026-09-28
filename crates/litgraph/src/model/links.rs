@@ -138,7 +138,11 @@ impl Instance {
         p.roles.extend(self.roles.clone());
         if let Some(src) = &self.payoff_transform {
             let ex = crate::expr::parse(src)?;
-            for n in p.nodes.iter_mut().filter(|n| n.kind == Some(NodeKind::Terminal)) {
+            for n in p
+                .nodes
+                .iter_mut()
+                .filter(|n| n.kind == Some(NodeKind::Terminal))
+            {
                 if let Some(x) = n.payoff {
                     n.payoff = Some(ex.eval(&PayoffEnv(x))?);
                 }
@@ -165,7 +169,12 @@ mod tests {
 
     #[test]
     fn local_ids_count_only_unnamed_parallels() {
-        let e = |id: Option<&str>| RawEdge { id: id.map(String::from), from: "a".into(), to: "b".into(), ..Default::default() };
+        let e = |id: Option<&str>| RawEdge {
+            id: id.map(String::from),
+            from: "a".into(),
+            to: "b".into(),
+            ..Default::default()
+        };
         let ids = local_edge_ids(&[e(Some("x")), e(None), e(None)]);
         assert_eq!(ids, ["x", "a->b#0", "a->b#1"]);
     }

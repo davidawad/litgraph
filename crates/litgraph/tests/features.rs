@@ -197,7 +197,14 @@ fn chain_and_simulation_agree() {
 fn sweep_finds_rate_breakpoint() {
     let g = toy();
     // Litigate beats settle while 90h*rate + 5000 < 200,000  ⇔ rate < 2166.67
-    let spec = sweep::SweepSpec { param: "rate", lo: 500.0, hi: 5000.0, steps: 10, watch: &[], tol: 1e-3 };
+    let spec = sweep::SweepSpec {
+        param: "rate",
+        lo: 500.0,
+        hi: 5000.0,
+        steps: 10,
+        watch: &[],
+        tol: 1e-3,
+    };
     let r = sweep::sweep(&g, &Scenario::default(), &spec).unwrap();
     assert_eq!(r.breakpoints.len(), 1);
     assert!((r.breakpoints[0].at - 195_000.0 / 90.0).abs() < 1e-2);

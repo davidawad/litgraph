@@ -184,7 +184,12 @@ fn simulate_run(
             let mut x = vals[pick];
             if Some(i) == elapsed_ix && o.sample_durations {
                 if let Some(du) = &v.g.edges[pick].duration {
-                    x = triangular(rng, du.min.unwrap_or(du.mode), du.mode, du.max.unwrap_or(du.mode));
+                    x = triangular(
+                        rng,
+                        du.min.unwrap_or(du.mode),
+                        du.mode,
+                        du.max.unwrap_or(du.mode),
+                    );
                 }
             }
             if x.is_finite() {
@@ -222,7 +227,12 @@ fn fee_eligibility(v: &View, fee: Option<&FeeShift>) -> Result<Vec<bool>> {
     (0..v.g.nodes.len())
         .map(|n| {
             Ok(v.g.nodes[n].is_terminal()
-                && ex.eval(&TerminalEnv { g: v.g, n, payoff: v.payoff[n], params: &v.params })? != 0.0)
+                && ex.eval(&TerminalEnv {
+                    g: v.g,
+                    n,
+                    payoff: v.payoff[n],
+                    params: &v.params,
+                })? != 0.0)
         })
         .collect()
 }

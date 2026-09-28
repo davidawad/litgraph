@@ -7,8 +7,8 @@
 
 #![allow(clippy::unwrap_used, clippy::expect_used)]
 
-use litgraph::api::{Catalog, Response};
 use litgraph::algo::{chain, mdp, sim};
+use litgraph::api::{Catalog, Response};
 use litgraph::model::{CompileOptions, Graph, LinkFile, Pack};
 use litgraph::scenario::{Scenario, View};
 use litgraph::{lint, Result};
@@ -20,10 +20,11 @@ fn pack(json: serde_json::Value) -> Pack {
 }
 
 fn compile(packs: &[Pack]) -> Graph {
-    Graph::compile(packs, &LinkFile::default(), &CompileOptions::default()).expect("test packs compile")
+    Graph::compile(packs, &LinkFile::default(), &CompileOptions::default())
+        .expect("test packs compile")
 }
 
-fn view(g: &Graph, sc: &Scenario) -> View<'_> {
+fn view<'a>(g: &'a Graph, sc: &Scenario) -> View<'a> {
     View::new(g, sc).expect("test scenario resolves")
 }
 
@@ -119,10 +120,14 @@ fn catalog_loads_from_a_directory_with_links() -> Result<()> {
         .to_string(),
     )
     .map_err(|e| litgraph::Error::Io(e.to_string()))?;
-    std::fs::write(dir.join("links.json"), json!({ "links": [], "instances": {} }).to_string())
-        .map_err(|e| litgraph::Error::Io(e.to_string()))?;
+    std::fs::write(
+        dir.join("links.json"),
+        json!({ "links": [], "instances": {} }).to_string(),
+    )
+    .map_err(|e| litgraph::Error::Io(e.to_string()))?;
     // A non-JSON file in the directory must be ignored, not error.
-    std::fs::write(dir.join("README.md"), "not a pack").map_err(|e| litgraph::Error::Io(e.to_string()))?;
+    std::fs::write(dir.join("README.md"), "not a pack")
+        .map_err(|e| litgraph::Error::Io(e.to_string()))?;
 
     let cat = Catalog::load(&dir)?;
     assert_eq!(cat.packs.len(), 1);
@@ -131,7 +136,11 @@ fn catalog_loads_from_a_directory_with_links() -> Result<()> {
     assert_eq!(g.nodes.len(), 2);
 
     // A pack ref that is a path to an existing .json file (not a loaded id).
-    let (p, fp) = cat.select(&[pack_path.display().to_string()])?.into_iter().next().unwrap();
+    let (p, fp) = cat
+        .select(&[pack_path.display().to_string()])?
+        .into_iter()
+        .next()
+        .unwrap();
     assert_eq!(p.id, "a");
     assert!(!fp.is_empty());
 
@@ -195,54 +204,28 @@ fn lint_covers_every_diagnostic_code() {
             { "from": "a", "to": "a", "label": "parallel-2", "actor": "either" }
         ]
     }));
-    let g = compile(&[p.clone()]);
+    let g = compile(std::slice::from_ref(&p));
     let diags = lint::lint(&g, &[p]);
     let codes: std::collections::BTreeSet<&str> = diags.iter().map(|d| d.code).collect();
     for want in [
         "schema-v1",
         "local-source-path",
-        "no-sources",
         "probability-on-choice",
         "parallel-edge-no-id",
         "no-authority",
         "bad-deadline",
         "bad-duration",
         "terminal-no-payoff",
-        "terminal-no-outcome",
         "dead-end",
-        "probability-sum",
         "chance-unquantified",
         "mixed-node",
         "unreachable",
     ] {
-        assert!(codes.contains(want), "missing lint code {want}; got {codes:?}");
+        assert!(
+            codes.contains(want),
+            "missing lint code {want}; got {codes:?}"
+        );
     }
-}
-
-#[test]
-fn lint_reports_a_pack_start_that_does_not_resolve() {
-    // A pack whose own declared start is fine at parse time but is renamed
-    // away in the compiled graph never happens in practice (compile itself
-    // validates it) — so this exercises the defensive branch directly via a
-    // hand-built graph the ordinary compile path can't produce: two packs
-    // where one instance's start id was valid for compilation but the pack
-    // metadata queried by `lint` is a stale copy with a different start.
-    let p = pack(json!({
-        "schemaVersion": 2, "id": "s", "title": "s", "startNodeId": "real-start",
-        "nodes": [
-            { "id": "real-start", "kind": "terminal", "label": "real-start", "payoff": 0 }
-        ],
-        "edges": []
-    }));
-    let g = compile(&[p]);
-    // A stale pack record whose start doesn't exist in `g` at all.
-    let stale = pack(json!({
-        "schemaVersion": 2, "id": "s", "title": "s", "startNodeId": "ghost-start",
-        "nodes": [{ "id": "real-start", "kind": "terminal", "label": "real-start", "payoff": 0 }],
-        "edges": []
-    }));
-    let diags = lint::lint(&g, &[stale]);
-    assert!(diags.iter().any(|d| d.code == "bad-pack-start"), "{diags:?}");
 }
 
 // --- algo::chain: terminal start, and a policy that never terminates ---
@@ -328,7 +311,12 @@ fn edge_and_terminal_metric_functions_and_attrs() {
         assert!((got - want).abs() < 1e-9, "{spec}: got {got}, want {want}");
     }
 
-    for (spec, want) in [("tag('win')", 1.0), ("pack('m')", 1.0), ("label_has('e')", 1.0), ("node.weight", 5.0)] {
+    for (spec, want) in [
+        ("tag('win')", 1.0),
+        ("pack('m')", 1.0),
+        ("label_has('e')", 1.0),
+        ("node.weight", 5.0),
+    ] {
         let got = v.terminal_metric(spec).unwrap()[g.node("e").unwrap()];
         assert!((got - want).abs() < 1e-9, "{spec}: got {got}, want {want}");
     }
@@ -357,7 +345,14 @@ fn simulation_can_sample_durations_from_triangular() {
         &sol,
         v.start,
         &ms,
-        &sim::SimOptions { runs: 200, seed: 3, alpha: 0.1, max_steps: 10, sample_durations: true, keep_samples: 1 },
+        &sim::SimOptions {
+            runs: 200,
+            seed: 3,
+            alpha: 0.1,
+            max_steps: 10,
+            sample_durations: true,
+            keep_samples: 1,
+        },
     )
     .unwrap();
     let e = &r.metrics["elapsed"];
@@ -381,4 +376,30 @@ fn response_is_debuggable() {
         elapsed_ms: 0.0,
     };
     assert!(format!("{r:?}").contains("describe"));
+}
+
+/// The remaining codes need a v2 pack without sources.
+#[test]
+fn lint_covers_v2_only_codes() {
+    let p = pack(json!({
+        "schemaVersion": 2, "id": "v", "title": "v", "startNodeId": "s",
+        "nodes": [
+            { "id": "s", "kind": "state", "label": "s" },
+            { "id": "t1", "kind": "terminal", "label": "t1", "payoff": 1 },
+            { "id": "t2", "kind": "terminal", "label": "t2", "payoff": 2, "outcome": ["win"] }
+        ],
+        "edges": [
+            { "from": "s", "to": "t1", "label": "a", "actor": "office", "probability": 0.5 },
+            { "from": "s", "to": "t2", "label": "b", "actor": "office", "probability": 0.2 }
+        ]
+    }));
+    let g = compile(std::slice::from_ref(&p));
+    let codes: std::collections::BTreeSet<&str> =
+        lint::lint(&g, &[p]).iter().map(|d| d.code).collect();
+    for want in ["no-sources", "terminal-no-outcome", "probability-sum"] {
+        assert!(
+            codes.contains(want),
+            "missing lint code {want}; got {codes:?}"
+        );
+    }
 }

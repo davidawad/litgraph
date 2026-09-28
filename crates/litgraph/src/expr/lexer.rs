@@ -18,7 +18,9 @@ pub(super) enum Tok {
 }
 
 /// Two-character operators first so `<=` wins over `<`. A bare `=` means `==`.
-const OPS: [&str; 16] = ["==", "!=", "<=", ">=", "&&", "||", "<", ">", "+", "-", "*", "/", "%", "^", "!", "="];
+const OPS: [&str; 16] = [
+    "==", "!=", "<=", ">=", "&&", "||", "<", ">", "+", "-", "*", "/", "%", "^", "!", "=",
+];
 
 fn number(chars: &[char], mut i: usize) -> Result<(Tok, usize)> {
     let start = i;
@@ -35,7 +37,9 @@ fn number(chars: &[char], mut i: usize) -> Result<(Tok, usize)> {
         }
     }
     let s: String = chars[start..i].iter().filter(|c| **c != '_').collect();
-    let n = s.parse().map_err(|_| Error::Expr(format!("bad number '{s}'")))?;
+    let n = s
+        .parse()
+        .map_err(|_| Error::Expr(format!("bad number '{s}'")))?;
     Ok((Tok::Num(n), i))
 }
 
@@ -46,7 +50,10 @@ fn string(chars: &[char], i: usize) -> Result<(Tok, usize)> {
         .iter()
         .position(|&c| c == quote)
         .ok_or_else(|| Error::Expr("unterminated string".into()))?;
-    Ok((Tok::Str(chars[start..start + end].iter().collect()), start + end + 1))
+    Ok((
+        Tok::Str(chars[start..start + end].iter().collect()),
+        start + end + 1,
+    ))
 }
 
 fn operator(chars: &[char], i: usize) -> Result<(Tok, usize)> {
@@ -78,10 +85,15 @@ pub(super) fn lex(src: &str) -> Result<Vec<Tok>> {
             continue;
         } else if let Some(t) = single {
             (t, i + 1)
-        } else if c.is_ascii_digit() || (c == '.' && chars.get(i + 1).is_some_and(char::is_ascii_digit)) {
+        } else if c.is_ascii_digit()
+            || (c == '.' && chars.get(i + 1).is_some_and(char::is_ascii_digit))
+        {
             number(&chars, i)?
         } else if c.is_alphabetic() || c == '_' {
-            let len = chars[i..].iter().take_while(|c| c.is_alphanumeric() || **c == '_' || **c == '.').count();
+            let len = chars[i..]
+                .iter()
+                .take_while(|c| c.is_alphanumeric() || **c == '_' || **c == '.')
+                .count();
             (Tok::Ident(chars[i..i + len].iter().collect()), i + len)
         } else if c == '"' || c == '\'' {
             string(&chars, i)?

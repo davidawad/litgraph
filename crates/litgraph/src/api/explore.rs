@@ -14,7 +14,11 @@ use crate::scenario::{resolve_spec, Scenario, View};
 
 pub(super) fn metric_op(v: &View, spec: &str, top: usize) -> Result<Value> {
     let vals = v.metric(spec)?;
-    let mut rows: Vec<(usize, f64)> = vals.into_iter().enumerate().filter(|(_, x)| x.is_finite()).collect();
+    let mut rows: Vec<(usize, f64)> = vals
+        .into_iter()
+        .enumerate()
+        .filter(|(_, x)| x.is_finite())
+        .collect();
     rows.sort_by(|a, b| b.1.total_cmp(&a.1));
     Ok(json!({
         "spec": spec,
@@ -25,12 +29,21 @@ pub(super) fn metric_op(v: &View, spec: &str, top: usize) -> Result<Value> {
     }))
 }
 
-pub(super) fn path_op(v: &View, start: NodeIx, to: &str, metric: &str, k: usize, report: &[String]) -> Result<Value> {
+pub(super) fn path_op(
+    v: &View,
+    start: NodeIx,
+    to: &str,
+    metric: &str,
+    k: usize,
+    report: &[String],
+) -> Result<Value> {
     let w = v.metric(metric)?;
     let ts = targets(v, to)?;
     let extra = metric_list(v, report)?;
     let mut found: Vec<paths::Path> = if k <= 1 {
-        paths::shortest_to_any(v, start, &ts, &w)?.into_iter().collect()
+        paths::shortest_to_any(v, start, &ts, &w)?
+            .into_iter()
+            .collect()
     } else {
         let mut all = vec![];
         for &t in &ts {
@@ -45,12 +58,26 @@ pub(super) fn path_op(v: &View, start: NodeIx, to: &str, metric: &str, k: usize,
             p.totals.push(p.edges.iter().map(|&e| vals[e]).sum());
         }
     }
-    let names: Vec<String> = std::iter::once(metric.to_string()).chain(report.iter().cloned()).collect();
-    Ok(json!({ "metric": metric, "from": node_ref(v, start), "to": to, "paths": found.iter().map(|p| path_json(v, p, &names)).collect::<Vec<_>>() }))
+    let names: Vec<String> = std::iter::once(metric.to_string())
+        .chain(report.iter().cloned())
+        .collect();
+    Ok(
+        json!({ "metric": metric, "from": node_ref(v, start), "to": to, "paths": found.iter().map(|p| path_json(v, p, &names)).collect::<Vec<_>>() }),
+    )
 }
 
-pub(super) fn pareto_op(v: &View, start: NodeIx, to: &str, objectives: &[String], max_labels: usize, limit: usize) -> Result<Value> {
-    let ws: Vec<Vec<f64>> = objectives.iter().map(|o| v.metric(o)).collect::<Result<_>>()?;
+pub(super) fn pareto_op(
+    v: &View,
+    start: NodeIx,
+    to: &str,
+    objectives: &[String],
+    max_labels: usize,
+    limit: usize,
+) -> Result<Value> {
+    let ws: Vec<Vec<f64>> = objectives
+        .iter()
+        .map(|o| v.metric(o))
+        .collect::<Result<_>>()?;
     let mut all: Vec<paths::Path> = vec![];
     let mut truncated = false;
     for t in targets(v, to)? {
@@ -59,7 +86,10 @@ pub(super) fn pareto_op(v: &View, start: NodeIx, to: &str, objectives: &[String]
         all.extend(fr.paths);
     }
     let dominated = |p: &paths::Path| {
-        all.iter().any(|q| q.totals.iter().zip(&p.totals).all(|(x, y)| x <= y) && q.totals.iter().zip(&p.totals).any(|(x, y)| x < y))
+        all.iter().any(|q| {
+            q.totals.iter().zip(&p.totals).all(|(x, y)| x <= y)
+                && q.totals.iter().zip(&p.totals).any(|(x, y)| x < y)
+        })
     };
     let front: Vec<&paths::Path> = all.iter().filter(|p| !dominated(p)).collect();
     Ok(json!({
@@ -79,7 +109,18 @@ pub(super) struct SweepArgs<'a> {
 
 pub(super) fn sweep_op(v: &View, sc: &Scenario, a: &SweepArgs<'_>) -> Result<Value> {
     let watch: Vec<NodeIx> = a.watch.iter().map(|n| v.g.node(n)).collect::<Result<_>>()?;
-    let res = sweep::sweep(v.g, sc, &sweep::SweepSpec { param: a.param, lo: a.lo, hi: a.hi, steps: a.steps, watch: &watch, tol: a.tol })?;
+    let res = sweep::sweep(
+        v.g,
+        sc,
+        &sweep::SweepSpec {
+            param: a.param,
+            lo: a.lo,
+            hi: a.hi,
+            steps: a.steps,
+            watch: &watch,
+            tol: a.tol,
+        },
+    )?;
     Ok(json!({
         "param": res.param,
         "curve": res.curve.iter().map(|(x, y)| json!([r(*x), r(*y)])).collect::<Vec<_>>(),
@@ -87,7 +128,15 @@ pub(super) fn sweep_op(v: &View, sc: &Scenario, a: &SweepArgs<'_>) -> Result<Val
     }))
 }
 
-pub(super) fn tornado_op(g: &Graph, sc: &Scenario, params: &[String], rel: f64, dp: f64, probabilities: bool, top: usize) -> Result<Value> {
+pub(super) fn tornado_op(
+    g: &Graph,
+    sc: &Scenario,
+    params: &[String],
+    rel: f64,
+    dp: f64,
+    probabilities: bool,
+    top: usize,
+) -> Result<Value> {
     let (base, rows) = sweep::tornado(g, sc, params, rel, dp, probabilities)?;
     Ok(json!({ "base_value": r(base), "rows": rows.iter().take(top).collect::<Vec<_>>() }))
 }
@@ -96,8 +145,19 @@ fn ids(v: &View, ns: impl IntoIterator<Item = NodeIx>) -> Vec<String> {
     ns.into_iter().map(|n| v.g.nodes[n].id.clone()).collect()
 }
 
-pub(super) fn structure_op(v: &View, start: NodeIx, what: StructureWhat, to: Option<&str>, capacity: &str, top: usize) -> Result<Value> {
-    let cycles = || structure::scc(v).into_iter().filter(|c| structure::is_cyclic(v, c));
+pub(super) fn structure_op(
+    v: &View,
+    start: NodeIx,
+    what: StructureWhat,
+    to: Option<&str>,
+    capacity: &str,
+    top: usize,
+) -> Result<Value> {
+    let cycles = || {
+        structure::scc(v)
+            .into_iter()
+            .filter(|c| structure::is_cyclic(v, c))
+    };
     Ok(match what {
         StructureWhat::Scc => json!({ "cycles": cycles().map(|c| ids(v, c)).collect::<Vec<_>>() }),
         StructureWhat::Dominators => {
@@ -117,12 +177,14 @@ pub(super) fn structure_op(v: &View, start: NodeIx, what: StructureWhat, to: Opt
             }
         }
         StructureWhat::Mincut => {
-            let t = v.g.node(to.ok_or_else(|| Error::Invalid("mincut needs `to`".into()))?)?;
+            let t =
+                v.g.node(to.ok_or_else(|| Error::Invalid("mincut needs `to`".into()))?)?;
             let c = structure::min_cut(v, start, t, &v.metric(capacity)?);
             json!({ "value": r(c.value), "cut": c.edges.iter().map(|&e| edge_ref(v, e)).collect::<Vec<_>>() })
         }
         StructureWhat::Betweenness => {
-            let mut rows: Vec<(usize, f64)> = structure::betweenness(v).into_iter().enumerate().collect();
+            let mut rows: Vec<(usize, f64)> =
+                structure::betweenness(v).into_iter().enumerate().collect();
             rows.sort_by(|a, b| b.1.total_cmp(&a.1));
             json!({ "top": rows.iter().take(top).map(|&(n, x)| json!({ "node": v.g.nodes[n].id, "betweenness": r(x) })).collect::<Vec<_>>() })
         }

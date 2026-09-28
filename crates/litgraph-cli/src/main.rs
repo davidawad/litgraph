@@ -78,13 +78,17 @@ fn scalar(v: &str) -> Value {
     match v {
         "true" => json!(true),
         "false" => json!(false),
-        _ if v.starts_with('{') || v.starts_with('[') => serde_json::from_str(v).unwrap_or_else(|_| json!(v)),
+        _ if v.starts_with('{') || v.starts_with('[') => {
+            serde_json::from_str(v).unwrap_or_else(|_| json!(v))
+        }
         _ => json!(v),
     }
 }
 
 fn kv(s: &str, flag: &str) -> Result<(String, String)> {
-    let (k, v) = s.split_once('=').with_context(|| format!("{flag} expects K=V, got `{s}`"))?;
+    let (k, v) = s
+        .split_once('=')
+        .with_context(|| format!("{flag} expects K=V, got `{s}`"))?;
     Ok((k.to_string(), v.to_string()))
 }
 
@@ -96,24 +100,37 @@ fn shorthand(cli: &Cli) -> Result<Value> {
     };
     for s in &cli.set {
         let (k, v) = kv(s, "--set")?;
-        let Ok(x) = v.parse::<f64>() else { bail!("--set {k}: `{v}` is not a number (params are numeric)") };
+        let Ok(x) = v.parse::<f64>() else {
+            bail!("--set {k}: `{v}` is not a number (params are numeric)")
+        };
         scenario["params"][k] = json!(x);
     }
     let mut op = Map::new();
     op.insert("op".into(), json!(cli.command));
     if let Some(i) = &cli.input {
-        bail!("unexpected argument `{i}` for op `{}`; pass op arguments as --arg k=v", cli.command);
+        bail!(
+            "unexpected argument `{i}` for op `{}`; pass op arguments as --arg k=v",
+            cli.command
+        );
     }
     for a in &cli.args {
         let (k, v) = kv(a, "--arg")?;
         op.insert(k, scalar(&v));
     }
-    let packs: Vec<&str> = cli.packs.as_deref().map(|p| p.split(',').collect()).unwrap_or_default();
+    let packs: Vec<&str> = cli
+        .packs
+        .as_deref()
+        .map(|p| p.split(',').collect())
+        .unwrap_or_default();
     Ok(json!({ "packs": packs, "links": !cli.no_links, "scenario": scenario, "op": op }))
 }
 
 fn emit(v: &impl serde::Serialize, compact: bool) -> Result<()> {
-    let s = if compact { serde_json::to_string(v)? } else { serde_json::to_string_pretty(v)? };
+    let s = if compact {
+        serde_json::to_string(v)?
+    } else {
+        serde_json::to_string_pretty(v)?
+    };
     println!("{s}");
     Ok(())
 }
@@ -131,7 +148,8 @@ fn run(cli: &Cli) -> Result<bool> {
             Ok(true)
         }
         "validate" => {
-            let doc: Value = serde_json::from_str(&read_input(cli.input.as_deref())?).context("document is not JSON")?;
+            let doc: Value = serde_json::from_str(&read_input(cli.input.as_deref())?)
+                .context("document is not JSON")?;
             let v = api::validate(&doc, cli.kind.as_deref(), &catalog);
             emit(&v, cli.compact)?;
             Ok(v.valid)

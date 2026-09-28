@@ -6,7 +6,9 @@
 
 #![allow(clippy::unwrap_used, clippy::expect_used)]
 
-use litgraph::api::{handle, handle_json, schema, Catalog, Op, Request, StructureWhat, SCHEMA_KINDS};
+use litgraph::api::{
+    handle, handle_json, schema, Catalog, Op, Request, StructureWhat, SCHEMA_KINDS,
+};
 use litgraph::scenario::Scenario;
 use serde_json::json;
 
@@ -15,7 +17,11 @@ fn catalog() -> Catalog {
 }
 
 fn req(op: Op) -> Request {
-    Request { packs: vec!["cofc".into()], op, ..Request::default() }
+    Request {
+        packs: vec!["cofc".into()],
+        op,
+        ..Request::default()
+    }
 }
 
 const START: &str = "claim-accrues";
@@ -62,13 +68,24 @@ fn graph_default_and_node_neighborhood() {
     let resp = handle(&req(Op::Graph { node: None }), &catalog());
     assert!(resp.ok);
 
-    let resp = handle(&req(Op::Graph { node: Some(INTERNAL_NODE.into()) }), &catalog());
+    let resp = handle(
+        &req(Op::Graph {
+            node: Some(INTERNAL_NODE.into()),
+        }),
+        &catalog(),
+    );
     assert!(resp.ok, "{resp:?}");
 }
 
 #[test]
 fn metric_top_rows() {
-    let resp = handle(&req(Op::Metric { spec: "dollars".into(), top: 5 }), &catalog());
+    let resp = handle(
+        &req(Op::Metric {
+            spec: "dollars".into(),
+            top: 5,
+        }),
+        &catalog(),
+    );
     assert!(resp.ok);
     let r = resp.result.unwrap();
     assert!(r["top"].as_array().unwrap().len() <= 5);
@@ -76,17 +93,34 @@ fn metric_top_rows() {
 
 #[test]
 fn explain_at_default_and_named_node() {
-    let resp = handle(&req(Op::Explain { node: None, from: None }), &catalog());
+    let resp = handle(
+        &req(Op::Explain {
+            node: None,
+            from: None,
+        }),
+        &catalog(),
+    );
     assert!(resp.ok);
 
-    let resp = handle(&req(Op::Explain { node: Some(INTERNAL_NODE.into()), from: None }), &catalog());
+    let resp = handle(
+        &req(Op::Explain {
+            node: Some(INTERNAL_NODE.into()),
+            from: None,
+        }),
+        &catalog(),
+    );
     assert!(resp.ok, "{resp:?}");
 }
 
 #[test]
 fn solve_full_policy_and_all_values() {
     let resp = handle(
-        &req(Op::Solve { from: None, full_policy: true, all_values: true, max_steps: 40 }),
+        &req(Op::Solve {
+            from: None,
+            full_policy: true,
+            all_values: true,
+            max_steps: 40,
+        }),
         &catalog(),
     );
     assert!(resp.ok);
@@ -97,7 +131,11 @@ fn solve_full_policy_and_all_values() {
 #[test]
 fn chain_expected_totals() {
     let resp = handle(
-        &req(Op::Chain { from: None, metrics: vec!["dollars".into(), "elapsed".into()], top: 5 }),
+        &req(Op::Chain {
+            from: None,
+            metrics: vec!["dollars".into(), "elapsed".into()],
+            top: 5,
+        }),
         &catalog(),
     );
     assert!(resp.ok);
@@ -124,7 +162,13 @@ fn simulate_small_run() {
 #[test]
 fn path_single_and_k_shortest_with_report() {
     let resp = handle(
-        &req(Op::Path { from: None, to: "terminals".into(), metric: "dollars".into(), k: 1, report: vec![] }),
+        &req(Op::Path {
+            from: None,
+            to: "terminals".into(),
+            metric: "dollars".into(),
+            k: 1,
+            report: vec![],
+        }),
         &catalog(),
     );
     assert!(resp.ok);
@@ -160,7 +204,14 @@ fn pareto_frontier_multi_objective() {
 #[test]
 fn sweep_finds_a_curve() {
     let resp = handle(
-        &req(Op::Sweep { param: "rate".into(), lo: 100.0, hi: 1000.0, steps: 5, watch: vec![], tol: 1e-3 }),
+        &req(Op::Sweep {
+            param: "rate".into(),
+            lo: 100.0,
+            hi: 1000.0,
+            steps: 5,
+            watch: vec![],
+            tol: 1e-3,
+        }),
         &catalog(),
     );
     assert!(resp.ok, "{resp:?}");
@@ -169,7 +220,13 @@ fn sweep_finds_a_curve() {
 #[test]
 fn tornado_sensitivity() {
     let resp = handle(
-        &req(Op::Tornado { params: vec!["rate".into()], rel: 0.25, dp: 0.1, probabilities: true, top: 5 }),
+        &req(Op::Tornado {
+            params: vec!["rate".into()],
+            rel: 0.25,
+            dp: 0.1,
+            probabilities: true,
+            top: 5,
+        }),
         &catalog(),
     );
     assert!(resp.ok, "{resp:?}");
@@ -179,9 +236,27 @@ fn tornado_sensitivity() {
 fn structure_every_analysis() {
     let cat = catalog();
     let cases = [
-        Op::Structure { from: None, what: StructureWhat::Summary, to: None, capacity: "1".into(), top: 5 },
-        Op::Structure { from: None, what: StructureWhat::Scc, to: None, capacity: "1".into(), top: 5 },
-        Op::Structure { from: None, what: StructureWhat::Dominators, to: None, capacity: "1".into(), top: 5 },
+        Op::Structure {
+            from: None,
+            what: StructureWhat::Summary,
+            to: None,
+            capacity: "1".into(),
+            top: 5,
+        },
+        Op::Structure {
+            from: None,
+            what: StructureWhat::Scc,
+            to: None,
+            capacity: "1".into(),
+            top: 5,
+        },
+        Op::Structure {
+            from: None,
+            what: StructureWhat::Dominators,
+            to: None,
+            capacity: "1".into(),
+            top: 5,
+        },
         Op::Structure {
             from: None,
             what: StructureWhat::Dominators,
@@ -196,8 +271,20 @@ fn structure_every_analysis() {
             capacity: "1".into(),
             top: 5,
         },
-        Op::Structure { from: None, what: StructureWhat::Betweenness, to: None, capacity: "1".into(), top: 5 },
-        Op::Structure { from: None, what: StructureWhat::Reachability, to: None, capacity: "1".into(), top: 5 },
+        Op::Structure {
+            from: None,
+            what: StructureWhat::Betweenness,
+            to: None,
+            capacity: "1".into(),
+            top: 5,
+        },
+        Op::Structure {
+            from: None,
+            what: StructureWhat::Reachability,
+            to: None,
+            capacity: "1".into(),
+            top: 5,
+        },
     ];
     for op in cases {
         let resp = handle(&req(op.clone()), &cat);
@@ -208,7 +295,13 @@ fn structure_every_analysis() {
 #[test]
 fn structure_mincut_without_to_is_an_error() {
     let resp = handle(
-        &req(Op::Structure { from: None, what: StructureWhat::Mincut, to: None, capacity: "1".into(), top: 5 }),
+        &req(Op::Structure {
+            from: None,
+            what: StructureWhat::Mincut,
+            to: None,
+            capacity: "1".into(),
+            top: 5,
+        }),
         &catalog(),
     );
     assert!(!resp.ok);
@@ -220,7 +313,11 @@ fn compare_base_and_variant_deltas() {
     let resp = handle(
         &req(Op::Compare {
             variant: json!({ "params": { "rate": 900.0 } }),
-            inner: Box::new(Op::Chain { from: None, metrics: vec!["dollars".into()], top: 5 }),
+            inner: Box::new(Op::Chain {
+                from: None,
+                metrics: vec!["dollars".into()],
+                top: 5,
+            }),
         }),
         &catalog(),
     );
@@ -232,16 +329,34 @@ fn compare_base_and_variant_deltas() {
 
 #[test]
 fn batch_runs_every_sub_op() {
-    let resp = handle(&req(Op::Batch { ops: vec![Op::Describe, Op::Packs, Op::Lint] }), &catalog());
+    let resp = handle(
+        &req(Op::Batch {
+            ops: vec![Op::Describe, Op::Packs, Op::Lint],
+        }),
+        &catalog(),
+    );
     assert!(resp.ok);
     assert_eq!(resp.result.unwrap().as_array().unwrap().len(), 3);
 }
 
 #[test]
 fn scenario_scoped_start_and_perspective_flow_through() {
-    let sc = Scenario { start: Some(START.into()), ..Scenario::default() };
-    let solve = Op::Solve { from: None, full_policy: false, all_values: false, max_steps: 40 };
-    let request = Request { packs: vec!["cofc".into()], scenario: sc, op: solve, ..Request::default() };
+    let sc = Scenario {
+        start: Some(START.into()),
+        ..Scenario::default()
+    };
+    let solve = Op::Solve {
+        from: None,
+        full_policy: false,
+        all_values: false,
+        max_steps: 40,
+    };
+    let request = Request {
+        packs: vec!["cofc".into()],
+        scenario: sc,
+        op: solve,
+        ..Request::default()
+    };
     let resp = handle(&request, &catalog());
     assert!(resp.ok, "{resp:?}");
 }
@@ -250,7 +365,11 @@ fn scenario_scoped_start_and_perspective_flow_through() {
 
 #[test]
 fn unknown_pack_ref_is_not_found_with_a_hint() {
-    let request = Request { packs: vec!["does-not-exist".into()], op: Op::Packs, ..Request::default() };
+    let request = Request {
+        packs: vec!["does-not-exist".into()],
+        op: Op::Packs,
+        ..Request::default()
+    };
     let resp = handle(&request, &catalog());
     assert!(!resp.ok);
     let err = resp.error.unwrap();
@@ -260,14 +379,25 @@ fn unknown_pack_ref_is_not_found_with_a_hint() {
 
 #[test]
 fn unknown_node_ref_is_not_found() {
-    let resp = handle(&req(Op::Graph { node: Some("does-not-exist".into()) }), &catalog());
+    let resp = handle(
+        &req(Op::Graph {
+            node: Some("does-not-exist".into()),
+        }),
+        &catalog(),
+    );
     assert!(!resp.ok);
     assert_eq!(resp.error.unwrap().code, "not-found");
 }
 
 #[test]
 fn bad_expression_is_an_expr_error_with_a_hint() {
-    let resp = handle(&req(Op::Metric { spec: "no_such_variable_at_all".into(), top: 5 }), &catalog());
+    let resp = handle(
+        &req(Op::Metric {
+            spec: "no_such_variable_at_all".into(),
+            top: 5,
+        }),
+        &catalog(),
+    );
     assert!(!resp.ok);
     let err = resp.error.unwrap();
     assert_eq!(err.code, "expr");
@@ -294,7 +424,10 @@ fn well_formed_json_request_round_trips_through_handle_json() {
 fn schema_returns_every_declared_kind() {
     for kind in SCHEMA_KINDS {
         let v = schema(kind).unwrap_or_else(|e| panic!("schema({kind}) failed: {e}"));
-        assert!(v.is_object(), "schema({kind}) should be a JSON schema object");
+        assert!(
+            v.is_object(),
+            "schema({kind}) should be a JSON schema object"
+        );
     }
 }
 

@@ -323,7 +323,12 @@ fn expand_label(
         if labels.len() >= max_labels {
             return true;
         }
-        labels.push(Label { node: to, cost, parent: Some(l), edge: Some(e) });
+        labels.push(Label {
+            node: to,
+            cost,
+            parent: Some(l),
+            edge: Some(e),
+        });
         open.push(labels.len() - 1);
     }
     false
@@ -390,7 +395,12 @@ pub fn pareto(
             ));
         }
     }
-    let mut labels: Vec<Label> = vec![Label { node: s, cost: vec![0.0; k], parent: None, edge: None }];
+    let mut labels: Vec<Label> = vec![Label {
+        node: s,
+        cost: vec![0.0; k],
+        parent: None,
+        edge: None,
+    }];
     let mut perm: Vec<Vec<usize>> = vec![vec![]; v.g.nodes.len()]; // permanent labels per node
     let mut open: Vec<usize> = vec![0];
     let mut truncated = false;
@@ -408,5 +418,9 @@ pub fn pareto(
         }
     }
     let paths = build_frontier_paths(v, s, &labels, &perm[t]);
-    Ok(Frontier { paths, labels_created: labels.len(), truncated })
+    Ok(Frontier {
+        paths,
+        labels_created: labels.len(),
+        truncated,
+    })
 }

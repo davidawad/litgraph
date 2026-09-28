@@ -19,7 +19,10 @@ use wasm_bindgen::prelude::wasm_bindgen;
 
 fn catalog() -> Result<&'static Catalog, String> {
     static CATALOG: OnceLock<Result<Catalog, String>> = OnceLock::new();
-    CATALOG.get_or_init(|| Catalog::embedded().map_err(|e| e.to_string())).as_ref().map_err(Clone::clone)
+    CATALOG
+        .get_or_init(|| Catalog::embedded().map_err(|e| e.to_string()))
+        .as_ref()
+        .map_err(Clone::clone)
 }
 
 fn error(code: &str, message: &str) -> String {
@@ -50,7 +53,10 @@ pub fn handle_with_packs(request_json: &str, packs_json: &str) -> String {
         Ok(_) => return error("parse", "packs must be an object of {file name: pack}"),
         Err(e) => return error("parse", &e.to_string()),
     };
-    match Catalog::from_files("inline".into(), files.into_iter().map(|(k, v)| (k, v.to_string()))) {
+    match Catalog::from_files(
+        "inline".into(),
+        files.into_iter().map(|(k, v)| (k, v.to_string())),
+    ) {
         Ok(c) => to_string(&api::handle_json(request_json, &c)),
         Err(e) => error("parse", &e.to_string()),
     }
@@ -106,7 +112,10 @@ mod tests {
         assert_eq!(parse(&describe())["op"], json!("describe"));
         assert!(parse(&schema("scenario"))["title"].is_string());
         assert_eq!(parse(&schema("nope"))["ok"], json!(false));
-        assert_eq!(parse(&validate(r#"{"params":{"rate":1}}"#, None))["valid"], json!(true));
+        assert_eq!(
+            parse(&validate(r#"{"params":{"rate":1}}"#, None))["valid"],
+            json!(true)
+        );
         assert_eq!(parse(&validate("{", None))["ok"], json!(false));
     }
 

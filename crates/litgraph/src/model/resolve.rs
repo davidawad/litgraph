@@ -20,7 +20,9 @@ impl Graph {
         if let Some(&ix) = self.node_ix.get(r) {
             return Ok(ix);
         }
-        let hits: Vec<NodeIx> = (0..self.nodes.len()).filter(|&i| self.nodes[i].local_id == r).collect();
+        let hits: Vec<NodeIx> = (0..self.nodes.len())
+            .filter(|&i| self.nodes[i].local_id == r)
+            .collect();
         match hits.as_slice() {
             [one] => Ok(*one),
             [] => Err(Error::NotFound(format!("node {r}{}", self.suggest_node(r)))),
@@ -41,7 +43,9 @@ impl Graph {
             return Ok(ix);
         }
         let suffix = format!("::{r}");
-        let hits: Vec<EdgeIx> = (0..self.edges.len()).filter(|&i| self.edges[i].id.ends_with(&suffix)).collect();
+        let hits: Vec<EdgeIx> = (0..self.edges.len())
+            .filter(|&i| self.edges[i].id.ends_with(&suffix))
+            .collect();
         match hits.as_slice() {
             [one] => Ok(*one),
             [] => Err(Error::NotFound(format!("edge {r}"))),
@@ -62,7 +66,11 @@ impl Graph {
                 return Ok(e);
             }
         }
-        let hits: Vec<EdgeIx> = self.out[node].iter().copied().filter(|&e| self.edges[e].label == r).collect();
+        let hits: Vec<EdgeIx> = self.out[node]
+            .iter()
+            .copied()
+            .filter(|&e| self.edges[e].label == r)
+            .collect();
         match hits.as_slice() {
             [one] => Ok(*one),
             _ => Err(Error::NotFound(format!(
@@ -78,7 +86,9 @@ impl Graph {
         let near = join(
             self.nodes
                 .iter()
-                .filter(|n| n.id.to_lowercase().contains(&r) || r.contains(&n.local_id.to_lowercase()))
+                .filter(|n| {
+                    n.id.to_lowercase().contains(&r) || r.contains(&n.local_id.to_lowercase())
+                })
                 .take(5)
                 .map(|n| n.id.as_str()),
         );
@@ -99,7 +109,11 @@ impl Graph {
     #[must_use]
     pub fn base_role(&self, e: EdgeIx) -> Role {
         let edge = &self.edges[e];
-        let pack = if edge.link { &self.nodes[edge.from].pack } else { &edge.pack };
+        let pack = if edge.link {
+            &self.nodes[edge.from].pack
+        } else {
+            &edge.pack
+        };
         self.pack_roles
             .get(pack)
             .and_then(|r| r.get(&edge.actor).copied())

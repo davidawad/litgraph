@@ -49,7 +49,10 @@ pub(super) fn path_json(v: &View, p: &paths::Path, names: &[String]) -> Value {
         .iter()
         .map(|&e| {
             let ed = &v.g.edges[e];
-            format!("{} --[{}]--> {}", v.g.nodes[ed.from].local_id, ed.label, v.g.nodes[ed.to].local_id)
+            format!(
+                "{} --[{}]--> {}",
+                v.g.nodes[ed.from].local_id, ed.label, v.g.nodes[ed.to].local_id
+            )
         })
         .collect();
     json!({
@@ -86,7 +89,10 @@ pub(super) fn targets(v: &View, spec: &str) -> Result<Vec<NodeIx>> {
         return Ok(v.g.terminals().collect());
     }
     if let Some(tag) = spec.strip_prefix("tag:") {
-        let ts: Vec<NodeIx> = v.g.terminals().filter(|&t| v.g.nodes[t].outcome.iter().any(|o| o == tag)).collect();
+        let ts: Vec<NodeIx> =
+            v.g.terminals()
+                .filter(|&t| v.g.nodes[t].outcome.iter().any(|o| o == tag))
+                .collect();
         if ts.is_empty() {
             return Err(Error::NotFound(format!("no terminals tagged {tag}")));
         }
@@ -96,7 +102,10 @@ pub(super) fn targets(v: &View, spec: &str) -> Result<Vec<NodeIx>> {
 }
 
 pub(super) fn metric_list(v: &View, names: &[String]) -> Result<Vec<(String, Vec<f64>)>> {
-    names.iter().map(|n| Ok((n.clone(), v.metric(n)?))).collect()
+    names
+        .iter()
+        .map(|n| Ok((n.clone(), v.metric(n)?)))
+        .collect()
 }
 
 /// Warnings for cyclic states where value iteration hit its cap.
@@ -151,7 +160,14 @@ pub(super) fn best_line(v: &View, sol: &mdp::Solution, start: NodeIx, max: usize
 pub(super) fn group_warnings(all: Vec<Warn>) -> Vec<super::GroupedWarning> {
     let mut by: BTreeMap<String, super::GroupedWarning> = BTreeMap::new();
     for w in all {
-        let g = by.entry(w.code.clone()).or_insert_with(|| super::GroupedWarning { code: w.code.clone(), count: 0, example: w.message.clone(), at: vec![] });
+        let g = by
+            .entry(w.code.clone())
+            .or_insert_with(|| super::GroupedWarning {
+                code: w.code.clone(),
+                count: 0,
+                example: w.message.clone(),
+                at: vec![],
+            });
         g.count += 1;
         if let Some(a) = w.at {
             if g.at.len() < 8 {

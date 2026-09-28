@@ -13,7 +13,11 @@ fn one_or_many<'de, D: Deserializer<'de>>(d: D) -> Result<Vec<String>, D::Error>
         Many(Vec<String>),
     }
     Ok(match OneOrMany::deserialize(d)? {
-        OneOrMany::One(s) => s.split(',').map(|x| x.trim().to_string()).filter(|x| !x.is_empty()).collect(),
+        OneOrMany::One(s) => s
+            .split(',')
+            .map(|x| x.trim().to_string())
+            .filter(|x| !x.is_empty())
+            .collect(),
         OneOrMany::Many(v) => v,
     })
 }
@@ -73,7 +77,11 @@ fn seed() -> u64 {
 // field's type (`Box<Op>`); returning `Op` would not satisfy that bound.
 #[allow(clippy::unnecessary_box_returns)]
 fn chain_op() -> Box<Op> {
-    Box::new(Op::Chain { from: None, metrics: chain_metrics(), top: 15 })
+    Box::new(Op::Chain {
+        from: None,
+        metrics: chain_metrics(),
+        top: 15,
+    })
 }
 
 /// What `structure` computes.

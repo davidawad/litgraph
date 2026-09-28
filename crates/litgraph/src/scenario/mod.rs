@@ -184,7 +184,14 @@ pub struct NodePlan {
 
 impl NodePlan {
     pub(crate) fn of(control: Control) -> NodePlan {
-        NodePlan { control, choices: vec![], draws: vec![], choice_mass: 0.0, minimize: false, wait: vec![] }
+        NodePlan {
+            control,
+            choices: vec![],
+            draws: vec![],
+            choice_mass: 0.0,
+            minimize: false,
+            wait: vec![],
+        }
     }
 }
 
@@ -194,7 +201,11 @@ pub const WAIT: usize = usize::MAX;
 /// Resolve a metric/utility spec: a scenario-defined name, a built-in name,
 /// or else the spec itself as an inline expression.
 #[must_use]
-pub fn resolve_spec<'a>(spec: &'a str, custom: &'a BTreeMap<String, String>, builtins: &'a [Builtin]) -> &'a str {
+pub fn resolve_spec<'a>(
+    spec: &'a str,
+    custom: &'a BTreeMap<String, String>,
+    builtins: &'a [Builtin],
+) -> &'a str {
     custom
         .get(spec)
         .map(String::as_str)

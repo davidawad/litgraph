@@ -11,6 +11,11 @@ mod links;
 mod resolve;
 mod schema;
 
-pub use graph::{heuristic_payoff, qualify, CompileOptions, Edge, EdgeIx, Graph, Node, NodeIx, PackMeta, PayoffSource};
+pub use graph::{
+    heuristic_payoff, qualify, CompileOptions, Edge, EdgeIx, Graph, Node, NodeIx, PackMeta,
+    PayoffSource,
+};
 pub use links::{local_edge_ids, merge_patch, Instance, LinkFile};
-pub use schema::{default_roles, Deadline, Duration, Group, NodeKind, Pack, RawEdge, RawNode, Role, Source};
+pub use schema::{
+    default_roles, Deadline, Duration, Group, NodeKind, Pack, RawEdge, RawNode, Role, Source,
+};

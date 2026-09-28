@@ -25,17 +25,26 @@ pub fn schema(kind: &str) -> Result<Value> {
         "scenario" => schema_for!(Scenario),
         "pack" => schema_for!(Pack),
         "links" => schema_for!(LinkFile),
-        other => return Err(Error::NotFound(format!("schema {other}; kinds: {}", SCHEMA_KINDS.join(", ")))),
+        other => {
+            return Err(Error::NotFound(format!(
+                "schema {other}; kinds: {}",
+                SCHEMA_KINDS.join(", ")
+            )))
+        }
     };
     serde_json::to_value(s).map_err(|e| Error::Invalid(e.to_string()))
 }
 
 fn builtins(xs: &[metrics::Builtin]) -> Vec<Value> {
-    xs.iter().map(|m| json!({ "name": m.name, "expr": m.expr, "doc": m.doc })).collect()
+    xs.iter()
+        .map(|m| json!({ "name": m.name, "expr": m.expr, "doc": m.doc }))
+        .collect()
 }
 
 fn named(xs: &[(&str, &str)]) -> Vec<Value> {
-    xs.iter().map(|(k, d)| json!({ "name": k, "doc": d })).collect()
+    xs.iter()
+        .map(|(k, d)| json!({ "name": k, "doc": d }))
+        .collect()
 }
 
 /// The manual: ops, scenario fields, metrics with their source expressions,

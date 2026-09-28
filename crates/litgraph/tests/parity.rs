@@ -7,7 +7,11 @@
 //! absorbing chain used the *self-only* reading with the best self edge by
 //! the optimistic Q*.
 
-#![allow(clippy::unwrap_used, clippy::expect_used, clippy::cast_possible_truncation)]
+#![allow(
+    clippy::unwrap_used,
+    clippy::expect_used,
+    clippy::cast_possible_truncation
+)]
 
 use litgraph::algo::{chain, mdp, paths, structure};
 use litgraph::model::{CompileOptions, Graph, LinkFile, Pack, Role};

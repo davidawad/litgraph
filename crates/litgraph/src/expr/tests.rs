@@ -16,7 +16,12 @@ impl Env for M {
 }
 
 fn env() -> M {
-    M(HashMap::from([("hours", 10.0), ("rate", 500.0), ("fees", 350.0), ("p", 0.25)]))
+    M(HashMap::from([
+        ("hours", 10.0),
+        ("rate", 500.0),
+        ("fees", 350.0),
+        ("p", 0.25),
+    ]))
 }
 
 fn ev(s: &str) -> f64 {
@@ -47,14 +52,23 @@ fn logic_ternary_functions() {
     assert_eq!(ev("tag('x') * 7 + tag(\"y\")"), 7.0);
     assert_eq!(ev("if(0, 1/0, 3)"), 3.0);
     assert_eq!(ev("hours = 10 ? 1 : 0"), 1.0);
-    assert_eq!(ev("true + false + isnan(0/0) + step(-1) + default(0/0, 4)"), 6.0);
-    assert_eq!(ev("abs(-2) + sqrt(16) + pow(2, 3) + log10(100) + exp(0)"), 17.0);
+    assert_eq!(
+        ev("true + false + isnan(0/0) + step(-1) + default(0/0, 4)"),
+        6.0
+    );
+    assert_eq!(
+        ev("abs(-2) + sqrt(16) + pow(2, 3) + log10(100) + exp(0)"),
+        17.0
+    );
     assert!(ev("inf") > 1e308);
 }
 
 #[test]
 fn vars_are_collected_once() {
-    assert_eq!(parse("a + b * a + f(c) + (d ? e : a)").unwrap().vars(), ["a", "b", "c", "d", "e"]);
+    assert_eq!(
+        parse("a + b * a + f(c) + (d ? e : a)").unwrap().vars(),
+        ["a", "b", "c", "d", "e"]
+    );
 }
 
 #[test]
@@ -63,8 +77,19 @@ fn errors_are_reported() {
         assert!(parse(bad).is_err(), "{bad} should not parse");
     }
     let e = env();
-    for bad in ["nope", "\"s\" + 1", "nosuch(1)", "if(1, 2)", "abs()", "min('a')", "tag(1)"] {
-        assert!(parse(bad).unwrap().eval(&e).is_err(), "{bad} should not evaluate");
+    for bad in [
+        "nope",
+        "\"s\" + 1",
+        "nosuch(1)",
+        "if(1, 2)",
+        "abs()",
+        "min('a')",
+        "tag(1)",
+    ] {
+        assert!(
+            parse(bad).unwrap().eval(&e).is_err(),
+            "{bad} should not evaluate"
+        );
     }
     assert!(Arg::Num(1.0).str().is_err() && Arg::Str("s".into()).num().is_err());
 }

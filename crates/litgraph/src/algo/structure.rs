@@ -220,12 +220,20 @@ struct Residual {
 /// its zero-capacity reverse arc.
 fn build_residual(v: &View, cap: &[f64]) -> Residual {
     let n = v.g.nodes.len();
-    let mut r = Residual { to: vec![], cap: vec![], adj: vec![vec![]; n] };
+    let mut r = Residual {
+        to: vec![],
+        cap: vec![],
+        adj: vec![vec![]; n],
+    };
     for (e, edge) in v.g.edges.iter().enumerate() {
         if !v.active[e] || edge.from == edge.to {
             continue;
         }
-        let w = if cap[e].is_finite() && cap[e] > 0.0 { cap[e] } else { 0.0 };
+        let w = if cap[e].is_finite() && cap[e] > 0.0 {
+            cap[e]
+        } else {
+            0.0
+        };
         r.adj[edge.from].push(r.to.len());
         r.to.push(edge.to);
         r.cap.push(w);

@@ -48,8 +48,17 @@ fn parse<T: serde::de::DeserializeOwned>(doc: &Value) -> Result<T> {
     serde_json::from_value(doc.clone()).map_err(|e| Error::Parse(e.to_string()))
 }
 
-fn scenario_against(catalog: &Catalog, packs: &[String], links: bool, sc: &Scenario, out: &mut Validation) {
-    match catalog.compile(packs, links, &CompileOptions::default()).and_then(|g| View::new(&g, sc).map(|v| v.warnings)) {
+fn scenario_against(
+    catalog: &Catalog,
+    packs: &[String],
+    links: bool,
+    sc: &Scenario,
+    out: &mut Validation,
+) {
+    match catalog
+        .compile(packs, links, &CompileOptions::default())
+        .and_then(|g| View::new(&g, sc).map(|v| v.warnings))
+    {
         Ok(w) => out.warnings = w,
         Err(e) => out.errors.push(e.to_string()),
     }
@@ -64,9 +73,22 @@ pub fn validate(doc: &Value, kind: Option<&str>, catalog: &Catalog) -> Validatio
         "request" => "request",
         _ => "scenario",
     };
-    let mut out = Validation { kind, valid: false, errors: vec![], diagnostics: vec![], warnings: vec![] };
+    let mut out = Validation {
+        kind,
+        valid: false,
+        errors: vec![],
+        diagnostics: vec![],
+        warnings: vec![],
+    };
     match kind {
-        "pack" => match parse::<Pack>(doc).and_then(|p| Graph::compile(std::slice::from_ref(&p), &LinkFile::default(), &CompileOptions::default()).map(|g| (p, g))) {
+        "pack" => match parse::<Pack>(doc).and_then(|p| {
+            Graph::compile(
+                std::slice::from_ref(&p),
+                &LinkFile::default(),
+                &CompileOptions::default(),
+            )
+            .map(|g| (p, g))
+        }) {
             Ok((p, g)) => out.diagnostics = lint::lint(&g, &[p]),
             Err(e) => out.errors.push(e.to_string()),
         },

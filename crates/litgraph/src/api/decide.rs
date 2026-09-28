@@ -3,7 +3,9 @@
 
 use serde_json::{json, Map, Value};
 
-use super::render::{best_line, choice_id, choice_label, convergence_warnings, edge_ref, metric_list, node_ref, r};
+use super::render::{
+    best_line, choice_id, choice_label, convergence_warnings, edge_ref, metric_list, node_ref, r,
+};
 use super::Warn;
 use crate::algo::{chain, mdp, sim};
 use crate::error::Result;
@@ -16,13 +18,23 @@ fn solve(v: &View) -> Result<mdp::Solution> {
     mdp::solve(v, &mdp::SolveOptions::default())
 }
 
-pub(super) fn solve_op(v: &View, start: NodeIx, full_policy: bool, all_values: bool, max_steps: usize) -> Out {
+pub(super) fn solve_op(
+    v: &View,
+    start: NodeIx,
+    full_policy: bool,
+    all_values: bool,
+    max_steps: usize,
+) -> Out {
     let sol = solve(v)?;
     let policy: Vec<Value> = sol
         .my_policy(v)
         .map(|(n, e)| json!({ "node": v.g.nodes[n].id, "edge": choice_id(v, e), "label": choice_label(v, e), "q": r(sol.option_q(v, n, e)) }))
         .collect();
-    let values = all_values.then(|| (0..v.g.nodes.len()).map(|n| (v.g.nodes[n].id.clone(), r(sol.value[n]))).collect::<Map<_, _>>());
+    let values = all_values.then(|| {
+        (0..v.g.nodes.len())
+            .map(|n| (v.g.nodes[n].id.clone(), r(sol.value[n])))
+            .collect::<Map<_, _>>()
+    });
     let result = json!({
         "start": node_ref(v, start),
         "value": r(sol.value[start]),
@@ -41,7 +53,11 @@ pub(super) fn chain_op(v: &View, start: NodeIx, metrics: &[String], top: usize) 
     let sol = solve(v)?;
     let ms = metric_list(v, metrics)?;
     let c = chain::chain(v, &sol, start, &ms)?;
-    let cost_total = metrics.first().and_then(|m| c.expected.get(m)).copied().unwrap_or(0.0);
+    let cost_total = metrics
+        .first()
+        .and_then(|m| c.expected.get(m))
+        .copied()
+        .unwrap_or(0.0);
     let absorption: Vec<Value> = c
         .absorption
         .iter()
@@ -128,7 +144,12 @@ fn option_json(v: &View, sol: &mdp::Solution, n: NodeIx, e: usize) -> Value {
     }
     // What happens after taking this edge: absorption from its target under the policy.
     if let Ok(after) = chain::chain(v, sol, ed.to, &[]) {
-        j["then"] = json!(after.absorption.iter().take(4).map(|&(t, p)| json!({ "terminal": v.g.nodes[t].local_id, "p": r(p) })).collect::<Vec<_>>());
+        j["then"] = json!(after
+            .absorption
+            .iter()
+            .take(4)
+            .map(|&(t, p)| json!({ "terminal": v.g.nodes[t].local_id, "p": r(p) }))
+            .collect::<Vec<_>>());
     }
     j
 }
@@ -137,7 +158,10 @@ pub(super) fn explain_op(v: &View, n: NodeIx) -> Out {
     let sol = solve(v)?;
     let node = &v.g.nodes[n];
     let plan = &v.plan[n];
-    let mut options: Vec<(f64, Value)> = v.outs(n).map(|e| (sol.q[e], option_json(v, &sol, n, e))).collect();
+    let mut options: Vec<(f64, Value)> = v
+        .outs(n)
+        .map(|e| (sol.q[e], option_json(v, &sol, n, e)))
+        .collect();
     if !plan.wait.is_empty() {
         let qw = sol.option_q(v, n, WAIT);
         let best = sol.choice.get(&n).copied();
@@ -152,7 +176,11 @@ pub(super) fn explain_op(v: &View, n: NodeIx) -> Out {
         options.push((qw, j));
     }
     options.sort_by(|a, b| b.0.total_cmp(&a.0));
-    let here: Vec<_> = v.warnings.iter().filter(|w| w.at.as_deref() == Some(node.id.as_str())).collect();
+    let here: Vec<_> = v
+        .warnings
+        .iter()
+        .filter(|w| w.at.as_deref() == Some(node.id.as_str()))
+        .collect();
     let result = json!({
         "node": { "id": node.id, "label": node.label, "kind": node.kind, "cite": node.cite, "note": node.note },
         "control": plan.control,

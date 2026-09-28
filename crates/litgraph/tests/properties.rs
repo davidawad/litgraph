@@ -88,9 +88,19 @@ fn random_chain(rng: &mut ChaCha8Rng, n_states: usize, n_terms: usize) -> Random
         edges,
         ..Default::default()
     };
-    let graph = Graph::compile(&[pack], &LinkFile::default(), &CompileOptions { no_continuations: true })
-        .expect("random chain packs always compile");
-    RandomChain { graph, n_states, n_terms }
+    let graph = Graph::compile(
+        &[pack],
+        &LinkFile::default(),
+        &CompileOptions {
+            no_continuations: true,
+        },
+    )
+    .expect("random chain packs always compile");
+    RandomChain {
+        graph,
+        n_states,
+        n_terms,
+    }
 }
 
 fn view<'a>(g: &'a Graph, sc: &Scenario) -> View<'a> {
@@ -238,7 +248,11 @@ proptest! {
 
 fn mixed_node_graph(my_payoff: f64, nature_payoff: f64, p: f64) -> Graph {
     let nodes = vec![
-        RawNode { id: "n0".into(), label: "n0".into(), ..Default::default() },
+        RawNode {
+            id: "n0".into(),
+            label: "n0".into(),
+            ..Default::default()
+        },
         RawNode {
             id: "good".into(),
             label: "good".into(),
@@ -255,8 +269,20 @@ fn mixed_node_graph(my_payoff: f64, nature_payoff: f64, p: f64) -> Graph {
         },
     ];
     let edges = vec![
-        RawEdge { from: "n0".into(), to: "good".into(), label: "choose".into(), actor: "applicant".into(), ..Default::default() },
-        RawEdge { from: "n0".into(), to: "world".into(), label: "nature".into(), probability: Some(p), ..Default::default() },
+        RawEdge {
+            from: "n0".into(),
+            to: "good".into(),
+            label: "choose".into(),
+            actor: "applicant".into(),
+            ..Default::default()
+        },
+        RawEdge {
+            from: "n0".into(),
+            to: "world".into(),
+            label: "nature".into(),
+            probability: Some(p),
+            ..Default::default()
+        },
     ];
     let pack = Pack {
         schema_version: 2,
@@ -267,7 +293,14 @@ fn mixed_node_graph(my_payoff: f64, nature_payoff: f64, p: f64) -> Graph {
         edges,
         ..Default::default()
     };
-    Graph::compile(&[pack], &LinkFile::default(), &CompileOptions { no_continuations: true }).unwrap()
+    Graph::compile(
+        &[pack],
+        &LinkFile::default(),
+        &CompileOptions {
+            no_continuations: true,
+        },
+    )
+    .unwrap()
 }
 
 proptest! {
@@ -377,7 +410,14 @@ proptest! {
 /// Recursive worker for [`brute_force_max_flow`]: tries every integer flow
 /// for edge `i..`, and updates `best` whenever a complete assignment
 /// conserves flow at every node but 0 and `t`.
-fn brute_force_rec(i: usize, edges: &[(usize, usize, i32)], n: usize, t: usize, flow: &mut Vec<i32>, best: &mut i32) {
+fn brute_force_rec(
+    i: usize,
+    edges: &[(usize, usize, i32)],
+    n: usize,
+    t: usize,
+    flow: &mut Vec<i32>,
+    best: &mut i32,
+) {
     if i == edges.len() {
         let mut balance = vec![0i64; n];
         for (k, &(a, b, _)) in edges.iter().enumerate() {
