@@ -93,7 +93,7 @@ fn random_chain(rng: &mut ChaCha8Rng, n_states: usize, n_terms: usize) -> Random
     RandomChain { graph, n_states, n_terms }
 }
 
-fn view(g: &Graph, sc: &Scenario) -> View<'_> {
+fn view<'a>(g: &'a Graph, sc: &Scenario) -> View<'a> {
     View::new(g, sc).expect("scenario resolves against a graph it was built for")
 }
 
