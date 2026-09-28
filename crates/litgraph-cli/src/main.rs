@@ -48,7 +48,7 @@ struct Cli {
     /// Document kind for `validate` (default: detected).
     #[arg(long)]
     kind: Option<String>,
-    /// Packs directory (default: $LITGRAPH_PACKS, else the packs built into this binary).
+    /// Packs directory (default: `$LITGRAPH_PACKS`, else the packs built into this binary).
     #[arg(long)]
     packs_dir: Option<String>,
     /// Do not apply links.json.
