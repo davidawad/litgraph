@@ -363,3 +363,97 @@ pub fn lu_solve(a: &mut [f64], n: usize, b: &mut [f64]) -> std::result::Result<V
     }
     Ok(x)
 }
+
+#[cfg(test)]
+mod tests {
+    #![allow(clippy::unwrap_used)]
+    use super::*;
+    use crate::model::{CompileOptions, Graph, LinkFile, Pack};
+    use crate::scenario::{Scenario, View};
+
+    fn compile(j: serde_json::Value) -> Graph {
+        let p: Pack = serde_json::from_value(j).expect("well-formed test pack");
+        Graph::compile(&[p], &LinkFile::default(), &CompileOptions::default())
+            .expect("test pack compiles")
+    }
+
+    /// A fabricated transition row whose probabilities don't sum to 1 (a
+    /// caller bug, not a real policy) must be diagnosed as exactly that,
+    /// not blamed on a non-terminating policy: its edge target is a
+    /// terminal (outside the transient set), so it "escapes" immediately
+    /// and can never appear in the trapped-states list either way.
+    #[test]
+    fn diagnose_singular_reports_rows_that_do_not_sum_to_one() {
+        let g = compile(serde_json::json!({
+            "schemaVersion": 2, "id": "ds", "title": "ds", "startNodeId": "s",
+            "nodes": [
+                { "id": "s", "kind": "state", "label": "s" },
+                { "id": "e", "kind": "terminal", "label": "e", "payoff": 1 }
+            ],
+            "edges": [{ "id": "go", "from": "s", "to": "e", "label": "go", "actor": "applicant" }]
+        }));
+        let v = View::new(&g, &Scenario::default()).unwrap();
+        let sol = crate::algo::mdp::solve(&v, &crate::algo::mdp::SolveOptions::default()).unwrap();
+        let s_ix = g.node("ds::s").unwrap();
+        let transient = vec![s_ix];
+        let tix: BTreeMap<NodeIx, usize> = BTreeMap::from([(s_ix, 0)]);
+        // 0.4 instead of 1.0: a fabricated bad row (this never happens from
+        // a real `step_dist` call, which is exactly why this diagnostic
+        // needs its own direct test rather than one routed through a real
+        // solve).
+        let dists = vec![vec![(g.edge("go").unwrap(), 0.4)]];
+        let err = diagnose_singular(&v, &sol, &transient, &tix, &dists, 0);
+        assert_eq!(err.code(), "numeric");
+        assert!(err.to_string().contains("do not sum to 1"), "{err}");
+    }
+
+    /// `x_reachable` walks positive-probability edges only, and reports
+    /// `false` for a target with no path at all — both need a fabricated
+    /// `dists` table, since a real solved policy's transient set is built
+    /// from exactly the same reachability this function re-checks (so a
+    /// real call can never see an unreachable target here).
+    #[test]
+    fn x_reachable_skips_zero_probability_edges_and_reports_unreachable_targets() {
+        let g = compile(serde_json::json!({
+            "schemaVersion": 2, "id": "xr", "title": "xr", "startNodeId": "s",
+            "nodes": [
+                { "id": "s", "kind": "state", "label": "s" },
+                { "id": "a", "kind": "state", "label": "a" },
+                { "id": "b", "kind": "state", "label": "b" },
+                { "id": "isolated", "kind": "state", "label": "isolated" }
+            ],
+            "edges": [
+                { "id": "s-zero", "from": "s", "to": "a", "label": "s-zero", "actor": "either" },
+                { "id": "s-b", "from": "s", "to": "b", "label": "s-b", "actor": "either" }
+            ]
+        }));
+        let v = View::new(&g, &Scenario::default()).unwrap();
+        let s_ix = g.node("xr::s").unwrap();
+        let a_ix = g.node("xr::a").unwrap();
+        let b_ix = g.node("xr::b").unwrap();
+        let isolated_ix = g.node("xr::isolated").unwrap();
+        let tix: BTreeMap<NodeIx, usize> = BTreeMap::from([
+            (s_ix, 0),
+            (a_ix, 1),
+            (b_ix, 2),
+            (isolated_ix, 3),
+        ]);
+        let dists = vec![
+            // From s: a zero-probability edge to `a` (skipped) and a
+            // positive-probability edge to `b` (followed).
+            vec![
+                (g.edge("s-zero").unwrap(), 0.0),
+                (g.edge("s-b").unwrap(), 1.0),
+            ],
+            vec![], // a: no out-edges recorded
+            vec![], // b: no out-edges recorded
+            vec![], // isolated: unreachable from s no matter what
+        ];
+        // `a` is only reachable via the zero-probability edge: unreachable.
+        assert!(!x_reachable(&dists, &tix, &v, 1, 0));
+        // `b` is reachable via the positive-probability edge.
+        assert!(x_reachable(&dists, &tix, &v, 2, 0));
+        // `isolated` has no edge into it at all from `s`.
+        assert!(!x_reachable(&dists, &tix, &v, 3, 0));
+    }
+}
