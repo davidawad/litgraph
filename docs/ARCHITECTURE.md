@@ -80,7 +80,9 @@ different set with `$LITGRAPH_PACKS` or `--packs-dir` (`Catalog::load`).
 5. **Stable identity.** Packs, nodes and edges have stable ids; errors say
    what was not found and suggest near matches; the same request against the
    same pack fingerprints and engine version returns the same answer
-   (simulation is seeded).
+   (simulation is seeded). Parsing is strict everywhere (`deny_unknown_fields`
+   on every request, scenario, op, pack, and links document): a typo is a
+   hard error naming the valid fields, not a silently-ignored key.
 6. **Cheap enough to think with.** Rust, milliseconds per solve on the full
    multi-forum graph, so sweeps, tornados and comparisons fit inside an
    agent's reasoning loop instead of being a batch job. `batch` amortizes
