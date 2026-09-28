@@ -238,7 +238,8 @@ fn batch_runs_every_sub_op() {
 #[test]
 fn scenario_scoped_start_and_perspective_flow_through() {
     let sc = Scenario { start: Some(START.into()), ..Scenario::default() };
-    let request = Request { packs: vec!["cofc".into()], scenario: sc, op: Op::Solve::default_solve(), ..Request::default() };
+    let solve = Op::Solve { from: None, full_policy: false, all_values: false, max_steps: 40 };
+    let request = Request { packs: vec!["cofc".into()], scenario: sc, op: solve, ..Request::default() };
     let resp = handle(&request, &catalog());
     assert!(resp.ok, "{resp:?}");
 }
