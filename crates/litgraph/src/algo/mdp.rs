@@ -34,24 +34,32 @@ use crate::metrics::TerminalEnv;
 use crate::model::{NodeIx, Role};
 use crate::scenario::{Control, Objective, View, WAIT};
 
+/// Tolerances for the cyclic (SCC-local) value-iteration backup.
 #[derive(Debug, Clone, Default)]
 pub struct SolveOptions {
+    /// Convergence tolerance, relative to the component's value scale (0 = default `1e-9`).
     pub epsilon: f64,
+    /// Iteration cap per cyclic component before giving up (0 = default `100_000`).
     pub max_iterations: usize,
 }
 
+/// The solved game: values, action values, and the optimal policy.
 #[derive(Debug, Clone, Serialize)]
 pub struct Solution {
+    /// Value of every node under the optimal (or fixed-role) policy.
     pub value: Vec<f64>,
     /// Per-edge action value (NaN for inactive edges / edges out of terminals).
     pub q: Vec<f64>,
     /// Chosen edge at every node where a chooser (self or opponent) acts.
     pub choice: BTreeMap<NodeIx, usize>,
+    /// True if every cyclic component converged within its iteration cap.
     pub converged: bool,
     /// Nodes in cycles that hit the iteration cap (values unreliable; usually a
     /// loop someone can force forever at positive cost).
     pub unconverged: Vec<NodeIx>,
+    /// Iterations used by the slowest-converging cyclic component.
     pub iterations: usize,
+    /// Fee-shift policy-iteration rounds used (0 if no `fee_shift`).
     pub fee_shift_rounds: usize,
     /// Effective (possibly fee-shift-adjusted) edge costs used.
     pub cost: Vec<f64>,
@@ -59,6 +67,7 @@ pub struct Solution {
 
 impl Solution {
     /// Value of option `e` at node `n` (the expectation over the world edges when `e` is WAIT).
+    #[must_use]
     pub fn option_q(&self, v: &View, n: NodeIx, e: usize) -> f64 {
         if e == WAIT {
             v.plan[n].wait.iter().map(|&(w, p)| p * self.q[w]).sum()
