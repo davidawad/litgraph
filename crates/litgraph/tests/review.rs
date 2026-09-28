@@ -3,6 +3,8 @@
 //! with a hand-computable expected value. See the review report for the
 //! ranked writeup.
 
+#![allow(clippy::unwrap_used, clippy::expect_used)]
+
 use litgraph::algo::mdp;
 use litgraph::model::{CompileOptions, Graph, LinkFile, Pack};
 use litgraph::scenario::{Objective, Scenario, View};
