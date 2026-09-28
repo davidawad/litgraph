@@ -114,6 +114,7 @@ pub const EDGE_VARS: &[(&str, &str)] = &[
     ),
 ];
 
+/// Functions callable from an edge expression: `(signature, doc)`.
 pub const EDGE_FUNCS: &[(&str, &str)] = &[
     ("tag(\"x\")", "edge has tag x"),
     ("to_tag(\"x\")", "target node has outcome or node tag x"),
