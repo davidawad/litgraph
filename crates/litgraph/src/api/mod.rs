@@ -27,6 +27,7 @@ mod validate;
 pub use catalog::{fingerprint, Catalog};
 pub use describe::{describe, schema, SCHEMA_KINDS};
 pub use op::{Op, StructureWhat};
+use op::ViewOp;
 pub use render::choice_label;
 pub use validate::{detect, validate, Validation};
 
