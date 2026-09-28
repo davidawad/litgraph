@@ -55,6 +55,7 @@ are fallbacks.
 | `valence`, `courtListenerUrl`, `actionId`, `note` | | as v1 |
 | `tags` | string[] | **v2** e.g. `["dispositive","sanctions","waiver-trap","settlement","appeal"]` |
 | `attrs` | `{string: number}` | **v2** free numeric attributes for custom functions (`edge.<name>`), e.g. `{"opp_hours": 40, "fee_award_prob": 0.3}` |
+| `replaces` | string[] | **v2, `links.json` only** — qualified (`pack::edge-id`) local edge ids this link edge supersedes when it's active. The compiled graph drops every listed edge once the link is loaded; error if any id doesn't resolve. Invalid on a pack's own edges (packs describe one forum; superseding is a composition concern, so it belongs in `links.json`) |
 
 ## Roles (v2)
 
