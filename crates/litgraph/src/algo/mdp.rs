@@ -346,6 +346,26 @@ pub fn absorb_prob(v: &View, choice: &BTreeMap<NodeIx, usize>, target: &[f64]) -
 /// Solves the stochastic game over `v`: values, optimal policy, and (if
 /// `v.sc.fee_shift` is set) the fee-shift-adjusted costs it converged on.
 ///
+/// ```
+/// use litgraph::algo::mdp;
+/// use litgraph::model::{CompileOptions, Graph, LinkFile, Pack};
+/// use litgraph::scenario::{Scenario, View};
+/// let json = r#"{
+///     "schemaVersion": 2, "id": "demo", "title": "Demo", "startNodeId": "start",
+///     "nodes": [
+///         {"id": "start", "label": "Start"},
+///         {"id": "end", "label": "End", "kind": "terminal", "payoff": 100.0}
+///     ],
+///     "edges": [{"from": "start", "to": "end", "label": "go"}]
+/// }"#;
+/// let pack = Pack::from_json(json).unwrap();
+/// let g = Graph::compile(&[pack], &LinkFile::default(), &CompileOptions::default()).unwrap();
+/// let v = View::new(&g, &Scenario::default()).unwrap();
+/// let sol = mdp::solve(&v, &mdp::SolveOptions::default()).unwrap();
+/// // One free edge to a $100 terminal: the start is worth exactly $100.
+/// assert_eq!(sol.value[v.start], 100.0);
+/// ```
+///
 /// # Errors
 /// Propagates any error evaluating the fee-eligibility expression.
 pub fn solve(v: &View, opts: &SolveOptions) -> Result<Solution> {
