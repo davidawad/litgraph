@@ -10,6 +10,7 @@ use crate::scenario::View;
 /// Tarjan SCC. Components are returned in reverse topological order (every
 /// component appears before any component that can reach it), which is the
 /// order a backward (Bellman) pass wants.
+#[must_use]
 pub fn scc(v: &View) -> Vec<Vec<NodeIx>> {
     let n = v.g.nodes.len();
     let mut index = vec![usize::MAX; n];
