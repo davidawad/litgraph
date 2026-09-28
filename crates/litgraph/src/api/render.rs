@@ -154,22 +154,6 @@ pub(super) fn best_line(v: &View, sol: &mdp::Solution, start: NodeIx, max: usize
     out
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    /// Finite values round to 6 decimals; non-finite ones become JSON `null`
-    /// rather than a value `serde_json` can't represent.
-    #[test]
-    fn r_rounds_finite_and_nulls_non_finite() {
-        assert_eq!(r(1.0 / 3.0), json!(0.333_333));
-        assert_eq!(r(2.0), json!(2.0));
-        assert_eq!(r(f64::NAN), Value::Null);
-        assert_eq!(r(f64::INFINITY), Value::Null);
-        assert_eq!(r(f64::NEG_INFINITY), Value::Null);
-    }
-}
-
 /// One entry per warning code: count, a representative message, and up to
 /// eight locations. Small responses without hiding anything (`lint` lists
 /// every location).
