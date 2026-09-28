@@ -12,9 +12,14 @@ use crate::expr::{Arg, Env};
 use crate::model::{Graph, Role};
 use std::collections::BTreeMap;
 
+/// A built-in metric, utility, or parameter, expressed as source: an
+/// expression an agent can read, not an opaque native function.
 pub struct Builtin {
+    /// The name a scenario refers to this built-in by.
     pub name: &'static str,
+    /// The expression source that defines it.
     pub expr: &'static str,
+    /// A one-line, human-readable description of what it computes.
     pub doc: &'static str,
 }
 
