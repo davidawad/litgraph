@@ -75,6 +75,7 @@ pub const PARAMS: &[(&str, f64, &str)] = &[
     ("carry_per_day", 0.0, "per-day cost of delay for time_value"),
 ];
 
+/// Variables visible to an edge expression: `(name, doc)`.
 pub const EDGE_VARS: &[(&str, &str)] = &[
     ("hours", "attorney hours on the edge"),
     ("fees / cost", "cash fees on the edge"),
