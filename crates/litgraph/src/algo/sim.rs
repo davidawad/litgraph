@@ -17,29 +17,45 @@ use crate::metrics::TerminalEnv;
 use crate::model::{NodeIx, Role};
 use crate::scenario::{Control, View};
 
+/// Summary statistics of a sampled distribution.
 #[derive(Debug, Clone, Serialize)]
 pub struct Summary {
+    /// Sample mean.
     pub mean: f64,
+    /// Sample standard deviation.
     pub std: f64,
+    /// Minimum (p0).
     pub min: f64,
+    /// 5th percentile.
     pub p05: f64,
+    /// 25th percentile.
     pub p25: f64,
+    /// Median.
     pub p50: f64,
+    /// 75th percentile.
     pub p75: f64,
+    /// 95th percentile.
     pub p95: f64,
+    /// Maximum (p100).
     pub max: f64,
 }
 
+/// Result of Monte Carlo simulation under a fixed policy.
 #[derive(Debug, Clone, Serialize)]
 pub struct SimResult {
+    /// Number of runs simulated.
     pub runs: usize,
+    /// RNG seed used (simulation is deterministic given seed + policy).
     pub seed: u64,
     /// Net outcome per run: utility(terminal) − our cost + fee recovery.
     pub net: Summary,
     /// Mean of the worst `alpha` fraction of net outcomes.
     pub cvar: f64,
+    /// The tail fraction `cvar` was computed over.
     pub alpha: f64,
+    /// Fraction of runs with a negative net outcome.
     pub p_loss: f64,
+    /// Distribution summary for every requested metric, by name.
     pub metrics: BTreeMap<String, Summary>,
     /// terminal -> frequency.
     pub terminals: Vec<(NodeIx, f64)>,
@@ -49,13 +65,19 @@ pub struct SimResult {
     pub samples: Vec<Vec<usize>>,
 }
 
+/// Options controlling a [`simulate`] run.
 pub struct SimOptions {
+    /// Number of runs to simulate.
     pub runs: usize,
+    /// RNG seed.
     pub seed: u64,
+    /// Tail fraction for `CVaR` (e.g. 0.1 = worst 10%).
     pub alpha: f64,
+    /// Per-run step cap; runs that exceed it are marked truncated.
     pub max_steps: usize,
     /// Sample elapsed time from each edge's triangular (min, mode, max) duration.
     pub sample_durations: bool,
+    /// Number of sample trajectories to retain (for inspection).
     pub keep_samples: usize,
 }
 
