@@ -17,15 +17,16 @@ ignore = []
 # ---------------------------------------------------------------------------
 [licenses]
 version = 2
-# The workspace crates (litgraph, litgraph-cli) are dual-purpose here: they
-# currently declare `license = "UNLICENSED"` pre-release and are expected to
-# move to `GPL-3.0-or-later` for the public release. `clarify` pins an
-# explicit, trusted answer for our own crates regardless of which of those
-# two strings is in Cargo.toml at any given moment, so `cargo deny check`
-# passes on both sides of that rename without editing this file again.
-# GPL-3.0-or-later is also allowed outright below for the same reason.
 confidence-threshold = 0.8
 
+# Allowlist compatible with distributing a GPL-3.0-or-later binary: every
+# license actually observed across the dependency tree today (MIT,
+# Apache-2.0 variants, BSD-2-Clause, Unicode-3.0), plus a few more that are
+# GPL-compatible and commonly show up one dependency bump away
+# (BSD-3-Clause, ISC, Unicode-DFS-2016, Zlib) so this doesn't need editing
+# on every routine dependency update. `cargo deny check licenses` reports
+# an "unmatched license allowance" warning (not a failure) for any entry
+# below that no current dependency actually uses.
 allow = [
     "MIT",
     "Apache-2.0",
@@ -36,30 +37,15 @@ allow = [
     "Unicode-3.0",
     "Unicode-DFS-2016",
     "Zlib",
-    "CC0-1.0",
     "GPL-3.0-or-later",
 ]
 
-exceptions = [
-    # Our own workspace crates: private/unpublished, license string is in
-    # flux (UNLICENSED pre-release -> GPL-3.0-or-later at open-source time).
-    { allow = ["GPL-3.0-or-later"], name = "litgraph" },
-    { allow = ["GPL-3.0-or-later"], name = "litgraph-cli" },
-]
-
-[[licenses.clarify]]
-name = "litgraph"
-expression = "GPL-3.0-or-later"
-license-files = []
-
-[[licenses.clarify]]
-name = "litgraph-cli"
-expression = "GPL-3.0-or-later"
-license-files = []
-
-# Third-party crates that are still unpublished/private and therefore report
-# no license at all should be treated the same as our own — none expected
-# today, kept here as documentation of intent.
+# The workspace crates (litgraph, litgraph-cli) declare `publish = false`
+# unconditionally (see Cargo.toml `[workspace.package]`); `private.ignore`
+# excludes unpublished crates from license checks entirely, so this file
+# does not need to track whether their `license` field currently reads
+# "UNLICENSED" (pre-release) or "GPL-3.0-or-later" (public release) — it
+# passes either way without being edited again.
 [licenses.private]
 ignore = true
 registries = []
