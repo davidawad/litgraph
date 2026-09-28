@@ -37,6 +37,7 @@ pub struct ChainResult {
 }
 
 /// Distribution over out-edges at node `n` under `choice`.
+#[must_use]
 pub fn step_dist(v: &View, sol_choice: &BTreeMap<NodeIx, usize>, n: NodeIx) -> Vec<(usize, f64)> {
     let plan = &v.plan[n];
     let mut d: Vec<(usize, f64)> = plan.draws.clone();
