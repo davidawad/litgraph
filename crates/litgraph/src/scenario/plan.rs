@@ -2,7 +2,10 @@
 //! Node plans: who acts at each node, what can interrupt them, and with what
 //! probabilities.
 
-use super::{Control, MixedMode, NodePlan, Objective, OpponentMode, ProbFill, Scenario, Warning};
+//! Plans are objective-independent: `Objective::Worst` is applied by the solver
+//! (every draw goes against us), so chains and simulations keep real probabilities.
+
+use super::{Control, MixedMode, NodePlan, OpponentMode, ProbFill, Scenario, Warning};
 use crate::model::{Graph, NodeIx, Role};
 
 /// Inputs shared by every node's plan.
