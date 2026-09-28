@@ -143,6 +143,7 @@ struct RunOutcome {
 #[allow(clippy::too_many_arguments)]
 fn simulate_run(
     v: &View,
+    start: NodeIx,
     dists: &[Vec<(usize, f64)>],
     fee: Option<&FeeShift>,
     elig: &[bool],
@@ -152,7 +153,7 @@ fn simulate_run(
     rng: &mut ChaCha8Rng,
     keep_sample: bool,
 ) -> RunOutcome {
-    let mut u = v.start;
+    let mut u = start;
     let mut spent = 0.0;
     let mut my_spent = 0.0;
     let mut acc = vec![0.0; metrics.len()];
