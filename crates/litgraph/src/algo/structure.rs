@@ -73,10 +73,13 @@ pub fn scc(v: &View) -> Vec<Vec<NodeIx>> {
 }
 
 /// True if the component has an internal cycle (size > 1 or a self-loop).
+#[must_use]
 pub fn is_cyclic(v: &View, comp: &[NodeIx]) -> bool {
     comp.len() > 1 || v.outs(comp[0]).any(|e| v.g.edges[e].to == comp[0])
 }
 
+/// Every node reachable from `from` along active edges (BFS).
+#[must_use]
 pub fn reachable(v: &View, from: NodeIx) -> Vec<bool> {
     let mut seen = vec![false; v.g.nodes.len()];
     let mut q = VecDeque::from([from]);
