@@ -154,8 +154,12 @@ supplies the graph, the solver, and the JSON contract.
 
 Forum procedures are JSON files in [`packs/`](packs/); `packs/links.json`
 joins them into one composed graph (e.g. a CoFC judgment linking to a
-Federal Circuit appeal). Run `litgraph packs` for live counts; schema is
-documented in [`docs/PACK_SCHEMA.md`](docs/PACK_SCHEMA.md).
+Federal Circuit appeal). They're compiled into the `litgraph` binary at
+build time, so `litgraph packs` works right after install with no
+`packs/` directory needed — point at a different set with
+`LITGRAPH_PACKS=<dir>` or `--packs-dir <dir>`. Run `litgraph packs` for
+live counts; schema is documented in
+[`docs/PACK_SCHEMA.md`](docs/PACK_SCHEMA.md).
 
 | pack | forum | schema | sourced (`sources` entries) | authored payoffs |
 |---|---|---|---|---|
