@@ -212,14 +212,17 @@ fn lint_pack_nodes(p: &Pack, push: &mut Push<'_>) {
 /// through links, not their start, so they are skipped.
 fn lint_reachability(g: &Graph, d: &mut Vec<Diagnostic>) {
     for p in g.packs.iter().filter(|p| !p.id.contains('@')) {
-        let Some(s) = g.node(&p.start) else {
-            d.push(Diagnostic {
-                severity: "error",
-                code: "bad-pack-start",
-                at: p.id.clone(),
-                message: format!("pack start `{}` does not resolve to a node", p.start),
-            });
-            continue;
+        let s = match g.node(&p.start) {
+            Ok(s) => s,
+            Err(err) => {
+                d.push(Diagnostic {
+                    severity: "error",
+                    code: "bad-pack-start",
+                    at: p.id.clone(),
+                    message: format!("pack start `{}` does not resolve to a node: {err}", p.start),
+                });
+                continue;
+            }
         };
         let mut seen = vec![false; g.nodes.len()];
         let mut stack = vec![s];
