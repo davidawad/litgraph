@@ -39,6 +39,7 @@ pub const METRICS: &[Builtin] = &[
     Builtin { name: "traps", expr: "tag('waiver-trap') + (valence_bad)", doc: "edges that are traps (tagged waiver-trap or valence bad)" },
 ];
 
+/// Built-in terminal utilities: how a terminal's payoff becomes a value.
 pub const UTILITIES: &[Builtin] = &[
     Builtin {
         name: "ev",
