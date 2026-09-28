@@ -7,4 +7,4 @@ fail-fast = false
 retries = 0
 
 [profile.ci.junit]
-path = "target/nextest/ci/junit.xml"
+path = "junit.xml"
