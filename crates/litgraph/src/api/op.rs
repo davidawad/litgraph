@@ -293,12 +293,6 @@ pub enum Op {
     },
 }
 
-impl Default for Op {
-    fn default() -> Self {
-        Op::Describe
-    }
-}
-
 impl Op {
     /// The op's wire name.
     #[must_use]
