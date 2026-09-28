@@ -331,26 +331,23 @@ fn start_of(v: &View, from: Option<&String>) -> Result<usize> {
     from.map_or(Ok(v.start), |f| v.g.node(f))
 }
 
-fn run_view(v: &View, op: &Op, sc: &Scenario) -> Result<(Value, Vec<Warn>)> {
-    match op {
-        Op::Explain { .. } | Op::Solve { .. } | Op::Chain { .. } | Op::Simulate { .. } => {
-            run_decision(v, op)
-        }
-        _ => run_explore(v, op, sc).map(|x| (x, vec![])),
-    }
-}
-
-/// Ops that solve the game and may warn about convergence.
-fn run_decision(v: &View, op: &Op) -> Result<(Value, Vec<Warn>)> {
-    match op {
-        Op::Explain { node, from } => {
+/// Every op `handle` hands off to a resolved [`View`] — a decision op that
+/// solves the game (and may warn about convergence), or a plain
+/// inspection/exploration op. `op: &ViewOp` (see [`Op::as_view_op`]) makes
+/// this exhaustive over exactly the ops that can reach here: no "not a
+/// decision op" / "handled before the view" catch-all is reachable, or
+/// needed, because `Describe`/`Lint`/`Packs`/`Batch`/`Compare` are simply
+/// not expressible as a `ViewOp` in the first place.
+fn run_view(v: &View, op: &ViewOp<'_>, sc: &Scenario) -> Result<(Value, Vec<Warn>)> {
+    match *op {
+        ViewOp::Explain { node, from } => {
             let n = match node {
                 Some(x) => v.g.node(x)?,
                 None => start_of(v, from.as_ref())?,
             };
             decide::explain_op(v, n)
         }
-        Op::Solve {
+        ViewOp::Solve {
             from,
             full_policy,
             all_values,
@@ -358,14 +355,14 @@ fn run_decision(v: &View, op: &Op) -> Result<(Value, Vec<Warn>)> {
         } => decide::solve_op(
             v,
             start_of(v, from.as_ref())?,
-            *full_policy,
-            *all_values,
-            *max_steps,
+            full_policy,
+            all_values,
+            max_steps,
         ),
-        Op::Chain { from, metrics, top } => {
-            decide::chain_op(v, start_of(v, from.as_ref())?, metrics, *top)
+        ViewOp::Chain { from, metrics, top } => {
+            decide::chain_op(v, start_of(v, from.as_ref())?, metrics, top)
         }
-        Op::Simulate {
+        ViewOp::Simulate {
             from,
             runs,
             seed,
@@ -376,52 +373,38 @@ fn run_decision(v: &View, op: &Op) -> Result<(Value, Vec<Warn>)> {
             samples,
         } => {
             let o = SimOptions {
-                runs: *runs,
-                seed: *seed,
-                alpha: *alpha,
-                max_steps: *max_steps,
-                sample_durations: *sample_durations,
-                keep_samples: *samples,
+                runs,
+                seed,
+                alpha,
+                max_steps,
+                sample_durations,
+                keep_samples: samples,
             };
             decide::simulate_op(v, start_of(v, from.as_ref())?, metrics, &o)
         }
-        _ => Err(Error::Invalid(format!(
-            "op {} is not a decision op",
-            op.name()
-        ))),
-    }
-}
-
-/// Inspection and exploration ops.
-fn run_explore(v: &View, op: &Op, sc: &Scenario) -> Result<Value> {
-    match op {
-        Op::Validate => Ok(
+        ViewOp::Validate => Ok((
             json!({ "valid": true, "nodes": v.g.nodes.len(), "edges": v.g.edges.len(), "start": v.g.nodes[v.start].id }),
-        ),
-        Op::Graph { node } => explore::graph_op(v, node.as_deref()),
-        Op::Metric { spec, top } => explore::metric_op(v, spec, *top),
-        Op::Path {
+            vec![],
+        )),
+        ViewOp::Graph { node } => explore::graph_op(v, node.as_deref()).map(|x| (x, vec![])),
+        ViewOp::Metric { spec, top } => explore::metric_op(v, spec, top).map(|x| (x, vec![])),
+        ViewOp::Path {
             from,
             to,
             metric,
             k,
             report,
-        } => explore::path_op(v, start_of(v, from.as_ref())?, to, metric, *k, report),
-        Op::Pareto {
+        } => explore::path_op(v, start_of(v, from.as_ref())?, to, metric, k, report)
+            .map(|x| (x, vec![])),
+        ViewOp::Pareto {
             from,
             to,
             objectives,
             max_labels,
             limit,
-        } => explore::pareto_op(
-            v,
-            start_of(v, from.as_ref())?,
-            to,
-            objectives,
-            *max_labels,
-            *limit,
-        ),
-        Op::Sweep {
+        } => explore::pareto_op(v, start_of(v, from.as_ref())?, to, objectives, max_labels, limit)
+            .map(|x| (x, vec![])),
+        ViewOp::Sweep {
             param,
             lo,
             hi,
@@ -431,39 +414,30 @@ fn run_explore(v: &View, op: &Op, sc: &Scenario) -> Result<Value> {
         } => {
             let args = explore::SweepArgs {
                 param,
-                lo: *lo,
-                hi: *hi,
-                steps: *steps,
+                lo,
+                hi,
+                steps,
                 watch,
-                tol: *tol,
+                tol,
             };
-            explore::sweep_op(v, sc, &args)
+            explore::sweep_op(v, sc, &args).map(|x| (x, vec![]))
         }
-        Op::Tornado {
+        ViewOp::Tornado {
             params,
             rel,
             dp,
             probabilities,
             top,
-        } => explore::tornado_op(v.g, sc, params, *rel, *dp, *probabilities, *top),
-        Op::Structure {
+        } => explore::tornado_op(v.g, sc, params, rel, dp, probabilities, top)
+            .map(|x| (x, vec![])),
+        ViewOp::Structure {
             from,
             what,
             to,
             capacity,
             top,
-        } => explore::structure_op(
-            v,
-            start_of(v, from.as_ref())?,
-            *what,
-            to.as_deref(),
-            capacity,
-            *top,
-        ),
-        _ => Err(Error::Invalid(format!(
-            "op {} is handled before the view",
-            op.name()
-        ))),
+        } => explore::structure_op(v, start_of(v, from.as_ref())?, what, to, capacity, top)
+            .map(|x| (x, vec![])),
     }
 }
 
