@@ -152,14 +152,6 @@ impl PlanInputs<'_> {
     }
 }
 
-/// Objective::Worst is applied in the solver (every draw goes against us);
-/// plans stay objective-independent so chains and simulations keep real
-/// probabilities.
-#[must_use]
-pub fn is_worst(sc: &Scenario) -> bool {
-    sc.objective == Objective::Worst
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
