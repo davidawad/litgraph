@@ -122,7 +122,7 @@ fn mask_and_probability_override() {
 
 /// Regression: at a mixed node whose world edge has no probability, the old
 /// self-only fallback deleted the way out and forced a costly self-loop
-/// forever (CoFC discovery-open: V → −$1.27B). Act-or-wait lets us wait.
+/// forever (`CoFC` discovery-open: V → −$1.27B). Act-or-wait lets us wait.
 #[test]
 fn act_or_wait_keeps_the_world_exit() {
     let pack: Pack = serde_json::from_value(json!({
