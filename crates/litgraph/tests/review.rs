@@ -24,7 +24,7 @@ use serde_json::json;
 ///
 /// Graph: node `start` has one self edge to `good` (+1000, cost 0) and one
 /// nature edge authored p=0.4 to `bad` (-1000, cost 0) — a textbook
-/// NatureFirst mixed node (chooser = self, interrupt = nature, authored,
+/// `NatureFirst` mixed node (chooser = self, interrupt = nature, authored,
 /// mass < 1).
 ///
 /// Expected value under plain expectation:
