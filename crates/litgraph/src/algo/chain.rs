@@ -291,8 +291,18 @@ fn x_reachable(
     false
 }
 
-/// In-place LU with partial pivoting; solves A x = b. Err on singular.
-pub fn lu_solve(a: &mut [f64], n: usize, b: &mut [f64]) -> std::result::Result<Vec<f64>, ()> {
+/// Marker error: the system was numerically singular (a zero pivot within
+/// tolerance). Carries no data — [`chain`] turns it into a diagnostic that
+/// names the offending states.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct Singular;
+
+/// In-place LU decomposition with partial pivoting; solves `A x = b`.
+///
+/// # Errors
+/// [`Singular`] if a pivot is zero (within tolerance) — the matrix has no
+/// unique solution.
+pub fn lu_solve(a: &mut [f64], n: usize, b: &mut [f64]) -> std::result::Result<Vec<f64>, Singular> {
     for col in 0..n {
         let mut piv = col;
         for r in col + 1..n {
@@ -301,7 +311,7 @@ pub fn lu_solve(a: &mut [f64], n: usize, b: &mut [f64]) -> std::result::Result<V
             }
         }
         if a[piv * n + col].abs() < 1e-12 {
-            return Err(());
+            return Err(Singular);
         }
         if piv != col {
             for j in 0..n {
