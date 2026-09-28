@@ -221,6 +221,22 @@ impl Graph {
     /// Compile packs, their `links.json` instances, and cross-pack links into
     /// one graph. Links apply only when both endpoints' packs are loaded.
     ///
+    /// ```
+    /// use litgraph::model::{CompileOptions, Graph, LinkFile, Pack};
+    /// let json = r#"{
+    ///     "schemaVersion": 2, "id": "demo", "title": "Demo", "startNodeId": "start",
+    ///     "nodes": [
+    ///         {"id": "start", "label": "Start"},
+    ///         {"id": "end", "label": "End", "kind": "terminal", "payoff": 100.0}
+    ///     ],
+    ///     "edges": [{"from": "start", "to": "end", "label": "go"}]
+    /// }"#;
+    /// let pack = Pack::from_json(json).unwrap();
+    /// let g = Graph::compile(&[pack], &LinkFile::default(), &CompileOptions::default()).unwrap();
+    /// assert_eq!(g.nodes.len(), 2);
+    /// assert_eq!(g.start, g.node("demo::start").unwrap());
+    /// ```
+    ///
     /// # Errors
     /// Duplicate or dangling ids, unknown start nodes, bad instances or links.
     pub fn compile(packs: &[Pack], lf: &LinkFile, opts: &CompileOptions) -> Result<Graph> {
