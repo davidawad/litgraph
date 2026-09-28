@@ -1,14 +1,29 @@
 [package]
 name = "litgraph"
-description = "Litigation procedure graphs as stochastic games: load, compose, weight with custom functions, solve, simulate."
+description = "Litigation procedure graphs as stochastic games: compose forums, weight with custom functions, solve, simulate."
 version.workspace = true
 edition.workspace = true
+rust-version.workspace = true
 license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme.workspace = true
+keywords.workspace = true
+categories.workspace = true
 publish.workspace = true
+build = "build.rs"
+
+[lints]
+workspace = true
 
 [dependencies]
 serde.workspace = true
 serde_json.workspace = true
+schemars.workspace = true
 thiserror.workspace = true
 rand.workspace = true
 rand_chacha.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true
