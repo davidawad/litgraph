@@ -17,8 +17,10 @@ use crate::error::{Error, Result};
 use crate::model::NodeIx;
 use crate::scenario::{Control, View, WAIT};
 
+/// Exact expectations for a fixed policy, from one start node to absorption.
 #[derive(Debug, Clone, Serialize)]
 pub struct ChainResult {
+    /// The node the chain was started from.
     pub start: NodeIx,
     /// terminal -> probability of ending there.
     pub absorption: Vec<(NodeIx, f64)>,
@@ -26,6 +28,7 @@ pub struct ChainResult {
     pub visits: Vec<(NodeIx, f64)>,
     /// metric name -> expected total to absorption.
     pub expected: BTreeMap<String, f64>,
+    /// Expected number of transitions to absorption.
     pub expected_steps: f64,
     /// Expected terminal utility (Σ P(t)·utility(t)).
     pub expected_utility: f64,
