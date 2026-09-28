@@ -15,7 +15,7 @@ use crate::error::Result;
 use crate::expr;
 use crate::metrics::TerminalEnv;
 use crate::model::{NodeIx, Role};
-use crate::scenario::{Control, View};
+use crate::scenario::{Control, FeeShift, View};
 
 /// Summary statistics of a sampled distribution.
 #[derive(Debug, Clone, Serialize)]
