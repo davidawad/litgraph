@@ -54,10 +54,17 @@ machete:
 
 # --- formal verification ---------------------------------------------------
 
-# Kani harnesses live behind #[cfg(kani)] in crates/litgraph. This succeeds
-# with zero harnesses today (kani exits 0 when nothing matches `--harness`
-# is not passed and no #[kani::proof] exists) and will start verifying for
-# real the moment the first harness is added.
+# Kani harnesses live behind #[cfg(kani)] in crates/litgraph. This is
+# expected to succeed with zero harnesses (kani exits 0 when no
+# #[kani::proof] exists) and start verifying for real the moment the first
+# harness is added.
+#
+# KNOWN GAP (2026-09-28): kani-verifier 0.67.0's bundled nightly is
+# rustc 1.93.0-nightly, which is older than this workspace's declared
+# `rust-version = "1.97"` (Cargo.toml) -- `cargo kani` refuses to build with
+# "rustc 1.93.0-nightly is not supported ... requires rustc 1.97" even with
+# zero harnesses. This is an upstream Kani/Rust-release-cadence lag, not
+# something fixable from this recipe; re-check after a kani-verifier bump.
 verify-kani:
     cargo kani -p litgraph
 
