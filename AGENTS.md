@@ -47,9 +47,10 @@ rather than silently ignoring a typo.
    tendencies belong to one matter.
 3. **Counterfactuals via `compare`**, not by editing packs.
 4. **Pack edits need sources.** Every new `authority`/`cite` must be
-   traceable to a `sources` entry or a public citation. Run `lint` and
-   `cargo test` after any pack change. Never invent rule numbers or
-   deadlines; mark uncertainty `UNVERIFIED` in `note`.
+   traceable to a `sources` entry or a public citation (`sources[].path` is
+   repo-relative only — never a local filesystem path). Run `validate`,
+   `lint`, and `cargo test` after any pack change. Never invent rule
+   numbers or deadlines; mark uncertainty `UNVERIFIED` in `note`.
 5. **Probabilities**: only on non-self edges, with basis + vintage in
    `note`. Unauthored beats invented.
 6. **Pin modes when comparing to v1** (`mixed: optimistic`,
