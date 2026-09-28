@@ -68,6 +68,10 @@ registries = []
 [bans]
 multiple-versions = "warn"
 wildcards = "deny"
+# Intra-workspace path dependencies (litgraph-cli -> litgraph) have no
+# registry version and are otherwise flagged as "wildcard" deps; they are
+# not the unpinned-external-dependency problem this lint exists to catch.
+allow-wildcard-paths = true
 deny = []
 skip = []
 skip-tree = []
