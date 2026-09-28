@@ -1,0 +1,32 @@
+[package]
+name = "litgraph-wasm"
+description = "WebAssembly bindings for litgraph: the same JSON request/response contract as the CLI, in the browser or Node."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme.workspace = true
+keywords.workspace = true
+categories.workspace = true
+publish.workspace = true
+
+[lints]
+workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+litgraph = { path = "../litgraph" }
+serde_json.workspace = true
+# Pinned to the wasm-bindgen-cli in nixpkgs (the flake's dev shell); the CLI
+# and the crate must match exactly.
+wasm-bindgen = "=0.2.127"
+
+[target.'cfg(all(target_arch = "wasm32", target_os = "unknown"))'.dependencies]
+# rand's OS entropy source needs the JS backend in the browser. litgraph only
+# uses seeded RNGs, but the dependency must still compile.
+getrandom = { version = "0.2", features = ["js"] }
