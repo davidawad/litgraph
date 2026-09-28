@@ -52,10 +52,16 @@ you can read exactly what "cost" means and write your own.
 | several ops against one compiled graph | `batch` |
 | content QA: unsourced packs, missing payoffs, dead ends | `lint` |
 
-Every response is `{ok, op, result, warnings, provenance, elapsed_ms}` or
-`{ok:false, error:{code, message, hint}}`. `litgraph describe` is the full
+Every response is `{ok, api_version, op, result, warnings, provenance,
+elapsed_ms}` or `{ok:false, api_version, op, error:{code, message, hint},
+elapsed_ms}`. `warnings` is grouped by code (`{code, count, example, at}`)
+rather than one entry per occurrence. `litgraph describe` is the full
 machine-readable manual: every op, every scenario field, every built-in
-metric with its source expression, every variable and function.
+metric with its source expression, every variable and function. Every
+document kind (`request`, `response`, `scenario`, `pack`, `links`) has a
+JSON Schema via `litgraph schema <kind>`, and `litgraph validate <file|->`
+checks any of them — including a pack you're authoring — without running
+an analysis.
 
 ## Quickstart
 
