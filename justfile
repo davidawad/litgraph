@@ -9,6 +9,22 @@ cov_floor := "97"
 default:
     just --list
 
+# --- setup -----------------------------------------------------------------
+
+# Install the cargo subcommand tools this justfile's recipes call out to.
+# Idempotent -- skips anything already on PATH. Prefer `nix develop` or
+# `devenv shell` over this where available (pre-built, no compile time).
+install:
+    command -v cargo-nextest >/dev/null 2>&1 || cargo install cargo-nextest --locked
+    command -v cargo-llvm-cov >/dev/null 2>&1 || cargo install cargo-llvm-cov --locked
+    command -v cargo-audit >/dev/null 2>&1 || cargo install cargo-audit --locked
+    command -v cargo-deny >/dev/null 2>&1 || cargo install cargo-deny --locked
+    command -v cargo-machete >/dev/null 2>&1 || cargo install cargo-machete --locked
+
+# Run the CLI (release build) with any extra args, e.g. `just run describe`.
+run *ARGS:
+    cargo run --release -p litgraph-cli -- {{ARGS}}
+
 # --- formatting & linting -----------------------------------------------
 
 fmt:
@@ -82,6 +98,20 @@ docker-smoke: docker-build
     docker run --rm litgraph:dev describe | head -20
     echo '{"packs":["cofc","cafc"],"op":{"op":"solve"}}' | docker run --rm -i litgraph:dev q -
 
+# --- wasm --------------------------------------------------------------
+
+# Build litgraph-wasm for the browser and Node targets into dist/wasm/.
+# Packs are embedded in the wasm binary (same build.rs as the CLI), so no
+# LITGRAPH_PACKS/packs-dir setup is needed at runtime.
+wasm:
+    cargo build --release -p litgraph-wasm --target wasm32-unknown-unknown
+    mkdir -p dist/wasm/web dist/wasm/node
+    wasm-bindgen --target web --out-dir dist/wasm/web target/wasm32-unknown-unknown/release/litgraph_wasm.wasm
+    wasm-bindgen --target nodejs --out-dir dist/wasm/node target/wasm32-unknown-unknown/release/litgraph_wasm.wasm
+
+wasm-smoke: wasm
+    node -e "const m=require('./dist/wasm/node/litgraph_wasm.js'); const r=JSON.parse(m.handle(JSON.stringify({packs:['cofc'],op:{op:'solve'}}))); if(!r.ok){console.error(r);process.exit(1)} console.log('wasm smoke ok')"
+
 # --- nix ---------------------------------------------------------------
 
 nix-build:
@@ -97,3 +127,6 @@ nix-check:
 # audit, and deny hit the network/build cache so they're last.
 ci: fmt-check lint test doctest cov audit deny
     @echo "ci: all gates passed"
+
+clean:
+    bash scripts/reap-stale-branches.sh
