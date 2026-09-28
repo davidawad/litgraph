@@ -16,9 +16,12 @@ use crate::error::{Error, Result};
 use crate::model::NodeIx;
 use crate::scenario::View;
 
+/// One concrete route through the graph, with its objective totals.
 #[derive(Debug, Clone, Serialize)]
 pub struct Path {
+    /// Nodes visited, from source to target (inclusive).
     pub nodes: Vec<NodeIx>,
+    /// Edges taken, from source to target.
     pub edges: Vec<usize>,
     /// Objective totals, in the order requested.
     pub totals: Vec<f64>,
