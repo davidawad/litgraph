@@ -249,7 +249,7 @@ impl Env for EdgeEnv<'_> {
             "label_has" => s().map(|t| b(contains_ci(Some(&e.label), &t))),
             "authority_has" => s().map(|t| b(contains_ci(e.authority.as_deref(), &t))),
             "attr" => s().and_then(|k| {
-                let d = args.get(1).map(|a| a.num()).transpose()?.unwrap_or(0.0);
+                let d = args.get(1).map(Arg::num).transpose()?.unwrap_or(0.0);
                 Ok(e.attrs.get(&k).copied().unwrap_or(d))
             }),
             _ => return None,
