@@ -69,6 +69,9 @@ fn f_dp() -> f64 {
 fn seed() -> u64 {
     7
 }
+// serde's `default = "chain_op"` requires this to return exactly the
+// field's type (`Box<Op>`); returning `Op` would not satisfy that bound.
+#[allow(clippy::unnecessary_box_returns)]
 fn chain_op() -> Box<Op> {
     Box::new(Op::Chain { from: None, metrics: chain_metrics(), top: 15 })
 }
