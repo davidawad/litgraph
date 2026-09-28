@@ -11,7 +11,7 @@ use crate::error::{Error, Result};
 /// A namespaced copy of a pack that remembers how it was entered — the
 /// product-graph construction for one piece of history, expressed as data.
 /// `cafc@cofc` is the Federal Circuit as entered from the Court of Federal
-/// Claims: its remand router can only route back to the CoFC.
+/// Claims: its remand router can only route back to the `CoFC`.
 #[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct Instance {
