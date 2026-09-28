@@ -121,14 +121,17 @@ section is the rules distilled.
 5. **Validate before you open a PR:**
 
    ```bash
-   litgraph lint --packs <your-pack-id>   # content diagnostics
-   cargo test -q                          # unit + parity + your pack loads cleanly
-   python3 -c "import json; json.load(open('packs/<your-pack>.json'))"  # valid JSON
+   litgraph validate packs/<your-pack>.json   # parses? refs resolve? (exit 2 if not)
+   litgraph lint --packs <your-pack-id>       # content diagnostics
+   cargo test -q                              # unit + parity + your pack loads cleanly
    ```
 
-   `lint` will name unsourced packs, unquantified chance nodes, missing
-   payoffs, and dead ends — fix what it finds or explain in the PR why the
-   gap is intentional (a genuinely unauthored area of law, for instance).
+   `validate` catches a malformed document (parsing is strict — an unknown
+   field is an error naming the valid ones) and unresolved references
+   before you even get to content quality. `lint` will name unsourced
+   packs, unquantified chance nodes, missing payoffs, and dead ends — fix
+   what it finds or explain in the PR why the gap is intentional (a
+   genuinely unauthored area of law, for instance).
 
 6. **Don't change ids, deadlines, probabilities, or payoffs incidentally.**
    If a PR's stated purpose is "add sources", the diff should be sources
