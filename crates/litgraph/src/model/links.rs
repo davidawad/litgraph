@@ -154,6 +154,7 @@ impl Instance {
 
 #[cfg(test)]
 mod tests {
+    #![allow(clippy::unwrap_used)]
     use super::*;
     use serde_json::json;
 
@@ -177,5 +178,52 @@ mod tests {
         };
         let ids = local_edge_ids(&[e(Some("x")), e(None), e(None)]);
         assert_eq!(ids, ["x", "a->b#0", "a->b#1"]);
+    }
+
+    fn base_pack() -> Pack {
+        Pack::from_json(
+            r#"{
+                "schemaVersion": 2, "id": "base", "title": "Base", "startNodeId": "start",
+                "nodes": [
+                    {"id": "start", "label": "Start"},
+                    {"id": "win", "label": "Win", "kind": "terminal", "payoff": 500000.0},
+                    {"id": "unpriced", "label": "Unpriced", "kind": "terminal"}
+                ],
+                "edges": [
+                    {"from": "start", "to": "win", "label": "go"}
+                ]
+            }"#,
+        )
+        .unwrap()
+    }
+
+    #[test]
+    fn materialize_runs_payoff_transform_through_a_function_call() {
+        // A function call in `payoff_transform` routes through PayoffEnv::func
+        // (which only ever knows the bare `payoff` variable) before falling
+        // back to the expression language's own math functions.
+        let base = base_pack();
+        let inst = Instance {
+            pack: "base".into(),
+            payoff_transform: Some("min(payoff, 100000)".into()),
+            ..Instance::default()
+        };
+        let p = inst.materialize("base@x", &base).unwrap();
+        assert_eq!(p.nodes[1].payoff, Some(100_000.0));
+        // A terminal with no authored payoff is left alone (no crash on `None`).
+        assert_eq!(p.nodes[2].payoff, None);
+    }
+
+    #[test]
+    fn materialize_rejects_a_reference_to_an_unknown_edge() {
+        let base = base_pack();
+        let inst = Instance {
+            pack: "base".into(),
+            remove_edges: vec!["no-such-edge".into()],
+            ..Instance::default()
+        };
+        let err = inst.materialize("base@x", &base).unwrap_err();
+        assert_eq!(err.code(), "invalid");
+        assert!(err.to_string().contains("unknown edge no-such-edge"));
     }
 }

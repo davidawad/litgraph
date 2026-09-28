@@ -161,9 +161,7 @@ mod tests {
         assert_eq!(v.kind, "links");
         assert!(!v.valid);
         assert!(
-            v.errors
-                .iter()
-                .any(|e| e.contains("no-such-edge")),
+            v.errors.iter().any(|e| e.contains("no-such-edge")),
             "{:?}",
             v.errors
         );

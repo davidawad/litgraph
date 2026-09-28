@@ -21,13 +21,16 @@ mod decide;
 mod describe;
 mod explore;
 mod op;
+mod op_defaults;
 mod render;
+mod stopwatch;
 mod validate;
 
+#[cfg(kani)]
+pub(crate) use catalog::fnv1a64 as catalog_fnv1a64;
 pub use catalog::{fingerprint, Catalog};
 pub use describe::{describe, schema, SCHEMA_KINDS};
 pub use op::{Op, StructureWhat};
-use op::ViewOp;
 pub use render::choice_label;
 pub use validate::{detect, validate, Validation};
 
@@ -41,6 +44,7 @@ use crate::lint;
 use crate::metrics;
 use crate::model::{merge_patch, CompileOptions, Graph, LinkFile, Pack};
 use crate::scenario::{Scenario, View};
+use stopwatch::Stopwatch;
 
 /// Engine name and version.
 pub const ENGINE: &str = concat!("litgraph ", env!("CARGO_PKG_VERSION"));
@@ -146,32 +150,6 @@ fn hint(e: &Error) -> &'static str {
     }
 }
 
-/// Wall-clock timer. `std::time::Instant` panics on `wasm32-unknown-unknown`
-/// (no clock), so there the timer reports 0 instead of aborting the request.
-struct Stopwatch(
-    #[cfg(not(all(target_arch = "wasm32", target_os = "unknown")))] std::time::Instant,
-);
-
-impl Stopwatch {
-    fn start() -> Stopwatch {
-        Stopwatch(
-            #[cfg(not(all(target_arch = "wasm32", target_os = "unknown")))]
-            std::time::Instant::now(),
-        )
-    }
-
-    #[cfg(not(all(target_arch = "wasm32", target_os = "unknown")))]
-    fn elapsed_ms(&self) -> f64 {
-        (self.0.elapsed().as_secs_f64() * 1e6).round() / 1e3
-    }
-
-    #[cfg(all(target_arch = "wasm32", target_os = "unknown"))]
-    #[allow(clippy::unused_self)] // no clock on this target
-    fn elapsed_ms(&self) -> f64 {
-        0.0
-    }
-}
-
 /// Run a request. Never panics or returns `Err`: failures are `ok: false` responses.
 #[must_use]
 pub fn handle(req: &Request, catalog: &Catalog) -> Response {
@@ -251,15 +229,9 @@ fn provenance(g: &Graph, selected: &[(Pack, String)], sc: &Scenario) -> Value {
 }
 
 type Out = (Value, Vec<Warn>, Value);
+type Answer = Result<(Value, Vec<Warn>)>;
 
 fn run(req: &Request, catalog: &Catalog) -> Result<Out> {
-    if req.op == Op::Describe {
-        return Ok((
-            describe(catalog),
-            vec![],
-            json!({ "engine": ENGINE, "api_version": API_VERSION }),
-        ));
-    }
     let selected = catalog.select(&req.packs)?;
     let packs: Vec<Pack> = selected.iter().map(|(p, _)| p.clone()).collect();
     let links = if req.links {
@@ -275,16 +247,48 @@ fn run(req: &Request, catalog: &Catalog) -> Result<Out> {
         },
     )?;
     let prov = provenance(&g, &selected, &req.scenario);
+    let (result, warns) = dispatch(req, catalog, &g, &packs)?;
+    Ok((result, warns, prov))
+}
+
+fn plain(r: Result<Value>) -> Answer {
+    r.map(|x| (x, vec![]))
+}
+
+/// Resolve the scenario into a view, run `f` on it, and attach every
+/// fallback the view took plus the compile notes.
+fn with_view(g: &Graph, sc: &Scenario, f: impl FnOnce(&View) -> Answer) -> Answer {
+    let v = View::new(g, sc)?;
+    let (result, mut warns) = f(&v)?;
+    warns.extend(v.warnings.iter().map(|w| Warn {
+        code: w.code.into(),
+        at: w.at.clone(),
+        message: w.message.clone(),
+    }));
+    warns.extend(g.notes.iter().map(|n| Warn {
+        code: "compile".into(),
+        at: None,
+        message: n.clone(),
+    }));
+    Ok((result, warns))
+}
+
+fn start_of(v: &View, from: Option<&String>) -> Result<usize> {
+    from.map_or(Ok(v.start), |f| v.g.node(f))
+}
+
+// One flat, exhaustive dispatch table over every op: splitting it would
+// reintroduce "can't happen here" arms, which is what this shape avoids.
+#[allow(clippy::too_many_lines)]
+fn dispatch(req: &Request, catalog: &Catalog, g: &Graph, packs: &[Pack]) -> Answer {
+    let sc = &req.scenario;
     match &req.op {
+        Op::Describe => plain(Ok(describe(catalog))),
         Op::Lint => {
-            let diags = lint::lint(&g, &packs);
-            return Ok((
-                json!({ "count": diags.len(), "diagnostics": diags }),
-                vec![],
-                prov,
-            ));
+            let diags = lint::lint(g, packs);
+            plain(Ok(json!({ "count": diags.len(), "diagnostics": diags })))
         }
-        Op::Packs => return Ok((explore::packs_op(&g, &packs), vec![], prov)),
+        Op::Packs => plain(Ok(explore::packs_op(g, packs))),
         Op::Batch { ops } => {
             let results: Vec<Response> = ops
                 .iter()
@@ -298,72 +302,41 @@ fn run(req: &Request, catalog: &Catalog) -> Result<Out> {
                     )
                 })
                 .collect();
-            return Ok((json!(results), vec![], prov));
+            plain(Ok(json!(results)))
         }
-        Op::Compare { variant, inner } => {
-            return Ok((compare(req, catalog, variant, inner)?, vec![], prov))
-        }
-        _ => {}
-    }
-    let view = View::new(&g, &req.scenario)?;
-    // Every `Op` that reaches here already survived the `match` above, so
-    // it can only be one of `as_view_op`'s `Some` variants — the `Lint` /
-    // `Packs` / `Batch` / `Compare` (and `Describe`, handled earlier still)
-    // cases all returned before this point.
-    let vop = req
-        .op
-        .as_view_op()
-        .expect("Describe/Lint/Packs/Batch/Compare all returned above");
-    let (result, mut warns) = run_view(&view, &vop, &req.scenario)?;
-    warns.extend(view.warnings.iter().map(|w| Warn {
-        code: w.code.into(),
-        at: w.at.clone(),
-        message: w.message.clone(),
-    }));
-    warns.extend(g.notes.iter().map(|n| Warn {
-        code: "compile".into(),
-        at: None,
-        message: n.clone(),
-    }));
-    Ok((result, warns, prov))
-}
-
-fn start_of(v: &View, from: Option<&String>) -> Result<usize> {
-    from.map_or(Ok(v.start), |f| v.g.node(f))
-}
-
-/// Every op `handle` hands off to a resolved [`View`] — a decision op that
-/// solves the game (and may warn about convergence), or a plain
-/// inspection/exploration op. `op: &ViewOp` (see [`Op::as_view_op`]) makes
-/// this exhaustive over exactly the ops that can reach here: no "not a
-/// decision op" / "handled before the view" catch-all is reachable, or
-/// needed, because `Describe`/`Lint`/`Packs`/`Batch`/`Compare` are simply
-/// not expressible as a `ViewOp` in the first place.
-fn run_view(v: &View, op: &ViewOp<'_>, sc: &Scenario) -> Result<(Value, Vec<Warn>)> {
-    match *op {
-        ViewOp::Explain { node, from } => {
+        Op::Compare { variant, inner } => plain(compare(req, catalog, variant, inner)),
+        Op::Validate => with_view(g, sc, |v| {
+            plain(Ok(
+                json!({ "valid": true, "nodes": v.g.nodes.len(), "edges": v.g.edges.len(), "start": v.g.nodes[v.start].id }),
+            ))
+        }),
+        Op::Graph { node } => with_view(g, sc, |v| plain(explore::graph_op(v, node.as_deref()))),
+        Op::Metric { spec, top } => with_view(g, sc, |v| plain(explore::metric_op(v, spec, *top))),
+        Op::Explain { node, from } => with_view(g, sc, |v| {
             let n = match node {
                 Some(x) => v.g.node(x)?,
                 None => start_of(v, from.as_ref())?,
             };
             decide::explain_op(v, n)
-        }
-        ViewOp::Solve {
+        }),
+        Op::Solve {
             from,
             full_policy,
             all_values,
             max_steps,
-        } => decide::solve_op(
-            v,
-            start_of(v, from.as_ref())?,
-            full_policy,
-            all_values,
-            max_steps,
-        ),
-        ViewOp::Chain { from, metrics, top } => {
-            decide::chain_op(v, start_of(v, from.as_ref())?, metrics, top)
-        }
-        ViewOp::Simulate {
+        } => with_view(g, sc, |v| {
+            decide::solve_op(
+                v,
+                start_of(v, from.as_ref())?,
+                *full_policy,
+                *all_values,
+                *max_steps,
+            )
+        }),
+        Op::Chain { from, metrics, top } => with_view(g, sc, |v| {
+            decide::chain_op(v, start_of(v, from.as_ref())?, metrics, *top)
+        }),
+        Op::Simulate {
             from,
             runs,
             seed,
@@ -372,73 +345,100 @@ fn run_view(v: &View, op: &ViewOp<'_>, sc: &Scenario) -> Result<(Value, Vec<Warn
             max_steps,
             sample_durations,
             samples,
-        } => {
+        } => with_view(g, sc, |v| {
             let o = SimOptions {
-                runs,
-                seed,
-                alpha,
-                max_steps,
-                sample_durations,
-                keep_samples: samples,
+                runs: *runs,
+                seed: *seed,
+                alpha: *alpha,
+                max_steps: *max_steps,
+                sample_durations: *sample_durations,
+                keep_samples: *samples,
             };
             decide::simulate_op(v, start_of(v, from.as_ref())?, metrics, &o)
-        }
-        ViewOp::Validate => Ok((
-            json!({ "valid": true, "nodes": v.g.nodes.len(), "edges": v.g.edges.len(), "start": v.g.nodes[v.start].id }),
-            vec![],
-        )),
-        ViewOp::Graph { node } => explore::graph_op(v, node.as_deref()).map(|x| (x, vec![])),
-        ViewOp::Metric { spec, top } => explore::metric_op(v, spec, top).map(|x| (x, vec![])),
-        ViewOp::Path {
+        }),
+        Op::Path {
             from,
             to,
             metric,
             k,
             report,
-        } => explore::path_op(v, start_of(v, from.as_ref())?, to, metric, k, report)
-            .map(|x| (x, vec![])),
-        ViewOp::Pareto {
+        } => with_view(g, sc, |v| {
+            plain(explore::path_op(
+                v,
+                start_of(v, from.as_ref())?,
+                to,
+                metric,
+                *k,
+                report,
+            ))
+        }),
+        Op::Pareto {
             from,
             to,
             objectives,
             max_labels,
             limit,
-        } => explore::pareto_op(v, start_of(v, from.as_ref())?, to, objectives, max_labels, limit)
-            .map(|x| (x, vec![])),
-        ViewOp::Sweep {
+        } => with_view(g, sc, |v| {
+            plain(explore::pareto_op(
+                v,
+                start_of(v, from.as_ref())?,
+                to,
+                objectives,
+                *max_labels,
+                *limit,
+            ))
+        }),
+        Op::Sweep {
             param,
             lo,
             hi,
             steps,
             watch,
             tol,
-        } => {
+        } => with_view(g, sc, |v| {
             let args = explore::SweepArgs {
                 param,
-                lo,
-                hi,
-                steps,
+                lo: *lo,
+                hi: *hi,
+                steps: *steps,
                 watch,
-                tol,
+                tol: *tol,
             };
-            explore::sweep_op(v, sc, &args).map(|x| (x, vec![]))
-        }
-        ViewOp::Tornado {
+            plain(explore::sweep_op(v, sc, &args))
+        }),
+        Op::Tornado {
             params,
             rel,
             dp,
             probabilities,
             top,
-        } => explore::tornado_op(v.g, sc, params, rel, dp, probabilities, top)
-            .map(|x| (x, vec![])),
-        ViewOp::Structure {
+        } => with_view(g, sc, |v| {
+            plain(explore::tornado_op(
+                v.g,
+                sc,
+                params,
+                *rel,
+                *dp,
+                *probabilities,
+                *top,
+            ))
+        }),
+        Op::Structure {
             from,
             what,
             to,
             capacity,
             top,
-        } => explore::structure_op(v, start_of(v, from.as_ref())?, what, to.as_deref(), capacity, top)
-            .map(|x| (x, vec![])),
+        } => with_view(g, sc, |v| {
+            plain(explore::structure_op(
+                v,
+                start_of(v, from.as_ref())?,
+                *what,
+                to.as_deref(),
+                capacity,
+                *top,
+            ))
+        }),
     }
 }
 

@@ -6,6 +6,7 @@
 //! space with every id namespaced `pack::local`. Algorithms only ever see the
 //! compiled graph; they never touch JSON.
 
+mod continuations;
 mod graph;
 mod links;
 mod resolve;

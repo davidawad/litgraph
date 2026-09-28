@@ -37,6 +37,7 @@ fn arithmetic_and_precedence() {
     assert_eq!(ev("(1 + 2) * 3"), 9.0);
     assert_eq!(ev("1_000 * 2"), 2000.0);
     assert_eq!(ev("1.5e3 + .5"), 1500.5);
+    assert_eq!(ev("1e-2 + 2e+1"), 20.01);
     assert_eq!(ev("7 % 4 - 10 / 4"), 0.5);
 }
 
@@ -51,6 +52,8 @@ fn logic_ternary_functions() {
     assert!((ev("-ln(p)") - 1.386_294_361_1).abs() < 1e-9);
     assert_eq!(ev("tag('x') * 7 + tag(\"y\")"), 7.0);
     assert_eq!(ev("if(0, 1/0, 3)"), 3.0);
+    assert_eq!(ev("if(1, 2, 1/0)"), 2.0);
+    assert_eq!(ev("default(5, 10)"), 5.0);
     assert_eq!(ev("hours = 10 ? 1 : 0"), 1.0);
     assert_eq!(
         ev("true + false + isnan(0/0) + step(-1) + default(0/0, 4)"),
@@ -69,6 +72,15 @@ fn vars_are_collected_once() {
         parse("a + b * a + f(c) + (d ? e : a)").unwrap().vars(),
         ["a", "b", "c", "d", "e"]
     );
+    // Unary is its own walk arm (negation / logical not).
+    assert_eq!(parse("-a + !b").unwrap().vars(), ["a", "b"]);
+}
+
+#[test]
+fn binary_falls_back_to_nan_for_an_operator_it_does_not_know() {
+    // Every operator the parser can produce is handled explicitly; this
+    // fallback only exists so `binary` stays a total function.
+    assert!(binary("nope", 1.0, 2.0).is_nan());
 }
 
 #[test]

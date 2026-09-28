@@ -27,6 +27,9 @@ pub mod metrics;
 pub mod model;
 pub mod scenario;
 
+#[cfg(kani)]
+mod proofs;
+
 pub use error::{Error, Result};
 pub use model::{Graph, Pack};
 pub use scenario::{Scenario, View};

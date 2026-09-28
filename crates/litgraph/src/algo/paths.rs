@@ -424,3 +424,51 @@ pub fn pareto(
         truncated,
     })
 }
+
+#[cfg(test)]
+mod tests {
+    #![allow(clippy::unwrap_used, clippy::expect_used)]
+    use super::*;
+    use crate::model::{CompileOptions, Graph, LinkFile, Pack};
+    use crate::scenario::{Scenario, View};
+
+    fn compile(j: serde_json::Value) -> Graph {
+        let p: Pack = serde_json::from_value(j).expect("well-formed test pack");
+        Graph::compile(&[p], &LinkFile::default(), &CompileOptions::default())
+            .expect("test pack compiles")
+    }
+
+    /// `build`'s cycle guard: a fabricated `prev` map whose back-pointers
+    /// cycle between two nodes, never reaching `s`, must return `None`
+    /// instead of looping forever. A real `sssp`-produced `prev` can never
+    /// contain such a cycle (each entry strictly shortens the shortest-path
+    /// tree), so this needs a hand-built one.
+    #[test]
+    fn build_returns_none_when_prev_forms_a_cycle() {
+        let g = compile(serde_json::json!({
+            "schemaVersion": 2, "id": "bc", "title": "bc", "startNodeId": "s",
+            "nodes": [
+                { "id": "s", "kind": "state", "label": "s" },
+                { "id": "a", "kind": "state", "label": "a" },
+                { "id": "b", "kind": "terminal", "label": "b", "payoff": 0 }
+            ],
+            "edges": [
+                { "id": "ab", "from": "a", "to": "b", "label": "ab", "actor": "either" },
+                { "id": "ba", "from": "b", "to": "a", "label": "ba", "actor": "either" }
+            ]
+        }));
+        let v = View::new(&g, &Scenario::default()).unwrap();
+        let s = g.node("bc::s").unwrap();
+        let a = g.node("bc::a").unwrap();
+        let b = g.node("bc::b").unwrap();
+        let ab = g.edge("ab").unwrap();
+        let ba = g.edge("ba").unwrap();
+        // Back-pointers cycle a <-> b forever; `s` (the walk's stopping
+        // condition) is never reached.
+        let mut prev: Vec<Option<usize>> = vec![None; g.nodes.len()];
+        prev[a] = Some(ba);
+        prev[b] = Some(ab);
+        let w = vec![1.0; g.edges.len()];
+        assert!(build(&v, s, b, &prev, &w).is_none());
+    }
+}

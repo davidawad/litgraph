@@ -187,7 +187,7 @@ pub(super) fn explain_op(v: &View, n: NodeIx) -> Out {
     let result = json!({
         "node": { "id": node.id, "label": node.label, "kind": node.kind, "cite": node.cite, "note": node.note },
         "control": plan.control,
-        "who_decides": who_decides(plan.control, plan.minimize),
+        "who_decides": who_decides(plan.control),
         "value": r(sol.value[n]),
         "interrupt_mass": r(1.0 - plan.choice_mass),
         "options": options.into_iter().map(|x| x.1).collect::<Vec<_>>(),

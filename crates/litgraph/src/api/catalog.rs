@@ -23,10 +23,15 @@ pub struct Catalog {
 /// pack changed between two analyses.
 #[must_use]
 pub fn fingerprint(bytes: &[u8]) -> String {
-    let h = bytes.iter().fold(0xcbf2_9ce4_8422_2325_u64, |h, &b| {
+    format!("fnv1a64:{:016x}", fnv1a64(bytes))
+}
+
+/// FNV-1a, 64-bit.
+#[must_use]
+pub(crate) fn fnv1a64(bytes: &[u8]) -> u64 {
+    bytes.iter().fold(0xcbf2_9ce4_8422_2325_u64, |h, &b| {
         (h ^ u64::from(b)).wrapping_mul(0x0100_0000_01b3)
-    });
-    format!("fnv1a64:{h:016x}")
+    })
 }
 
 impl Catalog {

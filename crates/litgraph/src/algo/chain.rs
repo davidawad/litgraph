@@ -366,7 +366,7 @@ pub fn lu_solve(a: &mut [f64], n: usize, b: &mut [f64]) -> std::result::Result<V
 
 #[cfg(test)]
 mod tests {
-    #![allow(clippy::unwrap_used)]
+    #![allow(clippy::unwrap_used, clippy::expect_used)]
     use super::*;
     use crate::model::{CompileOptions, Graph, LinkFile, Pack};
     use crate::scenario::{Scenario, View};
@@ -432,12 +432,8 @@ mod tests {
         let a_ix = g.node("xr::a").unwrap();
         let b_ix = g.node("xr::b").unwrap();
         let isolated_ix = g.node("xr::isolated").unwrap();
-        let tix: BTreeMap<NodeIx, usize> = BTreeMap::from([
-            (s_ix, 0),
-            (a_ix, 1),
-            (b_ix, 2),
-            (isolated_ix, 3),
-        ]);
+        let tix: BTreeMap<NodeIx, usize> =
+            BTreeMap::from([(s_ix, 0), (a_ix, 1), (b_ix, 2), (isolated_ix, 3)]);
         let dists = vec![
             // From s: a zero-probability edge to `a` (skipped) and a
             // positive-probability edge to `b` (followed).

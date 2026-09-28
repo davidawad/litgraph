@@ -148,7 +148,10 @@ fn best_line_marks_opponent_choice_and_opponent_wait() {
     // Hand computation: waiting nets -1000 (the world edge) vs -50 for
     // acting; the adversarial opponent picks the worse-for-us option, WAIT.
     assert_eq!(rb["value"], json!(-1000.0));
-    assert_eq!(rb["best_line"][0]["kind"], json!("opponent-waits-likely-draw"));
+    assert_eq!(
+        rb["best_line"][0]["kind"],
+        json!("opponent-waits-likely-draw")
+    );
     assert_eq!(rb["best_line"][0]["id"], json!("gaps::worldEdge"));
 }
 
@@ -360,7 +363,13 @@ fn forced_loop_never_converges_and_chain_reports_a_numeric_hint() {
 
     // `explain`'s per-option "then" (a nested chain from the edge's target)
     // is omitted when that chain errors — here every option's target loops.
-    let explained = handle(&loop_req(Op::Explain { node: None, from: None }), &catalog);
+    let explained = handle(
+        &loop_req(Op::Explain {
+            node: None,
+            from: None,
+        }),
+        &catalog,
+    );
     assert!(explained.ok, "{explained:?}");
     let r = explained.result.unwrap();
     assert!(
