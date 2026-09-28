@@ -141,4 +141,60 @@ mod tests {
         assert!(!ok(bad).valid);
         Ok(())
     }
+
+    /// A structurally valid `links.json` (parses fine) whose `replaces`
+    /// points at a non-existent edge fails at `Graph::compile`, not parse.
+    #[test]
+    fn links_compile_error_is_reported_without_panicking() -> Result<()> {
+        let c = Catalog::embedded()?;
+        let doc = json!({
+            "links": [
+                {
+                    "from": "cofc::claim-accrues",
+                    "to": "cofc::dismissed-time-barred",
+                    "label": "bogus link",
+                    "replaces": ["cofc::no-such-edge"]
+                }
+            ]
+        });
+        let v = validate(&doc, Some("links"), &c);
+        assert_eq!(v.kind, "links");
+        assert!(!v.valid);
+        assert!(
+            v.errors
+                .iter()
+                .any(|e| e.contains("no-such-edge")),
+            "{:?}",
+            v.errors
+        );
+        Ok(())
+    }
+
+    /// A `links.json` that fails to parse at all (missing required fields)
+    /// is reported as a parse error, distinct from the compile-error case
+    /// above.
+    #[test]
+    fn links_parse_error_is_reported() -> Result<()> {
+        let c = Catalog::embedded()?;
+        // `RawEdge` requires `to` and `label`; only `from` is given.
+        let doc = json!({ "links": [ { "from": "cofc::claim-accrues" } ] });
+        let v = validate(&doc, Some("links"), &c);
+        assert_eq!(v.kind, "links");
+        assert!(!v.valid);
+        assert_eq!(v.errors.len(), 1);
+        Ok(())
+    }
+
+    /// A scenario document that fails to parse (unknown field, `deny_unknown_fields`)
+    /// is reported as a parse error on the default ("scenario") kind.
+    #[test]
+    fn scenario_parse_error_is_reported() -> Result<()> {
+        let c = Catalog::embedded()?;
+        let doc = json!({ "not_a_real_scenario_field": 1 });
+        let v = validate(&doc, None, &c);
+        assert_eq!(v.kind, "scenario");
+        assert!(!v.valid);
+        assert_eq!(v.errors.len(), 1);
+        Ok(())
+    }
 }
