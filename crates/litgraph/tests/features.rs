@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! Semantics of the new (non-v1) capabilities on small hand-built graphs
 //! where the right answer can be computed by hand.
 

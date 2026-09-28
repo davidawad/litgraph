@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! Monte Carlo simulation under a policy. The closed-form chain gives means;
 //! simulation gives the *distribution*: percentiles, downside (CVaR), P(loss),
 //! and path-dependent quantities (fee recovery on actual spend, sampled

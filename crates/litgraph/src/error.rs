@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 use thiserror::Error;
 
 /// Every error carries a stable `code` so agents can branch without parsing prose.

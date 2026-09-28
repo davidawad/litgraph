@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! Adversarial review findings: each test demonstrates a suspected defect
 //! with a hand-computable expected value. See the review report for the
 //! ranked writeup.

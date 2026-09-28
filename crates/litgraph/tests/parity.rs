@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! Parity with the original TypeScript engine (civ-pro-the-gathering
 //! src/lib/graph). Fixtures: tests/fixtures/ts-parity/<pack>.json.
 //!

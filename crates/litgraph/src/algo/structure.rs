@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! Structural analyses over the active edges of a view: SCCs, dominators,
 //! reachability, weighted min cut, betweenness.
 

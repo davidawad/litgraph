@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! Parameter sweeps, policy-flip breakpoints, and sensitivity (tornado).
 //!
 //! Generalizes v1's policy-diff: any scenario parameter — including ones only

@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! Built-in metrics, terminal utilities, parameters, and the variable
 //! environments custom functions evaluate against.
 //!

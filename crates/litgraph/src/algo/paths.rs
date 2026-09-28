@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! Path queries over any metric: shortest (Dijkstra, or Bellman–Ford when a
 //! custom metric goes negative), Yen's k-shortest loopless alternatives, and
 //! the N-objective Pareto frontier (Martins label-setting).

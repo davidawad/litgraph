@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! Solve the procedure as a stochastic game.
 //!
 //! Each node's plan (scenario.rs) says who chooses and what may interrupt:

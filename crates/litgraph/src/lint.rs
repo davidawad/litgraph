@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! Content QA. Structural errors fail compilation; everything here is a
 //! diagnostic an author (human or agent) can act on.
 

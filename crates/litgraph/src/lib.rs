@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! litgraph — litigation procedure as a stochastic game.
 //!
 //! Layers, bottom to top (each only depends on the ones below):

@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! Absorbing Markov chain under a fixed policy: "what actually happens in
 //! expectation" from a start node — absorption probabilities per terminal,
 //! expected visits, and the expected total of ANY list of metrics.
