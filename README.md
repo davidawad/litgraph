@@ -175,9 +175,10 @@ live counts; schema is documented in
 v1 packs load and solve like any other pack — they carry authored
 deadlines, hours, and (for most) probabilities — they just don't yet have
 authored terminal payoffs or a `sources` list; the engine flags this on
-every response (`payoff_source: heuristic`, an unsourced-pack warning from
-`lint`). Bringing a pack to v2 (sources + authored payoffs) is exactly the
-kind of contribution described in [CONTRIBUTING.md](CONTRIBUTING.md).
+every response (a grouped `payoff-not-authored` warning, plus an
+unsourced-pack diagnostic from `lint`). Bringing a pack to v2 (sources +
+authored payoffs) is exactly the kind of contribution described in
+[CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Docs
 
