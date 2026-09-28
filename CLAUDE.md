@@ -1,1 +1,4 @@
-Read AGENTS.md. Rust only for new code. Issue tracking with `br` (beads_rust); run mutating `br` commands from the primary checkout.
+Read AGENTS.md for the operating manual: commands, response contract, and
+rules for driving the engine. This is a Rust project (workspace crates
+under `crates/`) — new code goes there. Issue tracking is
+[GitHub Issues](https://github.com/davidawad/litgraph/issues).
