@@ -20,7 +20,7 @@ const ROOT: &str = concat!(env!("CARGO_MANIFEST_DIR"), "/../..");
 fn packs() -> Vec<String> {
     let mut v: Vec<String> = std::fs::read_dir(format!("{ROOT}/tests/fixtures/ts-parity"))
         .unwrap()
-        .filter_map(|e| e.ok())
+        .filter_map(std::result::Result::ok)
         .map(|e| e.path())
         .filter(|p| p.extension().is_some_and(|x| x == "json"))
         .map(|p| p.file_stem().unwrap().to_string_lossy().to_string())
