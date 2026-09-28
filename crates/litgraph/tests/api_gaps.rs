@@ -81,11 +81,12 @@ fn explain(node: &str) -> serde_json::Value {
     resp.result.unwrap()
 }
 
-/// `who_decides` for the two controls the shipped-pack tests never reach:
-/// a pure-nature node (`Chance`) and a non-terminal with no active out-edges
-/// (`Sink`, from a mask-free authoring gap — see the `sink` warning).
+/// `who_decides` for the controls the shipped-pack tests never reach: a
+/// pure-nature node (`Chance`), a non-terminal with no active out-edges
+/// (`Sink`, from a mask-free authoring gap — see the `sink` warning), and a
+/// terminal itself (`explain` accepts any node, not just decision points).
 #[test]
-fn who_decides_covers_chance_and_sink() {
+fn who_decides_covers_chance_sink_and_terminal() {
     let chance = explain("chanceNode");
     assert_eq!(chance["control"], json!("chance"));
     assert_eq!(chance["who_decides"], json!("tribunal/chance"));
@@ -93,6 +94,11 @@ fn who_decides_covers_chance_and_sink() {
     let sink = explain("deadEnd");
     assert_eq!(sink["control"], json!("sink"));
     assert_eq!(sink["who_decides"], json!("nobody (dead end)"));
+
+    let terminal = explain("settled");
+    assert_eq!(terminal["control"], json!("terminal"));
+    assert_eq!(terminal["who_decides"], json!("nobody (terminal)"));
+    assert_eq!(terminal["value"], json!(100.0));
 }
 
 /// An adversarial opponent (missing probabilities on the opponent's own
