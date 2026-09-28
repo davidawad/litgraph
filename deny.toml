@@ -1,0 +1,80 @@
+# cargo-deny configuration. `just deny` / `cargo deny check` runs all four
+# checks (advisories, bans, licenses, sources) in one pass; see
+# https://embarkstudios.github.io/cargo-deny/ for the full schema.
+
+[graph]
+targets = []
+all-features = false
+no-default-features = false
+
+# ---------------------------------------------------------------------------
+[advisories]
+version = 2
+db-urls = ["https://github.com/rustsec/advisory-db"]
+yanked = "deny"
+ignore = []
+
+# ---------------------------------------------------------------------------
+[licenses]
+version = 2
+# The workspace crates (litgraph, litgraph-cli) are dual-purpose here: they
+# currently declare `license = "UNLICENSED"` pre-release and are expected to
+# move to `GPL-3.0-or-later` for the public release. `clarify` pins an
+# explicit, trusted answer for our own crates regardless of which of those
+# two strings is in Cargo.toml at any given moment, so `cargo deny check`
+# passes on both sides of that rename without editing this file again.
+# GPL-3.0-or-later is also allowed outright below for the same reason.
+confidence-threshold = 0.8
+
+allow = [
+    "MIT",
+    "Apache-2.0",
+    "Apache-2.0 WITH LLVM-exception",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "ISC",
+    "Unicode-3.0",
+    "Unicode-DFS-2016",
+    "Zlib",
+    "CC0-1.0",
+    "GPL-3.0-or-later",
+]
+
+exceptions = [
+    # Our own workspace crates: private/unpublished, license string is in
+    # flux (UNLICENSED pre-release -> GPL-3.0-or-later at open-source time).
+    { allow = ["GPL-3.0-or-later"], name = "litgraph" },
+    { allow = ["GPL-3.0-or-later"], name = "litgraph-cli" },
+]
+
+[[licenses.clarify]]
+name = "litgraph"
+expression = "GPL-3.0-or-later"
+license-files = []
+
+[[licenses.clarify]]
+name = "litgraph-cli"
+expression = "GPL-3.0-or-later"
+license-files = []
+
+# Third-party crates that are still unpublished/private and therefore report
+# no license at all should be treated the same as our own — none expected
+# today, kept here as documentation of intent.
+[licenses.private]
+ignore = true
+registries = []
+
+# ---------------------------------------------------------------------------
+[bans]
+multiple-versions = "warn"
+wildcards = "deny"
+deny = []
+skip = []
+skip-tree = []
+
+# ---------------------------------------------------------------------------
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"
+allow-registry = ["https://github.com/rust-lang/crates.io-index"]
+allow-git = []
