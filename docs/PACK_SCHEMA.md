@@ -23,7 +23,7 @@ are fallbacks.
 | `startNodeId` | node id | where walks and default analyses begin |
 | `groups` | `[{id,label}]` | visual/hierarchical clustering |
 | `roles` | object | **v2** actor → role mapping, see below |
-| `sources` | `[{id,title,url?,path?,sha256?,asOf?}]` | **v2** primary sources the pack was authored from. `cite`/`authority` strings should be traceable to one of these |
+| `sources` | `[{id,title,url?,path?,sha256?,asOf?}]` | **v2** primary sources the pack was authored from. `cite`/`authority` strings should be traceable to one of these. `path` is **repo-relative only** (e.g. a sibling pack file) — never a local/absolute filesystem path; cite the official `url` for everything else. `litgraph lint` errors (`local-source-path`) on an absolute `path` |
 | `nodes`, `edges` | arrays | |
 
 ## Nodes
