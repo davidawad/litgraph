@@ -6,12 +6,11 @@ startNodeId `claim-accrues`. 68 nodes / 84 edges / 12 terminals; validated
 
 ## What was read
 
-- **RCFC main rules PDF** -- `.../Court of Federal Claims/rcfc-rules-2026-07-27.pdf`
-  (as amended through 7/27/2026), read via `pdftotext -layout` in full
-  (13,162 lines) plus targeted grep passes for Appendix A, C, D, E and the
-  fee-schedule cross-reference. Also cross-read the same rule text pre-split
-  by rule number at `/Users/david/Agents/kb/scratch/rcfc_chapters/` (index
-  `_index_list.txt`) for RCFC 3, 4, 12, 14, 16, 41, 54, 55, 56, 58, 58.1, 59.
+- **RCFC main rules PDF** -- `rcfc-rules-2026-07-27.pdf` (as amended through
+  7/27/2026), read via `pdftotext -layout` in full (13,162 lines) plus
+  targeted grep passes for Appendix A, C, D, E and the fee-schedule
+  cross-reference, and a per-rule split of the same text for close reading of
+  RCFC 3, 4, 12, 14, 16, 41, 54, 55, 56, 58, 58.1, 59.
 - **RCFC Appendix J (Patent Rules)** -- `rcfc-appendix-j-patent-rules-2026-07-27.pdf`,
   read in full via `pdftotext -layout` (Rules 1-24, all deadlines).
 - **RCFC Appendix H (ADR)** -- `adr-procedures-appendix-h.pdf`, read in full.
