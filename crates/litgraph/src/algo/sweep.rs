@@ -128,15 +128,21 @@ pub fn sweep(g: &Graph, sc: &Scenario, spec: &SweepSpec<'_>) -> Result<SweepResu
     })
 }
 
+/// One row of a tornado analysis: how much `V(start)` swings when one input
+/// is perturbed to its low/high band.
 #[derive(Debug, Clone, Serialize)]
 pub struct Sensitivity {
     /// What was perturbed: `param:<name>` or `p:<edge id>`.
     pub input: String,
+    /// Low end of the perturbation band.
     pub low_value: f64,
+    /// High end of the perturbation band.
     pub high_value: f64,
     /// V(start) at the low / high perturbation.
     pub v_low: f64,
+    /// V(start) at the high perturbation.
     pub v_high: f64,
+    /// `|v_high - v_low|`: how much this input drives the answer.
     pub swing: f64,
     /// Did the first-move policy change within the band?
     pub policy_changes: bool,
@@ -144,6 +150,9 @@ pub struct Sensitivity {
 
 /// Tornado: perturb each listed parameter by ±`rel` and each authored draw
 /// probability by ±`dp` (siblings rescaled), rank by swing in V(start).
+///
+/// # Errors
+/// View or solve errors at any perturbation.
 pub fn tornado(
     g: &Graph,
     sc: &Scenario,
