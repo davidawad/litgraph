@@ -132,6 +132,7 @@ pub const EDGE_FUNCS: &[(&str, &str)] = &[
     ),
 ];
 
+/// Variables visible to a terminal (utility) expression: `(name, doc)`.
 pub const TERMINAL_VARS: &[(&str, &str)] = &[
     (
         "payoff",
