@@ -208,6 +208,28 @@ fn tally(
 /// absorption probabilities, expected visits, and expected totals for every
 /// metric in `metrics` (parallel arrays of per-edge values, indexed like `v.g.edges`).
 ///
+/// ```
+/// use litgraph::algo::{chain, mdp};
+/// use litgraph::model::{CompileOptions, Graph, LinkFile, Pack};
+/// use litgraph::scenario::{Scenario, View};
+/// let json = r#"{
+///     "schemaVersion": 2, "id": "demo", "title": "Demo", "startNodeId": "start",
+///     "nodes": [
+///         {"id": "start", "label": "Start"},
+///         {"id": "end", "label": "End", "kind": "terminal", "payoff": 100.0}
+///     ],
+///     "edges": [{"from": "start", "to": "end", "label": "go"}]
+/// }"#;
+/// let pack = Pack::from_json(json).unwrap();
+/// let g = Graph::compile(&[pack], &LinkFile::default(), &CompileOptions::default()).unwrap();
+/// let v = View::new(&g, &Scenario::default()).unwrap();
+/// let sol = mdp::solve(&v, &mdp::SolveOptions::default()).unwrap();
+/// let c = chain::chain(&v, &sol, v.start, &[]).unwrap();
+/// // The only line absorbs at `end` with probability 1.
+/// assert_eq!(c.absorption, vec![(g.node("demo::end").unwrap(), 1.0)]);
+/// assert_eq!(c.expected_utility, 100.0);
+/// ```
+///
 /// # Errors
 /// `Numeric` if the induced transition matrix is singular — either some
 /// transient state's out-probabilities do not sum to 1, or (more commonly)
