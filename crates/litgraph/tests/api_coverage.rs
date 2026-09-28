@@ -36,7 +36,8 @@ fn describe_lists_metrics_ops_and_schemas() {
 fn packs_reports_data_quality() {
     let resp = handle(&req(Op::Packs), &catalog());
     assert!(resp.ok);
-    assert!(resp.result.unwrap().is_array() || resp.result.unwrap().is_object());
+    let r = resp.result.unwrap();
+    assert!(r.is_array() || r.is_object());
 }
 
 #[test]
