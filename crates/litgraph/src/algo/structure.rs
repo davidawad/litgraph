@@ -121,6 +121,7 @@ pub fn coreachable(v: &View, targets: &[NodeIx]) -> Vec<bool> {
 
 /// Immediate dominators from `root` (Cooper–Harvey–Kennedy). `None` for
 /// unreachable nodes and the root.
+#[must_use]
 pub fn dominators(v: &View, root: NodeIx) -> Vec<Option<NodeIx>> {
     let n = v.g.nodes.len();
     // Reverse postorder.
