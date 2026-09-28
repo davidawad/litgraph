@@ -9,15 +9,32 @@ this file is the operating manual.
 cargo build --release                      # binary: target/release/litgraph
 cargo test                                 # unit + parity (vs the TS engine) + feature tests
 litgraph describe                          # the full manual as JSON — start here
+litgraph schema request                    # JSON Schema (draft 2020-12) of request|response|scenario|pack|links
+litgraph validate my-pack.json             # check a pack/links/scenario/request file; auto-detects kind
+litgraph validate - < request.json         # exit 2 if invalid; --kind to force
 litgraph packs                             # packs + data quality
 litgraph lint [--packs cofc]               # content diagnostics
 litgraph explain --packs frcp-civil-procedure --arg node=answer-due --set rate=900
+litgraph run request.json                  # same as `q`, reads a file
 litgraph q '{"packs":["cofc","cafc"],"scenario":{...},"op":{"op":"chain"}}'
 litgraph q - < request.json
 ```
 
-Every response: `{ok, op, result, warnings, provenance, elapsed_ms}` or
-`{ok:false, error:{code, message, hint}}` (exit code 2).
+Packs are embedded in the binary at build time — no `packs/` directory is
+needed after install. Point at a different set with `LITGRAPH_PACKS=<dir>`
+or `--packs-dir <dir>`.
+
+Every response: `{ok, api_version, op, result, warnings, provenance,
+elapsed_ms}` or `{ok:false, api_version, op, error:{code, message, hint},
+elapsed_ms}`. `warnings` is grouped: `[{code, count, example, at}]`, `at`
+holding up to eight locations. `api_version` is the request/response
+contract version (bumped only on a breaking change; currently `1`).
+Exit codes: `0` ok, `2` the request ran and failed / a document is invalid,
+`1` usage or I/O error.
+
+Parsing is strict everywhere — packs, scenarios, requests, and op
+arguments reject unknown fields with an error naming the valid ones,
+rather than silently ignoring a typo.
 
 ## Rules
 
