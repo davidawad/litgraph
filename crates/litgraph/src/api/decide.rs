@@ -99,14 +99,17 @@ pub(super) fn simulate_op(v: &View, start: NodeIx, metrics: &[String], o: &sim::
     Ok((result, convergence_warnings(v, &sol)))
 }
 
-fn who_decides(control: Control, minimize: bool) -> &'static str {
-    match (control, minimize) {
-        (Control::Me, _) => "you",
-        (Control::Opponent, true) => "opponent (adversarial)",
-        (Control::Opponent, false) => "opponent",
-        (Control::Chance, _) => "tribunal/chance",
-        (Control::Terminal, _) => "nobody (terminal)",
-        (Control::Sink, _) => "nobody (dead end)",
+/// Who acts at a node, in plain language. `Control::Opponent` is always
+/// adversarial: [`crate::scenario::NodePlan`]'s `minimize` is set exactly
+/// when `control == Control::Opponent` (see `plan.rs`'s `chooser`), so
+/// there is no "opponent, not adversarial" case to distinguish.
+fn who_decides(control: Control) -> &'static str {
+    match control {
+        Control::Me => "you",
+        Control::Opponent => "opponent (adversarial)",
+        Control::Chance => "tribunal/chance",
+        Control::Terminal => "nobody (terminal)",
+        Control::Sink => "nobody (dead end)",
     }
 }
 
