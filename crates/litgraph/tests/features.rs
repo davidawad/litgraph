@@ -75,7 +75,7 @@ fn custom_cost_and_utility_expressions() {
     let s = sc(json!({
         "metrics": { "biglaw": "hours * 2000 + fees" },
         "cost": "biglaw",
-        "payoffs": { "lost": -100000 },
+        "payoffs": { "lost": -100_000 },
         "utility": "payoff < 0 ? 3 * payoff : payoff"
     }));
     let (v, sol) = solve(&g, &s);
