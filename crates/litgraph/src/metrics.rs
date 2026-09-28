@@ -23,6 +23,7 @@ pub struct Builtin {
     pub doc: &'static str,
 }
 
+/// Built-in edge metrics: cost/weight expressions any scenario can select by name.
 pub const METRICS: &[Builtin] = &[
     Builtin { name: "dollars", expr: "hours * rate + fees", doc: "attorney labor at `rate` plus cash fees (the v1 dollarCost)" },
     Builtin { name: "hours", expr: "hours", doc: "attorney hours" },
