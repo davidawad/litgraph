@@ -199,8 +199,11 @@ pub fn dominators(v: &View, root: NodeIx) -> Vec<Option<NodeIx>> {
     idom
 }
 
+/// A minimum s–t cut: its total capacity and the edges that realize it.
 pub struct Cut {
+    /// Total capacity of the cut (max-flow value).
     pub value: f64,
+    /// Edge indices crossing the cut, from the source side to the sink side.
     pub edges: Vec<usize>,
 }
 
