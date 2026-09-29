@@ -80,6 +80,21 @@
       "probabilities": {
         "remand-route-itc": 1.0
       }
+    },
+    "cafc@district-court": {
+      "pack": "cafc",
+      "note": "Federal Circuit as entered from a district-court patent judgment (28 U.S.C. § 1295(a)(1)): a civil action arising under the patent laws, or one with a compulsory patent counterclaim. Remand can only return to that district court.",
+      "remove_edges": [
+        "origin-to-cofc",
+        "origin-to-ptab",
+        "origin-to-itc",
+        "remand-route-cofc",
+        "remand-route-ptab",
+        "remand-route-itc"
+      ],
+      "probabilities": {
+        "remand-route-district-court": 1.0
+      }
     }
   },
   "links": [
@@ -287,7 +302,23 @@
       "replaces": [
         "frcp-civil-procedure::notice-of-appeal-filed->cross-appeal-window#0"
       ],
-      "note": "Non-patent civil appeals. Patent cases go to the Federal Circuit (28 U.S.C. § 1295(a)(1)); start in cafc::entry-district-court for those until a district-court patent pack exists."
+      "note": "Non-patent civil appeals; the regional circuit is one of two routes out of `notice-of-appeal-filed` (see `frcp-appeal-to-cafc-district-court`). Which applies is a fact about the case (does it arise under the patent laws, or carry a compulsory patent counterclaim, 28 U.S.C. § 1295(a)(1)?), not a free choice between forums with concurrent jurisdiction — a matter scenario should `remove_edges` whichever of the two does not apply, the same way a `cafc@<origin>` instance keeps only the one true origin edge."
+    },
+    {
+      "id": "frcp-appeal-to-cafc-district-court",
+      "from": "frcp-civil-procedure::notice-of-appeal-filed",
+      "to": "cafc@district-court::entry-district-court",
+      "label": "Proceed to the Federal Circuit (district-court patent judgment)",
+      "actor": "applicant",
+      "authority": "28 U.S.C. § 1295(a)(1)",
+      "tags": [
+        "appeal",
+        "patent"
+      ],
+      "replaces": [
+        "frcp-civil-procedure::notice-of-appeal-filed->cross-appeal-window#0"
+      ],
+      "note": "The Federal Circuit has exclusive jurisdiction over an appeal from a final district-court judgment in a civil action arising under an Act of Congress relating to patents (or plant variety protection), or in which a party asserted a compulsory patent counterclaim -- including a final judgment under 28 U.S.C. § 1292(c)(1)-(2). Coexists with `frcp-appeal-to-regional-circuit` as the other route out of `notice-of-appeal-filed`; a matter scenario selects the applicable one with `scenario.remove_edges` (see that link's note). Routes into the `cafc@district-court` instance, which mirrors `cafc@ptab`/`cafc@itc`/`cafc@cofc`: it keeps only `origin-to-district-court` and remands only back to the district court."
     }
   ]
 }
