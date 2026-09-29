@@ -161,7 +161,9 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
-          cache-to: type=gha,mode=max
+          # Only a hand-pushed tag may write the build cache (auto-release
+          # calls this with cache-mode: read).
+          cache-to: ${{ github.event_name == 'push' && 'type=gha,mode=max' || '' }}
 
   # Point the Homebrew tap (github.com/davidawad/homebrew-tap) at this
   # release. Needs the HOMEBREW_TAP_DEPLOY_KEY secret: the private half of a

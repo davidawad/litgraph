@@ -62,6 +62,9 @@ jobs:
   release:
     needs: tag
     if: needs.tag.outputs.tag != ''
+    # workflow_run is a low-trust trigger: let the release restore build
+    # caches but never write them.
+    cache-mode: read
     uses: ./.github/workflows/release.yml
     with:
       tag: ${{ needs.tag.outputs.tag }}
