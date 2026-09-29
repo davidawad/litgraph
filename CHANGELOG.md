@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### 0.1.0 — initial public release
+## [0.1.0] - 2026-09-28
+
+Initial public release.
 
 litgraph models litigation procedure as a stochastic game on a graph and
 answers the questions a litigator (or an agent) actually has: what to do,

@@ -102,6 +102,9 @@ patent case in the Court of Federal Claims through the Federal Circuit:
 ## Install
 
 ```bash
+# homebrew (macOS, Linux)
+brew install davidawad/tap/litgraph
+
 # from source
 cargo install --git https://github.com/davidawad/litgraph litgraph-cli
 
@@ -111,12 +114,11 @@ nix run github:davidawad/litgraph -- describe
 # container
 docker run --rm ghcr.io/davidawad/litgraph describe
 
-# homebrew (planned)
-brew install davidawad/tap/litgraph
 ```
 
-Release tarballs (planned) will be attached to
-[GitHub Releases](https://github.com/davidawad/litgraph/releases). See
+Prebuilt binaries (Linux x86_64 glibc/musl, macOS arm64/x86_64) and the
+WebAssembly bundles are attached to each
+[GitHub Release](https://github.com/davidawad/litgraph/releases). See
 [CONTRIBUTING.md](CONTRIBUTING.md) for building from source with nix/devenv.
 
 ## Usage
