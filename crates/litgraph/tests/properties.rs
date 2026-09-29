@@ -93,6 +93,7 @@ fn random_chain(rng: &mut ChaCha8Rng, n_states: usize, n_terms: usize) -> Random
         &LinkFile::default(),
         &CompileOptions {
             no_continuations: true,
+            ..CompileOptions::default()
         },
     )
     .expect("random chain packs always compile");
@@ -298,6 +299,7 @@ fn mixed_node_graph(my_payoff: f64, nature_payoff: f64, p: f64) -> Graph {
         &LinkFile::default(),
         &CompileOptions {
             no_continuations: true,
+            ..CompileOptions::default()
         },
     )
     .unwrap()

@@ -5,8 +5,15 @@
 //! `links.json` instances and cross-pack links, compiled into dense index
 //! space with every id namespaced `pack::local`. Algorithms only ever see the
 //! compiled graph; they never touch JSON.
+//!
+//! Edges may also declare `sets`/`clears`/`requires`/`forbids` state flags
+//! (v2): the internal `flags` module expands those into a product graph over
+//! `(node, flag-set)` so a downstream node's identity can depend on history —
+//! an IPR estoppel, a waived defense, a prior RCE — without every algorithm
+//! needing to know that. See `docs/PACK_SCHEMA.md#state-flags`.
 
 mod continuations;
+mod flags;
 mod graph;
 mod links;
 mod resolve;
@@ -14,7 +21,7 @@ mod schema;
 
 pub use graph::{
     heuristic_payoff, qualify, CompileOptions, Edge, EdgeIx, Graph, Node, NodeIx, PackMeta,
-    PayoffSource,
+    PayoffSource, DEFAULT_MAX_PRODUCT_NODES,
 };
 pub use links::{local_edge_ids, merge_patch, Instance, LinkFile};
 pub use schema::{

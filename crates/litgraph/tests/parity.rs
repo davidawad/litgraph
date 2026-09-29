@@ -59,6 +59,13 @@ fn load(id: &str) -> (Graph, Value) {
             &LinkFile::default(),
             &CompileOptions {
                 no_continuations: true,
+                // The TS engine (and its frozen fixtures) predates state
+                // flags; some packs have since grown them for later,
+                // unrelated matters (IPR estoppel, FRCP 12(h) waiver, RCE
+                // count). Parity is specifically about the v1 semantics, so
+                // compile as if no edge declared any.
+                no_flags: true,
+                ..CompileOptions::default()
             },
         )
         .unwrap(),

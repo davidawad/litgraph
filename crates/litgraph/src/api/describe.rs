@@ -89,7 +89,7 @@ pub fn describe(catalog: &Catalog) -> Value {
         "scenario_library": catalog.scenarios().map(|s| json!({ "id": s.id, "summary": s.summary, "packs": s.packs })).collect::<Vec<_>>(),
         "calibration_source": calibration_source,
         "calibration_sets": calibration_sets,
-        "request": "see `litgraph schema request` for the full JSON Schema: {packs, links, no_continuations, scenario, op}; `scenario` is an inline object, a name from `scenario_library`, or {\"extends\": \"<name>\", ...overrides} deep-merged onto it (`litgraph schema named-scenario` for the library file shape)",
+        "request": "see `litgraph schema request` for the full JSON Schema: {packs, links, no_continuations, no_flags, max_product_nodes, scenario, op}; `scenario` is an inline object, a name from `scenario_library`, or {\"extends\": \"<name>\", ...overrides} deep-merged onto it (`litgraph schema named-scenario` for the library file shape)",
         "scenario": {
             "params": "{name: number} — visible to every expression",
             "metrics": "{name: edge-expr} — custom cost/weight functions",

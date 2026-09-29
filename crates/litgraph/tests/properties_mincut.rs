@@ -110,7 +110,7 @@ proptest! {
             edges,
             ..Default::default()
         };
-        let g = Graph::compile(&[pack], &LinkFile::default(), &CompileOptions { no_continuations: true }).unwrap();
+        let g = Graph::compile(&[pack], &LinkFile::default(), &CompileOptions { no_continuations: true, ..CompileOptions::default() }).unwrap();
         let v = view(&g, &Scenario::default());
         let cap = v.metric("hours").unwrap();
         let cut = structure::min_cut(&v, 0, t, &cap);

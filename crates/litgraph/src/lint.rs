@@ -3,7 +3,7 @@
 //! diagnostic an author (human or agent) can act on.
 
 use serde::Serialize;
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 use crate::cite::{CiteOutcome, SourceCorpus};
 use crate::model::{Graph, NodeKind, Pack};
@@ -265,6 +265,14 @@ fn lint_pack_nodes(p: &Pack, push: &mut Push<'_>) {
 
 /// Reachability from each pack start. Instances (`base@origin`) are entered
 /// through links, not their start, so they are skipped.
+///
+/// Checked at the `base_id` level, not the exact compiled node: a state-flag
+/// product graph gives every base node its own empty-flag copy (so any node
+/// stays directly addressable as `scenario.start`), but a node that's only
+/// ever reached with a flag set (e.g. downstream of an IPR estoppel or a
+/// waived defense) has no *real* predecessor into its unflagged copy. That's
+/// expected, not a content defect — so a base node only warns when *none* of
+/// its compiled copies (flagged or not) are reachable.
 fn lint_reachability(g: &Graph, d: &mut Vec<Diagnostic>) {
     for p in g.packs.iter().filter(|p| !p.id.contains('@')) {
         let s = match g.node(&p.start) {
@@ -291,12 +299,21 @@ fn lint_reachability(g: &Graph, d: &mut Vec<Diagnostic>) {
                 }
             }
         }
-        for (i, n) in g.nodes.iter().enumerate() {
-            if n.pack == p.id && !seen[i] && !n.synthetic {
+        let reachable_base: HashSet<&str> = (0..g.nodes.len())
+            .filter(|&i| seen[i])
+            .map(|i| g.nodes[i].base_id.as_str())
+            .collect();
+        let mut warned: HashSet<&str> = HashSet::new();
+        for n in &g.nodes {
+            if n.pack == p.id
+                && !n.synthetic
+                && !reachable_base.contains(n.base_id.as_str())
+                && warned.insert(n.base_id.as_str())
+            {
                 d.push(Diagnostic {
                     severity: "warn",
                     code: "unreachable",
-                    at: n.id.clone(),
+                    at: n.base_id.clone(),
                     message: format!("not reachable from {} start", p.id),
                 });
             }

@@ -104,6 +104,13 @@ pub struct RawNode {
     /// Free numeric attributes visible to custom functions (v2).
     #[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
     pub attrs: BTreeMap<String, f64>,
+    /// Terminal payoff override keyed by flag name (v2): if the compiled
+    /// product-graph copy of this node carries one of these flags, its
+    /// payoff is this value instead of `payoff`. Author with mutually
+    /// exclusive flags; if more than one matches, the first key in sorted
+    /// order wins. See `docs/PACK_SCHEMA.md#state-flags`.
+    #[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
+    pub payoff_by_flag: BTreeMap<String, f64>,
 }
 
 fn default_actor() -> String {
@@ -165,6 +172,22 @@ pub struct RawEdge {
     /// Links only: qualified edge ids this link supersedes when it applies.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub replaces: Vec<String>,
+    /// State flags this edge sets when taken (v2). Compiled into a product
+    /// graph over `(node, flag-set)`; see `docs/PACK_SCHEMA.md#state-flags`.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub sets: Vec<String>,
+    /// State flags this edge clears when taken (v2).
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub clears: Vec<String>,
+    /// Flags that must ALL be set for this edge to exist in the compiled
+    /// graph (v2). A flag no edge ever sets makes a `requires` on it always
+    /// fail.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub requires: Vec<String>,
+    /// Flags that must ALL be absent for this edge to exist in the compiled
+    /// graph (v2).
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub forbids: Vec<String>,
 }
 
 /// A primary source a pack was authored from.

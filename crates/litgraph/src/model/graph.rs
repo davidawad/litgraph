@@ -60,8 +60,20 @@ pub struct Node {
     pub tags: Vec<String>,
     /// Numeric attributes.
     pub attrs: BTreeMap<String, f64>,
+    /// Terminal payoff override keyed by flag name (authoring data, carried
+    /// through so the product-graph compiler can resolve it per copy).
+    #[serde(skip_serializing_if = "BTreeMap::is_empty")]
+    pub payoff_by_flag: BTreeMap<String, f64>,
     /// Engine-created (the `#end` twin of a continued terminal).
     pub synthetic: bool,
+    /// State flags set at this compiled copy (empty for the base graph, or
+    /// for a pack that never uses flags). Sorted.
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub flags: Vec<String>,
+    /// The unflagged (`flags` empty) qualified id this node is a copy of.
+    /// Equal to `id` when `flags` is empty. Lets output project a flagged
+    /// product-graph node back to the base pack node an author wrote.
+    pub base_id: String,
 }
 
 impl Node {
@@ -75,6 +87,12 @@ impl Node {
     #[must_use]
     pub fn is_terminal(&self) -> bool {
         self.kind == NodeKind::Terminal
+    }
+
+    /// True if this compiled node carries `flag`.
+    #[must_use]
+    pub fn has_flag(&self, flag: &str) -> bool {
+        self.flags.iter().any(|f| f == flag)
     }
 }
 
@@ -126,6 +144,18 @@ pub struct Edge {
     pub link: bool,
     /// Engine-created edge (terminal continuation `accept`).
     pub synthetic: bool,
+    /// Flags this edge sets when taken.
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub sets: Vec<String>,
+    /// Flags this edge clears when taken.
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub clears: Vec<String>,
+    /// Flags that must all be set for this edge to exist in the product graph.
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub requires: Vec<String>,
+    /// Flags that must all be absent for this edge to exist in the product graph.
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub forbids: Vec<String>,
 }
 
 /// Summary of a compiled pack.
@@ -153,12 +183,38 @@ pub struct PackMeta {
     pub instance: bool,
 }
 
+/// Hard cap on compiled `(node, flag-set)` product states. Chosen generously
+/// above every real pack combination; a graph that hits it gets a clear
+/// error rather than an unbounded compile.
+pub const DEFAULT_MAX_PRODUCT_NODES: usize = 20_000;
+
 /// Compilation switches.
-#[derive(Debug, Clone, Default)]
+#[derive(Debug, Clone)]
 pub struct CompileOptions {
     /// Keep terminals with out-edges absorbing (v1 semantics) instead of
     /// turning them into choices with an explicit `accept` edge.
     pub no_continuations: bool,
+    /// Hard cap on compiled `(node, flag-set)` product states (see
+    /// [`DEFAULT_MAX_PRODUCT_NODES`]). Ignored when no edge declares
+    /// `sets`/`clears`/`requires`/`forbids`, or when `no_flags` is set.
+    pub max_product_nodes: usize,
+    /// Ignore every edge's `sets`/`clears`/`requires`/`forbids` and compile
+    /// the graph exactly as if no pack declared any (v1/no-memory
+    /// semantics), even when some do. For reproducing the original v1
+    /// engine's behavior bit-for-bit (see `tests/parity.rs`) on a pack that
+    /// has since grown flags for a later matter; ordinary use leaves this
+    /// `false`.
+    pub no_flags: bool,
+}
+
+impl Default for CompileOptions {
+    fn default() -> Self {
+        CompileOptions {
+            no_continuations: false,
+            max_product_nodes: DEFAULT_MAX_PRODUCT_NODES,
+            no_flags: false,
+        }
+    }
 }
 
 /// One or more packs compiled into dense index space, ids namespaced `pack::local`.
@@ -264,6 +320,16 @@ impl Graph {
             }
         }
         g.add_links(&lf.links)?;
+        if !opts.no_flags
+            && g.edges.iter().any(|e| {
+                !e.sets.is_empty()
+                    || !e.clears.is_empty()
+                    || !e.requires.is_empty()
+                    || !e.forbids.is_empty()
+            })
+        {
+            g.expand_flags(opts.max_product_nodes)?;
+        }
         g.start = g.node_ix[&g.packs[0].start];
         if !opts.no_continuations {
             g.add_continuations();
@@ -295,7 +361,7 @@ impl Graph {
             };
             self.node_ix.insert(qid.clone(), self.nodes.len());
             self.nodes.push(Node {
-                id: qid,
+                id: qid.clone(),
                 pack: pack.id.clone(),
                 local_id: n.id.clone(),
                 kind,
@@ -309,7 +375,10 @@ impl Graph {
                 outcome: n.outcome.clone(),
                 tags: n.tags.clone(),
                 attrs: n.attrs.clone(),
+                payoff_by_flag: n.payoff_by_flag.clone(),
                 synthetic: false,
+                flags: vec![],
+                base_id: qid,
             });
         }
         for (e, local) in pack.edges.iter().zip(local_edge_ids(&pack.edges)) {
@@ -410,6 +479,10 @@ impl Graph {
             attrs: e.attrs.clone(),
             link,
             synthetic: false,
+            sets: e.sets.clone(),
+            clears: e.clears.clone(),
+            requires: e.requires.clone(),
+            forbids: e.forbids.clone(),
         });
         Ok(())
     }

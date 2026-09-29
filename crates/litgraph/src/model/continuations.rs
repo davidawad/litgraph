@@ -91,6 +91,10 @@ impl Graph {
             attrs: BTreeMap::new(),
             link: false,
             synthetic: true,
+            sets: vec![],
+            clears: vec![],
+            requires: vec![],
+            forbids: vec![],
         });
         self.notes.push(format!(
             "terminal {} has {} out-edge(s); modeled as a choice with an explicit accept edge",

@@ -119,6 +119,10 @@ pub const EDGE_FUNCS: &[(&str, &str)] = &[
     ("tag(\"x\")", "edge has tag x"),
     ("to_tag(\"x\")", "target node has outcome or node tag x"),
     ("from_tag(\"x\")", "source node has outcome or node tag x"),
+    (
+        "flag(\"x\")",
+        "the state-flag product graph has flag x set at the edge's source node (see docs/PACK_SCHEMA.md#state-flags)",
+    ),
     ("attr(\"x\", d)", "edge attr x or d"),
     ("actor(\"examiner\")", "edge's raw actor equals"),
     ("pack(\"frcp\")", "edge belongs to pack"),
@@ -146,6 +150,10 @@ pub const TERMINAL_VARS: &[(&str, &str)] = &[
     ("<param>", "any scenario parameter"),
     ("tag(\"win\")", "outcome tag test"),
     ("pack(\"x\"), label_has(\"x\")", "as for edges"),
+    (
+        "flag(\"x\")",
+        "this terminal's compiled state-flag product-graph copy has flag x set",
+    ),
 ];
 
 /// The default value for every built-in [`PARAMS`] entry, keyed by name.
@@ -244,6 +252,7 @@ impl Env for EdgeEnv<'_> {
             "tag" => s().map(|t| b(e.tags.contains(&t))),
             "to_tag" => s().map(|t| b(self.g.nodes[e.to].has_tag(&t))),
             "from_tag" => s().map(|t| b(self.g.nodes[e.from].has_tag(&t))),
+            "flag" => s().map(|t| b(self.g.nodes[e.from].has_flag(&t))),
             "actor" => s().map(|t| b(e.actor == t)),
             "pack" => s().map(|t| b(e.pack == t || self.g.nodes[e.from].pack == t)),
             "label_has" => s().map(|t| b(contains_ci(Some(&e.label), &t))),
@@ -292,6 +301,7 @@ impl Env for TerminalEnv<'_> {
         };
         Some(match name {
             "tag" | "to_tag" => s().map(|t| b(n.has_tag(&t))),
+            "flag" => s().map(|t| b(n.has_flag(&t))),
             "pack" => s().map(|t| b(n.pack == t)),
             "label_has" => s().map(|t| b(contains_ci(Some(&n.label), &t))),
             _ => return None,

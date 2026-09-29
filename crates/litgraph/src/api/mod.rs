@@ -56,7 +56,7 @@ use crate::algo::sim::SimOptions;
 use crate::error::{Error, Result};
 use crate::lint;
 use crate::metrics;
-use crate::model::{CompileOptions, Graph, LinkFile, Pack};
+use crate::model::{CompileOptions, Graph, LinkFile, Pack, DEFAULT_MAX_PRODUCT_NODES};
 use crate::scenario::{Scenario, View};
 use envelope::hint;
 use stopwatch::Stopwatch;
@@ -70,8 +70,12 @@ fn yes() -> bool {
     true
 }
 
+fn default_max_product_nodes() -> usize {
+    DEFAULT_MAX_PRODUCT_NODES
+}
+
 /// A request: which packs, which scenario, which operation.
-#[derive(Debug, Clone, Serialize, Deserialize, Default, JsonSchema)]
+#[derive(Debug, Clone, Serialize, Deserialize, JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct Request {
     /// Pack ids, forum keys, file stems, or paths. Empty = every pack, or —
@@ -85,6 +89,15 @@ pub struct Request {
     /// Keep v1 absorbing-terminal semantics (no `accept` continuations).
     #[serde(default)]
     pub no_continuations: bool,
+    /// Ignore every edge's `sets`/`clears`/`requires`/`forbids` state flags
+    /// (v1/no-memory semantics) even on packs that declare them.
+    #[serde(default)]
+    pub no_flags: bool,
+    /// Hard cap on compiled `(node, flag-set)` product states; a clear error
+    /// above this rather than an unbounded compile. Ignored unless a pack
+    /// edge declares `sets`/`clears`/`requires`/`forbids`.
+    #[serde(default = "default_max_product_nodes")]
+    pub max_product_nodes: usize,
     /// The matter: an inline scenario object (unknown fields rejected, as
     /// always), a string naming a scenario from the library
     /// (`litgraph describe` lists them), or `{"extends": "<name>", ...}`
@@ -96,6 +109,23 @@ pub struct Request {
     /// The operation (default `describe`).
     #[serde(default)]
     pub op: Op,
+}
+
+// A hand-written `Default` (instead of `#[derive(Default)]`) so it matches
+// the serde defaults above exactly: `usize::default()` is 0, which would
+// make `max_product_nodes` fail closed on the very first flag-using pack.
+impl Default for Request {
+    fn default() -> Self {
+        Request {
+            packs: vec![],
+            links: true,
+            no_continuations: false,
+            no_flags: false,
+            max_product_nodes: default_max_product_nodes(),
+            scenario: Value::default(),
+            op: Op::default(),
+        }
+    }
 }
 
 /// Run a request. Never panics or returns `Err`: failures are `ok: false` responses.
@@ -201,6 +231,8 @@ fn run(req: &Request, catalog: &Catalog) -> Result<Out> {
         &links,
         &CompileOptions {
             no_continuations: req.no_continuations,
+            max_product_nodes: req.max_product_nodes,
+            no_flags: req.no_flags,
         },
     )?;
     let calibration = calibration::apply_all(&mut g, &sc.calibration)?;

@@ -20,7 +20,17 @@ pub(super) fn r(x: f64) -> Value {
 }
 
 pub(super) fn node_ref(v: &View, n: NodeIx) -> Value {
-    json!({ "id": v.g.nodes[n].id, "label": v.g.nodes[n].label })
+    let nd = &v.g.nodes[n];
+    let mut m = Map::new();
+    m.insert("id".into(), json!(nd.id));
+    m.insert("label".into(), json!(nd.label));
+    if !nd.flags.is_empty() {
+        // Project back to the base pack node an author wrote, alongside the
+        // flags that distinguish this product-graph copy from it.
+        m.insert("base_id".into(), json!(nd.base_id));
+        m.insert("flags".into(), json!(nd.flags));
+    }
+    Value::Object(m)
 }
 
 pub(super) fn edge_ref(v: &View, e: usize) -> Value {
