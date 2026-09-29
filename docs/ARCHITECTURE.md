@@ -176,7 +176,11 @@ Remand terminals in CAFC link back into the origin forum.
   estoppel, waiver memory, RCE counts, cross-forum preclusion.
 - Port civ-pro's deadline clock (court days, holidays, FRCP/RCFC 6).
 - Scenario library (`scenarios/*.json`) for named matter profiles.
-- Calibration pipeline: probabilities and durations from docket data
-  (CourtListener / PACER tooling), each with vintage and sample size.
+- ~~Calibration pipeline: probabilities and durations from docket data~~
+  **Delivered**: `calibration/*.json` (embedded like packs; `scenario.calibration`,
+  `provenance.calibration`, the `calibration` gap-ranking op) — see
+  `docs/CALIBRATION.md`. Still open: a CourtListener/PACER-backed fetcher for
+  ongoing re-calibration (`scripts/calibrate/` currently regenerates one
+  set's arithmetic from recorded constants, not a live docket puller).
 - CVaR-optimal policies; general-sum (opponent with its own payoffs).
 - Cite verification: every `authority` resolves to a span in an L0 source.

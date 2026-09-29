@@ -16,6 +16,7 @@
 //! `provenance` (packs, fingerprints, parameters, modeling modes, engine), so
 //! an agent can tell authored facts from fallbacks without reading source.
 
+mod calibration;
 mod catalog;
 mod decide;
 mod describe;
@@ -26,6 +27,13 @@ mod render;
 mod stopwatch;
 mod validate;
 
+pub use calibration::{
+    apply as apply_calibration, apply_all as apply_calibration_all,
+    apply_named as apply_calibration_named, gaps as calibration_gaps,
+    Application as CalibrationApplication, Applied as CalibrationApplied, CalibrationCatalog,
+    CalibrationEntry, CalibrationSet, CalibrationSource, CalibrationTarget, Gap as CalibrationGap,
+    Gaps as CalibrationGaps,
+};
 #[cfg(kani)]
 pub(crate) use catalog::fnv1a64 as catalog_fnv1a64;
 pub use catalog::{fingerprint, Catalog};
@@ -210,7 +218,12 @@ pub fn handle_json(text: &str, catalog: &Catalog) -> Response {
     }
 }
 
-fn provenance(g: &Graph, selected: &[(Pack, String)], sc: &Scenario) -> Value {
+fn provenance(
+    g: &Graph,
+    selected: &[(Pack, String)],
+    sc: &Scenario,
+    calibration: &[CalibrationApplication],
+) -> Value {
     let mut params = metrics::default_params();
     params.extend(sc.params.clone());
     json!({
@@ -225,6 +238,9 @@ fn provenance(g: &Graph, selected: &[(Pack, String)], sc: &Scenario) -> Value {
             "cost": sc.cost.clone().unwrap_or_else(|| "dollars".into()),
             "utility": sc.utility.clone().unwrap_or_else(|| "ev".into()),
         },
+        // Which values were calibrated, and from where — empty unless
+        // `scenario.calibration` named at least one set.
+        "calibration": calibration,
     })
 }
 
@@ -239,14 +255,15 @@ fn run(req: &Request, catalog: &Catalog) -> Result<Out> {
     } else {
         LinkFile::default()
     };
-    let g = Graph::compile(
+    let mut g = Graph::compile(
         &packs,
         &links,
         &CompileOptions {
             no_continuations: req.no_continuations,
         },
     )?;
-    let prov = provenance(&g, &selected, &req.scenario);
+    let calibration = calibration::apply_all(&mut g, &req.scenario.calibration)?;
+    let prov = provenance(&g, &selected, &req.scenario, &calibration);
     let (result, warns) = dispatch(req, catalog, &g, &packs)?;
     Ok((result, warns, prov))
 }
@@ -422,6 +439,25 @@ fn dispatch(req: &Request, catalog: &Catalog, g: &Graph, packs: &[Pack]) -> Answ
                 *probabilities,
                 *top,
             ))
+        }),
+        Op::Calibration {
+            top,
+            dp,
+            rel,
+            max_candidates,
+        } => with_view(g, sc, |v| {
+            let out = calibration::gaps(v.g, sc, *dp, *rel, *max_candidates)?;
+            let probabilities: Vec<&calibration::Gap> =
+                out.probabilities.iter().take(*top).collect();
+            let durations: Vec<&calibration::Gap> = out.durations.iter().take(*top).collect();
+            plain(Ok(json!({
+                "base_value": out.base_value,
+                "probabilities": probabilities,
+                "probabilities_truncated": out.probabilities_truncated,
+                "base_elapsed_days": out.base_elapsed_days,
+                "durations": durations,
+                "durations_truncated": out.durations_truncated,
+            })))
         }),
         Op::Structure {
             from,

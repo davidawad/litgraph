@@ -1,0 +1,37 @@
+{
+  "id": "cofc-fy2024",
+  "title": "Court of Federal Claims bid-protest volume, FY2024",
+  "description": "Annual bid-protest filing/disposition volume from the CoFC's own FY2024 statistical report, recorded as node attrs on the `cofc` pack's protest-filing node for reference by custom expressions (e.g. a caseload-context metric). This is a raw annual count, not a rate: the report does not break down protest outcomes (sustained vs. denied), so `bid-protest-merits-ruling`'s out-edges remain unauthored — a good first candidate for the next calibration pass (see the `calibration` op's gap report).",
+  "entries": [
+    {
+      "target": "node-attr",
+      "ref": "cofc::bid-protest-complaint-filed",
+      "attr": "annual_filings_fy24",
+      "value": 266,
+      "source": {
+        "title": "Court of Federal Claims Statistical Report for the Fiscal Year October 1, 2023 - September 30, 2024",
+        "url": "https://www.uscfc.uscourts.gov/sites/cfc/files/statistical_report_2024.pdf",
+        "vintageStart": "2023-10-01",
+        "vintageEnd": "2024-09-30",
+        "retrieved": "2026-09-28"
+      },
+      "n": 266,
+      "method": "Page 1: 'Under its non-monetary jurisdiction (bid protest jurisdiction), there were 266 cases filed and the court disposed of 188.' `n` is the count itself (a full-population annual total, not a sample)."
+    },
+    {
+      "target": "node-attr",
+      "ref": "cofc::bid-protest-complaint-filed",
+      "attr": "annual_dispositions_fy24",
+      "value": 188,
+      "source": {
+        "title": "Court of Federal Claims Statistical Report for the Fiscal Year October 1, 2023 - September 30, 2024",
+        "url": "https://www.uscfc.uscourts.gov/sites/cfc/files/statistical_report_2024.pdf",
+        "vintageStart": "2023-10-01",
+        "vintageEnd": "2024-09-30",
+        "retrieved": "2026-09-28"
+      },
+      "n": 188,
+      "method": "Same page: bid-protest dispositions FY24. `n` is the count itself."
+    }
+  ]
+}

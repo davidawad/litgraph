@@ -1,0 +1,55 @@
+{
+  "id": "frcp-fy2024",
+  "title": "District court time-to-disposition by method, 12 months ending 9/30/2024",
+  "description": "Expected elapsed time (duration) for two `frcp-civil-procedure` pack edges, from the Administrative Office of the U.S. Courts' median time-to-disposition table (Table C-5), which breaks civil case terminations down by method of disposition. Only a median is published (no min/max), so each entry sets `distribution.mode` alone and leaves `min`/`max` unset — the engine's triangular duration collapses to the median when only `mode` is given. Months are converted to days at 365.25/12 = 30.4375 days/month.",
+  "entries": [
+    {
+      "target": "edge-duration",
+      "ref": "frcp-civil-procedure::service-completed->voluntary-dismissal#0",
+      "distribution": {
+        "mode": 252.63
+      },
+      "source": {
+        "title": "Table C-5 — U.S. District Courts: Median Time Intervals From Filing to Disposition of Civil Cases Terminated, by District and Method of Disposition, During the 12-Month Period Ending September 30, 2024",
+        "url": "https://www.uscourts.gov/sites/default/files/2024-12/jb_c5_0930.2024.pdf",
+        "vintageStart": "2023-10-01",
+        "vintageEnd": "2024-09-30",
+        "retrieved": "2026-09-28"
+      },
+      "n": 69436,
+      "method": "'Total' row, 'No Court Action' column (a voluntary/stipulated dismissal or settlement without a judicial ruling): 69,436 cases, median 8.3 months. 8.3 * 30.4375 = 252.63 days."
+    },
+    {
+      "target": "edge-duration",
+      "ref": "frcp-civil-procedure::discovery-open->voluntary-dismissal#0",
+      "distribution": {
+        "mode": 252.63
+      },
+      "source": {
+        "title": "Table C-5 — U.S. District Courts: Median Time Intervals From Filing to Disposition of Civil Cases Terminated, by District and Method of Disposition, During the 12-Month Period Ending September 30, 2024",
+        "url": "https://www.uscourts.gov/sites/default/files/2024-12/jb_c5_0930.2024.pdf",
+        "vintageStart": "2023-10-01",
+        "vintageEnd": "2024-09-30",
+        "retrieved": "2026-09-28"
+      },
+      "n": 69436,
+      "method": "Same 'No Court Action' figure as the other voluntary-dismissal edge above — the AO table does not distinguish which procedural stage the dismissal was reached at, only that no court ruling was involved."
+    },
+    {
+      "target": "edge-duration",
+      "ref": "frcp-civil-procedure::sj-ruling->summary-judgment-granted#0",
+      "distribution": {
+        "mode": 410.91
+      },
+      "source": {
+        "title": "Table C-5 — U.S. District Courts: Median Time Intervals From Filing to Disposition of Civil Cases Terminated, by District and Method of Disposition, During the 12-Month Period Ending September 30, 2024",
+        "url": "https://www.uscourts.gov/sites/default/files/2024-12/jb_c5_0930.2024.pdf",
+        "vintageStart": "2023-10-01",
+        "vintageEnd": "2024-09-30",
+        "retrieved": "2026-09-28"
+      },
+      "n": 21861,
+      "method": "'Total' row, 'During or After Pretrial' column (the closest published proxy for a summary-judgment ruling, which is typically decided at or after the close of pretrial/discovery): 21,861 cases, median 13.5 months. 13.5 * 30.4375 = 410.91 days."
+    }
+  ]
+}

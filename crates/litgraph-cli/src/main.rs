@@ -51,6 +51,10 @@ struct Cli {
     /// Packs directory (default: `$LITGRAPH_PACKS`, else the packs built into this binary).
     #[arg(long)]
     packs_dir: Option<String>,
+    /// Calibration directory (default: `$LITGRAPH_CALIBRATION`, else the sets built into this
+    /// binary); sets `$LITGRAPH_CALIBRATION` for this process so `scenario.calibration` picks it up.
+    #[arg(long)]
+    calibration_dir: Option<String>,
     /// Do not apply links.json.
     #[arg(long)]
     no_links: bool,
@@ -136,6 +140,9 @@ fn emit(v: &impl serde::Serialize, compact: bool) -> Result<()> {
 }
 
 fn run(cli: &Cli) -> Result<bool> {
+    if let Some(d) = &cli.calibration_dir {
+        std::env::set_var("LITGRAPH_CALIBRATION", d);
+    }
     let catalog = match &cli.packs_dir {
         Some(d) => Catalog::load(std::path::Path::new(d)),
         None => Catalog::default_source(),

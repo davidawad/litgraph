@@ -1,0 +1,35 @@
+{
+  "id": "cafc-fy2024",
+  "title": "Federal Circuit disposition rates on appeals from the Court of Federal Claims, FY2024",
+  "description": "Affirmance and vacatur/remand rates for the `cafc@cofc` pack instance (Federal Circuit as entered by a CoFC plaintiff-appellant), from the CoFC's own FY2024 statistical report, which tracks its own mandates from the Federal Circuit. The source's 'Reversing (including Reversing in part)' category (11 of 86) combines the pack's separate `reversed` and `affirmed-in-part-reversed-in-part` terminals and is deliberately left uncalibrated rather than guessing a split; likewise 'Appeal Dismissed' (32 of 86) has no matching edge in `panel-decision`'s outcomes (dismissals typically happen before a merits panel decision) and is not applied here. Only `panel-to-affirmed` and `panel-to-remand` are calibrated; `panel-to-rule36`, `panel-to-reversed` and `panel-to-mixed` keep the pack's existing teaching estimates (or the engine's probability-fill) until a source with matching granularity is found.",
+  "entries": [
+    {
+      "target": "edge-probability",
+      "ref": "cafc@cofc::panel-to-affirmed",
+      "value": 0.3837,
+      "source": {
+        "title": "Court of Federal Claims Statistical Report for the Fiscal Year October 1, 2023 - September 30, 2024",
+        "url": "https://www.uscfc.uscourts.gov/sites/cfc/files/statistical_report_2024.pdf",
+        "vintageStart": "2023-10-01",
+        "vintageEnd": "2024-09-30",
+        "retrieved": "2026-09-28"
+      },
+      "n": 86,
+      "method": "Page 5, 'Appeals to the United States Court of Appeals for the Federal Circuit': Mandates (not including vaccine cases) Total 86, of which 'Affirming U.S.C.F.C. Decision' 33. 33 / 86 = 0.38372..."
+    },
+    {
+      "target": "edge-probability",
+      "ref": "cafc@cofc::panel-to-remand",
+      "value": 0.1163,
+      "source": {
+        "title": "Court of Federal Claims Statistical Report for the Fiscal Year October 1, 2023 - September 30, 2024",
+        "url": "https://www.uscfc.uscourts.gov/sites/cfc/files/statistical_report_2024.pdf",
+        "vintageStart": "2023-10-01",
+        "vintageEnd": "2024-09-30",
+        "retrieved": "2026-09-28"
+      },
+      "n": 86,
+      "method": "Same table: 'Appeal Vacated' 10 of 86 mandates. 10 / 86 = 0.11628...; mapped to the pack's `remand-destination` decision node (`panel-to-remand`), since a Federal Circuit mandate vacating a CoFC judgment is reported by the CoFC as 'Appeal Vacated' and is, in practice, accompanied by a remand."
+    }
+  ]
+}

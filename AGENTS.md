@@ -14,6 +14,10 @@ litgraph validate my-pack.json             # check a pack/links/scenario/request
 litgraph validate - < request.json         # exit 2 if invalid; --kind to force
 litgraph packs                             # packs + data quality
 litgraph lint [--packs cofc]               # content diagnostics
+litgraph q '{"packs":["ptab-patent-trial-appeal-board"],"scenario":{"calibration":["ptab-fy2024"]},"op":{"op":"chain"}}'
+                                            # apply real docket-derived rates (docs/CALIBRATION.md)
+litgraph q '{"packs":["frcp-civil-procedure"],"op":{"op":"calibration"}}'
+                                            # uncalibrated probabilities/durations, ranked by sensitivity
 litgraph explain --packs frcp-civil-procedure --arg node=answer-due --set rate=900
 litgraph run request.json                  # same as `q`, reads a file
 litgraph q '{"packs":["cofc","cafc"],"scenario":{...},"op":{"op":"chain"}}'
@@ -57,6 +61,10 @@ rather than silently ignoring a typo.
    `prob_fill: uniform`); see tests/parity.rs.
 7. **Composed graphs**: set `scenario.start` explicitly; the default start
    is the first pack's start (alphabetical when `packs` is empty).
+8. **Calibrate, don't guess.** Before hand-typing a probability/duration
+   teaching estimate, check whether `calibration/*.json` already has a
+   sourced value, or whether `{"op":"calibration"}` says this input is worth
+   calibrating next. See `docs/CALIBRATION.md`.
 
 ## Layout
 
@@ -71,7 +79,8 @@ crates/litgraph/src/
   lint.rs     content QA
 crates/litgraph-cli/   the `litgraph` binary
 packs/                 forum packs + links.json
-docs/                  ARCHITECTURE, PACK_SCHEMA, COST_FUNCTIONS, CRITIQUE
+docs/                  ARCHITECTURE, PACK_SCHEMA, COST_FUNCTIONS, CRITIQUE, CALIBRATION
+calibration/           calibration/*.json overlay sets (real, sourced probabilities/durations)
 tests/fixtures/ts-parity/   golden outputs from the original TS engine
 ```
 

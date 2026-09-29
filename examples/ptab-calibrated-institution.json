@@ -1,0 +1,17 @@
+{
+  "packs": [
+    "ptab-patent-trial-appeal-board"
+  ],
+  "scenario": {
+    "params": {
+      "rate": 750
+    },
+    "calibration": [
+      "ptab-fy2024"
+    ]
+  },
+  "op": {
+    "op": "explain",
+    "node": "institution-decision"
+  }
+}

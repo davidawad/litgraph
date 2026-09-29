@@ -132,6 +132,15 @@ pub struct Scenario {
     pub discount_annual: Option<f64>,
     /// Fee shifting.
     pub fee_shift: Option<FeeShift>,
+    /// Named calibration set(s) to apply, in order (see `calibration/*.json`;
+    /// `litgraph schema calibration`). Each entry's probability/duration/node
+    /// attr becomes "authored" exactly as if hand-typed into the pack — the
+    /// usual probability-fill/renormalization and duration fallbacks still
+    /// apply on top. A ref that doesn't resolve (its pack wasn't loaded) is
+    /// silently skipped, like a `links.json` link into an unloaded pack.
+    /// `provenance.calibration` on the response says what was actually
+    /// applied, with each value's source, vintage, and sample size.
+    pub calibration: Vec<String>,
     /// Start node (default: the first pack's start).
     pub start: Option<String>,
 }

@@ -7,6 +7,7 @@
 use serde::Serialize;
 use serde_json::Value;
 
+use super::calibration::CalibrationSet;
 use super::catalog::Catalog;
 use super::Request;
 use crate::error::{Error, Result};
@@ -39,6 +40,8 @@ pub fn detect(doc: &Value) -> &'static str {
         "links"
     } else if has("op") || has("scenario") || has("packs") {
         "request"
+    } else if has("entries") {
+        "calibration"
     } else {
         "scenario"
     }
@@ -71,6 +74,7 @@ pub fn validate(doc: &Value, kind: Option<&str>, catalog: &Catalog) -> Validatio
         "pack" => "pack",
         "links" => "links",
         "request" => "request",
+        "calibration" => "calibration",
         _ => "scenario",
     };
     let mut out = Validation {
@@ -97,6 +101,31 @@ pub fn validate(doc: &Value, kind: Option<&str>, catalog: &Catalog) -> Validatio
                 let packs: Vec<Pack> = catalog.packs.iter().map(|(_, p, _)| p.clone()).collect();
                 if let Err(e) = Graph::compile(&packs, &lf, &CompileOptions::default()) {
                     out.errors.push(e.to_string());
+                }
+            }
+            Err(e) => out.errors.push(e.to_string()),
+        },
+        "calibration" => match parse::<CalibrationSet>(doc) {
+            Ok(set) => {
+                let packs: Vec<Pack> = catalog.packs.iter().map(|(_, p, _)| p.clone()).collect();
+                match Graph::compile(&packs, &catalog.links, &CompileOptions::default()) {
+                    Ok(g) => {
+                        for e in &set.entries {
+                            let found = match e.target {
+                                super::calibration::CalibrationTarget::NodeAttr => {
+                                    g.node(&e.target_ref).is_ok()
+                                }
+                                _ => g.edge(&e.target_ref).is_ok(),
+                            };
+                            if !found {
+                                out.errors.push(format!(
+                                    "calibration {}: ref {} not found against {} (not every ref needs to resolve against every pack selection at request time, but a validated calibration file should resolve against its author's packs)",
+                                    set.id, e.target_ref, catalog.origin
+                                ));
+                            }
+                        }
+                    }
+                    Err(e) => out.errors.push(e.to_string()),
                 }
             }
             Err(e) => out.errors.push(e.to_string()),
@@ -180,6 +209,44 @@ mod tests {
         assert_eq!(v.kind, "links");
         assert!(!v.valid);
         assert_eq!(v.errors.len(), 1);
+        Ok(())
+    }
+
+    /// A calibration set is detected from its `entries` key, and a bad ref
+    /// (a typo'd edge id) is reported as a validation error — unlike
+    /// `calibration::apply`, which silently skips an unresolved ref at
+    /// request time (the two have different jobs: validate catches authoring
+    /// mistakes, apply tolerates a multi-forum set used with a pack subset).
+    #[test]
+    fn calibration_set_detects_and_validates() -> Result<()> {
+        let c = Catalog::embedded()?;
+        let good = json!({
+            "id": "t", "title": "t",
+            "entries": [{
+                "target": "edge-probability", "ref": "cofc::claim-accrues->claim-time-barred#0",
+                "value": 0.1,
+                "source": {"title": "t", "url": "https://example.com", "vintageStart": "2024-01-01"},
+                "n": 1
+            }]
+        });
+        assert_eq!(detect(&good), "calibration");
+        let bad = json!({
+            "id": "t", "title": "t",
+            "entries": [{
+                "target": "edge-probability", "ref": "cofc::no-such-edge",
+                "value": 0.1,
+                "source": {"title": "t", "url": "https://example.com", "vintageStart": "2024-01-01"},
+                "n": 1
+            }]
+        });
+        let v = validate(&bad, Some("calibration"), &c);
+        assert_eq!(v.kind, "calibration");
+        assert!(!v.valid);
+        assert!(
+            v.errors.iter().any(|e| e.contains("no-such-edge")),
+            "{:?}",
+            v.errors
+        );
         Ok(())
     }
 

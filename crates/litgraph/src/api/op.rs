@@ -191,6 +191,22 @@ pub enum Op {
         #[serde(default = "n::<20>")]
         top: usize,
     },
+    /// Uncalibrated probabilities and durations, ranked by decision
+    /// sensitivity — what to calibrate first.
+    Calibration {
+        /// Rows to return, per kind (probabilities / durations).
+        #[serde(default = "n::<20>")]
+        top: usize,
+        /// Absolute perturbation for uncalibrated probabilities.
+        #[serde(default = "f_dp")]
+        dp: f64,
+        /// Relative perturbation for uncalibrated durations.
+        #[serde(default = "f_rel")]
+        rel: f64,
+        /// Cap on edges scanned per kind (bounds cost on a large selection).
+        #[serde(default = "n::<300>")]
+        max_candidates: usize,
+    },
     /// Structural analyses.
     Structure {
         /// Start override.
@@ -244,6 +260,7 @@ impl Op {
             Op::Pareto { .. } => "pareto",
             Op::Sweep { .. } => "sweep",
             Op::Tornado { .. } => "tornado",
+            Op::Calibration { .. } => "calibration",
             Op::Structure { .. } => "structure",
             Op::Compare { .. } => "compare",
             Op::Batch { .. } => "batch",

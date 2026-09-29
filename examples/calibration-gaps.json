@@ -1,0 +1,10 @@
+{
+  "packs": [
+    "frcp-civil-procedure"
+  ],
+  "op": {
+    "op": "calibration",
+    "top": 10,
+    "max_candidates": 200
+  }
+}

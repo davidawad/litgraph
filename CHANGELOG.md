@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **Calibration pipeline** (`docs/CALIBRATION.md`): `calibration/*.json`
+  overlay files — embedded at build time like `packs/*.json`, overridable
+  via `$LITGRAPH_CALIBRATION`/`--calibration-dir` — record a sourced
+  probability, duration, or node attribute (value, source URL/title,
+  vintage, sample size `n`, and derivation notes). `scenario.calibration`
+  (a list of set names) applies them by mutating the compiled graph exactly
+  as if the value had been hand-authored in the pack; `provenance.calibration`
+  reports what was applied, from where, and with what `n`. The new
+  `calibration` op ranks every *uncalibrated* probability/duration by
+  decision sensitivity (the same one-at-a-time perturbation `tornado` uses),
+  so an agent knows what to calibrate next. `litgraph schema calibration`
+  and `litgraph validate --kind calibration` cover the new file kind. Ships
+  with a first, real calibration set: USPTO PTAB institution/FWD rates,
+  Federal Circuit affirmance/vacatur rates on CoFC-origin appeals, CoFC
+  bid-protest volume, and AO district-court time-to-disposition — each
+  sourced from one fetched, working document (see `docs/CALIBRATION.md` for
+  citations and what's deliberately left uncalibrated).
+
 ## [0.1.0] - 2026-09-28
 
 Initial public release.

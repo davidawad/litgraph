@@ -1,0 +1,89 @@
+{
+  "id": "ptab-fy2024",
+  "title": "PTAB IPR/PGR institution and final-written-decision rates, FY2024",
+  "description": "Institution and final-written-decision (FWD) outcome rates for the `ptab-patent-trial-appeal-board` pack, replacing the pack's teaching-estimate probabilities on `institution-decision` and `fwd-issued` with USPTO's own FY2024 trial statistics. Covers Oct. 1, 2023 - Sept. 30, 2024 (USPTO fiscal year). Does not calibrate the merits-vs-Fintiv split of institution denials (the source reports only a single 'denied' total): the two denial edges' prior, unsourced teaching-estimate probabilities (0.2 / 0.15) are explicitly cleared rather than left in place, so they don't dilute the real 0.6810 institution-granted rate by renormalization (a cleared authored value plus one real one would otherwise both be treated as 'authored' and renormalized together) — the engine instead splits the 0.319 residual evenly between them and reports a `probability-fill` warning naming the gap, which `{\"op\":\"calibration\"}` also surfaces as a ranked candidate for the next calibration pass.",
+  "entries": [
+    {
+      "target": "edge-probability",
+      "ref": "ptab-patent-trial-appeal-board::institution-decision->institution-granted#0",
+      "value": 0.6810,
+      "source": {
+        "title": "PTAB Trial Statistics FY24 End of Year Outcome Roundup — IPR, PGR",
+        "url": "https://www.uspto.gov/sites/default/files/documents/ptab_aia_fy2024__roundup.pdf",
+        "vintageStart": "2023-10-01",
+        "vintageEnd": "2024-09-30",
+        "retrieved": "2026-09-28"
+      },
+      "n": 1087,
+      "method": "Slide 6, 'Institution rates by petition' (FY20-FY24): FY24 Instituted 740, Denied 347. 740 / (740 + 347) = 0.68069... rounded to 0.6810."
+    },
+    {
+      "target": "edge-probability",
+      "ref": "ptab-patent-trial-appeal-board::institution-decision->institution-denied-merits#0",
+      "source": {
+        "title": "PTAB Trial Statistics FY24 End of Year Outcome Roundup — IPR, PGR",
+        "url": "https://www.uspto.gov/sites/default/files/documents/ptab_aia_fy2024__roundup.pdf",
+        "vintageStart": "2023-10-01",
+        "vintageEnd": "2024-09-30",
+        "retrieved": "2026-09-28"
+      },
+      "n": 1087,
+      "method": "Clears the pack's prior unsourced 0.2 teaching estimate. The source reports only a combined institution-denied total (347 of 1087, captured on `institution-granted`'s complement); it does not break denials down by merits vs. Fintiv-discretion reason, so this edge is left unauthored rather than guessing a split — the engine's residual-probability fallback splits the denial mass evenly with `institution-denied-fintiv` and reports `probability-fill`."
+    },
+    {
+      "target": "edge-probability",
+      "ref": "ptab-patent-trial-appeal-board::institution-decision->institution-denied-fintiv#0",
+      "source": {
+        "title": "PTAB Trial Statistics FY24 End of Year Outcome Roundup — IPR, PGR",
+        "url": "https://www.uspto.gov/sites/default/files/documents/ptab_aia_fy2024__roundup.pdf",
+        "vintageStart": "2023-10-01",
+        "vintageEnd": "2024-09-30",
+        "retrieved": "2026-09-28"
+      },
+      "n": 1087,
+      "method": "Clears the pack's prior unsourced 0.15 teaching estimate, for the same reason as `institution-denied-merits` above."
+    },
+    {
+      "target": "edge-probability",
+      "ref": "ptab-patent-trial-appeal-board::fwd-issued->fwd-all-unpatentable#0",
+      "value": 0.6996,
+      "source": {
+        "title": "PTAB Trial Statistics FY24 End of Year Outcome Roundup — IPR, PGR",
+        "url": "https://www.uspto.gov/sites/default/files/documents/ptab_aia_fy2024__roundup.pdf",
+        "vintageStart": "2023-10-01",
+        "vintageEnd": "2024-09-30",
+        "retrieved": "2026-09-28"
+      },
+      "n": 446,
+      "method": "Slide 10, 'Outcomes by petition' (FY24): of petitions that received a final written decision, FWD All Unpatentable 312, FWD Mixed 67, FWD All Patentable 67 (446 total FWDs). 312 / 446 = 0.69955..., conditioned on reaching an FWD (fwd-issued's own probability of firing is a graph-structural certainty once instituted and not settled/dismissed pre-FWD, which this pack models separately upstream of fwd-issued)."
+    },
+    {
+      "target": "edge-probability",
+      "ref": "ptab-patent-trial-appeal-board::fwd-issued->fwd-mixed#0",
+      "value": 0.1502,
+      "source": {
+        "title": "PTAB Trial Statistics FY24 End of Year Outcome Roundup — IPR, PGR",
+        "url": "https://www.uspto.gov/sites/default/files/documents/ptab_aia_fy2024__roundup.pdf",
+        "vintageStart": "2023-10-01",
+        "vintageEnd": "2024-09-30",
+        "retrieved": "2026-09-28"
+      },
+      "n": 446,
+      "method": "Same slide as above: 67 / 446 = 0.15022..."
+    },
+    {
+      "target": "edge-probability",
+      "ref": "ptab-patent-trial-appeal-board::fwd-issued->fwd-all-confirmed#0",
+      "value": 0.1502,
+      "source": {
+        "title": "PTAB Trial Statistics FY24 End of Year Outcome Roundup — IPR, PGR",
+        "url": "https://www.uspto.gov/sites/default/files/documents/ptab_aia_fy2024__roundup.pdf",
+        "vintageStart": "2023-10-01",
+        "vintageEnd": "2024-09-30",
+        "retrieved": "2026-09-28"
+      },
+      "n": 446,
+      "method": "Same slide as above ('FWD All Patentable' = pack's 'fwd-all-confirmed'): 67 / 446 = 0.15022..."
+    }
+  ]
+}

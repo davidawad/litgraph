@@ -4,6 +4,7 @@
 use schemars::schema_for;
 use serde_json::{json, Value};
 
+use super::calibration::{CalibrationCatalog, CalibrationSet};
 use super::catalog::Catalog;
 use super::{Request, Response, API_VERSION, ENGINE};
 use crate::error::{Error, Result};
@@ -12,7 +13,14 @@ use crate::model::{LinkFile, Pack};
 use crate::scenario::Scenario;
 
 /// Documents that have a JSON Schema.
-pub const SCHEMA_KINDS: &[&str] = &["request", "response", "scenario", "pack", "links"];
+pub const SCHEMA_KINDS: &[&str] = &[
+    "request",
+    "response",
+    "scenario",
+    "pack",
+    "links",
+    "calibration",
+];
 
 /// The JSON Schema of a document kind.
 ///
@@ -25,6 +33,7 @@ pub fn schema(kind: &str) -> Result<Value> {
         "scenario" => schema_for!(Scenario),
         "pack" => schema_for!(Pack),
         "links" => schema_for!(LinkFile),
+        "calibration" => schema_for!(CalibrationSet),
         other => {
             return Err(Error::NotFound(format!(
                 "schema {other}; kinds: {}",
@@ -47,10 +56,26 @@ fn named(xs: &[(&str, &str)]) -> Vec<Value> {
         .collect()
 }
 
+fn calibration_sets() -> (String, Vec<Value>) {
+    match CalibrationCatalog::default_source() {
+        Ok(c) => (
+            c.origin.clone(),
+            c.sets
+                .iter()
+                .map(
+                    |(_, s, _)| json!({ "id": s.id, "title": s.title, "entries": s.entries.len() }),
+                )
+                .collect(),
+        ),
+        Err(e) => (format!("error: {e}"), vec![]),
+    }
+}
+
 /// The manual: ops, scenario fields, metrics with their source expressions,
 /// variables, functions, parameters, packs and instances.
 #[must_use]
 pub fn describe(catalog: &Catalog) -> Value {
+    let (calibration_source, calibration_sets) = calibration_sets();
     json!({
         "engine": ENGINE,
         "api_version": API_VERSION,
@@ -58,6 +83,8 @@ pub fn describe(catalog: &Catalog) -> Value {
         "packs": catalog.packs.iter().map(|(_, p, _)| json!({ "id": p.id, "forum": p.forum, "title": p.title })).collect::<Vec<_>>(),
         "links": catalog.links.links.len(),
         "instances": catalog.links.instances.iter().map(|(k, i)| json!({ "id": k, "pack": i.pack, "note": i.note })).collect::<Vec<_>>(),
+        "calibration_source": calibration_source,
+        "calibration_sets": calibration_sets,
         "request": "see `litgraph schema request` for the full JSON Schema: {packs, links, no_continuations, scenario, op}",
         "scenario": {
             "params": "{name: number} — visible to every expression",
@@ -78,6 +105,7 @@ pub fn describe(catalog: &Catalog) -> Value {
             "objective": "{type: expected} | {type: cara, a} | {type: worst}",
             "discount_annual": "number",
             "fee_shift": "{fraction, eligible?: terminal-expr}",
+            "calibration": "[calibration set id, ...] — see calibration_sets below and `litgraph schema calibration`; applied values are authored exactly as if hand-typed into the pack, reported in provenance.calibration",
             "start": "node ref",
         },
         "ops": {
@@ -95,6 +123,7 @@ pub fn describe(catalog: &Catalog) -> Value {
             "pareto": "{from?, to?, objectives?, max_labels?, limit?} N-objective frontier (default dollars × elapsed × surprise)",
             "sweep": "{param, lo?, hi?, steps?, watch?, tol?} value curve + policy breakpoints for ANY param",
             "tornado": "{params?, rel?, dp?, probabilities?, top?} what the answer is most sensitive to",
+            "calibration": "{top?, dp?, rel?, max_candidates?} uncalibrated probabilities/durations ranked by decision sensitivity — what to calibrate next",
             "structure": "{what: summary|scc|dominators|mincut|betweenness|reachability, from?, to?, capacity?, top?}",
             "compare": "{variant: scenario merge-patch, inner: op} base vs variant + deltas",
             "batch": "{ops: [op, ...]} several ops on one request",
