@@ -23,6 +23,9 @@ RUN cargo chef cook --release --recipe-path recipe.json
 COPY Cargo.toml Cargo.lock ./
 COPY crates crates
 COPY packs packs
+COPY scenarios scenarios
+COPY calibration calibration
+COPY sources sources
 RUN cargo build --release -p litgraph-cli -p litgraph-mcp && \
     strip target/release/litgraph target/release/litgraph-mcp
 

@@ -67,9 +67,17 @@ fn embed_dir(
     out_file: &Path,
 ) {
     println!("cargo:rerun-if-changed={}", dir.display());
-    let mut entries: Vec<PathBuf> = std::fs::read_dir(dir)
-        .map(|rd| rd.filter_map(|e| e.ok().map(|e| e.path())).collect())
-        .unwrap_or_default();
+    // A missing directory is a packaging bug (a Dockerfile or nix source
+    // filter that forgot to copy it), not an empty library: fail the build
+    // instead of silently shipping a binary with nothing embedded.
+    let read = std::fs::read_dir(dir).unwrap_or_else(|e| {
+        panic!(
+            "{} is missing ({e}); every directory build.rs embeds must be in the build \
+             context (Dockerfile COPY, flake.nix dataDirs)",
+            dir.display()
+        )
+    });
+    let mut entries: Vec<PathBuf> = read.filter_map(|e| e.ok().map(|e| e.path())).collect();
     entries.retain(|p| p.extension().is_some_and(|x| x == ext));
     entries.sort();
     let mut src = format!("/// {doc}\npub static {ident}: &[(&str, &str)] = &[\n");
