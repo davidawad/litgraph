@@ -23,8 +23,8 @@ RUN cargo chef cook --release --recipe-path recipe.json
 COPY Cargo.toml Cargo.lock ./
 COPY crates crates
 COPY packs packs
-RUN cargo build --release -p litgraph-cli && \
-    strip target/release/litgraph
+RUN cargo build --release -p litgraph-cli -p litgraph-mcp && \
+    strip target/release/litgraph target/release/litgraph-mcp
 
 # --- runtime: minimal non-root image ---------------------------------------
 FROM debian:bookworm-slim AS runtime
@@ -45,6 +45,7 @@ RUN apt-get update && \
     useradd --system --no-create-home --uid 10001 litgraph
 
 COPY --from=builder /build/target/release/litgraph /usr/local/bin/litgraph
+COPY --from=builder /build/target/release/litgraph-mcp /usr/local/bin/litgraph-mcp
 COPY --from=builder /build/packs /usr/share/litgraph/packs
 
 ENV LITGRAPH_PACKS=/usr/share/litgraph/packs
@@ -53,3 +54,6 @@ WORKDIR /home/litgraph
 
 ENTRYPOINT ["litgraph"]
 CMD ["describe"]
+
+# `litgraph-mcp` is also on PATH for `docker run --rm -i <image> litgraph-mcp`
+# (stdio MCP server) or an `entrypoint: litgraph-mcp` override.

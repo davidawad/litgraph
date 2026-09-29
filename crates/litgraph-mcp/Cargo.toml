@@ -1,0 +1,50 @@
+[package]
+name = "litgraph-mcp"
+description = "MCP (Model Context Protocol) stdio server for litgraph: one tool per engine op, packs/links/the manual as resources, thin wrapper over litgraph::api::handle."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme.workspace = true
+keywords.workspace = true
+categories.workspace = true
+publish.workspace = true
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "litgraph-mcp"
+path = "src/main.rs"
+
+[dependencies]
+litgraph = { path = "../litgraph" }
+serde_json.workspace = true
+schemars.workspace = true
+clap.workspace = true
+anyhow.workspace = true
+# Tools/resources are dispatched by hand (list_tools/call_tool/read_resource
+# on ServerHandler) rather than via the `#[tool_router]` macros, since the
+# tool set is generated at runtime from the engine's own Op schema -- so no
+# `macros` feature. `server` pulls in the schemars-derived schema helpers;
+# `transport-io` is stdio.
+rmcp = { version = "3.5", default-features = false, features = [
+    "server",
+    "transport-io",
+    "schemars",
+] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "io-std", "signal"] }
+
+[dev-dependencies]
+# Client-side pieces to drive the compiled binary as a real MCP client in
+# integration tests (spawn over stdio, initialize, list tools, call one,
+# read a resource) -- test-only, so they never reach the shipped binary
+# (cargo's resolver keeps dev-dependency features off the release build).
+rmcp = { version = "3.5", default-features = false, features = [
+    "client",
+    "transport-child-process",
+] }
+tokio = { version = "1", features = ["process"] }

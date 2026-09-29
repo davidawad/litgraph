@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["crates/litgraph", "crates/litgraph-cli", "crates/litgraph-wasm"]
+members = ["crates/litgraph", "crates/litgraph-cli", "crates/litgraph-mcp", "crates/litgraph-wasm"]
 
 [workspace.package]
 version = "0.1.0"

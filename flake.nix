@@ -91,6 +91,23 @@
             }
           );
 
+          litgraphMcp = craneLib.buildPackage (
+            commonArgs
+            // {
+              inherit cargoArtifacts;
+              pname = "litgraph-mcp";
+              cargoExtraArgs = "-p litgraph-mcp";
+              doCheck = false; # `nix flake check` runs the real test suite separately.
+
+              meta = with pkgs.lib; {
+                description = "MCP (Model Context Protocol) stdio server for litgraph: every engine op as a tool, packs/links.json/the manual as resources.";
+                homepage = "https://github.com/davidawad/litgraph";
+                license = licenses.gpl3Plus;
+                mainProgram = "litgraph-mcp";
+              };
+            }
+          );
+
           # --- wasm: litgraph-wasm for web + nodejs, via wasm-bindgen -----------
           wasmArgs = commonArgs // {
             pname = "litgraph-wasm";
@@ -144,9 +161,11 @@
         {
           packages.default = litgraph;
           packages.litgraph = litgraph;
+          packages.litgraph-mcp = litgraphMcp;
           packages.wasm = litgraphWasm;
 
           apps.default = flake-utils.lib.mkApp { drv = litgraph; };
+          apps.litgraph-mcp = flake-utils.lib.mkApp { drv = litgraphMcp; };
 
           devShells.default = pkgs.mkShell {
             packages = devTools;
@@ -157,6 +176,7 @@
 
           checks = {
             build = litgraph;
+            build-mcp = litgraphMcp;
 
             clippy = craneLib.cargoClippy (
               commonArgs

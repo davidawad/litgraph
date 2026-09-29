@@ -46,7 +46,7 @@ jobs:
         with:
           key: ${{ matrix.target }}
 
-      - run: cargo build --release --locked -p litgraph-cli --target ${{ matrix.target }}
+      - run: cargo build --release --locked -p litgraph-cli -p litgraph-mcp --target ${{ matrix.target }}
 
       - name: package
         shell: bash
@@ -55,6 +55,7 @@ jobs:
           name="litgraph-${{ github.ref_name }}-${{ matrix.target }}"
           mkdir -p "dist/$name"
           cp "target/${{ matrix.target }}/release/litgraph" "dist/$name/"
+          cp "target/${{ matrix.target }}/release/litgraph-mcp" "dist/$name/"
           cp README.md LICENSE "dist/$name/" 2>/dev/null || true
           cp -r packs "dist/$name/packs"
           tar -C dist -czf "dist/$name.tar.gz" "$name"

@@ -28,6 +28,14 @@ Packs are embedded in the binary at build time — no `packs/` directory is
 needed after install. Point at a different set with `LITGRAPH_PACKS=<dir>`
 or `--packs-dir <dir>`.
 
+Driving this from an MCP-capable agent instead of the CLI: `litgraph-mcp`
+(`crates/litgraph-mcp`) is the same contract over stdio — every op above is
+its own MCP tool, plus a generic `litgraph` tool for a raw request; packs,
+`links.json`, and this manual are MCP resources (`litgraph://packs/<id>`,
+`litgraph://links`, `litgraph://describe`). `claude mcp add litgraph --
+litgraph-mcp` wires it into Claude Code; see the README's "MCP server"
+section for other clients.
+
 Every response: `{ok, api_version, op, result, warnings, provenance,
 elapsed_ms}` or `{ok:false, api_version, op, error:{code, message, hint},
 elapsed_ms}`. `warnings` is grouped: `[{code, count, example, at}]`, `at`
@@ -78,6 +86,7 @@ crates/litgraph/src/
   api/        JSON request/response, describe, op dispatch
   lint.rs     content QA
 crates/litgraph-cli/   the `litgraph` binary
+crates/litgraph-mcp/   the `litgraph-mcp` binary: stdio MCP server, one tool per op
 packs/                 forum packs + links.json
 docs/                  ARCHITECTURE, PACK_SCHEMA, COST_FUNCTIONS, CRITIQUE, CALIBRATION
 calibration/           calibration/*.json overlay sets (real, sourced probabilities/durations)

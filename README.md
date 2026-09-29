@@ -107,6 +107,7 @@ brew install davidawad/tap/litgraph
 
 # from source
 cargo install --git https://github.com/davidawad/litgraph litgraph-cli
+cargo install --git https://github.com/davidawad/litgraph litgraph-mcp  # MCP server
 
 # nix, no clone
 nix run github:davidawad/litgraph -- describe
@@ -118,8 +119,10 @@ docker run --rm ghcr.io/davidawad/litgraph describe
 
 Prebuilt binaries (Linux x86_64 glibc/musl, macOS arm64/x86_64) and the
 WebAssembly bundles are attached to each
-[GitHub Release](https://github.com/davidawad/litgraph/releases). See
-[CONTRIBUTING.md](CONTRIBUTING.md) for building from source with nix/devenv.
+[GitHub Release](https://github.com/davidawad/litgraph/releases) -- each
+release tarball, the container image, and the nix flake all carry both
+`litgraph` and `litgraph-mcp`. See [CONTRIBUTING.md](CONTRIBUTING.md) for
+building from source with nix/devenv.
 
 ## Usage
 
@@ -141,6 +144,50 @@ The engine is a normal Rust crate (`litgraph`, in [`crates/litgraph`](crates/lit
 `litgraph-cli` is a thin binary over `litgraph::api::handle`. Add it as a
 path or git dependency to embed the solver, the expression language, or the
 pack loader directly — nothing about the CLI is required.
+
+### MCP server
+
+`litgraph-mcp` ([`crates/litgraph-mcp`](crates/litgraph-mcp)) is a stdio
+[MCP](https://modelcontextprotocol.io) server: a thin wrapper over
+`litgraph::api::handle`, same as the CLI. Every op is its own tool
+(`solve`, `chain`, `explain`, ...), each with an input schema sliced
+straight out of the engine's own JSON Schema for `Op` — plus one generic
+`litgraph` tool that takes a raw request `{packs, links, no_continuations,
+scenario, op}` verbatim. Packs, `links.json`, and the manual are MCP
+resources (`litgraph://packs/<id>`, `litgraph://links`,
+`litgraph://describe`). Every tool call returns the same JSON envelope as
+the CLI; an engine error (`ok: false`) comes back as a tool error carrying
+that envelope. `LITGRAPH_PACKS` and `--packs-dir` work exactly as they do
+for the CLI.
+
+**Claude Code:**
+
+```bash
+claude mcp add litgraph -- litgraph-mcp
+# with a packs directory instead of the embedded set:
+claude mcp add litgraph -e LITGRAPH_PACKS=/path/to/packs -- litgraph-mcp
+```
+
+**Claude Desktop** — add to `claude_desktop_config.json`
+(`~/Library/Application Support/Claude/claude_desktop_config.json` on
+macOS; `%APPDATA%\Claude\claude_desktop_config.json` on Windows;
+`~/.config/Claude/claude_desktop_config.json` on Linux):
+
+```json
+{
+  "mcpServers": {
+    "litgraph": {
+      "command": "litgraph-mcp"
+    }
+  }
+}
+```
+
+**Any other MCP client** that reads the same `mcpServers` stdio shape
+(Cursor, Windsurf, Zed, ...) uses the same block; add
+`"args": ["--packs-dir", "/path/to/packs"]` or `"env": {"LITGRAPH_PACKS":
+"/path/to/packs"}` to point at a pack set other than the ones embedded in
+the binary.
 
 ### As the engine behind an application
 
