@@ -22,6 +22,7 @@ mod compare;
 mod deadlines;
 mod decide;
 mod describe;
+mod envelope;
 mod explore;
 mod op;
 mod op_defaults;
@@ -41,6 +42,8 @@ pub use calibration::{
 pub(crate) use catalog::fnv1a64 as catalog_fnv1a64;
 pub use catalog::{fingerprint, Catalog};
 pub use describe::{describe, schema, SCHEMA_KINDS};
+pub(crate) use envelope::Warn;
+pub use envelope::{ApiError, GroupedWarning, Response};
 pub use op::{Op, StructureWhat};
 pub use render::choice_label;
 pub use validate::{detect, validate, Validation};
@@ -55,6 +58,7 @@ use crate::lint;
 use crate::metrics;
 use crate::model::{CompileOptions, Graph, LinkFile, Pack};
 use crate::scenario::{Scenario, View};
+use envelope::hint;
 use stopwatch::Stopwatch;
 
 /// Engine name and version.
@@ -92,80 +96,6 @@ pub struct Request {
     /// The operation (default `describe`).
     #[serde(default)]
     pub op: Op,
-}
-
-/// A structured error.
-#[derive(Debug, Clone, Serialize, JsonSchema)]
-pub struct ApiError {
-    /// Stable code: parse, invalid, not-found, expr, numeric, io.
-    pub code: String,
-    /// Message.
-    pub message: String,
-    /// What to try next.
-    pub hint: String,
-}
-
-/// All warnings with one code, collapsed.
-#[derive(Debug, Clone, Serialize, JsonSchema)]
-pub struct GroupedWarning {
-    /// Stable code (`probability-fill`, `mixed-node`, `payoff-not-authored`, ...).
-    pub code: String,
-    /// Occurrences.
-    pub count: usize,
-    /// A representative message.
-    pub example: String,
-    /// Up to eight locations.
-    pub at: Vec<String>,
-}
-
-/// The response envelope.
-#[derive(Debug, Clone, Serialize, JsonSchema)]
-pub struct Response {
-    /// Success.
-    pub ok: bool,
-    /// Request/response contract version.
-    pub api_version: u32,
-    /// The op that ran.
-    pub op: String,
-    /// Op-specific result.
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub result: Option<Value>,
-    /// Fallbacks and modeling choices the engine made.
-    pub warnings: Vec<GroupedWarning>,
-    /// Packs, fingerprints, parameters, modes, engine.
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub provenance: Option<Value>,
-    /// Error, when `ok` is false.
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub error: Option<ApiError>,
-    /// Wall time.
-    pub elapsed_ms: f64,
-}
-
-/// An ungrouped warning.
-#[derive(Debug, Clone)]
-pub(crate) struct Warn {
-    pub code: String,
-    pub at: Option<String>,
-    pub message: String,
-}
-
-fn hint(e: &Error) -> &'static str {
-    match e {
-        Error::NotFound(_) => {
-            r#"list ids with {"op":{"op":"graph"}} or {"op":{"op":"packs"}}; local ids work when unique"#
-        }
-        Error::Expr(_) => {
-            r#"see {"op":{"op":"describe"}} for variables/functions; test with {"op":{"op":"metric","spec":"..."}}"#
-        }
-        Error::Numeric(_) => {
-            "a forced or optimal choice loops forever; add a mask or policy to break the cycle"
-        }
-        Error::Parse(_) => {
-            "see `litgraph schema <request|scenario|pack|links>` for the exact shape"
-        }
-        _ => "",
-    }
 }
 
 /// Run a request. Never panics or returns `Err`: failures are `ok: false` responses.
