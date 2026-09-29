@@ -43,7 +43,7 @@ shape and resolves every `ref` against the loaded packs.
 | field | notes |
 |---|---|
 | `target` | `edge-probability` (sets `value`, 0..=1), `edge-duration` (sets `distribution`, a `Duration` — `{min?, mode, max?}` days), or `node-attr` (sets `attr` + `value`) |
-| `ref` | node or edge ref, same resolution as everywhere else in the engine (qualified `pack::local` recommended). An instance-qualified ref like `cafc@cofc::panel-to-affirmed` targets one `links.json` pack instance only, not the base pack or its siblings |
+| `ref` | node or edge ref, same resolution as everywhere else in the engine (qualified `pack::local` recommended). An instance-qualified ref like `cafc@cofc::panel-to-affirmed` targets one `links.json` pack instance only, not the base pack or its siblings. If the target pack uses [state flags](PACK_SCHEMA.md#state-flags), a bare ref (no `{flag}` suffix) resolves to that edge's *empty-flag* copy only — a flagged sibling reached with history already attached (e.g. `ptab-patent-trial-appeal-board.json`'s `fwd-issued->fwd-all-unpatentable#0{ipr-estopped}`, reachable after a Director-review remand for further proceedings) keeps its authored default rather than the calibrated value. Author a second entry with an explicit `{flag}`-suffixed ref if that path also needs the calibrated number |
 | `source` | `title`, `url` (fetched and checked to resolve when the entry was authored), `vintageStart`/`vintageEnd` (the reporting period), `retrieved` (when you checked it) |
 | `n` | sample size, or the count itself for a full-population annual total |
 | `method` | required whenever the value is derived arithmetic from the source's raw counts (show the arithmetic) |
