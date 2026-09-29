@@ -1,0 +1,68 @@
+name: Auto-release
+
+# Every green CI run on main decides whether the commits since the last tag
+# warrant a release (Conventional Commits -> semver, see
+# scripts/release/next-version.sh). If so it stamps the version, tags it,
+# and runs the Release workflow, which publishes binaries, the container
+# image, and the Homebrew formula. Docs/CI/chore-only pushes release nothing.
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+
+concurrency:
+  group: auto-release
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  tag:
+    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push'
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.bump.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: only release the commit CI just passed
+        id: fresh
+        run: |
+          if [ "$(git rev-parse HEAD)" = "${{ github.event.workflow_run.head_sha }}" ]; then
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "main moved past ${{ github.event.workflow_run.head_sha }}; its own CI run will release it"
+          fi
+
+      - uses: dtolnay/rust-toolchain@stable
+        if: steps.fresh.outputs.ok == 'true'
+
+      - name: bump, tag, push
+        id: bump
+        if: steps.fresh.outputs.ok == 'true'
+        run: |
+          set -euo pipefail
+          next="$(scripts/release/next-version.sh)"
+          if [ -z "$next" ]; then echo "no releasable commits since the last tag"; exit 0; fi
+          scripts/release/prepare.sh "$next"
+          git config user.name "litgraph-release[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -qam "chore(release): v$next"
+          git tag -a "v$next" -m "litgraph $next"
+          git push origin HEAD:main "v$next"
+          echo "tag=v$next" >> "$GITHUB_OUTPUT"
+
+  release:
+    needs: tag
+    if: needs.tag.outputs.tag != ''
+    uses: ./.github/workflows/release.yml
+    with:
+      tag: ${{ needs.tag.outputs.tag }}
+    secrets: inherit

@@ -55,7 +55,8 @@ CI runs the same recipe, so a clean `just ci` locally means CI should pass.
   `mod.rs` plus `schema.rs`/`links.rs`/`graph.rs`/`resolve.rs`) rather than
   growing one file indefinitely.
 - **Commits**: [Conventional Commits](https://www.conventionalcommits.org/)
-  (`feat:`, `fix:`, `refactor:`, `docs:`, `chore:`, ...).
+  (`feat:`, `fix:`, `refactor:`, `docs:`, `chore:`, ...). The type decides
+  the next release (see [Releases](#releases)), so pick it deliberately.
 - **SPDX headers**: every `.rs` file starts with
   `// SPDX-License-Identifier: GPL-3.0-or-later`. If you add a new source
   file without one, add the header — `just lint`/CI will eventually enforce
@@ -71,6 +72,29 @@ CI runs the same recipe, so a clean `just ci` locally means CI should pass.
   `-s` appends a `Signed-off-by: Your Name <you@example.com>` trailer
   attesting you have the right to submit the change under the project's
   license.
+
+## Releases
+
+Releases are automatic; nobody tags by hand. After every green CI run on
+`main`, `.github/workflows/auto-release.yml` reads the Conventional Commits
+since the last `v*` tag (`scripts/release/next-version.sh`):
+
+| Commits since the last tag | Next version |
+| --- | --- |
+| a breaking change (`type!:` or a `BREAKING CHANGE:` footer) | major (minor while the version is `0.x`) |
+| a `feat:` | minor |
+| a `fix:` or `perf:` | patch |
+| only `docs:`/`ci:`/`chore:`/`refactor:`/`test:`/`build:`/`style:` | no release |
+
+When a release is due it stamps `Cargo.toml` and `CHANGELOG.md`
+(`## [Unreleased]` becomes the new version), commits `chore(release): vX.Y.Z`,
+tags it, and runs the Release workflow: binaries and WebAssembly bundles on
+GitHub Releases, the `ghcr.io/davidawad/litgraph` image, and the
+`davidawad/tap/litgraph` Homebrew formula. Keep `## [Unreleased]` in
+`CHANGELOG.md` current as you go; it becomes the release notes.
+
+The tap update needs the `HOMEBREW_TAP_DEPLOY_KEY` repository secret, the
+private half of a write deploy key on `davidawad/homebrew-tap`.
 
 ## Pack authoring guide
 
