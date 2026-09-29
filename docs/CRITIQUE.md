@@ -39,10 +39,9 @@ engine defect, now fixed with a regression test.
   Opponents default to authored probabilities when present, else minimax.
   General-sum (opponent with its own payoffs) is solved by backward
   induction on the SCC DAG when `scenario.opponent_objective` is set — see
-  "General-sum opponents" below; `explain`'s per-option `regret` field is
-  not adapted for it yet (it assumes an adversarial opponent) and can show
-  a misleading sign at a general-sum opponent's node — use `value`/
-  `opponent_value` there instead (tracked as a follow-up).
+  "General-sum opponents" below, including `explain`'s per-option `regret`,
+  which is computed from the mover's own criterion (their `opp_q` at a
+  general-sum opponent's node, not an assumed adversary).
 - **Markov on the node — rung 1 fixed.** Litigation has memory: estoppel
   after an IPR FWD, a waived Rule 12(h) defense, an RCE already filed, which
   way a Federal Circuit panel actually ruled before a rehearing/cert detour.
@@ -79,9 +78,10 @@ engine defect, now fixed with a regression test.
 
 ## CVaR-optimal policies
 
-`objective: {type: cvar, alpha, grid?}` maximizes `CVaR_alpha` of the total
-outcome (mean of the worst `alpha` fraction) — not just reports it from a
-simulation the way `simulate`'s `cvar`/`p_loss`/percentile fields do.
+`objective: {type: cvar, alpha, grid?, y_lo?, y_hi?}` maximizes `CVaR_alpha`
+of the total outcome (mean of the worst `alpha` fraction) — not just
+reports it from a simulation the way `simulate`'s `cvar`/`p_loss`/percentile
+fields do.
 
 **Method.** Rockafellar & Uryasev (2000)'s variational form,
 
@@ -112,9 +112,9 @@ the recursion doesn't reference `ζ` except at the boundary, every candidate
   near a kink the grid doesn't land on exactly (a plateau-then-cliff value
   function, as at a deterministic terminal, can undershoot the true optimum
   by close to a full grid step — see `tests/cvar.rs`'s hand-checked case).
-  Increase `grid` for a tighter answer; there is no field yet to override the
-  default `y` range for a graph whose default range is a poor fit (e.g. very
-  costly cycles) — tracked as a follow-up.
+  Increase `grid` for a tighter answer, or override the default `y` range
+  directly with `y_lo`/`y_hi` (set together) for a graph whose default is a
+  poor fit (e.g. very costly cycles) or unnecessarily wide.
 - **Cyclic components** are iterated to a fixed point exactly like
   `mdp::solve`'s cyclic handling (same convergence tolerance/cap,
   `Solution.converged`/`unconverged`), on the whole `y`-row per node per
@@ -172,18 +172,28 @@ turns out to be. `opponent_objective: None` (the default) delegates to
   oscillate. `equilibrium::resolve` iterates jointly to the same tolerance/
   cap as `mdp::solve` and reports `converged: false` / `unconverged` exactly
   as honestly, rather than returning a number that looks confident.
-- **Only one objective for `self`.** The equilibrium solve always uses plain
-  expectation for `self` (ignoring `Objective::Cara`/`Worst`/`Cvar` if set
-  alongside `opponent_objective` — `Cvar` explicitly warns about this
-  combination; `Cara`/`Worst` are silently not applied, tracked as a
-  follow-up to warn there too).
-- **`explain`'s per-option `regret`** is computed from `NodePlan::minimize`,
-  which stays `true` at every `Control::Opponent` node regardless of
-  `opponent_objective` (the general-sum solver doesn't consult it, but
-  `explain` still does for the human-readable regret sign) — it can show a
-  misleading sign for a general-sum opponent's options. `value`/
-  `opponent_value` are correct; `regret` there is not, until `explain` is
-  made general-sum-aware (tracked as a follow-up).
+- **`Objective::Cara`/`Worst` are honored for `self`, never for the
+  opponent.** `self`'s risk objective applies to *self*'s aggregation over
+  nature's draws (world edges, interrupts, `WAIT`) — the same
+  `mdp::aggregate` helper `mdp::solve` uses, shared so the two can't drift —
+  both when *choosing* whether to wait (`Ctx::best_option`'s `crit_wait`)
+  and in the final value tally (`Ctx::backup`); a general-sum opponent's own
+  aggregation always stays plain expectation, since `opponent_objective`
+  gives them an objective function, not a modeled risk preference.
+  `Objective::Cvar` still doesn't compose with `opponent_objective` (a
+  `cvar-ignores-opponent-objective` warning): jointly optimizing our CVaR
+  against a self-interested opponent's own equilibrium is a substantially
+  harder problem, not attempted here.
+- **`explain`'s per-option `regret`** is computed from the mover's own
+  criterion: `self_q` (with `NodePlan::minimize`'s adversarial sign flip) at
+  every node except a general-sum opponent's, where it uses their own
+  `opp_q` instead (`EquilibriumSolution::opponent_q`, `NaN` for inactive/
+  terminal-sourced edges like `solution.q`) — `regret = opp_q(best) -
+  opp_q(option)`, always `>= 0` at the actual choice. `NodePlan::minimize`
+  stays `true` at every `Control::Opponent` node regardless of
+  `opponent_objective` (the general-sum solver doesn't consult it at all,
+  by design — see `best_option`'s doc comment), so `explain` — not the
+  solver — is what has to branch on `opponent_q.is_some()`.
 - **Not combined with `fee_shift`** (a warning is reported): fee-shift's
   policy-iteration cost adjustment is defined in terms of `self`'s policy
   only.

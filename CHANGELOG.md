@@ -144,23 +144,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `mpep-prosecution.json`), and a fix for `cafc-federal-circuit.json`'s
   `cert-not-sought`/`cert-denied` terminals losing the panel's actual
   win/loss through a rehearing-or-cert detour (docs/CRITIQUE.md #13).
-- `objective: {type: cvar, alpha, grid?}` optimizes `CVaR_alpha` of the total
-  outcome (not just reports it, as `simulate` already did) via
+- `objective: {type: cvar, alpha, grid?, y_lo?, y_hi?}` optimizes `CVaR_alpha`
+  of the total outcome (not just reports it, as `simulate` already did) via
   Rockafellar–Uryasev: a grid-discretized augmented-state backward
   induction, with the outer VaR-threshold search a lookup on the same grid.
-  Verified against brute-force enumeration of deterministic policies on
-  small graphs (`tests/cvar.rs`, including a proptest). Documented
-  exactness limits (grid discretization; doesn't compose with
+  `y_lo`/`y_hi` (set together) override the default grid-bound heuristic for
+  a graph where it's a poor fit or unnecessarily wide. Verified against
+  brute-force enumeration of deterministic policies on small graphs
+  (`tests/cvar.rs`/`tests/cvar_edge_cases.rs`, including a proptest).
+  Documented exactness limits (grid discretization; doesn't compose with
   `discount_annual`, `fee_shift`, or a general-sum opponent) in
   `docs/CRITIQUE.md`.
 - `scenario.opponent_objective` (a terminal expression): the opponent
   maximizes their own payoff (general-sum) instead of minimizing ours
   (zero-sum), solved as a subgame-perfect equilibrium by backward induction
   on the graph's SCC DAG (cyclic components iterate to a fixed point, with
-  the same honest non-convergence reporting as `solve`). Reports both
-  players' values (`solve`'s `opponent_value`/`opponent_values`).
-  `opponent_objective: None` (default) reproduces the existing zero-sum
-  answer exactly (`tests/general_sum.rs`). Documented in `docs/CRITIQUE.md`.
+  the same honest non-convergence reporting as `solve`). `self`'s
+  `Objective::Cara`/`Worst` risk objective is honored (applied to self's
+  aggregation over nature's draws only, via the same `mdp::aggregate` helper
+  `mdp::solve` uses — never to the opponent's, which stays plain
+  expectation). Reports both players' values (`solve`'s `opponent_value`/
+  `opponent_values`) and gives `explain`'s per-option `regret` the mover's
+  own criterion (the opponent's own `opp_q` at their node, not an assumed
+  adversary). `opponent_objective: None` (default) reproduces the existing
+  zero-sum answer exactly (`tests/general_sum.rs`). Documented in
+  `docs/CRITIQUE.md`.
 - Path-dependent terminal variables (`spent`, `elapsed_total`, `steps`) in
   utility (and `fee_shift.eligible`) expressions, for prejudgment interest
   and time-growing damages (e.g. `payoff * (1+r)^(elapsed_total/365)`).

@@ -11,6 +11,7 @@
 mod library;
 mod limits;
 mod plan;
+mod resolve;
 mod view;
 
 pub use library::{NamedScenario, ScenarioSource};
@@ -99,6 +100,17 @@ pub enum Objective {
         /// 41).
         #[serde(default)]
         grid: usize,
+        /// Override the default outcome-range bound `(lo, hi)` the grid
+        /// spans (default: the terminal-utility range widened by the
+        /// graph's total absolute edge cost — a conservative bound that can
+        /// be a poor fit for a graph with costly cycles, or unnecessarily
+        /// wide otherwise; see `docs/CRITIQUE.md`). Set both or neither;
+        /// `y_lo` must be strictly less than `y_hi`.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        y_lo: Option<f64>,
+        /// See `y_lo`.
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        y_hi: Option<f64>,
     },
 }
 

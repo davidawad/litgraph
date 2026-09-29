@@ -12,7 +12,7 @@ use std::collections::BTreeMap;
 
 use litgraph::algo::cvar;
 use litgraph::model::{CompileOptions, Graph, LinkFile, NodeIx, Pack};
-use litgraph::scenario::{Control, MixedMode, Objective, Scenario, View, WAIT};
+use litgraph::scenario::{Control, Objective, Scenario, View, WAIT};
 use proptest::prelude::*;
 use rand::{Rng, SeedableRng};
 use rand_chacha::ChaCha8Rng;
@@ -157,7 +157,12 @@ fn cvar_prefers_the_safe_option_expected_value_would_reject() {
     let g = risky_vs_safe_graph();
     let grid = 4001;
     let sc = Scenario {
-        objective: Objective::Cvar { alpha: 0.1, grid },
+        objective: Objective::Cvar {
+            alpha: 0.1,
+            grid,
+            y_lo: None,
+            y_hi: None,
+        },
         ..Default::default()
     };
     let v = View::new(&g, &sc).unwrap();
@@ -173,7 +178,14 @@ fn cvar_prefers_the_safe_option_expected_value_would_reject() {
         "expected value should prefer the risky edge"
     );
 
-    let cv = cvar::solve(&v, 0.1, grid, &litgraph::algo::mdp::SolveOptions::default()).unwrap();
+    let cv = cvar::solve(
+        &v,
+        0.1,
+        grid,
+        None,
+        &litgraph::algo::mdp::SolveOptions::default(),
+    )
+    .unwrap();
     // The true optimum sits at the kink zeta=20 of a piecewise-linear
     // (increasing then steeply falling) function; on a grid the achievable
     // max can undershoot by up to one grid step (interpolation between grid
@@ -221,11 +233,20 @@ fn cvar_matches_brute_force_on_a_three_choice_diamond() {
         objective: Objective::Cvar {
             alpha: 0.5,
             grid: 301,
+            y_lo: None,
+            y_hi: None,
         },
         ..Default::default()
     };
     let v = View::new(&g, &sc).unwrap();
-    let cv = cvar::solve(&v, 0.5, 301, &litgraph::algo::mdp::SolveOptions::default()).unwrap();
+    let cv = cvar::solve(
+        &v,
+        0.5,
+        301,
+        None,
+        &litgraph::algo::mdp::SolveOptions::default(),
+    )
+    .unwrap();
     let brute = brute_force_best_cvar(&v, 0.5);
     assert!(
         (cv.cvar - brute).abs() < 1.0,
@@ -296,11 +317,11 @@ proptest! {
         let (g, alpha) = random_tree_graph(&mut rng, 1);
         let grid = 501;
         let sc = Scenario {
-            objective: Objective::Cvar { alpha, grid },
+            objective: Objective::Cvar { alpha, grid, y_lo: None, y_hi: None },
             ..Default::default()
         };
         let v = View::new(&g, &sc).unwrap();
-        let cv = cvar::solve(&v, alpha, grid, &litgraph::algo::mdp::SolveOptions::default()).unwrap();
+        let cv = cvar::solve(&v, alpha, grid, None, &litgraph::algo::mdp::SolveOptions::default()).unwrap();
         let brute = brute_force_best_cvar(&v, alpha);
         // Tolerance scales with the grid step over the solver's own outcome
         // range: linear interpolation error is bounded by (step/2) times the
@@ -314,194 +335,4 @@ proptest! {
             brute
         );
     }
-}
-
-#[test]
-fn cvar_rejects_alpha_out_of_range() {
-    let g = risky_vs_safe_graph();
-    let sc = Scenario::default();
-    let v = View::new(&g, &sc).unwrap();
-    assert!(cvar::solve(&v, 0.0, 41, &litgraph::algo::mdp::SolveOptions::default()).is_err());
-    assert!(cvar::solve(&v, 1.5, 41, &litgraph::algo::mdp::SolveOptions::default()).is_err());
-}
-
-#[test]
-fn cvar_warns_when_combined_with_discount_fee_shift_or_opponent_objective() {
-    let g = risky_vs_safe_graph();
-    let sc = Scenario {
-        objective: Objective::Cvar {
-            alpha: 0.2,
-            grid: 21,
-        },
-        discount_annual: Some(0.05),
-        fee_shift: Some(litgraph::scenario::FeeShift {
-            fraction: 0.1,
-            eligible: None,
-        }),
-        opponent_objective: Some("payoff".to_string()),
-        ..Default::default()
-    };
-    let v = View::new(&g, &sc).unwrap();
-    for code in [
-        "cvar-ignores-discount",
-        "cvar-ignores-fee-shift",
-        "cvar-ignores-opponent-objective",
-    ] {
-        assert!(
-            v.warnings.iter().any(|w| w.code == code),
-            "missing warning {code}: {:?}",
-            v.warnings
-        );
-    }
-}
-
-/// A pack exercising the `backup` branches the graphs above don't reach:
-/// a forced (`scenario.policy`) choice, an act-or-wait node where waiting is
-/// optimal, a tie between two equal-value choices, and an isolated sink
-/// (every node's backup runs regardless of reachability from `start`, since
-/// `algo::structure::scc` decomposes the whole graph).
-fn coverage_graph() -> Graph {
-    compile(pack(json!({
-        "schemaVersion": 2, "id": "cvcov", "title": "cvcov", "startNodeId": "start",
-        "roles": { "applicant": "self", "examiner": "opponent" },
-        "nodes": [
-            { "id": "start", "kind": "state", "label": "start" },
-            { "id": "term-a", "kind": "terminal", "label": "term-a", "payoff": 100.0 },
-            { "id": "term-b", "kind": "terminal", "label": "term-b", "payoff": -100.0 },
-            { "id": "mid", "kind": "state", "label": "mid" },
-            { "id": "act-term", "kind": "terminal", "label": "act-term", "payoff": -500.0 },
-            { "id": "wait-term", "kind": "terminal", "label": "wait-term", "payoff": 300.0 },
-            { "id": "tie-node", "kind": "state", "label": "tie-node" },
-            { "id": "tie-a", "kind": "terminal", "label": "tie-a", "payoff": 50.0 },
-            { "id": "tie-b", "kind": "terminal", "label": "tie-b", "payoff": 50.0 },
-            { "id": "cyc-a", "kind": "state", "label": "cyc-a" },
-            { "id": "cyc-b", "kind": "state", "label": "cyc-b" },
-            { "id": "cyc-end", "kind": "terminal", "label": "cyc-end", "payoff": 15.0 },
-            { "id": "dead", "kind": "state", "label": "dead" }
-        ],
-        "edges": [
-            { "id": "to-mid", "from": "start", "to": "mid", "label": "to-mid", "actor": "applicant" },
-            { "id": "to-a", "from": "start", "to": "term-a", "label": "to-a", "actor": "applicant" },
-            { "id": "to-b", "from": "start", "to": "term-b", "label": "to-b", "actor": "applicant" },
-            { "id": "act", "from": "mid", "to": "act-term", "label": "act", "actor": "applicant" },
-            { "id": "world", "from": "mid", "to": "wait-term", "label": "world", "actor": "either" },
-            { "id": "to-tie-a", "from": "tie-node", "to": "tie-a", "label": "to-tie-a", "actor": "applicant" },
-            { "id": "to-tie-b", "from": "tie-node", "to": "tie-b", "label": "to-tie-b", "actor": "applicant" },
-            { "id": "cyc-a-b", "from": "cyc-a", "to": "cyc-b", "label": "spin", "actor": "either", "cost": 1.0 },
-            { "id": "cyc-b-a", "from": "cyc-b", "to": "cyc-a", "label": "spin-back", "actor": "either", "cost": 1.0 },
-            { "id": "cyc-a-end", "from": "cyc-a", "to": "cyc-end", "label": "exit", "actor": "either" }
-        ]
-    })))
-}
-
-/// `start` is itself an act-or-wait node, forced (`scenario.policy`) to the
-/// *world* edge's own id — `plan.rs` and this solver both read that as
-/// "wait", not "take that edge as ours" (a distinct branch from forcing an
-/// ordinary edge).
-fn forced_to_wait_graph() -> Graph {
-    compile(pack(json!({
-        "schemaVersion": 2, "id": "cvforce", "title": "cvforce", "startNodeId": "start",
-        "nodes": [
-            { "id": "start", "kind": "state", "label": "start" },
-            { "id": "act-term", "kind": "terminal", "label": "act-term", "payoff": 10.0 },
-            { "id": "wait-term", "kind": "terminal", "label": "wait-term", "payoff": 20.0 }
-        ],
-        "edges": [
-            { "id": "act", "from": "start", "to": "act-term", "label": "act", "actor": "applicant" },
-            { "id": "world", "from": "start", "to": "wait-term", "label": "world", "actor": "either" }
-        ]
-    })))
-}
-
-#[test]
-fn cvar_forced_to_the_world_edge_id_means_wait() {
-    let g = forced_to_wait_graph();
-    let mut policy = std::collections::BTreeMap::new();
-    policy.insert("cvforce::start".to_string(), "cvforce::world".to_string());
-    let sc = Scenario {
-        objective: Objective::Cvar {
-            alpha: 0.5,
-            grid: 21,
-        },
-        mixed: MixedMode::ActOrWait,
-        policy,
-        ..Default::default()
-    };
-    let v = View::new(&g, &sc).unwrap();
-    let cv = cvar::solve(&v, 0.5, 21, &litgraph::algo::mdp::SolveOptions::default()).unwrap();
-    assert_eq!(cv.solution.choice[&v.start], WAIT);
-}
-
-/// An opponent-controlled fork under `Objective::Cvar` (which ignores
-/// `opponent_objective` and always models the opponent adversarially):
-/// the opponent picks the edge worse for us.
-fn opponent_fork_graph() -> Graph {
-    compile(pack(json!({
-        "schemaVersion": 2, "id": "cvopp", "title": "cvopp", "startNodeId": "start",
-        "roles": { "applicant": "self", "examiner": "opponent" },
-        "nodes": [
-            { "id": "start", "kind": "state", "label": "start" },
-            { "id": "opp-lo", "kind": "terminal", "label": "opp-lo", "payoff": 10.0 },
-            { "id": "opp-hi", "kind": "terminal", "label": "opp-hi", "payoff": 90.0 }
-        ],
-        "edges": [
-            { "id": "to-opp-lo", "from": "start", "to": "opp-lo", "label": "to-opp-lo", "actor": "examiner" },
-            { "id": "to-opp-hi", "from": "start", "to": "opp-hi", "label": "to-opp-hi", "actor": "examiner" }
-        ]
-    })))
-}
-
-#[test]
-fn cvar_opponent_is_adversarial() {
-    let g = opponent_fork_graph();
-    let sc = Scenario {
-        objective: Objective::Cvar {
-            alpha: 0.5,
-            grid: 21,
-        },
-        ..Default::default()
-    };
-    let v = View::new(&g, &sc).unwrap();
-    let cv = cvar::solve(&v, 0.5, 21, &litgraph::algo::mdp::SolveOptions::default()).unwrap();
-    assert_eq!(
-        cv.solution.choice[&v.start],
-        g.edge("cvopp::to-opp-lo").unwrap(),
-        "an adversarial opponent picks the edge worse for us"
-    );
-}
-
-#[test]
-fn cvar_handles_forced_choice_act_or_wait_ties_and_sinks() {
-    let g = coverage_graph();
-    let mut policy = std::collections::BTreeMap::new();
-    // Forced (worse-looking, by raw payoff) into `mid`, so the reconstructed
-    // rollout also crosses the act-or-wait node.
-    policy.insert("cvcov::start".to_string(), "cvcov::to-mid".to_string());
-    let sc = Scenario {
-        objective: Objective::Cvar {
-            alpha: 0.3,
-            grid: 51,
-        },
-        mixed: MixedMode::ActOrWait,
-        policy,
-        ..Default::default()
-    };
-    let v = View::new(&g, &sc).unwrap();
-    let cv = cvar::solve(&v, 0.3, 51, &litgraph::algo::mdp::SolveOptions::default()).unwrap();
-    // The forced choice at `start` (into `mid`, not the directly-terminal
-    // options) is respected.
-    assert_eq!(
-        cv.solution.choice[&v.start],
-        g.edge("cvcov::to-mid").unwrap()
-    );
-    // At `mid`, waiting (`wait-term`, 300) beats acting (`act-term`, -500).
-    let mid = g.node("cvcov::mid").unwrap();
-    assert_eq!(cv.solution.choice[&mid], WAIT);
-    // `cyc-a`/`cyc-b` form a genuine cycle (a chance node spinning between
-    // them before exiting), exercising the iterate-to-convergence branch.
-    assert!(cv.solution.converged, "{:?}", cv.solution.unconverged);
-    // `tie-node` and `dead` are unreachable from `start`, but every node's
-    // backward-induction backup still runs (a tied Me choice, and a sink);
-    // the reachable part of the solve stayed finite throughout.
-    assert!(cv.cvar.is_finite());
 }

@@ -10,7 +10,7 @@ use super::Warn;
 use crate::algo::{chain, cvar, equilibrium, mdp, sim};
 use crate::error::Result;
 use crate::model::NodeIx;
-use crate::scenario::{Control, Objective, View, WAIT};
+use crate::scenario::{Control, NodePlan, Objective, View, WAIT};
 
 type Out = Result<(Value, Vec<Warn>)>;
 
@@ -18,15 +18,24 @@ type Out = Result<(Value, Vec<Warn>)>;
 /// default (`Expected`/`Cara`/`Worst`) objectives, delegating to the
 /// general-sum equilibrium (itself a passthrough to `mdp::solve` when
 /// `opponent_objective` is unset — the zero-sum special case) or to the
-/// `CVaR`-optimal solve.
-fn solve(v: &View) -> Result<mdp::Solution> {
-    if matches!(v.sc.objective, Objective::Cvar { .. }) {
-        let Objective::Cvar { alpha, grid } = v.sc.objective else {
-            unreachable!()
-        };
-        return Ok(cvar::solve(v, alpha, grid, &mdp::SolveOptions::default())?.solution);
+/// `CVaR`-optimal solve. The second element is the opponent's own per-edge
+/// `q` (`Some` only for a general-sum equilibrium — `explain` uses it for a
+/// mover-correct `regret`; `chain`/`simulate` ignore it).
+fn solve(v: &View) -> Result<(mdp::Solution, Option<Vec<f64>>)> {
+    if let Objective::Cvar {
+        alpha,
+        grid,
+        y_lo,
+        y_hi,
+    } = v.sc.objective
+    {
+        let y_range = cvar::y_range_of(y_lo, y_hi)?;
+        let sol = cvar::solve(v, alpha, grid, y_range, &mdp::SolveOptions::default())?.solution;
+        return Ok((sol, None));
     }
-    Ok(equilibrium::resolve(v, &mdp::SolveOptions::default())?.solution)
+    let eq = equilibrium::resolve(v, &mdp::SolveOptions::default())?;
+    let opponent_q = eq.general_sum.then_some(eq.opponent_q);
+    Ok((eq.solution, opponent_q))
 }
 
 pub(super) fn solve_op(
@@ -36,14 +45,22 @@ pub(super) fn solve_op(
     all_values: bool,
     max_steps: usize,
 ) -> Out {
-    if let Objective::Cvar { alpha, grid } = v.sc.objective {
-        let cv = cvar::solve(v, alpha, grid, &mdp::SolveOptions::default())?;
+    if let Objective::Cvar {
+        alpha,
+        grid,
+        y_lo,
+        y_hi,
+    } = v.sc.objective
+    {
+        let y_range = cvar::y_range_of(y_lo, y_hi)?;
+        let cv = cvar::solve(v, alpha, grid, y_range, &mdp::SolveOptions::default())?;
         let sol = &cv.solution;
         let mut result = solve_result(v, sol, start, full_policy, all_values, max_steps);
         result["cvar"] = r(cv.cvar);
         result["zeta"] = r(cv.zeta);
         result["alpha"] = json!(cv.alpha);
         result["grid"] = json!(cv.grid);
+        result["y_range"] = json!([r(cv.y_range.0), r(cv.y_range.1)]);
         return Ok((result, convergence_warnings(v, sol)));
     }
     let eq = equilibrium::resolve(v, &mdp::SolveOptions::default())?;
@@ -92,7 +109,7 @@ fn values_json(v: &View, values: &[f64]) -> Map<String, Value> {
 }
 
 pub(super) fn chain_op(v: &View, start: NodeIx, metrics: &[String], top: usize) -> Out {
-    let sol = solve(v)?;
+    let (sol, _) = solve(v)?;
     let ms = metric_list(v, metrics)?;
     let c = chain::chain(v, &sol, start, &ms)?;
     let cost_total = metrics
@@ -122,7 +139,7 @@ pub(super) fn chain_op(v: &View, start: NodeIx, metrics: &[String], top: usize) 
 }
 
 pub(super) fn simulate_op(v: &View, start: NodeIx, metrics: &[String], o: &sim::SimOptions) -> Out {
-    let sol = solve(v)?;
+    let (sol, _) = solve(v)?;
     let ms = metric_list(v, metrics)?;
     let res = sim::simulate(v, &sol, start, &ms, o)?;
     let result = json!({
@@ -144,10 +161,7 @@ pub(super) fn simulate_op(v: &View, start: NodeIx, metrics: &[String], o: &sim::
 /// Who acts at a node, in plain language. `Control::Opponent` is adversarial
 /// (minimizes our value) unless `scenario.opponent_objective` is set, in
 /// which case the opponent maximizes their own payoff instead — see
-/// `equilibrium.rs`. Either way `NodePlan::minimize` is `true` at an
-/// opponent node (it isn't consulted by the general-sum solver), so a
-/// general-sum option's `regret` in [`option_json`] — computed from
-/// `minimize` — is not meaningful; `value`/`opponent_value` are.
+/// `equilibrium.rs`.
 fn who_decides(control: Control, general_sum: bool) -> &'static str {
     match control {
         Control::Me => "you",
@@ -159,7 +173,50 @@ fn who_decides(control: Control, general_sum: bool) -> &'static str {
     }
 }
 
-fn option_json(v: &View, sol: &mdp::Solution, n: NodeIx, e: usize) -> Value {
+/// `q` of option `e` at node `n` under an arbitrary per-edge `q` array (the
+/// same rule as `mdp::Solution::option_q`: `WAIT`'s value is the weighted
+/// sum over the world edges it lets fire).
+fn option_q_of(v: &View, n: NodeIx, e: usize, q: &[f64]) -> f64 {
+    if e == WAIT {
+        v.plan[n].wait.iter().map(|&(w, p)| p * q[w]).sum()
+    } else {
+        q[e]
+    }
+}
+
+/// `option_json`/`explain_op`'s `regret` for option `e` against the chosen
+/// `best`: how much worse `e` is *for whoever moves at `n`*, so it is always
+/// `>= 0` at the actual optimum. At an opponent's node under a general-sum
+/// equilibrium (`opp_q` is `Some`) the mover maximizes their own `opp_q`, not
+/// our `q` with `plan.minimize`'s adversarial sign flip — using `opp_q` here
+/// is exactly the fix `NodePlan::minimize` can't express, since it stays
+/// `true` at every `Control::Opponent` node regardless of
+/// `scenario.opponent_objective` (see `plan.rs`).
+#[allow(clippy::too_many_arguments)]
+fn regret(
+    v: &View,
+    plan: &NodePlan,
+    n: NodeIx,
+    e: usize,
+    best: usize,
+    sol: &mdp::Solution,
+    opp_q: Option<&[f64]>,
+) -> f64 {
+    if plan.control == Control::Opponent {
+        if let Some(oq) = opp_q {
+            return option_q_of(v, n, best, oq) - option_q_of(v, n, e, oq);
+        }
+    }
+    let q = sol.option_q(v, n, e);
+    let qb = sol.option_q(v, n, best);
+    if plan.minimize {
+        q - qb
+    } else {
+        qb - q
+    }
+}
+
+fn option_json(v: &View, sol: &mdp::Solution, n: NodeIx, e: usize, opp_q: Option<&[f64]>) -> Value {
     let plan = &v.plan[n];
     let ed = &v.g.edges[e];
     let q = sol.q[e];
@@ -188,8 +245,7 @@ fn option_json(v: &View, sol: &mdp::Solution, n: NodeIx, e: usize) -> Value {
     };
     j["kind"] = json!(kind);
     if let (Some(b), "choice") = (best, kind) {
-        let qb = sol.option_q(v, n, b);
-        j["regret"] = r(if plan.minimize { q - qb } else { qb - q });
+        j["regret"] = r(regret(v, plan, n, e, b, sol, opp_q));
     }
     // What happens after taking this edge: absorption from its target under the policy.
     if let Ok(after) = chain::chain(v, sol, ed.to, &[]) {
@@ -204,12 +260,12 @@ fn option_json(v: &View, sol: &mdp::Solution, n: NodeIx, e: usize) -> Value {
 }
 
 pub(super) fn explain_op(v: &View, n: NodeIx) -> Out {
-    let sol = solve(v)?;
+    let (sol, opp_q) = solve(v)?;
     let node = &v.g.nodes[n];
     let plan = &v.plan[n];
     let mut options: Vec<(f64, Value)> = v
         .outs(n)
-        .map(|e| (sol.q[e], option_json(v, &sol, n, e)))
+        .map(|e| (sol.q[e], option_json(v, &sol, n, e, opp_q.as_deref())))
         .collect();
     if !plan.wait.is_empty() {
         let qw = sol.option_q(v, n, WAIT);
@@ -218,16 +274,8 @@ pub(super) fn explain_op(v: &View, n: NodeIx) -> Out {
             "id": "WAIT", "label": choice_label(v, WAIT), "kind": "wait", "q": r(qw), "chosen": best == Some(WAIT),
             "draws": plan.wait.iter().map(|&(e, p)| json!({ "edge": v.g.edges[e].id, "label": v.g.edges[e].label, "p": r(p) })).collect::<Vec<_>>(),
         });
-        let regret = best.map(|b| {
-            let qb = sol.option_q(v, n, b);
-            if plan.minimize {
-                qw - qb
-            } else {
-                qb - qw
-            }
-        });
-        if let Some(x) = regret {
-            j["regret"] = r(x);
+        if let Some(b) = best {
+            j["regret"] = r(regret(v, plan, n, WAIT, b, &sol, opp_q.as_deref()));
         }
         options.push((qw, j));
     }
@@ -240,7 +288,7 @@ pub(super) fn explain_op(v: &View, n: NodeIx) -> Out {
     let result = json!({
         "node": { "id": node.id, "label": node.label, "kind": node.kind, "cite": node.cite, "note": node.note },
         "control": plan.control,
-        "who_decides": who_decides(plan.control, v.sc.opponent_objective.is_some()),
+        "who_decides": who_decides(plan.control, opp_q.is_some()),
         "value": r(sol.value[n]),
         "interrupt_mass": r(1.0 - plan.choice_mass),
         "options": options.into_iter().map(|x| x.1).collect::<Vec<_>>(),

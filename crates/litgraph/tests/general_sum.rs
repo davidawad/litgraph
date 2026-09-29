@@ -8,7 +8,7 @@
 
 use litgraph::algo::{equilibrium, mdp};
 use litgraph::model::{CompileOptions, Graph, LinkFile, Pack};
-use litgraph::scenario::{OpponentMode, Scenario, View};
+use litgraph::scenario::{Objective, OpponentMode, Scenario, View};
 use serde_json::json;
 
 fn pack(j: serde_json::Value) -> Pack {
@@ -282,4 +282,183 @@ fn general_sum_inactive_edges_report_nan_q() {
     assert!(eq.solution.q[litigate].is_nan());
     // Only `settle` remains: the opponent has no real choice left.
     assert_eq!(eq.solution.choice[&v.start], g.edge("gs::settle").unwrap());
+}
+
+/// Full API-level check that `explain`'s `regret` is computed from the
+/// mover's own criterion at a general-sum opponent's node: `settle` (worse
+/// for us, better for the opponent — 10 vs 30 — is what an *adversarial*
+/// opponent would prefer) must show a *positive* regret relative to the
+/// actual (general-sum) choice `litigate`, not the negative number the old
+/// `NodePlan::minimize`-based computation gave (it assumed the opponent
+/// minimizes our value, backwards for a general-sum opponent).
+#[test]
+fn explain_reports_general_sum_correct_regret_sign() {
+    use litgraph::api::{handle, Catalog, Op, Request};
+    let text = serde_json::to_string(&pack(json!({
+        "schemaVersion": 2, "id": "gsexp", "title": "gsexp", "startNodeId": "start",
+        "roles": { "applicant": "self", "examiner": "opponent" },
+        "nodes": [
+            { "id": "start", "kind": "state", "label": "start" },
+            { "id": "settled", "kind": "terminal", "label": "settled", "payoff": 50.0,
+              "attrs": { "opp_payoff": 10.0 } },
+            { "id": "litigated", "kind": "terminal", "label": "litigated", "payoff": 100.0,
+              "attrs": { "opp_payoff": 30.0 } }
+        ],
+        "edges": [
+            { "id": "settle", "from": "start", "to": "settled", "label": "settle", "actor": "examiner" },
+            { "id": "litigate", "from": "start", "to": "litigated", "label": "litigate", "actor": "examiner" }
+        ]
+    })))
+    .unwrap();
+    let catalog = Catalog::from_files("t".into(), vec![("gsexp.json".into(), text)]).unwrap();
+    let sc = Scenario {
+        opponent_objective: Some("node.opp_payoff".to_string()),
+        ..Default::default()
+    };
+    let req = Request {
+        packs: vec!["gsexp".into()],
+        scenario: serde_json::to_value(&sc).unwrap(),
+        op: Op::Explain {
+            node: Some("gsexp::start".to_string()),
+            from: None,
+        },
+        ..Default::default()
+    };
+    let resp = handle(&req, &catalog);
+    assert!(resp.ok, "{resp:?}");
+    let result = resp.result.unwrap();
+    let options = result["options"].as_array().unwrap();
+    let find = |id: &str| options.iter().find(|o| o["id"] == id).unwrap();
+    let settle = find("gsexp::settle");
+    assert_eq!(settle["chosen"], json!(false));
+    assert!(
+        (settle["regret"].as_f64().unwrap() - 20.0).abs() < 1e-6,
+        "{settle:?}"
+    );
+    let litigate = find("gsexp::litigate");
+    assert_eq!(litigate["chosen"], json!(true));
+    assert!(
+        (litigate["regret"].as_f64().unwrap()).abs() < 1e-9,
+        "{litigate:?}"
+    );
+}
+
+/// A pure nature draw between a big win and a big loss (EV = 0): risk-averse
+/// self-aggregation (CARA/Worst) must apply to *self*'s value even under a
+/// general-sum opponent, while the opponent's own value — evaluated over the
+/// same draw — stays a plain (risk-neutral) expectation, since general-sum
+/// gives the opponent an objective function, not a modeled risk preference.
+fn high_variance_draw_graph() -> Graph {
+    compile(pack(json!({
+        "schemaVersion": 2, "id": "gsrisk", "title": "gsrisk", "startNodeId": "start",
+        "nodes": [
+            { "id": "start", "kind": "state", "label": "start" },
+            { "id": "hi", "kind": "terminal", "label": "hi", "payoff": 1000.0 },
+            { "id": "lo", "kind": "terminal", "label": "lo", "payoff": -1000.0 }
+        ],
+        "edges": [
+            { "id": "to-hi", "from": "start", "to": "hi", "label": "hi", "actor": "either", "probability": 0.5 },
+            { "id": "to-lo", "from": "start", "to": "lo", "label": "lo", "actor": "either", "probability": 0.5 }
+        ]
+    })))
+}
+
+#[test]
+fn general_sum_honors_cara_for_self_and_stays_risk_neutral_for_the_opponent() {
+    let g = high_variance_draw_graph();
+    let a = 0.001;
+    let sc = Scenario {
+        objective: Objective::Cara { a },
+        opponent_objective: Some("payoff".to_string()),
+        ..Default::default()
+    };
+    let v = View::new(&g, &sc).unwrap();
+    let eq = equilibrium::resolve(&v, &mdp::SolveOptions::default()).unwrap();
+
+    // Cross-check against `mdp::solve`'s own CARA computation on the very
+    // same chance node (no opponent_objective, so the ordinary zero-sum
+    // solver runs) — general-sum's self-aggregation must match it exactly,
+    // since a pure nature draw has no opponent choice to differ over.
+    let plain = Scenario {
+        objective: Objective::Cara { a },
+        ..Default::default()
+    };
+    let v_plain = View::new(&g, &plain).unwrap();
+    let sol_plain = mdp::solve(&v_plain, &mdp::SolveOptions::default()).unwrap();
+    assert!((eq.solution.value[v.start] - sol_plain.value[v_plain.start]).abs() < 1e-9);
+
+    // Risk-averse: strictly worse than the risk-neutral EV of 0.
+    assert!(
+        eq.solution.value[v.start] < -1.0,
+        "{}",
+        eq.solution.value[v.start]
+    );
+
+    // The opponent's own value (same "payoff" objective, same draw) is the
+    // plain expectation, unaffected by our CARA risk aversion.
+    assert!(
+        (eq.opponent_value[v.start]).abs() < 1e-9,
+        "{}",
+        eq.opponent_value[v.start]
+    );
+}
+
+/// `act` is a guaranteed 50; waiting is a 50/50 shot at 2000 or -1000
+/// (EV 500, much better than acting) — a risk-neutral chooser waits, but a
+/// sufficiently risk-averse (CARA) self must not: `best_option`'s own
+/// evaluation of waiting has to apply the same risk objective as the final
+/// value tally, or self would "choose" based on a value it doesn't actually
+/// get (a plain-expectation preview of a CARA-discounted outcome).
+fn act_or_wait_high_variance_graph() -> Graph {
+    compile(pack(json!({
+        "schemaVersion": 2, "id": "gsaw", "title": "gsaw", "startNodeId": "start",
+        "nodes": [
+            { "id": "start", "kind": "state", "label": "start" },
+            { "id": "act-term", "kind": "terminal", "label": "act-term", "payoff": 50.0 },
+            { "id": "hi", "kind": "terminal", "label": "hi", "payoff": 2000.0 },
+            { "id": "lo", "kind": "terminal", "label": "lo", "payoff": -1000.0 }
+        ],
+        "edges": [
+            { "id": "act", "from": "start", "to": "act-term", "label": "act", "actor": "applicant" },
+            { "id": "to-hi", "from": "start", "to": "hi", "label": "hi", "actor": "either", "probability": 0.5 },
+            { "id": "to-lo", "from": "start", "to": "lo", "label": "lo", "actor": "either", "probability": 0.5 }
+        ]
+    })))
+}
+
+#[test]
+fn general_sum_applies_cara_when_choosing_whether_to_wait_not_just_to_the_final_tally() {
+    let g = act_or_wait_high_variance_graph();
+    let sc = Scenario {
+        objective: Objective::Cara { a: 0.002 },
+        opponent_objective: Some("payoff".to_string()),
+        mixed: litgraph::scenario::MixedMode::ActOrWait,
+        ..Default::default()
+    };
+    let v = View::new(&g, &sc).unwrap();
+    let eq = equilibrium::resolve(&v, &mdp::SolveOptions::default()).unwrap();
+    assert_eq!(
+        eq.solution.choice[&v.start],
+        g.edge("gsaw::act").unwrap(),
+        "a CARA-averse self must not pick the high-variance wait just because \
+         its plain-expectation preview (500) beats acting (50); its actual \
+         certainty-equivalent value is deeply negative"
+    );
+    assert!((eq.solution.value[v.start] - 50.0).abs() < 1e-9);
+}
+
+#[test]
+fn general_sum_honors_worst_for_self_and_stays_risk_neutral_for_the_opponent() {
+    let g = high_variance_draw_graph();
+    let sc = Scenario {
+        objective: Objective::Worst,
+        opponent_objective: Some("payoff".to_string()),
+        ..Default::default()
+    };
+    let v = View::new(&g, &sc).unwrap();
+    let eq = equilibrium::resolve(&v, &mdp::SolveOptions::default()).unwrap();
+    // Every draw goes against us: the worst branch, -1000.
+    assert!((eq.solution.value[v.start] - -1000.0).abs() < 1e-9);
+    // The opponent still sees the plain expectation (0), not the worst case.
+    assert!((eq.opponent_value[v.start]).abs() < 1e-9);
 }

@@ -200,14 +200,43 @@ impl Ctx<'_> {
     }
 }
 
-/// Solves for a `CVaR_alpha`-optimal policy from `v.start`.
+/// Combines `Objective::Cvar`'s `y_lo`/`y_hi` scenario fields into the
+/// `y_range` [`solve`] takes.
 ///
 /// # Errors
-/// `alpha` out of `(0, 1]`, or an error evaluating an expression the view
-/// depends on (propagated from view construction of `v.utility`/`v.cost`,
-/// which are already resolved by the time this is called).
+/// Exactly one of `y_lo`/`y_hi` is set (they override the grid bound
+/// together or not at all).
+pub fn y_range_of(y_lo: Option<f64>, y_hi: Option<f64>) -> Result<Option<(f64, f64)>> {
+    match (y_lo, y_hi) {
+        (Some(lo), Some(hi)) => Ok(Some((lo, hi))),
+        (None, None) => Ok(None),
+        _ => Err(Error::Invalid(
+            "cvar objective: y_lo and y_hi must be set together".into(),
+        )),
+    }
+}
+
+/// Solves for a `CVaR_alpha`-optimal policy from `v.start`.
+///
+/// `y_range`, if given, overrides [`default_range`]'s conservative default
+/// grid bound (`Objective::Cvar`'s `y_lo`/`y_hi`) — useful when the default
+/// is a poor fit (e.g. a graph with costly cycles the default's
+/// single-simple-path bound doesn't cover) or unnecessarily wide (wasting
+/// grid resolution).
+///
+/// # Errors
+/// `alpha` out of `(0, 1]`, `y_range` given with `lo >= hi`, or an error
+/// evaluating an expression the view depends on (propagated from view
+/// construction of `v.utility`/`v.cost`, which are already resolved by the
+/// time this is called).
 #[allow(clippy::too_many_lines)]
-pub fn solve(v: &View, alpha: f64, grid: usize, opts: &SolveOptions) -> Result<CvarSolution> {
+pub fn solve(
+    v: &View,
+    alpha: f64,
+    grid: usize,
+    y_range: Option<(f64, f64)>,
+    opts: &SolveOptions,
+) -> Result<CvarSolution> {
     if !(alpha > 0.0 && alpha <= 1.0) {
         return Err(Error::Invalid(format!(
             "cvar objective: alpha must be in (0, 1], got {alpha}"
@@ -215,7 +244,15 @@ pub fn solve(v: &View, alpha: f64, grid: usize, opts: &SolveOptions) -> Result<C
     }
     let n_grid = if grid == 0 { 41 } else { grid.max(2) };
     let cost = &v.cost;
-    let y_range = default_range(v, cost);
+    let y_range = match y_range {
+        Some((lo, hi)) if lo < hi => (lo, hi),
+        Some((lo, hi)) => {
+            return Err(Error::Invalid(format!(
+                "cvar objective: y_lo ({lo}) must be less than y_hi ({hi})"
+            )))
+        }
+        None => default_range(v, cost),
+    };
     let ys = linspace(y_range.0, y_range.1, n_grid);
     let ctx = Ctx {
         v,

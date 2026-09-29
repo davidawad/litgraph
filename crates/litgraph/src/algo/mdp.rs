@@ -191,27 +191,41 @@ impl Ctx<'_> {
         (self.aggregate(&terms), best.map(|(_, e)| e))
     }
 
-    /// Expectation, or the CARA certainty equivalent, of (probability, value) terms.
+    /// Expectation, the CARA certainty equivalent, or the worst term, of
+    /// (probability, value) terms.
     fn aggregate(&self, terms: &[(f64, f64)]) -> f64 {
-        if self.worst {
-            return terms
+        aggregate(self.cara, self.worst, terms)
+    }
+}
+
+/// Expectation, the CARA certainty equivalent, or the worst term, of
+/// (probability, value) terms — the risk objective applied to a draw
+/// (world edges, interrupts, an act-or-wait node's `WAIT`). A free function
+/// (not a method) so [`crate::algo::equilibrium`] can apply the same risk
+/// objective to *self*'s side of a general-sum backup without depending on
+/// `mdp::Ctx`'s other, single-agent-only fields.
+///
+/// `worst` takes priority over `cara` (mirrors [`crate::scenario::Objective`],
+/// which is one of the two, never both).
+pub(crate) fn aggregate(cara: Option<f64>, worst: bool, terms: &[(f64, f64)]) -> f64 {
+    if worst {
+        return terms
+            .iter()
+            .filter(|t| t.0 > 0.0)
+            .map(|t| t.1)
+            .fold(f64::INFINITY, f64::min);
+    }
+    match cara {
+        Some(a) if a != 0.0 => {
+            // Certainty equivalent, computed stably around the max.
+            let m = terms
                 .iter()
-                .filter(|t| t.0 > 0.0)
-                .map(|t| t.1)
-                .fold(f64::INFINITY, f64::min);
+                .map(|&(_, q)| -a * q)
+                .fold(f64::NEG_INFINITY, f64::max);
+            let s: f64 = terms.iter().map(|&(pr, q)| pr * (-a * q - m).exp()).sum();
+            -(m + s.ln()) / a
         }
-        match self.cara {
-            Some(a) if a != 0.0 => {
-                // Certainty equivalent, computed stably around the max.
-                let m = terms
-                    .iter()
-                    .map(|&(_, q)| -a * q)
-                    .fold(f64::NEG_INFINITY, f64::max);
-                let s: f64 = terms.iter().map(|&(pr, q)| pr * (-a * q - m).exp()).sum();
-                -(m + s.ln()) / a
-            }
-            _ => terms.iter().map(|&(pr, q)| pr * q).sum(),
-        }
+        _ => terms.iter().map(|&(pr, q)| pr * q).sum(),
     }
 }
 

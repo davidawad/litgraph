@@ -27,6 +27,15 @@
 //! adversarial/chance opponent model, handled here by delegating to
 //! [`crate::algo::mdp::solve`] unchanged — the special case the brief and
 //! tests require to reproduce byte-for-byte.
+//!
+//! `self`'s risk objective (`Objective::Cara`/`Worst`) is honored: it's
+//! applied, via the same [`mdp::aggregate`] helper `mdp::solve` uses, to
+//! *self*'s aggregation over nature's draws — both when choosing whether to
+//! wait ([`Ctx::best_option`]'s `crit_wait`) and in the final value tally
+//! ([`Ctx::backup`]) — never to the opponent's, which stays plain
+//! expectation: general-sum gives the opponent an objective function, not a
+//! modeled risk preference. `Objective::Cvar` doesn't compose with a
+//! general-sum opponent at all (see `docs/CRITIQUE.md`).
 
 use serde::Serialize;
 use std::collections::BTreeMap;
@@ -37,7 +46,7 @@ use crate::error::Result;
 use crate::expr::{self, Expr};
 use crate::metrics::{PathVars, TerminalEnv};
 use crate::model::NodeIx;
-use crate::scenario::{Control, View, WAIT};
+use crate::scenario::{Control, Objective, View, WAIT};
 
 /// Result of resolving `v`: `self`'s solution plus the opponent's values.
 #[derive(Debug, Clone, Serialize)]
@@ -47,6 +56,14 @@ pub struct EquilibriumSolution {
     pub solution: Solution,
     /// The opponent's value at every node under the same policy.
     pub opponent_value: Vec<f64>,
+    /// The opponent's own per-edge continuation value (`NaN` for inactive
+    /// edges / edges out of terminals, same convention as `solution.q`).
+    /// Zero-sum falls out as `-solution.q` (the identity used for
+    /// `opponent_value`); general-sum uses their actual `opp_q`. This is
+    /// what a general-sum opponent's own choice is optimal *for* — `explain`
+    /// uses it to compute `regret` from the mover's own criterion instead of
+    /// always assuming an adversary.
+    pub opponent_q: Vec<f64>,
     /// `true` for a general-sum opponent (`opponent_objective` was set).
     pub general_sum: bool,
 }
@@ -62,9 +79,11 @@ pub fn resolve(v: &View, opts: &SolveOptions) -> Result<EquilibriumSolution> {
     let Some(obj) = v.sc.opponent_objective.as_deref() else {
         let solution = mdp::solve(v, opts)?;
         let opponent_value = solution.value.iter().map(|x| -x).collect();
+        let opponent_q = solution.q.iter().map(|x| -x).collect();
         return Ok(EquilibriumSolution {
             solution,
             opponent_value,
+            opponent_q,
             general_sum: false,
         });
     };
@@ -82,22 +101,33 @@ fn resolve_general_sum(v: &View, obj: &str, opts: &SolveOptions) -> Result<Equil
             eval_opponent(&opp_ex, v, n)
         })
         .collect::<Result<_>>()?;
+    let cara = match v.sc.objective {
+        Objective::Cara { a } => Some(a),
+        _ => None,
+    };
+    let worst = v.sc.objective == Objective::Worst;
     let ctx = Ctx {
         v,
         cost: &v.cost,
         opp_cost: &opp_cost,
         opp_terminal: &opp_terminal,
+        cara,
+        worst,
     };
     let (self_v, opp_v, choice, unconverged, worst_it) = joint_backward_induction(&ctx, opts);
-    let q = (0..v.g.edges.len())
-        .map(|e| {
-            if !v.active[e] || v.plan[v.g.edges[e].from].control == Control::Terminal {
-                f64::NAN
-            } else {
-                ctx.self_q(e, &self_v)
-            }
-        })
-        .collect();
+    let edge_q = |f: &dyn Fn(&Ctx, usize) -> f64| -> Vec<f64> {
+        (0..v.g.edges.len())
+            .map(|e| {
+                if !v.active[e] || v.plan[v.g.edges[e].from].control == Control::Terminal {
+                    f64::NAN
+                } else {
+                    f(&ctx, e)
+                }
+            })
+            .collect()
+    };
+    let q = edge_q(&|ctx, e| ctx.self_q(e, &self_v));
+    let opponent_q = edge_q(&|ctx, e| ctx.opp_q(e, &opp_v));
     let solution = Solution {
         value: self_v,
         q,
@@ -111,6 +141,7 @@ fn resolve_general_sum(v: &View, obj: &str, opts: &SolveOptions) -> Result<Equil
     Ok(EquilibriumSolution {
         solution,
         opponent_value: opp_v,
+        opponent_q,
         general_sum: true,
     })
 }
@@ -203,6 +234,13 @@ struct Ctx<'a> {
     cost: &'a [f64],
     opp_cost: &'a [f64],
     opp_terminal: &'a [f64],
+    /// `self`'s risk objective (`Objective::Cara`/`Worst`), applied only to
+    /// *self*'s aggregation over nature's draws (world edges, interrupts,
+    /// `WAIT`) — never to the opponent's own aggregation, which stays plain
+    /// expectation: general-sum gives the opponent an objective function,
+    /// not a modeled risk preference. See `docs/CRITIQUE.md`.
+    cara: Option<f64>,
+    worst: bool,
 }
 
 impl Ctx<'_> {
@@ -239,8 +277,19 @@ impl Ctx<'_> {
         } else {
             None
         };
+        // Self compares its own risk-adjusted value of waiting against its
+        // other options (matching the risk objective applied to the final
+        // tally in `backup`); an opponent's `WAIT` is always plain
+        // expectation, like every other opponent aggregation.
         let crit_wait = || -> Option<f64> {
-            (!p.wait.is_empty()).then(|| p.wait.iter().map(|&(e, pr)| pr * crit(e)).sum())
+            (!p.wait.is_empty()).then(|| {
+                let terms: Vec<(f64, f64)> = p.wait.iter().map(|&(e, pr)| (pr, crit(e))).collect();
+                if p.control == Control::Opponent {
+                    terms.iter().map(|&(pr, q)| pr * q).sum()
+                } else {
+                    mdp::aggregate(self.cara, self.worst, &terms)
+                }
+            })
         };
         let dist = |e: usize| -> u32 {
             if e == WAIT {
@@ -296,12 +345,18 @@ impl Ctx<'_> {
             _ => {}
         }
         let best = self.best_option(n, value, opp_value);
+        // Self's risk objective (if any) applies to `WAIT`'s aggregation over
+        // world edges exactly as it would in `mdp::Ctx` (a single-agent node
+        // with an interrupt uses the same rule); the opponent's `WAIT`
+        // aggregation is always plain expectation.
         let self_q_of = |e: usize| -> f64 {
             if e == WAIT {
-                p.wait
+                let terms: Vec<(f64, f64)> = p
+                    .wait
                     .iter()
-                    .map(|&(w, pr)| pr * self.self_q(w, value))
-                    .sum()
+                    .map(|&(w, pr)| (pr, self.self_q(w, value)))
+                    .collect();
+                mdp::aggregate(self.cara, self.worst, &terms)
             } else {
                 self.self_q(e, value)
             }
@@ -316,20 +371,24 @@ impl Ctx<'_> {
                 self.opp_q(e, opp_value)
             }
         };
-        let self_draws: f64 = p
+        let self_terms: Vec<(f64, f64)> = p
             .draws
             .iter()
-            .map(|&(e, pr)| pr * self.self_q(e, value))
-            .sum();
+            .map(|&(e, pr)| (pr, self.self_q(e, value)))
+            .chain(
+                best.filter(|_| p.choice_mass > 0.0)
+                    .map(|(_, e)| (p.choice_mass, self_q_of(e))),
+            )
+            .collect();
         let opp_draws: f64 = p
             .draws
             .iter()
             .map(|&(e, pr)| pr * self.opp_q(e, opp_value))
             .sum();
-        let (self_choice_part, opp_choice_part) = best
+        let opp_choice_part = best
             .filter(|_| p.choice_mass > 0.0)
-            .map_or((0.0, 0.0), |(_, e)| (self_q_of(e), opp_q_of(e)));
-        let self_val = self_draws + p.choice_mass * self_choice_part;
+            .map_or(0.0, |(_, e)| opp_q_of(e));
+        let self_val = mdp::aggregate(self.cara, self.worst, &self_terms);
         let opp_val = opp_draws + p.choice_mass * opp_choice_part;
         (self_val, opp_val, best.map(|(_, e)| e))
     }

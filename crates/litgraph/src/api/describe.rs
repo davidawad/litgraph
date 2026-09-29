@@ -107,7 +107,7 @@ pub fn describe(catalog: &Catalog) -> Value {
             "mixed": "nature-first (default; falls back to act-or-wait) | act-or-wait | self-only | optimistic",
             "opponent": "auto | adversarial | chance",
             "prob_fill": "residual | uniform",
-            "objective": "{type: expected} | {type: cara, a} | {type: worst} | {type: cvar, alpha, grid?} (optimizes CVaR_alpha, not just reports it; see docs/CRITIQUE.md)",
+            "objective": "{type: expected} | {type: cara, a} | {type: worst} | {type: cvar, alpha, grid?, y_lo?, y_hi?} (optimizes CVaR_alpha, not just reports it; y_lo/y_hi override the default grid bound, set together; see docs/CRITIQUE.md)",
             "discount_annual": "number",
             "fee_shift": "{fraction, eligible?: terminal-expr}",
             "calibration": "[calibration set id, ...] — see calibration_sets below and `litgraph schema calibration`; applied values are authored exactly as if hand-typed into the pack, reported in provenance.calibration",
