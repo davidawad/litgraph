@@ -52,16 +52,6 @@ pub struct Application {
     pub skipped: usize,
 }
 
-/// Every edge sharing `ix`'s `base_id` (itself included): every
-/// state-flag-product copy of the edge a pack actually describes. On a
-/// graph with no state flags (or with `no_flags` set) this is just `[ix]`.
-fn edge_family(g: &Graph, ix: usize) -> Vec<usize> {
-    let base_id = &g.edges[ix].base_id;
-    (0..g.edges.len())
-        .filter(|&i| &g.edges[i].base_id == base_id)
-        .collect()
-}
-
 /// Apply every entry in `set` whose ref resolves against `g`, mutating `g`
 /// in place exactly as if the value had been authored in the pack. A
 /// calibration entry authors one value for the edge a pack describes, not
@@ -77,7 +67,7 @@ pub fn apply(g: &mut Graph, set: &CalibrationSet) -> Application {
         let hit = match e.target {
             CalibrationTarget::EdgeProbability => match g.edge(&e.target_ref) {
                 Ok(ix) => {
-                    for i in edge_family(g, ix) {
+                    for i in g.edge_family(ix) {
                         g.edges[i].probability = e.value;
                     }
                     true
@@ -86,7 +76,7 @@ pub fn apply(g: &mut Graph, set: &CalibrationSet) -> Application {
             },
             CalibrationTarget::EdgeDuration => match g.edge(&e.target_ref) {
                 Ok(ix) => {
-                    for i in edge_family(g, ix) {
+                    for i in g.edge_family(ix) {
                         g.edges[i].duration.clone_from(&e.distribution);
                     }
                     true

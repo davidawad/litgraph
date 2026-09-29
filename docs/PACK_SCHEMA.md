@@ -119,6 +119,13 @@ is structurally an ordinary chance node — same edges, same probabilities,
 same `fill` semantics — only its *epistemic status* differs, and every
 existing algorithm, lint check and scenario field keeps working unchanged.
 
+A matter fact is true regardless of procedural history, so it applies to
+every [state-flag](#state-flags) product-graph copy of the node, not just
+the one whose id happens to match `node_ref` exactly: `scenario.facts`
+resolves `node_ref` to one node, then forces the same edge on every node
+sharing its `base_id` (`Graph::node_family`/`Graph::edge_family`) — the
+same reasoning as calibration's `Edge.base_id` handling above.
+
 ## Links (composition)
 
 `packs/links.json` joins packs into one multi-forum graph. Its top-level

@@ -104,6 +104,35 @@ impl Graph {
         (0..self.nodes.len()).filter(|&i| self.nodes[i].is_terminal())
     }
 
+    /// Every node sharing `ix`'s `base_id` (itself included): every
+    /// state-flag product-graph copy of the node a pack actually describes
+    /// (`docs/PACK_SCHEMA.md#state-flags`). `[ix]` on a graph with no state
+    /// flags. A scenario override authored against one node (a fact, a
+    /// forced payoff, a policy pin) is authored once for the pack node an
+    /// author wrote, not once per flag-history it can be reached under, so
+    /// callers that resolve a node ref should generally apply the override
+    /// to its whole family — see `scenario::View::new`'s handling of
+    /// `scenario.facts`.
+    #[must_use]
+    pub fn node_family(&self, ix: NodeIx) -> Vec<NodeIx> {
+        let base_id = &self.nodes[ix].base_id;
+        (0..self.nodes.len())
+            .filter(|&i| &self.nodes[i].base_id == base_id)
+            .collect()
+    }
+
+    /// Every edge sharing `ix`'s `base_id` (itself included); the edge
+    /// analog of [`Graph::node_family`]. Used by calibration
+    /// (`api::calibration::apply`) so one authored value reaches every
+    /// flagged instantiation of the edge it describes.
+    #[must_use]
+    pub fn edge_family(&self, ix: EdgeIx) -> Vec<EdgeIx> {
+        let base_id = &self.edges[ix].base_id;
+        (0..self.edges.len())
+            .filter(|&i| &self.edges[i].base_id == base_id)
+            .collect()
+    }
+
     /// Role of an edge from its pack's role table (links use the source
     /// node's pack). Scenario perspective overrides are applied by `View`.
     #[must_use]
