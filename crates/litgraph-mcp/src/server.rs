@@ -80,7 +80,7 @@ impl ServerHandler for LitgraphServer {
         let name = request.name.as_ref();
         let response = if name == ops::GENERIC_TOOL {
             ops::call_raw(&self.catalog, request.arguments)
-        } else if ops::OP_NAMES.contains(&name) {
+        } else if ops::op_names().iter().any(|n| n == name) {
             ops::call_op(&self.catalog, name, request.arguments)
         } else {
             return Err(McpError::invalid_params(

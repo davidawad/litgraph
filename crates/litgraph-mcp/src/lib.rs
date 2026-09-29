@@ -23,5 +23,5 @@ mod ops;
 mod resources;
 mod server;
 
-pub use ops::OP_NAMES;
+pub use ops::op_names;
 pub use server::LitgraphServer;

@@ -27,30 +27,24 @@ use litgraph::api::{self, Catalog, Response};
 use rmcp::model::{JsonObject, Tool};
 use serde_json::{json, Map, Value};
 
-/// Every engine op's wire name, in the engine's own dispatch order
-/// (`litgraph::api::Op::name()`'s targets). Kept as a literal list (rather
-/// than derived from the schema) so the tool set is visible at a glance;
-/// [`tools`] and its tests fail loudly if this ever drifts from the
-/// schema's own `oneOf` variants.
-pub const OP_NAMES: &[&str] = &[
-    "describe",
-    "packs",
-    "lint",
-    "validate",
-    "graph",
-    "metric",
-    "explain",
-    "solve",
-    "chain",
-    "simulate",
-    "path",
-    "pareto",
-    "sweep",
-    "tornado",
-    "structure",
-    "compare",
-    "batch",
-];
+/// Every engine op's wire name, in the order the engine's `Op` schema lists
+/// them — read from that schema's `oneOf` variants, so an op added to the
+/// engine becomes a tool with no edit here.
+#[must_use]
+pub fn op_names() -> &'static [String] {
+    static NAMES: OnceLock<Vec<String>> = OnceLock::new();
+    NAMES.get_or_init(|| {
+        request_schema()["$defs"]["Op"]["oneOf"]
+            .as_array()
+            .map(|variants| {
+                variants
+                    .iter()
+                    .filter_map(|v| v["properties"]["op"]["const"].as_str().map(str::to_owned))
+                    .collect()
+            })
+            .unwrap_or_default()
+    })
+}
 
 /// Wire name of the generic, raw-`Request` tool.
 pub const GENERIC_TOOL: &str = "litgraph";
@@ -158,16 +152,16 @@ fn generic_tool() -> Tool {
     )
 }
 
-/// Every tool this server exposes: one per [`OP_NAMES`], plus
+/// Every tool this server exposes: one per [`op_names`], plus
 /// [`GENERIC_TOOL`]. Descriptions are the exact text
 /// `litgraph::api::describe`'s `"ops"` map uses for each op, so a tool's
 /// description can't drift from the CLI's own manual either.
 #[must_use]
 pub fn tools(catalog: &Catalog) -> Vec<Tool> {
     let manual = api::describe(catalog);
-    let mut out: Vec<Tool> = OP_NAMES
+    let mut out: Vec<Tool> = op_names()
         .iter()
-        .filter_map(|&name| {
+        .filter_map(|name| {
             let schema = op_input_schema(name)?;
             Some(Tool::new(name, op_description(&manual, name), schema))
         })
@@ -219,24 +213,25 @@ mod tests {
     }
 
     #[test]
-    fn op_names_match_the_schemas_oneof_variants() {
-        let defs = request_schema()["$defs"]["Op"]["oneOf"].as_array().unwrap();
-        let schema_names: Vec<&str> = defs
-            .iter()
-            .map(|v| v["properties"]["op"]["const"].as_str().unwrap())
-            .collect();
-        assert_eq!(schema_names, OP_NAMES);
+    fn op_names_cover_the_core_ops_in_schema_order() {
+        let names = op_names();
+        for op in ["describe", "solve", "simulate", "tornado", "batch"] {
+            assert!(names.iter().any(|n| n == op), "missing {op}");
+        }
+        let mut unique = names.to_vec();
+        unique.dedup();
+        assert_eq!(unique.len(), names.len());
     }
 
     #[test]
     fn tools_covers_every_op_plus_the_generic_one() {
         let c = catalog();
         let names: Vec<String> = tools(&c).into_iter().map(|t| t.name.to_string()).collect();
-        for op in OP_NAMES {
-            assert!(names.contains(&(*op).to_string()), "missing tool for {op}");
+        for op in op_names() {
+            assert!(names.contains(op), "missing tool for {op}");
         }
         assert!(names.contains(&GENERIC_TOOL.to_string()));
-        assert_eq!(names.len(), OP_NAMES.len() + 1);
+        assert_eq!(names.len(), op_names().len() + 1);
     }
 
     #[test]
