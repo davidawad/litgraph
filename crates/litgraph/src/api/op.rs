@@ -5,6 +5,8 @@
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
+use crate::clock::ServiceMethod;
+
 #[allow(clippy::wildcard_imports)] // serde `default = "..."` paths name these helpers
 use super::op_defaults::*;
 
@@ -225,6 +227,36 @@ pub enum Op {
         #[serde(default = "n::<15>")]
         top: usize,
     },
+    /// Concrete due dates, with computation steps, for authored pack
+    /// `deadline` specs (`FRCP 6` / `RCFC 6` / `FRAP 26` / `19 CFR
+    /// 210.6(a)`, chosen from the owning pack's `forum`/id).
+    Deadlines {
+        /// The triggering event date, `"YYYY-MM-DD"`.
+        trigger: String,
+        /// Compute only this edge's deadline (overrides `node`/`reachable`).
+        #[serde(default)]
+        edge: Option<String>,
+        /// Node whose out-edges to compute (default: start).
+        #[serde(default)]
+        node: Option<String>,
+        /// Walk every edge reachable from `node` (not just its immediate
+        /// out-edges).
+        #[serde(default)]
+        reachable: bool,
+        /// Service method adding days before the last-day roll
+        /// (6(d)/26(c)/201.16), if any.
+        #[serde(default)]
+        service_method: Option<ServiceMethod>,
+        /// State-declared or presidential/congressional holidays beyond
+        /// the computed federal set, each `"YYYY-MM-DD"`.
+        #[serde(default)]
+        additional_holidays: Vec<String>,
+        /// Clerk's office inaccessible on the last day (`FRCP`/`RCFC
+        /// 6(a)(3)`; ignored with a step note under rule sets that don't
+        /// define it).
+        #[serde(default)]
+        clerk_inaccessible: bool,
+    },
     /// Run `inner` under the scenario and under the scenario merge-patched with `variant`.
     Compare {
         /// JSON merge-patch applied to the scenario.
@@ -262,6 +294,7 @@ impl Op {
             Op::Tornado { .. } => "tornado",
             Op::Calibration { .. } => "calibration",
             Op::Structure { .. } => "structure",
+            Op::Deadlines { .. } => "deadlines",
             Op::Compare { .. } => "compare",
             Op::Batch { .. } => "batch",
         }

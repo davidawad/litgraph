@@ -47,7 +47,7 @@ are fallbacks.
 | `from`, `to`, `label` | string | |
 | `actor` | `applicant` \| `examiner` \| `office` \| `either` | v1 vocabulary kept for compatibility. Interpreted through `roles` |
 | `authority` | string | the rule/statute that authorizes or compels this transition |
-| `deadline` | `{length, unit?, extendable?, extensionAuthority?, note?}` | `length` in days. **v2** `unit`: `calendar` (default) or `court` (court days) |
+| `deadline` | `{length, unit?, extendable?, extensionAuthority?, note?}` | `length` in days. **v2** `unit`: `calendar` (default) or `court` (court days). The `deadlines` API op turns this into a concrete due date from a trigger date, choosing `FRCP 6`/`RCFC 6`/`FRAP 26`/`19 CFR 210.6(a)` by the pack's `forum` (see `docs/ARCHITECTURE.md`'s "Deadline clock") |
 | `duration` | `{min?, mode, max?}` days | **v2** expected elapsed calendar time for this transition. Distinct from `deadline` (a window you must act inside). If absent the engine falls back to `deadline.length` and says so |
 | `cost` | USD | out-of-pocket fees (filing fees, USPTO fees, bonds) |
 | `hours` | number | attorney hours to execute (self/opponent moves only) |

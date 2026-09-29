@@ -125,6 +125,7 @@ pub fn describe(catalog: &Catalog) -> Value {
             "tornado": "{params?, rel?, dp?, probabilities?, top?} what the answer is most sensitive to",
             "calibration": "{top?, dp?, rel?, max_candidates?} uncalibrated probabilities/durations ranked by decision sensitivity — what to calibrate next",
             "structure": "{what: summary|scc|dominators|mincut|betweenness|reachability, from?, to?, capacity?, top?}",
+            "deadlines": "{trigger, edge?, node?, reachable?, service_method?, additional_holidays?, clerk_inaccessible?} concrete due dates + computation steps for authored deadline specs (FRCP 6 / RCFC 6 / FRAP 26 / 19 CFR 210.6(a), chosen by pack forum)",
             "compare": "{variant: scenario merge-patch, inner: op} base vs variant + deltas",
             "batch": "{ops: [op, ...]} several ops on one request",
         },

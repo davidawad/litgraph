@@ -18,6 +18,7 @@
 
 mod calibration;
 mod catalog;
+mod deadlines;
 mod decide;
 mod describe;
 mod explore;
@@ -475,6 +476,26 @@ fn dispatch(req: &Request, catalog: &Catalog, g: &Graph, packs: &[Pack]) -> Answ
                 *top,
             ))
         }),
+        Op::Deadlines {
+            trigger,
+            edge,
+            node,
+            reachable,
+            service_method,
+            additional_holidays,
+            clerk_inaccessible,
+        } => deadlines::deadlines_op(
+            g,
+            &deadlines::DeadlinesArgs {
+                trigger,
+                node: node.as_deref(),
+                edge: edge.as_deref(),
+                reachable: *reachable,
+                service_method: *service_method,
+                additional_holidays,
+                clerk_inaccessible: *clerk_inaccessible,
+            },
+        ),
     }
 }
 

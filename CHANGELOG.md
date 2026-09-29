@@ -40,6 +40,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   image, and the nix flake (`packages.litgraph-mcp`) alongside `litgraph`.
   See the README's "MCP server" section for `claude mcp add`, Claude
   Desktop, and generic-client setup.
+- `clock` module: dependency-free deadline computation under `FRCP 6`,
+  `RCFC 6`, `FRAP 26` (also governs the Federal Circuit), and `19 CFR
+  210.6(a)` (ITC Section 337) — federal legal holidays (including
+  RCFC-only Inauguration Day), forward/backward day counting,
+  calendar-vs-court-day units, the 3-day mail/service rules (differing
+  service-method sets per rule set), `FRCP`/`RCFC 6(a)(2)` hours-based
+  periods, and `6(a)(3)` clerk-inaccessibility extensions. Ported from
+  `civ-pro-the-gathering`'s `src/engine/clock/`, re-verified against the
+  rule text.
+- `deadlines` API op: concrete due dates, with a step-by-step computation
+  trace, for an edge's authored `deadline`, a node's out-edges, or every
+  deadline reachable from a node — with `service_method`,
+  `additional_holidays`, and `clerk_inaccessible` options. Discoverable via
+  `describe`/`schema request`.
 
 ## [0.1.0] - 2026-09-28
 

@@ -19,6 +19,9 @@
 /// paths/pareto, sweep/tornado, structure (SCCs, dominators, min-cut).
 pub mod algo;
 pub mod api;
+/// Deadline computation: `FRCP 6`/`RCFC 6`/`FRAP 26`/`19 CFR 210.6(a)`
+/// court-day and calendar-day time computation.
+pub mod clock;
 /// The crate's error type and `Result` alias.
 pub mod error;
 pub mod expr;

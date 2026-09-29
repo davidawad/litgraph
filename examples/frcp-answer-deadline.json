@@ -1,0 +1,10 @@
+{
+  "packs": [
+    "frcp-civil-procedure"
+  ],
+  "op": {
+    "op": "deadlines",
+    "trigger": "2026-01-05",
+    "node": "service-completed"
+  }
+}

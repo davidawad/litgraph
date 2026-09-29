@@ -182,6 +182,22 @@ section for client setup (Claude Code, Claude Desktop, generic clients).
 scenario library to serve until the roadmap item below lands; the
 resource dispatch in `crates/litgraph-mcp/src/resources.rs` is already
 shaped so that adding them is one new match arm (tracked as bead lg-3cx).
+## Deadline clock
+
+`crates/litgraph/src/clock/` computes concrete due dates from a pack-authored
+`deadline` (`docs/PACK_SCHEMA.md`'s `Deadline.length`/`unit`) and a trigger
+date, independent of the graph/scenario layers above — a deadline is a fact
+about a forum's procedure, not a scenario-dependent quantity. Four rule sets:
+`FRCP 6`, `RCFC 6` (textually identical to FRCP 6 except it also lists
+Inauguration Day as a legal holiday), `FRAP 26` (also governs the Federal
+Circuit; shares FRCP 6(a)(1)'s day-counting mechanics but a different
+service-method set for its 3-day extension), and `19 CFR 210.6(a)` (ITC
+Section 337 — a genuinely different algorithm: a business-day anchor and
+business-day counting for periods under 7 days). The `deadlines` API op
+resolves which rule set governs from the owning pack's `forum` (or, failing
+that, its id) and returns the due date with every computation step cited to
+its subsection, for one edge, a node's out-edges, or every deadline
+reachable from a node.
 
 ## Roadmap (tracked as beads)
 
@@ -189,7 +205,6 @@ shaped so that adding them is one new match arm (tracked as bead lg-3cx).
   `src/lib/graph` (one engine, two front ends).
 - State flags on edges (`sets`/`requires`) compiled to a product graph:
   estoppel, waiver memory, RCE counts, cross-forum preclusion.
-- Port civ-pro's deadline clock (court days, holidays, FRCP/RCFC 6).
 - Scenario library (`scenarios/*.json`) for named matter profiles.
 - ~~Calibration pipeline: probabilities and durations from docket data~~
   **Delivered**: `calibration/*.json` (embedded like packs; `scenario.calibration`,
