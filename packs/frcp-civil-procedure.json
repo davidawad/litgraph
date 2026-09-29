@@ -204,7 +204,7 @@
       "label": "DEFAULT JUDGMENT ENTERED",
       "kind": "terminal",
       "cite": "FRCP 55(b)(1); 55(b)(2)",
-      "note": "PERMADEATH (absent a successful Rule 60(b) motion, not separately modeled from this terminal). The clerk enters judgment for a sum certain if the defendant has not appeared and is not a minor or incompetent (55(b)(1)); otherwise the court enters it, and may hold a hearing to determine damages, establish the truth of an allegation, or investigate any other matter (55(b)(2)). Well-pleaded factual allegations (other than damages) are taken as true against the defaulting party -- damages must still be proven. PLACEHOLDER PAYOFF: $900,000, override per matter. Entered against a non-appearing defendant -- a real win for the plaintiff (self), discounted from a full $1,000,000 because it was never tested on the merits. The pack's authored `valence` of \"bad\" reflects how disfavored/drastic default judgments are procedurally, not who benefits -- flagged since it runs the other way from self's payoff.",
+      "note": "PERMADEATH (absent a successful Rule 60(b) motion, not separately modeled from this terminal). The clerk enters judgment for a sum certain if the defendant has not appeared and is not a minor or incompetent (55(b)(1)); otherwise the court enters it, and may hold a hearing to determine damages, establish the truth of an allegation, or investigate any other matter (55(b)(2)). Well-pleaded factual allegations (other than damages) are taken as true against the defaulting party -- damages must still be proven. PLACEHOLDER PAYOFF: $900,000, override per matter. Entered against a non-appearing defendant -- a real win for the plaintiff (self), discounted from a full $1,000,000 because it was never tested on the merits. The pack's authored `valence` of 'bad' reflects how disfavored/drastic default judgments are procedurally, not who benefits -- flagged since it runs the other way from self's payoff.",
       "group": "pleading-group",
       "valence": "bad",
       "payoff": 900000,
@@ -218,7 +218,7 @@
       "label": "VOLUNTARY / STIPULATED DISMISSAL",
       "kind": "terminal",
       "cite": "FRCP 41(a)",
-      "note": "Plaintiff may dismiss without a court order by filing a notice of dismissal before the opposing party serves either an answer or a summary-judgment motion (41(a)(1)(A)(i)), or by a stipulation signed by all parties who have appeared (41(a)(1)(A)(ii)) -- the common vehicle for a negotiated settlement. Otherwise dismissal requires a court order, typically on terms the court considers proper (41(a)(2)). A first 41(a)(1) dismissal is without prejudice unless the notice/stipulation states otherwise; a SECOND dismissal of the same claim operates as an adjudication on the merits (the 'two-dismissal rule,' 41(a)(1)(B)) -- not itself further modeled here. PLACEHOLDER PAYOFF: $400,000, override per matter, matching this project's settlement tier -- per this terminal's own note, \"the common vehicle for a negotiated settlement.\"",
+      "note": "Plaintiff may dismiss without a court order by filing a notice of dismissal before the opposing party serves either an answer or a summary-judgment motion (41(a)(1)(A)(i)), or by a stipulation signed by all parties who have appeared (41(a)(1)(A)(ii)) -- the common vehicle for a negotiated settlement. Otherwise dismissal requires a court order, typically on terms the court considers proper (41(a)(2)). A first 41(a)(1) dismissal is without prejudice unless the notice/stipulation states otherwise; a SECOND dismissal of the same claim operates as an adjudication on the merits (the 'two-dismissal rule,' 41(a)(1)(B)) -- not itself further modeled here. PLACEHOLDER PAYOFF: $400,000, override per matter, matching this project's settlement tier -- per this terminal's own note, 'the common vehicle for a negotiated settlement.'",
       "group": "pleading-group",
       "valence": "good",
       "payoff": 400000,
@@ -372,7 +372,7 @@
       "label": "DEFAULT JUDGMENT -- Discovery Sanction",
       "kind": "terminal",
       "cite": "FRCP 37(b)(2)(A)(vi)",
-      "note": "PERMADEATH for the defendant. The defendant's discovery misconduct (disobeying a compel order, spoliating evidence with intent to deprive) was severe enough to warrant default judgment as a sanction -- the adversarial mirror image of dismissal, and equally disfavored absent a clear showing of willfulness or bad faith. PLACEHOLDER PAYOFF: $900,000, override per matter. Per this terminal's own note, this sanction runs against the DEFENDANT's misconduct -- a real win for the plaintiff (self), discounted from a full $1,000,000 because it was never tested on the merits. The pack's authored `valence` of \"bad\" reflects how disfavored the sanction is procedurally, not who benefits -- flagged since it runs the other way from self's payoff.",
+      "note": "PERMADEATH for the defendant. The defendant's discovery misconduct (disobeying a compel order, spoliating evidence with intent to deprive) was severe enough to warrant default judgment as a sanction -- the adversarial mirror image of dismissal, and equally disfavored absent a clear showing of willfulness or bad faith. PLACEHOLDER PAYOFF: $900,000, override per matter. Per this terminal's own note, this sanction runs against the DEFENDANT's misconduct -- a real win for the plaintiff (self), discounted from a full $1,000,000 because it was never tested on the merits. The pack's authored `valence` of 'bad' reflects how disfavored the sanction is procedurally, not who benefits -- flagged since it runs the other way from self's payoff.",
       "group": "discovery-group",
       "courtListenerUrl": "https://www.courtlistener.com/opinion/8776470/victor-stanley-inc-v-creative-pipe-inc/",
       "valence": "bad",
@@ -422,7 +422,7 @@
       "label": "SUMMARY JUDGMENT ENTERED",
       "kind": "terminal",
       "cite": "FRCP 56(a)",
-      "note": "PERMADEATH for the losing party's claims/defenses on the merits (subject to appeal). No genuine dispute of material fact exists and the movant -- plaintiff or defendant -- is entitled to judgment as a matter of law on the full case. A grant of summary judgment is reviewed de novo on appeal, unlike a jury verdict's deferential review. PLACEHOLDER PAYOFF: $500,000 (stake midpoint), override per matter. This pack does not branch on which party a judgment favors -- `verdict-rendered`'s \"for plaintiff\"/\"for defendant\" edges both lead to the same `final-judgment-entered` state, and every downstream terminal (summary judgment, appeal outcomes) tracks only the procedural posture from there, not who won. A single payoff here necessarily blends a possible plaintiff win with a possible plaintiff loss; override with scenario.payoffs once the matter's actual judgment is known.",
+      "note": "PERMADEATH for the losing party's claims/defenses on the merits (subject to appeal). No genuine dispute of material fact exists and the movant -- plaintiff or defendant -- is entitled to judgment as a matter of law on the full case. A grant of summary judgment is reviewed de novo on appeal, unlike a jury verdict's deferential review. PLACEHOLDER PAYOFF: $500,000 (stake midpoint), override per matter. This pack does not branch on which party a judgment favors -- `verdict-rendered`'s 'for plaintiff'/'for defendant' edges both lead to the same `final-judgment-entered` state, and every downstream terminal (summary judgment, appeal outcomes) tracks only the procedural posture from there, not who won. A single payoff here necessarily blends a possible plaintiff win with a possible plaintiff loss; override with scenario.payoffs once the matter's actual judgment is known.",
       "group": "pretrial-motions-group",
       "courtListenerUrl": "https://www.courtlistener.com/opinion/145738/scott-v-harris/",
       "valence": "good",
@@ -576,7 +576,7 @@
       "label": "APPEAL FORFEITED -- Judgment Final",
       "kind": "terminal",
       "cite": "FRAP 4(a)(1)(A); Bowles v. Russell, 551 U.S. 205 (2007)",
-      "note": "PERMADEATH. No notice of appeal within 30 days (60 if the U.S. is a party) and no timely FRAP 4(a)(5) extension motion. Because the deadline is jurisdictional rather than a claim-processing rule, the court of appeals lacks power to hear the appeal even if the appellee never objects to its untimeliness -- the single most consequential deadline-as-permadeath trap in federal civil practice, the direct analog of the MPEP pack's 35 U.S.C. 133 six-month abandonment ceiling. PLACEHOLDER PAYOFF: $350,000, override per matter -- below the blended-neutral midpoint because a missed deadline (not a deliberate choice by either side) forecloses appellate correction of whatever the judgment was. This pack does not branch on which party a judgment favors -- `verdict-rendered`'s \"for plaintiff\"/\"for defendant\" edges both lead to the same `final-judgment-entered` state, and every downstream terminal (summary judgment, appeal outcomes) tracks only the procedural posture from there, not who won. A single payoff here necessarily blends a possible plaintiff win with a possible plaintiff loss; override with scenario.payoffs once the matter's actual judgment is known.",
+      "note": "PERMADEATH. No notice of appeal within 30 days (60 if the U.S. is a party) and no timely FRAP 4(a)(5) extension motion. Because the deadline is jurisdictional rather than a claim-processing rule, the court of appeals lacks power to hear the appeal even if the appellee never objects to its untimeliness -- the single most consequential deadline-as-permadeath trap in federal civil practice, the direct analog of the MPEP pack's 35 U.S.C. 133 six-month abandonment ceiling. PLACEHOLDER PAYOFF: $350,000, override per matter -- below the blended-neutral midpoint because a missed deadline (not a deliberate choice by either side) forecloses appellate correction of whatever the judgment was. This pack does not branch on which party a judgment favors -- `verdict-rendered`'s 'for plaintiff'/'for defendant' edges both lead to the same `final-judgment-entered` state, and every downstream terminal (summary judgment, appeal outcomes) tracks only the procedural posture from there, not who won. A single payoff here necessarily blends a possible plaintiff win with a possible plaintiff loss; override with scenario.payoffs once the matter's actual judgment is known.",
       "group": "judgment-appeal-group",
       "courtListenerUrl": "https://www.courtlistener.com/opinion/145714/bowles-v-russell/",
       "valence": "bad",
@@ -592,7 +592,7 @@
       "label": "JUDGMENT FINAL -- No Appeal Taken",
       "kind": "terminal",
       "cite": "28 U.S.C. 1291",
-      "note": "The losing party had a live right to appeal and elected not to exercise it within the FRAP 4(a) window. The judgment becomes final and, subject to any available collateral remedies (a Rule 60(b) motion in the district court, not further modeled here), is no longer open to challenge in this action. PLACEHOLDER PAYOFF: $500,000 (stake midpoint), override per matter. This pack does not branch on which party a judgment favors -- `verdict-rendered`'s \"for plaintiff\"/\"for defendant\" edges both lead to the same `final-judgment-entered` state, and every downstream terminal (summary judgment, appeal outcomes) tracks only the procedural posture from there, not who won. A single payoff here necessarily blends a possible plaintiff win with a possible plaintiff loss; override with scenario.payoffs once the matter's actual judgment is known.",
+      "note": "The losing party had a live right to appeal and elected not to exercise it within the FRAP 4(a) window. The judgment becomes final and, subject to any available collateral remedies (a Rule 60(b) motion in the district court, not further modeled here), is no longer open to challenge in this action. PLACEHOLDER PAYOFF: $500,000 (stake midpoint), override per matter. This pack does not branch on which party a judgment favors -- `verdict-rendered`'s 'for plaintiff'/'for defendant' edges both lead to the same `final-judgment-entered` state, and every downstream terminal (summary judgment, appeal outcomes) tracks only the procedural posture from there, not who won. A single payoff here necessarily blends a possible plaintiff win with a possible plaintiff loss; override with scenario.payoffs once the matter's actual judgment is known.",
       "group": "judgment-appeal-group",
       "valence": "good",
       "payoff": 500000,
@@ -637,7 +637,7 @@
       "label": "JUDGMENT AFFIRMED ON APPEAL",
       "kind": "terminal",
       "cite": "28 U.S.C. 1291",
-      "note": "The district court's judgment stands. Subject only to the narrow, discretionary avenue of a petition for certiorari to the Supreme Court (28 U.S.C. 1254(1); not separately modeled in this chart), the case is over. PLACEHOLDER PAYOFF: $500,000 (stake midpoint), override per matter. This pack does not branch on which party a judgment favors -- `verdict-rendered`'s \"for plaintiff\"/\"for defendant\" edges both lead to the same `final-judgment-entered` state, and every downstream terminal (summary judgment, appeal outcomes) tracks only the procedural posture from there, not who won. A single payoff here necessarily blends a possible plaintiff win with a possible plaintiff loss; override with scenario.payoffs once the matter's actual judgment is known.",
+      "note": "The district court's judgment stands. Subject only to the narrow, discretionary avenue of a petition for certiorari to the Supreme Court (28 U.S.C. 1254(1); not separately modeled in this chart), the case is over. PLACEHOLDER PAYOFF: $500,000 (stake midpoint), override per matter. This pack does not branch on which party a judgment favors -- `verdict-rendered`'s 'for plaintiff'/'for defendant' edges both lead to the same `final-judgment-entered` state, and every downstream terminal (summary judgment, appeal outcomes) tracks only the procedural posture from there, not who won. A single payoff here necessarily blends a possible plaintiff win with a possible plaintiff loss; override with scenario.payoffs once the matter's actual judgment is known.",
       "group": "judgment-appeal-group",
       "courtListenerUrl": "https://www.courtlistener.com/opinion/9395291/epic-games-inc-v-apple-inc/",
       "valence": "good",
@@ -652,7 +652,7 @@
       "label": "JUDGMENT REVERSED / VACATED AND REMANDED",
       "kind": "terminal",
       "cite": "28 U.S.C. 2106",
-      "note": "The court of appeals may affirm, modify, vacate, set aside, or reverse any judgment and remand the case with instructions as just under the circumstances (28 U.S.C. 2106). Marks the end of THIS chart's walk -- the remanded case re-enters district-court proceedings at whatever posture the mandate specifies (a new trial, reconsideration of a single ruling, or entry of a different judgment), which this pack does not separately re-model to avoid an unbounded loop back through the whole procedural history. PLACEHOLDER PAYOFF: $400,000, override per matter, matching this project's remand tier. This pack does not branch on which party a judgment favors -- `verdict-rendered`'s \"for plaintiff\"/\"for defendant\" edges both lead to the same `final-judgment-entered` state, and every downstream terminal (summary judgment, appeal outcomes) tracks only the procedural posture from there, not who won. A single payoff here necessarily blends a possible plaintiff win with a possible plaintiff loss; override with scenario.payoffs once the matter's actual judgment is known.",
+      "note": "The court of appeals may affirm, modify, vacate, set aside, or reverse any judgment and remand the case with instructions as just under the circumstances (28 U.S.C. 2106). Marks the end of THIS chart's walk -- the remanded case re-enters district-court proceedings at whatever posture the mandate specifies (a new trial, reconsideration of a single ruling, or entry of a different judgment), which this pack does not separately re-model to avoid an unbounded loop back through the whole procedural history. PLACEHOLDER PAYOFF: $400,000, override per matter, matching this project's remand tier. This pack does not branch on which party a judgment favors -- `verdict-rendered`'s 'for plaintiff'/'for defendant' edges both lead to the same `final-judgment-entered` state, and every downstream terminal (summary judgment, appeal outcomes) tracks only the procedural posture from there, not who won. A single payoff here necessarily blends a possible plaintiff win with a possible plaintiff loss; override with scenario.payoffs once the matter's actual judgment is known.",
       "group": "judgment-appeal-group",
       "courtListenerUrl": "https://www.courtlistener.com/opinion/779367/residential-funding-corporation-v-degeorge-financial-corp-degeorge-home/",
       "valence": "caution",
@@ -1812,39 +1812,57 @@
       "title": "Federal Rules of Civil Procedure, as amended to Dec. 1, 2024",
       "url": "https://www.uscourts.gov/sites/default/files/2025-02/federal-rules-of-civil-procedure-dec-1-2024_0.pdf",
       "sha256": "c86b327b3bbe7dd3e68ea434a2bf0bc62aee8e85229f3456f094a1b232568317",
-      "asOf": "2024-12-01"
+      "asOf": "2024-12-01",
+      "path": "sources/frcp.txt"
     },
     {
       "id": "frap-rules",
       "title": "Federal Rules of Appellate Procedure, as amended to Dec. 1, 2024 (FRAP 4(a) civil appeal clock)",
       "url": "https://www.uscourts.gov/sites/default/files/2025-02/federal-rules-of-appellate-procedure-dec-1-2024_0.pdf",
       "sha256": "d61711eca8e1f65955d12f1b7d29d4cc453d9ee1e30c4fff6c54b23f113454f6",
-      "asOf": "2024-12-01"
+      "asOf": "2024-12-01",
+      "path": "sources/frap.txt"
     },
     {
       "id": "usc28-1447",
       "title": "28 U.S.C. § 1447 (Procedure after removal; 1447(d) unreviewability)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/1447"
+      "url": "https://www.law.cornell.edu/uscode/text/28/1447",
+      "path": "sources/usc-cfr-prosecution-fragments.txt"
     },
     {
       "id": "usc28-1291",
       "title": "28 U.S.C. § 1291 (Final decisions of district courts)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/1291"
+      "url": "https://www.law.cornell.edu/uscode/text/28/1291",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "usc28-1254",
       "title": "28 U.S.C. § 1254 (Courts of appeals; certiorari)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/1254"
+      "url": "https://www.law.cornell.edu/uscode/text/28/1254",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "usc28-2106",
       "title": "28 U.S.C. § 2106 (Determination of appellate court)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/2106"
+      "url": "https://www.law.cornell.edu/uscode/text/28/2106",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "frcp-12h",
       "title": "Fed. R. Civ. P. 12(h) — Waiving and Preserving Certain Defenses",
       "url": "https://www.law.cornell.edu/rules/frcp/rule_12"
+    },
+    {
+      "id": "usc28-1332",
+      "title": "28 U.S.C. § 1332 (Diversity jurisdiction)",
+      "url": "https://www.law.cornell.edu/uscode/text/28/1332",
+      "path": "sources/usc-additional.txt"
+    },
+    {
+      "id": "usc28-1391",
+      "title": "28 U.S.C. § 1391 (Venue generally)",
+      "url": "https://www.law.cornell.edu/uscode/text/28/1391",
+      "path": "sources/usc-additional.txt"
     }
   ]
 }

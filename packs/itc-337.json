@@ -401,7 +401,7 @@
       "label": "Presidential/USTR Disapproval — No Force or Effect",
       "kind": "terminal",
       "cite": "usc1337.j",
-      "note": "'[S]uch determination and the action taken... shall have no force or effect.' Not merely the remedy — the DETERMINATION ITSELF is voided, which is why this is modeled as a clean terminal with no onward Federal Circuit appeal edge: there is nothing left to appeal. A governor's-clemency-style override of what looked like a final civil judgment, with no FRCP analog. PLACEHOLDER PAYOFF: $50,000, override per matter. This terminal is only reachable after a VIOLATION finding and remedy (`remedy-determined`) -- the merits were won, but § 1337(j) voids the determination and remedy entirely, so self recovers no exclusion/cease-desist relief. The pack's authored `valence` of \"good\" reflects the rarity/drama of a presidential override, not self's economic outcome; this payoff instead reflects the lost remedy (nominal vindication value only).",
+      "note": "'[S]uch determination and the action taken... shall have no force or effect.' Not merely the remedy — the DETERMINATION ITSELF is voided, which is why this is modeled as a clean terminal with no onward Federal Circuit appeal edge: there is nothing left to appeal. A governor's-clemency-style override of what looked like a final civil judgment, with no FRCP analog. PLACEHOLDER PAYOFF: $50,000, override per matter. This terminal is only reachable after a VIOLATION finding and remedy (`remedy-determined`) -- the merits were won, but § 1337(j) voids the determination and remedy entirely, so self recovers no exclusion/cease-desist relief. The pack's authored `valence` of 'good' reflects the rarity/drama of a presidential override, not self's economic outcome; this payoff instead reflects the lost remedy (nominal vindication value only).",
       "group": "presidential-review-group",
       "valence": "good",
       "payoff": 50000,
@@ -1278,23 +1278,27 @@
     {
       "id": "usc-1337",
       "title": "19 U.S.C. § 1337 (Unfair practices in import trade)",
-      "url": "https://www.law.cornell.edu/uscode/text/19/1337"
+      "url": "https://www.law.cornell.edu/uscode/text/19/1337",
+      "path": "sources/usc-19-1337.txt"
     },
     {
       "id": "cfr-210",
       "title": "19 C.F.R. Part 210 (USITC Rules of Adjudication and Enforcement), current",
       "url": "https://www.ecfr.gov/current/title-19/chapter-II/part-210",
-      "asOf": "2026-08-26"
+      "asOf": "2026-08-26",
+      "path": "sources/cfr-19-part210.txt"
     },
     {
       "id": "usc5-556",
       "title": "5 U.S.C. § 556 (APA hearing procedure)",
-      "url": "https://www.law.cornell.edu/uscode/text/5/556"
+      "url": "https://www.law.cornell.edu/uscode/text/5/556",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "usc28-1295",
       "title": "28 U.S.C. § 1295(a)(6) (CAFC jurisdiction over ITC § 337 appeals)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/1295"
+      "url": "https://www.law.cornell.edu/uscode/text/28/1295",
+      "path": "sources/usc-additional.txt"
     }
   ]
 }

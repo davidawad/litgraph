@@ -404,7 +404,7 @@
       "label": "AFFIRMED",
       "group": "merits-group",
       "cite": "FRAP 36(a)",
-      "note": "Judgment stands because no reversible error was found, but 'affirmed' need not mean the court agreed with the district court's reasoning — it only means the outcome was legally permissible. The real trap is assuming the panel endorsed the lower court's reasoning. PLACEHOLDER PAYOFF: $0, override per matter. Self is the appellant (the party that lost below and sought review); AFFIRMED means that loss stands. The pack's authored `valence` of \"good\" tracks a clean/expected disposition, not who wins -- flagged since it runs the other way from self's payoff.",
+      "note": "Judgment stands because no reversible error was found, but 'affirmed' need not mean the court agreed with the district court's reasoning — it only means the outcome was legally permissible. The real trap is assuming the panel endorsed the lower court's reasoning. PLACEHOLDER PAYOFF: $0, override per matter. Self is the appellant (the party that lost below and sought review); AFFIRMED means that loss stands. The pack's authored `valence` of 'good' tracks a clean/expected disposition, not who wins -- flagged since it runs the other way from self's payoff.",
       "valence": "good",
       "payoff": 0,
       "outcome": [
@@ -1652,27 +1652,32 @@
       "title": "Federal Rules of Appellate Procedure, as amended to Dec. 1, 2024",
       "url": "https://www.uscourts.gov/sites/default/files/2025-02/federal-rules-of-appellate-procedure-dec-1-2024_0.pdf",
       "sha256": "d61711eca8e1f65955d12f1b7d29d4cc453d9ee1e30c4fff6c54b23f113454f6",
-      "asOf": "2024-12-01"
+      "asOf": "2024-12-01",
+      "path": "sources/frap.txt"
     },
     {
       "id": "usc28-1291",
       "title": "28 U.S.C. § 1291 (Final decisions of district courts)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/1291"
+      "url": "https://www.law.cornell.edu/uscode/text/28/1291",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "usc28-1292",
       "title": "28 U.S.C. § 1292 (Interlocutory decisions)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/1292"
+      "url": "https://www.law.cornell.edu/uscode/text/28/1292",
+      "path": "sources/usc-cfr-prosecution-fragments.txt"
     },
     {
       "id": "usc28-1254",
       "title": "28 U.S.C. § 1254 (Courts of appeals; certiorari)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/1254"
+      "url": "https://www.law.cornell.edu/uscode/text/28/1254",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "usc28-2107",
       "title": "28 U.S.C. § 2107 (Time for appeal to courts of appeals)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/2107"
+      "url": "https://www.law.cornell.edu/uscode/text/28/2107",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "scotus-rules",
@@ -1680,6 +1685,14 @@
       "url": "https://www.supremecourt.gov/filingandrules/2023RulesoftheCourt.pdf",
       "sha256": "05f435c766fd596333828846d097828238ff89a266c24e3afca9ecd2fb9c19db",
       "asOf": "2023-01-01"
+    },
+    {
+      "id": "frcp-rules-cite",
+      "title": "Federal Rules of Civil Procedure, as amended to Dec. 1, 2024 (FRCP 50/52/59/60 post-trial motions tolling the appeal clock)",
+      "url": "https://www.uscourts.gov/sites/default/files/2025-02/federal-rules-of-civil-procedure-dec-1-2024_0.pdf",
+      "sha256": "c86b327b3bbe7dd3e68ea434a2bf0bc62aee8e85229f3456f094a1b232568317",
+      "asOf": "2024-12-01",
+      "path": "sources/frcp.txt"
     }
   ]
 }

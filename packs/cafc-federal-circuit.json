@@ -68,7 +68,8 @@
       "title": "Federal Circuit Rules of Practice (FRAP + Federal Circuit Rules + Practice Notes + Attorney Discipline Rules, combined)",
       "url": "https://www.cafc.uscourts.gov/wp-content/uploads/RulesProceduresAndForms/FederalCircuitRules/FederalCircuitRulesofPractice.pdf",
       "sha256": "b6346ed56a0ef66e8a681765873caf69239cda273f8946f1625571e013712c05",
-      "asOf": "2025-12-01"
+      "asOf": "2025-12-01",
+      "path": "sources/fedcir-rules.txt"
     },
     {
       "id": "fedcir-iops",
@@ -110,6 +111,68 @@
       "id": "itc-pack",
       "title": "itc-337.json (links into entry-itc / remanded-to-itc)",
       "path": "packs/itc-337.json"
+    },
+    {
+      "id": "frap-rules-cite",
+      "title": "Federal Rules of Appellate Procedure, as amended to Dec. 1, 2024 (incorporated by Fed. Cir. R.)",
+      "url": "https://www.uscourts.gov/sites/default/files/2025-02/federal-rules-of-appellate-procedure-dec-1-2024_0.pdf",
+      "sha256": "d61711eca8e1f65955d12f1b7d29d4cc453d9ee1e30c4fff6c54b23f113454f6",
+      "asOf": "2024-12-01",
+      "path": "sources/frap.txt"
+    },
+    {
+      "id": "usc28-1295-cite",
+      "title": "28 U.S.C. § 1295 (Federal Circuit jurisdiction)",
+      "url": "https://www.law.cornell.edu/uscode/text/28/1295",
+      "path": "sources/usc-additional.txt"
+    },
+    {
+      "id": "usc28-2522-cite",
+      "title": "28 U.S.C. § 2522 (Notice of appeal, CoFC)",
+      "url": "https://www.law.cornell.edu/uscode/text/28/2522",
+      "path": "sources/usc-additional.txt"
+    },
+    {
+      "id": "usc28-2107-cite",
+      "title": "28 U.S.C. § 2107 (Time for appeal to courts of appeals)",
+      "url": "https://www.law.cornell.edu/uscode/text/28/2107",
+      "path": "sources/usc-additional.txt"
+    },
+    {
+      "id": "usc28-2101-cite",
+      "title": "28 U.S.C. § 2101 (Supreme Court review time limitations)",
+      "url": "https://www.law.cornell.edu/uscode/text/28/2101",
+      "path": "sources/usc-additional.txt"
+    },
+    {
+      "id": "usc28-1254-cite",
+      "title": "28 U.S.C. § 1254 (Courts of appeals; certiorari)",
+      "url": "https://www.law.cornell.edu/uscode/text/28/1254",
+      "path": "sources/usc-additional.txt"
+    },
+    {
+      "id": "usc35-142-cite",
+      "title": "35 U.S.C. § 142 (Time for appeal from PTAB)",
+      "url": "https://www.law.cornell.edu/uscode/text/35/142",
+      "path": "sources/usc-additional.txt"
+    },
+    {
+      "id": "usc35-319-cite",
+      "title": "35 U.S.C. § 319 (Appeal of a PTAB final written decision)",
+      "url": "https://www.law.cornell.edu/uscode/text/35/319",
+      "path": "sources/usc-additional.txt"
+    },
+    {
+      "id": "usc-1337-cite",
+      "title": "19 U.S.C. § 1337 (ITC unfair-import-practices statute)",
+      "url": "https://www.law.cornell.edu/uscode/text/19/1337",
+      "path": "sources/usc-19-1337.txt"
+    },
+    {
+      "id": "cfr37-90-cite",
+      "title": "37 C.F.R. § 90.3 (Time for appeal from PTAB)",
+      "url": "https://www.ecfr.gov/current/title-37/chapter-I/subchapter-A/part-90",
+      "path": "sources/usc-cfr-prosecution-fragments.txt"
     }
   ],
   "nodes": [

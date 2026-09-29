@@ -136,7 +136,7 @@
       "kind": "terminal",
       "group": "charging-group",
       "cite": "Fed. R. Crim. P. 5.1(f)",
-      "note": "Magistrate finds no probable cause; defendant discharged on this complaint. Not a double jeopardy bar — jeopardy has not attached, so the government routinely re-prosecutes via grand jury indictment on the same conduct. PLACEHOLDER PAYOFF: $800,000, override per matter. Slightly discounted from a full win because, per this terminal's own note, the government \"routinely re-prosecutes via grand jury indictment\" on the same conduct.",
+      "note": "Magistrate finds no probable cause; defendant discharged on this complaint. Not a double jeopardy bar — jeopardy has not attached, so the government routinely re-prosecutes via grand jury indictment on the same conduct. PLACEHOLDER PAYOFF: $800,000, override per matter. Slightly discounted from a full win because, per this terminal's own note, the government 'routinely re-prosecutes via grand jury indictment' on the same conduct.",
       "valence": "good",
       "payoff": 800000,
       "outcome": [
@@ -560,7 +560,7 @@
       "kind": "terminal",
       "group": "appeal-group",
       "cite": "Fed. R. App. P. 4(b)",
-      "note": "Defendant deliberately lets the window lapse, often pursuant to an appeal-waiver plea agreement. Judgment becomes final for purposes of the AEDPA collateral-review clock under 28 U.S.C. § 2255(f); direct appeal is no longer available. PLACEHOLDER PAYOFF: $100,000, override per matter. Per this terminal's own note, this is often reached \"pursuant to an appeal-waiver plea agreement\" -- a deliberate, negotiated finality, valued slightly above an unreviewed trial conviction.",
+      "note": "Defendant deliberately lets the window lapse, often pursuant to an appeal-waiver plea agreement. Judgment becomes final for purposes of the AEDPA collateral-review clock under 28 U.S.C. § 2255(f); direct appeal is no longer available. PLACEHOLDER PAYOFF: $100,000, override per matter. Per this terminal's own note, this is often reached 'pursuant to an appeal-waiver plea agreement' -- a deliberate, negotiated finality, valued slightly above an unreviewed trial conviction.",
       "valence": "good",
       "payoff": 100000,
       "outcome": [
@@ -1467,34 +1467,70 @@
       "title": "Federal Rules of Criminal Procedure, as amended to Dec. 1, 2024",
       "url": "https://www.uscourts.gov/sites/default/files/2025-02/federal-rules-of-criminal-procedure-dec-1-2024_0.pdf",
       "sha256": "c89161b8a258b62af4d5298de832c43bd72f2eea1104c7625a5b561658e5875c",
-      "asOf": "2024-12-01"
+      "asOf": "2024-12-01",
+      "path": "sources/frcrimp.txt"
     },
     {
       "id": "frap-rules",
       "title": "Federal Rules of Appellate Procedure, as amended to Dec. 1, 2024 (FRAP 4(b) criminal appeal clock)",
       "url": "https://www.uscourts.gov/sites/default/files/2025-02/federal-rules-of-appellate-procedure-dec-1-2024_0.pdf",
       "sha256": "d61711eca8e1f65955d12f1b7d29d4cc453d9ee1e30c4fff6c54b23f113454f6",
-      "asOf": "2024-12-01"
+      "asOf": "2024-12-01",
+      "path": "sources/frap.txt"
     },
     {
       "id": "usc18-3161",
       "title": "18 U.S.C. §§ 3161-3162 (Speedy Trial Act)",
-      "url": "https://www.law.cornell.edu/uscode/text/18/3161"
+      "url": "https://www.law.cornell.edu/uscode/text/18/3161",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "usc18-3282",
       "title": "18 U.S.C. § 3282 (Offenses not capital -- 5-year limitations)",
-      "url": "https://www.law.cornell.edu/uscode/text/18/3282"
+      "url": "https://www.law.cornell.edu/uscode/text/18/3282",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "usc28-1291",
       "title": "28 U.S.C. § 1291 (Final decisions of district courts)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/1291"
+      "url": "https://www.law.cornell.edu/uscode/text/28/1291",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "usc28-2255",
       "title": "28 U.S.C. § 2255 (Collateral attack on a federal sentence)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/2255"
+      "url": "https://www.law.cornell.edu/uscode/text/28/2255",
+      "path": "sources/usc-additional.txt"
+    },
+    {
+      "id": "usc18-3142",
+      "title": "18 U.S.C. § 3142 (Release or detention of a defendant pending trial)",
+      "url": "https://www.law.cornell.edu/uscode/text/18/3142",
+      "path": "sources/usc-additional.txt"
+    },
+    {
+      "id": "usc18-3162",
+      "title": "18 U.S.C. § 3162 (Speedy Trial Act sanctions)",
+      "url": "https://www.law.cornell.edu/uscode/text/18/3162",
+      "path": "sources/usc-additional.txt"
+    },
+    {
+      "id": "usc18-3501",
+      "title": "18 U.S.C. § 3501 (Admissibility of confessions)",
+      "url": "https://www.law.cornell.edu/uscode/text/18/3501",
+      "path": "sources/usc-additional.txt"
+    },
+    {
+      "id": "usc18-3552",
+      "title": "18 U.S.C. § 3552 (Presentence report)",
+      "url": "https://www.law.cornell.edu/uscode/text/18/3552",
+      "path": "sources/usc-additional.txt"
+    },
+    {
+      "id": "usc18-3553",
+      "title": "18 U.S.C. § 3553 (Imposition of a sentence)",
+      "url": "https://www.law.cornell.edu/uscode/text/18/3553",
+      "path": "sources/usc-additional.txt"
     }
   ]
 }

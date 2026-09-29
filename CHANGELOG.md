@@ -89,10 +89,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `sources/PROVENANCE.md` for why plain text was vendored instead of
   fetched at lint/test time, and each file's exact provenance/sha256),
   embedded into the binary the same way `packs/` is, with a
-  `LITGRAPH_SOURCES` directory override mirroring `LITGRAPH_PACKS`. No
-  pack currently wires `sources[].path` to vendored text yet (tracked as a
-  follow-up); `cargo test --test cite_coverage_report -- --nocapture`
-  reports current coverage across every embedded pack.
+  `LITGRAPH_SOURCES` directory override mirroring `LITGRAPH_PACKS`.
+  `cargo test --test cite_coverage_report -- --nocapture` reports current
+  coverage across every embedded pack (see the next entry: every pack's
+  `sources[].path` is now wired).
 - **Matter facts** (`scenario.facts`): a chance node tagged `"fact"` in a pack
   represents a matter fact knowable at filing (time-barred? already pending
   elsewhere? a patent case?), not real uncertainty. `scenario.facts` (`{node
@@ -211,6 +211,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   per-file strictness (schema, `deny_unknown_fields`) is unchanged -- this
   is about the blast radius of one bad file, not about being lenient with
   its content.
+- **Cite verification actually wired**: every pack's `sources[].path` now
+  points at the vendored L0 text it needs — `unverifiable-cite` warnings
+  drop from ~1400 to 8 (98.5% resolved; ~99.5% of in-scope citations), the
+  remaining 8 all one documented gap (`sources/PROVENANCE.md`: a handful of
+  MPEP sections a two-column PDF layout couldn't cleanly isolate). New
+  vendored files: `rcfc.txt` (112 RCFC rules), `fedcir-rules.txt` (55 Fed.
+  Cir. local rules), `frcrimp.txt` (62 FRCrimP rules), `mpep.txt` (466 MPEP
+  sections, ported from `civ-pro-the-gathering`'s conversion plus targeted
+  PDF extraction), `cfr-19-part210.txt`/`cfr-37-part1.txt`/`cfr-37-part41.txt`
+  (full eCFR XML parses, 79/363/75 sections), `usc-additional.txt` (57 more
+  28/35/18/5 U.S.C. sections). Normalizer: citation ranges ("FRAP 28-31",
+  "37 C.F.R. §§ 42.120-42.121") now decompose into one citation per member
+  section instead of one unmatched literal; `itc-337.json`'s `usc1337.N`
+  shorthand now resolves the same way its `cfr210.N` shorthand already did;
+  fixed a carry-forward bug where an unrelated citation species ("Sup. Ct.
+  R. 13.1" between two U.S.C. cites) left a stale family active for a later
+  bare number. Also corrected two `mpep-prosecution.json` citations to a
+  section that exists in the current MPEP (`§ 818.03` doesn't) and two
+  `cofc-court-of-federal-claims.json` citations that embedded "[Not used]"
+  inside the machine-parsed `cite` string instead of `note`.
 
 ## [0.1.0] - 2026-09-28
 

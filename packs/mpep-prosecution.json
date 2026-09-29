@@ -360,7 +360,7 @@
       "id": "patent-challenged",
       "label": "Patent Challenged (Post-Grant)",
       "kind": "decision",
-      "cite": "35 U.S.C. 311 / 321 / 302",
+      "cite": "35 U.S.C. 311; 321; 302",
       "note": "A third party (or, for reexam, anyone including the owner) attacks the issued patent. Three doors, decided by the CHALLENGER: inter partes review (IPR, 102/103 on patents/publications, subject to the 315(b) one-year bar), post-grant review (PGR, broad grounds incl. 101/112 but only within 9 months of grant), or ex parte reexamination (EPR, SNQ standard, no petitioner estoppel). This is the first genuinely ADVERSARIAL region of the chart — the outcomes are opposing-party draws, not examiner draws.",
       "group": "post-grant-group"
     },
@@ -474,7 +474,7 @@
       "kind": "terminal",
       "valence": "caution",
       "cite": "35 U.S.C. 318(c) / 307(b)",
-      "note": "Substitute or amended claims survive (via a motion to amend or a reexam certificate). The patent lives on but narrower, and amended claims are subject to INTERVENING RIGHTS (35 U.S.C. 318(c) for AIA trials; 307(b) for reexam) — pre-amendment infringers may be shielded. A partial, discounted win. PLACEHOLDER PAYOFF: $400,000, override per matter, matching this project's partial/mixed-result tier -- per this terminal's own note, \"a partial, discounted win.\"",
+      "note": "Substitute or amended claims survive (via a motion to amend or a reexam certificate). The patent lives on but narrower, and amended claims are subject to INTERVENING RIGHTS (35 U.S.C. 318(c) for AIA trials; 307(b) for reexam) — pre-amendment infringers may be shielded. A partial, discounted win. PLACEHOLDER PAYOFF: $400,000, override per matter, matching this project's partial/mixed-result tier -- per this terminal's own note, 'a partial, discounted win.'",
       "group": "post-grant-group",
       "payoff": 400000,
       "outcome": [
@@ -661,7 +661,7 @@
       "to": "election-made",
       "label": "Elect invention WITHOUT traverse",
       "actor": "applicant",
-      "authority": "37 CFR 1.142; 37 CFR 1.143; MPEP 818.03",
+      "authority": "37 CFR 1.142; 37 CFR 1.143; MPEP 818.01",
       "deadline": {
         "length": 60,
         "extendable": true,
@@ -681,7 +681,7 @@
       "to": "election-made",
       "label": "Elect invention WITH traverse (preserve 37 CFR 1.144 petition)",
       "actor": "applicant",
-      "authority": "37 CFR 1.143; 37 CFR 1.144; MPEP 818.03(a)",
+      "authority": "37 CFR 1.143; 37 CFR 1.144; MPEP 818.01(d)",
       "deadline": {
         "length": 60,
         "extendable": true,
@@ -1304,7 +1304,7 @@
       "to": "patent-challenged",
       "label": "Third party challenges the issued patent (post-grant)",
       "actor": "office",
-      "authority": "35 U.S.C. 311 / 321 / 302",
+      "authority": "35 U.S.C. 311; 321; 302",
       "note": "The post-grant afterlife. Modeled as a world event off the (terminal) issuance node — like the existing patent-issued→maintenance-due edge, this out-edge is walked by the simulator but treated as absorbing by the from-start EV/absorbing-chain analysis (issuance is a terminal). The adversarial sub-chain rooted here is analyzed on its own — see design/graph-algorithms.md §8.5."
     },
     {
@@ -1689,77 +1689,108 @@
     {
       "id": "usc35-111",
       "title": "35 U.S.C. § 111 (Application)",
-      "url": "https://www.law.cornell.edu/uscode/text/35/111"
+      "url": "https://www.law.cornell.edu/uscode/text/35/111",
+      "path": "sources/usc-cfr-prosecution-fragments.txt"
     },
     {
       "id": "usc35-132",
       "title": "35 U.S.C. § 132 (Notice of rejection; reexamination)",
-      "url": "https://www.law.cornell.edu/uscode/text/35/132"
+      "url": "https://www.law.cornell.edu/uscode/text/35/132",
+      "path": "sources/usc-cfr-prosecution-fragments.txt"
     },
     {
       "id": "usc35-133",
       "title": "35 U.S.C. § 133 (Time for prosecuting application)",
-      "url": "https://www.law.cornell.edu/uscode/text/35/133"
+      "url": "https://www.law.cornell.edu/uscode/text/35/133",
+      "path": "sources/usc-cfr-prosecution-fragments.txt"
     },
     {
       "id": "usc35-134",
       "title": "35 U.S.C. § 134 (Appeal to the Patent Trial and Appeal Board)",
-      "url": "https://www.law.cornell.edu/uscode/text/35/134"
+      "url": "https://www.law.cornell.edu/uscode/text/35/134",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "usc35-151",
       "title": "35 U.S.C. § 151 (Issue of patent)",
-      "url": "https://www.law.cornell.edu/uscode/text/35/151"
+      "url": "https://www.law.cornell.edu/uscode/text/35/151",
+      "path": "sources/usc-cfr-prosecution-fragments.txt"
     },
     {
       "id": "usc35-154",
       "title": "35 U.S.C. § 154 (Contents and term of patent)",
-      "url": "https://www.law.cornell.edu/uscode/text/35/154"
+      "url": "https://www.law.cornell.edu/uscode/text/35/154",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "usc35-251",
       "title": "35 U.S.C. § 251 (Reissue of defective patents)",
-      "url": "https://www.law.cornell.edu/uscode/text/35/251"
+      "url": "https://www.law.cornell.edu/uscode/text/35/251",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "usc35-304",
       "title": "35 U.S.C. § 304 (Ex parte reexamination order; owner statement)",
-      "url": "https://www.law.cornell.edu/uscode/text/35/304"
+      "url": "https://www.law.cornell.edu/uscode/text/35/304",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "mpep-0700",
       "title": "MPEP Chapter 700 -- Examination of Applications (9th ed., Rev. 01.2024)",
       "url": "https://www.uspto.gov/web/offices/pac/mpep/mpep-0700.pdf",
       "sha256": "bb3e9e43f169ae0fc5c84126c4fad8614b064187743d74ff404c3088ef643047",
-      "asOf": "2024-01-31"
+      "asOf": "2024-01-31",
+      "path": "sources/mpep.txt"
     },
     {
       "id": "mpep-1200",
       "title": "MPEP Chapter 1200 -- Appeal (9th ed., Rev. 01.2024)",
       "url": "https://www.uspto.gov/web/offices/pac/mpep/mpep-1200.pdf",
       "sha256": "1cd10af8745143604b548231887b6ed90c2f734b0b109f6cacfe212c50d7fa8a",
-      "asOf": "2024-01-31"
+      "asOf": "2024-01-31",
+      "path": "sources/mpep.txt"
     },
     {
       "id": "mpep-1300",
       "title": "MPEP Chapter 1300 -- Allowance and Issue (9th ed., Rev. 01.2024)",
       "url": "https://www.uspto.gov/web/offices/pac/mpep/mpep-1300.pdf",
       "sha256": "4b16e0071ed2d41cf7e35691902b2b3a4409af994bb223f098d03ac96c4b4787",
-      "asOf": "2024-01-31"
+      "asOf": "2024-01-31",
+      "path": "sources/mpep.txt"
     },
     {
       "id": "mpep-1400",
       "title": "MPEP Chapter 1400 -- Correction of Patents (9th ed., Rev. 01.2024)",
       "url": "https://www.uspto.gov/web/offices/pac/mpep/mpep-1400.pdf",
       "sha256": "41252e1ccdec27ce787dc8242a4f9026b8080bb7756c5a6e0c5bde2b50271420",
-      "asOf": "2024-01-31"
+      "asOf": "2024-01-31",
+      "path": "sources/mpep.txt"
     },
     {
       "id": "cfr-37-patents",
       "title": "37 C.F.R. Part 1 (Rules of Practice in Patent Cases) et al. -- USPTO Consolidated Patent Rules",
       "url": "https://www.uspto.gov/web/offices/pac/mpep/consolidated_rules.pdf",
       "sha256": "54c190418121ba3ede5240a1b1466522e48b08a95129caf2d7825e5acd5a6f89",
-      "asOf": "2026-01-01"
+      "asOf": "2026-01-01",
+      "path": "sources/cfr-37-part1.txt"
+    },
+    {
+      "id": "cfr-42-cite",
+      "title": "37 C.F.R. Part 42 (PTAB trial practice, for AIA-trial cross-references from prosecution)",
+      "url": "https://www.ecfr.gov/current/title-37/chapter-I/subchapter-A/part-42",
+      "path": "sources/cfr-37-part42.txt"
+    },
+    {
+      "id": "usc35-312",
+      "title": "35 U.S.C. § 312 (Petitions for inter partes review)",
+      "url": "https://www.law.cornell.edu/uscode/text/35/312",
+      "path": "sources/usc-additional.txt"
+    },
+    {
+      "id": "cfr-37-part41-cite",
+      "title": "37 C.F.R. Part 41 (Board of Patent Appeals and Interferences / PTAB ex parte appeal rules)",
+      "url": "https://www.ecfr.gov/current/title-37/chapter-I/subchapter-A/part-41",
+      "path": "sources/cfr-37-part41.txt"
     }
   ]
 }

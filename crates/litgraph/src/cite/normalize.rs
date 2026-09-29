@@ -107,7 +107,7 @@ pub fn parse_cite_string(raw: &str, forum: Option<&str>) -> Vec<CiteRef> {
         // A case citation's own reporter cite ("551 U.S. 205 (2007)") is
         // comma-separated from the case name — never split it up.
         if looks_like_case_citation(segment) {
-            out.push(parse_one(segment, last_family, forum));
+            out.extend(expand_range(parse_one(segment, last_family, forum)));
             continue;
         }
         for piece in split_top_level_commas(segment) {
@@ -130,11 +130,82 @@ pub fn parse_cite_string(raw: &str, forum: Option<&str>) -> Vec<CiteRef> {
             let cref = parse_one(piece, last_family, forum);
             if !cref.is_out_of_scope() {
                 last_family = Some(cref.family);
+            } else if bare_number(piece).is_none() {
+                // This piece had its own (unrecognized-family or case-style)
+                // text, not just a bare trailing number hoping to inherit
+                // context ("Sup. Ct. R. 13.1" in "28 U.S.C. § 2101(c); Sup.
+                // Ct. R. 13.1, 13.3") — it breaks the carry-forward chain, so
+                // the NEXT bare number ("13.3") isn't wrongly attributed to
+                // an unrelated family from an earlier segment.
+                last_family = None;
             }
-            out.push(cref);
+            out.extend(expand_range(cref));
         }
     }
     out
+}
+
+/// Decompose a member-range citation ("FRAP 28-31", "37 C.F.R. §§
+/// 42.120-42.121", "18 U.S.C. §§ 3161-3162") into one [`CiteRef`] per member
+/// section, so each resolves against the corpus independently instead of the
+/// range being treated as one literal, unmatched heading. A citation with its
+/// own subsections (`"12(b)(6)-(7)"`, not a form any pack in this repo
+/// actually uses) is left alone — which subsection each range member binds to
+/// is ambiguous, so guessing would be worse than not expanding. Anything that
+/// isn't a plain member-member range (not a range at all, spans more than 99
+/// members, or the two sides don't share a family/prefix) is returned
+/// unchanged.
+fn expand_range(cref: CiteRef) -> Vec<CiteRef> {
+    if cref.is_out_of_scope() || !cref.subsections.is_empty() {
+        return vec![cref];
+    }
+    let Some((sep, seplen)) = find_range_separator(&cref.section) else {
+        return vec![cref];
+    };
+    let lo = cref.section[..sep].trim();
+    let hi = cref.section[sep + seplen..].trim();
+    let Some(members) = range_members(lo, hi) else {
+        return vec![cref];
+    };
+    members
+        .into_iter()
+        .map(|section| CiteRef {
+            section,
+            ..cref.clone()
+        })
+        .collect()
+}
+
+/// The byte offset and length of a `-`/`–`/`—` separator in `s`, if any.
+fn find_range_separator(s: &str) -> Option<(usize, usize)> {
+    s.char_indices()
+        .find(|(_, c)| matches!(c, '-' | '\u{2013}' | '\u{2014}'))
+        .map(|(i, c)| (i, c.len_utf8()))
+}
+
+/// Inclusive member list from `lo` to `hi`, capped at 100 members. Handles a
+/// plain integer range (`"28".."31"`) and a dotted range sharing a prefix
+/// (`"42.120".."42.121"`, or `"42.120".."121"` — legal writing often drops
+/// the repeated prefix on the high side).
+fn range_members(lo: &str, hi: &str) -> Option<Vec<String>> {
+    if let (Ok(a), Ok(b)) = (lo.parse::<u32>(), hi.parse::<u32>()) {
+        return (b >= a && b - a < 100).then(|| (a..=b).map(|n| n.to_string()).collect());
+    }
+    let (prefix, lo_last) = lo.rsplit_once('.')?;
+    let a: u32 = lo_last.parse().ok()?;
+    let hi_full;
+    let hi = if hi.contains('.') {
+        hi
+    } else {
+        hi_full = format!("{prefix}.{hi}");
+        &hi_full
+    };
+    let (hi_prefix, hi_last) = hi.rsplit_once('.')?;
+    if hi_prefix != prefix {
+        return None;
+    }
+    let b: u32 = hi_last.parse().ok()?;
+    (b >= a && b - a < 100).then(|| (a..=b).map(|n| format!("{prefix}.{n}")).collect())
 }
 
 /// Split on commas that are not inside `(...)` (so `"§ 3142(b), (c)"` splits
@@ -166,6 +237,9 @@ fn parse_one(piece: &str, last_family: Option<Family>, forum: Option<&str>) -> C
         return cref;
     }
     if let Some(cref) = try_itc_cfr_slug(piece, forum) {
+        return cref;
+    }
+    if let Some(cref) = try_itc_usc_slug(piece, forum) {
         return cref;
     }
     if let Some(cref) = try_mpep(piece) {
@@ -302,6 +376,31 @@ fn try_itc_cfr_slug(piece: &str, forum: Option<&str>) -> Option<CiteRef> {
     Some(CiteRef {
         family: Family::Cfr(19),
         section: format!("{part_no}.{sec_no}"),
+        subsections,
+        raw: piece.to_string(),
+    })
+}
+
+/// `itc-337.json`'s own shorthand for its one cited U.S.C. title: `"usc1337.b.1"`
+/// = 19 U.S.C. § 1337(b)(1). Mirrors [`try_itc_cfr_slug`]; only resolved for
+/// `forum == "itc"`, the only forum this pack's shorthand is used in.
+fn try_itc_usc_slug(piece: &str, forum: Option<&str>) -> Option<CiteRef> {
+    if forum != Some("itc") {
+        return None;
+    }
+    let rest = strip_prefix_ci(piece, &["usc"])?;
+    let mut parts = rest.split('.');
+    let sec_no = parts.next()?;
+    if sec_no.is_empty() || !sec_no.chars().all(|c| c.is_ascii_digit()) {
+        return None;
+    }
+    let subsections: Vec<String> = parts
+        .map(str::to_string)
+        .filter(|s| !s.is_empty())
+        .collect();
+    Some(CiteRef {
+        family: Family::Usc(19),
+        section: sec_no.to_string(),
         subsections,
         raw: piece.to_string(),
     })

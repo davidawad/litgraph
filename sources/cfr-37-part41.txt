@@ -1,0 +1,1430 @@
+## 37 C.F.R. § 41.1
+Policy.
+
+(a) Scope. Part 41 governs appeals and interferences before the Patent Trial and Appeal Board. Sections 1.1 to 1.36 and 1.181 to 1.183 of this title also apply to practice before the Board, as do other sections of part 1 of this title that are incorporated by reference into part 41.
+
+(b) Construction. The provisions of Part 41 shall be construed to secure the just, speedy, and inexpensive resolution of every proceeding before the Board.
+
+(c) Decorum. Each party must act with courtesy and decorum in all proceedings before the Board, including interactions with other parties.
+
+[69 FR 50003, Aug. 12, 2004, as amended at 77 FR 46630, Aug. 6, 2012]
+
+## 37 C.F.R. § 41.2
+Definitions.
+
+Unless otherwise clear from the context, the following definitions apply to proceedings under this part:
+
+Affidavit means affidavit, declaration under § 1.68 of this title, or statutory declaration under 28 U.S.C. 1746. A transcript of an ex parte deposition may be used as an affidavit in a contested case.
+
+Board means the Patent Trial and Appeal Board and includes:
+
+(1) For a final Board action:
+
+(i) In an appeal or contested case, a panel of the Board.
+
+(ii) In a proceeding under § 41.3, the Chief Administrative Patent Judge or another official acting under an express delegation from the Chief Administrative Patent Judge.
+
+(2) For non-final actions, a Board member or employee acting with the authority of the Board.
+
+Board member means the Under Secretary of Commerce for Intellectual Property and Director of the United States Patent and Trademark Office, the Deputy Under Secretary of Commerce for Intellectual Property and Deputy Director of the United States Patent and Trademark Office, the Commissioner for Patents, the Commissioner for Trademarks, and the administrative patent judges.
+
+Contested case means a Board proceeding other than an appeal under 35 U.S.C. 134 or a petition under § 41.3. An appeal in an inter partes reexamination is not a contested case.
+
+Final means, with regard to a Board action, final for the purposes of judicial review. A decision is final only if:
+
+(1) In a panel proceeding. The decision is rendered by a panel, disposes of all issues with regard to the party seeking judicial review, and does not indicate that further action is required; and
+
+(2) In other proceedings. The decision disposes of all issues or the decision states it is final.
+
+Hearing means consideration of the issues of record. Rehearing means reconsideration.
+
+Office means United States Patent and Trademark Office.
+
+Panel means at least three Board members acting in a panel proceeding.
+
+Panel proceeding means a proceeding in which final action is reserved by statute to at least three Board members, but includes a non-final portion of such a proceeding whether administered by a panel or not.
+
+Party, in this part, means any entity participating in a Board proceeding, other than officers and employees of the Office, including:
+
+(1) An appellant;
+
+(2) A participant in a contested case;
+
+(3) A petitioner; and
+
+(4) Counsel for any of the above, where context permits.
+
+[69 FR 50003, Aug. 12, 2004, as amended at 77 FR 46630, Aug. 6, 2012]
+
+## 37 C.F.R. § 41.3
+Petitions.
+
+(a) Deciding official. Petitions must be addressed to the Chief Administrative Patent Judge. A panel or an administrative patent judge may certify a question of policy to the Chief Administrative Patent Judge for decision. The Chief Administrative Patent Judge may delegate authority to decide petitions.
+
+(b) Scope. This section covers petitions on matters pending before the Board (§§ 41.35, 41.64, 41.103, and 41.205); otherwise, see §§ 1.181 to 1.183 of this title. The following matters are not subject to petition:
+
+(1) Issues committed by statute to a panel, and
+
+(2) In pending contested cases, procedural issues. See § 41.121(a)(3) and § 41.125(c).
+
+(c) Petition fee. The fee set in § 41.20(a) must accompany any petition under this section except no fee is required for a petition under this section seeking supervisory review.
+
+(d) Effect on proceeding. The filing of a petition does not stay the time for any other action in a Board proceeding.
+
+(e) Time for action. (1) Except as otherwise provided in this part or as the Board may authorize in writing, a party may:
+
+(i) File the petition within 14 days from the date of the action from which the party is requesting relief, and
+
+(ii) File any request for reconsideration of a petition decision within 14 days of the decision on petition or such other time as the Board may set.
+
+(2) A party may not file an opposition or a reply to a petition without Board authorization.
+
+[69 FR 50003, Aug. 12, 2004, as amended at 69 FR 58260, Sept. 30, 2004]
+
+## 37 C.F.R. § 41.4
+Timeliness.
+
+(a) Extensions of time. Extensions of time will be granted only on a showing of good cause except as otherwise provided by rule.
+
+(b) Late filings. (1) A late filing that results in either an application becoming abandoned or a reexamination prosecution becoming terminated under § 1.550(d) or § 1.957(b) of this title or limited under § 1.957(c) of this title may be revived as set forth in § 1.137 of this title.
+
+(2) A late filing that does not result in either an application becoming abandoned or a reexamination prosecution becoming terminated under § 1.550(d) or § 1.957(b) of this title or limited under § 1.957(c) of this title will be excused upon a showing of excusable neglect or a Board determination that consideration on the merits would be in the interest of justice.
+
+(c) Scope. This section governs all proceedings before the Board, but does not apply to filings related to Board proceedings before or after the Board has jurisdiction, such as:
+
+(1) Extensions during prosecution (see § 1.136 of this title),
+
+(2) Filing of a brief or request for oral hearing (see §§ 41.37, 41.41, 41.47, 41.67, 41.68, 41.71 and 41.73), or
+
+(3) Seeking judicial review (see §§ 1.301 to 1.304 of this title).
+
+[69 FR 50003, Aug. 12, 2004, as amended at 72 FR 18907, Apr. 16, 2007]
+
+## 37 C.F.R. § 41.5
+Counsel.
+
+While the Board has jurisdiction:
+
+(a) Appearance pro hac vice. The Board may authorize a person other than a registered practitioner to appear as counsel in a specific proceeding.
+
+(b) Disqualification. (1) The Board may disqualify counsel in a specific proceeding after notice and an opportunity to be heard.
+
+(2) A decision to disqualify is not final for the purposes of judicial review until certified by the Chief Administrative Patent Judge.
+
+(c) Withdrawal. Counsel may not withdraw from a proceeding before the Board unless the Board authorizes such withdrawal. See § 11.116 of this subchapter regarding conditions for withdrawal.
+
+(d) Procedure. The Board may institute a proceeding under this section on its own or a party in a contested case may request relief under this section.
+
+(e) Referral to the Director of Enrollment and Discipline. Possible violations of the disciplinary rules in part 11 of this subchapter may be referred to the Office of Enrollment and Discipline for investigation. See § 11.22 of this subchapter.
+
+[69 FR 50003, Aug. 12, 2004, as amended at 73 FR 47704, Aug. 14, 2008; 78 FR 20211, Apr. 3, 2013]
+
+## 37 C.F.R. § 41.6
+Public availability of Board records.
+
+(a) Publication —(1) Generally. Any Board action is available for public inspection without a party's permission if rendered in a file open to the public pursuant to § 1.11 of this title or in an application that has been published in accordance with §§ 1.211 to 1.221 of this title. The Office may independently publish any Board action that is available for public inspection.
+
+(2) Determination of special circumstances. Any Board action not publishable under paragraph (a)(1) of this section may be published or made available for public inspection if the Director believes that special circumstances warrant publication and a party does not, within two months after being notified of the intention to make the action public, object in writing on the ground that the action discloses the objecting party's trade secret or other confidential information and states with specificity that such information is not otherwise publicly available. If the action discloses such information, the party shall identify the deletions in the text of the action considered necessary to protect the information. If the affected party considers that the entire action must be withheld from the public to protect such information, the party must explain why. The party will be given time, not less than twenty days, to request reconsideration and seek court review before any contested portion of the action is made public over its objection.
+
+(b) Record of proceeding. (1) The record of a Board proceeding is available to the public unless a patent application not otherwise available to the public is involved.
+
+(2) Notwithstanding paragraph (b)(1) of this section, after a final Board action in or judgment in a Board proceeding, the record of the Board proceeding will be made available to the public if any involved file is or becomes open to the public under § 1.11 of this title or an involved application is or becomes published under §§ 1.211 to 1.221 of this title.
+
+## 37 C.F.R. § 41.7
+Management of the record.
+
+(a) The Board may expunge any paper directed to a Board proceeding, or filed while an application or patent is under the jurisdiction of the Board, that is not authorized under this part or in a Board order, or that is filed contrary to a Board order.
+
+(b) A party may not file a paper previously filed in the same Board proceeding, not even as an exhibit or appendix, without Board authorization or as required by rule.
+
+## 37 C.F.R. § 41.8
+Mandatory notices.
+
+(a) In an appeal brief (§§ 41.37, 41.67, or 41.68) or at the initiation of a contested case (§ 41.101), and within 20 days of any change during the proceeding, a party must identify:
+
+(1) Its real party-in-interest, and
+
+(2) Each judicial or administrative proceeding that could affect, or be affected by, the Board proceeding.
+
+(b) For contested cases, a party seeking judicial review of a Board proceeding must file a notice with the Board of the judicial review within 20 days of the filing of the complaint or the notice of appeal. The notice to the Board must include a copy of the complaint or notice of appeal. See also §§ 1.301 to 1.304 of this title.
+
+## 37 C.F.R. § 41.9
+Action by owner.
+
+(a) Entire interest. An owner of the entire interest in an application or patent involved in a Board proceeding may act in the proceeding to the exclusion of the inventor ( see §§ 3.71 and 3.73 of this title).
+
+(b) Part interest. An owner of a part interest in an application or patent involved in a Board proceeding may petition to act in the proceeding to the exclusion of an inventor or a co-owner. The petition must show the inability or refusal of an inventor or co-owner to prosecute the proceeding or other cause why it is in the interest of justice to permit the owner of a part interest to act in the proceeding. An order granting the petition may set conditions on the actions of the parties during the proceeding.
+
+[69 FR 50003, Aug. 12, 2004, as amended at 77 FR 48826, Aug. 14, 2012]
+
+## 37 C.F.R. § 41.10
+Correspondence addresses.
+
+Except as the Board may otherwise direct,
+
+(a) Appeals. Correspondence in an application or a patent involved in an appeal (subparts B and C of this part) during the period beginning when an appeal docketing notice is issued and ending when a decision has been rendered by the Board, as well as any request for rehearing of a decision by the Board, shall be mailed to: Patent Trial and Appeal Board, United States Patent and Trademark Office, PO Box 1450, Alexandria, Virginia 22313-1450. Notices of appeal, appeal briefs, reply briefs, requests for oral hearing, as well as all other correspondence in an application or a patent involved in an appeal to the Board for which an address is not otherwise specified, should be addressed as set out in § 1.1(a)(1)(i) of this title.
+
+(b) Interferences. Mailed correspondence in interference (subpart D of this part) shall be sent to Mail Stop INTERFERENCE, Patent Trial and Appeal Board, United States Patent and Trademark Office, PO Box 1450, Alexandria, Virginia 22313-1450.
+
+(c) Trial Proceedings. Correspondence in trial proceedings (part 42 of this title) are governed by § 42.6(b) of this title.
+
+[77 FR 46630, Aug. 6, 2012]
+
+## 37 C.F.R. § 41.11
+
+
+An ex parte communication about an inter partes reexamination (subpart C of this part) or about a contested case (subparts D and E of this part) with a Board member, or with a Board employee assigned to the proceeding, is not permitted.
+
+## 37 C.F.R. § 41.12
+Citation of authority.
+
+(a) For any United States Supreme Court decision, citation to the United States Reports is preferred.
+
+(b) For any decision other than a United States Supreme Court decision, citation to the West Reporter System is preferred.
+
+(c) Citations to authority must include pinpoint citations whenever a specific holding or portion of an authority is invoked.
+
+(d) Non-binding authority should be used sparingly. If the authority is not an authority of the Office and is not reproduced in the United States Reports or the West Reporter System, a copy of the authority should be provided.
+
+[76 FR 72296, Nov. 22, 2011]
+
+## 37 C.F.R. § 41.20
+Fees.
+
+(a) Petition fee. The fee for filing a petition under this part is: $420.00
+
+(b) Appeal fees. (1) For filing a notice of appeal from the examiner to the Patent Trial and Appeal Board:
+
+Table 1 to Paragraph (b)(1) By a micro entity (§ 1.29) $168.00 By a small entity (§ 1.27(a)) 336.00 By other than a small or micro entity 840.00
+
+(2)(i) For filing a brief in support of an appeal in an application or ex parte reexamination proceeding: $0.00
+
+(ii) In addition to the fee for filing a notice of appeal, for filing a brief in support of an appeal in an inter partes reexamination proceeding:
+
+Table 2 to Paragraph (b)(2)(ii) By a micro entity (§ 1.29) $420.00 By a small entity (§ 1.27(a)) 840.00 By other than a small or micro entity 2,100.00
+
+(3) For filing a request for an oral hearing before the Board in an appeal under 35 U.S.C. 134:
+
+Table 3 to Paragraph (b)(3) By a micro entity (§ 1.29) $272.00 By a small entity (§ 1.27(a)) 544.00 By other than a small or micro entity 1,360.00
+
+(4) In addition to the fee for filing a notice of appeal, for forwarding an appeal in an application or ex parte reexamination proceeding to the Board:
+
+Table 4 to Paragraph (b)(4) By a micro entity (§ 1.29) $472.00 By a small entity (§ 1.27(a)) 944.00 By other than a small or micro entity 2,360.00
+
+[78 FR 4290, Jan. 18, 2013, as amended at 82 FR 52817, Nov. 14, 2017; 85 FR 46993, Aug. 3, 2020; 88 FR 17158, Mar. 22, 2023]
+
+## 37 C.F.R. § 41.30
+Definitions.
+
+In addition to the definitions in § 41.2, the following definitions apply to proceedings under this subpart unless otherwise clear from the context:
+
+Applicant means either the applicant in a national application for a patent or the applicant in an application for reissue of a patent.
+
+Evidence means something (including testimony, documents and tangible objects) that tends to prove or disprove the existence of an alleged fact, except that for the purpose of this subpart Evidence does not include dictionaries, which may be cited before the Board.
+
+Owner means the owner of the patent undergoing ex parte reexamination under § 1.510 of this title.
+
+Proceeding means either a national application for a patent, an application for reissue of a patent, an ex parte reexamination proceeding, or a trial before the Patent Trial and Appeal Board. Appeal to the Board in an inter partes reexamination proceeding is controlled by subpart C of this part.
+
+Record means the items listed in the content listing of the Image File Wrapper of the official file of the application or reexamination proceeding on appeal or the official file of the Office if other than the Image File Wrapper, excluding amendments, Evidence, and other documents that were not entered. In the case of an issued patent being reissued or reexamined, the Record further includes the Record of the patent being reissued or reexamined.
+
+[69 FR 50003, Aug. 12, 2004, as amended at 76 FR 72296, Nov. 22, 2011; 77 FR 46630, Aug. 6, 2012]
+
+## 37 C.F.R. § 41.31
+Appeal to Board.
+
+(a) Who may appeal and how to file an appeal. An appeal is taken to the Board by filing a notice of appeal.
+
+(1) Every applicant, any of whose claims has been twice rejected, may appeal from the decision of the examiner to the Board by filing a notice of appeal accompanied by the fee set forth in § 41.20(b)(1) within the time period provided under § 1.134 of this title for reply.
+
+(2) Every owner of a patent under ex parte reexamination filed under § 1.510 of this title before November 29, 1999, any of whose claims has been twice rejected, may appeal from the decision of the examiner to the Board by filing a notice of appeal accompanied by the fee set forth in § 41.20(b)(1) within the time period provided under § 1.134 of this title for reply.
+
+(3) Every owner of a patent under ex parte reexamination filed under § 1.510 of this title on or after November 29, 1999, any of whose claims has been finally (§ 1.113 of this title) rejected, may appeal from the decision of the examiner to the Board by filing a notice of appeal accompanied by the fee set forth in § 41.20(b)(1) within the time period provided under § 1.134 of this title for reply.
+
+(b) The signature requirements of §§ 1.33 and 11.18(a) of this title do not apply to a notice of appeal filed under this section.
+
+(c) An appeal, when taken, is presumed to be taken from the rejection of all claims under rejection unless cancelled by an amendment filed by the applicant and entered by the Office. Questions relating to matters not affecting the merits of the invention may be required to be settled before an appeal can be considered.
+
+(d) The time periods set forth in paragraphs (a)(1) through (a)(3) of this section are extendable under the provisions of § 1.136 of this title for patent applications and § 1.550(c) of this title for ex parte reexamination proceedings.
+
+[69 FR 50003, Aug. 12, 2004, as amended at 76 FR 72296, Nov. 22, 2011]
+
+## 37 C.F.R. § 41.33
+Amendments and affidavits or other Evidence after appeal.
+
+(a) Amendments filed after the date of filing an appeal pursuant to § 41.31(a)(1) through (a)(3) and prior to the date a brief is filed pursuant to § 41.37 may be admitted as provided in § 1.116 of this title.
+
+(b) Amendments filed on or after the date of filing a brief pursuant to § 41.37 may be admitted:
+
+(1) To cancel claims, where such cancellation does not affect the scope of any other pending claim in the proceeding, or
+
+(2) To rewrite dependent claims into independent form.
+
+(c) All other amendments filed after the date of filing an appeal pursuant to § 41.31(a)(1) through (a)(3) will not be admitted except as permitted by §§ 41.39(b)(1), 41.50(a)(2)(i), and 41.50(b)(1).
+
+(d)(1) An affidavit or other Evidence filed after the date of filing an appeal pursuant to § 41.31(a)(1) through (a)(3) and prior to the date of filing a brief pursuant to § 41.37 may be admitted if the examiner determines that the affidavit or other Evidence overcomes all rejections under appeal and that a showing of good and sufficient reasons why the affidavit or other Evidence is necessary and was not earlier presented has been made.
+
+(2) All other affidavits or other Evidence filed after the date of filing an appeal pursuant to § 41.31(a)(1) through (a)(3) will not be admitted except as permitted by §§ 41.39(b)(1), 41.50(a)(2)(i), and 41.50(b)(1).
+
+[69 FR 50003, Aug. 12, 2004, as amended at 76 FR 72296, Nov. 22, 2011]
+
+## 37 C.F.R. § 41.35
+Jurisdiction over appeal.
+
+(a) Beginning of jurisdiction. Jurisdiction over the proceeding passes to the Board upon the filing of a reply brief under § 41.41 or the expiration of the time in which to file such a reply brief, whichever is earlier.
+
+(b) End of jurisdiction. The jurisdiction of the Board ends when:
+
+(1) The Director or the Board enters a remand order ( see §§ 41.35(c), 41.35(e), and 41.50(a)(1)),
+
+(2) The Board enters a final decision ( see § 41.2) and judicial review is sought or the time for seeking judicial review has expired,
+
+(3) An express abandonment which complies with § 1.138 of this title is recognized,
+
+(4) A request for continued examination is filed which complies with § 1.114 of this title,
+
+(5) Appellant fails to take any required action under §§ 41.39(b), 41.50(a)(2), 41.50(b), or 41.50(d), and the Board enters an order of dismissal, or
+
+(6) Appellant reopens prosecution pursuant to § 41.40(b) or in response to a new ground of rejection entered in a decision of the Board ( see § 41.50(b)(1)).
+
+(c) Remand ordered by the Director. Prior to the entry of a decision on the appeal by the Board ( see § 41.50), the Director may sua sponte order the proceeding remanded to the examiner.
+
+(d) Documents filed during Board's jurisdiction. Except for petitions authorized by this part, consideration of any information disclosure statement or petition filed while the Board possesses jurisdiction over the proceeding will be held in abeyance until the Board's jurisdiction ends.
+
+(e) Administrative remands ordered by the Board. If, after receipt and review of the proceeding, the Board determines that the file is not complete or is not in compliance with the requirements of this subpart, the Board may relinquish jurisdiction to the examiner or take other appropriate action to permit completion of the file.
+
+[76 FR 72297, Nov. 22, 2011]
+
+## 37 C.F.R. § 41.37
+Appeal brief.
+
+(a) Timing. Appellant must file a brief under this section within two months from the date of filing the notice of appeal under § 41.31. The appeal brief fee in an application or ex parte reexamination proceeding is $0.00, but if the appeal results in an examiner's answer, the appeal forwarding fee set forth in § 41.20(b)(4) must be paid within the time period specified in § 41.45 to avoid dismissal of an appeal.
+
+(b) Failure to file a brief. On failure to file the brief within the period specified in paragraph (a) of this section, the appeal will stand dismissed.
+
+(c) Content of appeal brief. (1) Except as otherwise provided in this paragraph, the brief shall contain the following items under appropriate headings and in the order indicated in paragraphs (c)(1)(i) through (v) of this section, except that a brief filed by an appellant who is not represented by a registered practitioner need only substantially comply with paragraphs (c)(1)(i), (c)(1)(ii), (c)(1)(iv), and (c)(1)(v) of this section:
+
+(i) Real party in interest. A statement identifying by name the real party in interest at the time the appeal brief is filed, except that such statement is not required if the named inventor or inventors are themselves the real party in interest. If an appeal brief does not contain a statement of the real party in interest, the Office may assume that the named inventor or inventors are the real party in interest.
+
+(ii) Related appeals, interferences, and trials. A statement identifying by application, patent, appeal, interference, or trial number all other prior and pending appeals, interferences, trials before the Board, or judicial proceedings (collectively, “related cases”) which satisfy all of the following conditions: involve an application or patent owned by the appellant or assignee, are known to appellant, the appellant's legal representative, or assignee, and may be related to, directly affect or be directly affected by or have a bearing on the Board's decision in the pending appeal, except that such statement is not required if there are no such related cases. If an appeal brief does not contain a statement of related cases, the Office may assume that there are no such related cases.
+
+(iii) Summary of claimed subject matter. A concise explanation of the subject matter defined in each of the rejected independent claims, which shall refer to the specification in the Record by page and line number or by paragraph number, and to the drawing, if any, by reference characters. For each rejected independent claim, and for each dependent claim argued separately under the provisions of paragraph (c)(1)(iv) of this section, if the claim contains a means plus function or step plus function recitation as permitted by 35 U.S.C. 112(f), then the concise explanation must identify the structure, material, or acts described in the specification in the Record as corresponding to each claimed function with reference to the specification in the Record by page and line number or by paragraph number, and to the drawing, if any, by reference characters. Reference to the patent application publication does not satisfy the requirements of this paragraph.
+
+(iv) Argument. The arguments of appellant with respect to each ground of rejection, and the basis therefor, with citations of the statutes, regulations, authorities, and parts of the Record relied on. The arguments shall explain why the examiner erred as to each ground of rejection contested by appellant. Except as provided for in §§ 41.41, 41.47 and 41.52, any arguments or authorities not included in the appeal brief will be refused consideration by the Board for purposes of the present appeal. Each ground of rejection contested by appellant must be argued under a separate heading, and each heading shall reasonably identify the ground of rejection being contested ( e.g., by claim number, statutory basis, and applied reference, if any). For each ground of rejection applying to two or more claims, the claims may be argued separately (claims are considered by appellant as separately patentable), as a group (all claims subject to the ground of rejection stand or fall together), or as a subgroup (a subset of the claims subject to the ground of rejection stand or fall together). When multiple claims subject to the same ground of rejection are argued as a group or subgroup by appellant, the Board may select a single claim from the group or subgroup and may decide the appeal as to the ground of rejection with respect to the group or subgroup on the basis of the selected claim alone. Notwithstanding any other provision of this paragraph, the failure of appellant to separately argue claims which appellant has grouped together shall constitute a waiver of any argument that the Board must consider the patentability of any grouped claim separately. Under each heading identifying the ground of rejection being contested, any claim(s) argued separately or as a subgroup shall be argued under a separate subheading that identifies the claim(s) by number. A statement which merely points out what a claim recites will not be considered an argument for separate patentability of the claim.
+
+(v) Claims appendix. An appendix containing a copy of the claims involved in the appeal.
+
+(2) A brief shall not include any new or non-admitted amendment, or any new or non-admitted affidavit or other Evidence. See § 1.116 of this title for treatment of amendments, affidavits or other evidence filed after final action but before or on the same date of filing an appeal and § 41.33 for treatment of amendments, affidavits or other Evidence filed after the date of filing the appeal. Review of an examiner's refusal to admit an amendment or Evidence is by petition to the Director. See § 1.181 of this title.
+
+(d) Notice of non-compliance. If a brief is filed which does not comply with all the requirements of paragraph (c) of this section, appellant will be notified of the reasons for non-compliance and given a time period within which to file an amended brief. If appellant does not, within the set time period, file an amended brief that overcomes all the reasons for non-compliance stated in the notification, the appeal will stand dismissed. Review of a determination of non-compliance is by petition to the Chief Administrative Patent Judge. See § 41.3.
+
+(e) Extensions of time. The time periods set forth in this section are extendable under the provisions of § 1.136 of this title for patent applications and § 1.550(c) of this title for ex parte reexamination proceedings.
+
+[69 FR 50003, Aug. 12, 2004, as amended at 76 FR 72297, Nov. 22, 2011; 77 FR 46630, Aug. 6, 2012; 78 FR 4291, Jan. 18, 2013; 78 FR 17107, Mar. 20, 2013]
+
+## 37 C.F.R. § 41.39
+Examiner's answer.
+
+(a) Content of examiner's answer. The primary examiner may, within such time as may be directed by the Director, furnish a written answer to the appeal brief.
+
+(1) An examiner's answer is deemed to incorporate all of the grounds of rejection set forth in the Office action from which the appeal is taken (as modified by any advisory action and pre-appeal brief conference decision), unless the examiner's answer expressly indicates that a ground of rejection has been withdrawn.
+
+(2) An examiner's answer may include a new ground of rejection. For purposes of the examiner's answer, any rejection that relies upon any Evidence not relied upon in the Office action from which the appeal is taken (as modified by any advisory action) shall be designated by the primary examiner as a new ground of rejection. The examiner must obtain the approval of the Director to furnish an answer that includes a new ground of rejection.
+
+(b) Appellant's response to new ground of rejection. If an examiner's answer contains a rejection designated as a new ground of rejection, appellant must within two months from the date of the examiner's answer exercise one of the following two options to avoid sua sponte dismissal of the appeal as to the claims subject to the new ground of rejection:
+
+(1) Reopen prosecution. Request that prosecution be reopened before the primary examiner by filing a reply under § 1.111 of this title with or without amendment or submission of affidavits (§§ 1.130, 1.131 or 1.132 of this of this title) or other Evidence. Any amendment or submission of affidavits or other Evidence must be relevant to the new ground of rejection. A request that complies with this paragraph will be entered and the application or the patent under ex parte reexamination will be reconsidered by the examiner under the provisions of § 1.112 of this title. Any request that prosecution be reopened under this paragraph will be treated as a request to withdraw the appeal.
+
+(2) Maintain appeal. Request that the appeal be maintained by filing a reply brief as set forth in § 41.41. Such a reply brief must address as set forth in § 41.37(c)(1)(iv) each new ground of rejection and should follow the other requirements of a brief as set forth in § 41.37(c). A reply brief may not be accompanied by any amendment, affidavit (§§ 1.130, 1.131 or 1.132 of this of this title) or other Evidence. If a reply brief filed pursuant to this section is accompanied by any amendment, affidavit or other Evidence, it shall be treated as a request that prosecution be reopened before the primary examiner under paragraph (b)(1) of this section.
+
+(c) Extensions of time. Extensions of time under § 1.136(a) of this title for patent applications are not applicable to the time period set forth in this section. See § 1.136(b) of this title for extensions of time to reply for patent applications and § 1.550(c) of this title for extensions of time to reply for ex parte reexamination proceedings.
+
+[69 FR 50003, Aug. 12, 2004, as amended at 76 FR 72298, Nov. 22, 2011]
+
+## 37 C.F.R. § 41.40
+Tolling of time period to file a reply brief.
+
+(a) Timing. Any request to seek review of the primary examiner's failure to designate a rejection as a new ground of rejection in an examiner's answer must be by way of a petition to the Director under § 1.181 of this title filed within two months from the entry of the examiner's answer and before the filing of any reply brief. Failure of appellant to timely file such a petition will constitute a waiver of any arguments that a rejection must be designated as a new ground of rejection.
+
+(b) Petition granted and prosecution reopened. A decision granting a petition under § 1.181 to designate a new ground of rejection in an examiner's answer will provide a two-month time period in which appellant must file a reply under § 1.111 of this title to reopen the prosecution before the primary examiner. On failure to timely file a reply under § 1.111, the appeal will stand dismissed.
+
+(c) Petition not granted and appeal maintained. A decision refusing to grant a petition under § 1.181 of this title to designate a new ground of rejection in an examiner's answer will provide a two-month time period in which appellant may file only a single reply brief under § 41.41.
+
+(d) Withdrawal of petition and appeal maintained. If a reply brief under § 41.41 is filed within two months from the date of the examiner's answer and on or after the filing of a petition under § 1.181 to designate a new ground of rejection in an examiner's answer, but before a decision on the petition, the reply brief will be treated as a request to withdraw the petition and to maintain the appeal.
+
+(e) Extensions of time. Extensions of time under § 1.136(a) of this title for patent applications are not applicable to the time period set forth in this section. See § 1.136(b) of this title for extensions of time to reply for patent applications and § 1.550(c) of this title for extensions of time to reply for ex parte reexamination proceedings.
+
+[76 FR 72298, Nov. 22, 2011]
+
+## 37 C.F.R. § 41.41
+Reply brief.
+
+(a) Timing. Appellant may file only a single reply brief to an examiner's answer within the later of two months from the date of either the examiner's answer, or a decision refusing to grant a petition under § 1.181 of this title to designate a new ground of rejection in an examiner's answer.
+
+(b) Content. (1) A reply brief shall not include any new or non-admitted amendment, or any new or non-admitted affidavit or other Evidence. See § 1.116 of this title for amendments, affidavits or other evidence filed after final action but before or on the same date of filing an appeal and § 41.33 for amendments, affidavits or other Evidence filed after the date of filing the appeal.
+
+(2) Any argument raised in the reply brief which was not raised in the appeal brief, or is not responsive to an argument raised in the examiner's answer, including any designated new ground of rejection, will not be considered by the Board for purposes of the present appeal, unless good cause is shown.
+
+(c) Extensions of time. Extensions of time under § 1.136(a) of this title for patent applications are not applicable to the time period set forth in this section. See § 1.136(b) of this title for extensions of time to reply for patent applications and § 1.550(c) of this title for extensions of time to reply for ex parte reexamination proceedings.
+
+[69 FR 50003, Aug. 12, 2004, as amended at 76 FR 72298, Nov. 22, 2011]
+
+## 37 C.F.R. § 41.45
+Appeal forwarding fee.
+
+(a) Timing. Appellant in an application or ex parte reexamination proceeding must pay the fee set forth in § 41.20(b)(4) within the later of two months from the date of either the examiner's answer, or a decision refusing to grant a petition under § 1.181 of this chapter to designate a new ground of rejection in an examiner's answer.
+
+(b) Failure to pay appeal forwarding fee. On failure to pay the fee set forth in § 41.20(b)(4) within the period specified in paragraph (a) of this section, the appeal will stand dismissed.
+
+(c) Extensions of time. Extensions of time under § 1.136(a) of this title for patent applications are not applicable to the time period set forth in this section. See § 1.136(b) of this title for extensions of time to reply for patent applications and § 1.550(c) of this title for extensions of time to reply for ex parte reexamination proceedings.
+
+[78 FR 17107, Mar. 20, 2013]
+
+## 37 C.F.R. § 41.47
+Oral hearing.
+
+(a) An oral hearing should be requested only in those circumstances in which appellant considers such a hearing necessary or desirable for a proper presentation of the appeal. An appeal decided on the briefs without an oral hearing will receive the same consideration by the Board as appeals decided after an oral hearing.
+
+(b) If appellant desires an oral hearing, appellant must file, as a separate paper captioned “REQUEST FOR ORAL HEARING,” a written request for such hearing accompanied by the fee set forth in § 41.20(b)(3) within two months from the date of the examiner's answer or on the date of filing of a reply brief, whichever is earlier.
+
+(c) If no request and fee for oral hearing have been timely filed by appellant as required by paragraph (b) of this section, the appeal will be assigned for consideration and decision on the briefs without an oral hearing.
+
+(d) If appellant has complied with all the requirements of paragraph (b) of this section, a date for the oral hearing will be set, and due notice thereof given to appellant. If an oral hearing is held, an oral argument may be presented by, or on behalf of, the primary examiner if considered desirable by either the primary examiner or the Board. A hearing will be held as stated in the notice, and oral argument will ordinarily be limited to twenty minutes for appellant and fifteen minutes for the primary examiner unless otherwise ordered.
+
+(e)(1) Appellant will argue first and may reserve time for rebuttal. At the oral hearing, appellant may only rely on Evidence that has been previously entered and considered by the primary examiner and present argument that has been relied upon in the brief or reply brief except as permitted by paragraph (e)(2) of this section. The primary examiner may only rely on argument and Evidence relied upon in an answer except as permitted by paragraph (e)(2) of this section.
+
+(2) Upon a showing of good cause, appellant and/or the primary examiner may rely on a new argument based upon a recent relevant decision of either the Board or a Federal Court.
+
+(f) Notwithstanding the submission of a request for oral hearing complying with this rule, if the Board decides that a hearing is not necessary, the Board will so notify appellant.
+
+(g) Extensions of time under § 1.136(a) of this title for patent applications are not applicable to the time periods set forth in this section. See § 1.136(b) of this title for extensions of time to reply for patent applications and § 1.550(c) of this title for extensions of time to reply for ex parte reexamination proceedings.
+
+[69 FR 50003, Aug. 12, 2004, as amended at 76 FR 72298, Nov. 22, 2011]
+
+## 37 C.F.R. § 41.50
+Decisions and other actions by the Board.
+
+(a)(1) Affirmance and reversal. The Board, in its decision, may affirm or reverse the decision of the examiner in whole or in part on the grounds and on the claims specified by the examiner. The affirmance of the rejection of a claim on any of the grounds specified constitutes a general affirmance of the decision of the examiner on that claim, except as to any ground specifically reversed. The Board may also remand an application to the examiner.
+
+(2) If a substitute examiner's answer is written in response to a remand by the Board for further consideration of a rejection pursuant to paragraph (a)(1) of this section, the appellant must within two months from the date of the substitute examiner's answer exercise one of the following two options to avoid sua sponte dismissal of the appeal as to the claims subject to the rejection for which the Board has remanded the proceeding:
+
+(i) Reopen prosecution. Request that prosecution be reopened before the examiner by filing a reply under § 1.111 of this title with or without amendment or submission of affidavits (§§ 1.130, 1.131 or 1.132 of this title) or other Evidence. Any amendment or submission of affidavits or other Evidence must be relevant to the issues set forth in the remand or raised in the substitute examiner's answer. A request that complies with this paragraph (a) will be entered and the application or the patent under ex parte reexamination will be reconsidered by the examiner under the provisions of § 1.112 of this title. Any request that prosecution be reopened under this paragraph will be treated as a request to withdraw the appeal.
+
+(ii) Maintain appeal. Request that the appeal be maintained by filing a reply brief as provided in § 41.41. If such a reply brief is accompanied by any amendment, affidavit or other Evidence, it shall be treated as a request that prosecution be reopened before the examiner under paragraph (a)(2)(i) of this section.
+
+(b) New ground of rejection. Should the Board have knowledge of any grounds not involved in the appeal for rejecting any pending claim, it may include in its opinion a statement to that effect with its reasons for so holding, and designate such a statement as a new ground of rejection of the claim. A new ground of rejection pursuant to this paragraph shall not be considered final for judicial review. When the Board enters such a non-final decision, the appellant, within two months from the date of the decision, must exercise one of the following two options with respect to the new ground of rejection to avoid termination of the appeal as to the rejected claims:
+
+(1) Reopen prosecution. Submit an appropriate amendment of the claims so rejected or new Evidence relating to the claims so rejected, or both, and have the matter reconsidered by the examiner, in which event the prosecution will be remanded to the examiner. The new ground of rejection is binding upon the examiner unless an amendment or new Evidence not previously of Record is made which, in the opinion of the examiner, overcomes the new ground of rejection designated in the decision. Should the examiner reject the claims, appellant may again appeal to the Board pursuant to this subpart.
+
+(2) Request rehearing. Request that the proceeding be reheard under § 41.52 by the Board upon the same Record. The request for rehearing must address any new ground of rejection and state with particularity the points believed to have been misapprehended or overlooked in entering the new ground of rejection and also state all other grounds upon which rehearing is sought.
+
+(c) Review of undesignated new ground of rejection. Any request to seek review of a panel's failure to designate a new ground of rejection in its decision must be raised by filing a request for rehearing as set forth in § 41.52. Failure of appellant to timely file such a request for rehearing will constitute a waiver of any arguments that a decision contains an undesignated new ground of rejection.
+
+(d) Request for briefing and information. The Board may order appellant to additionally brief any matter that the Board considers to be of assistance in reaching a reasoned decision on the pending appeal. Appellant will be given a time period within which to respond to such an order. Failure to timely comply with the order may result in the sua sponte dismissal of the appeal.
+
+(e) Remand not final action. Whenever a decision of the Board includes a remand, that decision shall not be considered final for judicial review. When appropriate, upon conclusion of proceedings on remand before the examiner, the Board may enter an order otherwise making its decision final for judicial review.
+
+(f) Extensions of time. Extensions of time under § 1.136(a) of this title for patent applications are not applicable to the time periods set forth in this section. See § 1.136(b) of this title for extensions of time to reply for patent applications and § 1.550(c) of this title for extensions of time to reply for ex parte reexamination proceedings.
+
+[76 FR 72299, Nov. 22, 2011]
+
+## 37 C.F.R. § 41.52
+Rehearing.
+
+(a)(1) Appellant may file a single request for rehearing within two months of the date of the original decision of the Board. No request for rehearing from a decision on rehearing will be permitted, unless the rehearing decision so modified the original decision as to become, in effect, a new decision, and the Board states that a second request for rehearing would be permitted. The request for rehearing must state with particularity the points believed to have been misapprehended or overlooked by the Board. Arguments not raised, and Evidence not previously relied upon, pursuant to §§ 41.37, 41.41, or 41.47 are not permitted in the request for rehearing except as permitted by paragraphs (a)(2) through (a)(4) of this section. When a request for rehearing is made, the Board shall render a decision on the request for rehearing. The decision on the request for rehearing is deemed to incorporate the earlier opinion reflecting its decision for appeal, except for those portions specifically withdrawn on rehearing, and is final for the purpose of judicial review, except when noted otherwise in the decision on rehearing.
+
+(2) Appellant may present a new argument based upon a recent relevant decision of either the Board or a Federal Court.
+
+(3) New arguments responding to a new ground of rejection designated pursuant to § 41.50(b) are permitted.
+
+(4) New arguments that the Board's decision contains an undesignated new ground of rejection are permitted.
+
+(b) Extensions of time under § 1.136(a) of this title for patent applications are not applicable to the time period set forth in this section. See § 1.136(b) of this title for extensions of time to reply for patent applications and § 1.550(c) of this title for extensions of time to reply for ex parte reexamination proceedings.
+
+[69 FR 50003, Aug. 12, 2004, as amended at 76 FR 72299, Nov. 22, 2011]
+
+## 37 C.F.R. § 41.54
+Action following decision.
+
+After decision by the Board, jurisdiction over an application or patent under ex parte reexamination proceeding passes to the examiner, subject to appellant's right of appeal or other review, for such further action by appellant or by the examiner, as the condition of the application or patent under ex parte reexamination proceeding may require, to carry into effect the decision.
+
+[76 FR 72299, Nov. 22, 2011]
+
+## 37 C.F.R. § 41.60
+Definitions.
+
+In addition to the definitions in § 41.2, the following definitions apply to proceedings under this subpart unless otherwise clear from the context:
+
+Appellant means any party, whether the owner or a requester, filing a notice of appeal or cross appeal under § 41.61. If more than one party appeals or cross appeals, each appealing or cross appealing party is an appellant with respect to the claims to which his or her appeal or cross appeal is directed.
+
+Filing means filing with a certificate indicating service of the document under § 1.903 of this title.
+
+Owner means the owner of the patent undergoing inter partes reexamination under § 1.915 of this title.
+
+Proceeding means an inter partes reexamination proceeding. Appeal to the Board in an ex parte reexamination proceeding is controlled by subpart B of this part. An inter partes reexamination proceeding is not a contested case subject to subpart D.
+
+Requester means each party, other than the owner, who requested that the patent undergo inter partes reexamination under § 1.915 of this title.
+
+Respondent means any requester responding under § 41.68 to the appellant's brief of the owner, or the owner responding under § 41.68 to the appellant's brief of any requester. No requester may be a respondent to the appellant brief of any other requester.
+
+## 37 C.F.R. § 41.61
+Notice of appeal and cross appeal to Board.
+
+(a)(1) Upon the issuance of a Right of Appeal Notice under § 1.953 of this title, the owner may appeal to the Board with respect to the final rejection of any claim of the patent by filing a notice of appeal within the time provided in the Right of Appeal Notice and paying the fee set forth in § 41.20(b)(1).
+
+(2) Upon the issuance of a Right of Appeal Notice under § 1.953 of this title, the requester may appeal to the Board with respect to any final decision favorable to the patentability, including any final determination not to make a proposed rejection, of any original, proposed amended, or new claim of the patent by filing a notice of appeal within the time provided in the Right of Appeal Notice and paying the fee set forth in § 41.20(b)(1).
+
+(b)(1) Within fourteen days of service of a requester's notice of appeal under paragraph (a)(2) of this section and upon payment of the fee set forth in § 41.20(b)(1), an owner who has not filed a notice of appeal may file a notice of cross appeal with respect to the final rejection of any claim of the patent.
+
+(2) Within fourteen days of service of an owner's notice of appeal under paragraph (a)(1) of this section and upon payment of the fee set forth in § 41.20(b)(1), a requester who has not filed a notice of appeal may file a notice of cross appeal with respect to any final decision favorable to the patentability, including any final determination not to make a proposed rejection, of any original, proposed amended, or new claim of the patent.
+
+(c) The notice of appeal or cross appeal in the proceeding must identify the appealed claim(s) and must be signed by the owner, the requester, or a duly authorized attorney or agent.
+
+(d) An appeal or cross appeal, when taken, must be taken from all the rejections of the claims in a Right of Appeal Notice which the patent owner proposes to contest or from all the determinations favorable to patentability, including any final determination not to make a proposed rejection, in a Right of Appeal Notice which a requester proposes to contest. Questions relating to matters not affecting the merits of the invention may be required to be settled before an appeal is decided.
+
+(e) The time periods for filing a notice of appeal or cross appeal may not be extended.
+
+(f) If a notice of appeal or cross appeal is timely filed but does not comply with any requirement of this section, appellant will be notified of the reasons for non-compliance and given a non-extendable time period within which to file an amended notice of appeal or cross appeal. If the appellant does not then file an amended notice of appeal or cross appeal within the set time period, or files a notice which does not overcome all the reasons for non-compliance stated in the notification of the reasons for non-compliance, that appellant's appeal or cross appeal will stand dismissed.
+
+## 37 C.F.R. § 41.63
+Amendments and affidavits or other evidence after appeal.
+
+(a) Amendments filed after the date of filing an appeal pursuant to § 41.61 canceling claims may be admitted where such cancellation does not affect the scope of any other pending claim in the proceeding.
+
+(b) All other amendments filed after the date of filing an appeal pursuant to § 41.61 will not be admitted except as permitted by § 41.77(b)(1).
+
+(c) Affidavits or other evidence filed after the date of filing an appeal pursuant to § 41.61 will not be admitted except as permitted by reopening prosecution under § 41.77(b)(1).
+
+## 37 C.F.R. § 41.64
+Jurisdiction over appeal in
+
+(a) Jurisdiction over the proceeding passes to the Board upon transmittal of the file, including all briefs and examiner's answers, to the Board.
+
+(b) If, after receipt and review of the proceeding, the Board determines that the file is not complete or is not in compliance with the requirements of this subpart, the Board may relinquish jurisdiction to the examiner or take other appropriate action to permit completion of the file.
+
+(c) Prior to the entry of a decision on the appeal by the Board, the Director may sua sponte order the proceeding remanded to the examiner.
+
+## 37 C.F.R. § 41.66
+Time for filing briefs.
+
+(a) An appellant's brief must be filed no later than two months from the latest filing date of the last-filed notice of appeal or cross appeal or, if any party to the proceeding is entitled to file an appeal or cross appeal but fails to timely do so, no later than two months from the expiration of the time for filing (by the last party entitled to do so) such notice of appeal or cross appeal. The time for filing an appellant's brief or an amended appellant's brief may not be extended.
+
+(b) Once an appellant's brief has been properly filed, any brief must be filed by respondent within one month from the date of service of the appellant's brief. The time for filing a respondent's brief or an amended respondent's brief may not be extended.
+
+(c) The examiner will consider both the appellant's and respondent's briefs and may prepare an examiner's answer under § 41.69.
+
+(d) Any appellant may file a rebuttal brief under § 41.71 within one month of the date of the examiner's answer. The time for filing a rebuttal brief or an amended rebuttal brief may not be extended.
+
+(e) No further submission will be considered and any such submission will be treated in accordance with § 1.939 of this title.
+
+## 37 C.F.R. § 41.67
+Appellant's brief.
+
+(a)(1) Appellant(s) may once, within time limits for filing set forth in § 41.66, file a brief and serve the brief on all other parties to the proceeding in accordance with § 1.903 of this title.
+
+(2) The brief must be signed by the appellant, or the appellant's duly authorized attorney or agent and must be accompanied by the requisite fee set forth in § 41.20(b)(2).
+
+(b) An appellant's appeal shall stand dismissed upon failure of that appellant to file an appellant's brief, accompanied by the requisite fee, within the time allowed under § 41.66(a).
+
+(c)(1) The appellant's brief shall contain the following items under appropriate headings and in the order indicated in paragraphs (c)(1)(i) through (c)(1)(xi) of this section.
+
+(i) Real party in interest. A statement identifying by name the real party in interest.
+
+(ii) Related appeals, interferences, and trials. A statement identifying by application, patent, appeal, interference, or trial number all other prior and pending appeals, interferences, trials before the Board, or judicial proceedings known to appellant, the appellant's legal representative, or assignee which may be related to, directly affect or be directly affected by or have a bearing on the Board's decision in the pending appeal. Copies of any decisions rendered by a court or the Board in any proceeding identified under this paragraph must be included in an appendix as required by paragraph (c)(1)(xi) of this section.
+
+(iii) Status of claims. A statement of the status of all the claims in the proceeding (e.g., rejected, allowed or confirmed, withdrawn, objected to, canceled). If the appellant is the owner, the appellant must also identify the rejected claims whose rejection is being appealed. If the appellant is a requester, the appellant must identify the claims that the examiner has made a determination favorable to patentability, which determination is being appealed.
+
+(iv) Status of amendments. A statement of the status of any amendment filed subsequent to the close of prosecution.
+
+(v) Summary of claimed subject matter. A concise explanation of the subject matter defined in each of the independent claims involved in the appeal, which shall refer to the specification by column and line number, and to the drawing(s), if any, by reference characters. For each independent claim involved in the appeal and for each dependent claim argued separately under the provisions of paragraph (c)(1)(vii) of this section, every means plus function and step plus function as permitted by 35 U.S.C. 112(f), must be identified and the structure, material, or acts described in the specification as corresponding to each claimed function must be set forth with reference to the specification by page and line number, and to the drawing, if any, by reference characters.
+
+(vi) Issues to be reviewed on appeal. A concise statement of each issue presented for review. No new ground of rejection can be proposed by a third party requester appellant, unless such ground was withdrawn by the examiner during the prosecution of the proceeding, and the third party requester has not yet had an opportunity to propose it as a third party requester proposed ground of rejection.
+
+(vii) Argument. The contentions of appellant with respect to each issue presented for review in paragraph (c)(1)(vi) of this section, and the basis therefor, with citations of the statutes, regulations, authorities, and parts of the record relied on. Any arguments or authorities not included in the brief permitted under this section or §§ 41.68 and 41.71 will be refused consideration by the Board, unless good cause is shown. Each issue must be treated under a separate heading. If the appellant is the patent owner, for each ground of rejection in the Right of Appeal Notice which appellant contests and which applies to two or more claims, the claims may be argued separately or as a group. When multiple claims subject to the same ground of rejection are argued as a group by appellant, the Board may select a single claim from the group of claims that are argued together to decide the appeal with respect to the group of claims as to the ground of rejection on the basis of the selected claim alone. Notwithstanding any other provision of this paragraph, the failure of appellant to separately argue claims which appellant has grouped together shall constitute a waiver of any argument that the Board must consider the patentability of any grouped claim separately. Any claim argued separately should be placed under a subheading identifying the claim by number. Claims argued as a group should be placed under a subheading identifying the claims by number. A statement which merely points out what a claim recites will not be considered an argument for separate patentability of the claim.
+
+(viii) Claims appendix. An appendix containing a copy of the claims to be reviewed on appeal.
+
+(ix) Evidence appendix. An appendix containing copies of any evidence submitted pursuant to §§ 1.130, 1.131, or 1.132 of this title or of any other evidence entered by the examiner and relied upon by appellant in the appeal, along with a statement setting forth where in the record that evidence was entered in the record by the examiner. Reference to unentered evidence is not permitted in the brief. See § 41.63 for treatment of evidence submitted after appeal. This appendix may also include copies of the evidence relied upon by the examiner in any ground of rejection to be reviewed on appeal.
+
+(x) Related proceedings appendix. An appendix containing copies of decisions rendered by a court or the Board in any proceeding identified pursuant to paragraph (c)(1)(ii) of this section.
+
+(xi) Certificate of service. A certification that a copy of the brief has been served in its entirety on all other parties to the reexamination proceeding. The names and addresses of the parties served must be indicated.
+
+(2) A brief shall not include any new or non-admitted amendment, or any new or non-admitted affidavit or other evidence. See § 1.116 of this title for amendments, affidavits or other evidence filed after final action but before or on the same date of filing an appeal and § 41.63 for amendments, affidavits or other evidence after the date of filing the appeal.
+
+(d) If a brief is filed which does not comply with all the requirements of paragraph (a) and paragraph (c) of this section, appellant will be notified of the reasons for non-compliance and given a non-extendable time period within which to file an amended brief. If appellant does not file an amended brief within the set time period, or files an amended brief which does not overcome all the reasons for non-compliance stated in the notification, that appellant's appeal will stand dismissed.
+
+[69 FR 50003, Aug. 12, 2004, as amended at 77 FR 46630, Aug. 6, 2012]
+
+## 37 C.F.R. § 41.68
+Respondent's brief.
+
+(a)(1) Respondent(s) in an appeal may once, within the time limit for filing set forth in § 41.66, file a respondent brief and serve the brief on all parties in accordance with § 1.903 of this title.
+
+(2) The brief must be signed by the party, or the party's duly authorized attorney or agent, and must be accompanied by the requisite fee set forth in § 41.20(b)(2).
+
+(3) The respondent brief shall be limited to issues raised in the appellant brief to which the respondent brief is directed.
+
+(4) A requester's respondent brief may not address any brief of any other requester.
+
+(b)(1) The respondent brief shall contain the following items under appropriate headings and in the order here indicated, and may include an appendix containing only those portions of the record on which reliance has been made.
+
+(i) Real Party in Interest. A statement identifying by name the real party in interest.
+
+(ii) Related Appeals, Interferences, and trials. A statement identifying by application, patent, appeal, interference, or trial number all other prior and pending appeals, interferences or judicial proceedings known to respondent, the respondent's legal representative, or assignee which may be related to, directly affect or be directly affected by or have a bearing on the Board's decision in the pending appeal. Copies of any decisions rendered by a court or the Board in any proceeding identified under this paragraph must be included in an appendix as required by paragraph (b)(1)(ix) of this section.
+
+(iii) Status of claims. A statement accepting or disputing appellant's statement of the status of claims. If appellant's statement of the status of claims is disputed, the errors in appellant's statement must be specified with particularity.
+
+(iv) Status of amendments. A statement accepting or disputing appellant's statement of the status of amendments. If appellant's statement of the status of amendments is disputed, the errors in appellant's statement must be specified with particularity.
+
+(v) Summary of claimed subject matter. A statement accepting or disputing appellant's summary of the subject matter defined in each of the independent claims involved in the appeal. If appellant's summary of the subject matter is disputed, the errors in appellant's summary must be specified.
+
+(vi) Issues to be reviewed on appeal. A statement accepting or disputing appellant's statement of the issues presented for review. If appellant's statement of the issues presented for review is disputed, the errors in appellant's statement must be specified. A counter statement of the issues for review may be made. No new ground of rejection can be proposed by a requester respondent.
+
+(vii) Argument. A statement accepting or disputing the contentions of appellant with each of the issues presented by the appellant for review. If a contention of the appellant is disputed, the errors in appellant's argument must be specified, stating the basis therefor, with citations of the statutes, regulations, authorities, and parts of the record relied on. Each issue must be treated under a separate heading. An argument may be made with each of the issues stated in the counter statement of the issues, with each counter-stated issue being treated under a separate heading.
+
+(viii) Evidence appendix. An appendix containing copies of any evidence submitted pursuant to §§ 1.130, 1.131, or 1.132 of this title or of any other evidence entered by the examiner and relied upon by respondent in the appeal, along with a statement setting forth where in the record that evidence was entered in the record by the examiner. Reference to unentered evidence is not permitted in the respondent's brief. See § 41.63 for treatment of evidence submitted after appeal.
+
+(ix) Related proceedings appendix. An appendix containing copies of decisions rendered by a court or the Board in any proceeding identified pursuant to paragraph (b)(1)(ii) of this section.
+
+(x) Certificate of service. A certification that a copy of the respondent brief has been served in its entirety on all other parties to the reexamination proceeding. The names and addresses of the parties served must be indicated.
+
+(2) A respondent brief shall not include any new or non-admitted amendment, or any new or non-admitted affidavit or other evidence. See § 1.116 of this title for amendments, affidavits or other evidence filed after final action but before or on the same date of filing an appeal and § 41.63 for amendments, affidavits or other evidence filed after the date of filing the appeal.
+
+(c) If a respondent brief is filed which does not comply with all the requirements of paragraph (a) and paragraph (b) of this section, respondent will be notified of the reasons for non-compliance and given a non-extendable time period within which to file an amended brief. If respondent does not file an amended respondent brief within the set time period, or files an amended respondent brief which does not overcome all the reasons for non-compliance stated in the notification, the respondent brief and any amended respondent brief by that respondent will not be considered.
+
+[69 FR 50003, Aug. 12, 2004, as amended at 77 FR 46631, Aug. 6, 2012]
+
+## 37 C.F.R. § 41.69
+Examiner's answer.
+
+(a) The primary examiner may, within such time as directed by the Director, furnish a written answer to the owner's and/or requester's appellant brief or respondent brief including, as may be necessary, such explanation of the invention claimed and of the references relied upon, the grounds of rejection, and the reasons for patentability, including grounds for not adopting any proposed rejection. A copy of the answer shall be supplied to the owner and all requesters. If the primary examiner determines that the appeal does not comply with the provisions of §§ 41.61, 41.66, 41.67 and 41.68 or does not relate to an appealable action, the primary examiner shall make such determination of record.
+
+(b) An examiner's answer may not include a new ground of rejection.
+
+(c) An examiner's answer may not include a new determination not to make a proposed rejection of a claim.
+
+(d) Any new ground of rejection, or any new determination not to make a proposed rejection, must be made in an Office action reopening prosecution.
+
+## 37 C.F.R. § 41.71
+Rebuttal brief.
+
+(a) Within one month of the examiner's answer, any appellant may once file a rebuttal brief.
+
+(b)(1) The rebuttal brief of the owner may be directed to the examiner's answer and/or any respondent brief.
+
+(2) The rebuttal brief of the owner shall not include any new or non-admitted amendment, or an affidavit or other evidence. See § 1.116 of this title for amendments, affidavits or other evidence filed after final action but before or on the same date of filing an appeal and § 41.63 for amendments, affidavits or other evidence filed after the date of filing the appeal.
+
+(c)(1) The rebuttal brief of any requester may be directed to the examiner's answer and/or the respondent brief of the owner.
+
+(2) The rebuttal brief of a requester may not be directed to the respondent brief of any other requester.
+
+(3) No new ground of rejection can be proposed by a requester.
+
+(4) The rebuttal brief of a requester shall not include any new or non-admitted affidavit or other evidence. See § 1.116(d) of this title for affidavits or other evidence filed after final action but before or on the same date of filing an appeal and § 41.63(c) for affidavits or other evidence filed after the date of filing the appeal.
+
+(d) The rebuttal brief must include a certification that a copy of the rebuttal brief has been served in its entirety on all other parties to the proceeding. The names and addresses of the parties served must be indicated.
+
+(e) If a rebuttal brief is timely filed under paragraph (a) of this section but does not comply with all the requirements of paragraphs (a) through (d) of this section, appellant will be notified of the reasons for non-compliance and provided with a non-extendable period of one month within which to file an amended rebuttal brief. If the appellant does not file an amended rebuttal brief during the one-month period, or files an amended rebuttal brief which does not overcome all the reasons for non-compliance stated in the notification, that appellant's rebuttal brief and any amended rebuttal brief by that appellant will not be considered.
+
+## 37 C.F.R. § 41.73
+Oral hearing.
+
+(a) An oral hearing should be requested only in those circumstances in which an appellant or a respondent considers such a hearing necessary or desirable for a proper presentation of the appeal. An appeal decided on the briefs without an oral hearing will receive the same consideration by the Board as an appeal decided after an oral hearing.
+
+(b) If an appellant or a respondent desires an oral hearing, he or she must file, as a separate paper captioned “REQUEST FOR ORAL HEARING,” a written request for such hearing accompanied by the fee set forth in § 41.20(b)(3) within two months after the date of the examiner's answer. The time for requesting an oral hearing may not be extended. The request must include a certification that a copy of the request has been served in its entirety on all other parties to the proceeding. The names and addresses of the parties served must be indicated.
+
+(c) If no request and fee for oral hearing have been timely filed by appellant or respondent as required by paragraph (b) of this section, the appeal will be assigned for consideration and decision on the briefs without an oral hearing.
+
+(d) If appellant or respondent has complied with all the requirements of paragraph (b) of this section, a hearing date will be set, and notice given to the owner and all requesters. If an oral hearing is held, an oral argument may be presented by, or on behalf of, the primary examiner if considered desirable by either the primary examiner or the Board. The notice shall set a non-extendable period within which all requests for oral hearing shall be submitted by any other party to the appeal desiring to participate in the oral hearing. A hearing will be held as stated in the notice, and oral argument will be limited to thirty minutes for each appellant or respondent who has requested an oral hearing, and twenty minutes for the primary examiner unless otherwise ordered. No appellant or respondent will be permitted to participate in an oral hearing unless he or she has requested an oral hearing and submitted the fee set forth in § 41.20(b)(3).
+
+(e)(1) At the oral hearing, each appellant and respondent may only rely on evidence that has been previously entered and considered by the primary examiner and present argument that has been relied upon in the briefs except as permitted by paragraph (e)(2) of this section. The primary examiner may only rely on argument and evidence relied upon in an answer except as permitted by paragraph (e)(2) of this section. The Board will determine the order of the arguments presented at the oral hearing.
+
+(2) Upon a showing of good cause, appellant, respondent and/or the primary examiner may rely on a new argument based upon a recent relevant decision of either the Board or a Federal Court.
+
+(f) Notwithstanding the submission of a request for oral hearing complying with this rule, if the Board decides that a hearing is not necessary, the Board will so notify the owner and all requesters.
+
+## 37 C.F.R. § 41.77
+Decisions and other actions by the Board.
+
+(a) The Patent Trial and Appeal Board, in its decision, may affirm or reverse each decision of the examiner on all issues raised on each appealed claim, or remand the reexamination proceeding to the examiner for further consideration. The reversal of the examiner's determination not to make a rejection proposed by the third party requester constitutes a decision adverse to the patentability of the claims which are subject to that proposed rejection which will be set forth in the decision of the Patent Trial and Appeal Board as a new ground of rejection under paragraph (b) of this section. The affirmance of the rejection of a claim on any of the grounds specified constitutes a general affirmance of the decision of the examiner on that claim, except as to any ground specifically reversed.
+
+(b) Should the Board reverse the examiner's determination not to make a rejection proposed by a requester, the Board shall set forth in the opinion in support of its decision a new ground of rejection; or should the Board have knowledge of any grounds not raised in the appeal for rejecting any pending claim, it may include in its opinion a statement to that effect with its reasons for so holding, which statement shall constitute a new ground of rejection of the claim. Any decision which includes a new ground of rejection pursuant to this paragraph shall not be considered final for judicial review. When the Board makes a new ground of rejection, the owner, within one month from the date of the decision, must exercise one of the following two options with respect to the new ground of rejection to avoid termination of the appeal proceeding as to the rejected claim:
+
+(1) Reopen prosecution. The owner may file a response requesting reopening of prosecution before the examiner. Such a response must be either an amendment of the claims so rejected or new evidence relating to the claims so rejected, or both.
+
+(2) Request rehearing. The owner may request that the proceeding be reheard under § 41.79 by the Board upon the same record. The request for rehearing must address any new ground of rejection and state with particularity the points believed to have been misapprehended or overlooked in entering the new ground of rejection and also state all other grounds upon which rehearing is sought.
+
+(c) Where the owner has filed a response requesting reopening of prosecution under paragraph (b)(1) of this section, any requester, within one month of the date of service of the owner's response, may once file comments on the response. Such written comments must be limited to the issues raised by the Board's opinion reflecting its decision and the owner's response. Any requester that had not previously filed an appeal or cross appeal and is seeking under this subsection to file comments or a reply to the comments is subject to the appeal and brief fees under § 41.20(b)(1) and (2), respectively, which must accompany the comments or reply.
+
+(d) Following any response by the owner under paragraph (b)(1) of this section and any written comments from a requester under paragraph (c) of this section, the proceeding will be remanded to the examiner. The statement of the Board shall be binding upon the examiner unless an amendment or new evidence not previously of record is made which, in the opinion of the examiner, overcomes the new ground of rejection stated in the decision. The examiner will consider any owner response under paragraph (b)(1) of this section and any written comments by a requester under paragraph (c) of this section and issue a determination that the rejection is maintained or has been overcome.
+
+(e) Within one month of the examiner's determination pursuant to paragraph (d) of this section, the owner or any requester may once submit comments in response to the examiner's determination. Within one month of the date of service of comments in response to the examiner's determination, the owner and any requesters may file a reply to the comments. No requester reply may address the comments of any other requester reply. Any requester that had not previously filed an appeal or cross appeal and is seeking under this subsection to file comments or a reply to the comments is subject to the appeal and brief fees under § 41.20(b)(1) and (2), respectively, which must accompany the comments or reply.
+
+(f) After submission of any comments and any reply pursuant to paragraph (e) of this section, or after time has expired, the proceeding will be returned to the Board which shall reconsider the matter and issue a new decision. The new decision is deemed to incorporate the earlier decision, except for those portions specifically withdrawn.
+
+(g) The time period set forth in paragraph (b) of this section is subject to the extension of time provisions of § 1.956 of this title when the owner is responding under paragraph (b)(1) of this section. The time period set forth in paragraph (b) of this section may not be extended when the owner is responding under paragraph (b)(2) of this section. The time periods set forth in paragraphs (c) and (e) of this section may not be extended.
+
+[69 FR 50003, Aug. 12, 2004, as amended at 77 FR 46631, Aug. 6, 2012]
+
+## 37 C.F.R. § 41.79
+Rehearing.
+
+(a) Parties to the appeal may file a request for rehearing of the decision within one month of the date of:
+
+(1) The original decision of the Board under § 41.77(a),
+
+(2) The original § 41.77(b) decision under the provisions of § 41.77(b)(2),
+
+(3) The expiration of the time for the owner to take action under § 41.77(b)(2), or
+
+(4) The new decision of the Board under § 41.77(f).
+
+(b)(1) The request for rehearing must state with particularity the points believed to have been misapprehended or overlooked in rendering the Board's opinion reflecting its decision. Arguments not raised in the briefs before the Board and evidence not previously relied upon in the briefs are not permitted in the request for rehearing except as permitted by paragraphs (b)(2) and (b)(3) of this section.
+
+(2) Upon a showing of good cause, appellant and/or respondent may present a new argument based upon a recent relevant decision of either the Board or a Federal Court.
+
+(3) New arguments responding to a new ground of rejection made pursuant to § 41.77(b) are permitted.
+
+(c) Within one month of the date of service of any request for rehearing under paragraph (a) of this section, or any further request for rehearing under paragraph (d) of this section, the owner and all requesters may once file comments in opposition to the request for rehearing or the further request for rehearing. The comments in opposition must be limited to the issues raised in the request for rehearing or the further request for rehearing.
+
+(d) If a party to an appeal files a request for rehearing under paragraph (a) of this section, or a further request for rehearing under this section, the Board shall render a decision on the request for rehearing. The decision on the request for rehearing is deemed to incorporate the earlier opinion reflecting its decision for appeal, except for those portions specifically withdrawn on rehearing and is final for the purpose of judicial review, except when noted otherwise in the decision on rehearing. If the Board opinion reflecting its decision on rehearing becomes, in effect, a new decision, and the Board so indicates, then any party to the appeal may, within one month of the new decision, file a further request for rehearing of the new decision under this subsection. Such further request for rehearing must comply with paragraph (b) of this section.
+
+(e) The times for requesting rehearing under paragraph (a) of this section, for requesting further rehearing under paragraph (c) of this section, and for submitting comments under paragraph (b) of this section may not be extended.
+
+## 37 C.F.R. § 41.81
+Action following decision.
+
+The parties to an appeal to the Board may not appeal to the U.S. Court of Appeals for the Federal Circuit under § 1.983 of this title until all parties' rights to request rehearing have been exhausted, at which time the decision of the Board is final and appealable by any party to the appeal to the Board.
+
+## 37 C.F.R. § 41.100
+Definitions.
+
+In addition to the definitions in § 41.2, the following definitions apply to proceedings under this subpart:
+
+Business day means a day other than a Saturday, Sunday, or Federal holiday within the District of Columbia.
+
+Involved means the Board has declared the patent application, patent, or claim so described to be a subject of the contested case.
+
+## 37 C.F.R. § 41.101
+Notice of proceeding.
+
+(a) Notice of a contested case will be sent to every party to the proceeding. The entry of the notice initiates the proceeding.
+
+(b) When the Board is unable to provide actual notice of a contested case on a party through the correspondence address of record for the party, the Board may authorize other modes of notice, including:
+
+(1) Sending notice to another address associated with the party, or
+
+(2) Publishing the notice in the Official Gazette of the United States Patent and Trademark Office.
+
+## 37 C.F.R. § 41.102
+Completion of examination.
+
+Before a contested case is initiated, except as the Board may otherwise authorize, for each involved application and patent:
+
+(a) Examination or reexamination must be completed, and
+
+(b) There must be at least one claim that:
+
+(1) Is patentable but for a judgment in the contested case, and
+
+(2) Would be involved in the contested case.
+
+## 37 C.F.R. § 41.103
+Jurisdiction over involved files.
+
+The Board acquires jurisdiction over any involved file when the Board initiates a contested case. Other proceedings for the involved file within the Office are suspended except as the Board may order.
+
+## 37 C.F.R. § 41.104
+Conduct of contested case.
+
+(a) The Board may determine a proper course of conduct in a proceeding for any situation not specifically covered by this part and may enter non-final orders to administer the proceeding.
+
+(b) An administrative patent judge may waive or suspend in a proceeding the application of any rule in this subpart, subject to such conditions as the administrative patent judge may impose.
+
+(c) Times set in this subpart are defaults. In the event of a conflict between a time set by rule and a time set by order, the time set by order is controlling. Action due on a day other than a business day may be completed on the next business day unless the Board expressly states otherwise.
+
+## 37 C.F.R. § 41.106
+Filing and service.
+
+(a) General format requirements. (1) The paper used for filings must be durable and white. A party must choose to file on either A4-sized paper or 8 1/2 inch × 11 inch paper except in the case of exhibits that require a larger size in order to preserve details of the original. A party may not switch between paper sizes in a single proceeding. Only one side of the paper may be used.
+
+(2) In papers, including affidavits, created for the proceeding:
+
+(i) Markings must be in black ink or must otherwise provide an equivalently permanent, dark, high-contrast image on the paper. The quality of printing must be equivalent to the quality produced by a laser printer. Either a proportional or monospaced font may be used, but the proportional font must be 12-point or larger and a monospaced font must not contain more than 4 characters per centimeter (10 characters per inch). Case names must be underlined or italicized.
+
+(ii) Double spacing must be used except in headings, tables of contents, tables of authorities, indices, signature blocks, and certificates of service. Block quotations may be single-spaced and must be indented. Margins must be at least 2.5 centimeters (1 inch) on all sides.
+
+(b) Papers other than exhibits —(1) Cover sheet. (i) The cover sheet must include the caption the Board specifies for the proceeding, a header indicating the party and contact information for the party, and a title indicating the sequence and subject of the paper. For example, “JONES MOTION 2, For benefit of an earlier application”.
+
+(ii) If the Board specifies a color other than white for the cover sheet, the cover sheet must be that color.
+
+(2) Papers must have two 0.5 cm ( 1/4 inch) holes with centers 1 cm ( 1/2 inch) from the top of the page and 7 cm (2 3/4 inch) apart, centered horizontally on the page.
+
+(3) Incorporation by reference; combined papers. Arguments must not be incorporated by reference from one paper into another paper. Combined motions, oppositions, replies, or other combined papers are not permitted.
+
+(4) Exhibits. Additional requirements for exhibits appear in § 41.154(c).
+
+(c) Working copy. Every paper filed must be accompanied by a working copy marked “APJ Copy”.
+
+(d) Specific filing forms —(1) Filing by mail. A paper filed using the Priority Mail Express® service of the United States Postal Service will be deemed to be filed as of “date accepted” on the Priority Mail Express® mailing label; otherwise, mail will be deemed to be filed as of the stamped date of receipt at the Board.
+
+(2) Other modes of filing. The Board may authorize other modes of filing, including electronic filing and hand filing, and may set conditions for the use of such other modes.
+
+(e) Service. (1) Papers filed with the Board, if not previously served, must be served simultaneously on every opposing party except as the Board expressly directs.
+
+(2) If a party is represented by counsel, service must be on counsel.
+
+(3) Service must be by Priority Mail Express® or by means at least as fast and reliable as Priority Mail Express®. Electronic service is not permitted without Board authorization.
+
+(4) The date of service does not count in computing the time for responding.
+
+(f) Certificate of service. (1) Papers other than exhibits must include a certificate of service as a separate page at the end of each paper that must be served on an opposing party.
+
+(2) Exhibits must be accompanied by a certificate of service, but a single certificate may accompany any group of exhibits submitted together.
+
+(3) A certificate of service must state:
+
+(i) The date and manner of service,
+
+(ii) The name and address of every person served, and
+
+(iii) For exhibits filed as a group, the name and number of each exhibit served.
+
+(4) A certificate made by a person other than a registered practitioner must be in the form of an affidavit.
+
+[69 FR 50003, Aug. 12, 2004, as amended at 79 FR 63043, Oct. 22, 2014; 88 FR 78650, Nov. 16, 2023]
+
+## 37 C.F.R. § 41.108
+Lead counsel.
+
+(a) A party may be represented by counsel. The Board may require a party to appoint a lead counsel. If counsel is not of record in a party's involved application or patent, then a power of attorney for that counsel for the party's involved application or patent must be filed with the notice required in paragraph (b) of this section.
+
+(b) Within 14 days of the initiation of each contested case, each party must file a separate notice identifying its counsel, if any, and providing contact information for each counsel identified or, if the party has no counsel, then for the party. Contact information must, at a minimum, include:
+
+(1) A mailing address;
+
+(2) An address for courier delivery when the mailing address is not available for such delivery (for example, when the mailing address is a Post Office box);
+
+(3) A telephone number;
+
+(4) A facsimile number; and
+
+(5) An electronic mail address.
+
+(c) A party must promptly notify the Board of any change in the contact information required in paragraph (b) of this section.
+
+## 37 C.F.R. § 41.109
+Access to and copies of Office records.
+
+(a) Request for access or copies. Any request from a party for access to or copies of Office records directly related to a contested case must be filed with the Board. The request must precisely identify the records and in the case of copies include the appropriate fee set under § 1.19(b) of this title.
+
+(b) Authorization of access and copies. Access and copies will ordinarily only be authorized for the following records:
+
+(1) The application file for an involved patent;
+
+(2) An involved application; and
+
+(3) An application for which a party has been accorded benefit under subpart E of this part.
+
+(c) Missing or incomplete copies. If a party does not receive a complete copy of a record within 21 days of the authorization, the party must promptly notify the Board.
+
+## 37 C.F.R. § 41.110
+Filing claim information.
+
+(a) Clean copy of claims. Within 14 days of the initiation of the proceeding, each party must file a clean copy of its involved claims and, if a biotechnology material sequence is a limitation, a clean copy of the sequence.
+
+(b) Annotated copy of claims. Within 28 days of the initiation of the proceeding, each party must:
+
+(1) For each involved claim having a limitation that is illustrated in a drawing or biotechnology material sequence, file an annotated copy of the claim indicating in bold face between braces ({ }) where each limitation is shown in the drawing or sequence.
+
+(2) For each involved claim that contains a means-plus-function or step-plus-function limitation in the form permitted under 35 U.S.C. 112(f), file an annotated copy of the claim indicating in bold face between braces ({ }) the specific portions of the specification that describe the structure, material, or acts corresponding to each claimed function.
+
+(c) Any motion to add or amend a claim must include:
+
+(1) A clean copy of the claim,
+
+(2) A claim chart showing where the disclosure of the patent or application provides written description of the subject matter of the claim, and
+
+(3) Where applicable, a copy of the claims annotated according to paragraph (b) of this section.
+
+[69 FR 50003, Aug. 12, 2004, as amended at 77 FR 46631, Aug. 6, 2012]
+
+## 37 C.F.R. § 41.120
+Notice of basis for relief.
+
+(a) The Board may require a party to provide a notice stating the relief it requests and the basis for its entitlement to relief. The Board may provide for the notice to be maintained in confidence for a limited time.
+
+(b) Effect. If a notice under paragraph (a) of this section is required, a party will be limited to filing substantive motions consistent with the notice. Ambiguities in the notice will be construed against the party. A notice is not evidence except as an admission by a party-opponent.
+
+(c) Correction. A party may move to correct its notice. The motion should be filed promptly after the party becomes aware of the basis for the correction. A correction filed after the time set for filing notices will only be entered if entry would serve the interests of justice.
+
+## 37 C.F.R. § 41.121
+Motions.
+
+(a) Types of motions —(1) Substantive motions. Consistent with the notice of requested relief, if any, and to the extent the Board authorizes, a party may file a motion:
+
+(i) To redefine the scope of the contested case,
+
+(ii) To change benefit accorded for the contested subject matter, or
+
+(iii) For judgment in the contested case.
+
+(2) Responsive motions. The Board may authorize a party to file a motion to amend or add a claim, to change inventorship, or otherwise to cure a defect raised in a notice of requested relief or in a substantive motion.
+
+(3) Miscellaneous motions. Any request for relief other than a substantive or responsive motion must be filed as a miscellaneous motion.
+
+(b) Burden of proof. The party filing the motion has the burden of proof to establish that it is entitled to the requested relief.
+
+(c) Content of motions; oppositions and replies. (1) Each motion must be filed as a separate paper and must include:
+
+(i) A statement of the precise relief requested,
+
+(ii) A statement of material facts (see paragraph (d) of this section), and
+
+(iii) A full statement of the reasons for the relief requested, including a detailed explanation of the significance of the evidence and the governing law, rules, and precedent.
+
+(2) Compliance with rules. Where a rule in part 1 of this title ordinarily governs the relief sought, the motion must make any showings required under that rule in addition to any showings required in this part.
+
+(3) The Board may order additional showings or explanations as a condition for filing a motion.
+
+(d) Statement of material facts. (1) Each material fact shall be set forth as a separate numbered sentence with specific citations to the portions of the record that support the fact.
+
+(2) The Board may require that the statement of material facts be submitted as a separate paper.
+
+(e) Claim charts. Claim charts must be used in support of any paper requiring the comparison of a claim to something else, such as another claim, prior art, or a specification. Claim charts must accompany the paper as an appendix. Claim charts are not a substitute for appropriate argument and explanation in the paper.
+
+(f) The Board may order briefing on any issue that could be raised by motion.
+
+## 37 C.F.R. § 41.122
+Oppositions and replies.
+
+(a) Oppositions and replies must comply with the content requirements for motions and must include a statement identifying material facts in dispute. Any material fact not specifically denied shall be considered admitted.
+
+(b) All arguments for the relief requested in a motion must be made in the motion. A reply may only respond to arguments raised in the corresponding opposition.
+
+## 37 C.F.R. § 41.123
+Default filing times.
+
+(a) A motion, other than a miscellaneous motion, may only be filed according to a schedule the Board sets. The default times for acting are:
+
+(1) An opposition is due 30 days after service of the motion.
+
+(2) A reply is due 30 days after service of the opposition.
+
+(3) A responsive motion is due 30 days after the service of the motion.
+
+(b) Miscellaneous motions. (1) If no time for filing a specific miscellaneous motion is provided in this part or in a Board order:
+
+(i) The opposing party must be consulted prior to filing the miscellaneous motion, and
+
+(ii) If an opposing party plans to oppose the miscellaneous motion, the movant may not file the motion without Board authorization. Such authorization should ordinarily be obtained through a telephone conference including the Board and every other party to the proceeding. Delay in seeking relief may justify a denial of the motion.
+
+(2) An opposition may not be filed without authorization. The default times for acting are:
+
+(i) An opposition to a miscellaneous motion is due five business days after service of the motion.
+
+(ii) A reply to a miscellaneous motion opposition is due three business days after service of the opposition.
+
+(c) Exhibits. Each exhibit must be filed and served with the first paper in which it is cited except as the Board may otherwise order.
+
+## 37 C.F.R. § 41.124
+Oral argument.
+
+(a) Request for oral argument. A party may request an oral argument on an issue raised in a paper within five business days of the filing of the paper. The request must be filed as a separate paper and must specify the issues to be considered.
+
+(b) Copies for panel. If an oral argument is set for a panel, the movant on any issue to be argued must provide three working copies of the motion, the opposition, and the reply. Each party is responsible for providing three working copies of its exhibits relating to the motion.
+
+(c) Length of argument. If a request for oral argument is granted, each party will have a total of 20 minutes to present its arguments, including any time for rebuttal.
+
+(d) Demonstrative exhibits must be served at least five business days before the oral argument and filed no later than the time of the oral argument.
+
+(e) Transcription. The Board encourages the use of a transcription service at oral arguments but, if such a service is to be used, the Board must be notified in advance to ensure adequate facilities are available and a transcript must be filed with the Board promptly after the oral argument.
+
+## 37 C.F.R. § 41.125
+Decision on motions.
+
+(a) Order of consideration. The Board may take up motions for decisions in any order, may grant, deny, or dismiss any motion, and may take such other action appropriate to secure the just, speedy, and inexpensive determination of the proceeding. A decision on a motion may include deferral of action on an issue until a later point in the proceeding.
+
+(b) Interlocutory decisions. A decision on motions without a judgment is not final for the purposes of judicial review. A panel decision on an issue will govern further proceedings in the contested case.
+
+(c) Rehearing —(1) Time for request. A request for rehearing of a decision on a motion must be filed within fourteen days of the decision.
+
+(2) No tolling. The filing of a request for rehearing does not toll times for taking action.
+
+(3) Burden on rehearing. The burden of showing a decision should be modified lies with the party attacking the decision. The request must specifically identify:
+
+(i) All matters the party believes to have been misapprehended or overlooked, and
+
+(ii) The place where the matter was previously addressed in a motion, opposition, or reply.
+
+(4) Opposition; reply. Neither an opposition nor a reply to a request for rehearing may be filed without Board authorization.
+
+(5) Panel rehearing. If a decision is not a panel decision, the party requesting rehearing may request that a panel rehear the decision. A panel rehearing a procedural decision will review the decision for an abuse of discretion.
+
+## 37 C.F.R. § 41.126
+Arbitration.
+
+(a) Parties to a contested case may resort to binding arbitration to determine any issue in a contested case. The Office is not a party to the arbitration. The Board is not bound and may independently determine questions of patentability, jurisdiction, and Office practice.
+
+(b) The Board will not authorize arbitration unless:
+
+(1) It is to be conducted according to Title 9 of the United States Code.
+
+(2) The parties notify the Board in writing of their intention to arbitrate.
+
+(3) The agreement to arbitrate:
+
+(i) Is in writing,
+
+(ii) Specifies the issues to be arbitrated,
+
+(iii) Names the arbitrator, or provides a date not more than 30 days after the execution of the agreement for the selection of the arbitrator, and
+
+(iv) Provides that the arbitrator's award shall be binding on the parties and that judgment thereon can be entered by the Board.
+
+(4) A copy of the agreement is filed within 20 days after its execution.
+
+(5) The arbitration is completed within the time the Board sets.
+
+(c) The parties are solely responsible for the selection of the arbitrator and the conduct of proceedings before the arbitrator.
+
+(d) Issues not disposed of by the arbitration will be resolved in accordance with the procedures established in this subpart.
+
+(e) The Board will not consider the arbitration award unless it:
+
+(1) Is binding on the parties,
+
+(2) Is in writing,
+
+(3) States in a clear and definite manner each issue arbitrated and the disposition of each issue, and
+
+(4) Is filed within 20 days of the date of the award.
+
+(f) Once the award is filed, the parties to the award may not take actions inconsistent with the award. If the award is dispositive of the contested subject matter for a party, the Board may enter judgment as to that party.
+
+## 37 C.F.R. § 41.127
+Judgment.
+
+(a) Effect within Office —(1) Estoppel. A judgment disposes of all issues that were, or by motion could have properly been, raised and decided. A losing party who could have properly moved for relief on an issue, but did not so move, may not take action in the Office after the judgment that is inconsistent with that party's failure to move, except that a losing party shall not be estopped with respect to any contested subject matter for which that party was awarded a favorable judgment.
+
+(2) Final disposal of claim. Adverse judgment against a claim is a final action of the Office requiring no further action by the Office to dispose of the claim permanently.
+
+(b) Request for adverse judgment. A party may at any time in the proceeding request judgment against itself. Actions construed to be a request for adverse judgment include:
+
+(1) Abandonment of an involved application such that the party no longer has an application or patent involved in the proceeding,
+
+(2) Cancellation or disclaiming of a claim such that the party no longer has a claim involved in the proceeding,
+
+(3) Concession of priority or unpatentability of the contested subject matter, and
+
+(4) Abandonment of the contest.
+
+(c) Recommendation. The judgment may include a recommendation for further action by the examiner or by the Director. If the Board recommends rejection of a claim of an involved application, the examiner must enter and maintain the recommended rejection unless an amendment or showing of facts not previously of record is filed which, in the opinion of the examiner, overcomes the recommended rejection.
+
+(d) Rehearing. A party dissatisfied with the judgment may file a request for rehearing within 30 days of the entry of the judgment. The request must specifically identify all matters the party believes to have been misapprehended or overlooked, and the place where the matter was previously addressed in a motion, opposition, or reply.
+
+[69 FR 50003, Aug. 12, 2004, as amended at 69 FR 58260, Sept. 30, 2004]
+
+## 37 C.F.R. § 41.128
+Sanctions.
+
+(a) The Board may impose a sanction against a party for misconduct, including:
+
+(1) Failure to comply with an applicable rule or order in the proceeding;
+
+(2) Advancing a misleading or frivolous request for relief or argument; or
+
+(3) Engaging in dilatory tactics.
+
+(b) Sanctions include entry of:
+
+(1) An order holding certain facts to have been established in the proceeding;
+
+(2) An order expunging, or precluding a party from filing, a paper;
+
+(3) An order precluding a party from presenting or contesting a particular issue;
+
+(4) An order precluding a party from requesting, obtaining, or opposing discovery;
+
+(5) An order excluding evidence;
+
+(6) An order awarding compensatory expenses, including attorney fees;
+
+(7) An order requiring terminal disclaimer of patent term; or
+
+(8) Judgment in the contested case.
+
+## 37 C.F.R. § 41.150
+Discovery.
+
+(a) Limited discovery. A party is not entitled to discovery except as authorized in this subpart. The parties may agree to discovery among themselves at any time.
+
+(b) Automatic discovery. (1) Within 21 days of a request by an opposing party, a party must:
+
+(i) Serve a legible copy of every requested patent, patent application, literature reference, and test standard mentioned in the specification of the party's involved patent or application, or application upon which the party will rely for benefit, and, if the requested material is in a language other than English, a translation, if available, and
+
+(ii) File with the Board a notice (without copies of the requested materials) of service of the requested materials.
+
+(2) Unless previously served, or the Board orders otherwise, any exhibit cited in a motion or in testimony must be served with the citing motion or testimony.
+
+(c) Additional discovery. (1) A party may request additional discovery. The requesting party must show that such additional discovery is in the interests of justice. The Board may specify conditions for such additional discovery.
+
+(2) When appropriate, a party may obtain production of documents and things during cross examination of an opponent's witness or during testimony authorized under § 41.156.
+
+## 37 C.F.R. § 41.151
+Admissibility.
+
+Evidence that is not taken, sought, or filed in accordance with this subpart shall not be admissible.
+
+## 37 C.F.R. § 41.152
+Applicability of the Federal Rules of Evidence.
+
+(a) Generally. Except as otherwise provided in this subpart, the Federal Rules of Evidence shall apply to contested cases.
+
+(b) Exclusions. Those portions of the Federal Rules of Evidence relating to criminal proceedings, juries, and other matters not relevant to proceedings under this subpart shall not apply.
+
+(c) Modifications in terminology. Unless otherwise clear from context, the following terms of the Federal Rules of Evidence shall be construed as indicated:
+
+Appellate court means United States Court of Appeals for the Federal Circuit or a United States district court when judicial review is under 35 U.S.C. 146.
+
+Civil action, civil proceeding, action, and trial mean contested case.
+
+Courts of the United States, U.S. Magistrate, court, trial court, and trier of fact mean Board.
+
+Hearing means:
+
+(i) In Federal Rule of Evidence 703, the time when the expert testifies.
+
+(ii) In Federal Rule of Evidence 804(a)(5), the time for taking testimony.
+
+Judge means the Board.
+
+Judicial notice means official notice.
+
+Trial or hearing means, in Federal Rule of Evidence 807, the time for taking testimony.
+
+(d) The Board, in determining foreign law, may consider any relevant material or source, including testimony, whether or not submitted by a party or admissible under the Federal Rules of Evidence.
+
+## 37 C.F.R. § 41.153
+Records of the Office.
+
+Certification is not necessary as a condition to admissibility when the evidence to be submitted is a record of the Office to which all parties have access.
+
+## 37 C.F.R. § 41.154
+Form of evidence.
+
+(a) Evidence consists of affidavits, transcripts of depositions, documents, and things. All evidence must be submitted in the form of an exhibit.
+
+(b) Translation required. When a party relies on a document or is required to produce a document in a language other than English, a translation of the document into English and an affidavit attesting to the accuracy of the translation must be filed with the document.
+
+(c) An exhibit must conform with the requirements for papers in § 41.106 of this subpart and the requirements of this paragraph.
+
+(1) Each exhibit must have an exhibit label with a unique number in a range assigned by the Board, the names of the parties, and the proceeding number in the following format:
+
+JONES EXHIBIT 2001
+
+Jones v. Smith
+
+Contested Case 104,999
+
+(2) When the exhibit is a paper:
+
+(i) Each page must be uniquely numbered in sequence, and
+
+(ii) The exhibit label must be affixed to the lower right corner of the first page of the exhibit without obscuring information on the first page or, if obscuring is unavoidable, affixed to a duplicate first page.
+
+(d) Exhibit list. Each party must maintain an exhibit list with the exhibit number and a brief description of each exhibit. If the exhibit is not filed, the exhibit list should note that fact. The Board may require the filing of a current exhibit list prior to acting on a motion.
+
+[69 FR 50003, Aug. 12, 2004, as amended at 69 FR 58260, Sept. 30, 2004]
+
+## 37 C.F.R. § 41.155
+Objection; motion to exclude; motion in limine.
+
+(a) Deposition. Objections to deposition evidence must be made during the deposition. Evidence to cure the objection must be provided during the deposition unless the parties to the deposition stipulate otherwise on the deposition record.
+
+(b) Other than deposition. For evidence other than deposition evidence:
+
+(1) Objection. Any objection must be served within five business days of service of evidence, other than deposition evidence, to which the objection is directed.
+
+(2) Supplemental evidence. The party relying on evidence for which an objection is timely served may respond to the objection by serving supplemental evidence within ten business days of service of the objection.
+
+(c) Motion to exclude. A miscellaneous motion to exclude evidence must be filed to preserve any objection. The motion must identify the objections in the record in order and must explain the objections.
+
+(d) Motion in limine. A party may file a miscellaneous motion in limine for a ruling on the admissibility of evidence.
+
+[69 FR 50003, Aug. 12, 2004, as amended at 69 FR 58260, Sept. 30, 2004]
+
+## 37 C.F.R. § 41.156
+Compelling testimony and production.
+
+(a) Authorization required. A party seeking to compel testimony or production of documents or things must file a miscellaneous motion for authorization. The miscellaneous motion must describe the general relevance of the testimony, document, or thing and must:
+
+(1) In the case of testimony, identify the witness by name or title, and
+
+(2) In the case of a document or thing, the general nature of the document or thing.
+
+(b) Outside the United States. For testimony or production sought outside the United States, the motion must also:
+
+(1) In the case of testimony. (i) Identify the foreign country and explain why the party believes the witness can be compelled to testify in the foreign country, including a description of the procedures that will be used to compel the testimony in the foreign country and an estimate of the time it is expected to take to obtain the testimony; and
+
+(ii) Demonstrate that the party has made reasonable efforts to secure the agreement of the witness to testify in the United States but has been unsuccessful in obtaining the agreement, even though the party has offered to pay the expenses of the witness to travel to and testify in the United States.
+
+(2) In the case of production of a document or thing. (i) Identify the foreign country and explain why the party believes production of the document or thing can be compelled in the foreign country, including a description of the procedures that will be used to compel production of the document or thing in the foreign country and an estimate of the time it is expected to take to obtain production of the document or thing; and
+
+(ii) Demonstrate that the party has made reasonable efforts to obtain the agreement of the individual or entity having possession, custody, or control of the document to produce the document or thing in the United States but has been unsuccessful in obtaining that agreement, even though the party has offered to pay the expenses of producing the document or thing in the United States.
+
+## 37 C.F.R. § 41.157
+Taking testimony.
+
+(a) Form. Direct testimony must be submitted in the form of an affidavit except when the testimony is compelled under 35 U.S.C. 24, in which case it may be in the form of a deposition transcript.
+
+(b) Time and location. (1) Uncompelled direct testimony may be taken at any time; otherwise, testimony may only be taken during such time period as the Board may authorize.
+
+(2) Other testimony. (i) Except as the Board otherwise orders, authorized testimony may be taken at any reasonable time and location within the United States before any disinterested official authorized to administer oaths at that location.
+
+(ii) Testimony outside the United States may only be taken as the Board specifically directs.
+
+(c) Notice of deposition. (1) Prior to the taking of testimony, all parties to the proceeding must agree on the time and place for taking testimony. If the parties cannot agree, the party seeking the testimony must initiate a conference with the Board to set a time and place.
+
+(2) Cross-examination should ordinarily take place after any supplemental evidence relating to the direct testimony has been filed and more than a week before the filing date for any paper in which the cross-examination testimony is expected to be used. A party requesting cross-examination testimony of more than one witness may choose the order in which the witnesses are to be cross-examined.
+
+(3) In the case of direct testimony, at least three business days prior to the conference in paragraph (c)(1) of this section, the party seeking the direct testimony must serve:
+
+(i) A list and copy of each document under the party's control and on which the party intends to rely, and
+
+(ii) A list of, and proffer of reasonable access to, any thing other than a document under the party's control and on which the party intends to rely.
+
+(4) Notice of the deposition must be filed at least two business days before a deposition. The notice limits the scope of the testimony and must list:
+
+(i) The time and place of the deposition,
+
+(ii) The name and address of the witness,
+
+(iii) A list of the exhibits to be relied upon during the deposition, and
+
+(iv) A general description of the scope and nature of the testimony to be elicited.
+
+(5) Motion to quash. Objection to a defect in the notice is waived unless a miscellaneous motion to quash is promptly filed.
+
+(d) Deposition in a foreign language. If an interpreter will be used during the deposition, the party calling the witness must initiate a conference with the Board at least five business days before the deposition.
+
+(e) Manner of taking testimony. (1) Each witness before giving a deposition shall be duly sworn according to law by the officer before whom the deposition is to be taken. The officer must be authorized to take testimony under 35 U.S.C. 23.
+
+(2) The testimony shall be taken in answer to interrogatories with any questions and answers recorded in their regular order by the officer, or by some other disinterested person in the presence of the officer, unless the presence of the officer is waived on the record by agreement of all parties.
+
+(3) Any exhibits relied upon must be numbered according to the numbering scheme assigned for the contested case and must, if not previously served, be served at the deposition.
+
+(4) All objections made at the time of the deposition to the qualifications of the officer taking the deposition, the manner of taking it, the evidence presented, the conduct of any party, and any other objection to the proceeding shall be noted on the record by the officer. Evidence objected to shall be taken subject to a ruling on the objection.
+
+(5) When the testimony has been transcribed, the witness shall read and sign (in the form of an affidavit) a transcript of the deposition unless:
+
+(i) The parties otherwise agree in writing, (ii) The parties waive reading and signature by the witness on the record at the deposition, or
+
+(iii) The witness refuses to read or sign the transcript of the deposition.
+
+(6) The officer shall prepare a certified transcript by attaching to the transcript of the deposition a certificate in the form of an affidavit signed and sealed by the officer. Unless the parties waive any of the following requirements, in which case the certificate shall so state, the certificate must state:
+
+(i) The witness was duly sworn by the officer before commencement of testimony by the witness;
+
+(ii) The transcript is a true record of the testimony given by the witness;
+
+(iii) The name of the person who recorded the testimony and, if the officer did not record it, whether the testimony was recorded in the presence of the officer;
+
+(iv) The presence or absence of any opponent;
+
+(v) The place where the deposition was taken and the day and hour when the deposition began and ended;
+
+(vi) The officer has no disqualifying interest, personal or financial, in a party; and
+
+(vii) If a witness refuses to read or sign the transcript, the circumstances under which the witness refused.
+
+(7) The officer must promptly provide a copy of the transcript to all parties. The proponent of the testimony must file the original as an exhibit.
+
+(8) Any objection to the content, form, or manner of taking the deposition, including the qualifications of the officer, is waived unless made on the record during the deposition and preserved in a timely filed miscellaneous motion to exclude.
+
+(f) Costs. Except as the Board may order or the parties may agree in writing, the proponent of the testimony shall bear all costs associated with the testimony, including the reasonable costs associated with making the witness available for the cross-examination.
+
+## 37 C.F.R. § 41.158
+Expert testimony; tests and data.
+
+(a) Expert testimony that does not disclose the underlying facts or data on which the opinion is based is entitled to little or no weight. Testimony on United States patent law will not be admitted.
+
+(b) If a party relies on a technical test or data from such a test, the party must provide an affidavit explaining:
+
+(1) Why the test or data is being used,
+
+(2) How the test was performed and the data was generated,
+
+(3) How the data is used to determine a value,
+
+(4) How the test is regarded in the relevant art, and
+
+(5) Any other information necessary for the Board to evaluate the test and data.
+
+## 37 C.F.R. § 41.200
+Procedure; pendency.
+
+(a) A patent interference is a contested case subject to the procedures set forth in subpart D of this part.
+
+(b) Any reference to 35 U.S.C. 102 or 135 in this subpart refers to the statute in effect on March 15, 2013, unless otherwise expressly indicated. Any reference to 35 U.S.C. 141 or 146 in this subpart refers to the statute applicable to the involved application or patent.
+
+(c) Patent interferences shall be administered such that pendency before the Board is normally no more than two years.
+
+[69 FR 50003, Aug. 12, 2004, as amended at 75 FR 19559, Apr. 15, 2010; 80 FR 17971, Apr. 2, 2015]
+
+## 37 C.F.R. § 41.201
+Definitions.
+
+In addition to the definitions in §§ 41.2 and 41.100, the following definitions apply to proceedings under this subpart:
+
+Accord benefit means Board recognition that a patent application provides a proper constructive reduction to practice under 35 U.S.C. 102(g)(1).
+
+Constructive reduction to practice means a described and enabled anticipation under 35 U.S.C. 102(g)(1), in a patent application of the subject matter of a count. Earliest constructive reduction to practice means the first constructive reduction to practice that has been continuously disclosed through a chain of patent applications including in the involved application or patent. For the chain to be continuous, each subsequent application must comply with the requirements of 35 U.S.C. 119-121, 365, or 386.
+
+Count means the Board's description of the interfering subject matter that sets the scope of admissible proofs on priority. Where there is more than one count, each count must describe a patentably distinct invention.
+
+Involved claim means, for the purposes of 35 U.S.C. 135(a), a claim that has been designated as corresponding to the count.
+
+Senior party means the party entitled to the presumption under § 41.207(a)(1) that it is the prior inventor. Any other party is a junior party.
+
+Threshold issue means an issue that, if resolved in favor of the movant, would deprive the opponent of standing in the interference. Threshold issues may include:
+
+(1) No interference-in-fact, and
+
+(2) In the case of an involved application claim first made after the publication of the movant's application or issuance of the movant's patent:
+
+(i) Repose under 35 U.S.C. 135(b) in view of the movant's patent or published application, or
+
+(ii) Unpatentability for lack of written description under 35 U.S.C. 112 of an involved application claim where the applicant suggested, or could have suggested, an interference under § 41.202(a).
+
+[69 FR 50003, Aug. 12, 2004, as amended at 77 FR 46631, Aug. 6, 2012; 80 FR 17971, Apr. 2, 2015]
+
+## 37 C.F.R. § 41.202
+Suggesting an interference.
+
+(a) Applicant. An applicant, including a reissue applicant, may suggest an interference with another application or a patent. The suggestion must:
+
+(1) Provide sufficient information to identify the application or patent with which the applicant seeks an interference,
+
+(2) Identify all claims the applicant believes interfere, propose one or more counts, and show how the claims correspond to one or more counts,
+
+(3) For each count, provide a claim chart comparing at least one claim of each party corresponding to the count and show why the claims interfere within the meaning of § 41.203(a),
+
+(4) Explain in detail why the applicant will prevail on priority,
+
+(5) If a claim has been added or amended to provoke an interference, provide a claim chart showing the written description for each claim in the applicant's specification, and
+
+(6) For each constructive reduction to practice for which the applicant wishes to be accorded benefit, provide a chart showing where the disclosure provides a constructive reduction to practice within the scope of the interfering subject matter.
+
+(b) Patentee. A patentee cannot suggest an interference under this section but may, to the extent permitted under § 1.291 of this title, alert the examiner of an application claiming interfering subject matter to the possibility of an interference.
+
+(c) Examiner. An examiner may require an applicant to add a claim to provoke an interference. Failure to satisfy the requirement within a period (not less than one month) the examiner sets will operate as a concession of priority for the subject matter of the claim. If the interference would be with a patent, the applicant must also comply with paragraphs (a)(2) through (a)(6) of this section. The claim the examiner proposes to have added must, apart from the question of priority under 35 U.S.C. 102(g):
+
+(1) Be patentable to the applicant, and
+
+(2) Be drawn to patentable subject matter claimed by another applicant or patentee.
+
+(d) Requirement to show priority under 35 U.S.C. 102(g). (1) When an applicant has an earliest constructive reduction to practice that is later than the apparent earliest constructive reduction to practice for a patent or published application claiming interfering subject matter, the applicant must show why it would prevail on priority.
+
+(2) If an applicant fails to show priority under paragraph (d)(1) of this section, an administrative patent judge may nevertheless declare an interference to place the applicant under an order to show cause why judgment should not be entered against the applicant on priority. New evidence in support of priority will not be admitted except on a showing of good cause. The Board may authorize the filing of motions to redefine the interfering subject matter or to change the benefit accorded to the parties.
+
+(e) Sufficiency of showing. (1) A showing of priority under this section is not sufficient unless it would, if unrebutted, support a determination of priority in favor of the party making the showing.
+
+(2) When testimony or production necessary to show priority is not available without authorization under § 41.150(c) or § 41.156(a), the showing shall include:
+
+(i) Any necessary interrogatory, request for admission, request for production, or deposition request, and
+
+(ii) A detailed proffer of what the response to the interrogatory or request would be expected to be and an explanation of the relevance of the response to the question of priority.
+
+[69 FR 50003, Aug. 12, 2004, as amended at 77 FR 42174, July 17, 2012]
+
+## 37 C.F.R. § 41.203
+Declaration.
+
+(a) Interfering subject matter. An interference exists if the subject matter of a claim of one party would, if prior art, have anticipated or rendered obvious the subject matter of a claim of the opposing party and vice versa.
+
+(b) Notice of declaration. An administrative patent judge declares the patent interference on behalf of the Director. A notice declaring an interference identifies:
+
+(1) The interfering subject matter;
+
+(2) The involved applications, patents, and claims;
+
+(3) The accorded benefit for each count; and
+
+(4) The claims corresponding to each count.
+
+(c) Redeclaration. An administrative patent judge may redeclare a patent interference on behalf of the Director to change the declaration made under paragraph (b) of this section.
+
+(d) A party may suggest the addition of a patent or application to the interference or the declaration of an additional interference. The suggestion should make the showings required under § 41.202(a) of this part.
+
+## 37 C.F.R. § 41.204
+Notice of basis for relief.
+
+(a) Priority statement. (1) A party may not submit evidence of its priority in addition to its accorded benefit unless it files a statement setting forth all bases on which the party intends to establish its entitlement to judgment on priority.
+
+(2) The priority statement must:
+
+(i) State the date and location of the party's earliest corroborated conception,
+
+(ii) State the date and location of the party's earliest corroborated actual reduction to practice,
+
+(iii) State the earliest corroborated date on which the party's diligence began, and
+
+(iv) Provide a copy of the earliest document upon which the party will rely to show conception.
+
+(3) If a junior party fails to file a priority statement overcoming a senior party's accorded benefit, judgment shall be entered against the junior party absent a showing of good cause.
+
+(b) Other substantive motions. The Board may require a party to list the motions it intends to file, including sufficient detail to place the Board and the opponent on notice of the precise relief sought.
+
+(c) Filing and service. The Board will set the times for filing and serving statements required under this section.
+
+## 37 C.F.R. § 41.205
+Settlement agreements.
+
+(a) Constructive notice; time for filing. Pursuant to 35 U.S.C. 135(c), an agreement or understanding, including collateral agreements referred to therein, made in connection with or in contemplation of the termination of an interference must be filed prior to the termination of the interference between the parties to the agreement. After a final decision is entered by the Board, an interference is considered terminated when no appeal (35 U.S.C. 141) or other review (35 U.S.C. 146) has been or can be taken or had. If an appeal to the U.S. Court of Appeals for the Federal Circuit (under 35 U.S.C. 141) or a civil action (under 35 U.S.C. 146) has been filed the interference is considered terminated when the appeal or civil action is terminated. A civil action is terminated when the time to appeal the judgment expires. An appeal to the U.S. Court of Appeals for the Federal Circuit, whether from a decision of the Board or a judgment in a civil action, is terminated when the mandate is issued by the Court.
+
+(b) Untimely filing. The Chief Administrative Patent Judge may permit the filing of an agreement under paragraph (a) of this section up to six months after termination upon petition and a showing of good cause for the failure to file prior to termination.
+
+(c) Request to keep separate. Any party to an agreement under paragraph (a) of this section may request that the agreement be kept separate from the interference file. The request must be filed with or promptly after the agreement is filed.
+
+(d) Access to agreement. Any person, other than a representative of a Government agency, may have access to an agreement kept separate under paragraph (c) of this section only upon petition and on a showing of good cause. The agreement will be available to Government agencies on written request.
+
+## 37 C.F.R. § 41.206
+Common interests in the invention.
+
+An administrative patent judge may decline to declare, or if already declared the Board may issue judgment in, an interference between an application and another application or patent that are commonly owned.
+
+## 37 C.F.R. § 41.207
+Presumptions.
+
+(a) Priority —(1) Order of invention. Parties are presumed to have invented interfering subject matter in the order of the dates of their accorded benefit for each count. If two parties are accorded the benefit of the same earliest date of constructive reduction to practice, then neither party is entitled to a presumption of priority with respect to the other such party.
+
+(2) Evidentiary standard. Priority may be proved by a preponderance of the evidence except a party must prove priority by clear and convincing evidence if the date of its earliest constructive reduction to practice is after the issue date of an involved patent or the publication date under 35 U.S.C. 122(b) of an involved application or patent.
+
+(b) Claim correspondence. (1) For the purposes of determining priority and derivation, all claims of a party corresponding to the count are presumed to stand or fall together. To challenge this presumption, a party must file a timely substantive motion to have a corresponding claim designated as not corresponding to the count. No presumption based on claim correspondence regarding the grouping of claims exists for other grounds of unpatentability.
+
+(2) A claim corresponds to a count if the subject matter of the count, treated as prior art to the claim, would have anticipated or rendered obvious the subject matter of the claim.
+
+(c) Cross-applicability of prior art. When a motion for judgment of unpatentability against an opponent's claim on the basis of prior art is granted, each of the movant's claims corresponding to the same count as the opponent's claim will be presumed to be unpatentable in view of the same prior art unless the movant in its motion rebuts this presumption.
+
+## 37 C.F.R. § 41.208
+Content of substantive and responsive motions.
+
+The general requirements for motions in contested cases are stated at § 41.121(c).
+
+(a) In an interference, substantive motions must:
+
+(1) Raise a threshold issue,
+
+(2) Seek to change the scope of the definition of the interfering subject matter or the correspondence of claims to the count,
+
+(3) Seek to change the benefit accorded for the count, or
+
+(4) Seek judgment on derivation or on priority.
+
+(b) To be sufficient, a motion must provide a showing, supported with appropriate evidence, such that, if unrebutted, it would justify the relief sought. The burden of proof is on the movant.
+
+(c) Showing patentability. (1) A party moving to add or amend a claim must show the claim is patentable.
+
+(2) A party moving to add or amend a count must show the count is patentable over prior art.

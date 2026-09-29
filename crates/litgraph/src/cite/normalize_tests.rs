@@ -274,3 +274,101 @@ fn rule_prefix_missing_required_space_does_not_match() {
     let c = one("Fed.R.Civ.P. 12", None);
     assert_eq!(c.family, Family::Other);
 }
+
+// Range decomposition -----------------------------------------------------
+
+#[test]
+fn plain_integer_range_expands_to_every_member() {
+    let refs = parse_cite_string("FRAP 28-31", None);
+    let sections: Vec<&str> = refs.iter().map(|c| c.section.as_str()).collect();
+    assert_eq!(sections, vec!["28", "29", "30", "31"]);
+    assert!(refs.iter().all(|c| c.family == Family::Frap));
+    assert_eq!(refs[0].heading().as_deref(), Some("FRAP 28"));
+    assert_eq!(refs[3].heading().as_deref(), Some("FRAP 31"));
+}
+
+#[test]
+fn dotted_range_with_repeated_prefix_expands() {
+    let refs = parse_cite_string("37 C.F.R. §§ 42.120-42.121", None);
+    let sections: Vec<&str> = refs.iter().map(|c| c.section.as_str()).collect();
+    assert_eq!(sections, vec!["42.120", "42.121"]);
+}
+
+#[test]
+fn dotted_range_with_dropped_prefix_on_high_side_expands() {
+    // Legal writing shorthand: "42.120-121" instead of repeating "42.120-42.121".
+    let refs = parse_cite_string("37 C.F.R. § 42.120-121", None);
+    let sections: Vec<&str> = refs.iter().map(|c| c.section.as_str()).collect();
+    assert_eq!(sections, vec!["42.120", "42.121"]);
+}
+
+#[test]
+fn usc_range_expands() {
+    let refs = parse_cite_string("18 U.S.C. §§ 3161-3162", None);
+    let sections: Vec<&str> = refs.iter().map(|c| c.section.as_str()).collect();
+    assert_eq!(sections, vec!["3161", "3162"]);
+    assert!(refs.iter().all(|c| c.family == Family::Usc(18)));
+}
+
+#[test]
+fn a_non_range_hyphenated_section_is_left_alone() {
+    // Not a range at all (descending / mismatched prefix): don't guess.
+    let c = one("37 C.F.R. § 90.3-42.1", None);
+    assert_eq!(c.section, "90.3-42.1");
+    assert_eq!(c.heading().as_deref(), Some("37 C.F.R. § 90.3-42.1"));
+}
+
+#[test]
+fn a_cite_with_subsections_is_never_range_expanded() {
+    // Ambiguous which member a subsection would bind to if the section part
+    // were a range -- expand_range bails out on any non-empty subsections
+    // rather than guessing. `parse_cite_string` returns exactly one CiteRef
+    // here specifically because no expansion happened (`one()` panics if it
+    // returns more than one).
+    let c = one("35 U.S.C. § 315(e)", None);
+    assert_eq!(c.section, "315");
+    assert_eq!(c.subsections, vec!["e"]);
+}
+
+#[test]
+fn an_oversized_range_is_left_alone() {
+    let c = one("FRAP 1-500", None);
+    assert_eq!(c.section, "1-500");
+}
+
+// ITC usc-slug shorthand ---------------------------------------------------
+
+#[test]
+fn itc_usc_slug_resolves_only_for_the_itc_forum() {
+    let c = one("usc1337.b.1", Some("itc"));
+    assert_eq!(c.family, Family::Usc(19));
+    assert_eq!(c.section, "1337");
+    assert_eq!(c.subsections, vec!["b", "1"]);
+    assert_eq!(c.heading().as_deref(), Some("19 U.S.C. § 1337"));
+
+    let unresolved = one("usc1337.b.1", None);
+    assert_eq!(unresolved.family, Family::Other);
+}
+
+#[test]
+fn itc_usc_slug_rejects_non_numeric_section() {
+    let c = one("usc.b.1", Some("itc"));
+    assert_eq!(c.family, Family::Other);
+}
+
+// Carry-forward chain-breaking --------------------------------------------
+
+#[test]
+fn an_unrelated_citation_species_breaks_the_carry_forward_chain() {
+    // "Sup. Ct. R. 13.1" isn't a recognized family and has its own text (not
+    // a bare trailing number), so it must not leave `28 U.S.C.` active for
+    // "13.3" to wrongly inherit -- both should resolve as out-of-scope, not
+    // as "28 U.S.C. § 13.3".
+    let refs = parse_cite_string("28 U.S.C. § 2101(c); Sup. Ct. R. 13.1, 13.3", None);
+    assert_eq!(refs.len(), 3);
+    assert_eq!(refs[0].family, Family::Usc(28));
+    assert_eq!(refs[0].section, "2101");
+    assert_eq!(refs[1].family, Family::Other);
+    assert_eq!(refs[2].family, Family::Other);
+    assert!(refs[1].is_out_of_scope() && refs[2].is_out_of_scope());
+}

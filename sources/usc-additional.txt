@@ -1,0 +1,1328 @@
+## 28 U.S.C. § 46
+§46. Assignment of judges; panels; hearings; quorum
+
+(a) Circuit judges shall sit on the court and its panels in such order and at such times as the court directs.
+
+(b) In each circuit the court may authorize the hearing and determination of cases and controversies by separate panels, each consisting of three judges, at least a majority of whom shall be judges of that court, unless such judges cannot sit because recused or disqualified, or unless the chief judge of that court certifies that there is an emergency including, but not limited to, the unavailability of a judge of the court because of illness. Such panels shall sit at the times and places and hear the cases and controversies assigned as the court directs. The United States Court of Appeals for the Federal Circuit shall determine by rule a procedure for the rotation of judges from panel to panel to ensure that all of the judges sit on a representative cross section of the cases heard and, notwithstanding the first sentence of this subsection, may determine by rule the number of judges, not less than three, who constitute a panel.
+
+(c) Cases and controversies shall be heard and determined by a court or panel of not more than three judges (except that the United States Court of Appeals for the Federal Circuit may sit in panels of more than three judges if its rules so provide), unless a hearing or rehearing before the court in banc is ordered by a majority of the circuit judges of the circuit who are in regular active service. A court in banc shall consist of all circuit judges in regular active service, or such number of judges as may be prescribed in accordance with section 6 of Public Law 95–486 (92 Stat. 1633), except that any senior circuit judge of the circuit shall be eligible (1) to participate, at his election and upon designation and assignment pursuant to section 294(c) of this title and the rules of the circuit, as a member of an in banc court reviewing a decision of a panel of which such judge was a member, or (2) to continue to participate in the decision of a case or controversy that was heard or reheard by the court in banc at a time when such judge was in regular active service.
+
+(d) A majority of the number of judges authorized to constitute a court or panel thereof, as provided in paragraph (c), shall constitute a quorum.
+
+## 28 U.S.C. § 1254
+§1254. Courts of appeals; certiorari; certified questions
+
+Cases in the courts of appeals may be reviewed by the Supreme Court by the following methods:
+
+(1) By writ of certiorari granted upon the petition of any party to any civil or criminal case, before or after rendition of judgment or decree;
+
+(2) By certification at any time by a court of appeals of any question of law in any civil or criminal case as to which instructions are desired, and upon such certification the Supreme Court may give binding instructions or require the entire record to be sent up for decision of the entire matter in controversy.
+
+## 28 U.S.C. § 1291
+§1291. Final decisions of district courts
+
+The courts of appeals (other than the United States Court of Appeals for the Federal Circuit) shall have jurisdiction of appeals from all final decisions of the district courts of the United States, the United States District Court for the District of the Canal Zone, the District Court of Guam, and the District Court of the Virgin Islands, except where a direct review may be had in the Supreme Court. The jurisdiction of the United States Court of Appeals for the Federal Circuit shall be limited to the jurisdiction described in sections 1292(c) and (d) and 1295 of this title.
+
+## 28 U.S.C. § 1295
+§1295. Jurisdiction of the United States Court of Appeals for the Federal Circuit
+
+(a) The United States Court of Appeals for the Federal Circuit shall have exclusive jurisdiction-
+
+(1) of an appeal from a final decision of a district court of the United States, the District Court of Guam, the District Court of the Virgin Islands, or the District Court of the Northern Mariana Islands, in any civil action arising under, or in any civil action in which a party has asserted a compulsory counterclaim arising under, any Act of Congress relating to patents or plant variety protection;
+
+(2) of an appeal from a final decision of a district court of the United States, the United States District Court for the District of the Canal Zone, the District Court of Guam, the District Court of the Virgin Islands, or the District Court for the Northern Mariana Islands, if the jurisdiction of that court was based, in whole or in part, on section 1346 of this title, except that jurisdiction of an appeal in a case brought in a district court under section 1346(a)(1), 1346(b), 1346(e), or 1346(f) of this title or under section 1346(a)(2) when the claim is founded upon an Act of Congress or a regulation of an executive department providing for internal revenue shall be governed by sections 1291, 1292, and 1294 of this title;
+
+(3) of an appeal from a final decision of the United States Court of Federal Claims;
+
+(4) of an appeal from a decision of-
+
+(A) the Patent Trial and Appeal Board of the United States Patent and Trademark Office with respect to a patent application, derivation proceeding, reexamination, post-grant review, or inter partes review under title 35, at the instance of a party who exercised that party's right to participate in the applicable proceeding before or appeal to the Board, except that an applicant or a party to a derivation proceeding may also have remedy by civil action pursuant to section 145 or 146 of title 35; an appeal under this subparagraph of a decision of the Board with respect to an application or derivation proceeding shall waive the right of such applicant or party to proceed under section 145 or 146 of title 35;
+
+(B) the Under Secretary of Commerce for Intellectual Property and Director of the United States Patent and Trademark Office or the Trademark Trial and Appeal Board with respect to applications for registration of marks and other proceedings as provided in section 21 of the Trademark Act of 1946 (15 U.S.C. 1071); or
+
+(C) a district court to which a case was directed pursuant to section 145, 146, or 154(b) of title 35;
+
+(5) of an appeal from a final decision of the United States Court of International Trade;
+
+(6) to review the final determinations of the United States International Trade Commission relating to unfair practices in import trade, made under section 337 of the Tariff Act of 1930 (19 U.S.C. 1337);
+
+(7) to review, by appeal on questions of law only, findings of the Secretary of Commerce under U.S. note 6 to subchapter X of chapter 98 of the Harmonized Tariff Schedule of the United States (relating to importation of instruments or apparatus);
+
+(8) of an appeal under section 71 of the Plant Variety Protection Act (7 U.S.C. 2461);
+
+(9) of an appeal from a final order or final decision of the Merit Systems Protection Board, pursuant to sections 7703(b)(1) and 7703(d) of title 5;
+
+(10) of an appeal from a final decision of an agency board of contract appeals pursuant to section 7107(a)(1) of title 41;
+
+(11) of an appeal under section 211 of the Economic Stabilization Act of 1970;
+
+(12) of an appeal under section 5 of the Emergency Petroleum Allocation Act of 1973;
+
+(13) of an appeal under section 506(c) of the Natural Gas Policy Act of 1978; and
+
+(14) of an appeal under section 523 of the Energy Policy and Conservation Act.
+
+(b) The head of any executive department or agency may, with the approval of the Attorney General, refer to the Court of Appeals for the Federal Circuit for judicial review any final decision rendered by a board of contract appeals pursuant to the terms of any contract with the United States awarded by that department or agency which the head of such department or agency has concluded is not entitled to finality pursuant to the review standards specified in section 7107(b) of title 41. The head of each executive department or agency shall make any referral under this section within one hundred and twenty days after the receipt of a copy of the final appeal decision.
+
+(c) The Court of Appeals for the Federal Circuit shall review the matter referred in accordance with the standards specified in section 7107(b) of title 41. The court shall proceed with judicial review on the administrative record made before the board of contract appeals on matters so referred as in other cases pending in such court, shall determine the issue of finality of the appeal decision, and shall, if appropriate, render judgment thereon, or remand the matter to any administrative or executive body or official with such direction as it may deem proper and just.
+
+## 28 U.S.C. § 1331
+§1331. Federal question
+
+The district courts shall have original jurisdiction of all civil actions arising under the Constitution, laws, or treaties of the United States.
+
+## 28 U.S.C. § 1491
+§1491. Claims against United States generally; actions involving Tennessee Valley Authority
+
+(a)(1) The United States Court of Federal Claims shall have jurisdiction to render judgment upon any claim against the United States founded either upon the Constitution, or any Act of Congress or any regulation of an executive department, or upon any express or implied contract with the United States, or for liquidated or unliquidated damages in cases not sounding in tort. For the purpose of this paragraph, an express or implied contract with the Army and Air Force Exchange Service, Navy Exchanges, Marine Corps Exchanges, Coast Guard Exchanges, or Exchange Councils of the National Aeronautics and Space Administration shall be considered an express or implied contract with the United States.
+
+(2) To provide an entire remedy and to complete the relief afforded by the judgment, the court may, as an incident of and collateral to any such judgment, issue orders directing restoration to office or position, placement in appropriate duty or retirement status, and correction of applicable records, and such orders may be issued to any appropriate official of the United States. In any case within its jurisdiction, the court shall have the power to remand appropriate matters to any administrative or executive body or official with such direction as it may deem proper and just. The Court of Federal Claims shall have jurisdiction to render judgment upon any claim by or against, or dispute with, a contractor arising under section 7104(b)(1) of title 41, including a dispute concerning termination of a contract, rights in tangible or intangible property, compliance with cost accounting standards, and other nonmonetary disputes on which a decision of the contracting officer has been issued under section 6 1 of that Act.
+
+(b)(1) Both the Unites 2 States Court of Federal Claims and the district courts of the United States shall have jurisdiction to render judgment on an action by an interested party objecting to a solicitation by a Federal agency for bids or proposals for a proposed contract or to a proposed award or the award of a contract or any alleged violation of statute or regulation in connection with a procurement or a proposed procurement. Both the United States Court of Federal Claims and the district courts of the United States shall have jurisdiction to entertain such an action without regard to whether suit is instituted before or after the contract is awarded.
+
+(2) To afford relief in such an action, the courts may award any relief that the court considers proper, including declaratory and injunctive relief except that any monetary relief shall be limited to bid preparation and proposal costs.
+
+(3) In exercising jurisdiction under this subsection, the courts shall give due regard to the interests of national defense and national security and the need for expeditious resolution of the action.
+
+(4) In any action under this subsection, the courts shall review the agency's decision pursuant to the standards set forth in section 706 of title 5.
+
+(5) If an interested party who is a member of the private sector commences an action described in paragraph (1) with respect to a public-private competition conducted under Office of Management and Budget Circular A–76 regarding the performance of an activity or function of a Federal agency, or a decision to convert a function performed by Federal employees to private sector performance without a competition under Office of Management and Budget Circular A–76, then an interested party described in section 3551(2)(B) of title 31 shall be entitled to intervene in that action.
+
+(6) Jurisdiction over any action described in paragraph (1) arising out of a maritime contract, or a solicitation for a proposed maritime contract, shall be governed by this section and shall not be subject to the jurisdiction of the district courts of the United States under the Suits in Admiralty Act (chapter 309 of title 46) or the Public Vessels Act (chapter 311 of title 46).
+
+(c) Nothing herein shall be construed to give the United States Court of Federal Claims jurisdiction of any civil action within the exclusive jurisdiction of the Court of International Trade, or of any action against, or founded on conduct of, the Tennessee Valley Authority, or to amend or modify the provisions of the Tennessee Valley Authority Act of 1933 with respect to actions by or against the Authority.
+
+## 28 U.S.C. § 1498
+§1498. Patent and copyright cases
+
+(a) Whenever an invention described in and covered by a patent of the United States is used or manufactured by or for the United States without license of the owner thereof or lawful right to use or manufacture the same, the owner's remedy shall be by action against the United States in the United States Court of Federal Claims for the recovery of his reasonable and entire compensation for such use and manufacture. Reasonable and entire compensation shall include the owner's reasonable costs, including reasonable fees for expert witnesses and attorneys, in pursuing the action if the owner is an independent inventor, a nonprofit organization, or an entity that had no more than 500 employees at any time during the 5-year period preceding the use or manufacture of the patented invention by or for the United States. Nothwithstanding 1 the preceding sentences, unless the action has been pending for more than 10 years from the time of filing to the time that the owner applies for such costs and fees, reasonable and entire compensation shall not include such costs and fees if the court finds that the position of the United States was substantially justified or that special circumstances make an award unjust.
+
+For the purposes of this section, the use or manufacture of an invention described in and covered by a patent of the United States by a contractor, a subcontractor, or any person, firm, or corporation for the Government and with the authorization or consent of the Government, shall be construed as use or manufacture for the United States.
+
+The court shall not award compensation under this section if the claim is based on the use or manufacture by or for the United States of any article owned, leased, used by, or in the possession of the United States prior to July 1, 1918.
+
+A Government employee shall have the right to bring suit against the Government under this section except where he was in a position to order, influence, or induce use of the invention by the Government. This section shall not confer a right of action on any patentee or any assignee of such patentee with respect to any invention discovered or invented by a person while in the employment or service of the United States, where the invention was related to the official functions of the employee, in cases in which such functions included research and development, or in the making of which Government time, materials or facilities were used.
+
+(b) Hereafter, whenever the copyright in any work protected under the copyright laws of the United States shall be infringed by the United States, by a corporation owned or controlled by the United States, or by a contractor, subcontractor, or any person, firm, or corporation acting for the Government and with the authorization or consent of the Government, the exclusive action which may be brought for such infringement shall be an action by the copyright owner against the United States in the Court of Federal Claims for the recovery of his reasonable and entire compensation as damages for such infringement, including the minimum statutory damages as set forth in section 504(c) of title 17, United States Code: Provided, That a Government employee shall have a right of action against the Government under this subsection except where he was in a position to order, influence, or induce use of the copyrighted work by the Government: Provided, however, That this subsection shall not confer a right of action on any copyright owner or any assignee of such owner with respect to any copyrighted work prepared by a person while in the employment or service of the United States, where the copyrighted work was prepared as a part of the official functions of the employee, or in the preparation of which Government time, material, or facilities were used: And provided further, That before such action against the United States has been instituted the appropriate corporation owned or controlled by the United States or the head of the appropriate department or agency of the Government, as the case may be, is authorized to enter into an agreement with the copyright owner in full settlement and compromise for the damages accruing to him by reason of such infringement and to settle the claim administratively out of available appropriations.
+
+Except as otherwise provided by law, no recovery shall be had for any infringement of a copyright covered by this subsection committed more than three years prior to the filing of the complaint or counterclaim for infringement in the action, except that the period between the date of receipt of a written claim for compensation by the Department or agency of the Government or corporation owned or controlled by the United States, as the case may be, having authority to settle such claim and the date of mailing by the Government of a notice to the claimant that his claim has been denied shall not be counted as a part of the three years, unless suit is brought before the last-mentioned date.
+
+(c) The provisions of this section shall not apply to any claim arising in a foreign country.
+
+(d) Hereafter, whenever a plant variety protected by a certificate of plant variety protection under the laws of the United States shall be infringed by the United States, by a corporation owned or controlled by the United States, or by a contractor, subcontractor, or any person, firm, or corporation acting for the Government, and with the authorization and consent of the Government, the exclusive remedy of the owner of such certificate shall be by action against the United States in the Court of Federal Claims for the recovery of his reasonable and entire compensation as damages for such infringement: Provided, That a Government employee shall have a right of action against the Government under this subsection except where he was in a position to order, influence, or induce use of the protected plant variety by the Government: Provided, however, That this subsection shall not confer a right of action on any certificate owner or any assignee of such owner with respect to any protected plant variety made by a person while in the employment or service of the United States, where such variety was prepared as a part of the official functions of the employee, or in the preparation of which Government time, material, or facilities were used: And provided further, That before such action against the United States has been instituted, the appropriate corporation owned or controlled by the United States or the head of the appropriate agency of the Government, as the case may be, is authorized to enter into an agreement with the certificate owner in full settlement and compromise, for the damages accrued to him by reason of such infringement and to settle the claim administratively out of available appropriations.
+
+(e) Subsections (b) and (c) of this section apply to exclusive rights in mask works under chapter 9 of title 17, and to exclusive rights in designs under chapter 13 of title 17, to the same extent as such subsections apply to copyrights.
+
+## 28 U.S.C. § 1500
+§1500. Pendency of claims in other courts
+
+The United States Court of Federal Claims shall not have jurisdiction of any claim for or in respect to which the plaintiff or his assignee has pending in any other court any suit or process against the United States or any person who, at the time when the cause of action alleged in such suit or process arose, was, in respect thereto, acting or professing to act, directly or indirectly under the authority of the United States.
+
+## 28 U.S.C. § 1914
+§1914. District court; filing and miscellaneous fees; rules of court
+
+(a) The clerk of each district court shall require the parties instituting any civil action, suit or proceeding in such court, whether by original process, removal or otherwise, to pay a filing fee of $350, except that on application for a writ of habeas corpus the filing fee shall be $5.
+
+(b) The clerk shall collect from the parties such additional fees only as are prescribed by the Judicial Conference of the United States.
+
+(c) Each district court by rule or standing order may require advance payment of fees.
+
+## 28 U.S.C. § 2101
+§2101. Supreme Court; time for appeal or certiorari; docketing; stay
+
+(a) A direct appeal to the Supreme Court from any decision under section 1253 of this title, holding unconstitutional in whole or in part, any Act of Congress, shall be taken within thirty days after the entry of the interlocutory or final order, judgment or decree. The record shall be made up and the case docketed within sixty days from the time such appeal is taken under rules prescribed by the Supreme Court.
+
+(b) Any other direct appeal to the Supreme Court which is authorized by law, from a decision of a district court in any civil action, suit or proceeding, shall be taken within thirty days from the judgment, order or decree, appealed from, if interlocutory, and within sixty days if final.
+
+(c) Any other appeal or any writ of certiorari intended to bring any judgment or decree in a civil action, suit or proceeding before the Supreme Court for review shall be taken or applied for within ninety days after the entry of such judgment or decree. A justice of the Supreme Court, for good cause shown, may extend the time for applying for a writ of certiorari for a period not exceeding sixty days.
+
+(d) The time for appeal or application for a writ of certiorari to review the judgment of a State court in a criminal case shall be as prescribed by rules of the Supreme Court.
+
+(e) An application to the Supreme Court for a writ of certiorari to review a case before judgment has been rendered in the court of appeals may be made at any time before judgment.
+
+(f) In any case in which the final judgment or decree of any court is subject to review by the Supreme Court on writ of certiorari, the execution and enforcement of such judgment or decree may be stayed for a reasonable time to enable the party aggrieved to obtain a writ of certiorari from the Supreme Court. The stay may be granted by a judge of the court rendering the judgment or decree or by a justice of the Supreme Court, and may be conditioned on the giving of security, approved by such judge or justice, that if the aggrieved party fails to make application for such writ within the period allotted therefor, or fails to obtain an order granting his application, or fails to make his plea good in the Supreme Court, he shall answer for all damages and costs which the other party may sustain by reason of the stay.
+
+(g) The time for application for a writ of certiorari to review a decision of the United States Court of Appeals for the Armed Forces, or the decision of a Court of Criminal Appeals that the United States Court of Appeals for the Armed Forces refuses to grant a petition to review, shall be as prescribed by rules of the Supreme Court.
+
+## 28 U.S.C. § 2106
+§2106. Determination
+
+The Supreme Court or any other court of appellate jurisdiction may affirm, modify, vacate, set aside or reverse any judgment, decree, or order of a court lawfully brought before it for review, and may remand the cause and direct the entry of such appropriate judgment, decree, or order, or require such further proceedings to be had as may be just under the circumstances.
+
+## 28 U.S.C. § 2107
+§2107. Time for appeal to court of appeals
+
+(a) Except as otherwise provided in this section, no appeal shall bring any judgment, order or decree in an action, suit or proceeding of a civil nature before a court of appeals for review unless notice of appeal is filed, within thirty days after the entry of such judgment, order or decree.
+
+(b) In any such action, suit, or proceeding, the time as to all parties shall be 60 days from such entry if one of the parties is-
+
+(1) the United States;
+
+(2) a United States agency;
+
+(3) a United States officer or employee sued in an official capacity; or
+
+(4) a current or former United States officer or employee sued in an individual capacity for an act or omission occurring in connection with duties performed on behalf of the United States, including all instances in which the United States represents that officer or employee when the judgment, order, or decree is entered or files the appeal for that officer or employee.
+
+(c) The district court may, upon motion filed not later than 30 days after the expiration of the time otherwise set for bringing appeal, extend the time for appeal upon a showing of excusable neglect or good cause. In addition, if the district court finds-
+
+(1) that a party entitled to notice of the entry of a judgment or order did not receive such notice from the clerk or any party within 21 days of its entry, and
+
+(2) that no party would be prejudiced,
+
+the district court may, upon motion filed within 180 days after entry of the judgment or order or within 14 days after receipt of such notice, whichever is earlier, reopen the time for appeal for a period of 14 days from the date of entry of the order reopening the time for appeal.
+
+(d) This section shall not apply to bankruptcy matters or other proceedings under Title 11.
+
+## 28 U.S.C. § 2412
+§2412. Costs and fees
+
+(a)(1) Except as otherwise specifically provided by statute, a judgment for costs, as enumerated in section 1920 of this title, but not including the fees and expenses of attorneys, may be awarded to the prevailing party in any civil action brought by or against the United States or any agency or any official of the United States acting in his or her official capacity in any court having jurisdiction of such action. A judgment for costs when taxed against the United States shall, in an amount established by statute, court rule, or order, be limited to reimbursing in whole or in part the prevailing party for the costs incurred by such party in the litigation.
+
+(2) A judgment for costs, when awarded in favor of the United States in an action brought by the United States, may include an amount equal to the filing fee prescribed under section 1914(a) of this title. The preceding sentence shall not be construed as requiring the United States to pay any filing fee.
+
+(b) Unless expressly prohibited by statute, a court may award reasonable fees and expenses of attorneys, in addition to the costs which may be awarded pursuant to subsection (a), to the prevailing party in any civil action brought by or against the United States or any agency or any official of the United States acting in his or her official capacity in any court having jurisdiction of such action. The United States shall be liable for such fees and expenses to the same extent that any other party would be liable under the common law or under the terms of any statute which specifically provides for such an award.
+
+(c)(1) Any judgment against the United States or any agency and any official of the United States acting in his or her official capacity for costs pursuant to subsection (a) shall be paid as provided in sections 2414 and 2517 of this title and shall be in addition to any relief provided in the judgment.
+
+(2) Any judgment against the United States or any agency and any official of the United States acting in his or her official capacity for fees and expenses of attorneys pursuant to subsection (b) shall be paid as provided in sections 2414 and 2517 of this title, except that if the basis for the award is a finding that the United States acted in bad faith, then the award shall be paid by any agency found to have acted in bad faith and shall be in addition to any relief provided in the judgment.
+
+(d)(1)(A) Except as otherwise specifically provided by statute, a court shall award to a prevailing party other than the United States fees and other expenses, in addition to any costs awarded pursuant to subsection (a), incurred by that party in any civil action (other than cases sounding in tort), including proceedings for judicial review of agency action, brought by or against the United States in any court having jurisdiction of that action, unless the court finds that the position of the United States was substantially justified or that special circumstances make an award unjust.
+
+(B) A party seeking an award of fees and other expenses shall, within thirty days of final judgment in the action, submit to the court an application for fees and other expenses which shows that the party is a prevailing party and is eligible to receive an award under this subsection, and the amount sought, including an itemized statement from any attorney or expert witness representing or appearing in behalf of the party stating the actual time expended and the rate at which fees and other expenses were computed. The party shall also allege that the position of the United States was not substantially justified. Whether or not the position of the United States was substantially justified shall be determined on the basis of the record (including the record with respect to the action or failure to act by the agency upon which the civil action is based) which is made in the civil action for which fees and other expenses are sought.
+
+(C) The court, in its discretion, may reduce the amount to be awarded pursuant to this subsection, or deny an award, to the extent that the prevailing party during the course of the proceedings engaged in conduct which unduly and unreasonably protracted the final resolution of the matter in controversy.
+
+(D) If, in a civil action brought by the United States or a proceeding for judicial review of an adversary adjudication described in section 504(a)(4) of title 5, the demand by the United States is substantially in excess of the judgment finally obtained by the United States and is unreasonable when compared with such judgment, under the facts and circumstances of the case, the court shall award to the party the fees and other expenses related to defending against the excessive demand, unless the party has committed a willful violation of law or otherwise acted in bad faith, or special circumstances make an award unjust. Fees and expenses awarded under this subparagraph shall be paid only as a consequence of appropriations provided in advance.
+
+(2) For the purposes of this subsection-
+
+(A) "fees and other expenses" includes the reasonable expenses of expert witnesses, the reasonable cost of any study, analysis, engineering report, test, or project which is found by the court to be necessary for the preparation of the party's case, and reasonable attorney fees (The amount of fees awarded under this subsection shall be based upon prevailing market rates for the kind and quality of the services furnished, except that (i) no expert witness shall be compensated at a rate in excess of the highest rate of compensation for expert witnesses paid by the United States; and (ii) attorney fees shall not be awarded in excess of $125 per hour unless the court determines that an increase in the cost of living or a special factor, such as the limited availability of qualified attorneys for the proceedings involved, justifies a higher fee.);
+
+(B) "party" means (i) an individual whose net worth did not exceed $2,000,000 at the time the civil action was filed, or (ii) any owner of an unincorporated business, or any partnership, corporation, association, unit of local government, or organization, the net worth of which did not exceed $7,000,000 at the time the civil action was filed, and which had not more than 500 employees at the time the civil action was filed; except that an organization described in section 501(c)(3) of the Internal Revenue Code of 1986 (26 U.S.C. 501(c)(3)) exempt from taxation under section 501(a) of such Code, or a cooperative association as defined in section 15(a) of the Agricultural Marketing Act (12 U.S.C. 1141j(a)), may be a party regardless of the net worth of such organization or cooperative association or for purposes of subsection (d)(1)(D), a small entity as defined in section 601 of title 5;
+
+(C) "United States" includes any agency and any official of the United States acting in his or her official capacity;
+
+(D) "position of the United States" means, in addition to the position taken by the United States in the civil action, the action or failure to act by the agency upon which the civil action is based; except that fees and expenses may not be awarded to a party for any portion of the litigation in which the party has unreasonably protracted the proceedings;
+
+(E) "civil action brought by or against the United States" includes an appeal by a party, other than the United States, from a decision of a contracting officer rendered pursuant to a disputes clause in a contract with the Government or pursuant to chapter 71 of title 41;
+
+(F) "court" includes the United States Court of Federal Claims and the United States Court of Appeals for Veterans Claims;
+
+(G) "final judgment" means a judgment that is final and not appealable, and includes an order of settlement;
+
+(H) "prevailing party", in the case of eminent domain proceedings, means a party who obtains a final judgment (other than by settlement), exclusive of interest, the amount of which is at least as close to the highest valuation of the property involved that is attested to at trial on behalf of the property owner as it is to the highest valuation of the property involved that is attested to at trial on behalf of the Government; and
+
+(I) "demand" means the express demand of the United States which led to the adversary adjudication, but shall not include a recitation of the maximum statutory penalty (i) in the complaint, or (ii) elsewhere when accompanied by an express demand for a lesser amount.
+
+(3) In awarding fees and other expenses under this subsection to a prevailing party in any action for judicial review of an adversary adjudication, as defined in subsection (b)(1)(C) of section 504 of title 5, or an adversary adjudication subject to chapter 71 of title 41, the court shall include in that award fees and other expenses to the same extent authorized in subsection (a) of such section, unless the court finds that during such adversary adjudication the position of the United States was substantially justified, or that special circumstances make an award unjust.
+
+(4) Fees and other expenses awarded under this subsection to a party shall be paid by any agency over which the party prevails from any funds made available to the agency by appropriation or otherwise.
+
+(5)(A) Not later than March 31 of the first fiscal year beginning after the date of enactment of the John D. Dingell, Jr. Conservation, Management, and Recreation Act, and every fiscal year thereafter, the Chairman of the Administrative Conference of the United States shall submit to Congress and make publicly available online a report on the amount of fees and other expenses awarded during the preceding fiscal year pursuant to this subsection.
+
+(B) Each report under subparagraph (A) shall describe the number, nature, and amount of the awards, the claims involved in the controversy, and any other relevant information that may aid Congress in evaluating the scope and impact of such awards.
+
+(C)(i) Each report under subparagraph (A) shall account for all payments of fees and other expenses awarded under this subsection that are made pursuant to a settlement agreement, regardless of whether the settlement agreement is sealed or otherwise subject to a nondisclosure provision.
+
+(ii) The disclosure of fees and other expenses required under clause (i) shall not affect any other information that is subject to a nondisclosure provision in a settlement agreement.
+
+(D) The Chairman of the Administrative Conference of the United States shall include and clearly identify in each annual report under subparagraph (A), for each case in which an award of fees and other expenses is included in the report-
+
+(i) any amounts paid under section 1304 of title 31 for a judgment in the case;
+
+(ii) the amount of the award of fees and other expenses; and
+
+(iii) the statute under which the plaintiff filed suit.
+
+(6) As soon as practicable, and in any event not later than the date on which the first report under paragraph (5)(A) is required to be submitted, the Chairman of the Administrative Conference of the United States shall create and maintain online a searchable database containing, with respect to each award of fees and other expenses under this subsection made on or after the date of enactment of the John D. Dingell, Jr. Conservation, Management, and Recreation Act, the following information:
+
+(A) The case name and number, hyperlinked to the case, if available.
+
+(B) The name of the agency involved in the case.
+
+(C) The name of each party to whom the award was made as such party is identified in the order or other court document making the award.
+
+(D) A description of the claims in the case.
+
+(E) The amount of the award.
+
+(F) The basis for the finding that the position of the agency concerned was not substantially justified.
+
+(7) The online searchable database described in paragraph (6) may not reveal any information the disclosure of which is prohibited by law or a court order.
+
+(8) The head of each agency (including the Attorney General of the United States) shall provide to the Chairman of the Administrative Conference of the United States in a timely manner all information requested by the Chairman to comply with the requirements of paragraphs (5), (6), and (7).
+
+(e) The provisions of this section shall not apply to any costs, fees, and other expenses in connection with any proceeding to which section 7430 of the Internal Revenue Code of 1986 applies (determined without regard to subsections (b) and (f) of such section). Nothing in the preceding sentence shall prevent the awarding under subsection (a) of this section of costs enumerated in section 1920 of this title (as in effect on October 1, 1981).
+
+(f) If the United States appeals an award of costs or fees and other expenses made against the United States under this section and the award is affirmed in whole or in part, interest shall be paid on the amount of the award as affirmed. Such interest shall be computed at the rate determined under section 1961(a) of this title, and shall run from the date of the award through the day before the date of the mandate of affirmance.
+
+## 28 U.S.C. § 2501
+§2501. Time for filing suit
+
+Every claim of which the United States Court of Federal Claims has jurisdiction shall be barred unless the petition thereon is filed within six years after such claim first accrues.
+
+Every claim under section 1497 of this title shall be barred unless the petition thereon is filed within two years after the termination of the river and harbor improvements operations on which the claim is based.
+
+A petition on the claim of a person under legal disability or beyond the seas at the time the claim accrues may be filed within three years after the disability ceases.
+
+A suit for the fees of an officer of the United States shall not be filed until his account for such fees has been finally acted upon, unless the Government Accountability Office fails to act within six months after receiving the account.
+
+## 28 U.S.C. § 2522
+§2522. Notice of appeal
+
+Review of a decision of the United States Court of Federal Claims shall be obtained by filing a notice of appeal with the clerk of the Court of Federal Claims within the time and in the manner prescribed for appeals to United States courts of appeals from the United States district courts.
+
+## 35 U.S.C. § 6
+§6. Patent Trial and Appeal Board
+
+(a) In General.-There shall be in the Office a Patent Trial and Appeal Board. The Director, the Deputy Director, the Commissioner for Patents, the Commissioner for Trademarks, and the administrative patent judges shall constitute the Patent Trial and Appeal Board. The administrative patent judges shall be persons of competent legal knowledge and scientific ability who are appointed by the Secretary, in consultation with the Director. Any reference in any Federal law, Executive order, rule, regulation, or delegation of authority, or any document of or pertaining to the Board of Patent Appeals and Interferences is deemed to refer to the Patent Trial and Appeal Board.
+
+(b) Duties.-The Patent Trial and Appeal Board shall-
+
+(1) on written appeal of an applicant, review adverse decisions of examiners upon applications for patents pursuant to section 134(a);
+
+(2) review appeals of reexaminations pursuant to section 134(b);
+
+(3) conduct derivation proceedings pursuant to section 135; and
+
+(4) conduct inter partes reviews and post-grant reviews pursuant to chapters 31 and 32.
+
+(c) 3-Member Panels.-Each appeal, derivation proceeding, post-grant review, and inter partes review shall be heard by at least 3 members of the Patent Trial and Appeal Board, who shall be designated by the Director. Only the Patent Trial and Appeal Board may grant rehearings.
+
+(d) Treatment of Prior Appointments.-The Secretary of Commerce may, in the Secretary's discretion, deem the appointment of an administrative patent judge who, before the date of the enactment of this subsection, held office pursuant to an appointment by the Director to take effect on the date on which the Director initially appointed the administrative patent judge. It shall be a defense to a challenge to the appointment of an administrative patent judge on the basis of the judge's having been originally appointed by the Director that the administrative patent judge so appointed was acting as a de facto officer.
+
+## 35 U.S.C. § 120
+§120. Benefit of earlier filing date in the United States
+
+An application for patent for an invention disclosed in the manner provided by section 112(a) (other than the requirement to disclose the best mode) in an application previously filed in the United States, or as provided by section 363 or 385, which names an inventor or joint inventor in the previously filed application shall have the same effect, as to such invention, as though filed on the date of the prior application, if filed before the patenting or abandonment of or termination of proceedings on the first application or on an application similarly entitled to the benefit of the filing date of the first application and if it contains or is amended to contain a specific reference to the earlier filed application. No application shall be entitled to the benefit of an earlier filed application under this section unless an amendment containing the specific reference to the earlier filed application is submitted at such time during the pendency of the application as required by the Director. The Director may consider the failure to submit such an amendment within that time period as a waiver of any benefit under this section. The Director may establish procedures, including the requirement for payment of the fee specified in section 41(a)(7), to accept an unintentionally delayed submission of an amendment under this section.
+
+## 35 U.S.C. § 121
+§121. Divisional applications
+
+If two or more independent and distinct inventions are claimed in one application, the Director may require the application to be restricted to one of the inventions. If the other invention is made the subject of a divisional application which complies with the requirements of section 120 it shall be entitled to the benefit of the filing date of the original application. A patent issuing on an application with respect to which a requirement for restriction under this section has been made, or on an application filed as a result of such a requirement, shall not be used as a reference either in the Patent and Trademark Office or in the courts against a divisional application or against the original application or any patent issued on either of them, if the divisional application is filed before the issuance of the patent on the other application. The validity of a patent shall not be questioned for failure of the Director to require the application to be restricted to one invention.
+
+## 35 U.S.C. § 142
+§142. Notice of appeal
+
+When an appeal is taken to the United States Court of Appeals for the Federal Circuit, the appellant shall file in the Patent and Trademark Office a written notice of appeal directed to the Director, within such time after the date of the decision from which the appeal is taken as the Director prescribes, but in no case less than 60 days after that date.
+
+## 35 U.S.C. § 251
+§251. Reissue of defective patents
+
+(a) In General.-Whenever any patent is, through error, deemed wholly or partly inoperative or invalid, by reason of a defective specification or drawing, or by reason of the patentee claiming more or less than he had a right to claim in the patent, the Director shall, on the surrender of such patent and the payment of the fee required by law, reissue the patent for the invention disclosed in the original patent, and in accordance with a new and amended application, for the unexpired part of the term of the original patent. No new matter shall be introduced into the application for reissue.
+
+(b) Multiple Reissued Patents.-The Director may issue several reissued patents for distinct and separate parts of the thing patented, upon demand of the applicant, and upon payment of the required fee for a reissue for each of such reissued patents.
+
+(c) Applicability of This Title.-The provisions of this title relating to applications for patent shall be applicable to applications for reissue of a patent, except that application for reissue may be made and sworn to by the assignee of the entire interest if the application does not seek to enlarge the scope of the claims of the original patent or the application for the original patent was filed by the assignee of the entire interest.
+
+(d) Reissue Patent Enlarging Scope of Claims.-No reissued patent shall be granted enlarging the scope of the claims of the original patent unless applied for within two years from the grant of the original patent.
+
+## 35 U.S.C. § 286
+§286. Time limitation on damages
+
+Except as otherwise provided by law, no recovery shall be had for any infringement committed more than six years prior to the filing of the complaint or counterclaim for infringement in the action.
+
+In the case of claims against the United States Government for use of a patented invention, the period before bringing suit, up to six years, between the date of receipt of a written claim for compensation by the department or agency of the Government having authority to settle such claim, and the date of mailing by the Government of a notice to the claimant that his claim has been denied shall not be counted as part of the period referred to in the preceding paragraph.
+
+## 35 U.S.C. § 302
+§302. Request for reexamination
+
+Any person at any time may file a request for reexamination by the Office of any claim of a patent on the basis of any prior art cited under the provisions of section 301. The request must be in writing and must be accompanied by payment of a reexamination fee established by the Director pursuant to the provisions of section 41. The request must set forth the pertinency and manner of applying cited prior art to every claim for which reexamination is requested. Unless the requesting person is the owner of the patent, the Director promptly will send a copy of the request to the owner of record of the patent.
+
+## 35 U.S.C. § 303
+§303. Determination of issue by Director
+
+(a) Within three months following the filing of a request for reexamination under the provisions of section 302, the Director will determine whether a substantial new question of patentability affecting any claim of the patent concerned is raised by the request, with or without consideration of other patents or printed publications. On his own initiative, and any time, the Director may determine whether a substantial new question of patentability is raised by patents and publications discovered by him or cited under the provisions of section 301 or 302. The existence of a substantial new question of patentability is not precluded by the fact that a patent or printed publication was previously cited by or to the Office or considered by the Office.
+
+(b) A record of the Director's determination under subsection (a) of this section will be placed in the official file of the patent, and a copy promptly will be given or mailed to the owner of record of the patent and to the person requesting reexamination, if any.
+
+(c) A determination by the Director pursuant to subsection (a) of this section that no substantial new question of patentability has been raised will be final and nonappealable. Upon such a determination, the Director may refund a portion of the reexamination fee required under section 302.
+
+## 35 U.S.C. § 304
+§304. Reexamination order by Director
+
+If, in a determination made under the provisions of subsection 303(a), the Director finds that a substantial new question of patentability affecting any claim of a patent is raised, the determination will include an order for reexamination of the patent for resolution of the question. The patent owner will be given a reasonable period, not less than two months from the date a copy of the determination is given or mailed to him, within which he may file a statement on such question, including any amendment to his patent and new claim or claims he may wish to propose, for consideration in the reexamination. If the patent owner files such a statement, he promptly will serve a copy of it on the person who has requested reexamination under the provisions of section 302. Within a period of two months from the date of service, that person may file and have considered in the reexamination a reply to any statement filed by the patent owner. That person promptly will serve on the patent owner a copy of any reply filed.
+
+## 35 U.S.C. § 305
+§305. Conduct of reexamination proceedings
+
+After the times for filing the statement and reply provided for by section 304 have expired, reexamination will be conducted according to the procedures established for initial examination under the provisions of sections 132 and 133. In any reexamination proceeding under this chapter, the patent owner will be permitted to propose any amendment to his patent and a new claim or claims thereto, in order to distinguish the invention as claimed from the prior art cited under the provisions of section 301, or in response to a decision adverse to the patentability of a claim of a patent. No proposed amended or new claim enlarging the scope of a claim of the patent will be permitted in a reexamination proceeding under this chapter. All reexamination proceedings under this section, including any appeal to the Patent Trial and Appeal Board, will be conducted with special dispatch within the Office.
+
+## 35 U.S.C. § 307
+§307. Certificate of patentability, unpatentability, and claim cancellation
+
+(a) In a reexamination proceeding under this chapter, when the time for appeal has expired or any appeal proceeding has terminated, the Director will issue and publish a certificate canceling any claim of the patent finally determined to be unpatentable, confirming any claim of the patent determined to be patentable, and incorporating in the patent any proposed amended or new claim determined to be patentable.
+
+(b) Any proposed amended or new claim determined to be patentable and incorporated into a patent following a reexamination proceeding will have the same effect as that specified in section 252 for reissued patents on the right of any person who made, purchased, or used within the United States, or imported into the United States, anything patented by such proposed amended or new claim, or who made substantial preparation for the same, prior to issuance of a certificate under the provisions of subsection (a) of this section.
+
+## 35 U.S.C. § 311
+§311. Inter partes review
+
+(a) In General.-Subject to the provisions of this chapter, a person who is not the owner of a patent may file with the Office a petition to institute an inter partes review of the patent. The Director shall establish, by regulation, fees to be paid by the person requesting the review, in such amounts as the Director determines to be reasonable, considering the aggregate costs of the review.
+
+(b) Scope.-A petitioner in an inter partes review may request to cancel as unpatentable 1 or more claims of a patent only on a ground that could be raised under section 102 or 103 and only on the basis of prior art consisting of patents or printed publications.
+
+(c) Filing Deadline.-A petition for inter partes review shall be filed after the later of either-
+
+(1) the date that is 9 months after the grant of a patent; or
+
+(2) if a post-grant review is instituted under chapter 32, the date of the termination of such post-grant review.
+
+## 35 U.S.C. § 313
+§313. Preliminary response to petition
+
+If an inter partes review petition is filed under section 311, the patent owner shall have the right to file a preliminary response to the petition, within a time period set by the Director, that sets forth reasons why no inter partes review should be instituted based upon the failure of the petition to meet any requirement of this chapter.
+
+## 35 U.S.C. § 314
+§314. Institution of inter partes review
+
+(a) Threshold.-The Director may not authorize an inter partes review to be instituted unless the Director determines that the information presented in the petition filed under section 311 and any response filed under section 313 shows that there is a reasonable likelihood that the petitioner would prevail with respect to at least 1 of the claims challenged in the petition.
+
+(b) Timing.-The Director shall determine whether to institute an inter partes review under this chapter pursuant to a petition filed under section 311 within 3 months after-
+
+(1) receiving a preliminary response to the petition under section 313; or
+
+(2) if no such preliminary response is filed, the last date on which such response may be filed.
+
+(c) Notice.-The Director shall notify the petitioner and patent owner, in writing, of the Director's determination under subsection (a), and shall make such notice available to the public as soon as is practicable. Such notice shall include the date on which the review shall commence.
+
+(d) No Appeal.-The determination by the Director whether to institute an inter partes review under this section shall be final and nonappealable.
+
+## 35 U.S.C. § 315
+§315. Relation to other proceedings or actions
+
+(a) Infringer's Civil Action.-
+
+(1) Inter partes review barred by civil action.-An inter partes review may not be instituted if, before the date on which the petition for such a review is filed, the petitioner or real party in interest filed a civil action challenging the validity of a claim of the patent.
+
+(2) Stay of civil action.-If the petitioner or real party in interest files a civil action challenging the validity of a claim of the patent on or after the date on which the petitioner files a petition for inter partes review of the patent, that civil action shall be automatically stayed until either-
+
+(A) the patent owner moves the court to lift the stay;
+
+(B) the patent owner files a civil action or counterclaim alleging that the petitioner or real party in interest has infringed the patent; or
+
+(C) the petitioner or real party in interest moves the court to dismiss the civil action.
+
+(3) Treatment of counterclaim.-A counterclaim challenging the validity of a claim of a patent does not constitute a civil action challenging the validity of a claim of a patent for purposes of this subsection.
+
+(b) Patent Owner's Action.-An inter partes review may not be instituted if the petition requesting the proceeding is filed more than 1 year after the date on which the petitioner, real party in interest, or privy of the petitioner is served with a complaint alleging infringement of the patent. The time limitation set forth in the preceding sentence shall not apply to a request for joinder under subsection (c).
+
+(c) Joinder.-If the Director institutes an inter partes review, the Director, in his or her discretion, may join as a party to that inter partes review any person who properly files a petition under section 311 that the Director, after receiving a preliminary response under section 313 or the expiration of the time for filing such a response, determines warrants the institution of an inter partes review under section 314.
+
+(d) Multiple Proceedings.-Notwithstanding sections 135(a), 251, and 252, and chapter 30, during the pendency of an inter partes review, if another proceeding or matter involving the patent is before the Office, the Director may determine the manner in which the inter partes review or other proceeding or matter may proceed, including providing for stay, transfer, consolidation, or termination of any such matter or proceeding.
+
+(e) Estoppel.-
+
+(1) Proceedings before the office.-The petitioner in an inter partes review of a claim in a patent under this chapter that results in a final written decision under section 318(a), or the real party in interest or privy of the petitioner, may not request or maintain a proceeding before the Office with respect to that claim on any ground that the petitioner raised or reasonably could have raised during that inter partes review.
+
+(2) Civil actions and other proceedings.-The petitioner in an inter partes review of a claim in a patent under this chapter that results in a final written decision under section 318(a), or the real party in interest or privy of the petitioner, may not assert either in a civil action arising in whole or in part under section 1338 of title 28 or in a proceeding before the International Trade Commission under section 337 of the Tariff Act of 1930 that the claim is invalid on any ground that the petitioner raised or reasonably could have raised during that inter partes review.
+
+## 35 U.S.C. § 316
+§316. Conduct of inter partes review
+
+(a) Regulations.-The Director shall prescribe regulations-
+
+(1) providing that the file of any proceeding under this chapter shall be made available to the public, except that any petition or document filed with the intent that it be sealed shall, if accompanied by a motion to seal, be treated as sealed pending the outcome of the ruling on the motion;
+
+(2) setting forth the standards for the showing of sufficient grounds to institute a review under section 314(a);
+
+(3) establishing procedures for the submission of supplemental information after the petition is filed;
+
+(4) establishing and governing inter partes review under this chapter and the relationship of such review to other proceedings under this title;
+
+(5) setting forth standards and procedures for discovery of relevant evidence, including that such discovery shall be limited to-
+
+(A) the deposition of witnesses submitting affidavits or declarations; and
+
+(B) what is otherwise necessary in the interest of justice;
+
+(6) prescribing sanctions for abuse of discovery, abuse of process, or any other improper use of the proceeding, such as to harass or to cause unnecessary delay or an unnecessary increase in the cost of the proceeding;
+
+(7) providing for protective orders governing the exchange and submission of confidential information;
+
+(8) providing for the filing by the patent owner of a response to the petition under section 313 after an inter partes review has been instituted, and requiring that the patent owner file with such response, through affidavits or declarations, any additional factual evidence and expert opinions on which the patent owner relies in support of the response;
+
+(9) setting forth standards and procedures for allowing the patent owner to move to amend the patent under subsection (d) to cancel a challenged claim or propose a reasonable number of substitute claims, and ensuring that any information submitted by the patent owner in support of any amendment entered under subsection (d) is made available to the public as part of the prosecution history of the patent;
+
+(10) providing either party with the right to an oral hearing as part of the proceeding;
+
+(11) requiring that the final determination in an inter partes review be issued not later than 1 year after the date on which the Director notices the institution of a review under this chapter, except that the Director may, for good cause shown, extend the 1-year period by not more than 6 months, and may adjust the time periods in this paragraph in the case of joinder under section 315(c);
+
+(12) setting a time period for requesting joinder under section 315(c); and
+
+(13) providing the petitioner with at least 1 opportunity to file written comments within a time period established by the Director.
+
+(b) Considerations.-In prescribing regulations under this section, the Director shall consider the effect of any such regulation on the economy, the integrity of the patent system, the efficient administration of the Office, and the ability of the Office to timely complete proceedings instituted under this chapter.
+
+(c) Patent Trial and Appeal Board.-The Patent Trial and Appeal Board shall, in accordance with section 6, conduct each inter partes review instituted under this chapter.
+
+(d) Amendment of the Patent.-
+
+(1) In general.-During an inter partes review instituted under this chapter, the patent owner may file 1 motion to amend the patent in 1 or more of the following ways:
+
+(A) Cancel any challenged patent claim.
+
+(B) For each challenged claim, propose a reasonable number of substitute claims.
+
+(2) Additional motions.-Additional motions to amend may be permitted upon the joint request of the petitioner and the patent owner to materially advance the settlement of a proceeding under section 317, or as permitted by regulations prescribed by the Director.
+
+(3) Scope of claims.-An amendment under this subsection may not enlarge the scope of the claims of the patent or introduce new matter.
+
+(e) Evidentiary Standards.-In an inter partes review instituted under this chapter, the petitioner shall have the burden of proving a proposition of unpatentability by a preponderance of the evidence.
+
+## 35 U.S.C. § 317
+§317. Settlement
+
+(a) In General.-An inter partes review instituted under this chapter shall be terminated with respect to any petitioner upon the joint request of the petitioner and the patent owner, unless the Office has decided the merits of the proceeding before the request for termination is filed. If the inter partes review is terminated with respect to a petitioner under this section, no estoppel under section 315(e) shall attach to the petitioner, or to the real party in interest or privy of the petitioner, on the basis of that petitioner's institution of that inter partes review. If no petitioner remains in the inter partes review, the Office may terminate the review or proceed to a final written decision under section 318(a).
+
+(b) Agreements in Writing.-Any agreement or understanding between the patent owner and a petitioner, including any collateral agreements referred to in such agreement or understanding, made in connection with, or in contemplation of, the termination of an inter partes review under this section shall be in writing and a true copy of such agreement or understanding shall be filed in the Office before the termination of the inter partes review as between the parties. At the request of a party to the proceeding, the agreement or understanding shall be treated as business confidential information, shall be kept separate from the file of the involved patents, and shall be made available only to Federal Government agencies on written request, or to any person on a showing of good cause.
+
+## 35 U.S.C. § 318
+§318. Decision of the Board
+
+(a) Final Written Decision.-If an inter partes review is instituted and not dismissed under this chapter, the Patent Trial and Appeal Board shall issue a final written decision with respect to the patentability of any patent claim challenged by the petitioner and any new claim added under section 316(d).
+
+(b) Certificate.-If the Patent Trial and Appeal Board issues a final written decision under subsection (a) and the time for appeal has expired or any appeal has terminated, the Director shall issue and publish a certificate canceling any claim of the patent finally determined to be unpatentable, confirming any claim of the patent determined to be patentable, and incorporating in the patent by operation of the certificate any new or amended claim determined to be patentable.
+
+(c) Intervening Rights.-Any proposed amended or new claim determined to be patentable and incorporated into a patent following an inter partes review under this chapter shall have the same effect as that specified in section 252 for reissued patents on the right of any person who made, purchased, or used within the United States, or imported into the United States, anything patented by such proposed amended or new claim, or who made substantial preparation therefor, before the issuance of a certificate under subsection (b).
+
+(d) Data on Length of Review.-The Office shall make available to the public data describing the length of time between the institution of, and the issuance of a final written decision under subsection (a) for, each inter partes review.
+
+## 35 U.S.C. § 319
+§319. Appeal
+
+A party dissatisfied with the final written decision of the Patent Trial and Appeal Board under section 318(a) may appeal the decision pursuant to sections 141 through 144. Any party to the inter partes review shall have the right to be a party to the appeal.
+
+## 35 U.S.C. § 321
+§321. Post-grant review
+
+(a) In General.-Subject to the provisions of this chapter, a person who is not the owner of a patent may file with the Office a petition to institute a post-grant review of the patent. The Director shall establish, by regulation, fees to be paid by the person requesting the review, in such amounts as the Director determines to be reasonable, considering the aggregate costs of the post-grant review.
+
+(b) Scope.-A petitioner in a post-grant review may request to cancel as unpatentable 1 or more claims of a patent on any ground that could be raised under paragraph (2) or (3) of section 282(b) (relating to invalidity of the patent or any claim).
+
+(c) Filing Deadline.-A petition for a post-grant review may only be filed not later than the date that is 9 months after the date of the grant of the patent or of the issuance of a reissue patent (as the case may be).
+
+## 35 U.S.C. § 323
+§323. Preliminary response to petition
+
+If a post-grant review petition is filed under section 321, the patent owner shall have the right to file a preliminary response to the petition, within a time period set by the Director, that sets forth reasons why no post-grant review should be instituted based upon the failure of the petition to meet any requirement of this chapter.
+
+## 35 U.S.C. § 324
+§324. Institution of post-grant review
+
+(a) Threshold.-The Director may not authorize a post-grant review to be instituted unless the Director determines that the information presented in the petition filed under section 321, if such information is not rebutted, would demonstrate that it is more likely than not that at least 1 of the claims challenged in the petition is unpatentable.
+
+(b) Additional Grounds.-The determination required under subsection (a) may also be satisfied by a showing that the petition raises a novel or unsettled legal question that is important to other patents or patent applications.
+
+(c) Timing.-The Director shall determine whether to institute a post-grant review under this chapter pursuant to a petition filed under section 321 within 3 months after-
+
+(1) receiving a preliminary response to the petition under section 323; or
+
+(2) if no such preliminary response is filed, the last date on which such response may be filed.
+
+(d) Notice.-The Director shall notify the petitioner and patent owner, in writing, of the Director's determination under subsection (a) or (b), and shall make such notice available to the public as soon as is practicable. Such notice shall include the date on which the review shall commence.
+
+(e) No Appeal.-The determination by the Director whether to institute a post-grant review under this section shall be final and nonappealable.
+
+## 35 U.S.C. § 325
+§325. Relation to other proceedings or actions
+
+(a) Infringer's Civil Action.-
+
+(1) Post-grant review barred by civil action.-A post-grant review may not be instituted under this chapter if, before the date on which the petition for such a review is filed, the petitioner or real party in interest filed a civil action challenging the validity of a claim of the patent.
+
+(2) Stay of civil action.-If the petitioner or real party in interest files a civil action challenging the validity of a claim of the patent on or after the date on which the petitioner files a petition for post-grant review of the patent, that civil action shall be automatically stayed until either-
+
+(A) the patent owner moves the court to lift the stay;
+
+(B) the patent owner files a civil action or counterclaim alleging that the petitioner or real party in interest has infringed the patent; or
+
+(C) the petitioner or real party in interest moves the court to dismiss the civil action.
+
+(3) Treatment of counterclaim.-A counterclaim challenging the validity of a claim of a patent does not constitute a civil action challenging the validity of a claim of a patent for purposes of this subsection.
+
+(b) Preliminary Injunctions.-If a civil action alleging infringement of a patent is filed within 3 months after the date on which the patent is granted, the court may not stay its consideration of the patent owner's motion for a preliminary injunction against infringement of the patent on the basis that a petition for post-grant review has been filed under this chapter or that such a post-grant review has been instituted under this chapter.
+
+(c) Joinder.-If more than 1 petition for a post-grant review under this chapter is properly filed against the same patent and the Director determines that more than 1 of these petitions warrants the institution of a post-grant review under section 324, the Director may consolidate such reviews into a single post-grant review.
+
+(d) Multiple Proceedings.-Notwithstanding sections 135(a), 251, and 252, and chapter 30, during the pendency of any post-grant review under this chapter, if another proceeding or matter involving the patent is before the Office, the Director may determine the manner in which the post-grant review or other proceeding or matter may proceed, including providing for the stay, transfer, consolidation, or termination of any such matter or proceeding. In determining whether to institute or order a proceeding under this chapter, chapter 30, or chapter 31, the Director may take into account whether, and reject the petition or request because, the same or substantially the same prior art or arguments previously were presented to the Office.
+
+(e) Estoppel.-
+
+(1) Proceedings before the office.-The petitioner in a post-grant review of a claim in a patent under this chapter that results in a final written decision under section 328(a), or the real party in interest or privy of the petitioner, may not request or maintain a proceeding before the Office with respect to that claim on any ground that the petitioner raised or reasonably could have raised during that post-grant review.
+
+(2) Civil actions and other proceedings.-The petitioner in a post-grant review of a claim in a patent under this chapter that results in a final written decision under section 328(a), or the real party in interest or privy of the petitioner, may not assert either in a civil action arising in whole or in part under section 1338 of title 28 or in a proceeding before the International Trade Commission under section 337 of the Tariff Act of 1930 that the claim is invalid on any ground that the petitioner raised or reasonably could have raised during that post-grant review.
+
+(f) Reissue Patents.-A post-grant review may not be instituted under this chapter if the petition requests cancellation of a claim in a reissue patent that is identical to or narrower than a claim in the original patent from which the reissue patent was issued, and the time limitations in section 321(c) would bar filing a petition for a post-grant review for such original patent.
+
+## 35 U.S.C. § 326
+§326. Conduct of post-grant review
+
+(a) Regulations.-The Director shall prescribe regulations-
+
+(1) providing that the file of any proceeding under this chapter shall be made available to the public, except that any petition or document filed with the intent that it be sealed shall, if accompanied by a motion to seal, be treated as sealed pending the outcome of the ruling on the motion;
+
+(2) setting forth the standards for the showing of sufficient grounds to institute a review under subsections (a) and (b) of section 324;
+
+(3) establishing procedures for the submission of supplemental information after the petition is filed;
+
+(4) establishing and governing a post-grant review under this chapter and the relationship of such review to other proceedings under this title;
+
+(5) setting forth standards and procedures for discovery of relevant evidence, including that such discovery shall be limited to evidence directly related to factual assertions advanced by either party in the proceeding;
+
+(6) prescribing sanctions for abuse of discovery, abuse of process, or any other improper use of the proceeding, such as to harass or to cause unnecessary delay or an unnecessary increase in the cost of the proceeding;
+
+(7) providing for protective orders governing the exchange and submission of confidential information;
+
+(8) providing for the filing by the patent owner of a response to the petition under section 323 after a post-grant review has been instituted, and requiring that the patent owner file with such response, through affidavits or declarations, any additional factual evidence and expert opinions on which the patent owner relies in support of the response;
+
+(9) setting forth standards and procedures for allowing the patent owner to move to amend the patent under subsection (d) to cancel a challenged claim or propose a reasonable number of substitute claims, and ensuring that any information submitted by the patent owner in support of any amendment entered under subsection (d) is made available to the public as part of the prosecution history of the patent;
+
+(10) providing either party with the right to an oral hearing as part of the proceeding;
+
+(11) requiring that the final determination in any post-grant review be issued not later than 1 year after the date on which the Director notices the institution of a proceeding under this chapter, except that the Director may, for good cause shown, extend the 1-year period by not more than 6 months, and may adjust the time periods in this paragraph in the case of joinder under section 325(c); and
+
+(12) providing the petitioner with at least 1 opportunity to file written comments within a time period established by the Director.
+
+(b) Considerations.-In prescribing regulations under this section, the Director shall consider the effect of any such regulation on the economy, the integrity of the patent system, the efficient administration of the Office, and the ability of the Office to timely complete proceedings instituted under this chapter.
+
+(c) Patent Trial and Appeal Board.-The Patent Trial and Appeal Board shall, in accordance with section 6, conduct each post-grant review instituted under this chapter.
+
+(d) Amendment of the Patent.-
+
+(1) In general.-During a post-grant review instituted under this chapter, the patent owner may file 1 motion to amend the patent in 1 or more of the following ways:
+
+(A) Cancel any challenged patent claim.
+
+(B) For each challenged claim, propose a reasonable number of substitute claims.
+
+(2) Additional motions.-Additional motions to amend may be permitted upon the joint request of the petitioner and the patent owner to materially advance the settlement of a proceeding under section 327, or upon the request of the patent owner for good cause shown.
+
+(3) Scope of claims.-An amendment under this subsection may not enlarge the scope of the claims of the patent or introduce new matter.
+
+(e) Evidentiary Standards.-In a post-grant review instituted under this chapter, the petitioner shall have the burden of proving a proposition of unpatentability by a preponderance of the evidence.
+
+## 35 U.S.C. § 327
+§327. Settlement
+
+(a) In General.-A post-grant review instituted under this chapter shall be terminated with respect to any petitioner upon the joint request of the petitioner and the patent owner, unless the Office has decided the merits of the proceeding before the request for termination is filed. If the post-grant review is terminated with respect to a petitioner under this section, no estoppel under section 325(e) shall attach to the petitioner, or to the real party in interest or privy of the petitioner, on the basis of that petitioner's institution of that post-grant review. If no petitioner remains in the post-grant review, the Office may terminate the post-grant review or proceed to a final written decision under section 328(a).
+
+(b) Agreements in Writing.-Any agreement or understanding between the patent owner and a petitioner, including any collateral agreements referred to in such agreement or understanding, made in connection with, or in contemplation of, the termination of a post-grant review under this section shall be in writing, and a true copy of such agreement or understanding shall be filed in the Office before the termination of the post-grant review as between the parties. At the request of a party to the proceeding, the agreement or understanding shall be treated as business confidential information, shall be kept separate from the file of the involved patents, and shall be made available only to Federal Government agencies on written request, or to any person on a showing of good cause.
+
+## 35 U.S.C. § 328
+§328. Decision of the Board
+
+(a) Final Written Decision.-If a post-grant review is instituted and not dismissed under this chapter, the Patent Trial and Appeal Board shall issue a final written decision with respect to the patentability of any patent claim challenged by the petitioner and any new claim added under section 326(d).
+
+(b) Certificate.-If the Patent Trial and Appeal Board issues a final written decision under subsection (a) and the time for appeal has expired or any appeal has terminated, the Director shall issue and publish a certificate canceling any claim of the patent finally determined to be unpatentable, confirming any claim of the patent determined to be patentable, and incorporating in the patent by operation of the certificate any new or amended claim determined to be patentable.
+
+(c) Intervening Rights.-Any proposed amended or new claim determined to be patentable and incorporated into a patent following a post-grant review under this chapter shall have the same effect as that specified in section 252 for reissued patents on the right of any person who made, purchased, or used within the United States, or imported into the United States, anything patented by such proposed amended or new claim, or who made substantial preparation therefor, before the issuance of a certificate under subsection (b).
+
+(d) Data on Length of Review.-The Office shall make available to the public data describing the length of time between the institution of, and the issuance of a final written decision under subsection (a) for, each post-grant review.
+## 18 U.S.C. § 3161
+§3161. Time limits and exclusions
+
+(a) In any case involving a defendant charged with an offense, the appropriate judicial officer, at the earliest practicable time, shall, after consultation with the counsel for the defendant and the attorney for the Government, set the case for trial on a day certain, or list it for trial on a weekly or other short-term trial calendar at a place within the judicial district, so as to assure a speedy trial.
+
+(b) Any information or indictment charging an individual with the commission of an offense shall be filed within thirty days from the date on which such individual was arrested or served with a summons in connection with such charges. If an individual has been charged with a felony in a district in which no grand jury has been in session during such thirty-day period, the period of time for filing of the indictment shall be extended an additional thirty days.
+
+(c)(1) In any case in which a plea of not guilty is entered, the trial of a defendant charged in an information or indictment with the commission of an offense shall commence within seventy days from the filing date (and making public) of the information or indictment, or from the date the defendant has appeared before a judicial officer of the court in which such charge is pending, whichever date last occurs. If a defendant consents in writing to be tried before a magistrate judge on a complaint, the trial shall commence within seventy days from the date of such consent.
+
+(2) Unless the defendant consents in writing to the contrary, the trial shall not commence less than thirty days from the date on which the defendant first appears through counsel or expressly waives counsel and elects to proceed pro se.
+
+(d)(1) If any indictment or information is dismissed upon motion of the defendant, or any charge contained in a complaint filed against an individual is dismissed or otherwise dropped, and thereafter a complaint is filed against such defendant or individual charging him with the same offense or an offense based on the same conduct or arising from the same criminal episode, or an information or indictment is filed charging such defendant with the same offense or an offense based on the same conduct or arising from the same criminal episode, the provisions of subsections (b) and (c) of this section shall be applicable with respect to such subsequent complaint, indictment, or information, as the case may be.
+
+(2) If the defendant is to be tried upon an indictment or information dismissed by a trial court and reinstated following an appeal, the trial shall commence within seventy days from the date the action occasioning the trial becomes final, except that the court retrying the case may extend the period for trial not to exceed one hundred and eighty days from the date the action occasioning the trial becomes final if the unavailability of witnesses or other factors resulting from the passage of time shall make trial within seventy days impractical. The periods of delay enumerated in section 3161(h) are excluded in computing the time limitations specified in this section. The sanctions of section 3162 apply to this subsection.
+
+(e) If the defendant is to be tried again following a declaration by the trial judge of a mistrial or following an order of such judge for a new trial, the trial shall commence within seventy days from the date the action occasioning the retrial becomes final. If the defendant is to be tried again following an appeal or a collateral attack, the trial shall commence within seventy days from the date the action occasioning the retrial becomes final, except that the court retrying the case may extend the period for retrial not to exceed one hundred and eighty days from the date the action occasioning the retrial becomes final if unavailability of witnesses or other factors resulting from passage of time shall make trial within seventy days impractical. The periods of delay enumerated in section 3161(h) are excluded in computing the time limitations specified in this section. The sanctions of section 3162 apply to this subsection.
+
+(f) Notwithstanding the provisions of subsection (b) of this section, for the first twelve-calendar-month period following the effective date of this section as set forth in section 3163(a) of this chapter the time limit imposed with respect to the period between arrest and indictment by subsection (b) of this section shall be sixty days, for the second such twelve-month period such time limit shall be forty-five days and for the third such period such time limit shall be thirty-five days.
+
+(g) Notwithstanding the provisions of subsection (c) of this section, for the first twelve-calendar-month period following the effective date of this section as set forth in section 3163(b) of this chapter, the time limit with respect to the period between arraignment and trial imposed by subsection (c) of this section shall be one hundred and eighty days, for the second such twelve-month period such time limit shall be one hundred and twenty days, and for the third such period such time limit with respect to the period between arraignment and trial shall be eighty days.
+
+(h) The following periods of delay shall be excluded in computing the time within which an information or an indictment must be filed, or in computing the time within which the trial of any such offense must commence:
+
+(1) Any period of delay resulting from other proceedings concerning the defendant, including but not limited to-
+
+(A) delay resulting from any proceeding, including any examinations, to determine the mental competency or physical capacity of the defendant;
+
+(B) delay resulting from trial with respect to other charges against the defendant;
+
+(C) delay resulting from any interlocutory appeal;
+
+(D) delay resulting from any pretrial motion, from the filing of the motion through the conclusion of the hearing on, or other prompt disposition of, such motion;
+
+(E) delay resulting from any proceeding relating to the transfer of a case or the removal of any defendant from another district under the Federal Rules of Criminal Procedure;
+
+(F) delay resulting from transportation of any defendant from another district, or to and from places of examination or hospitalization, except that any time consumed in excess of ten days from the date an order of removal or an order directing such transportation, and the defendant's arrival at the destination shall be presumed to be unreasonable;
+
+(G) delay resulting from consideration by the court of a proposed plea agreement to be entered into by the defendant and the attorney for the Government; and
+
+(H) delay reasonably attributable to any period, not to exceed thirty days, during which any proceeding concerning the defendant is actually under advisement by the court.
+
+(2) Any period of delay during which prosecution is deferred by the attorney for the Government pursuant to written agreement with the defendant, with the approval of the court, for the purpose of allowing the defendant to demonstrate his good conduct.
+
+(3)(A) Any period of delay resulting from the absence or unavailability of the defendant or an essential witness.
+
+(B) For purposes of subparagraph (A) of this paragraph, a defendant or an essential witness shall be considered absent when his whereabouts are unknown and, in addition, he is attempting to avoid apprehension or prosecution or his whereabouts cannot be determined by due diligence. For purposes of such subparagraph, a defendant or an essential witness shall be considered unavailable whenever his whereabouts are known but his presence for trial cannot be obtained by due diligence or he resists appearing at or being returned for trial.
+
+(4) Any period of delay resulting from the fact that the defendant is mentally incompetent or physically unable to stand trial.
+
+(5) If the information or indictment is dismissed upon motion of the attorney for the Government and thereafter a charge is filed against the defendant for the same offense, or any offense required to be joined with that offense, any period of delay from the date the charge was dismissed to the date the time limitation would commence to run as to the subsequent charge had there been no previous charge.
+
+(6) A reasonable period of delay when the defendant is joined for trial with a codefendant as to whom the time for trial has not run and no motion for severance has been granted.
+
+(7)(A) Any period of delay resulting from a continuance granted by any judge on his own motion or at the request of the defendant or his counsel or at the request of the attorney for the Government, if the judge granted such continuance on the basis of his findings that the ends of justice served by taking such action outweigh the best interest of the public and the defendant in a speedy trial. No such period of delay resulting from a continuance granted by the court in accordance with this paragraph shall be excludable under this subsection unless the court sets forth, in the record of the case, either orally or in writing, its reasons for finding that the ends of justice served by the granting of such continuance outweigh the best interests of the public and the defendant in a speedy trial.
+
+(B) The factors, among others, which a judge shall consider in determining whether to grant a continuance under subparagraph (A) of this paragraph in any case are as follows:
+
+(i) Whether the failure to grant such a continuance in the proceeding would be likely to make a continuation of such proceeding impossible, or result in a miscarriage of justice.
+
+(ii) Whether the case is so unusual or so complex, due to the number of defendants, the nature of the prosecution, or the existence of novel questions of fact or law, that it is unreasonable to expect adequate preparation for pretrial proceedings or for the trial itself within the time limits established by this section.
+
+(iii) Whether, in a case in which arrest precedes indictment, delay in the filing of the indictment is caused because the arrest occurs at a time such that it is unreasonable to expect return and filing of the indictment within the period specified in section 3161(b), or because the facts upon which the grand jury must base its determination are unusual or complex.
+
+(iv) Whether the failure to grant such a continuance in a case which, taken as a whole, is not so unusual or so complex as to fall within clause (ii), would deny the defendant reasonable time to obtain counsel, would unreasonably deny the defendant or the Government continuity of counsel, or would deny counsel for the defendant or the attorney for the Government the reasonable time necessary for effective preparation, taking into account the exercise of due diligence.
+
+(C) No continuance under subparagraph (A) of this paragraph shall be granted because of general congestion of the court's calendar, or lack of diligent preparation or failure to obtain available witnesses on the part of the attorney for the Government.
+
+(8) Any period of delay, not to exceed one year, ordered by a district court upon an application of a party and a finding by a preponderance of the evidence that an official request, as defined in section 3292 of this title, has been made for evidence of any such offense and that it reasonably appears, or reasonably appeared at the time the request was made, that such evidence is, or was, in such foreign country.
+
+(i) If trial did not commence within the time limitation specified in section 3161 because the defendant had entered a plea of guilty or nolo contendere subsequently withdrawn to any or all charges in an indictment or information, the defendant shall be deemed indicted with respect to all charges therein contained within the meaning of section 3161, on the day the order permitting withdrawal of the plea becomes final.
+
+(j)(1) If the attorney for the Government knows that a person charged with an offense is serving a term of imprisonment in any penal institution, he shall promptly-
+
+(A) undertake to obtain the presence of the prisoner for trial; or
+
+(B) cause a detainer to be filed with the person having custody of the prisoner and request him to so advise the prisoner and to advise the prisoner of his right to demand trial.
+
+(2) If the person having custody of such prisoner receives a detainer, he shall promptly advise the prisoner of the charge and of the prisoner's right to demand trial. If at any time thereafter the prisoner informs the person having custody that he does demand trial, such person shall cause notice to that effect to be sent promptly to the attorney for the Government who caused the detainer to be filed.
+
+(3) Upon receipt of such notice, the attorney for the Government shall promptly seek to obtain the presence of the prisoner for trial.
+
+(4) When the person having custody of the prisoner receives from the attorney for the Government a properly supported request for temporary custody of such prisoner for trial, the prisoner shall be made available to that attorney for the Government (subject, in cases of interjurisdictional transfer, to any right of the prisoner to contest the legality of his delivery).
+
+(k)(1) If the defendant is absent (as defined by subsection (h)(3)) on the day set for trial, and the defendant's subsequent appearance before the court on a bench warrant or other process or surrender to the court occurs more than 21 days after the day set for trial, the defendant shall be deemed to have first appeared before a judicial officer of the court in which the information or indictment is pending within the meaning of subsection (c) on the date of the defendant's subsequent appearance before the court.
+
+(2) If the defendant is absent (as defined by subsection (h)(3)) on the day set for trial, and the defendant's subsequent appearance before the court on a bench warrant or other process or surrender to the court occurs not more than 21 days after the day set for trial, the time limit required by subsection (c), as extended by subsection (h), shall be further extended by 21 days.
+
+## 18 U.S.C. § 3282
+§3282. Offenses not capital
+
+(a) In General.-Except as otherwise expressly provided by law, no person shall be prosecuted, tried, or punished for any offense, not capital, unless the indictment is found or the information is instituted within five years next after such offense shall have been committed.
+
+(b) DNA Profile Indictment.-
+
+(1) In general.-In any indictment for an offense under chapter 109A for which the identity of the accused is unknown, it shall be sufficient to describe the accused as an individual whose name is unknown, but who has a particular DNA profile.
+
+(2) Exception.-Any indictment described under paragraph (1), which is found not later than 5 years after the offense under chapter 109A is committed, shall not be subject to-
+
+(A) the limitations period described under subsection (a); and
+
+(B) the provisions of chapter 208 until the individual is arrested or served with a summons in connection with the charges contained in the indictment.
+
+(3) Defined term.-For purposes of this subsection, the term "DNA profile" means a set of DNA identification characteristics.
+
+## 5 U.S.C. § 556
+§556. Hearings; presiding employees; powers and duties; burden of proof; evidence; record as basis of decision
+
+(a) This section applies, according to the provisions thereof, to hearings required by section 553 or 554 of this title to be conducted in accordance with this section.
+
+(b) There shall preside at the taking of evidence-
+
+(1) the agency;
+
+(2) one or more members of the body which comprises the agency; or
+
+(3) one or more administrative law judges appointed under section 3105 of this title.
+
+This subchapter does not supersede the conduct of specified classes of proceedings, in whole or in part, by or before boards or other employees specially provided for by or designated under statute. The functions of presiding employees and of employees participating in decisions in accordance with section 557 of this title shall be conducted in an impartial manner. A presiding or participating employee may at any time disqualify himself. On the filing in good faith of a timely and sufficient affidavit of personal bias or other disqualification of a presiding or participating employee, the agency shall determine the matter as a part of the record and decision in the case.
+
+(c) Subject to published rules of the agency and within its powers, employees presiding at hearings may-
+
+(1) administer oaths and affirmations;
+
+(2) issue subpenas authorized by law;
+
+(3) rule on offers of proof and receive relevant evidence;
+
+(4) take depositions or have depositions taken when the ends of justice would be served;
+
+(5) regulate the course of the hearing;
+
+(6) hold conferences for the settlement or simplification of the issues by consent of the parties or by the use of alternative means of dispute resolution as provided in subchapter IV of this chapter;
+
+(7) inform the parties as to the availability of one or more alternative means of dispute resolution, and encourage use of such methods;
+
+(8) require the attendance at any conference held pursuant to paragraph (6) of at least one representative of each party who has authority to negotiate concerning resolution of issues in controversy;
+
+(9) dispose of procedural requests or similar matters;
+
+(10) make or recommend decisions in accordance with section 557 of this title; and
+
+(11) take other action authorized by agency rule consistent with this subchapter.
+
+(d) Except as otherwise provided by statute, the proponent of a rule or order has the burden of proof. Any oral or documentary evidence may be received, but the agency as a matter of policy shall provide for the exclusion of irrelevant, immaterial, or unduly repetitious evidence. A sanction may not be imposed or rule or order issued except on consideration of the whole record or those parts thereof cited by a party and supported by and in accordance with the reliable, probative, and substantial evidence. The agency may, to the extent consistent with the interests of justice and the policy of the underlying statutes administered by the agency, consider a violation of section 557(d) of this title sufficient grounds for a decision adverse to a party who has knowingly committed such violation or knowingly caused such violation to occur. A party is entitled to present his case or defense by oral or documentary evidence, to submit rebuttal evidence, and to conduct such cross-examination as may be required for a full and true disclosure of the facts. In rule making or determining claims for money or benefits or applications for initial licenses an agency may, when a party will not be prejudiced thereby, adopt procedures for the submission of all or part of the evidence in written form.
+
+(e) The transcript of testimony and exhibits, together with all papers and requests filed in the proceeding, constitutes the exclusive record for decision in accordance with section 557 of this title and, on payment of lawfully prescribed costs, shall be made available to the parties. When an agency decision rests on official notice of a material fact not appearing in the evidence in the record, a party is entitled, on timely request, to an opportunity to show the contrary.
+## 35 U.S.C. § 312
+§312. Petitions
+
+(a) Requirements of Petition.-A petition filed under section 311 may be considered only if-
+
+(1) the petition is accompanied by payment of the fee established by the Director under section 311;
+
+(2) the petition identifies all real parties in interest;
+
+(3) the petition identifies, in writing and with particularity, each claim challenged, the grounds on which the challenge to each claim is based, and the evidence that supports the grounds for the challenge to each claim, including-
+
+(A) copies of patents and printed publications that the petitioner relies upon in support of the petition; and
+
+(B) affidavits or declarations of supporting evidence and opinions, if the petitioner relies on expert opinions;
+
+(4) the petition provides such other information as the Director may require by regulation; and
+
+(5) the petitioner provides copies of any of the documents required under paragraphs (2), (3), and (4) to the patent owner or, if applicable, the designated representative of the patent owner.
+
+(b) Public Availability.-As soon as practicable after the receipt of a petition under section 311, the Director shall make the petition available to the public.
+
+## 18 U.S.C. § 3142
+§3142. Release or detention of a defendant pending trial
+
+(a) In General.-Upon the appearance before a judicial officer of a person charged with an offense, the judicial officer shall issue an order that, pending trial, the person be-
+
+(1) released on personal recognizance or upon execution of an unsecured appearance bond, under subsection (b) of this section;
+
+(2) released on a condition or combination of conditions under subsection (c) of this section;
+
+(3) temporarily detained to permit revocation of conditional release, deportation, or exclusion under subsection (d) of this section; or
+
+(4) detained under subsection (e) of this section.
+
+(b) Release on Personal Recognizance or Unsecured Appearance Bond.-The judicial officer shall order the pretrial release of the person on personal recognizance, or upon execution of an unsecured appearance bond in an amount specified by the court, subject to the condition that the person not commit a Federal, State, or local crime during the period of release and subject to the condition that the person cooperate in the collection of a DNA sample from the person if the collection of such a sample is authorized pursuant to section 3 of the DNA Analysis Backlog Elimination Act of 2000 (42 U.S.C. 14135a),1 unless the judicial officer determines that such release will not reasonably assure the appearance of the person as required or will endanger the safety of any other person or the community.
+
+(c) Release on Conditions.-(1) If the judicial officer determines that the release described in subsection (b) of this section will not reasonably assure the appearance of the person as required or will endanger the safety of any other person or the community, such judicial officer shall order the pretrial release of the person-
+
+(A) subject to the condition that the person not commit a Federal, State, or local crime during the period of release and subject to the condition that the person cooperate in the collection of a DNA sample from the person if the collection of such a sample is authorized pursuant to section 3 of the DNA Analysis Backlog Elimination Act of 2000 (42 U.S.C. 14135a); 1 and
+
+(B) subject to the least restrictive further condition, or combination of conditions, that such judicial officer determines will reasonably assure the appearance of the person as required and the safety of any other person and the community, which may include the condition that the person-
+
+(i) remain in the custody of a designated person, who agrees to assume supervision and to report any violation of a release condition to the court, if the designated person is able reasonably to assure the judicial officer that the person will appear as required and will not pose a danger to the safety of any other person or the community;
+
+(ii) maintain employment, or, if unemployed, actively seek employment;
+
+(iii) maintain or commence an educational program;
+
+(iv) abide by specified restrictions on personal associations, place of abode, or travel;
+
+(v) avoid all contact with an alleged victim of the crime and with a potential witness who may testify concerning the offense;
+
+(vi) report on a regular basis to a designated law enforcement agency, pretrial services agency, or other agency;
+
+(vii) comply with a specified curfew;
+
+(viii) refrain from possessing a firearm, destructive device, or other dangerous weapon;
+
+(ix) refrain from excessive use of alcohol, or any use of a narcotic drug or other controlled substance, as defined in section 102 of the Controlled Substances Act (21 U.S.C. 802), without a prescription by a licensed medical practitioner;
+
+(x) undergo available medical, psychological, or psychiatric treatment, including treatment for drug or alcohol dependency, and remain in a specified institution if required for that purpose;
+
+(xi) execute an agreement to forfeit upon failing to appear as required, property of a sufficient unencumbered value, including money, as is reasonably necessary to assure the appearance of the person as required, and shall provide the court with proof of ownership and the value of the property along with information regarding existing encumbrances as the judicial office may require;
+
+(xii) execute a bail bond with solvent sureties; who will execute an agreement to forfeit in such amount as is reasonably necessary to assure appearance of the person as required and shall provide the court with information regarding the value of the assets and liabilities of the surety if other than an approved surety and the nature and extent of encumbrances against the surety's property; such surety shall have a net worth which shall have sufficient unencumbered value to pay the amount of the bail bond;
+
+(xiii) return to custody for specified hours following release for employment, schooling, or other limited purposes; and
+
+(xiv) satisfy any other condition that is reasonably necessary to assure the appearance of the person as required and to assure the safety of any other person and the community.
+
+In any case that involves a minor victim under section 1201, 1591, 2241, 2242, 2244(a)(1), 2245, 2251, 2251A, 2252(a)(1), 2252(a)(2), 2252(a)(3), 2252A(a)(1), 2252A(a)(2), 2252A(a)(3), 2252A(a)(4), 2260, 2421, 2422, 2423, or 2425 of this title, or a failure to register offense under section 2250 of this title, any release order shall contain, at a minimum, a condition of electronic monitoring and each of the conditions specified at subparagraphs (iv), (v), (vi), (vii), and (viii).
+
+(2) The judicial officer may not impose a financial condition that results in the pretrial detention of the person.
+
+(3) The judicial officer may at any time amend the order to impose additional or different conditions of release.
+
+(d) Temporary Detention To Permit Revocation of Conditional Release, Deportation, or Exclusion.-If the judicial officer determines that-
+
+(1) such person-
+
+(A) is, and was at the time the offense was committed, on-
+
+(i) release pending trial for a felony under Federal, State, or local law;
+
+(ii) release pending imposition or execution of sentence, appeal of sentence or conviction, or completion of sentence, for any offense under Federal, State, or local law; or
+
+(iii) probation or parole for any offense under Federal, State, or local law; or
+
+(B) is not a citizen of the United States or lawfully admitted for permanent residence, as defined in section 101(a)(20) of the Immigration and Nationality Act (8 U.S.C. 1101(a)(20)); and
+
+(2) such person may flee or pose a danger to any other person or the community;
+
+such judicial officer shall order the detention of such person, for a period of not more than ten days, excluding Saturdays, Sundays, and holidays, and direct the attorney for the Government to notify the appropriate court, probation or parole official, or State or local law enforcement official, or the appropriate official of the Immigration and Naturalization Service. If the official fails or declines to take such person into custody during that period, such person shall be treated in accordance with the other provisions of this section, notwithstanding the applicability of other provisions of law governing release pending trial or deportation or exclusion proceedings. If temporary detention is sought under paragraph (1)(B) of this subsection, such person has the burden of proving to the court such person's United States citizenship or lawful admission for permanent residence.
+
+(e) Detention.-(1) If, after a hearing pursuant to the provisions of subsection (f) of this section, the judicial officer finds that no condition or combination of conditions will reasonably assure the appearance of the person as required and the safety of any other person and the community, such judicial officer shall order the detention of the person before trial.
+
+(2) In a case described in subsection (f)(1) of this section, a rebuttable presumption arises that no condition or combination of conditions will reasonably assure the safety of any other person and the community if such judicial officer finds that-
+
+(A) the person has been convicted of a Federal offense that is described in subsection (f)(1) of this section, or of a State or local offense that would have been an offense described in subsection (f)(1) of this section if a circumstance giving rise to Federal jurisdiction had existed;
+
+(B) the offense described in subparagraph (A) was committed while the person was on release pending trial for a Federal, State, or local offense; and
+
+(C) a period of not more than five years has elapsed since the date of conviction, or the release of the person from imprisonment, for the offense described in subparagraph (A), whichever is later.
+
+(3) Subject to rebuttal by the person, it shall be presumed that no condition or combination of conditions will reasonably assure the appearance of the person as required and the safety of the community if the judicial officer finds that there is probable cause to believe that the person committed-
+
+(A) an offense for which a maximum term of imprisonment of ten years or more is prescribed in the Controlled Substances Act (21 U.S.C. 801 et seq.), the Controlled Substances Import and Export Act (21 U.S.C. 951 et seq.), or chapter 705 of title 46;
+
+(B) an offense under section 924(c), 956(a), or 2332b of this title;
+
+(C) an offense listed in section 2332b(g)(5)(B) of title 18, United States Code, for which a maximum term of imprisonment of 10 years or more is prescribed;
+
+(D) an offense under chapter 77 of this title for which a maximum term of imprisonment of 20 years or more is prescribed; or
+
+(E) an offense involving a minor victim under section 1201, 1591, 2241, 2242, 2244(a)(1), 2245, 2251, 2251A, 2252(a)(1), 2252(a)(2), 2252(a)(3), 2252A(a)(1), 2252A(a)(2), 2252A(a)(3), 2252A(a)(4), 2260, 2421, 2422, 2423, or 2425 of this title.
+
+(f) Detention Hearing.-The judicial officer shall hold a hearing to determine whether any condition or combination of conditions set forth in subsection (c) of this section will reasonably assure the appearance of such person as required and the safety of any other person and the community-
+
+(1) upon motion of the attorney for the Government, in a case that involves-
+
+(A) a crime of violence, a violation of section 1591, or an offense listed in section 2332b(g)(5)(B) for which a maximum term of imprisonment of 10 years or more is prescribed;
+
+(B) an offense for which the maximum sentence is life imprisonment or death;
+
+(C) an offense for which a maximum term of imprisonment of ten years or more is prescribed in the Controlled Substances Act (21 U.S.C. 801 et seq.), the Controlled Substances Import and Export Act (21 U.S.C. 951 et seq.), or chapter 705 of title 46;
+
+(D) any felony if such person has been convicted of two or more offenses described in subparagraphs (A) through (C) of this paragraph, or two or more State or local offenses that would have been offenses described in subparagraphs (A) through (C) of this paragraph if a circumstance giving rise to Federal jurisdiction had existed, or a combination of such offenses; or
+
+(E) any felony that is not otherwise a crime of violence that involves a minor victim or that involves the possession or use of a firearm or destructive device (as those terms are defined in section 921), or any other dangerous weapon, or involves a failure to register under section 2250 of title 18, United States Code; or
+
+(2) upon motion of the attorney for the Government or upon the judicial officer's own motion in a case, that involves-
+
+(A) a serious risk that such person will flee; or
+
+(B) a serious risk that such person will obstruct or attempt to obstruct justice, or threaten, injure, or intimidate, or attempt to threaten, injure, or intimidate, a prospective witness or juror.
+
+The hearing shall be held immediately upon the person's first appearance before the judicial officer unless that person, or the attorney for the Government, seeks a continuance. Except for good cause, a continuance on motion of such person may not exceed five days (not including any intermediate Saturday, Sunday, or legal holiday), and a continuance on motion of the attorney for the Government may not exceed three days (not including any intermediate Saturday, Sunday, or legal holiday). During a continuance, such person shall be detained, and the judicial officer, on motion of the attorney for the Government or sua sponte, may order that, while in custody, a person who appears to be a narcotics addict receive a medical examination to determine whether such person is an addict. At the hearing, such person has the right to be represented by counsel, and, if financially unable to obtain adequate representation, to have counsel appointed. The person shall be afforded an opportunity to testify, to present witnesses, to cross-examine witnesses who appear at the hearing, and to present information by proffer or otherwise. The rules concerning admissibility of evidence in criminal trials do not apply to the presentation and consideration of information at the hearing. The facts the judicial officer uses to support a finding pursuant to subsection (e) that no condition or combination of conditions will reasonably assure the safety of any other person and the community shall be supported by clear and convincing evidence. The person may be detained pending completion of the hearing. The hearing may be reopened, before or after a determination by the judicial officer, at any time before trial if the judicial officer finds that information exists that was not known to the movant at the time of the hearing and that has a material bearing on the issue whether there are conditions of release that will reasonably assure the appearance of such person as required and the safety of any other person and the community.
+
+(g) Factors To Be Considered.-The judicial officer shall, in determining whether there are conditions of release that will reasonably assure the appearance of the person as required and the safety of any other person and the community, take into account the available information concerning-
+
+(1) the nature and circumstances of the offense charged, including whether the offense is a crime of violence, a violation of section 1591, a Federal crime of terrorism, or involves a minor victim or a controlled substance, firearm, explosive, or destructive device;
+
+(2) the weight of the evidence against the person;
+
+(3) the history and characteristics of the person, including-
+
+(A) the person's character, physical and mental condition, family ties, employment, financial resources, length of residence in the community, community ties, past conduct, history relating to drug or alcohol abuse, criminal history, and record concerning appearance at court proceedings; and
+
+(B) whether, at the time of the current offense or arrest, the person was on probation, on parole, or on other release pending trial, sentencing, appeal, or completion of sentence for an offense under Federal, State, or local law; and
+
+(4) the nature and seriousness of the danger to any person or the community that would be posed by the person's release. In considering the conditions of release described in subsection (c)(1)(B)(xi) or (c)(1)(B)(xii) of this section, the judicial officer may upon his own motion, or shall upon the motion of the Government, conduct an inquiry into the source of the property to be designated for potential forfeiture or offered as collateral to secure a bond, and shall decline to accept the designation, or the use as collateral, of property that, because of its source, will not reasonably assure the appearance of the person as required.
+
+(h) Contents of Release Order.-In a release order issued under subsection (b) or (c) of this section, the judicial officer shall-
+
+(1) include a written statement that sets forth all the conditions to which the release is subject, in a manner sufficiently clear and specific to serve as a guide for the person's conduct; and
+
+(2) advise the person of-
+
+(A) the penalties for violating a condition of release, including the penalties for committing an offense while on pretrial release;
+
+(B) the consequences of violating a condition of release, including the immediate issuance of a warrant for the person's arrest; and
+
+(C) sections 1503 of this title (relating to intimidation of witnesses, jurors, and officers of the court), 1510 (relating to obstruction of criminal investigations), 1512 (tampering with a witness, victim, or an informant), and 1513 (retaliating against a witness, victim, or an informant).
+
+(i) Contents of Detention Order.-In a detention order issued under subsection (e) of this section, the judicial officer shall-
+
+(1) include written findings of fact and a written statement of the reasons for the detention;
+
+(2) direct that the person be committed to the custody of the Attorney General for confinement in a corrections facility separate, to the extent practicable, from persons awaiting or serving sentences or being held in custody pending appeal;
+
+(3) direct that the person be afforded reasonable opportunity for private consultation with counsel; and
+
+(4) direct that, on order of a court of the United States or on request of an attorney for the Government, the person in charge of the corrections facility in which the person is confined deliver the person to a United States marshal for the purpose of an appearance in connection with a court proceeding.
+
+The judicial officer may, by subsequent order, permit the temporary release of the person, in the custody of a United States marshal or another appropriate person, to the extent that the judicial officer determines such release to be necessary for preparation of the person's defense or for another compelling reason.
+
+(j) Presumption of Innocence.-Nothing in this section shall be construed as modifying or limiting the presumption of innocence.
+
+## 18 U.S.C. § 3162
+§3162. Sanctions
+
+(a)(1) If, in the case of any individual against whom a complaint is filed charging such individual with an offense, no indictment or information is filed within the time limit required by section 3161(b) as extended by section 3161(h) of this chapter, such charge against that individual contained in such complaint shall be dismissed or otherwise dropped. In determining whether to dismiss the case with or without prejudice, the court shall consider, among others, each of the following factors: the seriousness of the offense; the facts and circumstances of the case which led to the dismissal; and the impact of a reprosecution on the administration of this chapter and on the administration of justice.
+
+(2) If a defendant is not brought to trial within the time limit required by section 3161(c) as extended by section 3161(h), the information or indictment shall be dismissed on motion of the defendant. The defendant shall have the burden of proof of supporting such motion but the Government shall have the burden of going forward with the evidence in connection with any exclusion of time under subparagraph 3161(h)(3). In determining whether to dismiss the case with or without prejudice, the court shall consider, among others, each of the following factors: the seriousness of the offense; the facts and circumstances of the case which led to the dismissal; and the impact of a reprosecution on the administration of this chapter and on the administration of justice. Failure of the defendant to move for dismissal prior to trial or entry of a plea of guilty or nolo contendere shall constitute a waiver of the right to dismissal under this section.
+
+(b) In any case in which counsel for the defendant or the attorney for the Government (1) knowingly allows the case to be set for trial without disclosing the fact that a necessary witness would be unavailable for trial; (2) files a motion solely for the purpose of delay which he knows is totally frivolous and without merit; (3) makes a statement for the purpose of obtaining a continuance which he knows to be false and which is material to the granting of a continuance; or (4) otherwise willfully fails to proceed to trial without justification consistent with section 3161 of this chapter, the court may punish any such counsel or attorney, as follows:
+
+(A) in the case of an appointed defense counsel, by reducing the amount of compensation that otherwise would have been paid to such counsel pursuant to section 3006A of this title in an amount not to exceed 25 per centum thereof;
+
+(B) in the case of a counsel retained in connection with the defense of a defendant, by imposing on such counsel a fine of not to exceed 25 per centum of the compensation to which he is entitled in connection with his defense of such defendant;
+
+(C) by imposing on any attorney for the Government a fine of not to exceed $250;
+
+(D) by denying any such counsel or attorney for the Government the right to practice before the court considering such case for a period of not to exceed ninety days; or
+
+(E) by filing a report with an appropriate disciplinary committee.
+
+The authority to punish provided for by this subsection shall be in addition to any other authority or power available to such court.
+
+(c) The court shall follow procedures established in the Federal Rules of Criminal Procedure in punishing any counsel or attorney for the Government pursuant to this section.
+
+## 18 U.S.C. § 3501
+§3501. Admissibility of confessions
+
+(a) In any criminal prosecution brought by the United States or by the District of Columbia, a confession, as defined in subsection (e) hereof, shall be admissible in evidence if it is voluntarily given. Before such confession is received in evidence, the trial judge shall, out of the presence of the jury, determine any issue as to voluntariness. If the trial judge determines that the confession was voluntarily made it shall be admitted in evidence and the trial judge shall permit the jury to hear relevant evidence on the issue of voluntariness and shall instruct the jury to give such weight to the confession as the jury feels it deserves under all the circumstances.
+
+(b) The trial judge in determining the issue of voluntariness shall take into consideration all the circumstances surrounding the giving of the confession, including (1) the time elapsing between arrest and arraignment of the defendant making the confession, if it was made after arrest and before arraignment, (2) whether such defendant knew the nature of the offense with which he was charged or of which he was suspected at the time of making the confession, (3) whether or not such defendant was advised or knew that he was not required to make any statement and that any such statement could be used against him, (4) whether or not such defendant had been advised prior to questioning of his right to the assistance of counsel; and (5) whether or not such defendant was without the assistance of counsel when questioned and when giving such confession.
+
+The presence or absence of any of the above-mentioned factors to be taken into consideration by the judge need not be conclusive on the issue of voluntariness of the confession.
+
+(c) In any criminal prosecution by the United States or by the District of Columbia, a confession made or given by a person who is a defendant therein, while such person was under arrest or other detention in the custody of any law-enforcement officer or law-enforcement agency, shall not be inadmissible solely because of delay in bringing such person before a magistrate judge or other officer empowered to commit persons charged with offenses against the laws of the United States or of the District of Columbia if such confession is found by the trial judge to have been made voluntarily and if the weight to be given the confession is left to the jury and if such confession was made or given by such person within six hours immediately following his arrest or other detention: Provided, That the time limitation contained in this subsection shall not apply in any case in which the delay in bringing such person before such magistrate judge or other officer beyond such six-hour period is found by the trial judge to be reasonable considering the means of transportation and the distance to be traveled to the nearest available such magistrate judge or other officer.
+
+(d) Nothing contained in this section shall bar the admission in evidence of any confession made or given voluntarily by any person to any other person without interrogation by anyone, or at any time at which the person who made or gave such confession was not under arrest or other detention.
+
+(e) As used in this section, the term "confession" means any confession of guilt of any criminal offense or any self-incriminating statement made or given orally or in writing.
+
+## 18 U.S.C. § 3552
+§3552. Presentence reports
+
+(a) Presentence Investigation and Report by Probation Officer.-A United States probation officer shall make a presentence investigation of a defendant that is required pursuant to the provisions of Rule 32(c) of the Federal Rules of Criminal Procedure, and shall, before the imposition of sentence, report the results of the investigation to the court.
+
+(b) Presentence Study and Report by Bureau of Prisons.-If the court, before or after its receipt of a report specified in subsection (a) or (c), desires more information than is otherwise available to it as a basis for determining the sentence to be imposed on a defendant found guilty of a misdemeanor or felony, it may order a study of the defendant. The study shall be conducted in the local community by qualified consultants unless the sentencing judge finds that there is a compelling reason for the study to be done by the Bureau of Prisons or there are no adequate professional resources available in the local community to perform the study. The period of the study shall be no more than sixty days. The order shall specify the additional information that the court needs before determining the sentence to be imposed. Such an order shall be treated for administrative purposes as a provisional sentence of imprisonment for the maximum term authorized by section 3581(b) for the offense committed. The study shall inquire into such matters as are specified by the court and any other matters that the Bureau of Prisons or the professional consultants believe are pertinent to the factors set forth in section 3553(a). The period of the study may, in the discretion of the court, be extended for an additional period of not more than sixty days. By the expiration of the period of the study, or by the expiration of any extension granted by the court, the United States marshal shall, if the defendant is in custody, return the defendant to the court for final sentencing. The Bureau of Prisons or the professional consultants shall provide the court with a written report of the pertinent results of the study and make to the court whatever recommendations the Bureau or the consultants believe will be helpful to a proper resolution of the case. The report shall include recommendations of the Bureau or the consultants concerning the guidelines and policy statements, promulgated by the Sentencing Commission pursuant to 28 U.S.C. 994(a), that they believe are applicable to the defendant's case. After receiving the report and the recommendations, the court shall proceed finally to sentence the defendant in accordance with the sentencing alternatives and procedures available under this chapter.
+
+(c) Presentence Examination and Report by Psychiatric or Psychological Examiners.-If the court, before or after its receipt of a report specified in subsection (a) or (b) desires more information than is otherwise available to it as a basis for determining the mental condition of the defendant, the court may order the same psychiatric or psychological examination and report thereon as may be ordered under section 4244(b) of this title.
+
+(d) Disclosure of Presentence Reports.-The court shall assure that a report filed pursuant to this section is disclosed to the defendant, the counsel for the defendant, and the attorney for the Government at least ten days prior to the date set for sentencing, unless this minimum period is waived by the defendant. The court shall provide a copy of the presentence report to the attorney for the Government to use in collecting an assessment, criminal fine, forfeiture or restitution imposed.
+
+## 18 U.S.C. § 3553
+§3553. Imposition of a sentence
+
+(a) Factors To Be Considered in Imposing a Sentence.-The court shall impose a sentence sufficient, but not greater than necessary, to comply with the purposes set forth in paragraph (2) of this subsection. The court, in determining the particular sentence to be imposed, shall consider-
+
+(1) the nature and circumstances of the offense and the history and characteristics of the defendant;
+
+(2) the need for the sentence imposed-
+
+(A) to reflect the seriousness of the offense, to promote respect for the law, and to provide just punishment for the offense;
+
+(B) to afford adequate deterrence to criminal conduct;
+
+(C) to protect the public from further crimes of the defendant; and
+
+(D) to provide the defendant with needed educational or vocational training, medical care, or other correctional treatment in the most effective manner;
+
+(3) the kinds of sentences available;
+
+(4) the kinds of sentence and the sentencing range established for-
+
+(A) the applicable category of offense committed by the applicable category of defendant as set forth in the guidelines-
+
+(i) issued by the Sentencing Commission pursuant to section 994(a)(1) of title 28, United States Code, subject to any amendments made to such guidelines by act of Congress (regardless of whether such amendments have yet to be incorporated by the Sentencing Commission into amendments issued under section 994(p) of title 28); and
+
+(ii) that, except as provided in section 3742(g), are in effect on the date the defendant is sentenced; or
+
+(B) in the case of a violation of probation or supervised release, the applicable guidelines or policy statements issued by the Sentencing Commission pursuant to section 994(a)(3) of title 28, United States Code, taking into account any amendments made to such guidelines or policy statements by act of Congress (regardless of whether such amendments have yet to be incorporated by the Sentencing Commission into amendments issued under section 994(p) of title 28);
+
+(5) any pertinent policy statement-
+
+(A) issued by the Sentencing Commission pursuant to section 994(a)(2) of title 28, United States Code, subject to any amendments made to such policy statement by act of Congress (regardless of whether such amendments have yet to be incorporated by the Sentencing Commission into amendments issued under section 994(p) of title 28); and
+
+(B) that, except as provided in section 3742(g), is in effect on the date the defendant is sentenced.1
+
+(6) the need to avoid unwarranted sentence disparities among defendants with similar records who have been found guilty of similar conduct; and
+
+(7) the need to provide restitution to any victims of the offense.
+
+(b) Application of Guidelines in Imposing a Sentence.-
+
+(1) In general.-Except as provided in paragraph (2), the court shall impose a sentence of the kind, and within the range, referred to in subsection (a)(4) unless the court finds that there exists an aggravating or mitigating circumstance of a kind, or to a degree, not adequately taken into consideration by the Sentencing Commission in formulating the guidelines that should result in a sentence different from that described. In determining whether a circumstance was adequately taken into consideration, the court shall consider only the sentencing guidelines, policy statements, and official commentary of the Sentencing Commission. In the absence of an applicable sentencing guideline, the court shall impose an appropriate sentence, having due regard for the purposes set forth in subsection (a)(2). In the absence of an applicable sentencing guideline in the case of an offense other than a petty offense, the court shall also have due regard for the relationship of the sentence imposed to sentences prescribed by guidelines applicable to similar offenses and offenders, and to the applicable policy statements of the Sentencing Commission.
+
+(2) Child crimes and sexual offenses.-
+
+(A) 2 
+Sentencing.-In sentencing a defendant convicted of an offense under section 1201 involving a minor victim, an offense under section 1591, or an offense under chapter 71, 109A, 110, or 117, the court shall impose a sentence of the kind, and within the range, referred to in subsection (a)(4) unless-
+
+(i) the court finds that there exists an aggravating circumstance of a kind, or to a degree, not adequately taken into consideration by the Sentencing Commission in formulating the guidelines that should result in a sentence greater than that described;
+
+(ii) the court finds that there exists a mitigating circumstance of a kind or to a degree, that-
+
+(I) has been affirmatively and specifically identified as a permissible ground of downward departure in the sentencing guidelines or policy statements issued under section 994(a) of title 28, taking account of any amendments to such sentencing guidelines or policy statements by Congress;
+
+(II) has not been taken into consideration by the Sentencing Commission in formulating the guidelines; and
+
+(III) should result in a sentence different from that described; or
+
+(iii) the court finds, on motion of the Government, that the defendant has provided substantial assistance in the investigation or prosecution of another person who has committed an offense and that this assistance established a mitigating circumstance of a kind, or to a degree, not adequately taken into consideration by the Sentencing Commission in formulating the guidelines that should result in a sentence lower than that described.
+
+In determining whether a circumstance was adequately taken into consideration, the court shall consider only the sentencing guidelines, policy statements, and official commentary of the Sentencing Commission, together with any amendments thereto by act of Congress. In the absence of an applicable sentencing guideline, the court shall impose an appropriate sentence, having due regard for the purposes set forth in subsection (a)(2). In the absence of an applicable sentencing guideline in the case of an offense other than a petty offense, the court shall also have due regard for the relationship of the sentence imposed to sentences prescribed by guidelines applicable to similar offenses and offenders, and to the applicable policy statements of the Sentencing Commission, together with any amendments to such guidelines or policy statements by act of Congress.
+
+(c) Statement of Reasons for Imposing a Sentence.-The court, at the time of sentencing, shall state in open court the reasons for its imposition of the particular sentence, and, if the sentence-
+
+(1) is of the kind, and within the range, described in subsection (a)(4), and that range exceeds 24 months, the reason for imposing a sentence at a particular point within the range; or
+
+(2) is not of the kind, or is outside the range, described in subsection (a)(4), the specific reason for the imposition of a sentence different from that described, which reasons must also be stated with specificity in a statement of reasons form issued under section 994(w)(1)(B) of title 28, except to the extent that the court relies upon statements received in camera in accordance with Federal Rule of Criminal Procedure 32. In the event that the court relies upon statements received in camera in accordance with Federal Rule of Criminal Procedure 32 the court shall state that such statements were so received and that it relied upon the content of such statements.
+
+If the court does not order restitution, or orders only partial restitution, the court shall include in the statement the reason therefor. The court shall provide a transcription or other appropriate public record of the court's statement of reasons, together with the order of judgment and commitment, to the Probation System and to the Sentencing Commission,,3 and, if the sentence includes a term of imprisonment, to the Bureau of Prisons.
+
+(d) Presentence Procedure for an Order of Notice.-Prior to imposing an order of notice pursuant to section 3555, the court shall give notice to the defendant and the Government that it is considering imposing such an order. Upon motion of the defendant or the Government, or on its own motion, the court shall-
+
+(1) permit the defendant and the Government to submit affidavits and written memoranda addressing matters relevant to the imposition of such an order;
+
+(2) afford counsel an opportunity in open court to address orally the appropriateness of the imposition of such an order; and
+
+(3) include in its statement of reasons pursuant to subsection (c) specific reasons underlying its determinations regarding the nature of such an order.
+
+Upon motion of the defendant or the Government, or on its own motion, the court may in its discretion employ any additional procedures that it concludes will not unduly complicate or prolong the sentencing process.
+
+(e) Limited Authority To Impose a Sentence Below a Statutory Minimum.-Upon motion of the Government, the court shall have the authority to impose a sentence below a level established by statute as a minimum sentence so as to reflect a defendant's substantial assistance in the investigation or prosecution of another person who has committed an offense. Such sentence shall be imposed in accordance with the guidelines and policy statements issued by the Sentencing Commission pursuant to section 994 of title 28, United States Code.
+
+(f) Limitation on Applicability of Statutory Minimums in Certain Cases.-Notwithstanding any other provision of law, in the case of an offense under section 401, 404, or 406 of the Controlled Substances Act (21 U.S.C. 841, 844, 846), section 1010 or 1013 of the Controlled Substances Import and Export Act (21 U.S.C. 960, 963), or section 70503 or 70506 of title 46, the court shall impose a sentence pursuant to guidelines promulgated by the United States Sentencing Commission under section 994 of title 28 without regard to any statutory minimum sentence, if the court finds at sentencing, after the Government has been afforded the opportunity to make a recommendation, that-
+
+(1) the defendant does not have-
+
+(A) more than 4 criminal history points, excluding any criminal history points resulting from a 1-point offense, as determined under the sentencing guidelines;
+
+(B) a prior 3-point offense, as determined under the sentencing guidelines; and
+
+(C) a prior 2-point violent offense, as determined under the sentencing guidelines;
+
+(2) the defendant did not use violence or credible threats of violence or possess a firearm or other dangerous weapon (or induce another participant to do so) in connection with the offense;
+
+(3) the offense did not result in death or serious bodily injury to any person;
+
+(4) the defendant was not an organizer, leader, manager, or supervisor of others in the offense, as determined under the sentencing guidelines and was not engaged in a continuing criminal enterprise, as defined in section 408 of the Controlled Substances Act; and
+
+(5) not later than the time of the sentencing hearing, the defendant has truthfully provided to the Government all information and evidence the defendant has concerning the offense or offenses that were part of the same course of conduct or of a common scheme or plan, but the fact that the defendant has no relevant or useful other information to provide or that the Government is already aware of the information shall not preclude a determination by the court that the defendant has complied with this requirement.
+
+Information disclosed by a defendant under this subsection may not be used to enhance the sentence of the defendant unless the information relates to a violent offense.
+
+(g) Definition of Violent Offense.-As used in this section, the term "violent offense" means a crime of violence, as defined in section 16, that is punishable by imprisonment.
+
+## 28 U.S.C. § 1332
+§1332. Diversity of citizenship; amount in controversy; costs
+
+(a) The district courts shall have original jurisdiction of all civil actions where the matter in controversy exceeds the sum or value of $75,000, exclusive of interest and costs, and is between-
+
+(1) citizens of different States;
+
+(2) citizens of a State and citizens or subjects of a foreign state, except that the district courts shall not have original jurisdiction under this subsection of an action between citizens of a State and citizens or subjects of a foreign state who are lawfully admitted for permanent residence in the United States and are domiciled in the same State;
+
+(3) citizens of different States and in which citizens or subjects of a foreign state are additional parties; and
+
+(4) a foreign state, defined in section 1603(a) of this title, as plaintiff and citizens of a State or of different States.
+
+(b) Except when express provision therefor is otherwise made in a statute of the United States, where the plaintiff who files the case originally in the Federal courts is finally adjudged to be entitled to recover less than the sum or value of $75,000, computed without regard to any setoff or counterclaim to which the defendant may be adjudged to be entitled, and exclusive of interest and costs, the district court may deny costs to the plaintiff and, in addition, may impose costs on the plaintiff.
+
+(c) For the purposes of this section and section 1441 of this title-
+
+(1) a corporation shall be deemed to be a citizen of every State and foreign state by which it has been incorporated and of the State or foreign state where it has its principal place of business, except that in any direct action against the insurer of a policy or contract of liability insurance, whether incorporated or unincorporated, to which action the insured is not joined as a party-defendant, such insurer shall be deemed a citizen of-
+
+(A) every State and foreign state of which the insured is a citizen;
+
+(B) every State and foreign state by which the insurer has been incorporated; and
+
+(C) the State or foreign state where the insurer has its principal place of business; and
+
+(2) the legal representative of the estate of a decedent shall be deemed to be a citizen only of the same State as the decedent, and the legal representative of an infant or incompetent shall be deemed to be a citizen only of the same State as the infant or incompetent.
+
+(d)(1) In this subsection-
+
+(A) the term "class" means all of the class members in a class action;
+
+(B) the term "class action" means any civil action filed under rule 23 of the Federal Rules of Civil Procedure or similar State statute or rule of judicial procedure authorizing an action to be brought by 1 or more representative persons as a class action;
+
+(C) the term "class certification order" means an order issued by a court approving the treatment of some or all aspects of a civil action as a class action; and
+
+(D) the term "class members" means the persons (named or unnamed) who fall within the definition of the proposed or certified class in a class action.
+
+(2) The district courts shall have original jurisdiction of any civil action in which the matter in controversy exceeds the sum or value of $5,000,000, exclusive of interest and costs, and is a class action in which-
+
+(A) any member of a class of plaintiffs is a citizen of a State different from any defendant;
+
+(B) any member of a class of plaintiffs is a foreign state or a citizen or subject of a foreign state and any defendant is a citizen of a State; or
+
+(C) any member of a class of plaintiffs is a citizen of a State and any defendant is a foreign state or a citizen or subject of a foreign state.
+
+(3) A district court may, in the interests of justice and looking at the totality of the circumstances, decline to exercise jurisdiction under paragraph (2) over a class action in which greater than one-third but less than two-thirds of the members of all proposed plaintiff classes in the aggregate and the primary defendants are citizens of the State in which the action was originally filed based on consideration of-
+
+(A) whether the claims asserted involve matters of national or interstate interest;
+
+(B) whether the claims asserted will be governed by laws of the State in which the action was originally filed or by the laws of other States;
+
+(C) whether the class action has been pleaded in a manner that seeks to avoid Federal jurisdiction;
+
+(D) whether the action was brought in a forum with a distinct nexus with the class members, the alleged harm, or the defendants;
+
+(E) whether the number of citizens of the State in which the action was originally filed in all proposed plaintiff classes in the aggregate is substantially larger than the number of citizens from any other State, and the citizenship of the other members of the proposed class is dispersed among a substantial number of States; and
+
+(F) whether, during the 3-year period preceding the filing of that class action, 1 or more other class actions asserting the same or similar claims on behalf of the same or other persons have been filed.
+
+(4) A district court shall decline to exercise jurisdiction under paragraph (2)-
+
+(A)(i) over a class action in which-
+
+(I) greater than two-thirds of the members of all proposed plaintiff classes in the aggregate are citizens of the State in which the action was originally filed;
+
+(II) at least 1 defendant is a defendant-
+
+(aa) from whom significant relief is sought by members of the plaintiff class;
+
+(bb) whose alleged conduct forms a significant basis for the claims asserted by the proposed plaintiff class; and
+
+(cc) who is a citizen of the State in which the action was originally filed; and
+
+(III) principal injuries resulting from the alleged conduct or any related conduct of each defendant were incurred in the State in which the action was originally filed; and
+
+(ii) during the 3-year period preceding the filing of that class action, no other class action has been filed asserting the same or similar factual allegations against any of the defendants on behalf of the same or other persons; or
+
+(B) two-thirds or more of the members of all proposed plaintiff classes in the aggregate, and the primary defendants, are citizens of the State in which the action was originally filed.
+
+(5) Paragraphs (2) through (4) shall not apply to any class action in which-
+
+(A) the primary defendants are States, State officials, or other governmental entities against whom the district court may be foreclosed from ordering relief; or
+
+(B) the number of members of all proposed plaintiff classes in the aggregate is less than 100.
+
+(6) In any class action, the claims of the individual class members shall be aggregated to determine whether the matter in controversy exceeds the sum or value of $5,000,000, exclusive of interest and costs.
+
+(7) Citizenship of the members of the proposed plaintiff classes shall be determined for purposes of paragraphs (2) through (6) as of the date of filing of the complaint or amended complaint, or, if the case stated by the initial pleading is not subject to Federal jurisdiction, as of the date of service by plaintiffs of an amended pleading, motion, or other paper, indicating the existence of Federal jurisdiction.
+
+(8) This subsection shall apply to any class action before or after the entry of a class certification order by the court with respect to that action.
+
+(9) Paragraph (2) shall not apply to any class action that solely involves a claim-
+
+(A) concerning a covered security as defined under 16(f)(3) 1 of the Securities Act of 1933 (15 U.S.C. 78p(f)(3) 2) and section 28(f)(5)(E) of the Securities Exchange Act of 1934 (15 U.S.C. 78bb(f)(5)(E));
+
+(B) that relates to the internal affairs or governance of a corporation or other form of business enterprise and that arises under or by virtue of the laws of the State in which such corporation or business enterprise is incorporated or organized; or
+
+(C) that relates to the rights, duties (including fiduciary duties), and obligations relating to or created by or pursuant to any security (as defined under section 2(a)(1) of the Securities Act of 1933 (15 U.S.C. 77b(a)(1)) and the regulations issued thereunder).
+
+(10) For purposes of this subsection and section 1453, an unincorporated association shall be deemed to be a citizen of the State where it has its principal place of business and the State under whose laws it is organized.
+
+(11)(A) For purposes of this subsection and section 1453, a mass action shall be deemed to be a class action removable under paragraphs (2) through (10) if it otherwise meets the provisions of those paragraphs.
+
+(B)(i) As used in subparagraph (A), the term "mass action" means any civil action (except a civil action within the scope of section 1711(2)) in which monetary relief claims of 100 or more persons are proposed to be tried jointly on the ground that the plaintiffs' claims involve common questions of law or fact, except that jurisdiction shall exist only over those plaintiffs whose claims in a mass action satisfy the jurisdictional amount requirements under subsection (a).
+
+(ii) As used in subparagraph (A), the term "mass action" shall not include any civil action in which-
+
+(I) all of the claims in the action arise from an event or occurrence in the State in which the action was filed, and that allegedly resulted in injuries in that State or in States contiguous to that State;
+
+(II) the claims are joined upon motion of a defendant;
+
+(III) all of the claims in the action are asserted on behalf of the general public (and not on behalf of individual claimants or members of a purported class) pursuant to a State statute specifically authorizing such action; or
+
+(IV) the claims have been consolidated or coordinated solely for pretrial proceedings.
+
+(C)(i) Any action(s) removed to Federal court pursuant to this subsection shall not thereafter be transferred to any other court pursuant to section 1407, or the rules promulgated thereunder, unless a majority of the plaintiffs in the action request transfer pursuant to section 1407.
+
+(ii) This subparagraph will not apply-
+
+(I) to cases certified pursuant to rule 23 of the Federal Rules of Civil Procedure; or
+
+(II) if plaintiffs propose that the action proceed as a class action pursuant to rule 23 of the Federal Rules of Civil Procedure.
+
+(D) The limitations periods on any claims asserted in a mass action that is removed to Federal court pursuant to this subsection shall be deemed tolled during the period that the action is pending in Federal court.
+
+(e) The word "States", as used in this section, includes the Territories, the District of Columbia, and the Commonwealth of Puerto Rico.
+
+## 28 U.S.C. § 1391
+§1391. Venue generally
+
+(a) Applicability of Section.-Except as otherwise provided by law-
+
+(1) this section shall govern the venue of all civil actions brought in district courts of the United States; and
+
+(2) the proper venue for a civil action shall be determined without regard to whether the action is local or transitory in nature.
+
+(b) Venue in General.-A civil action may be brought in-
+
+(1) a judicial district in which any defendant resides, if all defendants are residents of the State in which the district is located;
+
+(2) a judicial district in which a substantial part of the events or omissions giving rise to the claim occurred, or a substantial part of property that is the subject of the action is situated; or
+
+(3) if there is no district in which an action may otherwise be brought as provided in this section, any judicial district in which any defendant is subject to the court's personal jurisdiction with respect to such action.
+
+(c) Residency.-For all venue purposes-
+
+(1) a natural person, including an alien lawfully admitted for permanent residence in the United States, shall be deemed to reside in the judicial district in which that person is domiciled;
+
+(2) an entity with the capacity to sue and be sued in its common name under applicable law, whether or not incorporated, shall be deemed to reside, if a defendant, in any judicial district in which such defendant is subject to the court's personal jurisdiction with respect to the civil action in question and, if a plaintiff, only in the judicial district in which it maintains its principal place of business; and
+
+(3) a defendant not resident in the United States may be sued in any judicial district, and the joinder of such a defendant shall be disregarded in determining where the action may be brought with respect to other defendants.
+
+(d) Residency of Corporations in States With Multiple Districts.-For purposes of venue under this chapter, in a State which has more than one judicial district and in which a defendant that is a corporation is subject to personal jurisdiction at the time an action is commenced, such corporation shall be deemed to reside in any district in that State within which its contacts would be sufficient to subject it to personal jurisdiction if that district were a separate State, and, if there is no such district, the corporation shall be deemed to reside in the district within which it has the most significant contacts.
+
+(e) Actions Where Defendant Is Officer or Employee of the United States.-
+
+(1) In general.-A civil action in which a defendant is an officer or employee of the United States or any agency thereof acting in his official capacity or under color of legal authority, or an agency of the United States, or the United States, may, except as otherwise provided by law, be brought in any judicial district in which (A) a defendant in the action resides, (B) a substantial part of the events or omissions giving rise to the claim occurred, or a substantial part of property that is the subject of the action is situated, or (C) the plaintiff resides if no real property is involved in the action. Additional persons may be joined as parties to any such action in accordance with the Federal Rules of Civil Procedure and with such other venue requirements as would be applicable if the United States or one of its officers, employees, or agencies were not a party.
+
+(2) Service.-The summons and complaint in such an action shall be served as provided by the Federal Rules of Civil Procedure except that the delivery of the summons and complaint to the officer or agency as required by the rules may be made by certified mail beyond the territorial limits of the district in which the action is brought.
+
+(f) Civil Actions Against a Foreign State.-A civil action against a foreign state as defined in section 1603(a) of this title may be brought-
+
+(1) in any judicial district in which a substantial part of the events or omissions giving rise to the claim occurred, or a substantial part of property that is the subject of the action is situated;
+
+(2) in any judicial district in which the vessel or cargo of a foreign state is situated, if the claim is asserted under section 1605(b) of this title;
+
+(3) in any judicial district in which the agency or instrumentality is licensed to do business or is doing business, if the action is brought against an agency or instrumentality of a foreign state as defined in section 1603(b) of this title; or
+
+(4) in the United States District Court for the District of Columbia if the action is brought against a foreign state or political subdivision thereof.
+
+(g) Multiparty, Multiforum Litigation.-A civil action in which jurisdiction of the district court is based upon section 1369 of this title may be brought in any district in which any defendant resides or in which a substantial part of the accident giving rise to the action took place.
+
+## 5 U.S.C. § 706
+§706. Scope of review
+
+To the extent necessary to decision and when presented, the reviewing court shall decide all relevant questions of law, interpret constitutional and statutory provisions, and determine the meaning or applicability of the terms of an agency action. The reviewing court shall-
+
+(1) compel agency action unlawfully withheld or unreasonably delayed; and
+
+(2) hold unlawful and set aside agency action, findings, and conclusions found to be-
+
+(A) arbitrary, capricious, an abuse of discretion, or otherwise not in accordance with law;
+
+(B) contrary to constitutional right, power, privilege, or immunity;
+
+(C) in excess of statutory jurisdiction, authority, or limitations, or short of statutory right;
+
+(D) without observance of procedure required by law;
+
+(E) unsupported by substantial evidence in a case subject to sections 556 and 557 of this title or otherwise reviewed on the record of an agency hearing provided by statute; or
+
+(F) unwarranted by the facts to the extent that the facts are subject to trial de novo by the reviewing court.
+
+In making the foregoing determinations, the court shall review the whole record or those parts of it cited by a party, and due account shall be taken of the rule of prejudicial error.
+## 35 U.S.C. § 143
+§143. Proceedings on appeal
+
+With respect to an appeal described in section 142, the Director shall transmit to the United States Court of Appeals for the Federal Circuit a certified list of the documents comprising the record in the Patent and Trademark Office. The court may request that the Director forward the original or certified copies of such documents during pendency of the appeal. In an ex parte case, the Director shall submit to the court in writing the grounds for the decision of the Patent and Trademark Office, addressing all of the issues raised in the appeal. The Director shall have the right to intervene in an appeal from a decision entered by the Patent Trial and Appeal Board in a derivation proceeding under section 135 or in an inter partes or post-grant review under chapter 31 or 32. The court shall, before hearing an appeal, give notice of the time and place of the hearing to the Director and the parties in the appeal.
+
+## 35 U.S.C. § 144
+§144. Decision on appeal
+
+The United States Court of Appeals for the Federal Circuit shall review the decision from which an appeal is taken on the record before the Patent and Trademark Office. Upon its determination the court shall issue to the Director its mandate and opinion, which shall be entered of record in the Patent and Trademark Office and shall govern the further proceedings in the case.
+
+## 35 U.S.C. § 306
+§306. Appeal
+
+The patent owner involved in a reexamination proceeding under this chapter may appeal under the provisions of section 134, and may seek court review under the provisions of sections 141 to 144, with respect to any decision adverse to the patentability of any original or proposed amended or new claim of the patent.
+
+## 35 U.S.C. § 322
+§322. Petitions
+
+(a) Requirements of Petition.-A petition filed under section 321 may be considered only if-
+
+(1) the petition is accompanied by payment of the fee established by the Director under section 321;
+
+(2) the petition identifies all real parties in interest;
+
+(3) the petition identifies, in writing and with particularity, each claim challenged, the grounds on which the challenge to each claim is based, and the evidence that supports the grounds for the challenge to each claim, including-
+
+(A) copies of patents and printed publications that the petitioner relies upon in support of the petition; and
+
+(B) affidavits or declarations of supporting evidence and opinions, if the petitioner relies on other factual evidence or on expert opinions;
+
+(4) the petition provides such other information as the Director may require by regulation; and
+
+(5) the petitioner provides copies of any of the documents required under paragraphs (2), (3), and (4) to the patent owner or, if applicable, the designated representative of the patent owner.
+
+(b) Public Availability.-As soon as practicable after the receipt of a petition under section 321, the Director shall make the petition available to the public.

@@ -48,7 +48,8 @@
       "title": "Rules of the United States Court of Federal Claims (RCFC), as amended through July 27, 2026",
       "url": "https://www.uscfc.uscourts.gov/sites/cfc/files/Rules%207.27.2026.pdf",
       "sha256": "ff02c342f055be5e5f51df4de1dcec3c1264bb9907895d379d5baa796ec30a97",
-      "asOf": "2026-07-27"
+      "asOf": "2026-07-27",
+      "path": "sources/rcfc.txt"
     },
     {
       "id": "rcfc-app-j",
@@ -101,22 +102,26 @@
     {
       "id": "usc-1491",
       "title": "28 U.S.C. § 1491 (Tucker Act)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/1491"
+      "url": "https://www.law.cornell.edu/uscode/text/28/1491",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "usc-1498",
       "title": "28 U.S.C. § 1498 (Patent and copyright cases)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/1498"
+      "url": "https://www.law.cornell.edu/uscode/text/28/1498",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "usc-1500",
       "title": "28 U.S.C. § 1500 (Pendency of claims in other courts)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/1500"
+      "url": "https://www.law.cornell.edu/uscode/text/28/1500",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "usc-2501",
       "title": "28 U.S.C. § 2501 (Time for filing suit)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/2501"
+      "url": "https://www.law.cornell.edu/uscode/text/28/2501",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "usc-2503",
@@ -126,22 +131,26 @@
     {
       "id": "usc-2522",
       "title": "28 U.S.C. § 2522 (Notice of appeal)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/2522"
+      "url": "https://www.law.cornell.edu/uscode/text/28/2522",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "usc-1295",
       "title": "28 U.S.C. § 1295(a)(3) (CAFC jurisdiction over CoFC appeals)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/1295"
+      "url": "https://www.law.cornell.edu/uscode/text/28/1295",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "usc-2412",
       "title": "28 U.S.C. § 2412 (Equal Access to Justice Act -- costs and fees)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/2412"
+      "url": "https://www.law.cornell.edu/uscode/text/28/2412",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "usc35-286",
       "title": "35 U.S.C. § 286 (Time limitation on damages; last paragraph -- administrative-claim tolling)",
-      "url": "https://www.law.cornell.edu/uscode/text/35/286"
+      "url": "https://www.law.cornell.edu/uscode/text/35/286",
+      "path": "sources/usc-additional.txt"
     }
   ],
   "nodes": [
@@ -691,7 +700,7 @@
       "id": "trial-bench",
       "kind": "state",
       "label": "Bench Trial (No Jury)",
-      "cite": "RCFC 39 [Not used]; RCFC 52",
+      "cite": "RCFC 39; RCFC 52",
       "note": "RCFC 38/39 (jury trial/demand) are marked '[Not used]' -- the CoFC has no jury trials; every trial is to the court. For §1498(a) patent claims this is doubly true by statute as well as rule: the patentee's remedy is 'reasonable and entire compensation,' assessed by the court, never a jury verdict.",
       "group": "trial-post-trial-group"
     },
@@ -1564,7 +1573,7 @@
       "to": "verdict-rendered",
       "label": "Bench trial concludes",
       "actor": "either",
-      "authority": "RCFC 39 [Not used]; RCFC 52(a)",
+      "authority": "RCFC 39; RCFC 52(a)",
       "note": "No jury trials at the CoFC; RCFC 38/39 are marked '[Not used].'"
     },
     {

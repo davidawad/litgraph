@@ -351,7 +351,7 @@
       "kind": "terminal",
       "group": "trial-group",
       "cite": "37 CFR 42.73(b)(2)-(3)",
-      "note": "Board cancels the claims without reaching the merits in a FWD. Functionally equivalent to losing on the merits: full 315(e) estoppel attaches to grounds raised or that reasonably could have been raised in the petition. PLACEHOLDER PAYOFF: $900,000, override per matter. The pack's own note calls this \"functionally equivalent to losing on the merits\" -- for the PATENT OWNER, whose claims are cancelled; for the petitioner (self, this pack's protagonist) that is a near-full win, reached without the cost of a full trial. The pack's authored `valence` of \"bad\" tracks the patent owner's side, not self's payoff -- flagged here since it runs the other way from every other `valence: good` FWD terminal.",
+      "note": "Board cancels the claims without reaching the merits in a FWD. Functionally equivalent to losing on the merits: full 315(e) estoppel attaches to grounds raised or that reasonably could have been raised in the petition. PLACEHOLDER PAYOFF: $900,000, override per matter. The pack's own note calls this 'functionally equivalent to losing on the merits' -- for the PATENT OWNER, whose claims are cancelled; for the petitioner (self, this pack's protagonist) that is a near-full win, reached without the cost of a full trial. The pack's authored `valence` of 'bad' tracks the patent owner's side, not self's payoff -- flagged here since it runs the other way from every other `valence: good` FWD terminal.",
       "valence": "bad",
       "payoff": 900000,
       "outcome": [
@@ -1532,7 +1532,7 @@
         "mode": 365,
         "max": 540
       },
-      "note": "Duration: formalizes this edge's own note (\"typical timeline runs 6-18 months\") into the duration field."
+      "note": "Duration: formalizes this edge's own note ('typical timeline runs 6-18 months') into the duration field."
     }
   ],
   "forum": "ptab",
@@ -1546,43 +1546,51 @@
     {
       "id": "usc35-311",
       "title": "35 U.S.C. § 311 (Inter partes review)",
-      "url": "https://www.law.cornell.edu/uscode/text/35/311"
+      "url": "https://www.law.cornell.edu/uscode/text/35/311",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "usc35-314",
       "title": "35 U.S.C. § 314 (Institution; 314(d) no-appeal bar)",
-      "url": "https://www.law.cornell.edu/uscode/text/35/314"
+      "url": "https://www.law.cornell.edu/uscode/text/35/314",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "usc35-315",
       "title": "35 U.S.C. § 315 (Relation to other proceedings; 315(b) time bar; 315(e) estoppel)",
-      "url": "https://www.law.cornell.edu/uscode/text/35/315"
+      "url": "https://www.law.cornell.edu/uscode/text/35/315",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "usc35-316",
       "title": "35 U.S.C. § 316 (Conduct of inter partes review; 1-year FWD deadline)",
-      "url": "https://www.law.cornell.edu/uscode/text/35/316"
+      "url": "https://www.law.cornell.edu/uscode/text/35/316",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "usc35-317",
       "title": "35 U.S.C. § 317 (Settlement)",
-      "url": "https://www.law.cornell.edu/uscode/text/35/317"
+      "url": "https://www.law.cornell.edu/uscode/text/35/317",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "usc35-318",
       "title": "35 U.S.C. § 318 (Final written decision)",
-      "url": "https://www.law.cornell.edu/uscode/text/35/318"
+      "url": "https://www.law.cornell.edu/uscode/text/35/318",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "usc35-319",
       "title": "35 U.S.C. § 319 (Appeal to the Federal Circuit; 63-day window)",
-      "url": "https://www.law.cornell.edu/uscode/text/35/319"
+      "url": "https://www.law.cornell.edu/uscode/text/35/319",
+      "path": "sources/usc-additional.txt"
     },
     {
       "id": "cfr-42",
       "title": "37 C.F.R. Part 42 (Trial Practice Before the Patent Trial and Appeal Board), current",
       "url": "https://www.ecfr.gov/current/title-37/chapter-I/subchapter-A/part-42",
-      "asOf": "2026-08-26"
+      "asOf": "2026-08-26",
+      "path": "sources/cfr-37-part42.txt"
     },
     {
       "id": "ptab-tpg",
@@ -1590,6 +1598,30 @@
       "url": "https://www.uspto.gov/sites/default/files/documents/trial_practice_guide_nov2019_oct2025_web.pdf",
       "sha256": "260c05b6def096819a9bf724438247b34fe839ba4d8351bb2339d6fa20c512b3",
       "asOf": "2025-10-01"
+    },
+    {
+      "id": "usc35-151-cite",
+      "title": "35 U.S.C. § 151 (Issue of patent)",
+      "url": "https://www.law.cornell.edu/uscode/text/35/151",
+      "path": "sources/usc-cfr-prosecution-fragments.txt"
+    },
+    {
+      "id": "usc35-312-cite",
+      "title": "35 U.S.C. § 312 (Petitions for inter partes review)",
+      "url": "https://www.law.cornell.edu/uscode/text/35/312",
+      "path": "sources/usc-additional.txt"
+    },
+    {
+      "id": "cfr37-90-cite",
+      "title": "37 C.F.R. § 90.3 (Time for appeal from PTAB)",
+      "url": "https://www.ecfr.gov/current/title-37/chapter-I/subchapter-A/part-90",
+      "path": "sources/usc-cfr-prosecution-fragments.txt"
+    },
+    {
+      "id": "usc5-706",
+      "title": "5 U.S.C. § 706 (APA scope of review)",
+      "url": "https://www.law.cornell.edu/uscode/text/5/706",
+      "path": "sources/usc-additional.txt"
     }
   ]
 }
