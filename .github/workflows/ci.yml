@@ -49,7 +49,7 @@ jobs:
         with:
           tool: cargo-nextest
       - run: cargo nextest run --workspace --profile ci
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: nextest-junit-${{ matrix.os }}
@@ -81,7 +81,7 @@ jobs:
       # `just cov` passes on main.
       - run: cargo llvm-cov nextest -p litgraph --fail-under-lines 97 --lcov --output-path lcov.info
         continue-on-error: true
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: coverage-lcov
           path: lcov.info
