@@ -52,8 +52,23 @@ pub struct Application {
     pub skipped: usize,
 }
 
+/// Every edge sharing `ix`'s `base_id` (itself included): every
+/// state-flag-product copy of the edge a pack actually describes. On a
+/// graph with no state flags (or with `no_flags` set) this is just `[ix]`.
+fn edge_family(g: &Graph, ix: usize) -> Vec<usize> {
+    let base_id = &g.edges[ix].base_id;
+    (0..g.edges.len())
+        .filter(|&i| &g.edges[i].base_id == base_id)
+        .collect()
+}
+
 /// Apply every entry in `set` whose ref resolves against `g`, mutating `g`
-/// in place exactly as if the value had been authored in the pack.
+/// in place exactly as if the value had been authored in the pack. A
+/// calibration entry authors one value for the edge a pack describes, not
+/// one per flag-history it can be taken under, so a ref that resolves
+/// applies to every state-flag-product copy of that edge (see
+/// `docs/PACK_SCHEMA.md#state-flags`), not just the one instantiation whose
+/// exact id matches.
 #[must_use]
 pub fn apply(g: &mut Graph, set: &CalibrationSet) -> Application {
     let mut applied = vec![];
@@ -62,14 +77,18 @@ pub fn apply(g: &mut Graph, set: &CalibrationSet) -> Application {
         let hit = match e.target {
             CalibrationTarget::EdgeProbability => match g.edge(&e.target_ref) {
                 Ok(ix) => {
-                    g.edges[ix].probability = e.value;
+                    for i in edge_family(g, ix) {
+                        g.edges[i].probability = e.value;
+                    }
                     true
                 }
                 Err(_) => false,
             },
             CalibrationTarget::EdgeDuration => match g.edge(&e.target_ref) {
                 Ok(ix) => {
-                    g.edges[ix].duration.clone_from(&e.distribution);
+                    for i in edge_family(g, ix) {
+                        g.edges[i].duration.clone_from(&e.distribution);
+                    }
                     true
                 }
                 Err(_) => false,
@@ -208,5 +227,55 @@ mod tests {
         let mut g = demo_graph();
         let err = apply_named(&mut g, "definitely-not-a-real-set").unwrap_err();
         assert_eq!(err.code(), "not-found");
+    }
+
+    /// A calibration entry authors one value for the edge a pack describes,
+    /// not one per flag-history it can be taken under: a calibrated PTAB
+    /// FWD-outcome edge must also land on its `{ipr-estopped}` sibling,
+    /// reachable via `cafc-vacates-remands -> fwd-issued` after an earlier
+    /// FWD already set the flag (docs/CALIBRATION.md, docs/PACK_SCHEMA.md#state-flags).
+    #[test]
+    fn a_calibrated_value_reaches_every_flagged_sibling_of_the_edge() {
+        let root = concat!(env!("CARGO_MANIFEST_DIR"), "/../..");
+        let pack = Pack::from_json(
+            &std::fs::read_to_string(format!("{root}/packs/ptab-patent-trial-appeal-board.json"))
+                .unwrap(),
+        )
+        .unwrap();
+        let mut g = Graph::compile(&[pack], &LinkFile::default(), &CompileOptions::default())
+            .expect("ptab pack compiles");
+
+        let base_id =
+            "ptab-patent-trial-appeal-board::fwd-issued->fwd-all-unpatentable#0".to_string();
+        let flagged_id = format!("{base_id}{{ipr-estopped}}");
+        // The flagged sibling must actually exist (via the Director-review
+        // remand loop) or this test would trivially pass for the wrong
+        // reason.
+        let flagged_ix = g
+            .edge(&flagged_id)
+            .expect("fwd-issued's outcome edges are reachable a second time, flagged, via remand");
+        assert_ne!(
+            g.edges[flagged_ix].base_id, g.edges[flagged_ix].id,
+            "the flagged copy's base_id should point back at the unflagged edge"
+        );
+
+        let set = CalibrationSet::from_json(&format!(
+            r#"{{"id":"x","title":"x","entries":[{{
+                "target":"edge-probability","ref":"{base_id}","value":0.9123,
+                "source":{{"title":"t","url":"https://example.com","vintageStart":"2024-01-01"}},"n":1
+            }}]}}"#
+        ))
+        .unwrap();
+        let app = apply(&mut g, &set);
+        assert_eq!(app.applied.len(), 1);
+        assert_eq!(app.skipped, 0);
+
+        let base_ix = g.edge(&base_id).unwrap();
+        assert_eq!(g.edges[base_ix].probability, Some(0.9123));
+        assert_eq!(
+            g.edges[flagged_ix].probability,
+            Some(0.9123),
+            "the flagged sibling must carry the calibrated value too, not the authored default"
+        );
     }
 }

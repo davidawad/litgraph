@@ -195,7 +195,12 @@ an ordinary graph — flags are compiled away into plain nodes before any
 algorithm runs, so none of them know flags exist. A compiled `Node` carries
 `flags` (its flag-set) and `base_id` (the unflagged id it's a copy of), so a
 response can always project a flagged node back to the pack node an author
-wrote (`api::render::node_ref` does this whenever `flags` is non-empty).
+wrote (`api::render::node_ref` does this whenever `flags` is non-empty). A
+compiled `Edge` carries `base_id` too (the pre-expansion edge it's an
+instantiation of) — every flagged instantiation of the same authored edge
+shares one `base_id`, which is how a calibration entry (`docs/CALIBRATION.md`)
+targets one edge by its authored id and lands on every flagged copy at once,
+not just the one whose exact id matches.
 
 **Reading flags in expressions.** `flag("x")` is available in edge
 (cost/mask/probability-transform) and terminal (utility) expressions — see

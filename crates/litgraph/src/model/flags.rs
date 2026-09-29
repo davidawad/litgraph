@@ -20,7 +20,8 @@
 
 use std::collections::{BTreeSet, HashMap, VecDeque};
 
-use super::graph::{Edge, Graph, Node, NodeIx, PayoffSource};
+use super::entities::{Edge, Node, PayoffSource};
+use super::graph::{Graph, NodeIx};
 use crate::error::{Error, Result};
 
 /// `{a,b}` (flags sorted, comma-joined); empty string when `flags` is empty.

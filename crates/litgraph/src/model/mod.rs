@@ -13,16 +13,15 @@
 //! needing to know that. See `docs/PACK_SCHEMA.md#state-flags`.
 
 mod continuations;
+mod entities;
 mod flags;
 mod graph;
 mod links;
 mod resolve;
 mod schema;
 
-pub use graph::{
-    heuristic_payoff, qualify, CompileOptions, Edge, EdgeIx, Graph, Node, NodeIx, PackMeta,
-    PayoffSource, DEFAULT_MAX_PRODUCT_NODES,
-};
+pub use entities::{CompileOptions, Edge, Node, PackMeta, PayoffSource, DEFAULT_MAX_PRODUCT_NODES};
+pub use graph::{heuristic_payoff, qualify, EdgeIx, Graph, NodeIx};
 pub use links::{local_edge_ids, merge_patch, Instance, LinkFile};
 pub use schema::{
     default_roles, Deadline, Duration, Group, NodeKind, Pack, RawEdge, RawNode, Role, Source,

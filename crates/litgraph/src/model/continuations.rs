@@ -4,7 +4,8 @@
 
 use std::collections::BTreeMap;
 
-use super::graph::{Edge, EdgeIx, Graph, Node, NodeIx, PayoffSource};
+use super::entities::{Edge, Node, PayoffSource};
+use super::graph::{EdgeIx, Graph, NodeIx};
 use super::schema::NodeKind;
 
 impl Graph {
@@ -70,7 +71,8 @@ impl Graph {
         let edge_id = format!("{}#accept", src.id);
         self.edge_ix.insert(edge_id.clone(), self.edges.len());
         self.edges.push(Edge {
-            id: edge_id,
+            id: edge_id.clone(),
+            base_id: edge_id,
             pack: src.pack.clone(),
             from: ix,
             to: end_ix,
