@@ -176,14 +176,11 @@ pub fn k_shortest(v: &View, s: NodeIx, t: NodeIx, w: &[f64], k: usize) -> Result
     let Some(first) = shortest(v, s, t, w)? else {
         return Ok(found);
     };
+    // `last` is always the most recently found path, so it is never absent.
+    let mut last = first.clone();
     found.push(first);
     let mut candidates: Vec<Path> = vec![];
     while found.len() < k {
-        // `found` always has at least one entry: `first` was pushed above
-        // and every loop iteration below only ever adds more.
-        let Some(last) = found.last().cloned() else {
-            break;
-        };
         for i in 0..last.edges.len() {
             let spur = last.nodes[i];
             let root_edges = &last.edges[..i];
@@ -195,31 +192,34 @@ pub fn k_shortest(v: &View, s: NodeIx, t: NodeIx, w: &[f64], k: usize) -> Result
             }
             let banned_n: HashSet<NodeIx> = last.nodes[..i].iter().copied().collect();
             let (dist, prev) = sssp(v, spur, w, &banned_e, &banned_n)?;
-            if !dist[t].is_finite() {
+            let Some(spur_path) = dist[t]
+                .is_finite()
+                .then(|| build(v, spur, t, &prev, w))
+                .flatten()
+            else {
+                continue;
+            };
+            let mut edges = root_edges.to_vec();
+            edges.extend(&spur_path.edges);
+            if found.iter().chain(&candidates).any(|p| p.edges == edges) {
                 continue;
             }
-            if let Some(spur_path) = build(v, spur, t, &prev, w) {
-                let mut edges = root_edges.to_vec();
-                edges.extend(&spur_path.edges);
-                if found.iter().chain(&candidates).any(|p| p.edges == edges) {
-                    continue;
-                }
-                let mut nodes = vec![s];
-                nodes.extend(edges.iter().map(|&e| v.g.edges[e].to));
-                let total = edges.iter().map(|&e| w[e]).sum();
-                candidates.push(Path {
-                    probability: path_probability(v, &edges),
-                    nodes,
-                    edges,
-                    totals: vec![total],
-                });
-            }
+            let mut nodes = vec![s];
+            nodes.extend(edges.iter().map(|&e| v.g.edges[e].to));
+            let total = edges.iter().map(|&e| w[e]).sum();
+            candidates.push(Path {
+                probability: path_probability(v, &edges),
+                nodes,
+                edges,
+                totals: vec![total],
+            });
         }
         if candidates.is_empty() {
             break;
         }
         candidates.sort_by(|a, b| a.totals[0].total_cmp(&b.totals[0]));
-        found.push(candidates.remove(0));
+        last = candidates.remove(0);
+        found.push(last.clone());
     }
     Ok(found)
 }

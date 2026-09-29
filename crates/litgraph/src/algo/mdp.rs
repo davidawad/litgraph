@@ -317,9 +317,10 @@ pub fn absorb_prob(v: &View, choice: &BTreeMap<NodeIx, usize>, target: &[f64]) -
                                         .sum::<f64>();
                             } else if let Some(&e) = choice.get(&u) {
                                 acc += plan.choice_mass * p[v.g.edges[e].to];
-                            } else if !plan.choices.is_empty() {
-                                // Worst-case nature with no recorded choice: average.
-                                let k = plan.choices.len() as f64;
+                            } else {
+                                // Worst-case nature with no recorded choice:
+                                // average (`max(1)` guards the no-choice case).
+                                let k = (plan.choices.len() as f64).max(1.0);
                                 acc += plan.choice_mass
                                     * plan
                                         .choices

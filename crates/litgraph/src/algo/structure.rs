@@ -244,15 +244,24 @@ fn build_residual(v: &View, cap: &[f64]) -> Residual {
     r
 }
 
-/// One BFS augmenting step; returns the parent-arc map if `t` is reachable.
-fn augmenting_path(r: &Residual, n: usize, s: NodeIx, t: NodeIx) -> Option<Vec<Option<usize>>> {
+/// One BFS augmenting step; returns the arcs of a residual path from `s` to
+/// `t` (in `t`-to-`s` order; empty when `s == t`), or `None` if `t` is
+/// unreachable.
+fn augmenting_path(r: &Residual, n: usize, s: NodeIx, t: NodeIx) -> Option<Vec<usize>> {
     let mut parent: Vec<Option<usize>> = vec![None; n];
     let mut seen = vec![false; n];
     seen[s] = true;
     let mut q = VecDeque::from([s]);
     while let Some(u) = q.pop_front() {
         if u == t {
-            return Some(parent);
+            // Only `s` has no parent among the visited nodes.
+            let mut arcs = vec![];
+            let mut x = t;
+            while let Some(a) = parent[x] {
+                arcs.push(a);
+                x = r.to[a ^ 1];
+            }
+            return Some(arcs);
         }
         for &a in &r.adj[u] {
             if r.cap[a] > 1e-12 && !seen[r.to[a]] {
@@ -262,30 +271,17 @@ fn augmenting_path(r: &Residual, n: usize, s: NodeIx, t: NodeIx) -> Option<Vec<O
             }
         }
     }
-    seen[t].then_some(parent)
+    None
 }
 
-/// Pushes the maximum flow the found augmenting path allows; returns the
-/// bottleneck capacity pushed (0 if the path is somehow already exhausted).
-fn push_flow(r: &mut Residual, parent: &[Option<usize>], s: NodeIx, t: NodeIx) -> f64 {
-    let mut bottleneck = f64::INFINITY;
-    let mut x = t;
-    while x != s {
-        // BFS already confirmed a path to `t`, so every node on it has a
-        // `parent`; if that ever fails, stop rather than panic.
-        let Some(a) = parent[x] else { break };
-        bottleneck = bottleneck.min(r.cap[a]);
-        x = r.to[a ^ 1];
-    }
-    if !bottleneck.is_finite() {
-        return 0.0;
-    }
-    let mut x = t;
-    while x != s {
-        let Some(a) = parent[x] else { break };
+/// Pushes the maximum flow the augmenting path `arcs` allows; returns the
+/// bottleneck capacity pushed. Every arc on a BFS path has residual capacity
+/// above 1e-12, so the push is always positive and saturates at least one arc.
+fn push_flow(r: &mut Residual, arcs: &[usize]) -> f64 {
+    let bottleneck = arcs.iter().map(|&a| r.cap[a]).fold(f64::INFINITY, f64::min);
+    for &a in arcs {
         r.cap[a] -= bottleneck;
         r.cap[a ^ 1] += bottleneck;
-        x = r.to[a ^ 1];
     }
     bottleneck
 }
@@ -317,12 +313,8 @@ pub fn min_cut(v: &View, s: NodeIx, t: NodeIx, cap: &[f64]) -> Cut {
     let mut r = build_residual(v, cap);
     let mut flow = 0.0;
     if s != t {
-        while let Some(parent) = augmenting_path(&r, n, s, t) {
-            let pushed = push_flow(&mut r, &parent, s, t);
-            if pushed <= 0.0 {
-                break;
-            }
-            flow += pushed;
+        while let Some(arcs) = augmenting_path(&r, n, s, t) {
+            flow += push_flow(&mut r, &arcs);
         }
     }
     let in_s = source_side(&r, n, s);

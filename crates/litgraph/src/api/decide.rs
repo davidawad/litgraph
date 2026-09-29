@@ -172,9 +172,16 @@ pub(super) fn explain_op(v: &View, n: NodeIx) -> Out {
             "id": "WAIT", "label": choice_label(v, WAIT), "kind": "wait", "q": r(qw), "chosen": best == Some(WAIT),
             "draws": plan.wait.iter().map(|&(e, p)| json!({ "edge": v.g.edges[e].id, "label": v.g.edges[e].label, "p": r(p) })).collect::<Vec<_>>(),
         });
-        if let Some(b) = best {
+        let regret = best.map(|b| {
             let qb = sol.option_q(v, n, b);
-            j["regret"] = r(if plan.minimize { qw - qb } else { qb - qw });
+            if plan.minimize {
+                qw - qb
+            } else {
+                qb - qw
+            }
+        });
+        if let Some(x) = regret {
+            j["regret"] = r(x);
         }
         options.push((qw, j));
     }

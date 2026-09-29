@@ -129,11 +129,12 @@ pub(super) fn best_line(v: &View, sol: &mdp::Solution, start: NodeIx, max: usize
     while out.len() < max && !seen[cur] {
         seen[cur] = true;
         let plan = &v.plan[cur];
-        if matches!(plan.control, Control::Terminal | Control::Sink) {
-            break;
-        }
-        let dist = chain::step_dist(v, &sol.choice, cur);
-        let Some(&(e, p)) = dist.iter().max_by(|a, b| a.1.total_cmp(&b.1)) else {
+        // Terminals and dead ends take no step; neither does a node with no
+        // outgoing mass at all.
+        let step = (!matches!(plan.control, Control::Terminal | Control::Sink))
+            .then(|| chain::step_dist(v, &sol.choice, cur))
+            .and_then(|dist| dist.into_iter().max_by(|a, b| a.1.total_cmp(&b.1)));
+        let Some((e, p)) = step else {
             break;
         };
         let chosen = sol.choice.get(&cur).copied();

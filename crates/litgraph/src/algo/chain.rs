@@ -46,7 +46,9 @@ pub fn step_dist(v: &View, sol_choice: &BTreeMap<NodeIx, usize>, n: NodeIx) -> V
             d.extend(plan.wait.iter().map(|&(e, p)| (e, p * plan.choice_mass)));
         } else if let Some(&e) = sol_choice.get(&n) {
             d.push((e, plan.choice_mass));
-        } else if !plan.choices.is_empty() {
+        } else {
+            // No recorded choice: spread the mass evenly (a no-op if there are
+            // no choices, so `k` is never used as a zero divisor).
             let k = plan.choices.len() as f64;
             d.extend(plan.choices.iter().map(|&e| (e, plan.choice_mass / k)));
         }
@@ -298,15 +300,15 @@ fn x_reachable(
         if u == i {
             return true;
         }
-        for &(e, p) in &dists[u] {
-            if p <= 0.0 {
-                continue;
-            }
-            if let Some(&j) = tix.get(&v.g.edges[e].to) {
-                if !seen[j] {
-                    seen[j] = true;
-                    stack.push(j);
-                }
+        // Positive-probability steps to other transient nodes.
+        let next = dists[u]
+            .iter()
+            .filter(|&&(_, p)| p > 0.0)
+            .filter_map(|&(e, _)| tix.get(&v.g.edges[e].to).copied());
+        for j in next {
+            if !seen[j] {
+                seen[j] = true;
+                stack.push(j);
             }
         }
     }
