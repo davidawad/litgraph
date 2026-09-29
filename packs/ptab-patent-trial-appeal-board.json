@@ -5,6 +5,13 @@
   "description": "Post-grant adversarial challenges to issued patents before the USPTO Patent Trial and Appeal Board — inter partes review (IPR) and post-grant review (PGR), from petition filing through institution, trial on the merits, final written decision, rehearing/Director review, and Federal Circuit appeal.",
   "jurisdiction": "35 U.S.C. Chapter 31 (AIA Trials) / 37 C.F.R. Part 42 / USPTO PTAB",
   "startNodeId": "patent-granted",
+  "sources": [
+    {
+      "id": "35-usc-315",
+      "title": "35 U.S.C. § 315 — Relation to other proceedings or actions",
+      "url": "https://www.law.cornell.edu/uscode/text/35/315"
+    }
+  ],
   "groups": [
     {
       "id": "pre-petition-group",
@@ -1223,7 +1230,9 @@
       "to": "adverse-judgment-terminal",
       "label": "Board enters adverse judgment",
       "actor": "examiner",
-      "authority": "37 CFR 42.73(b)"
+      "authority": "37 CFR 42.73(b)",
+      "sets": ["ipr-estopped"],
+      "note": "See the adverse-judgment-terminal node note: functionally equivalent to a merits FWD, so 35 U.S.C. § 315(e) estoppel attaches the same way."
     },
     {
       "from": "oral-hearing-request",
@@ -1264,7 +1273,8 @@
       "label": "Hold all instituted claims unpatentable",
       "actor": "examiner",
       "authority": "35 U.S.C. § 318(a)",
-      "probability": 0.55
+      "probability": 0.55,
+      "sets": ["ipr-estopped"]
     },
     {
       "from": "fwd-issued",
@@ -1272,7 +1282,9 @@
       "label": "Confirm all instituted claims patentable",
       "actor": "examiner",
       "authority": "35 U.S.C. § 318(a)",
-      "probability": 0.25
+      "probability": 0.25,
+      "sets": ["ipr-estopped"],
+      "note": "Estoppel attaches to the losing petitioner too: 315(e) is triggered by a final written decision issuing, not by which side wins it (see node note)."
     },
     {
       "from": "fwd-issued",
@@ -1280,7 +1292,8 @@
       "label": "Cancel some claims, confirm others",
       "actor": "examiner",
       "authority": "35 U.S.C. § 318(a)",
-      "probability": 0.2
+      "probability": 0.2,
+      "sets": ["ipr-estopped"]
     },
     {
       "from": "fwd-all-unpatentable",

@@ -5,6 +5,13 @@
   "description": "Pre-filing/jurisdiction & venue -> pleading (service, Rule 12 responses, default) -> amendment & joinder -> discovery (Rule 26 conference through Rule 37 sanctions and CBI-style protective orders) -> pretrial motions (summary judgment, Daubert, motions in limine) -> trial -> post-trial motions (Rule 50/59/60) -> judgment & appeal (28 U.S.C. 1291/1292, FRAP 4, cross-appeal). Citations checked against the FRCP, FRAP, and Title 28 as reflected in content/rulepacks/frcp-fragment.json and the situations corpus; approximate figures (filing fees) are flagged inline. Direct structural counterpart to content/statecharts/mpep-prosecution.json and content/statecharts/itc-337.json for the FRCP pack. Walk mode teaches the FRAP 4(a)(4) tolling trap, the unextendable Rule 59(e)/60(b) and removal clocks, and the jurisdictional (Bowles v. Russell) character of the notice-of-appeal deadline.",
   "jurisdiction": "Federal Rules of Civil Procedure / U.S. District Courts",
   "startNodeId": "pre-filing",
+  "sources": [
+    {
+      "id": "frcp-12h",
+      "title": "Fed. R. Civ. P. 12(h) — Waiving and Preserving Certain Defenses",
+      "url": "https://www.law.cornell.edu/rules/frcp/rule_12"
+    }
+  ],
   "groups": [
     {
       "id": "pre-filing-group",
@@ -918,6 +925,7 @@
       }
     },
     {
+      "id": "12b-motion-filed",
       "from": "rule12-response-window",
       "to": "motion-to-dismiss-filed",
       "label": "File pre-answer Rule 12(b) motion instead of answering",
@@ -935,7 +943,9 @@
         "min": 3.1,
         "mode": 10.5,
         "max": 21.0
-      }
+      },
+      "sets": ["waived-12h-defenses"],
+      "note": "This pack doesn't separately model which Rule 12(b) defenses a motion raises, so sets waived-12h-defenses on every 12(b) motion as the conservative default: FRCP 12(h)(1)(A) waives lack of personal jurisdiction, improper venue, insufficient process, and insufficient service of process by omitting any of them from a motion made under the circumstances described in Rule 12(g)(2) (a motion raising some, but not all, available Rule 12 defenses). A pack that modeled motion content in more detail could instead set this flag only on the omitting variant."
     },
     {
       "from": "rule12-response-window",

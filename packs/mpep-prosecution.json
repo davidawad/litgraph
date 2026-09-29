@@ -5,6 +5,13 @@
   "description": "Canonical pre-filing → prosecution → appeal → issuance flowchart for a U.S. nonprovisional utility application. MPEP and 37 CFR citations verified against live USPTO/eCFR sources (2024-07-01 edition). Walk mode teaches the RCE-vs-appeal fork economics, the unextendable 6-month ceiling, and abandonment-as-permadeath.",
   "jurisdiction": "USPTO / MPEP",
   "startNodeId": "pre-filing",
+  "sources": [
+    {
+      "id": "37-cfr-1-114",
+      "title": "37 C.F.R. § 1.114 — Request for continued examination",
+      "url": "https://www.law.cornell.edu/cfr/text/37/1.114"
+    }
+  ],
   "groups": [
     {
       "id": "pre-filing-group",
@@ -899,7 +906,9 @@
         "min": 13.5,
         "mode": 45.0,
         "max": 90.0
-      }
+      },
+      "sets": ["rce-filed-before"],
+      "note": "Marks the application as having used at least one RCE (37 CFR 1.114): a scenario can price a second/subsequent RCE differently (e.g. the higher 37 CFR 1.17(e) fee tier) with a cost expression that reads flag('rce-filed-before'). See docs/PACK_SCHEMA.md#state-flags."
     },
     {
       "from": "after-final-decision",
@@ -971,7 +980,8 @@
       "actor": "applicant",
       "authority": "37 CFR 1.114",
       "cost": 1360,
-      "hours": 12
+      "hours": 12,
+      "sets": ["rce-filed-before"]
     },
     {
       "from": "after-final-amendment",
@@ -1106,7 +1116,8 @@
       "actor": "applicant",
       "authority": "37 CFR 1.114; MPEP 1207.03",
       "cost": 1360,
-      "hours": 12
+      "hours": 12,
+      "sets": ["rce-filed-before"]
     },
     {
       "from": "ptab-decision",

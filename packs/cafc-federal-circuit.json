@@ -622,11 +622,16 @@
       "group": "cert-group",
       "cite": "Sup. Ct. R. 13.1",
       "payoff": 0,
+      "payoffByFlag": {
+        "panel-affirmed": 0,
+        "panel-mixed": 250000,
+        "panel-reversed": 1000000
+      },
       "outcome": [
         "final"
       ],
       "valence": "good",
-      "note": "This pack does not carry the upstream panel-decision payoff forward through the rehearing/mandate/cert branch; the 0 here means 'no additional value beyond what was already realized at the earlier terminal,' not that the appeal was worthless. See cafc-SOURCES-NOTES.md."
+      "note": "Not seeking certiorari leaves the panel's disposition undisturbed, so this restores whatever the panel actually decided (panel-decision's own panel-to-affirmed/panel-to-reversed/panel-to-mixed edges `sets` the matching flag, carried forward through rehearing/mandate by the state-flag product graph — docs/PACK_SCHEMA.md#state-flags). `payoff: 0` is the fallback only when this terminal is reached with none of those flags set (e.g. a direct scenario.start here). See docs/CRITIQUE.md and cafc-SOURCES-NOTES.md."
     },
     {
       "id": "cert-petition-filed",
@@ -649,11 +654,16 @@
       "group": "cert-group",
       "cite": "Sup. Ct. R. 10",
       "payoff": 0,
+      "payoffByFlag": {
+        "panel-affirmed": 0,
+        "panel-mixed": 250000,
+        "panel-reversed": 1000000
+      },
       "outcome": [
         "final"
       ],
       "valence": "good",
-      "note": "Not a ruling on the merits; carries zero precedential weight. Same non-carry-forward convention as cert-not-sought."
+      "note": "Denial of certiorari is not a ruling on the merits and carries zero precedential weight — the Federal Circuit's judgment simply stands, so payoffByFlag restores whatever the panel actually decided, same mechanism and rationale as cert-not-sought."
     },
     {
       "id": "cert-granted",
@@ -1149,7 +1159,8 @@
       "actor": "office",
       "authority": "Fed. Cir. R. 36(a)",
       "probability": 0.2,
-      "note": "~20% of 2024 merits terminations per patentlyo-2024-datapack."
+      "sets": ["panel-affirmed"],
+      "note": "~20% of 2024 merits terminations per patentlyo-2024-datapack. Sets panel-affirmed so cert-not-sought/cert-denied can restore this outcome's payoff if rehearing/cert is entered and denied — see docs/PACK_SCHEMA.md#state-flags and docs/CRITIQUE.md."
     },
     {
       "id": "panel-to-affirmed",
@@ -1159,6 +1170,7 @@
       "actor": "office",
       "authority": "FRAP 36(a)",
       "probability": 0.28,
+      "sets": ["panel-affirmed"],
       "note": "Teaching estimate apportioning the non-Rule-36 balance — not independently sourced."
     },
     {
@@ -1169,6 +1181,7 @@
       "actor": "office",
       "authority": "FRAP 36(a)",
       "probability": 0.1,
+      "sets": ["panel-reversed"],
       "note": "Teaching estimate — not independently sourced."
     },
     {
@@ -1189,6 +1202,7 @@
       "actor": "office",
       "authority": "FRAP 36(a)",
       "probability": 0.17,
+      "sets": ["panel-mixed"],
       "note": "Teaching estimate — not independently sourced."
     },
     {
@@ -1349,7 +1363,9 @@
       "to": "panel-decision",
       "label": "Case reheard/modified — fresh disposition",
       "actor": "office",
-      "authority": "Fed. Cir. R. 40(e)"
+      "authority": "Fed. Cir. R. 40(e)",
+      "clears": ["panel-affirmed", "panel-reversed", "panel-mixed"],
+      "note": "A fresh disposition replaces the prior one, so the panel-outcome flag from the disposition being reheard is cleared here — the new panel-to-affirmed/panel-to-reversed/panel-to-mixed edge that follows sets the flag that matters going forward. Without this, a case that goes through rehearing more than once could accumulate contradictory flags (e.g. panel-affirmed AND panel-reversed at once)."
     },
     {
       "id": "mandate-to-costs",
