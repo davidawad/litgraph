@@ -32,10 +32,9 @@ or `--packs-dir <dir>`. The named scenario library (`scenarios/*.json`) is
 embedded the same way; override with `LITGRAPH_SCENARIOS=<dir>` or
 `--scenarios-dir <dir>`. See docs/PACK_SCHEMA.md's "Scenario library" section
 for the file shape and how a request composes a named scenario with
-overrides (`{"extends": "<id>", ...}`).
-or `--packs-dir <dir>`. The vendored L0 source corpus (`sources/*.txt`,
-see `sources/PROVENANCE.md`) is embedded the same way; override it with
-`LITGRAPH_SOURCES=<dir>`.
+overrides (`{"extends": "<id>", ...}`). The vendored L0 source corpus
+(`sources/*.txt`, see `sources/PROVENANCE.md`) is embedded the same way;
+override it with `LITGRAPH_SOURCES=<dir>`.
 
 Driving this from an MCP-capable agent instead of the CLI: `litgraph-mcp`
 (`crates/litgraph-mcp`) is the same contract over stdio — every op above is
