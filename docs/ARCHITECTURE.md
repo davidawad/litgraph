@@ -227,7 +227,11 @@ reachable from a node.
   `docs/CALIBRATION.md`. Still open: a CourtListener/PACER-backed fetcher for
   ongoing re-calibration (`scripts/calibrate/` currently regenerates one
   set's arithmetic from recorded constants, not a live docket puller).
-- CVaR-optimal policies; general-sum (opponent with its own payoffs).
+- ~~CVaR-optimal policies; general-sum (opponent with its own payoffs).~~
+  **Delivered**: `objective: {type: cvar, alpha}` (Rockafellar–Uryasev) and
+  `scenario.opponent_objective` (subgame-perfect equilibrium by backward
+  induction) — see `docs/CRITIQUE.md`'s "CVaR-optimal policies" and
+  "General-sum opponents" sections.
 - ~~Cite verification: every `authority` resolves to a span in an L0
   source.~~ Shipped (`crates/litgraph/src/cite/`, `sources/*.txt`,
   `unverifiable-cite` lint diagnostic). Remaining: wire `sources[].path`

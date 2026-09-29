@@ -37,7 +37,12 @@ engine defect, now fixed with a regression test.
 - **Two-party stochastic game, not a one-player MDP.** Roles `self /
   opponent / nature` per pack, overridable per query (`perspective`).
   Opponents default to authored probabilities when present, else minimax.
-  General-sum (opponent with its own payoffs) is not solved yet.
+  General-sum (opponent with its own payoffs) is solved by backward
+  induction on the SCC DAG when `scenario.opponent_objective` is set — see
+  "General-sum opponents" below; `explain`'s per-option `regret` field is
+  not adapted for it yet (it assumes an adversarial opponent) and can show
+  a misleading sign at a general-sum opponent's node — use `value`/
+  `opponent_value` there instead (tracked as a follow-up).
 - **Markov on the node — rung 1 fixed.** Litigation has memory: estoppel
   after an IPR FWD, a waived Rule 12(h) defense, an RCE already filed, which
   way a Federal Circuit panel actually ruled before a rehearing/cert detour.
@@ -62,13 +67,126 @@ engine defect, now fixed with a regression test.
   (scoring points × $1k) with v2 placeholders ($1M claim). Always set
   `scenario.payoffs` for the matter at hand; responses warn when they are
   not authored.
-- **Risk.** Mean-optimal by default. CARA is exact; CVaR/percentiles are
-  reported from simulation but not optimized.
+- **Risk.** Mean-optimal by default. CARA is exact. CVaR/percentiles are
+  reported from simulation (`simulate`'s `cvar`/percentile fields) and, since
+  `objective: {type: cvar, alpha}` (see "CVaR-optimal policies" below), can
+  also be *optimized*, with documented grid-discretization exactness limits.
 - **Probabilities are teaching estimates** in most packs (vintages noted
   in node/edge notes). `tornado` shows which ones the answer actually
   depends on — calibrate those first.
 - **Durations** are sparse; `elapsed` falls back to deadline windows and
   every response says so.
+
+## CVaR-optimal policies
+
+`objective: {type: cvar, alpha, grid?}` maximizes `CVaR_alpha` of the total
+outcome (mean of the worst `alpha` fraction) — not just reports it from a
+simulation the way `simulate`'s `cvar`/`p_loss`/percentile fields do.
+
+**Method.** Rockafellar & Uryasev (2000)'s variational form,
+
+```text
+CVaR_alpha(X) = max_ζ [ ζ − (1/alpha)·E[(ζ − X)⁺] ]
+```
+
+is concave in the Value-at-Risk threshold `ζ`. Bäuerle & Ott (2011) show
+that for a Markov (or, as here, an SCC-ordered stochastic-game) total
+reward, the inner expectation becomes an ordinary backward induction once
+the state is augmented with `y`, the "remaining budget" `ζ` minus the value
+accumulated so far: taking an edge shifts `y ↦ y + cost(edge)`, and at a
+terminal the local objective `−(1/alpha)·max(y − utility(terminal), 0)`
+depends on `y` alone. `crates/litgraph/src/algo/cvar.rs` runs one SCC-ordered
+backward-induction pass (the same `scc`/`is_cyclic` decomposition as
+`mdp::solve`) computing `W(node, y)` on a discretized grid of `y`; because
+the recursion doesn't reference `ζ` except at the boundary, every candidate
+`ζ` is answered by the *same* pass — the outer maximization is a lookup
+`max_j [ ys[j] + W(start, ys[j]) ]` at the start node, not a repeated solve.
+
+**Exactness limits.**
+
+- **Grid discretization.** `y` is discretized to `grid` points (default 41)
+  spanning a conservative default range (the terminal-utility range widened
+  by the graph's total absolute edge cost); off-grid lookups use linear
+  interpolation. Error is bounded by the grid step times the local slope of
+  the (piecewise-linear, slope ≤ `1/alpha`) value function, and is *worse*
+  near a kink the grid doesn't land on exactly (a plateau-then-cliff value
+  function, as at a deterministic terminal, can undershoot the true optimum
+  by close to a full grid step — see `tests/cvar.rs`'s hand-checked case).
+  Increase `grid` for a tighter answer; there is no field yet to override the
+  default `y` range for a graph whose default range is a poor fit (e.g. very
+  costly cycles) — tracked as a follow-up.
+- **Cyclic components** are iterated to a fixed point exactly like
+  `mdp::solve`'s cyclic handling (same convergence tolerance/cap,
+  `Solution.converged`/`unconverged`), on the whole `y`-row per node per
+  iteration.
+- **Doesn't compose with `discount_annual`, `fee_shift`, or a general-sum
+  `opponent_objective`** (each triggers a `cvar-ignores-*` warning):
+  discounting a per-edge value while additively shifting a "remaining
+  budget" state are two different notions of time value that would need a
+  more careful joint augmentation; fee-shift's cost depends on the (here,
+  budget-dependent) policy through policy iteration, which isn't combined
+  with the grid solve; and jointly optimizing our CVaR against a
+  self-interested opponent's own equilibrium is a substantially harder
+  problem (not attempted here — the opponent is modeled adversarially, as
+  in ordinary `solve`).
+- **Reported policy is a single canonical rollout**, not the true (budget-
+  dependent) optimal policy at every `(node, y)`: the CVaR-optimal policy
+  in general chooses differently depending on how much budget remains, but
+  `Solution.choice`/`value` (as consumed by `chain`/`simulate`/`explain`)
+  are keyed by node alone. `cvar::solve` walks the single trajectory from
+  `(start, ζ*)` and records the first-visit choice per node; a node
+  revisited with a different remaining budget (a cycle) keeps its
+  first-visit choice, which need not be optimal for that later visit.
+  `Solution.q` is left `NaN` for the same reason: no single per-edge number
+  is correct independent of the budget it's evaluated at.
+- **Verification.** `tests/cvar.rs` compares `cvar::solve` against brute-force
+  enumeration of every deterministic memoryless policy (exact distribution
+  enumeration + the same `CVaR_alpha` formula) on small acyclic graphs,
+  including a randomized proptest sweep, within a grid-step-scaled tolerance.
+
+## General-sum opponents
+
+`scenario.opponent_objective` (a terminal expression, e.g. `"node.opp_fees +
+node.stake"`) switches the opponent from a zero-sum adversary (minimizing
+our value) to a self-interested player maximizing *their own* payoff.
+
+**Method.** The compiled graph is an extensive-form, perfect-information
+game: exactly one party moves at each node. Backward induction over such a
+game computes the subgame-perfect equilibrium directly — `algo/equilibrium.rs`
+runs the same SCC-ordered pass as `mdp::solve`, but tracks *two* value
+vectors (`self`, `opponent`); at an opponent-controlled node the opponent
+picks the edge maximizing their own continuation value
+(`-opponent_dollars(edge) + opponent_objective(to)`, the `opponent_dollars`
+built-in giving their per-edge cost symmetrically to how `cost`/`utility`
+give ours), and *both* players' values propagate along whichever edge that
+turns out to be. `opponent_objective: None` (the default) delegates to
+`mdp::solve` unchanged — the zero-sum special case, reproduced exactly
+(`tests/general_sum.rs`'s `zero_sum_opponent_objective_none_reproduces_mdp_solve_exactly`).
+
+**Exactness limits.**
+
+- **Cyclic components don't have a convergence guarantee.** A single-agent
+  MDP's value iteration is a contraction; general-sum best-response
+  iteration (each side re-optimizing against the other's last-iteration
+  value) is not guaranteed to converge for arbitrary payoffs — it can
+  oscillate. `equilibrium::resolve` iterates jointly to the same tolerance/
+  cap as `mdp::solve` and reports `converged: false` / `unconverged` exactly
+  as honestly, rather than returning a number that looks confident.
+- **Only one objective for `self`.** The equilibrium solve always uses plain
+  expectation for `self` (ignoring `Objective::Cara`/`Worst`/`Cvar` if set
+  alongside `opponent_objective` — `Cvar` explicitly warns about this
+  combination; `Cara`/`Worst` are silently not applied, tracked as a
+  follow-up to warn there too).
+- **`explain`'s per-option `regret`** is computed from `NodePlan::minimize`,
+  which stays `true` at every `Control::Opponent` node regardless of
+  `opponent_objective` (the general-sum solver doesn't consult it, but
+  `explain` still does for the human-readable regret sign) — it can show a
+  misleading sign for a general-sum opponent's options. `value`/
+  `opponent_value` are correct; `regret` there is not, until `explain` is
+  made general-sum-aware (tracked as a follow-up).
+- **Not combined with `fee_shift`** (a warning is reported): fee-shift's
+  policy-iteration cost adjustment is defined in terms of `self`'s policy
+  only.
 
 ## Architecture changes
 

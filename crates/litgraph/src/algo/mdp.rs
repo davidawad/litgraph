@@ -85,7 +85,7 @@ impl Solution {
     }
 }
 
-fn gamma(v: &View, e: usize) -> f64 {
+pub(crate) fn gamma(v: &View, e: usize) -> f64 {
     match v.sc.discount_annual {
         Some(r) if r != 0.0 => (1.0 + r).powf(-v.elapsed[e] / 365.0),
         _ => 1.0,
@@ -400,6 +400,7 @@ pub fn solve(v: &View, opts: &SolveOptions) -> Result<Solution> {
                 n,
                 payoff: v.payoff[n],
                 params: &v.params,
+                path: crate::metrics::PathVars::default(),
             })?;
             Ok(if x == 0.0 { 0.0 } else { 1.0 })
         })

@@ -7,15 +7,26 @@ use super::render::{
     best_line, choice_id, choice_label, convergence_warnings, edge_ref, metric_list, node_ref, r,
 };
 use super::Warn;
-use crate::algo::{chain, mdp, sim};
+use crate::algo::{chain, cvar, equilibrium, mdp, sim};
 use crate::error::Result;
 use crate::model::NodeIx;
-use crate::scenario::{Control, View, WAIT};
+use crate::scenario::{Control, Objective, View, WAIT};
 
 type Out = Result<(Value, Vec<Warn>)>;
 
+/// The policy `chain`/`simulate`/`explain` run under: `mdp::solve` for the
+/// default (`Expected`/`Cara`/`Worst`) objectives, delegating to the
+/// general-sum equilibrium (itself a passthrough to `mdp::solve` when
+/// `opponent_objective` is unset — the zero-sum special case) or to the
+/// `CVaR`-optimal solve.
 fn solve(v: &View) -> Result<mdp::Solution> {
-    mdp::solve(v, &mdp::SolveOptions::default())
+    if matches!(v.sc.objective, Objective::Cvar { .. }) {
+        let Objective::Cvar { alpha, grid } = v.sc.objective else {
+            unreachable!()
+        };
+        return Ok(cvar::solve(v, alpha, grid, &mdp::SolveOptions::default())?.solution);
+    }
+    Ok(equilibrium::resolve(v, &mdp::SolveOptions::default())?.solution)
 }
 
 pub(super) fn solve_op(
@@ -25,28 +36,59 @@ pub(super) fn solve_op(
     all_values: bool,
     max_steps: usize,
 ) -> Out {
-    let sol = solve(v)?;
+    if let Objective::Cvar { alpha, grid } = v.sc.objective {
+        let cv = cvar::solve(v, alpha, grid, &mdp::SolveOptions::default())?;
+        let sol = &cv.solution;
+        let mut result = solve_result(v, sol, start, full_policy, all_values, max_steps);
+        result["cvar"] = r(cv.cvar);
+        result["zeta"] = r(cv.zeta);
+        result["alpha"] = json!(cv.alpha);
+        result["grid"] = json!(cv.grid);
+        return Ok((result, convergence_warnings(v, sol)));
+    }
+    let eq = equilibrium::resolve(v, &mdp::SolveOptions::default())?;
+    let sol = &eq.solution;
+    let mut result = solve_result(v, sol, start, full_policy, all_values, max_steps);
+    if eq.general_sum {
+        result["opponent_value"] = r(eq.opponent_value[start]);
+        if all_values {
+            result["opponent_values"] = json!(values_json(v, &eq.opponent_value));
+        }
+    }
+    Ok((result, convergence_warnings(v, sol)))
+}
+
+/// The original `solve` result shape, shared by the zero-sum/general-sum and
+/// `CVaR` paths; callers add their objective-specific fields on top.
+fn solve_result(
+    v: &View,
+    sol: &mdp::Solution,
+    start: NodeIx,
+    full_policy: bool,
+    all_values: bool,
+    max_steps: usize,
+) -> Value {
     let policy: Vec<Value> = sol
         .my_policy(v)
         .map(|(n, e)| json!({ "node": v.g.nodes[n].id, "edge": choice_id(v, e), "label": choice_label(v, e), "q": r(sol.option_q(v, n, e)) }))
         .collect();
-    let values = all_values.then(|| {
-        (0..v.g.nodes.len())
-            .map(|n| (v.g.nodes[n].id.clone(), r(sol.value[n])))
-            .collect::<Map<_, _>>()
-    });
-    let result = json!({
+    json!({
         "start": node_ref(v, start),
         "value": r(sol.value[start]),
         "converged": sol.converged,
         "iterations": sol.iterations,
         "fee_shift_rounds": sol.fee_shift_rounds,
-        "best_line": best_line(v, &sol, start, max_steps),
+        "best_line": best_line(v, sol, start, max_steps),
         "policy_size": policy.len(),
         "policy": full_policy.then_some(policy),
-        "values": values,
-    });
-    Ok((result, convergence_warnings(v, &sol)))
+        "values": all_values.then(|| values_json(v, &sol.value)),
+    })
+}
+
+fn values_json(v: &View, values: &[f64]) -> Map<String, Value> {
+    (0..v.g.nodes.len())
+        .map(|n| (v.g.nodes[n].id.clone(), r(values[n])))
+        .collect()
 }
 
 pub(super) fn chain_op(v: &View, start: NodeIx, metrics: &[String], top: usize) -> Out {
@@ -99,13 +141,17 @@ pub(super) fn simulate_op(v: &View, start: NodeIx, metrics: &[String], o: &sim::
     Ok((result, convergence_warnings(v, &sol)))
 }
 
-/// Who acts at a node, in plain language. `Control::Opponent` is always
-/// adversarial: [`crate::scenario::NodePlan`]'s `minimize` is set exactly
-/// when `control == Control::Opponent` (see `plan.rs`'s `chooser`), so
-/// there is no "opponent, not adversarial" case to distinguish.
-fn who_decides(control: Control) -> &'static str {
+/// Who acts at a node, in plain language. `Control::Opponent` is adversarial
+/// (minimizes our value) unless `scenario.opponent_objective` is set, in
+/// which case the opponent maximizes their own payoff instead — see
+/// `equilibrium.rs`. Either way `NodePlan::minimize` is `true` at an
+/// opponent node (it isn't consulted by the general-sum solver), so a
+/// general-sum option's `regret` in [`option_json`] — computed from
+/// `minimize` — is not meaningful; `value`/`opponent_value` are.
+fn who_decides(control: Control, general_sum: bool) -> &'static str {
     match control {
         Control::Me => "you",
+        Control::Opponent if general_sum => "opponent (own payoff, general-sum equilibrium)",
         Control::Opponent => "opponent (adversarial)",
         Control::Chance => "tribunal/chance",
         Control::Terminal => "nobody (terminal)",
@@ -194,7 +240,7 @@ pub(super) fn explain_op(v: &View, n: NodeIx) -> Out {
     let result = json!({
         "node": { "id": node.id, "label": node.label, "kind": node.kind, "cite": node.cite, "note": node.note },
         "control": plan.control,
-        "who_decides": who_decides(plan.control),
+        "who_decides": who_decides(plan.control, v.sc.opponent_objective.is_some()),
         "value": r(sol.value[n]),
         "interrupt_mass": r(1.0 - plan.choice_mass),
         "options": options.into_iter().map(|x| x.1).collect::<Vec<_>>(),

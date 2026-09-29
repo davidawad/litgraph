@@ -156,6 +156,50 @@ pub const TERMINAL_VARS: &[(&str, &str)] = &[
     ),
 ];
 
+/// Names of the path-dependent terminal variables (see [`PathVars`]). Used
+/// both to document them (`describe`) and to detect when an expression
+/// depends on them (the `path-variable-in-markov` warning).
+pub const PATH_VAR_NAMES: [&str; 3] = ["spent", "elapsed_total", "steps"];
+
+/// Path-dependent variables visible to a terminal expression: `(name, doc)`.
+/// See [`PathVars`] for exactness limits.
+pub const PATH_VARS: &[(&str, &str)] = &[
+    (
+        "spent",
+        "cumulative cost (the scenario's cost metric) along the actual path to this terminal; exact in `simulate`, 0 in `solve`/`chain` (Markov)",
+    ),
+    (
+        "elapsed_total",
+        "cumulative elapsed days along the actual path; exact in `simulate` (sampled durations if enabled), 0 in `solve`/`chain`",
+    ),
+    (
+        "steps",
+        "number of edges traversed to reach this terminal; exact in `simulate`, 0 in `solve`/`chain`",
+    ),
+];
+
+/// Path-dependent variables (`spent`, `elapsed_total`, `steps`) available to a
+/// terminal expression, e.g. for prejudgment interest
+/// (`payoff * (1+r)^(elapsed_total/365)`) or time-growing damages.
+///
+/// These have no fixed value at a node in the Markov sense: the same terminal
+/// can be reached having spent different amounts on different paths, so
+/// `solve` (value iteration / SCC backups) and `chain` (the absorbing chain)
+/// — which value a node once, independent of history — cannot compute them
+/// exactly and use [`PathVars::default`] (all zero) instead. Only
+/// [`crate::algo::sim::simulate`] knows the actual trajectory and evaluates
+/// the utility expression per run with the real accumulated values. See
+/// `docs/COST_FUNCTIONS.md` ("Path-dependent terminal variables").
+#[derive(Debug, Clone, Copy, Default, PartialEq)]
+pub struct PathVars {
+    /// Cumulative cost metric along the path so far.
+    pub spent: f64,
+    /// Cumulative elapsed days along the path so far.
+    pub elapsed_total: f64,
+    /// Number of edges traversed so far.
+    pub steps: f64,
+}
+
 /// The default value for every built-in [`PARAMS`] entry, keyed by name.
 #[must_use]
 pub fn default_params() -> BTreeMap<String, f64> {
@@ -276,6 +320,9 @@ pub struct TerminalEnv<'a> {
     pub payoff: f64,
     /// Resolved scenario parameters, visible to expressions by name.
     pub params: &'a BTreeMap<String, f64>,
+    /// Path-dependent variables (`spent`, `elapsed_total`, `steps`); defaults
+    /// (all zero) in a Markov context. See [`PathVars`].
+    pub path: PathVars,
 }
 
 impl Env for TerminalEnv<'_> {
@@ -284,6 +331,9 @@ impl Env for TerminalEnv<'_> {
         match name {
             "payoff" => Some(self.payoff),
             "payoff_authored" => Some(b(n.payoff_source == crate::model::PayoffSource::Authored)),
+            "spent" => Some(self.path.spent),
+            "elapsed_total" => Some(self.path.elapsed_total),
+            "steps" => Some(self.path.steps),
             _ => {
                 if let Some(a) = name.strip_prefix("node.") {
                     return Some(n.attrs.get(a).copied().unwrap_or(f64::NAN));

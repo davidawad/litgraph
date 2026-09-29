@@ -70,7 +70,7 @@ with existing variables; **data** = expressible once packs carry the `attrs`;
 | waiver / trap exposure | `tag('waiver-trap') + valence_bad` | built-in `traps` |
 | chokepoints weighted by likelihood or money | `structure mincut capacity=p` / `=dollars` | built-in |
 | judge / forum / examiner calibration | `probability_fn: "label_has('grant') ? p * judge_grant_mult : p"` | expression |
-| optimizing CVaR (not just reporting it) | — | engine |
+| optimizing CVaR (not just reporting it) | `objective: {type: cvar, alpha}` (Rockafellar–Uryasev; see docs/CRITIQUE.md) | built-in |
 
 ### D. Outcome value (terminal)
 
@@ -81,7 +81,7 @@ with existing variables; **data** = expressible once packs carry the `attrs`;
 | outcome-class weighting | `tag('win') * payoff`, `tag('settlement') * payoff * 0.9` | expression |
 | fee shifting (§ 285, EAJA, 1927, Rule 37, contract) | `fee_shift: {fraction, eligible: "tag('fee-eligible')"}`, exact under policy via policy iteration | built-in |
 | Rule 68 offer-of-judgment cost shift | `fee_shift` with `eligible: "payoff < offer"` and costs-only fraction | expression |
-| prejudgment interest, damages that grow with time | needs elapsed-so-far at the terminal (path-dependent) | engine (simulate can; MDP needs state augmentation) |
+| prejudgment interest, damages that grow with time | `payoff * (1+r)^(elapsed_total/365)` (see "Path-dependent terminal variables" below) | expression (exact in `simulate`; `solve`/`chain` see `elapsed_total` as 0) |
 | collectability / judgment-proof defendant | `payoff * collect_p` | expression |
 | non-monetary objectives (injunction, precedent, deterrence) | terminal `attrs` + utility expr, e.g. `payoff + node.precedent_value * precedent_weight` | data |
 
@@ -98,7 +98,7 @@ with existing variables; **data** = expressible once packs carry the `attrs`;
 | estoppel / waiver that persists within a forum (IPR § 315(e), FRCP 12(h)) | edge `sets`/`clears`/`requires`/`forbids` a flag; `flag("x")` in a cost/utility expression | built-in (`docs/PACK_SCHEMA.md#state-flags`) |
 | estoppel / preclusion that persists *across forums* | flags set in one pack, read by a `flag()` expression or `forbids` on an edge in another pack (or a `links.json` link edge) — same mechanism, wired across the composed graph | built-in for a link edge in the flag's own graph; a pack whose only connection to the flag-setting pack is a scenario, not a compiled edge, still needs a shared graph to see it |
 | information value (discovery changes p) | needs belief state (POMDP) | engine |
-| non-zero-sum opponent with its own payoffs | general-sum equilibrium | engine |
+| non-zero-sum opponent with its own payoffs | `opponent_objective: terminal-expr` (subgame-perfect equilibrium by backward induction; see docs/CRITIQUE.md) | built-in |
 
 ### F. Conduct and sanctions
 
@@ -106,6 +106,41 @@ with existing variables; **data** = expressible once packs carry the `attrs`;
 |---|---|---|
 | price sanctions exposure out | `tag('sanctions') ? 1e9 : hours * rate + fees` | expression |
 | Rule 11 / 1927 / inherent-power risk | `attr('sanction_p', 0) * attr('sanction_usd', 0) + hours * rate + fees` | data |
+
+## Path-dependent terminal variables
+
+A terminal (utility) expression can read three variables describing the path
+that reached it, in addition to the ordinary terminal variables (`payoff`,
+`node.<attr>`, params, ...; see `litgraph describe`'s `terminal_variables`):
+
+| variable | meaning |
+|---|---|
+| `spent` | cumulative cost (the scenario's `cost` metric) along the path to this terminal |
+| `elapsed_total` | cumulative elapsed days along the path (sampled durations if `simulate`'s `sample_durations` is on) |
+| `steps` | number of edges traversed to reach this terminal |
+
+These support prejudgment interest and time-growing damages, e.g.:
+
+```jsonc
+"utility": "payoff * (1 + r) ^ (elapsed_total / 365)"   // compounds on elapsed calendar time
+"utility": "payoff - 500 * steps"                        // a flat per-step (e.g. per-hearing) drag
+```
+
+**Exactness.** A terminal is Markov on the *node* in `solve` (SCC-ordered
+Bellman backups) and `chain` (the absorbing chain): both value a node once,
+independent of how it was reached. But the same terminal can be reached
+having spent different amounts on different paths (a converging graph, or a
+cycle that adds cost each time around), so there is no single correct
+`spent`/`elapsed_total`/`steps` to hand those algorithms — they use `0` for
+all three (`(1+r)^0 == 1`: no interest is applied) and `litgraph
+validate`/every op that resolves a scenario reports a `path-variable-in-markov`
+warning when the utility (or a `fee_shift.eligible` expression, which is
+always Markov) references one of them. Only
+[`simulate`](../crates/litgraph/src/algo/sim.rs) knows the actual sampled
+trajectory and evaluates the utility expression per run with the real
+accumulated values — use `simulate`, not `solve`/`chain`, whenever the
+answer should reflect exact prejudgment interest or time-growing damages.
+See `examples/cofc-prejudgment-interest-sim.json`.
 
 ## Writing new ones
 

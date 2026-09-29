@@ -4,10 +4,10 @@
 use std::collections::{BTreeMap, HashSet, VecDeque};
 
 use super::plan::PlanInputs;
-use super::{resolve_spec, NodePlan, Scenario, Warning};
+use super::{limits, resolve_spec, NodePlan, Scenario, Warning};
 use crate::error::{Error, Result};
-use crate::expr;
-use crate::metrics::{self, EdgeEnv, TerminalEnv};
+use crate::expr::{self, Expr};
+use crate::metrics::{self, EdgeEnv, PathVars, TerminalEnv};
 use crate::model::{Graph, NodeIx, PayoffSource, Role};
 
 /// A scenario resolved into dense arrays. Every algorithm consumes a view.
@@ -28,6 +28,10 @@ pub struct View<'g> {
     pub payoff: Vec<f64>,
     /// Terminal utility per node (0 off-terminal).
     pub utility: Vec<f64>,
+    /// The resolved utility expression, for re-evaluation with real
+    /// path-dependent variables (`simulate` uses this; `utility` above is the
+    /// Markov (path vars = 0) value `solve`/`chain` use).
+    pub utility_expr: Expr,
     /// Scenario cost metric per edge (NaN if inactive).
     pub cost: Vec<f64>,
     /// Expected elapsed days per edge.
@@ -283,6 +287,7 @@ impl<'g> View<'g> {
             prob: plans.prob,
             payoff,
             utility: vec![0.0; g.nodes.len()],
+            utility_expr: Expr::Num(0.0),
             cost: vec![],
             elapsed: vec![],
             plan: plans.plan,
@@ -290,7 +295,10 @@ impl<'g> View<'g> {
             start,
             warnings: plans.warnings,
         };
-        view.utility = view.utilities()?;
+        let (utility, utility_expr) = view.utilities()?;
+        view.utility = utility;
+        view.utility_expr = utility_expr;
+        view.warnings.extend(limits::fee_shift_path_vars(sc)?);
         let cost_spec = sc.cost.clone().unwrap_or_else(|| "dollars".into());
         view.cost = view.metric(&cost_spec)?;
         view.elapsed = view.metric("elapsed")?;
@@ -308,13 +316,19 @@ impl<'g> View<'g> {
                 ),
             });
         }
+        view.warnings.extend(limits::cvar_limits(sc));
+        view.warnings.extend(limits::opponent_objective_limits(sc));
         Ok(view)
     }
 
-    fn utilities(&mut self) -> Result<Vec<f64>> {
+    fn utilities(&mut self) -> Result<(Vec<f64>, Expr)> {
         let spec = self.sc.utility.clone().unwrap_or_else(|| "ev".into());
         let src = resolve_spec(&spec, &self.sc.utilities, metrics::UTILITIES).to_string();
         let ex = expr::parse(&src)?;
+        self.warnings.extend(limits::path_var_warning_for(
+            &format!("utility `{src}`"),
+            &ex,
+        ));
         let overridden: Vec<NodeIx> = self
             .sc
             .payoffs
@@ -329,6 +343,7 @@ impl<'g> View<'g> {
                 n,
                 payoff: self.payoff[n],
                 params: &self.params,
+                path: PathVars::default(),
             };
             out[n] = ex.eval(&env).map_err(|e| {
                 Error::Expr(format!("utility `{src}` at {}: {e}", self.g.nodes[n].id))
@@ -344,7 +359,33 @@ impl<'g> View<'g> {
                 message: format!("{guessed} terminal(s) use a heuristic or zero payoff; override with scenario.payoffs or author `payoff` in the pack"),
             });
         }
-        Ok(out)
+        Ok((out, ex))
+    }
+
+    /// Evaluate the resolved utility expression at terminal `n` with explicit
+    /// path-dependent variables. `solve`/`chain` use the precomputed
+    /// `utility` field (path vars default to 0); `simulate` calls this with
+    /// the actual accumulated `spent`/`elapsed_total`/`steps` for the sampled
+    /// trajectory that reached `n`.
+    ///
+    /// # Errors
+    /// Expression evaluation errors (should not occur: the same expression
+    /// evaluated cleanly at every terminal when the view was constructed).
+    pub fn utility_at(&self, n: NodeIx, path: PathVars) -> Result<f64> {
+        self.utility_expr
+            .eval(&TerminalEnv {
+                g: self.g,
+                n,
+                payoff: self.payoff[n],
+                params: &self.params,
+                path,
+            })
+            .map_err(|e| {
+                Error::Expr(format!(
+                    "utility at {} with path vars: {e}",
+                    self.g.nodes[n].id
+                ))
+            })
     }
 
     /// Evaluate a metric (name or expression) on every edge; inactive edges get NaN.
@@ -386,6 +427,7 @@ impl<'g> View<'g> {
                     n,
                     payoff: self.payoff[n],
                     params: &self.params,
+                    path: PathVars::default(),
                 })
             })
             .collect()

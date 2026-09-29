@@ -13,7 +13,7 @@ use crate::algo::chain::step_dist;
 use crate::algo::mdp::Solution;
 use crate::error::Result;
 use crate::expr;
-use crate::metrics::TerminalEnv;
+use crate::metrics::{PathVars, TerminalEnv};
 use crate::model::{NodeIx, Role};
 use crate::scenario::{Control, FeeShift, View};
 
@@ -138,8 +138,63 @@ struct RunOutcome {
     traj: Option<Vec<usize>>,
 }
 
+/// Picks one edge from a step's weighted distribution.
+fn pick_edge(rng: &mut ChaCha8Rng, d: &[(usize, f64)]) -> usize {
+    let total: f64 = d.iter().map(|x| x.1).sum();
+    let mut r = rng.gen::<f64>() * total;
+    for &(e, p) in d {
+        if r < p {
+            return e;
+        }
+        r -= p;
+    }
+    d[d.len() - 1].0
+}
+
+/// Accumulates every requested metric for taking edge `pick` onto `acc`,
+/// returning the step's elapsed time: the same figure reported under an
+/// "elapsed" metric slot when the caller requested one (sampled if
+/// `sample_durations`), else the deterministic expected elapsed — so tracking
+/// it for `elapsed_total` never consumes RNG draws the caller didn't already
+/// ask for, and existing seeded outputs are unaffected.
+fn accumulate_step(
+    v: &View,
+    pick: usize,
+    metrics: &[(String, Vec<f64>)],
+    elapsed_ix: Option<usize>,
+    sample_durations: bool,
+    rng: &mut ChaCha8Rng,
+    acc: &mut [f64],
+) -> f64 {
+    let mut this_elapsed = None;
+    for (i, (_, vals)) in metrics.iter().enumerate() {
+        let mut x = vals[pick];
+        if Some(i) == elapsed_ix && sample_durations {
+            if let Some(du) = &v.g.edges[pick].duration {
+                x = triangular(
+                    rng,
+                    du.min.unwrap_or(du.mode),
+                    du.mode,
+                    du.max.unwrap_or(du.mode),
+                );
+            }
+        }
+        if Some(i) == elapsed_ix {
+            this_elapsed = Some(x);
+        }
+        if x.is_finite() {
+            acc[i] += x;
+        }
+    }
+    this_elapsed.unwrap_or(v.elapsed[pick])
+}
+
 /// Simulates one trajectory from `start` under the precomputed step
 /// distributions `dists`, sampling every metric in `metrics`.
+///
+/// # Errors
+/// Propagates any error evaluating the terminal utility expression (with the
+/// real path-dependent variables for the trajectory just sampled).
 #[allow(clippy::too_many_arguments)]
 fn simulate_run(
     v: &View,
@@ -152,13 +207,14 @@ fn simulate_run(
     o: &SimOptions,
     rng: &mut ChaCha8Rng,
     keep_sample: bool,
-) -> RunOutcome {
+) -> Result<RunOutcome> {
     let mut u = start;
     let mut spent = 0.0;
     let mut my_spent = 0.0;
+    let mut elapsed_total = 0.0;
     let mut acc = vec![0.0; metrics.len()];
     let mut traj = vec![];
-    let mut steps = 0;
+    let mut steps: usize = 0;
     let mut ended = true;
     while !matches!(v.plan[u].control, Control::Terminal | Control::Sink) {
         let d = &dists[u];
@@ -166,35 +222,22 @@ fn simulate_run(
             ended = false;
             break;
         }
-        let total: f64 = d.iter().map(|x| x.1).sum();
-        let mut r = rng.gen::<f64>() * total;
-        let mut pick = d[d.len() - 1].0;
-        for &(e, p) in d {
-            if r < p {
-                pick = e;
-                break;
-            }
-            r -= p;
-        }
+        let pick = pick_edge(rng, d);
         spent += v.cost[pick];
         if v.role[pick] == Role::Me {
             my_spent += v.cost[pick];
         }
-        for (i, (_, vals)) in metrics.iter().enumerate() {
-            let mut x = vals[pick];
-            if Some(i) == elapsed_ix && o.sample_durations {
-                if let Some(du) = &v.g.edges[pick].duration {
-                    x = triangular(
-                        rng,
-                        du.min.unwrap_or(du.mode),
-                        du.mode,
-                        du.max.unwrap_or(du.mode),
-                    );
-                }
-            }
-            if x.is_finite() {
-                acc[i] += x;
-            }
+        let step_elapsed = accumulate_step(
+            v,
+            pick,
+            metrics,
+            elapsed_ix,
+            o.sample_durations,
+            rng,
+            &mut acc,
+        );
+        if step_elapsed.is_finite() {
+            elapsed_total += step_elapsed;
         }
         if keep_sample {
             traj.push(pick);
@@ -207,14 +250,25 @@ fn simulate_run(
         _ => 0.0,
     };
     let terminal = (v.plan[u].control == Control::Terminal).then_some(u);
-    let term_value = terminal.map_or(0.0, |t| v.utility[t]);
-    RunOutcome {
+    let term_value = match terminal {
+        Some(t) => v.utility_at(
+            t,
+            PathVars {
+                spent,
+                elapsed_total,
+                #[allow(clippy::cast_precision_loss)] // step counts never approach 2^53
+                steps: steps as f64,
+            },
+        )?,
+        None => 0.0,
+    };
+    Ok(RunOutcome {
         net: term_value - spent + recovery,
         per_metric: acc,
         ended,
         terminal,
         traj: keep_sample.then_some(traj),
-    }
+    })
 }
 
 /// Builds the fee-eligibility indicator per node (true only for
@@ -232,6 +286,7 @@ fn fee_eligibility(v: &View, fee: Option<&FeeShift>) -> Result<Vec<bool>> {
                     n,
                     payoff: v.payoff[n],
                     params: &v.params,
+                    path: PathVars::default(),
                 })? != 0.0)
         })
         .collect()
@@ -241,7 +296,8 @@ fn fee_eligibility(v: &View, fee: Option<&FeeShift>) -> Result<Vec<bool>> {
 /// `start`, sampling the given `metrics` alongside net outcome.
 ///
 /// # Errors
-/// Propagates any error evaluating the fee-eligibility expression.
+/// Propagates any error evaluating the fee-eligibility expression or (per
+/// run) the terminal utility expression.
 pub fn simulate(
     v: &View,
     sol: &Solution,
@@ -274,7 +330,7 @@ pub fn simulate(
             o,
             &mut rng,
             keep_sample,
-        );
+        )?;
         if !outcome.ended {
             truncated += 1;
         }

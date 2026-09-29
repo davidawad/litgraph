@@ -144,6 +144,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `mpep-prosecution.json`), and a fix for `cafc-federal-circuit.json`'s
   `cert-not-sought`/`cert-denied` terminals losing the panel's actual
   win/loss through a rehearing-or-cert detour (docs/CRITIQUE.md #13).
+- `objective: {type: cvar, alpha, grid?}` optimizes `CVaR_alpha` of the total
+  outcome (not just reports it, as `simulate` already did) via
+  Rockafellar–Uryasev: a grid-discretized augmented-state backward
+  induction, with the outer VaR-threshold search a lookup on the same grid.
+  Verified against brute-force enumeration of deterministic policies on
+  small graphs (`tests/cvar.rs`, including a proptest). Documented
+  exactness limits (grid discretization; doesn't compose with
+  `discount_annual`, `fee_shift`, or a general-sum opponent) in
+  `docs/CRITIQUE.md`.
+- `scenario.opponent_objective` (a terminal expression): the opponent
+  maximizes their own payoff (general-sum) instead of minimizing ours
+  (zero-sum), solved as a subgame-perfect equilibrium by backward induction
+  on the graph's SCC DAG (cyclic components iterate to a fixed point, with
+  the same honest non-convergence reporting as `solve`). Reports both
+  players' values (`solve`'s `opponent_value`/`opponent_values`).
+  `opponent_objective: None` (default) reproduces the existing zero-sum
+  answer exactly (`tests/general_sum.rs`). Documented in `docs/CRITIQUE.md`.
+- Path-dependent terminal variables (`spent`, `elapsed_total`, `steps`) in
+  utility (and `fee_shift.eligible`) expressions, for prejudgment interest
+  and time-growing damages (e.g. `payoff * (1+r)^(elapsed_total/365)`).
+  Exact in `simulate` (evaluated per sampled trajectory); `solve`/`chain`
+  are Markov on the node and see them as `0`, with a `path-variable-in-markov`
+  warning from `validate`/every scenario-resolving op when an expression
+  depends on one. See `docs/COST_FUNCTIONS.md` and
+  `examples/cofc-prejudgment-interest-sim.json`.
 
 ## [0.1.0] - 2026-09-28
 

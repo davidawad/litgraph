@@ -9,6 +9,7 @@
 //! it had to take as a structured [`Warning`].
 
 mod library;
+mod limits;
 mod plan;
 mod view;
 
@@ -80,6 +81,25 @@ pub enum Objective {
     },
     /// Every draw goes against us (robust / worst case).
     Worst,
+    /// Maximize `CVaR_alpha` of the total outcome (the mean of the worst
+    /// `alpha` fraction) — not just report it from a simulation. Solved by
+    /// Rockafellar–Uryasev: one backward-induction pass over the graph
+    /// computes, for every node and a grid of "remaining budget" values `y`,
+    /// the optimal expected shortfall below `y`; the outer choice of `VaR`
+    /// threshold `ζ` is then a lookup on that same grid at the start node.
+    /// Ignores `discount_annual` and `fee_shift` (a warning is reported if
+    /// either is set). See `docs/CRITIQUE.md` ("CVaR-optimal policies") for
+    /// the method and its exactness limits (grid discretization; cyclic
+    /// components are iterated to convergence, same as ordinary `solve`).
+    Cvar {
+        /// Tail fraction, e.g. `0.1` = worst 10%. Must be in `(0, 1]`.
+        alpha: f64,
+        /// Grid points spanning the outcome range, for both the outer `VaR`
+        /// search and the inner augmented-state discretization (0 = default
+        /// 41).
+        #[serde(default)]
+        grid: usize,
+    },
 }
 
 /// Fee shifting: part of our cost is recovered if the matter ends at an eligible terminal.
@@ -150,6 +170,21 @@ pub struct Scenario {
     /// `provenance.calibration` on the response says what was actually
     /// applied, with each value's source, vintage, and sample size.
     pub calibration: Vec<String>,
+    /// Opponent's own terminal payoff expression (e.g. their fees plus the
+    /// stake). When set, the opponent is solved as a self-interested
+    /// (general-sum) player via backward induction on the graph's SCC DAG —
+    /// a subgame-perfect equilibrium — instead of a zero-sum adversary: at
+    /// every opponent-controlled node the opponent picks the edge
+    /// maximizing their own continuation value
+    /// (`-opponent_dollars(edge) + opponent_objective(to)`), regardless of
+    /// `opponent` mode. Cyclic components are iterated to a joint fixed
+    /// point (both players' values), with the same convergence reporting as
+    /// `solve`. `None` (default) keeps the existing zero-sum
+    /// adversarial/chance opponent model, which the general-sum solver
+    /// reduces to exactly. Not combined with `fee_shift` (a warning is
+    /// reported if both are set: the opponent equilibrium uses unadjusted
+    /// cost). See `docs/CRITIQUE.md` ("General-sum opponents").
+    pub opponent_objective: Option<String>,
     /// Start node (default: the first pack's start).
     pub start: Option<String>,
 }

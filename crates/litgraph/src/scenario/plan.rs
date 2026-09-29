@@ -120,11 +120,15 @@ impl PlanInputs<'_> {
             return self.chooser(n, Control::Me, mine, &[opp, nat].concat(), out);
         }
         if !opp.is_empty() {
-            let as_chance = match self.sc.opponent {
-                OpponentMode::Chance => true,
-                OpponentMode::Adversarial => false,
-                OpponentMode::Auto => opp.iter().all(|&e| self.authored[e].is_some()),
-            };
+            // A general-sum opponent is always a self-interested chooser
+            // (their equilibrium choice is computed from their own
+            // objective, not modeled by draws), regardless of `opponent`.
+            let as_chance = self.sc.opponent_objective.is_none()
+                && match self.sc.opponent {
+                    OpponentMode::Chance => true,
+                    OpponentMode::Adversarial => false,
+                    OpponentMode::Auto => opp.iter().all(|&e| self.authored[e].is_some()),
+                };
             if !as_chance {
                 return self.chooser(n, Control::Opponent, opp, &nat, out);
             }
