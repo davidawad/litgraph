@@ -1,15 +1,26 @@
 # typos (https://github.com/crate-ci/typos) spell-checker config.
-# Run locally: `typos`. Wired into CI's `actions-self-lint`-adjacent lane
-# is not needed -- typos ships its own GitHub Action (see ci.yml `typos`).
+# Run locally: `typos`. CI runs it via the `typos` job in ci.yml.
 
 [default]
 extend-ignore-re = [
     # Legal citations and docket-style tokens sometimes read as typos.
 ]
 
+[default.extend-words]
+# Legal terms: sur-reply, Federal Rules of Evidence.
+sur = "sur"
+Sur = "Sur"
+FRE = "FRE"
+
+[default.extend-identifiers]
+# Short graph-algorithm locals (node a/b, node n/d).
+ba = "ba"
+nd = "nd"
+
 [files]
 extend-exclude = [
-    "packs/*.json",   # legal-procedure JSON packs -- case names, citations
+    "packs/*.json",
+    "tests/fixtures/",  # verbatim copies of upstream packs   # legal-procedure JSON packs -- case names, citations
     "Cargo.lock",
     "flake.lock",
     "devenv.lock",

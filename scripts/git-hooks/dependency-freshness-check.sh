@@ -44,7 +44,7 @@ FLOOR_DAYS="${DEPENDENCY_FRESHNESS_FLOOR_DAYS:-14}"
 BLOCKED=""
 
 # Age of an RFC 3339 / ISO 8601 timestamp in whole days, or nothing if
-# unparseable (GNU `date -d` — see dotfiles' functions.sh pkg-freeze
+# unparsable (GNU `date -d` — see dotfiles' functions.sh pkg-freeze
 # comments for the BSD/GNU split this doesn't attempt to cover; a repo
 # using this template on a non-GNU-date machine just gets a silent skip
 # per finding, same fail-open policy as everything else below).
