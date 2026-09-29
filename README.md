@@ -222,7 +222,10 @@ build time, so `litgraph packs` works right after install with no
 `packs/` directory needed — point at a different set with
 `LITGRAPH_PACKS=<dir>` or `--packs-dir <dir>`. Run `litgraph packs` for
 live counts; schema is documented in
-[`docs/PACK_SCHEMA.md`](docs/PACK_SCHEMA.md). The vendored L0 source text
+[`docs/PACK_SCHEMA.md`](docs/PACK_SCHEMA.md). A pack (or `links.json`) that
+fails to parse is skipped, not fatal to the rest — `litgraph describe`'s
+`pack_load_errors` names the file and the reason, and a request naming that
+pack gets an ordinary "not found" rather than every op going down. The vendored L0 source text
 `sources[].path` points into (see [`sources/PROVENANCE.md`](sources/PROVENANCE.md))
 is embedded the same way, overridable with `LITGRAPH_SOURCES=<dir>`.
 

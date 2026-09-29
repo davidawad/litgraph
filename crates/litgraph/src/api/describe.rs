@@ -83,6 +83,10 @@ pub fn describe(catalog: &Catalog) -> Value {
         "api_version": API_VERSION,
         "packs_source": catalog.origin,
         "packs": catalog.packs.iter().map(|(_, p, _)| json!({ "id": p.id, "forum": p.forum, "title": p.title })).collect::<Vec<_>>(),
+        // A pack or links.json that failed to parse is skipped, not fatal
+        // (Catalog::from_files) -- named here so it's never silently
+        // missing from "packs" above.
+        "pack_load_errors": catalog.load_errors.iter().map(|e| json!({ "file": e.file, "message": e.message })).collect::<Vec<_>>(),
         "links": catalog.links.links.len(),
         "instances": catalog.links.instances.iter().map(|(k, i)| json!({ "id": k, "pack": i.pack, "note": i.note })).collect::<Vec<_>>(),
         "scenarios_source": catalog.scenarios_origin,

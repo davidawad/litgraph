@@ -199,6 +199,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   generic parser, but rejected by serde's derived `Deserialize`) fails as
   one clearly-named test instead of a whole-suite cascade of near-identical
   panics.
+- **A malformed pack or `links.json` no longer takes the whole catalog
+  down.** `Catalog::from_files` (embedded set, `LITGRAPH_PACKS`/`--packs-dir`
+  directories, `Catalog::load`) used to fail the entire catalog -- every
+  pack, every op -- on the first file that didn't parse. It now skips that
+  file and records it in the new `Catalog.load_errors` (`{file, message}`),
+  keeping every other pack usable; a request naming the broken pack gets an
+  ordinary `NotFound` (it was simply never loaded), not a global outage.
+  `litgraph describe`'s new `pack_load_errors` names what failed and why, so
+  the failure stays visible instead of silent. `Pack::from_json`'s own
+  per-file strictness (schema, `deny_unknown_fields`) is unchanged -- this
+  is about the blast radius of one bad file, not about being lenient with
+  its content.
 
 ## [0.1.0] - 2026-09-28
 

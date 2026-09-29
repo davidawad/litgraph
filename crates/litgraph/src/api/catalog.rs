@@ -3,12 +3,29 @@
 
 use std::path::{Path, PathBuf};
 
+use schemars::JsonSchema;
+use serde::Serialize;
+
 use crate::error::{Error, Result};
 use crate::model::{CompileOptions, Graph, LinkFile, Pack};
 use crate::scenario::NamedScenario;
 
 include!(concat!(env!("OUT_DIR"), "/embedded_packs.rs"));
 include!(concat!(env!("OUT_DIR"), "/embedded_scenarios.rs"));
+
+/// A pack or `links.json` file that failed to parse. Recorded, not fatal: a
+/// single malformed file must not take every op down for every user of the
+/// binary, so [`Catalog::from_files`] skips it and keeps loading the rest
+/// (`litgraph packs`/`describe` surface these; a request that names the
+/// broken pack gets an ordinary `NotFound` — it was simply never loaded —
+/// not a global failure).
+#[derive(Debug, Clone, Serialize, JsonSchema)]
+pub struct LoadError {
+    /// The file that failed to parse.
+    pub file: String,
+    /// The parse error.
+    pub message: String,
+}
 
 /// A set of packs plus their `links.json`, and a named-scenario library.
 #[derive(Debug, Clone)]
@@ -17,8 +34,12 @@ pub struct Catalog {
     pub origin: String,
     /// `(file name, pack, content fingerprint)`, sorted by file name.
     pub packs: Vec<(String, Pack, String)>,
-    /// Cross-pack links and instances.
+    /// Cross-pack links and instances. Empty (not composed) if `links.json`
+    /// itself failed to parse -- see `load_errors`.
     pub links: LinkFile,
+    /// Pack and `links.json` files that failed to parse and were skipped,
+    /// in the order encountered. Empty in the ordinary case.
+    pub load_errors: Vec<LoadError>,
     /// `embedded` or the directory the scenario library was read from.
     pub scenarios_origin: String,
     /// `(file name, scenario, content fingerprint)`, sorted by file name.
@@ -41,24 +62,41 @@ pub(crate) fn fnv1a64(bytes: &[u8]) -> u64 {
 }
 
 impl Catalog {
-    /// Build a catalog from `(file name, JSON text)` pairs; `links.json` is the link file.
+    /// Build a catalog from `(file name, JSON text)` pairs; `links.json` is
+    /// the link file. A file that fails to parse is skipped and recorded in
+    /// `load_errors` rather than failing the whole catalog -- one bad pack
+    /// (hand-edited, a bad merge, truncated on disk) shouldn't cost every
+    /// other pack, every op, for every user of the binary. This never
+    /// returns `Err`; its `Result` is `Ok` in every case reachable from
+    /// well-formed `(name, text)` pairs, kept for API stability and to
+    /// match `with_scenario_files`'s signature.
     ///
     /// # Errors
-    /// Malformed packs or links.
+    /// Never, currently; kept `Result` for forward compatibility.
     pub fn from_files(
         origin: String,
         files: impl IntoIterator<Item = (String, String)>,
     ) -> Result<Catalog> {
         let mut packs = vec![];
         let mut links = LinkFile::default();
+        let mut load_errors = vec![];
         for (name, text) in files {
             if name == "links.json" {
-                links = serde_json::from_str(&text)
-                    .map_err(|e| Error::Parse(format!("links.json: {e}")))?;
+                match serde_json::from_str(&text) {
+                    Ok(lf) => links = lf,
+                    Err(e) => load_errors.push(LoadError {
+                        file: name,
+                        message: format!("links.json: {e}"),
+                    }),
+                }
             } else {
-                let pack =
-                    Pack::from_json(&text).map_err(|e| Error::Parse(format!("{name}: {e}")))?;
-                packs.push((name, pack, fingerprint(text.as_bytes())));
+                match Pack::from_json(&text) {
+                    Ok(pack) => packs.push((name, pack, fingerprint(text.as_bytes()))),
+                    Err(e) => load_errors.push(LoadError {
+                        file: name.clone(),
+                        message: format!("{name}: {e}"),
+                    }),
+                }
             }
         }
         packs.sort_by(|a, b| a.0.cmp(&b.0));
@@ -66,17 +104,19 @@ impl Catalog {
             origin,
             packs,
             links,
+            load_errors,
             scenarios_origin: String::new(),
             scenarios: vec![],
         })
     }
 
     /// The packs compiled into this build, with the embedded scenario
-    /// library attached.
+    /// library attached. A malformed embedded pack is skipped and recorded
+    /// in `load_errors`, not fatal -- see [`Catalog::from_files`].
     ///
     /// # Errors
-    /// Only if an embedded pack or scenario is malformed (caught by the test
-    /// suite).
+    /// Only if an embedded scenario is malformed (caught by the test suite;
+    /// packs themselves never fail this call, see `from_files`).
     pub fn embedded() -> Result<Catalog> {
         Catalog::from_files(
             "embedded".into(),
@@ -276,10 +316,64 @@ mod tests {
         let c = Catalog::embedded()?;
         assert!(c.packs.len() >= 8, "embedded packs: {}", c.packs.len());
         assert!(!c.links.links.is_empty());
+        assert!(
+            c.load_errors.is_empty(),
+            "embedded packs should all parse cleanly: {:?}",
+            c.load_errors
+        );
         let g = c.compile(&[], true, &CompileOptions::default())?;
         assert!(g.nodes.len() > 400);
         assert!(c.select(&["nope".into()]).is_err());
         assert_eq!(c.select(&["cofc".into()])?.len(), 1);
+        Ok(())
+    }
+
+    /// The failure shape a single malformed pack must have: skipped and
+    /// recorded, not a hard failure that takes every other pack (and every
+    /// op for every user of the binary) down with it. Three files: one
+    /// good pack, one with invalid JSON, and a `links.json` that also fails
+    /// to parse -- all three loaded together, in one `from_files` call.
+    #[test]
+    fn a_malformed_pack_or_links_file_is_skipped_and_recorded_not_a_hard_failure() -> Result<()> {
+        let good = r#"{
+            "schemaVersion": 2, "id": "demo", "title": "Demo", "startNodeId": "start",
+            "nodes": [{"id": "start", "label": "Start", "kind": "terminal", "payoff": 1.0}],
+            "edges": []
+        }"#;
+        let bad_pack = r#"{ "schemaVersion": 2, "id": "broken", not valid json"#;
+        let bad_links = r#"{ "links": [ this is not valid json either"#;
+        let c = Catalog::from_files(
+            "test".into(),
+            [
+                ("good.json".to_string(), good.to_string()),
+                ("broken.json".to_string(), bad_pack.to_string()),
+                ("links.json".to_string(), bad_links.to_string()),
+            ],
+        )?;
+
+        // The good pack loaded and is usable...
+        assert_eq!(c.packs.len(), 1);
+        assert_eq!(c.select(&["demo".into()])?.len(), 1);
+        assert!(c
+            .compile(&["demo".into()], true, &CompileOptions::default())
+            .is_ok());
+
+        // ...while both bad files are named, not silently dropped, and
+        // don't appear as if they'd loaded (links stays the empty default).
+        assert_eq!(c.load_errors.len(), 2);
+        assert!(c
+            .load_errors
+            .iter()
+            .any(|e| e.file == "broken.json" && e.message.contains("broken.json")));
+        assert!(c
+            .load_errors
+            .iter()
+            .any(|e| e.file == "links.json" && e.message.contains("links.json")));
+        assert!(c.links.links.is_empty() && c.links.instances.is_empty());
+
+        // Asking for the broken pack by name is an ordinary NotFound (it
+        // was never loaded), not a panic or a global outage.
+        assert!(c.select(&["broken".into()]).is_err());
         Ok(())
     }
 
