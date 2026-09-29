@@ -49,14 +49,16 @@
 
           src = craneLib.cleanCargoSource ./.;
 
-          # The workspace build needs packs/ present as source (a build.rs in
-          # crates/litgraph embeds packs/ into the binary at build time), so
-          # the crane source filter is widened beyond just Rust files.
+          # crates/litgraph/build.rs embeds these data directories into the
+          # binary at build time, so the crane source filter keeps them
+          # alongside the Rust sources.
+          dataDirs = [ "packs" "scenarios" "calibration" "sources" ];
           unfilteredSrc = pkgs.lib.cleanSourceWith {
             src = ./.;
             filter =
               path: type:
-              (craneLib.filterCargoSources path type) || (pkgs.lib.hasInfix "/packs/" path) || (baseNameOf path == "packs");
+              (craneLib.filterCargoSources path type)
+              || builtins.any (d: pkgs.lib.hasInfix "/${d}/" path || baseNameOf path == d) dataDirs;
           };
 
           commonArgs = {
