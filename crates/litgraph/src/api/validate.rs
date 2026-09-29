@@ -9,11 +9,11 @@ use serde_json::Value;
 
 use super::calibration::CalibrationSet;
 use super::catalog::Catalog;
-use super::Request;
+use super::{scenario_ref, Request};
 use crate::error::{Error, Result};
 use crate::lint::{self, Diagnostic};
 use crate::model::{CompileOptions, Graph, LinkFile, Pack};
-use crate::scenario::{Scenario, View};
+use crate::scenario::{NamedScenario, Scenario, View};
 
 /// Outcome of validating one document.
 #[derive(Debug, Clone, Serialize)]
@@ -38,6 +38,11 @@ pub fn detect(doc: &Value) -> &'static str {
         "pack"
     } else if has("links") || has("instances") {
         "links"
+    } else if has("summary") && has("scenario") {
+        // A scenario-library file (`scenarios/*.json`) also has a `scenario`
+        // (and often a `packs`) key, so it must be checked before "request"
+        // below; `summary` is unique to that shape.
+        "named-scenario"
     } else if has("op") || has("scenario") || has("packs") {
         "request"
     } else if has("entries") {
@@ -75,6 +80,7 @@ pub fn validate(doc: &Value, kind: Option<&str>, catalog: &Catalog) -> Validatio
         "links" => "links",
         "request" => "request",
         "calibration" => "calibration",
+        "named-scenario" => "named-scenario",
         _ => "scenario",
     };
     let mut out = Validation {
@@ -131,7 +137,14 @@ pub fn validate(doc: &Value, kind: Option<&str>, catalog: &Catalog) -> Validatio
             Err(e) => out.errors.push(e.to_string()),
         },
         "request" => match parse::<Request>(doc) {
-            Ok(req) => scenario_against(catalog, &req.packs, req.links, &req.scenario, &mut out),
+            Ok(req) => match scenario_ref::resolve(&req.scenario, &req.packs, catalog) {
+                Ok((sc, packs)) => scenario_against(catalog, &packs, req.links, &sc, &mut out),
+                Err(e) => out.errors.push(e.to_string()),
+            },
+            Err(e) => out.errors.push(e.to_string()),
+        },
+        "named-scenario" => match parse::<NamedScenario>(doc) {
+            Ok(def) => scenario_against(catalog, &def.packs, true, &def.scenario, &mut out),
             Err(e) => out.errors.push(e.to_string()),
         },
         _ => match parse::<Scenario>(doc) {

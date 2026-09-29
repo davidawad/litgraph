@@ -18,6 +18,7 @@
 
 mod calibration;
 mod catalog;
+mod compare;
 mod deadlines;
 mod decide;
 mod describe;
@@ -25,6 +26,7 @@ mod explore;
 mod op;
 mod op_defaults;
 mod render;
+pub(crate) mod scenario_ref;
 mod stopwatch;
 mod validate;
 
@@ -51,7 +53,7 @@ use crate::algo::sim::SimOptions;
 use crate::error::{Error, Result};
 use crate::lint;
 use crate::metrics;
-use crate::model::{merge_patch, CompileOptions, Graph, LinkFile, Pack};
+use crate::model::{CompileOptions, Graph, LinkFile, Pack};
 use crate::scenario::{Scenario, View};
 use stopwatch::Stopwatch;
 
@@ -68,7 +70,9 @@ fn yes() -> bool {
 #[derive(Debug, Clone, Serialize, Deserialize, Default, JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct Request {
-    /// Pack ids, forum keys, file stems, or paths. Empty = every pack.
+    /// Pack ids, forum keys, file stems, or paths. Empty = every pack, or —
+    /// when `scenario` names a scenario that declares `packs` — that
+    /// scenario's packs.
     #[serde(default)]
     pub packs: Vec<String>,
     /// Apply `links.json` between loaded packs.
@@ -77,9 +81,14 @@ pub struct Request {
     /// Keep v1 absorbing-terminal semantics (no `accept` continuations).
     #[serde(default)]
     pub no_continuations: bool,
-    /// The matter.
+    /// The matter: an inline scenario object (unknown fields rejected, as
+    /// always), a string naming a scenario from the library
+    /// (`litgraph describe` lists them), or `{"extends": "<name>", ...}`
+    /// composing a named scenario with inline overrides deep-merged
+    /// (RFC 7386) on top. See `litgraph schema request` and
+    /// `docs/PACK_SCHEMA.md`.
     #[serde(default)]
-    pub scenario: Scenario,
+    pub scenario: Value,
     /// The operation (default `describe`).
     #[serde(default)]
     pub op: Op,
@@ -249,7 +258,8 @@ type Out = (Value, Vec<Warn>, Value);
 type Answer = Result<(Value, Vec<Warn>)>;
 
 fn run(req: &Request, catalog: &Catalog) -> Result<Out> {
-    let selected = catalog.select(&req.packs)?;
+    let (sc, pack_refs) = scenario_ref::resolve(&req.scenario, &req.packs, catalog)?;
+    let selected = catalog.select(&pack_refs)?;
     let packs: Vec<Pack> = selected.iter().map(|(p, _)| p.clone()).collect();
     let links = if req.links {
         catalog.links.clone()
@@ -263,9 +273,9 @@ fn run(req: &Request, catalog: &Catalog) -> Result<Out> {
             no_continuations: req.no_continuations,
         },
     )?;
-    let calibration = calibration::apply_all(&mut g, &req.scenario.calibration)?;
-    let prov = provenance(&g, &selected, &req.scenario, &calibration);
-    let (result, warns) = dispatch(req, catalog, &g, &packs)?;
+    let calibration = calibration::apply_all(&mut g, &sc.calibration)?;
+    let prov = provenance(&g, &selected, &sc, &calibration);
+    let (result, warns) = dispatch(req, catalog, &g, &packs, &sc)?;
     Ok((result, warns, prov))
 }
 
@@ -298,8 +308,7 @@ fn start_of(v: &View, from: Option<&String>) -> Result<usize> {
 // One flat, exhaustive dispatch table over every op: splitting it would
 // reintroduce "can't happen here" arms, which is what this shape avoids.
 #[allow(clippy::too_many_lines)]
-fn dispatch(req: &Request, catalog: &Catalog, g: &Graph, packs: &[Pack]) -> Answer {
-    let sc = &req.scenario;
+fn dispatch(req: &Request, catalog: &Catalog, g: &Graph, packs: &[Pack], sc: &Scenario) -> Answer {
     match &req.op {
         Op::Describe => plain(Ok(describe(catalog))),
         Op::Lint => {
@@ -322,7 +331,9 @@ fn dispatch(req: &Request, catalog: &Catalog, g: &Graph, packs: &[Pack]) -> Answ
                 .collect();
             plain(Ok(json!(results)))
         }
-        Op::Compare { variant, inner } => plain(compare(req, catalog, variant, inner)),
+        Op::Compare { variant, inner } => {
+            plain(compare::compare(sc, packs, req, catalog, variant, inner))
+        }
         Op::Validate => with_view(g, sc, |v| {
             plain(Ok(
                 json!({ "valid": true, "nodes": v.g.nodes.len(), "edges": v.g.edges.len(), "start": v.g.nodes[v.start].id }),
@@ -497,42 +508,4 @@ fn dispatch(req: &Request, catalog: &Catalog, g: &Graph, packs: &[Pack]) -> Answ
             },
         ),
     }
-}
-
-fn compare(req: &Request, catalog: &Catalog, variant: &Value, inner: &Op) -> Result<Value> {
-    let mut merged =
-        serde_json::to_value(&req.scenario).map_err(|e| Error::Invalid(e.to_string()))?;
-    merge_patch(&mut merged, variant);
-    let variant_sc: Scenario =
-        serde_json::from_value(merged).map_err(|e| Error::Parse(format!("variant: {e}")))?;
-    let a = handle(
-        &Request {
-            op: inner.clone(),
-            ..req.clone()
-        },
-        catalog,
-    );
-    let b = handle(
-        &Request {
-            op: inner.clone(),
-            scenario: variant_sc,
-            ..req.clone()
-        },
-        catalog,
-    );
-    let get = |r: &Response, k: &str| {
-        r.result
-            .as_ref()
-            .and_then(|x| x.get(k))
-            .and_then(Value::as_f64)
-    };
-    let delta = |k: &str| match (get(&a, k), get(&b, k)) {
-        (Some(x), Some(y)) => json!(y - x),
-        _ => Value::Null,
-    };
-    Ok(json!({
-        "delta": { "value": delta("value"), "expected_utility": delta("expected_utility"), "expected_net": delta("expected_net") },
-        "base": a,
-        "variant": b,
-    }))
 }

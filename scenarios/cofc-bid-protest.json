@@ -1,0 +1,23 @@
+{
+  "id": "cofc-bid-protest",
+  "summary": "Post-award bid protest at the Court of Federal Claims under 28 U.S.C. §1491(b): a disappointed offeror challenging a federal procurement award.",
+  "notes": "Plaintiff is a disappointed offeror protesting a post-award procurement decision under the CoFC's concurrent bid-protest jurisdiction, 28 U.S.C. §1491(b)(1) (verified law.cornell.edu). Uses the `cofc` pack alone via its dedicated (8-node) bid-protest branch (`filing-track-fork` -> `bid-protest-*` -> `protest-sustained`/`protest-denied`); this scenario removes the two patent-track-only edges so the graph runs a clean protest matter (the pack's bid-protest branch does not merge back into the patent/general-civil answer-and-discovery machinery, so no further pruning is needed once those two edges are gone). RCFC Appendix C procedure (pre-filing notice, sealed complaint, initial status conference, TRO/PI practice, administrative-record cross-motions) is already sourced in the `cofc` pack (packs/cofc-SOURCES-NOTES.md); not re-verified here. Money numbers are illustrative: `protest-sustained`'s value is modeled as bid-and-proposal-cost recovery plus re-compete opportunity, NOT a share of the patent scenario's $1,000,000 stake — bid-protest relief is injunctive/declaratory (resolicitation, corrective action), not usually a damages award (the pack's own note on `protest-sustained` flags this explicitly; kept at the pack's own $200,000 placeholder here as well, since no more specific procurement value is known for an illustrative matter). Attorney rate $600/hr (illustrative bid-protest-specialist estimate, lower than the patent-track rate since Appendix C practice is record-review, not full discovery/trial). The pack's own probability estimates on the protest-sustained/denied fork are flagged 'TEACHING ESTIMATE' (not a cited GAO/CoFC sustain-rate statistic); this scenario does not override them.",
+  "packs": ["cofc"],
+  "sources": [
+    { "title": "28 U.S.C. §1491(b)(1) — CoFC bid-protest jurisdiction", "url": "https://www.law.cornell.edu/uscode/text/28/1491" }
+  ],
+  "scenario": {
+    "params": { "rate": 600, "opp_rate": 500 },
+    "remove_edges": [
+      "cofc::e-filingfork-standard",
+      "cofc::e-patentfork-adminclaim",
+      "cofc::e-patentfork-skipadmin"
+    ],
+    "payoffs": {
+      "cofc::protest-sustained": 200000,
+      "cofc::protest-denied": 0,
+      "cofc::dismissed-time-barred": 0,
+      "cofc::dismissed-1500-bar": 0
+    }
+  }
+}

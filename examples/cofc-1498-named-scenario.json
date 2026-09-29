@@ -1,0 +1,10 @@
+{
+  "scenario": {
+    "extends": "cofc-1498-patent-case",
+    "params": { "rate": 950 }
+  },
+  "op": {
+    "op": "chain",
+    "metrics": ["dollars", "elapsed", "hours"]
+  }
+}

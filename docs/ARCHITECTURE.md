@@ -206,6 +206,12 @@ reachable from a node.
 - State flags on edges (`sets`/`requires`) compiled to a product graph:
   estoppel, waiver memory, RCE counts, cross-forum preclusion.
 - Scenario library (`scenarios/*.json`) for named matter profiles.
+- Port civ-pro's deadline clock (court days, holidays, FRCP/RCFC 6).
+- ~~Scenario library (`scenarios/*.json`) for named matter profiles.~~
+  **Delivered**: named scenarios (packs, params, perspective, payoffs,
+  probabilities, policy) embedded like packs; a request's `scenario` can name
+  one or compose it with inline overrides (`extends`) — see
+  `docs/PACK_SCHEMA.md`'s "Scenario library" section.
 - ~~Calibration pipeline: probabilities and durations from docket data~~
   **Delivered**: `calibration/*.json` (embedded like packs; `scenario.calibration`,
   `provenance.calibration`, the `calibration` gap-ranking op) — see

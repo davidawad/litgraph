@@ -1,8 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! Embed the repository's `packs/` and `calibration/` directories into the
-//! library so the binary works standalone (no directory needed at runtime).
-//! `LITGRAPH_PACKS`/`LITGRAPH_CALIBRATION` (or `--packs-dir`/
-//! `--calibration-dir`) still override at runtime.
+//! Embed the repository's `packs/`, `scenarios/` and `calibration/`
+//! directories into the library so the binary works standalone (no
+//! directory needed at runtime). `LITGRAPH_PACKS`/`--packs-dir`,
+//! `LITGRAPH_SCENARIOS`/`--scenarios-dir` and
+//! `LITGRAPH_CALIBRATION`/`--calibration-dir` still override at runtime,
+//! independently of each other.
 
 use std::fmt::Write as _;
 use std::path::{Path, PathBuf};
@@ -42,6 +44,12 @@ fn main() {
         "EMBEDDED",
         "embedded_packs.rs",
         "`(file name, contents)` of every embedded pack file (including `links.json`).",
+    );
+    embed_dir(
+        &manifest.join("../../scenarios"),
+        "EMBEDDED_SCENARIOS",
+        "embedded_scenarios.rs",
+        "`(file name, contents)` of every embedded named-scenario file.",
     );
     embed_dir(
         &manifest.join("../../calibration"),

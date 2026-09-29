@@ -8,9 +8,9 @@ this file is the operating manual.
 ```bash
 cargo build --release                      # binary: target/release/litgraph
 cargo test                                 # unit + parity (vs the TS engine) + feature tests
-litgraph describe                          # the full manual as JSON — start here
-litgraph schema request                    # JSON Schema (draft 2020-12) of request|response|scenario|pack|links
-litgraph validate my-pack.json             # check a pack/links/scenario/request file; auto-detects kind
+litgraph describe                          # the full manual as JSON — start here (lists scenario_library)
+litgraph schema request                    # JSON Schema (draft 2020-12) of request|response|scenario|named-scenario|pack|links
+litgraph validate my-pack.json             # check a pack/links/scenario/named-scenario/request file; auto-detects kind
 litgraph validate - < request.json         # exit 2 if invalid; --kind to force
 litgraph packs                             # packs + data quality
 litgraph lint [--packs cofc]               # content diagnostics
@@ -21,12 +21,18 @@ litgraph q '{"packs":["frcp-civil-procedure"],"op":{"op":"calibration"}}'
 litgraph explain --packs frcp-civil-procedure --arg node=answer-due --set rate=900
 litgraph run request.json                  # same as `q`, reads a file
 litgraph q '{"packs":["cofc","cafc"],"scenario":{...},"op":{"op":"chain"}}'
+litgraph q '{"scenario":"cofc-1498-patent-case","op":{"op":"chain"}}'   # named scenario; its own `packs` apply
+litgraph chain --scenario cofc-1498-patent-case --set rate=900          # CLI: name/file/inline JSON, --set composes via `extends`
 litgraph q - < request.json
 ```
 
 Packs are embedded in the binary at build time — no `packs/` directory is
 needed after install. Point at a different set with `LITGRAPH_PACKS=<dir>`
-or `--packs-dir <dir>`.
+or `--packs-dir <dir>`. The named scenario library (`scenarios/*.json`) is
+embedded the same way; override with `LITGRAPH_SCENARIOS=<dir>` or
+`--scenarios-dir <dir>`. See docs/PACK_SCHEMA.md's "Scenario library" section
+for the file shape and how a request composes a named scenario with
+overrides (`{"extends": "<id>", ...}`).
 
 Driving this from an MCP-capable agent instead of the CLI: `litgraph-mcp`
 (`crates/litgraph-mcp`) is the same contract over stdio — every op above is

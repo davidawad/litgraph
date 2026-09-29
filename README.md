@@ -59,10 +59,18 @@ elapsed_ms}`. `warnings` is grouped by code (`{code, count, example, at}`)
 rather than one entry per occurrence. `litgraph describe` is the full
 machine-readable manual: every op, every scenario field, every built-in
 metric with its source expression, every variable and function. Every
-document kind (`request`, `response`, `scenario`, `pack`, `links`) has a
+document kind (`request`, `response`, `scenario`, `named-scenario`, `pack`,
+`links`) has a
 JSON Schema via `litgraph schema <kind>`, and `litgraph validate <file|->`
 checks any of them — including a pack you're authoring — without running
 an analysis.
+
+A **scenario library** (`scenarios/*.json`) ships with named matter profiles
+(rates, stakes, perspective, payoffs, probabilities, policy, which packs to
+load); `litgraph describe`'s `scenario_library` lists them. A request can
+reference one by name (`{"scenario": "cofc-1498-patent-case", "op": {...}}`)
+or compose it with inline overrides (`{"extends": "<id>", ...overrides}`,
+deep-merged); the CLI's `--scenario <name|file|json>` and `--set` do the same.
 
 ## Quickstart
 
@@ -81,6 +89,7 @@ cargo build --release
   },
   "op": { "op": "simulate", "runs": 50000 }
 }'
+./target/release/litgraph chain --scenario cofc-1498-patent-case --set rate=900
 ```
 
 Runnable requests live in [`examples/`](examples/) — a 28 U.S.C. § 1498
@@ -210,6 +219,15 @@ build time, so `litgraph packs` works right after install with no
 `LITGRAPH_PACKS=<dir>` or `--packs-dir <dir>`. Run `litgraph packs` for
 live counts; schema is documented in
 [`docs/PACK_SCHEMA.md`](docs/PACK_SCHEMA.md).
+
+## Scenario library
+
+Named matter profiles are JSON files in [`scenarios/`](scenarios/), also
+compiled into the binary at build time; point at a different set with
+`LITGRAPH_SCENARIOS=<dir>` or `--scenarios-dir <dir>`. Shape and request
+composition (`{"scenario": "<id>"}` / `{"extends": "<id>", ...overrides}`)
+are documented in [`docs/PACK_SCHEMA.md`](docs/PACK_SCHEMA.md)'s "Scenario
+library" section.
 
 | pack | forum | schema | sourced (`sources` entries) | authored payoffs |
 |---|---|---|---|---|

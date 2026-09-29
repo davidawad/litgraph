@@ -39,11 +39,12 @@ fn catalog() -> Catalog {
 fn sweep_request(hi: f64) -> Request {
     Request {
         packs: vec!["chancey".into()],
-        scenario: Scenario {
+        scenario: serde_json::to_value(Scenario {
             params: [("x".to_string(), 100.0)].into(),
             probability_fn: Some("if(x > 500, no_such_fn(p), p)".into()),
             ..Scenario::default()
-        },
+        })
+        .expect("scenario serializes"),
         op: Op::Sweep {
             param: "x".into(),
             lo: 100.0,

@@ -353,7 +353,7 @@ fn scenario_scoped_start_and_perspective_flow_through() {
     };
     let request = Request {
         packs: vec!["cofc".into()],
-        scenario: sc,
+        scenario: serde_json::to_value(sc).expect("scenario serializes"),
         op: solve,
         ..Request::default()
     };

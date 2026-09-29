@@ -5,10 +5,12 @@ use std::path::{Path, PathBuf};
 
 use crate::error::{Error, Result};
 use crate::model::{CompileOptions, Graph, LinkFile, Pack};
+use crate::scenario::NamedScenario;
 
 include!(concat!(env!("OUT_DIR"), "/embedded_packs.rs"));
+include!(concat!(env!("OUT_DIR"), "/embedded_scenarios.rs"));
 
-/// A set of packs plus their `links.json`.
+/// A set of packs plus their `links.json`, and a named-scenario library.
 #[derive(Debug, Clone)]
 pub struct Catalog {
     /// `embedded` or the directory the packs were read from.
@@ -17,6 +19,10 @@ pub struct Catalog {
     pub packs: Vec<(String, Pack, String)>,
     /// Cross-pack links and instances.
     pub links: LinkFile,
+    /// `embedded` or the directory the scenario library was read from.
+    pub scenarios_origin: String,
+    /// `(file name, scenario, content fingerprint)`, sorted by file name.
+    pub scenarios: Vec<(String, NamedScenario, String)>,
 }
 
 /// FNV-1a 64 content fingerprint (not cryptographic): enough to tell that a
@@ -60,20 +66,113 @@ impl Catalog {
             origin,
             packs,
             links,
+            scenarios_origin: String::new(),
+            scenarios: vec![],
         })
     }
 
-    /// The packs compiled into this build.
+    /// The packs compiled into this build, with the embedded scenario
+    /// library attached.
     ///
     /// # Errors
-    /// Only if an embedded pack is malformed (caught by the test suite).
+    /// Only if an embedded pack or scenario is malformed (caught by the test
+    /// suite).
     pub fn embedded() -> Result<Catalog> {
         Catalog::from_files(
             "embedded".into(),
             EMBEDDED
                 .iter()
                 .map(|(n, t)| ((*n).to_string(), (*t).to_string())),
+        )?
+        .with_embedded_scenarios()
+    }
+
+    /// Attach the scenario library embedded in this binary, replacing
+    /// whatever scenarios (if any) this catalog already had.
+    ///
+    /// # Errors
+    /// Only if an embedded scenario is malformed (caught by the test suite).
+    pub fn with_embedded_scenarios(self) -> Result<Catalog> {
+        self.with_scenario_files(
+            "embedded".into(),
+            EMBEDDED_SCENARIOS
+                .iter()
+                .map(|(n, t)| ((*n).to_string(), (*t).to_string())),
         )
+    }
+
+    /// Attach every `*.json` scenario file in `dir`, replacing whatever
+    /// scenarios (if any) this catalog already had.
+    ///
+    /// # Errors
+    /// Unreadable directory or a malformed scenario file.
+    pub fn with_scenarios_dir(self, dir: &Path) -> Result<Catalog> {
+        let read =
+            std::fs::read_dir(dir).map_err(|e| Error::Io(format!("{}: {e}", dir.display())))?;
+        let mut files = vec![];
+        for entry in read.filter_map(std::result::Result::ok) {
+            let p = entry.path();
+            if p.extension().is_some_and(|x| x == "json") {
+                let text = std::fs::read_to_string(&p)
+                    .map_err(|e| Error::Io(format!("{}: {e}", p.display())))?;
+                let name = p
+                    .file_name()
+                    .map(|n| n.to_string_lossy().to_string())
+                    .unwrap_or_default();
+                files.push((name, text));
+            }
+        }
+        self.with_scenario_files(dir.display().to_string(), files)
+    }
+
+    fn with_scenario_files(
+        mut self,
+        origin: String,
+        files: impl IntoIterator<Item = (String, String)>,
+    ) -> Result<Catalog> {
+        let mut scenarios = vec![];
+        for (name, text) in files {
+            let def = NamedScenario::from_json(&text)
+                .map_err(|e| Error::Parse(format!("{name}: {e}")))?;
+            if let Some((dup, ..)) = scenarios
+                .iter()
+                .find(|(_, d, _): &&(String, NamedScenario, String)| d.id == def.id)
+            {
+                return Err(Error::Parse(format!(
+                    "scenario {name}: id `{}` duplicates {dup}",
+                    def.id
+                )));
+            }
+            scenarios.push((name, def, fingerprint(text.as_bytes())));
+        }
+        scenarios.sort_by(|a, b| a.0.cmp(&b.0));
+        self.scenarios_origin = origin;
+        self.scenarios = scenarios;
+        Ok(self)
+    }
+
+    /// Every scenario in the library.
+    pub fn scenarios(&self) -> impl Iterator<Item = &NamedScenario> {
+        self.scenarios.iter().map(|(_, s, _)| s)
+    }
+
+    /// Resolve a scenario ref: its `id`, or the file stem it was loaded from.
+    ///
+    /// # Errors
+    /// `NotFound` listing the available names.
+    pub fn scenario(&self, name: &str) -> Result<&NamedScenario> {
+        self.scenarios
+            .iter()
+            .find(|(file, s, _)| s.id == name || file.strip_suffix(".json") == Some(name))
+            .map(|(_, s, _)| s)
+            .ok_or_else(|| {
+                let ids: Vec<&str> = self
+                    .scenarios
+                    .iter()
+                    .map(|(_, s, _)| s.id.as_str())
+                    .collect();
+                Error::NotFound(format!("scenario {name}; available: {}", ids.join(", ")))
+            })
     }
 
     /// Every `*.json` in `dir` (and `links.json` if present).
@@ -99,14 +198,24 @@ impl Catalog {
         Catalog::from_files(dir.display().to_string(), files)
     }
 
-    /// `$LITGRAPH_PACKS` if set, else the embedded packs.
+    /// `$LITGRAPH_PACKS` if set, else the embedded packs; independently,
+    /// `$LITGRAPH_SCENARIOS` if set, else the embedded scenario library.
     ///
     /// # Errors
-    /// As [`Catalog::load`] / [`Catalog::embedded`].
+    /// As [`Catalog::load`] / [`Catalog::embedded`] / [`Catalog::with_scenarios_dir`].
     pub fn default_source() -> Result<Catalog> {
-        match std::env::var_os("LITGRAPH_PACKS") {
-            Some(d) => Catalog::load(&PathBuf::from(d)),
-            None => Catalog::embedded(),
+        let catalog = match std::env::var_os("LITGRAPH_PACKS") {
+            Some(d) => Catalog::load(&PathBuf::from(d))?,
+            None => Catalog::from_files(
+                "embedded".into(),
+                EMBEDDED
+                    .iter()
+                    .map(|(n, t)| ((*n).to_string(), (*t).to_string())),
+            )?,
+        };
+        match std::env::var_os("LITGRAPH_SCENARIOS") {
+            Some(d) => catalog.with_scenarios_dir(&PathBuf::from(d)),
+            None => catalog.with_embedded_scenarios(),
         }
     }
 
@@ -171,6 +280,50 @@ mod tests {
         assert!(g.nodes.len() > 400);
         assert!(c.select(&["nope".into()]).is_err());
         assert_eq!(c.select(&["cofc".into()])?.len(), 1);
+        Ok(())
+    }
+
+    #[test]
+    fn embedded_catalog_loads_the_scenario_library() -> Result<()> {
+        let c = Catalog::embedded()?;
+        assert_eq!(c.scenarios_origin, "embedded");
+        assert!(
+            c.scenarios().count() >= 4,
+            "embedded scenarios: {}",
+            c.scenarios().count()
+        );
+        assert!(c.scenario("nope").is_err());
+        Ok(())
+    }
+
+    /// `with_scenarios_dir` reads every `*.json` in a directory and reports a
+    /// clear error naming the unknown id, matching pack selection.
+    #[test]
+    fn with_scenarios_dir_reads_a_directory_and_reports_unknown_names() -> Result<()> {
+        let dir = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../scenarios");
+        assert!(
+            dir.is_dir(),
+            "expected a scenarios/ dir at {}",
+            dir.display()
+        );
+        let c = Catalog::embedded()?.with_scenarios_dir(&dir)?;
+        assert_eq!(c.scenarios_origin, dir.display().to_string());
+        assert!(!c.scenarios().collect::<Vec<_>>().is_empty());
+        let err = c.scenario("definitely-not-a-scenario").unwrap_err();
+        assert!(err.to_string().contains("available:"), "{err}");
+        Ok(())
+    }
+
+    /// `default_source` reads `$LITGRAPH_SCENARIOS` independently of
+    /// `$LITGRAPH_PACKS` (nextest gives every test its own process).
+    #[test]
+    fn default_source_honors_litgraph_scenarios_env_var() -> Result<()> {
+        let dir = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../scenarios");
+        std::env::set_var("LITGRAPH_SCENARIOS", &dir);
+        let c = Catalog::default_source()?;
+        std::env::remove_var("LITGRAPH_SCENARIOS");
+        assert_eq!(c.scenarios_origin, dir.display().to_string());
+        assert_eq!(c.origin, "embedded");
         Ok(())
     }
 

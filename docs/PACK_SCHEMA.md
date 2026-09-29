@@ -143,6 +143,49 @@ Referencing an edge id `remove_edges`/`probabilities`/`patch_edges` doesn't
 recognize is an error naming the unknown id — instances are checked at
 compile time, same as everything else.
 
+## Scenario library (`scenarios/*.json`)
+
+A **named scenario** is a matter profile: a human summary/notes, the packs it
+needs, its sourced facts, and the engine scenario itself (rates, stakes,
+perspective, masks, payoffs, probabilities, policy, modeling modes — the same
+`scenario` object a request carries; `litgraph schema scenario` gives its
+full shape). It is embedded into the binary the same way packs are
+(`crates/litgraph/build.rs`); `$LITGRAPH_SCENARIOS` or `--scenarios-dir`
+override it at runtime, independently of `$LITGRAPH_PACKS`/`--packs-dir`.
+
+| field | type | notes |
+|---|---|---|
+| `id` | string | name a request references (`"scenario": "<id>"`); by convention matches the file stem |
+| `summary` | string | one line; `litgraph describe`'s `scenario_library` lists every scenario by this |
+| `notes` | string | facts, the basis for every rate/stake/probability (sourced vs illustrative), and any modeling judgment calls |
+| `packs` | string[] | pack refs this scenario needs. A request naming this scenario with no `packs` of its own uses these; an explicit request `packs` always wins |
+| `sources` | `[{title,url?,as_of?}]` | sourced facts backing this scenario's numbers |
+| `scenario` | object | the engine scenario (`litgraph schema scenario`) |
+
+`litgraph schema named-scenario` gives the full JSON Schema; `litgraph
+validate scenarios/your-scenario.json` (or `--kind named-scenario`) resolves
+it against the current packs the same way a request is validated, reporting
+unresolved node/edge refs and expression errors.
+
+### Referencing a scenario from a request
+
+A request's `scenario` field is one of:
+
+- absent / `null` — the engine default (no overrides).
+- an inline object — today's shape, unchanged; unknown fields are still a
+  hard error naming the valid ones.
+- a bare string `"<id>"` — the named scenario's `scenario`, unmodified; its
+  `packs` apply when the request gives none of its own, so a request can be
+  just `{"scenario": "<id>", "op": {...}}`.
+- `{"extends": "<id>", ...overrides}` — the named scenario's `scenario`
+  deep-merged (RFC 7386) with `overrides` (every other key); the merged
+  result is still parsed as a real `Scenario`, so a typo in `overrides` is
+  the same "unknown field" error as an inline scenario, not a silent no-op.
+
+CLI: `--scenario <name|file.json|'{"inline":"json"}'>`; `--set k=v` composes
+onto a named `--scenario` via `extends` automatically. `--scenarios-dir` (or
+`$LITGRAPH_SCENARIOS`) points at a directory instead of the embedded library.
+
 ## Authoring rules
 
 1. Every `cite` / `authority` must be checkable against a `sources` entry or a

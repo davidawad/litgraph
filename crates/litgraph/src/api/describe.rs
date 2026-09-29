@@ -10,13 +10,14 @@ use super::{Request, Response, API_VERSION, ENGINE};
 use crate::error::{Error, Result};
 use crate::metrics;
 use crate::model::{LinkFile, Pack};
-use crate::scenario::Scenario;
+use crate::scenario::{NamedScenario, Scenario};
 
 /// Documents that have a JSON Schema.
 pub const SCHEMA_KINDS: &[&str] = &[
     "request",
     "response",
     "scenario",
+    "named-scenario",
     "pack",
     "links",
     "calibration",
@@ -31,6 +32,7 @@ pub fn schema(kind: &str) -> Result<Value> {
         "request" => schema_for!(Request),
         "response" => schema_for!(Response),
         "scenario" => schema_for!(Scenario),
+        "named-scenario" => schema_for!(NamedScenario),
         "pack" => schema_for!(Pack),
         "links" => schema_for!(LinkFile),
         "calibration" => schema_for!(CalibrationSet),
@@ -83,9 +85,11 @@ pub fn describe(catalog: &Catalog) -> Value {
         "packs": catalog.packs.iter().map(|(_, p, _)| json!({ "id": p.id, "forum": p.forum, "title": p.title })).collect::<Vec<_>>(),
         "links": catalog.links.links.len(),
         "instances": catalog.links.instances.iter().map(|(k, i)| json!({ "id": k, "pack": i.pack, "note": i.note })).collect::<Vec<_>>(),
+        "scenarios_source": catalog.scenarios_origin,
+        "scenario_library": catalog.scenarios().map(|s| json!({ "id": s.id, "summary": s.summary, "packs": s.packs })).collect::<Vec<_>>(),
         "calibration_source": calibration_source,
         "calibration_sets": calibration_sets,
-        "request": "see `litgraph schema request` for the full JSON Schema: {packs, links, no_continuations, scenario, op}",
+        "request": "see `litgraph schema request` for the full JSON Schema: {packs, links, no_continuations, scenario, op}; `scenario` is an inline object, a name from `scenario_library`, or {\"extends\": \"<name>\", ...overrides} deep-merged onto it (`litgraph schema named-scenario` for the library file shape)",
         "scenario": {
             "params": "{name: number} — visible to every expression",
             "metrics": "{name: edge-expr} — custom cost/weight functions",

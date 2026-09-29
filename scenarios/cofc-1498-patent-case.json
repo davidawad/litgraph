@@ -1,0 +1,29 @@
+{
+  "id": "cofc-1498-patent-case",
+  "summary": "28 U.S.C. §1498(a) patent case in the Court of Federal Claims: the government's unlicensed use/manufacture of a patented invention, patent-track procedure through trial or summary judgment.",
+  "notes": "Plaintiff is a patent owner suing the United States under 28 U.S.C. §1498(a) (the government's sole and exclusive remedy for its own use/manufacture of a patented invention is 'reasonable and entire compensation' in the CoFC — no injunction, no treble/enhanced damages, no jury; see 28 U.S.C. §1498(a), verified at law.cornell.edu, and the pack's own cite on this). Uses the `cofc` pack alone (the pack already models both the §1498 patent track and a separate §1491(b) bid-protest track from the same `filing-track-fork`/`patent-claim-fork`; this scenario removes the bid-protest and general-civil branches so the graph is a clean patent-track matter — see `remove_edges`). All procedural deadlines/fees/authorities (RCFC 3/4/12/14(b)/16/56/58/59, Appendix J patent rules, the $405 CoFC filing fee) are already sourced in the `cofc` pack itself (see packs/cofc-SOURCES-NOTES.md) and are not re-verified here. Money numbers below are THIS SCENARIO's own additions (rate, payoffs) and are illustrative unless noted: hypothetical patent claim valued at $1,000,000 (matches the pack's own PLACEHOLDER payoff baseline; override per actual matter), attorney rate $650/hr blended partner/associate BigLaw estimate (illustrative, not sourced), ADR settlement modeled at 45% of full value (the pack's own placeholder, kept as-is). `protest-sustained`/`protest-denied` and the general-civil terminals are unreachable once the two `remove_edges` below force the patent track, so they are left at the pack's own defaults rather than re-authored.",
+  "packs": ["cofc"],
+  "sources": [
+    { "title": "28 U.S.C. §1498(a) — patent/copyright use, exclusive remedy, no injunction", "url": "https://www.law.cornell.edu/uscode/text/28/1498" },
+    { "title": "28 U.S.C. §1491 (Tucker Act) — CoFC jurisdiction", "url": "https://www.law.cornell.edu/uscode/text/28/1491" }
+  ],
+  "scenario": {
+    "params": { "rate": 650, "opp_rate": 550 },
+    "remove_edges": [
+      "cofc::e-filingfork-protest",
+      "cofc::e-casetype-general"
+    ],
+    "payoffs": {
+      "cofc::judgment-entered": 1000000,
+      "cofc::judgment-for-plaintiff": 1000000,
+      "cofc::judgment-for-government": 0,
+      "cofc::summary-judgment-for-government": 0,
+      "cofc::settled-adr": 450000,
+      "cofc::dismissed-time-barred": 0,
+      "cofc::dismissed-1500-bar": 0,
+      "cofc::dismissed-lack-of-jurisdiction": 0,
+      "cofc::dismissed-failure-to-state": 0,
+      "cofc::voluntary-dismissal-early": 0
+    }
+  }
+}

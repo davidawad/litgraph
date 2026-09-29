@@ -54,6 +54,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   deadline reachable from a node — with `service_method`,
   `additional_holidays`, and `clerk_inaccessible` options. Discoverable via
   `describe`/`schema request`.
+- Scenario library (`scenarios/*.json`): named matter profiles (rates,
+  stakes, perspective, payoffs, probabilities, policy, which packs to load),
+  embedded into the binary like packs and overridable with
+  `LITGRAPH_SCENARIOS`/`--scenarios-dir`. A request's `scenario` field can
+  now be a bare name (`"scenario": "cofc-1498-patent-case"`) or a named
+  scenario composed with inline overrides (`{"extends": "<id>",
+  ...overrides}`, deep-merged per RFC 7386, `deny_unknown_fields` preserved
+  on the merged result). CLI: `--scenario <name|file|json>`, `--set` composes
+  onto a named scenario automatically. `describe` lists every scenario
+  (`scenario_library`); `litgraph schema named-scenario` gives the file
+  shape; `litgraph validate` accepts a scenario-library file directly
+  (`named-scenario` kind). Ships four scenarios: a 28 U.S.C. §1498 patent
+  case, a post-award bid protest (28 U.S.C. §1491(b)), an IPR defense at the
+  PTAB with appeal to the CAFC, and a generic FRCP civil case; every shipped
+  scenario is checked against the current packs by
+  `crates/litgraph/tests/scenario_library.rs`. Public loader API:
+  `Catalog::scenarios()` / `Catalog::scenario(name)`.
 
 ## [0.1.0] - 2026-09-28
 

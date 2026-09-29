@@ -8,9 +8,11 @@
 //! per-node arrays that every algorithm consumes, and records every fallback
 //! it had to take as a structured [`Warning`].
 
+mod library;
 mod plan;
 mod view;
 
+pub use library::{NamedScenario, ScenarioSource};
 pub use plan::fill;
 pub use view::View;
 
@@ -92,7 +94,7 @@ pub struct FeeShift {
 }
 
 /// A what-if: everything about one matter that is not in the packs.
-#[derive(Debug, Clone, Serialize, Deserialize, Default, JsonSchema)]
+#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, JsonSchema)]
 #[serde(default, rename_all = "snake_case", deny_unknown_fields)]
 pub struct Scenario {
     /// Parameter values visible to every expression (defaults: see `describe`).
