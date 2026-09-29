@@ -103,6 +103,7 @@ pub fn describe(catalog: &Catalog) -> Value {
             "probability_fn": "edge-expr rewriting p on world edges (p = authored or NaN), chance nodes renormalized",
             "payoffs": "{node ref: usd}",
             "policy": "{node ref: edge ref} force our move",
+            "facts": "{node ref: edge ref} force a `fact`-tagged chance node to its true branch (unset uses the authored prior + warns `fact-unset`)",
             "mixed": "nature-first (default; falls back to act-or-wait) | act-or-wait | self-only | optimistic",
             "opponent": "auto | adversarial | chance",
             "prob_fill": "residual | uniform",

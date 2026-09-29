@@ -5,6 +5,8 @@
 //! Plans are objective-independent: `Objective::Worst` is applied by the solver
 //! (every draw goes against us), so chains and simulations keep real probabilities.
 
+use std::collections::HashSet;
+
 use super::{Control, MixedMode, NodePlan, OpponentMode, ProbFill, Scenario, Warning};
 use crate::model::{Graph, NodeIx, Role};
 
@@ -15,6 +17,9 @@ pub(super) struct PlanInputs<'a> {
     pub active: &'a [bool],
     pub role: &'a [Role],
     pub authored: &'a [Option<f64>],
+    /// Nodes with a `scenario.facts` entry (resolved), so `fact`-tagged
+    /// chance nodes with one are known-set rather than falling back silently.
+    pub fact_nodes: &'a HashSet<NodeIx>,
 }
 
 /// Plans for every node, the effective per-edge draw probabilities, and warnings.
@@ -128,12 +133,31 @@ impl PlanInputs<'_> {
         self.chance(n, &nat, out)
     }
 
+    /// True if `n` is tagged `fact` in its pack: a chance node whose outcome
+    /// is a matter fact knowable at filing, not real uncertainty.
+    fn is_fact(&self, n: NodeIx) -> bool {
+        self.g.nodes[n].tags.iter().any(|t| t == "fact")
+    }
+
     fn chance(&self, n: NodeIx, edges: &[usize], out: &mut Plans) -> NodePlan {
         let missing = edges
             .iter()
             .filter(|&&e| self.authored[e].is_none())
             .count();
-        if missing > 0 {
+        if self.is_fact(n) {
+            if !self.fact_nodes.contains(&n) {
+                self.warn(
+                    out,
+                    n,
+                    "fact-unset",
+                    format!(
+                        "matter fact not set via scenario.facts; using the authored prior ({} of {} out-edges authored) instead of this matter's actual fact -- see docs/PACK_SCHEMA.md#matter-facts",
+                        edges.len() - missing,
+                        edges.len()
+                    ),
+                );
+            }
+        } else if missing > 0 {
             let msg = format!(
                 "{missing} of {} out-edges lack probabilities; filled ({:?})",
                 edges.len(),

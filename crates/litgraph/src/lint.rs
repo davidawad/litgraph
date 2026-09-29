@@ -213,6 +213,7 @@ fn lint_pack_nodes(p: &Pack, push: &mut Push<'_>) {
                 "non-terminal with no out-edges".into(),
             );
         }
+        let is_fact = n.tags.iter().any(|t| t == "fact");
         if !terminal && !outs.is_empty() && outs.iter().all(|e| e.actor != "applicant") {
             let with = outs.iter().filter(|e| e.probability.is_some()).count();
             if with == outs.len() {
@@ -225,6 +226,21 @@ fn lint_pack_nodes(p: &Pack, push: &mut Push<'_>) {
                         format!("chance node probabilities sum to {s:.3}"),
                     );
                 }
+            } else if is_fact {
+                // A node tagged `fact` is a matter fact knowable at filing
+                // (e.g. "is this claim time-barred"), not real chance — an
+                // unauthored prior means it silently defaults to a uniform
+                // (or residual) split instead of a real base rate whenever
+                // `scenario.facts` isn't set for this matter.
+                push(
+                    "warn",
+                    "fact-no-prior",
+                    at.clone(),
+                    format!(
+                        "tagged `fact` but only {with}/{} out-edges carry an authored prior probability; author base-rate estimates (basis + vintage in `note`) so an unset scenario.facts falls back to something better than an even split",
+                        outs.len()
+                    ),
+                );
             } else if outs.len() > 1 {
                 push(
                     "info",
@@ -290,8 +306,9 @@ fn lint_reachability(g: &Graph, d: &mut Vec<Diagnostic>) {
 
 #[cfg(test)]
 mod tests {
+    #![allow(clippy::unwrap_used)]
     use super::*;
-    use crate::model::{RawNode, Source};
+    use crate::model::{CompileOptions, LinkFile, RawNode, Source};
 
     fn pack_with_cite(sources: Vec<Source>, cite: &str) -> Pack {
         Pack {
@@ -411,7 +428,6 @@ mod tests {
     /// unit-level `lint_pack_cites` helper.
     #[test]
     fn lint_reports_unverifiable_cite_via_public_entry_point() {
-        use crate::model::{CompileOptions, Graph, LinkFile};
         let p = pack_with_cite(vec![source(Some("sources/frcp.txt"))], "FRCP 9999");
         let g = Graph::compile(
             std::slice::from_ref(&p),
@@ -421,5 +437,94 @@ mod tests {
         .unwrap();
         let diags = lint(&g, std::slice::from_ref(&p));
         assert!(diags.iter().any(|d| d.code == "unverifiable-cite"));
+    }
+
+    fn pack(json: &str) -> Pack {
+        Pack::from_json(json).unwrap()
+    }
+
+    #[test]
+    fn fact_node_without_a_full_prior_is_flagged() {
+        let p = pack(
+            r#"{
+                "schemaVersion": 2, "id": "demo", "title": "Demo", "startNodeId": "check",
+                "sources": [{"id": "s", "title": "t", "url": "https://example.com"}],
+                "nodes": [
+                    {"id": "check", "label": "Check", "kind": "decision", "tags": ["fact"]},
+                    {"id": "a", "label": "A", "kind": "terminal", "payoff": 1.0, "outcome": ["win"]},
+                    {"id": "b", "label": "B", "kind": "terminal", "payoff": 0.0, "outcome": ["loss"]}
+                ],
+                "edges": [
+                    {"from": "check", "to": "a", "label": "a", "actor": "office"},
+                    {"from": "check", "to": "b", "label": "b", "actor": "office", "probability": 0.1}
+                ]
+            }"#,
+        );
+        let g = Graph::compile(
+            std::slice::from_ref(&p),
+            &LinkFile::default(),
+            &CompileOptions::default(),
+        )
+        .unwrap();
+        let d = lint(&g, &[p]);
+        assert!(d
+            .iter()
+            .any(|x| x.code == "fact-no-prior" && x.at == "demo::check"));
+        assert!(!d.iter().any(|x| x.code == "chance-unquantified"));
+    }
+
+    #[test]
+    fn fact_node_with_a_full_prior_is_not_flagged() {
+        let p = pack(
+            r#"{
+                "schemaVersion": 2, "id": "demo", "title": "Demo", "startNodeId": "check",
+                "sources": [{"id": "s", "title": "t", "url": "https://example.com"}],
+                "nodes": [
+                    {"id": "check", "label": "Check", "kind": "decision", "tags": ["fact"]},
+                    {"id": "a", "label": "A", "kind": "terminal", "payoff": 1.0, "outcome": ["win"]},
+                    {"id": "b", "label": "B", "kind": "terminal", "payoff": 0.0, "outcome": ["loss"]}
+                ],
+                "edges": [
+                    {"from": "check", "to": "a", "label": "a", "actor": "office", "probability": 0.9},
+                    {"from": "check", "to": "b", "label": "b", "actor": "office", "probability": 0.1}
+                ]
+            }"#,
+        );
+        let g = Graph::compile(
+            std::slice::from_ref(&p),
+            &LinkFile::default(),
+            &CompileOptions::default(),
+        )
+        .unwrap();
+        let d = lint(&g, &[p]);
+        assert!(!d.iter().any(|x| x.code == "fact-no-prior"));
+    }
+
+    #[test]
+    fn a_plain_chance_node_without_the_fact_tag_still_gets_chance_unquantified() {
+        let p = pack(
+            r#"{
+                "schemaVersion": 2, "id": "demo", "title": "Demo", "startNodeId": "check",
+                "sources": [{"id": "s", "title": "t", "url": "https://example.com"}],
+                "nodes": [
+                    {"id": "check", "label": "Check", "kind": "decision"},
+                    {"id": "a", "label": "A", "kind": "terminal", "payoff": 1.0, "outcome": ["win"]},
+                    {"id": "b", "label": "B", "kind": "terminal", "payoff": 0.0, "outcome": ["loss"]}
+                ],
+                "edges": [
+                    {"from": "check", "to": "a", "label": "a", "actor": "office"},
+                    {"from": "check", "to": "b", "label": "b", "actor": "office", "probability": 0.1}
+                ]
+            }"#,
+        );
+        let g = Graph::compile(
+            std::slice::from_ref(&p),
+            &LinkFile::default(),
+            &CompileOptions::default(),
+        )
+        .unwrap();
+        let d = lint(&g, &[p]);
+        assert!(d.iter().any(|x| x.code == "chance-unquantified"));
+        assert!(!d.iter().any(|x| x.code == "fact-no-prior"));
     }
 }

@@ -183,7 +183,10 @@
       "label": "Is the Petition Filed Within 6 Years of Accrual?",
       "cite": "28 U.S.C. § 2501",
       "note": "Every claim within CoFC jurisdiction is barred unless the petition is filed within six years after the claim first accrues (tolled for any §286 administrative-claim interval on the patent track). Narrow tolling exists for legal disability or being 'beyond the seas' at accrual (petition within 3 years after the disability ceases) -- not separately modeled here. This bar is jurisdictional; the court must dismiss sua sponte if it is missed, regardless of the merits.",
-      "group": "threshold-group"
+      "group": "threshold-group",
+      "tags": [
+        "fact"
+      ]
     },
     {
       "id": "dismissed-time-barred",
@@ -206,7 +209,10 @@
       "label": "Is the Same Claim Currently Pending in Any Other Court?",
       "cite": "28 U.S.C. § 1500",
       "note": "THE CLASSIC TRAP: §1500 strips CoFC jurisdiction over any claim for which the plaintiff has a suit pending in any other court against the United States (or anyone acting under its authority) arising from substantially the same operative facts -- even if the other suit seeks different relief. United States v. Tohono O'odham Nation, 563 U.S. 307 (2011). Filing (or failing to dismiss) a parallel district-court/agency suit before or simultaneously with the CoFC complaint is a routine, entirely avoidable way to lose CoFC jurisdiction; the fix is to dismiss the other suit BEFORE filing here, not after.",
-      "group": "threshold-group"
+      "group": "threshold-group",
+      "tags": [
+        "fact"
+      ]
     },
     {
       "id": "dismissed-1500-bar",
@@ -837,7 +843,9 @@
       "to": "section-1500-check",
       "label": "Petition filed within 6 years of accrual (as tolled)",
       "actor": "either",
-      "authority": "28 U.S.C. § 2501"
+      "authority": "28 U.S.C. § 2501",
+      "probability": 0.95,
+      "note": "Prior (labeled estimate, not a measured statistic): competent counsel screens for this jurisdictional trap before filing, so most FILED claims clear it; override with scenario.facts once this matter's actual filing history is known (accrual date vs. filing date; any parallel suit)."
     },
     {
       "id": "e-limitations-barred",
@@ -850,7 +858,9 @@
       "tags": [
         "dispositive",
         "jurisdictional"
-      ]
+      ],
+      "probability": 0.05,
+      "note": "Prior (labeled estimate, not a measured statistic): competent counsel screens for this jurisdictional trap before filing, so most FILED claims clear it; override with scenario.facts once this matter's actual filing history is known (accrual date vs. filing date; any parallel suit)."
     },
     {
       "id": "e-1500-clear",
@@ -858,7 +868,9 @@
       "to": "filing-track-fork",
       "label": "No suit on the same claim currently pending in any other court",
       "actor": "office",
-      "authority": "28 U.S.C. § 1500"
+      "authority": "28 U.S.C. § 1500",
+      "probability": 0.95,
+      "note": "Prior (labeled estimate, not a measured statistic): competent counsel screens for this jurisdictional trap before filing, so most FILED claims clear it; override with scenario.facts once this matter's actual filing history is known (accrual date vs. filing date; any parallel suit)."
     },
     {
       "id": "e-1500-barred",
@@ -872,7 +884,9 @@
         "dispositive",
         "jurisdictional",
         "waiver-trap"
-      ]
+      ],
+      "probability": 0.05,
+      "note": "Prior (labeled estimate, not a measured statistic): competent counsel screens for this jurisdictional trap before filing, so most FILED claims clear it; override with scenario.facts once this matter's actual filing history is known (accrual date vs. filing date; any parallel suit)."
     },
     {
       "id": "e-filingfork-standard",

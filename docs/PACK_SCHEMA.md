@@ -77,6 +77,45 @@ convention is: `applicant` = the party whose moves we are analyzing (usually
 plaintiff/appellant), `examiner` = the opposing party, `office` = the court or
 clerk, `either` = either party / events not controlled by one side.
 
+## Matter facts (v2)
+
+Some chance nodes aren't real uncertainty — they're a **fact about this
+matter** that just hasn't been told to the engine yet: whether a claim was
+filed more than six years after accrual (`28 U.S.C. §2501`), whether the
+same claim is already pending elsewhere (`28 U.S.C. §1500`), whether a
+judgment arises under the patent laws (`28 U.S.C. §1295(a)(1)`). Modeling
+these as an ordinary unauthored chance node makes them 50/50 (or whatever
+`scenario.prob_fill` does), which is never right: the true answer is
+either 0 or 1, the pack's author just doesn't know which until the
+scenario says so.
+
+**Tag the node** `"tags": ["fact"]` and **author a prior** — a labeled
+estimate or sourced base rate — as the `probability` on every one of its
+out-edges, same as any chance node, with the basis in each edge's `note`
+(e.g. "estimate: counsel screens for this before filing"). `litgraph lint`
+flags a `fact`-tagged node whose out-edges aren't all authored
+(`fact-no-prior`) — the whole point of tagging it is that a real prior,
+not a 50/50 default, should be there.
+
+At query time, a scenario that knows the actual fact sets
+**`scenario.facts`**: `{node ref: edge ref}`, exactly the shape of
+`policy` (which forces *our* choice) but for a fact node nature controls —
+it forces that edge's probability to 1 and its siblings to 0 (via the same
+sibling-rescale `scenario.probabilities` already does; `facts` is sugar
+over it, keyed by node so an agent doesn't have to compute the edge id by
+hand). A `fact`-tagged node with no `scenario.facts` entry falls back to
+the authored prior and a `fact-unset` warning names it, so "I don't know
+this matter's facts yet" is always visible in the response, never silent.
+
+```json
+"scenario": { "facts": { "cofc::limitations-check": "cofc::e-limitations-timely" } }
+```
+
+Use `tags: ["fact"]` (not a new node `kind`) precisely because a fact node
+is structurally an ordinary chance node — same edges, same probabilities,
+same `fill` semantics — only its *epistemic status* differs, and every
+existing algorithm, lint check and scenario field keeps working unchanged.
+
 ## Links (composition)
 
 `packs/links.json` joins packs into one multi-forum graph. Its top-level

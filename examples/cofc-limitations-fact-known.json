@@ -1,0 +1,23 @@
+{
+  "packs": [
+    "cofc"
+  ],
+  "scenario": {
+    "params": {
+      "rate": 850,
+      "stakes": 12
+    }
+  },
+  "op": {
+    "op": "compare",
+    "variant": {
+      "facts": {
+        "cofc::limitations-check": "cofc::e-limitations-timely",
+        "cofc::section-1500-check": "cofc::e-1500-clear"
+      }
+    },
+    "inner": {
+      "op": "solve"
+    }
+  }
+}

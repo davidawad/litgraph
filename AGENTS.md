@@ -65,7 +65,11 @@ rather than silently ignoring a typo.
    before answering.
 2. **Matter facts go in the scenario, not the pack.** Packs describe a
    forum's procedure for everyone; stakes, rates, waivers, the judge's
-   tendencies belong to one matter.
+   tendencies belong to one matter. A chance node whose outcome is actually
+   knowable at filing (time-barred? already pending elsewhere? a patent
+   case?) is tagged `"fact"` in the pack with an authored prior; the
+   scenario resolves it for real via `scenario.facts` (`{node ref: edge
+   ref}`), not by editing the pack. See `docs/PACK_SCHEMA.md#matter-facts-v2`.
 3. **Counterfactuals via `compare`**, not by editing packs.
 4. **Pack edits need sources.** Every new `authority`/`cite` must be
    traceable to a `sources` entry or a public citation (`sources[].path` is

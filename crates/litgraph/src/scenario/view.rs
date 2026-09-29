@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! [`View`]: a scenario resolved against a graph.
 
-use std::collections::{BTreeMap, VecDeque};
+use std::collections::{BTreeMap, HashSet, VecDeque};
 
 use super::plan::PlanInputs;
 use super::{resolve_spec, NodePlan, Scenario, Warning};
@@ -104,9 +104,19 @@ fn active_edges(
 }
 
 /// Authored probabilities after scenario overrides (siblings rescaled) and `probability_fn`.
-fn probabilities(g: &Graph, sc: &Scenario, v: &ViewParts<'_>) -> Result<Vec<Option<f64>>> {
+///
+/// `overrides` is `scenario.probabilities` plus every `scenario.facts` entry
+/// resolved to its edge's canonical id at probability 1.0 (see
+/// [`View::new`]) — facts are "force this edge" sugar over the same
+/// rescale-siblings mechanism, not a separate code path.
+fn probabilities(
+    g: &Graph,
+    sc: &Scenario,
+    v: &ViewParts<'_>,
+    overrides: &BTreeMap<String, f64>,
+) -> Result<Vec<Option<f64>>> {
     let mut authored: Vec<Option<f64>> = g.edges.iter().map(|e| e.probability).collect();
-    for (r, &p) in &sc.probabilities {
+    for (r, &p) in overrides {
         let e = g.edge(r)?;
         if !(0.0..=1.0).contains(&p) {
             return Err(Error::Invalid(format!(
@@ -218,7 +228,20 @@ impl<'g> View<'g> {
             params: &params,
             payoff: &payoff,
         };
-        let authored = probabilities(g, sc, &parts)?;
+        // `scenario.facts` is sugar over `scenario.probabilities`: each
+        // {node ref: edge ref} resolves to that edge's canonical id forced to
+        // 1.0 (siblings fall to 0 via the usual rescale). `fact_nodes` records
+        // which nodes had an entry, so a `fact`-tagged node without one can
+        // warn instead of silently taking a heuristic/uniform fallback.
+        let mut overrides = sc.probabilities.clone();
+        let mut fact_nodes: HashSet<NodeIx> = HashSet::new();
+        for (node_ref, edge_ref) in &sc.facts {
+            let ni = g.node(node_ref)?;
+            let ei = g.edge_at(ni, edge_ref)?;
+            fact_nodes.insert(ni);
+            overrides.insert(g.edges[ei].id.clone(), 1.0);
+        }
+        let authored = probabilities(g, sc, &parts, &overrides)?;
         let mut forced = BTreeMap::new();
         for (n, e) in &sc.policy {
             let ni = g.node(n)?;
@@ -230,6 +253,7 @@ impl<'g> View<'g> {
             active: &active,
             role: &role,
             authored: &authored,
+            fact_nodes: &fact_nodes,
         }
         .build();
         let start = sc.start.as_deref().map_or(Ok(g.start), |s| g.node(s))?;
@@ -370,5 +394,87 @@ impl<'g> View<'g> {
             .iter()
             .copied()
             .filter(move |&e| self.active[e])
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    #![allow(clippy::unwrap_used)]
+    use super::*;
+    use crate::model::{CompileOptions, LinkFile, Pack};
+
+    /// A `fact`-tagged decision with two `office` (nature) out-edges and an
+    /// authored 90/10 prior, mirroring `cofc::limitations-check`.
+    fn fact_pack(json: &str) -> Graph {
+        let pack = Pack::from_json(json).unwrap();
+        Graph::compile(&[pack], &LinkFile::default(), &CompileOptions::default()).unwrap()
+    }
+
+    const FACT_JSON: &str = r#"{
+        "schemaVersion": 2, "id": "demo", "title": "Demo", "startNodeId": "check",
+        "nodes": [
+            {"id": "check", "label": "Check", "kind": "decision", "tags": ["fact"]},
+            {"id": "ok", "label": "OK", "kind": "terminal", "payoff": 1000.0},
+            {"id": "barred", "label": "Barred", "kind": "terminal", "payoff": 0.0}
+        ],
+        "edges": [
+            {"id": "e-ok", "from": "check", "to": "ok", "label": "clear", "actor": "office", "probability": 0.9},
+            {"id": "e-barred", "from": "check", "to": "barred", "label": "barred", "actor": "office", "probability": 0.1}
+        ]
+    }"#;
+
+    #[test]
+    fn unset_fact_uses_the_authored_prior_and_warns() {
+        let g = fact_pack(FACT_JSON);
+        let v = View::new(&g, &Scenario::default()).unwrap();
+        let check = g.node("demo::check").unwrap();
+        let ok = g.edge("demo::e-ok").unwrap();
+        let barred = g.edge("demo::e-barred").unwrap();
+        assert_eq!(v.prob[ok], Some(0.9));
+        assert_eq!(v.prob[barred], Some(0.1));
+        assert!(
+            v.warnings
+                .iter()
+                .any(|w| w.code == "fact-unset"
+                    && w.at.as_deref() == Some(g.nodes[check].id.as_str()))
+        );
+    }
+
+    #[test]
+    fn set_fact_forces_its_edge_and_zeroes_the_sibling_without_warning() {
+        let g = fact_pack(FACT_JSON);
+        let sc = Scenario {
+            facts: BTreeMap::from([("demo::check".into(), "demo::e-barred".into())]),
+            ..Scenario::default()
+        };
+        let v = View::new(&g, &sc).unwrap();
+        let ok = g.edge("demo::e-ok").unwrap();
+        let barred = g.edge("demo::e-barred").unwrap();
+        assert_eq!(v.prob[barred], Some(1.0));
+        assert_eq!(v.prob[ok], Some(0.0));
+        assert!(!v.warnings.iter().any(|w| w.code == "fact-unset"));
+        assert!(!v.warnings.iter().any(|w| w.code == "probability-fill"));
+    }
+
+    #[test]
+    fn a_non_fact_chance_node_is_unaffected() {
+        // Same shape, no `fact` tag: plain chance-node warnings still apply
+        // (regression guard: the fact path must not swallow ordinary nodes).
+        const JSON: &str = r#"{
+            "schemaVersion": 2, "id": "demo", "title": "Demo", "startNodeId": "check",
+            "nodes": [
+                {"id": "check", "label": "Check", "kind": "decision"},
+                {"id": "a", "label": "A", "kind": "terminal", "payoff": 1.0},
+                {"id": "b", "label": "B", "kind": "terminal", "payoff": 0.0}
+            ],
+            "edges": [
+                {"from": "check", "to": "a", "label": "a", "actor": "office"},
+                {"from": "check", "to": "b", "label": "b", "actor": "office"}
+            ]
+        }"#;
+        let g = fact_pack(JSON);
+        let v = View::new(&g, &Scenario::default()).unwrap();
+        assert!(v.warnings.iter().any(|w| w.code == "probability-fill"));
+        assert!(!v.warnings.iter().any(|w| w.code == "fact-unset"));
     }
 }

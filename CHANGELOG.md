@@ -90,6 +90,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   pack currently wires `sources[].path` to vendored text yet (tracked as a
   follow-up); `cargo test --test cite_coverage_report -- --nocapture`
   reports current coverage across every embedded pack.
+- **Matter facts** (`scenario.facts`): a chance node tagged `"fact"` in a pack
+  represents a matter fact knowable at filing (time-barred? already pending
+  elsewhere? a patent case?), not real uncertainty. `scenario.facts` (`{node
+  ref: edge ref}`, the same shape as `policy`) forces that node's true branch;
+  left unset, the engine falls back to the pack's authored prior and warns
+  `fact-unset`. New lint rule `fact-no-prior` flags a `fact`-tagged node whose
+  out-edges aren't all authored. Applied to `cofc::limitations-check` and
+  `cofc::section-1500-check`. See `docs/PACK_SCHEMA.md#matter-facts-v2`.
 
 ## [0.1.0] - 2026-09-28
 

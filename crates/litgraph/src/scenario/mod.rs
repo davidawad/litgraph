@@ -122,6 +122,13 @@ pub struct Scenario {
     pub payoffs: BTreeMap<String, f64>,
     /// Node ref → edge ref: force our choice (a world edge at an act-or-wait node means "wait").
     pub policy: BTreeMap<String, String>,
+    /// Node ref → edge ref: a matter fact this scenario knows to be true, at a
+    /// chance node tagged `fact` in the pack (e.g. "is this claim time-barred").
+    /// Forces that edge's probability to 1 (siblings to 0). Unlike `policy`,
+    /// this applies at nodes nature controls, not at a choice of ours. A
+    /// `fact`-tagged node with no entry here uses the pack's authored prior
+    /// and a `fact-unset` warning names it. See `docs/PACK_SCHEMA.md#matter-facts`.
+    pub facts: BTreeMap<String, String>,
     /// Mixed-node semantics.
     pub mixed: MixedMode,
     /// Opponent model where only the opponent chooses.
