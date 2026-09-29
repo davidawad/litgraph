@@ -5,13 +5,6 @@
   "description": "Pre-filing/jurisdiction & venue -> pleading (service, Rule 12 responses, default) -> amendment & joinder -> discovery (Rule 26 conference through Rule 37 sanctions and CBI-style protective orders) -> pretrial motions (summary judgment, Daubert, motions in limine) -> trial -> post-trial motions (Rule 50/59/60) -> judgment & appeal (28 U.S.C. 1291/1292, FRAP 4, cross-appeal). Citations checked against the FRCP, FRAP, and Title 28 as reflected in content/rulepacks/frcp-fragment.json and the situations corpus; approximate figures (filing fees) are flagged inline. Direct structural counterpart to content/statecharts/mpep-prosecution.json and content/statecharts/itc-337.json for the FRCP pack. Walk mode teaches the FRAP 4(a)(4) tolling trap, the unextendable Rule 59(e)/60(b) and removal clocks, and the jurisdictional (Bowles v. Russell) character of the notice-of-appeal deadline.",
   "jurisdiction": "Federal Rules of Civil Procedure / U.S. District Courts",
   "startNodeId": "pre-filing",
-  "sources": [
-    {
-      "id": "frcp-12h",
-      "title": "Fed. R. Civ. P. 12(h) — Waiving and Preserving Certain Defenses",
-      "url": "https://www.law.cornell.edu/rules/frcp/rule_12"
-    }
-  ],
   "groups": [
     {
       "id": "pre-filing-group",
@@ -1847,6 +1840,11 @@
       "id": "usc28-2106",
       "title": "28 U.S.C. § 2106 (Determination of appellate court)",
       "url": "https://www.law.cornell.edu/uscode/text/28/2106"
+    },
+    {
+      "id": "frcp-12h",
+      "title": "Fed. R. Civ. P. 12(h) — Waiving and Preserving Certain Defenses",
+      "url": "https://www.law.cornell.edu/rules/frcp/rule_12"
     }
   ]
 }

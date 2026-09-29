@@ -5,13 +5,6 @@
   "description": "Post-grant adversarial challenges to issued patents before the USPTO Patent Trial and Appeal Board — inter partes review (IPR) and post-grant review (PGR), from petition filing through institution, trial on the merits, final written decision, rehearing/Director review, and Federal Circuit appeal.",
   "jurisdiction": "35 U.S.C. Chapter 31 (AIA Trials) / 37 C.F.R. Part 42 / USPTO PTAB",
   "startNodeId": "patent-granted",
-  "sources": [
-    {
-      "id": "35-usc-315",
-      "title": "35 U.S.C. § 315 — Relation to other proceedings or actions",
-      "url": "https://www.law.cornell.edu/uscode/text/35/315"
-    }
-  ],
   "groups": [
     {
       "id": "pre-petition-group",

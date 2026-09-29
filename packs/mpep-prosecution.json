@@ -5,13 +5,6 @@
   "description": "Canonical pre-filing → prosecution → appeal → issuance flowchart for a U.S. nonprovisional utility application. MPEP and 37 CFR citations verified against live USPTO/eCFR sources (2024-07-01 edition). Walk mode teaches the RCE-vs-appeal fork economics, the unextendable 6-month ceiling, and abandonment-as-permadeath.",
   "jurisdiction": "USPTO / MPEP",
   "startNodeId": "pre-filing",
-  "sources": [
-    {
-      "id": "37-cfr-1-114",
-      "title": "37 C.F.R. § 1.114 — Request for continued examination",
-      "url": "https://www.law.cornell.edu/cfr/text/37/1.114"
-    }
-  ],
   "groups": [
     {
       "id": "pre-filing-group",
