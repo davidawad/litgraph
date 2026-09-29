@@ -21,6 +21,9 @@ nd = "nd"
 extend-exclude = [
     "packs/*.json",
     "tests/fixtures/",  # verbatim copies of upstream packs   # legal-procedure JSON packs -- case names, citations
+    "sources/*.txt",  # vendored L0 primary-law text (see sources/PROVENANCE.md); PDF/HTML
+                       # extraction preserves the original's line-wrap hyphenation verbatim
+                       # ("Represen-\ntation"), which reads as typos but isn't ours to fix
     "Cargo.lock",
     "flake.lock",
     "devenv.lock",

@@ -71,6 +71,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   scenario is checked against the current packs by
   `crates/litgraph/tests/scenario_library.rs`. Public loader API:
   `Catalog::scenarios()` / `Catalog::scenario(name)`.
+- **Cite verification against L0 sources** (`crates/litgraph/src/cite/`):
+  `litgraph lint` now checks every node `cite` / edge `authority` string
+  against the pack's own `sources` — normalizing surface forms ("FRCP
+  12(b)(6)", "Fed. R. Civ. P. 12(b)(6)", "28 U.S.C. § 1498(a)", "35 USC
+  315(e)", "37 C.F.R. § 42.108", "RCFC 56", compound citations like
+  "28 U.S.C. 1291; 2106", case citations recognized and skipped as
+  out-of-scope), resolving each to a vendored source span via
+  `Pack.sources[].path`, and fuzzy-matching a quoted phrase in `note`
+  against that span when one is given. Unverifiable cites are a new `warn`
+  diagnostic, `unverifiable-cite`, with the exact reason. Vendored L0
+  corpus under `sources/*.txt` (FRCP, FRAP, 19 U.S.C. § 1337, 37 C.F.R.
+  Part 42, and 28/35 U.S.C. + 37 C.F.R. Part 1 fragments — see
+  `sources/PROVENANCE.md` for why plain text was vendored instead of
+  fetched at lint/test time, and each file's exact provenance/sha256),
+  embedded into the binary the same way `packs/` is, with a
+  `LITGRAPH_SOURCES` directory override mirroring `LITGRAPH_PACKS`. No
+  pack currently wires `sources[].path` to vendored text yet (tracked as a
+  follow-up); `cargo test --test cite_coverage_report -- --nocapture`
+  reports current coverage across every embedded pack.
 
 ## [0.1.0] - 2026-09-28
 

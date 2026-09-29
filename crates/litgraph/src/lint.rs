@@ -5,6 +5,7 @@
 use serde::Serialize;
 use std::collections::HashMap;
 
+use crate::cite::{CiteOutcome, SourceCorpus};
 use crate::model::{Graph, NodeKind, Pack};
 
 /// One content-quality finding: a warning about authored data, not a
@@ -41,10 +42,20 @@ pub fn lint(g: &Graph, packs: &[Pack]) -> Vec<Diagnostic> {
                 message,
             });
         };
+        let corpus = SourceCorpus::default_source();
         for p in packs {
             lint_pack_sources(p, &mut push);
             lint_pack_edges(p, &mut push);
             lint_pack_nodes(p, &mut push);
+            match &corpus {
+                Ok(corpus) => lint_pack_cites(p, corpus, &mut push),
+                Err(e) => push(
+                    "info",
+                    "sources-unavailable",
+                    p.id.clone(),
+                    format!("could not load the L0 source corpus, cite verification skipped: {e}"),
+                ),
+            }
         }
     }
     lint_reachability(g, &mut d);
@@ -88,6 +99,29 @@ fn lint_pack_sources(p: &Pack, push: &mut Push<'_>) {
             pid.clone(),
             "no `sources`; cites cannot be traced to a primary document".into(),
         );
+    }
+}
+
+/// Every `cite`/`authority` should resolve to a span in a vendored L0
+/// source this pack itself declares (`sources[].path`). A pack with no
+/// `sources` at all is already flagged by [`lint_pack_sources`]'s
+/// `no-sources`, so this only reports per-cite once the pack has at least
+/// one source to check against (otherwise every cite would duplicate the
+/// same "no sources" reason).
+fn lint_pack_cites(p: &Pack, corpus: &SourceCorpus, push: &mut Push<'_>) {
+    if p.sources.is_empty() {
+        return;
+    }
+    let pid = &p.id;
+    for check in crate::cite::check_pack(p, corpus) {
+        if let CiteOutcome::Unresolvable { reason } = check.outcome {
+            push(
+                "warn",
+                "unverifiable-cite",
+                format!("{pid}::{}", check.at),
+                format!("cite `{}` in `{}` {reason}", check.cite_ref.raw, check.raw),
+            );
+        }
     }
 }
 
@@ -251,5 +285,141 @@ fn lint_reachability(g: &Graph, d: &mut Vec<Diagnostic>) {
                 });
             }
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::model::{RawNode, Source};
+
+    fn pack_with_cite(sources: Vec<Source>, cite: &str) -> Pack {
+        Pack {
+            schema_version: 2,
+            id: "test".into(),
+            title: "Test".into(),
+            description: None,
+            jurisdiction: None,
+            forum: None,
+            start_node_id: "n1".into(),
+            groups: vec![],
+            roles: std::collections::BTreeMap::new(),
+            sources,
+            nodes: vec![RawNode {
+                id: "n1".into(),
+                label: "n1".into(),
+                cite: Some(cite.to_string()),
+                ..Default::default()
+            }],
+            edges: vec![],
+        }
+    }
+
+    fn source(path: Option<&str>) -> Source {
+        Source {
+            id: "s".into(),
+            title: None,
+            url: None,
+            path: path.map(str::to_string),
+            sha256: None,
+            as_of: None,
+        }
+    }
+
+    fn frcp_corpus() -> SourceCorpus {
+        SourceCorpus::from_files([(
+            "sources/frcp-fixture.txt".to_string(),
+            "## Rule 12\nDefenses and objections.\n".to_string(),
+        )])
+    }
+
+    #[test]
+    fn reports_unverifiable_cite_with_reason() {
+        let p = pack_with_cite(vec![source(Some("sources/frcp-fixture.txt"))], "FRCP 99");
+        let mut diags = vec![];
+        let mut push = |severity, code, at: String, message: String| {
+            diags.push(Diagnostic {
+                severity,
+                code,
+                at,
+                message,
+            });
+        };
+        lint_pack_cites(&p, &frcp_corpus(), &mut push);
+        assert_eq!(diags.len(), 1);
+        assert_eq!(diags[0].code, "unverifiable-cite");
+        assert_eq!(diags[0].severity, "warn");
+        assert!(diags[0].message.contains("Rule 99"));
+    }
+
+    #[test]
+    fn no_diagnostic_for_cite_that_resolves() {
+        let p = pack_with_cite(vec![source(Some("sources/frcp-fixture.txt"))], "FRCP 12");
+        let mut diags = vec![];
+        let mut push = |severity, code, at: String, message: String| {
+            diags.push(Diagnostic {
+                severity,
+                code,
+                at,
+                message,
+            });
+        };
+        lint_pack_cites(&p, &frcp_corpus(), &mut push);
+        assert!(diags.is_empty());
+    }
+
+    /// A pack with zero `sources` is already covered by `no-sources`
+    /// (`lint_pack_sources`); `lint_pack_cites` must not pile on a
+    /// duplicate per-cite diagnostic.
+    #[test]
+    fn no_duplicate_diagnostic_when_pack_has_no_sources() {
+        let p = pack_with_cite(vec![], "FRCP 12(b)(6)");
+        let mut diags = vec![];
+        let mut push = |severity, code, at: String, message: String| {
+            diags.push(Diagnostic {
+                severity,
+                code,
+                at,
+                message,
+            });
+        };
+        lint_pack_cites(&p, &frcp_corpus(), &mut push);
+        assert!(diags.is_empty());
+    }
+
+    #[test]
+    fn case_citation_produces_no_diagnostic() {
+        let p = pack_with_cite(
+            vec![source(Some("sources/frcp-fixture.txt"))],
+            "Bowles v. Russell, 551 U.S. 205 (2007)",
+        );
+        let mut diags = vec![];
+        let mut push = |severity, code, at: String, message: String| {
+            diags.push(Diagnostic {
+                severity,
+                code,
+                at,
+                message,
+            });
+        };
+        lint_pack_cites(&p, &frcp_corpus(), &mut push);
+        assert!(diags.is_empty());
+    }
+
+    /// End-to-end through the public `lint()` entry point (uses the real
+    /// embedded corpus via `SourceCorpus::default_source()`), not just the
+    /// unit-level `lint_pack_cites` helper.
+    #[test]
+    fn lint_reports_unverifiable_cite_via_public_entry_point() {
+        use crate::model::{CompileOptions, Graph, LinkFile};
+        let p = pack_with_cite(vec![source(Some("sources/frcp.txt"))], "FRCP 9999");
+        let g = Graph::compile(
+            std::slice::from_ref(&p),
+            &LinkFile::default(),
+            &CompileOptions::default(),
+        )
+        .unwrap();
+        let diags = lint(&g, std::slice::from_ref(&p));
+        assert!(diags.iter().any(|d| d.code == "unverifiable-cite"));
     }
 }

@@ -191,7 +191,17 @@ onto a named `--scenario` via `extends` automatically. `--scenarios-dir` (or
 1. Every `cite` / `authority` must be checkable against a `sources` entry or a
    public citation. No invented rule numbers. A `sources[].path` must be
    repo-relative (or omitted) — never a local filesystem path; cite the
-   official `url` instead.
+   official `url` instead. If `path` points at a vendored L0 text file
+   under `sources/` (see `sources/PROVENANCE.md`), `litgraph lint`
+   verifies the cite mechanically — normalizing the surface form ("FRCP
+   12(b)(6)", "Fed. R. Civ. P. 12(b)(6)", "28 U.S.C. § 1498(a)", "37
+   C.F.R. § 42.108", "RCFC 56", ... all resolve the same way), resolving
+   it to a `## <heading>` span in that file, and fuzzy-matching any
+   quoted phrase in `note` against that span. A cite it can't verify gets
+   an `unverifiable-cite` warning naming the exact reason (no local
+   `sources[].path`, no matching heading, quote not found, ...) rather
+   than silently passing; add new vendored text under `sources/` before
+   citing a body of law that isn't there yet.
 2. Probabilities are optional. Where you author one, put the basis in `note`
    (statistic + vintage, or "teaching estimate"). Unauthored is better than
    invented; the engine reports unauthored chance nodes.

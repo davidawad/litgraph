@@ -50,7 +50,7 @@ you can read exactly what "cost" means and write your own.
 | SCCs, dominators, min-cut, betweenness, reachability | `structure` |
 | base scenario vs. a counterfactual, with deltas | `compare` |
 | several ops against one compiled graph | `batch` |
-| content QA: unsourced packs, missing payoffs, dead ends | `lint` |
+| content QA: unsourced packs, missing payoffs, dead ends, unverifiable cites | `lint` |
 | resolve packs + scenario without running an analysis | `validate` |
 
 Every response is `{ok, api_version, op, result, warnings, provenance,
@@ -218,7 +218,9 @@ build time, so `litgraph packs` works right after install with no
 `packs/` directory needed — point at a different set with
 `LITGRAPH_PACKS=<dir>` or `--packs-dir <dir>`. Run `litgraph packs` for
 live counts; schema is documented in
-[`docs/PACK_SCHEMA.md`](docs/PACK_SCHEMA.md).
+[`docs/PACK_SCHEMA.md`](docs/PACK_SCHEMA.md). The vendored L0 source text
+`sources[].path` points into (see [`sources/PROVENANCE.md`](sources/PROVENANCE.md))
+is embedded the same way, overridable with `LITGRAPH_SOURCES=<dir>`.
 
 ## Scenario library
 

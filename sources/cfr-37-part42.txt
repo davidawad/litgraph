@@ -1,0 +1,800 @@
+## 37 C.F.R. § 42.1
+37 C.F.R. § 42.1 — Policy.
+(a) Scope. Part 42 governs proceedings before the Patent Trial and Appeal Board. Sections 1.4, 1.7, 1.14, 1.16, 1.22, 1.23, 1.25, 1.26, 1.32, 1.34, and 1.36 of this chapter also apply to proceedings before the Board, as do other sections of part 1 of this chapter that are incorporated by reference into this part.
+(b) Construction. This part shall be construed to secure the just, speedy, and inexpensive resolution of every proceeding.
+(c) Decorum. Every party must act with courtesy and decorum in all proceedings before the Board, including in interactions with other parties.
+(d) Evidentiary standard. The default evidentiary standard is a preponderance of the evidence.
+
+## 37 C.F.R. § 42.2
+37 C.F.R. § 42.2 — Definitions.
+The following definitions apply to this part:
+Affidavit means affidavit or declaration under § 1.68 of this chapter. A transcript of an ex parte deposition or a declaration under 28 U.S.C. 1746 may be used as an affidavit.
+Board means the Patent Trial and Appeal Board. Board means a panel of the Board, or a member or employee acting with the authority of the Board, including:
+(1) For petition decisions and interlocutory decisions, a Board member or employee acting with the authority of the Board.
+(2) For final written decisions under 35 U.S.C. 135(d), 318(a), and 328(a), a panel of the Board.
+Business day means a day other than a Saturday, Sunday, or Federal holiday within the District of Columbia.
+Confidential information means trade secret or other confidential research, development, or commercial information.
+Final means final for the purpose of judicial review to the extent available. A decision is final only if it disposes of all necessary issues with regard to the party seeking judicial review, and does not indicate that further action is required.
+Hearing means consideration of the trial.
+Involved means an application, patent, or claim that is the subject of the proceeding.
+Judgment means a final written decision by the Board, or a termination of a proceeding.
+Motion means a request for relief other than by petition.
+Office means the United States Patent and Trademark Office.
+Panel means at least three members of the Board.
+Party means at least the petitioner and the patent owner and, in a derivation proceeding, any applicant or assignee of the involved application.
+Petition is a request that a trial be instituted.
+Petitioner means the party filing a petition requesting that a trial be instituted.
+Preliminary Proceeding begins with the filing of a petition for instituting a trial and ends with a written decision as to whether a trial will be instituted.
+Proceeding means a trial or preliminary proceeding.
+Rehearing means reconsideration.
+Trial means a contested case instituted by the Board based upon a petition. A trial begins with a written decision notifying the petitioner and patent owner of the institution of the trial. The term trial specifically includes a derivation proceeding under 35 U.S.C. 135; an inter partes review under Chapter 31 of title 35, United States Code; a post-grant review under Chapter 32 of title 35, United States Code; and a transitional business-method review under section 18 of the Leahy-Smith America Invents Act. Patent interferences are administered under part 41 and not under part 42 of this title, and therefore are not trials.
+
+## 37 C.F.R. § 42.3
+37 C.F.R. § 42.3 — Jurisdiction.
+(a) The Board may exercise exclusive jurisdiction within the Office over every involved application and patent during the proceeding, as the Board may order.
+(b) A petition to institute a trial must be filed with the Board consistent with any time period required by statute.
+
+## 37 C.F.R. § 42.4
+37 C.F.R. § 42.4 — Notice of trial.
+(a) Institution of trial. The Board institutes the trial on behalf of the Director.
+(b) Notice of a trial will be sent to every party to the proceeding. The entry of the notice institutes the trial.
+(c) The Board may authorize additional modes of notice, including:
+(1) Sending notice to another address associated with the party, or
+(2) Publishing the notice in the Official Gazette of the United States Patent and Trademark Office or the Federal Register.
+
+## 37 C.F.R. § 42.5
+37 C.F.R. § 42.5 — Conduct of the proceeding.
+(a) The Board may determine a proper course of conduct in a proceeding for any situation not specifically covered by this part and may enter non-final orders to administer the proceeding.
+(b) The Board may waive or suspend a requirement of parts 1, 41, and 42 and may place conditions on the waiver or suspension.
+(c) Times. (1) Setting times. The Board may set times by order. Times set by rule are default and may be modified by order. Any modification of times will take any applicable statutory pendency goal into account.
+(2) Extension of time. A request for an extension of time must be supported by a showing of good cause.
+(3) Late action. A late action will be excused on a showing of good cause or upon a Board decision that consideration on the merits would be in the interests of justice.
+(d) Ex parte communications. Communication regarding a specific proceeding with a Board member defined in 35 U.S.C. 6(a) is not permitted unless both parties have an opportunity to be involved in the communication.
+
+## 37 C.F.R. § 42.6
+37 C.F.R. § 42.6 — Filing of documents, including exhibits; service.
+(a) General format requirements. (1) Page size must be 8 1/2 inch × 11 inch except in the case of exhibits that require a larger size in order to preserve details of the original.
+(2) In documents, including affidavits, created for the proceeding:
+(i) Markings must be in black or must otherwise provide an equivalent dark, high-contrast image;
+(ii) 14-point, Times New Roman proportional font, with normal spacing, must be used;
+(iii) Double spacing must be used except in claim charts, headings, tables of contents, tables of authorities, indices, signature blocks, and certificates of service. Block quotations may be 1.5 spaced, but must be indented from both the left and the right margins; and
+(iv) Margins must be at least 2.5 centimeters (1 inch) on all sides.
+(3) Incorporation by reference; combined documents. Arguments must not be incorporated by reference from one document into another document. Combined motions, oppositions, replies, or other combined documents are not permitted.
+(4) Signature; identification. Documents must be signed in accordance with §§ 1.33 and 11.18(a) of this title, and should be identified by the trial number (where known).
+(b) Modes of filing. (1) Electronic filing. Unless otherwise authorized, submissions are to be made to the Board electronically via the Internet according to the parameters established by the Board and published on the Web site of the Office.
+(2)(i) Filing by means other than electronic filing. A document filed by means other than electronic filing must:
+(A) Be accompanied by a motion requesting acceptance of the submission; and
+(B) Identify a date of transmission where a party seeks a filing date other than the date of receipt at the Board.
+(ii) Mailed correspondence shall be sent to: Mail Stop PATENT BOARD, Patent Trial and Appeal Board, United States Patent and Trademark Office, PO Box 1450, Alexandria, Virginia 22313-1450.
+(c) Exhibits. Each exhibit must be filed with the first document in which it is cited except as the Board may otherwise order.
+(d) Previously filed paper. A document already in the record of the proceeding must not be filed again, not even as an exhibit or an appendix, without express Board authorization.
+(e) Service. (1) Electronic or other mode. Service may be made electronically upon agreement of the parties. Otherwise, service may be by Priority Mail Express® or by means at least as fast and reliable as Priority Mail Express®.
+(2) Simultaneous with filing. Each document filed with the Board, if not previously served, must be served simultaneously on each opposing party.
+(3) Counsel of record. If a party is represented by counsel of record in the proceeding, service must be on counsel.
+(4) Certificate of service. (i) Each document, other than an exhibit, must include a certificate of service at the end of that document. Any exhibit filed with the document may be included in the certification for the document.
+(ii) For an exhibit filed separately, a transmittal letter incorporating the certificate of service must be filed. If more than one exhibit is filed at one time, a single letter should be used for all of the exhibits filed together. The letter must state the name and exhibit number for every exhibit filed with the letter.
+(iii) The certificate of service must state:
+(A) The date and manner of service; and
+(B) The name and address of every person served.
+[77 FR 48669, Aug. 14, 2012, as amended at 79 FR 63043, Oct. 22, 2014; 80 FR 28565, May 19, 2015]
+
+## 37 C.F.R. § 42.7
+37 C.F.R. § 42.7 — Management of the record.
+(a) The Board may expunge any paper directed to a proceeding or filed while an application or patent is under the jurisdiction of the Board that is not authorized under this part or in a Board order or that is filed contrary to a Board order.
+(b) The Board may vacate or hold in abeyance any non-Board action directed to a proceeding while an application or patent is under the jurisdiction of the Board unless the action was authorized by the Board.
+
+## 37 C.F.R. § 42.8
+37 C.F.R. § 42.8 — Mandatory notices.
+(a) Each notice listed in paragraph (b) of this section must be filed with the Board:
+(1) By the petitioner, as part of the petition;
+(2) By the patent owner, or applicant in the case of derivation, within 21 days of service of the petition; or
+(3) By either party, within 21 days of a change of the information listed in paragraph (b) of this section stated in an earlier paper.
+(b) Each of the following notices must be filed:
+(1) Real party-in-interest. Identify each real party-in-interest for the party.
+(2) Related matters. Identify any other judicial or administrative matter that would affect, or be affected by, a decision in the proceeding.
+(3) Lead and back-up counsel. If the party is represented by counsel, then counsel must be identified.
+(4) Service information. Identify (if applicable):
+(i) An electronic mail address;
+(ii) A postal mailing address;
+(iii) A hand-delivery address, if different than the postal mailing address;
+(iv) A telephone number; and
+(v) A facsimile number.
+
+## 37 C.F.R. § 42.9
+37 C.F.R. § 42.9 — Action by patent owner.
+(a) Entire interest. An owner of the entire interest in an involved application or patent may act to the exclusion of the inventor ( see § 3.71 of this title).
+(b) Part interest. An owner of a part interest in the subject patent may move to act to the exclusion of an inventor or a co-owner. The motion must show the inability or refusal of an inventor or co-owner to prosecute the proceeding or other cause why it is in the interests of justice to permit the owner of a part interest to act in the trial. In granting the motion, the Board may set conditions on the actions of the parties.
+
+## 37 C.F.R. § 42.10
+37 C.F.R. § 42.10 — Counsel.
+(a) If a party is represented by counsel, the party must designate a lead counsel and at least one back-up counsel who can conduct business on behalf of the lead counsel.
+(b) A power of attorney must be filed with the designation of counsel, except the patent owner should not file an additional power of attorney if the designated counsel is already counsel of record in the subject patent or application.
+(c) The Board may recognize counsel pro hac vice during a proceeding upon a showing of good cause, subject to the condition that lead counsel be a registered practitioner and to any other conditions as the Board may impose. For example, where the lead counsel is a registered practitioner, a motion to appear pro hac vice by counsel who is not a registered practitioner may be granted upon showing that counsel is an experienced litigating attorney and has an established familiarity with the subject matter at issue in the proceeding.
+(d) A panel of the Board may disqualify counsel for cause after notice and opportunity for hearing. A decision to disqualify is not final for the purposes of judicial review until certified by the Chief Administrative Patent Judge.
+(e) Counsel may not withdraw from a proceeding before the Board unless the Board authorizes such withdrawal.
+[77 FR 48669, Aug. 14, 2012, as amended at 80 FR 28565, May 19, 2015]
+
+## 37 C.F.R. § 42.11
+37 C.F.R. § 42.11 — Duty of candor; signing papers; representations to the Board; sanctions.
+(a) Duty of candor. Parties and individuals involved in the proceeding have a duty of candor and good faith to the Office during the course of a proceeding.
+(b) Signature. Every petition, response, written motion, and other paper filed in a proceeding must comply with the signature requirements set forth in § 11.18(a) of this chapter. The Board may expunge any unsigned submission unless the omission is promptly corrected after being called to the counsel's or party's attention.
+(c) Representations to the Board. By presenting to the Board a petition, response, written motion, or other paper—whether by signing, filing, submitting, or later advocating it—an attorney, registered practitioner, or unrepresented party attests to compliance with the certification requirements under § 11.18(b)(2) of this chapter.
+(d) Sanctions —(1) In general. If, after notice and a reasonable opportunity to respond, the Board determines that paragraph (c) of this section has been violated, the Board may impose an appropriate sanction on any attorney, registered practitioner, or party that violated the rule or is responsible for the violation.
+(2) Motion for sanctions. A motion for sanctions must be made separately from any other motion and must describe the specific conduct that allegedly violates paragraph (c) of this section. The motion must be authorized by the Board under § 42.20 prior to filing the motion. At least 21 days prior to seeking authorization to file a motion for sanctions, the moving party must serve the other party with the proposed motion. A motion for sanctions must not be filed or be presented to the Board if the challenged paper, claim, defense, contention, or denial is withdrawn or appropriately corrected within 21 days after service of such motion or within another time the Board sets. If warranted, the Board may award to the prevailing party the reasonable expenses, including attorney's fees, incurred for the motion.
+(3) On the Board's initiative. On its own, the Board may order an attorney, registered practitioner, or party to show cause why conduct specifically described in the order has not violated paragraph (c) of this section and why a specific sanction authorized by the Board should not be imposed.
+(4) Nature of a sanction. A sanction imposed under this rule must be limited to what suffices to deter repetition of the conduct or comparable conduct by others similarly situated and should be consistent with § 42.12.
+(5) Requirements for an order. An order imposing a sanction must describe the sanctioned conduct and explain the basis for the sanction.
+[81 FR 18765, Apr. 1, 2016]
+
+## 37 C.F.R. § 42.12
+37 C.F.R. § 42.12 — Sanctions.
+(a) The Board may impose a sanction against a party for misconduct, including:
+(1) Failure to comply with an applicable rule or order in the proceeding;
+(2) Advancing a misleading or frivolous argument or request for relief;
+(3) Misrepresentation of a fact;
+(4) Engaging in dilatory tactics;
+(5) Abuse of discovery;
+(6) Abuse of process; or
+(7) Any other improper use of the proceeding, including actions that harass or cause unnecessary delay or an unnecessary increase in the cost of the proceeding.
+(b) Sanctions include entry of one or more of the following:
+(1) An order holding facts to have been established in the proceeding;
+(2) An order expunging or precluding a party from filing a paper;
+(3) An order precluding a party from presenting or contesting a particular issue;
+(4) An order precluding a party from requesting, obtaining, or opposing discovery;
+(5) An order excluding evidence;
+(6) An order providing for compensatory expenses, including attorney fees;
+(7) An order requiring terminal disclaimer of patent term; or
+(8) Judgment in the trial or dismissal of the petition.
+
+## 37 C.F.R. § 42.13
+37 C.F.R. § 42.13 — Citation of authority.
+(a) For any United States Supreme Court decision, citation to the United States Reports is preferred.
+(b) For any decision other than a United States Supreme Court decision, citation to the West Reporter System is preferred.
+(c) Citations to authority must include pinpoint citations whenever a specific holding or portion of an authority is invoked.
+(d) Non-binding authority should be used sparingly. If the authority is not an authority of the Office and is not reproduced in the United States Reports or the West Reporter System, a copy of the authority should be provided.
+
+## 37 C.F.R. § 42.14
+37 C.F.R. § 42.14 — Public availability.
+The record of a proceeding, including documents and things, shall be made available to the public, except as otherwise ordered. A party intending a document or thing to be sealed shall file a motion to seal concurrent with the filing of the document or thing to be sealed. The document or thing shall be provisionally sealed on receipt of the motion and remain so pending the outcome of the decision on the motion.
+
+## 37 C.F.R. § 42.15
+37 C.F.R. § 42.15 — Fees.
+(a) On filing a petition for inter partes review of a patent, payment of the following fees are due:
+(1) Inter Partes Review request fee: $19,000.00
+(2) Inter Partes Review Post-Institution fee: $22,500.00
+(3) In addition to the Inter Partes Review request fee, for requesting a review of each claim in excess of 20: $375.00
+(4) In addition to the Inter Partes Post-Institution request fee, for requesting a review of each claim in excess of 20: $750.00
+(b) On filing a petition for post-grant review or covered business method patent review of a patent, payment of the following fees are due:
+(1) Post-Grant or Covered Business Method Patent Review request fee: $20,000.00
+(2) Post-Grant or Covered Business Method Patent Review Post-Institution fee: $27,500.00
+(3) In addition to the Post-Grant or Covered Business Method Patent Review request fee, for requesting a review of each claim in excess of 20: $475.00
+(4) In addition to the Post-Grant or Covered Business Method Patent Review Post-Institution fee, for requesting a review of each claim in excess of 20: $1,050.00
+(c) On the filing of a petition for a derivation proceeding, payment of the following fee is due:
+(1) Derivation petition fee: $420.00
+(2) [Reserved]
+(d) Any request requiring payment of a fee under this part, including a written request to make a settlement agreement available: $420.00
+(e) Fee for non-registered practitioners to appear pro hac vice before the Patent Trial and Appeal Board: $250.00
+[85 FR 46993, Aug. 3, 2020]
+
+## 37 C.F.R. § 42.20
+37 C.F.R. § 42.20 — Generally.
+(a) Relief. Relief, other than a petition requesting the institution of a trial, must be requested in the form of a motion.
+(b) Prior authorization. A motion will not be entered without Board authorization. Authorization may be provided in an order of general applicability or during the proceeding.
+(c) Burden of proof. The moving party has the burden of proof to establish that it is entitled to the requested relief.
+(d) Briefing. The Board may order briefing on any issue involved in the trial.
+
+## 37 C.F.R. § 42.21
+37 C.F.R. § 42.21 — Notice of basis for relief.
+(a) Notice of request for relief. The Board may require a party to file a notice stating the relief it requests and the basis for its entitlement to relief. A notice must include sufficient detail to place the Board and each opponent on notice of the precise relief requested. A notice is not evidence except as an admission by a party-opponent.
+(b) Filing and service. The Board may set the times and conditions for filing and serving notices required under this section. The Board may provide for the notice filed with the Board to be maintained in confidence for a limited time.
+(c) Effect. If a notice under paragraph (a) of this section is required:
+(1) A failure to state a sufficient basis for relief may result in a denial of the relief requested;
+(2) A party will be limited to filing motions consistent with the notice; and
+(3) Ambiguities in the notice will be construed against the party.
+(d) Correction. A party may move to correct its notice. The motion should be filed promptly after the party becomes aware of the basis for the correction. A correction filed after the time set for filing notices will only be entered if entry would serve the interests of justice.
+
+## 37 C.F.R. § 42.22
+37 C.F.R. § 42.22 — Content of petitions and motions.
+(a) Each petition or motion must be filed as a separate paper and must include:
+(1) A statement of the precise relief requested; and
+(2) A full statement of the reasons for the relief requested, including a detailed explanation of the significance of the evidence including material facts, and the governing law, rules, and precedent.
+(b) Relief requested. Where a rule in part 1 of this title ordinarily governs the relief sought, the petition or motion must make any showings required under that rule in addition to any showings required in this part.
+(c) Statement of material facts. Each petition or motion may include a statement of material fact. Each material fact preferably shall be set forth as a separately numbered sentence with specific citations to the portions of the record that support the fact.
+(d) The Board may order additional showings or explanations as a condition for authorizing a motion ( see § 42.20(b)).
+
+## 37 C.F.R. § 42.23
+37 C.F.R. § 42.23 — Oppositions, replies, and sur-replies.
+(a) Oppositions, replies, and sur-replies must comply with the content requirements for motions and, if the paper to which the opposition, reply, or sur-reply is responding contains a statement of material fact, must include a listing of facts that are admitted, denied, or cannot be admitted or denied. Any material fact not specifically denied may be considered admitted.
+(b) All arguments for the relief requested in a motion must be made in the motion. A reply may only respond to arguments raised in the corresponding opposition, patent owner preliminary response, patent owner response, or decision on institution. A sur-reply may only respond to arguments raised in the corresponding reply and may not be accompanied by new evidence other than deposition transcripts of the cross-examination of any reply witness.
+[85 FR 79128, Dec. 9, 2020]
+
+## 37 C.F.R. § 42.24
+37 C.F.R. § 42.24 — Type-volume or page limits for petitions, motions, oppositions, replies, and sur-replies.
+(a) Petitions and motions. (1) The following word counts or page limits for petitions and motions apply and include any statement of material facts to be admitted or denied in support of the petition or motion. The word count or page limit does not include a table of contents, a table of authorities, mandatory notices under § 42.8, a certificate of service or word count, or appendix of exhibits or claim listing.
+(i) Petition requesting inter partes review: 14,000 words.
+(ii) Petition requesting post-grant review: 18,700 words.
+(iii) Petition requesting covered business method patent review: 18,700 words.
+(iv) Petition requesting derivation proceeding: 14,000 words.
+(v) Motions (excluding motions to amend): 15 pages.
+(vi) Motions to Amend: 25 pages.
+(2) Petitions to institute a trial must comply with the stated word counts but may be accompanied by a motion to waive the word counts. The petitioner must show in the motion how a waiver of the word counts is in the interests of justice and must append a copy of proposed petition exceeding the word count to the motion. If the motion is not granted, the proposed petition exceeding the word count may be expunged or returned. Any other motion to waive word counts or page limits must be granted in advance of filing a motion, opposition, or reply for which the waiver is necessary.
+(b) Patent owner responses and oppositions. The word counts or page limits set forth in this paragraph (b) do not include a listing of facts which are admitted, denied, or cannot be admitted or denied.
+(1) The word counts for a patent owner preliminary response to petition are the same as the word counts for the petition.
+(2) The word counts for a patent owner response to petition are the same as the word counts for the petition.
+(3) The page limits for oppositions are the same as those for corresponding motions.
+(c) Replies and sur-replies. The following word counts or page limits for replies and sur-replies apply and include any statement of facts in support of the reply. The word counts or page limits do not include a table of contents; a table of authorities; a listing of facts that are admitted, denied, or cannot be admitted or denied; a certificate of service or word count; or an appendix of exhibits.
+(1) Replies to patent owner responses to petitions: 5,600 words.
+(2) Replies to oppositions (excluding replies to oppositions to motions to amend): 5 pages.
+(3) Replies to oppositions to motions to amend: 12 pages.
+(4) Sur-replies to replies to patent owner responses to petitions: 5,600 words.
+(d) Certification. Any paper whose length is specified by type-volume limits must include a certification stating the number of words in the paper. A party may rely on the word count of the word-processing system used to prepare the paper.
+[81 FR 18765, Apr. 1, 2016, as amended at 81 FR 24703, Apr. 27, 2016; 85 FR 79128, Dec. 9, 2020]
+
+## 37 C.F.R. § 42.25
+37 C.F.R. § 42.25 — Default filing times.
+(a) A motion may only be filed according to a schedule set by the Board. The default times for acting are:
+(1) An opposition is due one month after service of the motion; and
+(2) A reply is due one month after service of the opposition.
+(b) A party should seek relief promptly after the need for relief is identified. Delay in seeking relief may justify a denial of relief sought.
+
+## 37 C.F.R. § 42.51
+37 C.F.R. § 42.51 — Discovery.
+(a) Mandatory initial disclosures.
+(1) With agreement. Parties may agree to mandatory discovery requiring the initial disclosures set forth in the Office Patent Trial Practice Guide.
+(i) The parties must submit any agreement reached on initial disclosures by no later than the filing of the patent owner preliminary response or the expiration of the time period for filing such a response. The initial disclosures of the parties shall be filed as exhibits.
+(ii) Upon the institution of a trial, parties may automatically take discovery of the information identified in the initial disclosures.
+(2) Without agreement. Where the parties fail to agree to the mandatory discovery set forth in paragraph (a)(1), a party may seek such discovery by motion.
+(b) Limited discovery. A party is not entitled to discovery except as provided in paragraph (a) of this section, or as otherwise authorized in this subpart.
+(1) Routine discovery. Except as the Board may otherwise order:
+(i) Unless previously served or otherwise by agreement of the parties, any exhibit cited in a paper or in testimony must be served with the citing paper or testimony.
+(ii) Cross examination of affidavit testimony prepared for the proceeding is authorized within such time period as the Board may set.
+(iii) Unless previously served, a party must serve relevant information that is inconsistent with a position advanced by the party during the proceeding concurrent with the filing of the documents or things that contains the inconsistency. This requirement does not make discoverable anything otherwise protected by legally recognized privileges such as attorney-client or attorney work product. This requirement extends to inventors, corporate officers, and persons involved in the preparation or filing of the documents or things.
+(2) Additional discovery. (i) The parties may agree to additional discovery between themselves. Where the parties fail to agree, a party may move for additional discovery. The moving party must show that such additional discovery is in the interests of justice, except in post-grant reviews where additional discovery is limited to evidence directly related to factual assertions advanced by either party in the proceeding ( see § 42.224). The Board may specify conditions for such additional discovery.
+(ii) When appropriate, a party may obtain production of documents and things during cross examination of an opponent's witness or during authorized compelled testimony under § 42.52.
+(c) Production of documents. Except as otherwise ordered by the Board, a party producing documents and things shall either provide copies to the opposing party or make the documents and things available for inspection and copying at a reasonable time and location in the United States.
+[77 FR 48669, Aug. 14, 2012, as amended at 80 FR 28565, May 19, 2015]
+
+## 37 C.F.R. § 42.52
+37 C.F.R. § 42.52 — Compelling testimony and production.
+(a) Authorization required. A party seeking to compel testimony or production of documents or things must file a motion for authorization. The motion must describe the general relevance of the testimony, document, or thing, and must:
+(1) In the case of testimony, identify the witness by name or title; and
+(2) In the case of a document or thing, the general nature of the document or thing.
+(b) Outside the United States. For testimony or production sought outside the United States, the motion must also:
+(1) In the case of testimony. (i) Identify the foreign country and explain why the party believes the witness can be compelled to testify in the foreign country, including a description of the procedures that will be used to compel the testimony in the foreign country and an estimate of the time it is expected to take to obtain the testimony; and
+(ii) Demonstrate that the party has made reasonable efforts to secure the agreement of the witness to testify in the United States but has been unsuccessful in obtaining the agreement, even though the party has offered to pay the travel expenses of the witness to testify in the United States.
+(2) In the case of production of a document or thing. (i) Identify the foreign country and explain why the party believes production of the document or thing can be compelled in the foreign country, including a description of the procedures that will be used to compel production of the document or thing in the foreign country and an estimate of the time it is expected to take to obtain production of the document or thing; and
+(ii) Demonstrate that the party has made reasonable efforts to obtain the agreement of the individual or entity having possession, custody, or control of the document or thing to produce the document or thing in the United States but has been unsuccessful in obtaining that agreement, even though the party has offered to pay the expenses of producing the document or thing in the United States.
+
+## 37 C.F.R. § 42.53
+37 C.F.R. § 42.53 — Taking testimony.
+(a) Form. Uncompelled direct testimony must be submitted in the form of an affidavit. All other testimony, including testimony compelled under 35 U.S.C. 24, must be in the form of a deposition transcript. Parties may agree to video-recorded testimony, but may not submit such testimony without prior authorization of the Board. In addition, the Board may authorize or require live or video-recorded testimony.
+(b) Time and location. (1) Uncompelled direct testimony may be taken at any time to support a petition, motion, opposition, or reply; otherwise, testimony may only be taken during a testimony period set by the Board.
+(2) Except as the Board otherwise orders, during the testimony period, deposition testimony may be taken at any reasonable time and location within the United States before any disinterested official authorized to administer oaths at that location.
+(3) Uncompelled deposition testimony outside the United States may only be taken upon agreement of the parties or as the Board specifically directs.
+(c) Duration. (1) Unless stipulated by the parties or ordered by the Board, direct examination, cross-examination, and redirect examination for compelled deposition testimony shall be subject to the following time limits: Seven hours for direct examination, four hours for cross-examination, and two hours for redirect examination.
+(2) Unless stipulated by the parties or ordered by the Board, cross-examination, redirect examination, and re-cross examination for uncompelled direct testimony shall be subject to the follow time limits: Seven hours for cross-examination, four hours for redirect examination, and two hours for re-cross examination.
+(d) Notice of deposition. (1) Prior to the taking of deposition testimony, all parties to the proceeding must agree on the time and place for taking testimony. If the parties cannot agree, the party seeking the testimony must initiate a conference with the Board to set a time and place.
+(2) Cross-examination should ordinarily take place after any supplemental evidence relating to the direct testimony has been filed and more than a week before the filing date for any paper in which the cross-examination testimony is expected to be used. A party requesting cross-examination testimony of more than one witness may choose the order in which the witnesses are to be cross-examined.
+(3) In the case of direct deposition testimony, at least three business days prior to the conference in paragraph (d)(1) of this section, or if there is no conference, at least ten days prior to the deposition, the party seeking the direct testimony must serve:
+(i) A list and copy of each document under the party's control and on which the party intends to rely; and
+(ii) A list of, and proffer of reasonable access to, anything other than a document under the party's control and on which the party intends to rely.
+(4) The party seeking the deposition must file a notice of the deposition at least ten business days before a deposition.
+(5) Scope and content —(i) For direct deposition testimony, the notice limits the scope of the testimony and must list:
+(A) The time and place of the deposition;
+(B) The name and address of the witness;
+(C) A list of the exhibits to be relied upon during the deposition; and
+(D) A general description of the scope and nature of the testimony to be elicited.
+(ii) For cross-examination testimony, the scope of the examination is limited to the scope of the direct testimony.
+(iii) The notice must list the time and place of the deposition.
+(iv) Where an additional party seeks to take direct testimony of a third party witness at the time and place noticed in paragraph (d)(5) of this section, the additional party must provide a counter notice that lists the exhibits to be relied upon in the deposition and a general description of the scope and nature of the testimony to be elicited.
+(6) Motion to quash —Objection to a defect in the notice is waived unless the objecting party promptly seeks authorization to file a motion to quash.
+(e) Deposition in a foreign language. If an interpreter will be used during the deposition, the party calling the witness must initiate a conference with the Board at least five business days before the deposition.
+(f) Manner of taking deposition testimony. (1) Before giving deposition testimony, each witness shall be duly sworn according to law by the officer before whom the deposition is to be taken. The officer must be authorized to take testimony under 35 U.S.C. 23.
+(2) The testimony shall be taken with any questions and answers recorded in their regular order by the officer, or by some other disinterested person in the presence of the officer, unless the presence of the officer is waived on the record by agreement of all parties.
+(3) Any exhibits used during the deposition must be numbered as required by § 42.63(c), and must, if not previously served, be served at the deposition. Exhibits objected to shall be accepted pending a decision on the objection.
+(4) All objections made at the time of the deposition to the qualifications of the officer taking the deposition, the manner of taking it, the evidence presented, the conduct of any party, and any other objection to the deposition shall be noted on the record by the officer.
+(5) When the testimony has been transcribed, the witness shall read and sign (in the form of an affidavit) a transcript of the deposition unless:
+(i) The parties otherwise agree in writing;
+(ii) The parties waive reading and signature by the witness on the record at the deposition; or
+(iii) The witness refuses to read or sign the transcript of the deposition.
+(6) The officer shall prepare a certified transcript by attaching a certificate in the form of an affidavit signed and sealed by the officer to the transcript of the deposition. Unless the parties waive any of the following requirements, in which case the certificate shall so state, the certificate must state:
+(i) The witness was duly sworn by the officer before commencement of testimony by the witness;
+(ii) The transcript is a true record of the testimony given by the witness;
+(iii) The name of the person who recorded the testimony, and if the officer did not record it, whether the testimony was recorded in the presence of the officer;
+(iv) The presence or absence of any opponent;
+(v) The place where the deposition was taken and the day and hour when the deposition began and ended;
+(vi) The officer has no disqualifying interest, personal or financial, in a party; and
+(vii) If a witness refuses to read or sign the transcript, the circumstances under which the witness refused.
+(7) Except where the parties agree otherwise, the proponent of the testimony must arrange for providing a copy of the transcript to all other parties. The testimony must be filed as an exhibit.
+(8) Any objection to the content, form, or manner of taking the deposition, including the qualifications of the officer, is waived unless made on the record during the deposition and preserved in a timely filed motion to exclude.
+(g) Costs. Except as the Board may order or the parties may agree in writing, the proponent of the direct testimony shall bear all costs associated with the testimony, including the reasonable costs associated with making the witness available for the cross-examination.
+[77 FR 48669, Aug. 14, 2012, as amended at 80 FR 28565, May 19, 2015]
+
+## 37 C.F.R. § 42.54
+37 C.F.R. § 42.54 — Protective order.
+(a) A party may file a motion to seal where the motion to seal contains a proposed protective order, such as the default protective order set forth in the Office Patent Trial Practice Guide. The motion must include a certification that the moving party has in good faith conferred or attempted to confer with other affected parties in an effort to resolve the dispute. The Board may, for good cause, issue an order to protect a party or person from disclosing confidential information, including, but not limited to, one or more of the following:
+(1) Forbidding the disclosure or discovery;
+(2) Specifying terms, including time and place, for the disclosure or discovery;
+(3) Prescribing a discovery method other than the one selected by the party seeking discovery;
+(4) Forbidding inquiry into certain matters, or limiting the scope of disclosure or discovery to certain matters;
+(5) Designating the persons who may be present while the discovery is conducted;
+(6) Requiring that a deposition be sealed and opened only by order of the Board;
+(7) Requiring that a trade secret or other confidential research, development, or commercial information not be revealed or be revealed only in a specified way; and
+(8) Requiring that the parties simultaneously file specified documents or information in sealed envelopes, to be opened as the Board directs.
+(b) [Reserved]
+
+## 37 C.F.R. § 42.55
+37 C.F.R. § 42.55 — Confidential information in a petition.
+A petitioner filing confidential information with a petition may, concurrent with the filing of the petition, file a motion to seal with a proposed protective order as to the confidential information. The institution of the requested trial will constitute a grant of the motion to seal unless otherwise ordered by the Board.
+(a) Default protective order. Where a motion to seal requests entry of the default protective order set forth in the Office Patent Trial Practice Guide, the petitioner must file, but need not serve, the confidential information under seal. The patent owner may only access the filed sealed information prior to the institution of the trial by agreeing to the terms of the default protective order or obtaining relief from the Board.
+(b) Protective orders other than default protective order. Where a motion to seal requests entry of a protective order other than the default protective order, the petitioner must file, but need not serve, the confidential information under seal. The patent owner may only access the sealed confidential information prior to the institution of the trial by:
+(1) agreeing to the terms of the protective order requested by the petitioner;
+(2) agreeing to the terms of a protective order that the parties file jointly; or
+(3) obtaining entry of a protective order ( e.g., the default protective order).
+
+## 37 C.F.R. § 42.56
+37 C.F.R. § 42.56 — Expungement of confidential information.
+After denial of a petition to institute a trial or after final judgment in a trial, a party may file a motion to expunge confidential information from the record.
+
+## 37 C.F.R. § 42.57
+37 C.F.R. § 42.57 — Privilege for patent practitioners.
+(a) Privileged communications. A communication between a client and a USPTO patent practitioner or a foreign jurisdiction patent practitioner that is reasonably necessary and incident to the scope of the practitioner's authority shall receive the same protections of privilege under Federal law as if that communication were between a client and an attorney authorized to practice in the United States, including all limitations and exceptions.
+(b) Definitions. The term “USPTO patent practitioner” means a person who has fulfilled the requirements to practice patent matters before the United States Patent and Trademark Office under § 11.7 of this chapter. “Foreign jurisdiction patent practitioner” means a person who is authorized to provide legal advice on patent matters in a foreign jurisdiction, provided that the jurisdiction establishes professional qualifications and the practitioner satisfies them. For foreign jurisdiction practitioners, this rule applies regardless of whether that jurisdiction provides privilege or an equivalent under its laws.
+(c) Scope of coverage. USPTO patent practitioners and foreign jurisdiction patent practitioners shall receive the same treatment as attorneys on all issues affecting privilege or waiver, such as communications with employees or assistants of the practitioner and communications between multiple practitioners.
+[82 FR 51575, Nov. 7, 2017]
+
+## 37 C.F.R. § 42.61
+37 C.F.R. § 42.61 — Admissibility.
+(a) Evidence that is not taken, sought, or filed in accordance with this subpart is not admissible.
+(b) Records of the Office. Certification is not necessary as a condition to admissibility when the evidence to be submitted is a record of the Office to which all parties have access.
+(c) Specification and drawings. A specification or drawing of a United States patent application or patent is admissible as evidence only to prove what the specification or drawing describes. If there is data in the specification or a drawing upon which a party intends to rely to prove the truth of the data, an affidavit by an individual having first-hand knowledge of how the data was generated must be filed.
+
+## 37 C.F.R. § 42.62
+37 C.F.R. § 42.62 — Applicability of the Federal rules of evidence.
+(a) Generally. Except as otherwise provided in this subpart, the Federal Rules of Evidence shall apply to a proceeding.
+(b) Exclusions. Those portions of the Federal Rules of Evidence relating to criminal proceedings, juries, and other matters not relevant to proceedings under this subpart shall not apply.
+(c) Modifications in terminology. Unless otherwise clear from context, the following terms of the Federal Rules of Evidence shall be construed as indicated:
+Appellate court means United States Court of Appeals for the Federal Circuit.
+Civil action, civil proceeding, and action mean a proceeding before the Board under part 42.
+Courts of the United States, U.S. Magistrate, court, trial court, trier of fact, and judge mean Board.
+Hearing means, as defined in Federal Rule of Evidence 804(a)(5), the time for taking testimony.
+Judicial notice means official notice.
+Trial or hearing in Federal Rule of Evidence 807 means the time for taking testimony.
+(d) In determining foreign law, the Board may consider any relevant material or source, including testimony, whether or not submitted by a party or admissible under the Federal Rules of Evidence.
+
+## 37 C.F.R. § 42.63
+37 C.F.R. § 42.63 — Form of evidence.
+(a) Exhibits required. Evidence consists of affidavits, transcripts of depositions, documents, and things. All evidence must be filed in the form of an exhibit.
+(b) Translation required. When a party relies on a document or is required to produce a document in a language other than English, a translation of the document into English and an affidavit attesting to the accuracy of the translation must be filed with the document.
+(c) Exhibit numbering. Each party's exhibits must be uniquely numbered sequentially in a range the Board specifies. For the petitioner, the range is 1001-1999, and for the patent owner, the range is 2001-2999.
+(d) Exhibit format. An exhibit must conform with the requirements for papers in § 42.6 and the requirements of this paragraph.
+(1) Each exhibit must have an exhibit label.
+(i) An exhibit filed with the petition must include the petitioner's name followed by a unique exhibit number.
+(ii) For exhibits not filed with the petition, the exhibit label must include the party's name followed by a unique exhibit number, the names of the parties, and the trial number.
+(2) When the exhibit is a paper:
+(i) Each page must be uniquely numbered in sequence; and
+(ii) The exhibit label must be affixed to the lower right corner of the first page of the exhibit without obscuring information on the first page or, if obscuring is unavoidable, affixed to a duplicate first page.
+(e) Exhibit list. Each party must maintain an exhibit list with the exhibit number and a brief description of each exhibit. If the exhibit is not filed, the exhibit list should note that fact. A current exhibit list must be served whenever evidence is served and the current exhibit list must be filed when filing exhibits.
+
+## 37 C.F.R. § 42.64
+37 C.F.R. § 42.64 — Objection; motion to exclude.
+(a) Deposition evidence. An objection to the admissibility of deposition evidence must be made during the deposition. Evidence to cure the objection must be provided during the deposition, unless the parties to the deposition stipulate otherwise on the deposition record.
+(b) Other evidence. For evidence other than deposition evidence:
+(1) Objection. Any objection to evidence submitted during a preliminary proceeding must be filed within ten business days of the institution of the trial. Once a trial has been instituted, any objection must be filed within five business days of service of evidence to which the objection is directed. The objection must identify the grounds for the objection with sufficient particularity to allow correction in the form of supplemental evidence.
+(2) Supplemental evidence. The party relying on evidence to which an objection is timely served may respond to the objection by serving supplemental evidence within ten business days of service of the objection.
+(c) Motion to exclude. A motion to exclude evidence must be filed to preserve any objection. The motion must identify the objections in the record in order and must explain the objections. The motion may be filed without prior authorization from the Board.
+[77 FR 48669, Aug. 14, 2012, as amended at 80 FR 28565, May 19, 2015]
+
+## 37 C.F.R. § 42.65
+37 C.F.R. § 42.65 — Expert testimony; tests and data.
+(a) Expert testimony that does not disclose the underlying facts or data on which the opinion is based is entitled to little or no weight. Testimony on United States patent law or patent examination practice will not be admitted.
+(b) If a party relies on a technical test or data from such a test, the party must provide an affidavit explaining:
+(1) Why the test or data is being used;
+(2) How the test was performed and the data was generated;
+(3) How the data is used to determine a value;
+(4) How the test is regarded in the relevant art; and
+(5) Any other information necessary for the Board to evaluate the test and data.
+
+## 37 C.F.R. § 42.70
+37 C.F.R. § 42.70 — Oral argument.
+(a) Request for oral argument. A party may request oral argument on an issue raised in a paper at a time set by the Board. The request must be filed as a separate paper and must specify the issues to be argued.
+(b) Demonstrative exhibits must be served at least seven business days before the oral argument and filed no later than the time of the oral argument.
+[77 FR 48669, Aug. 14, 2012, as amended at 81 FR 18765, Apr. 1, 2016]
+
+## 37 C.F.R. § 42.71
+37 C.F.R. § 42.71 — Decision on petitions or motions.
+(a) Order of consideration. The Board may take up petitions or motions for decisions in any order, may grant, deny, or dismiss any petition or motion, and may enter any appropriate order.
+(b) Interlocutory decisions. A decision on a motion without a judgment is not final for the purposes of judicial review. If a decision is not a panel decision, the party may request that a panel rehear the decision. When rehearing a non-panel decision, a panel will review the decision for an abuse of discretion. A panel decision on an issue will govern the trial.
+(c) Petition decisions. A decision by the Board on whether to institute a trial is final and nonappealable. A party may request rehearing on a decision by the Board on whether to institute a trial pursuant to paragraph (d) of this section. When rehearing a decision on petition, a panel will review the decision for an abuse of discretion.
+(d) Rehearing. A party dissatisfied with a decision may file a single request for rehearing without prior authorization from the Board. The burden of showing a decision should be modified lies with the party challenging the decision. The request must specifically identify all matters the party believes the Board misapprehended or overlooked, and the place where each matter was previously addressed in a motion, an opposition, a reply, or a sur-reply. A request for rehearing does not toll times for taking action. Any request must be filed:
+(1) Within 14 days of the entry of a non-final decision or a decision to institute a trial as to at least one ground of unpatentability asserted in the petition; or
+(2) Within 30 days of the entry of a final decision or a decision not to institute a trial.
+[77 FR 48669, Aug. 14, 2012, as amended at 80 FR 28565, May 19, 2015; 85 FR 79129, Dec. 9, 2020]
+
+## 37 C.F.R. § 42.72
+37 C.F.R. § 42.72 — Termination of trial.
+The Board may terminate a trial without rendering a final written decision, where appropriate, including where the trial is consolidated with another proceeding or pursuant to a joint request under 35 U.S.C. 317(a) or 327(a).
+
+## 37 C.F.R. § 42.73
+37 C.F.R. § 42.73 — Judgment.
+(a) A judgment, except in the case of a termination, disposes of all issues that were, or by motion reasonably could have been, raised and decided.
+(b) Request for adverse judgment. A party may request judgment against itself at any time during a proceeding. Actions construed to be a request for adverse judgment include:
+(1) Disclaimer of the involved application or patent;
+(2) Cancellation or disclaimer of a claim such that the party has no remaining claim in the trial;
+(3) Concession of unpatentability or derivation of the contested subject matter; and
+(4) Abandonment of the contest.
+(c) Recommendation. The judgment may include a recommendation for further action by an examiner or by the Director.
+(d) Estoppel. (1) Petitioner other than in derivation proceeding. A petitioner, or the real party in interest or privy of the petitioner, is estopped in the Office from requesting or maintaining a proceeding with respect to a claim for which it has obtained a final written decision on patentability in an inter partes review, post-grant review, or a covered business method patent review, on any ground that the petitioner raised or reasonably could have raised during the trial, except that estoppel shall not apply to a petitioner, or to the real party in interest or privy of the petitioner who has settled under 35 U.S.C. 317 or 327.
+(2) In a derivation, the losing party who could have properly moved for relief on an issue, but did not so move, may not take action in the Office after the judgment that is inconsistent with that party's failure to move, except that a losing party shall not be estopped with respect to any contested subject matter for which that party was awarded a favorable judgment.
+(3) Patent applicant or owner. A patent applicant or owner is precluded from taking action inconsistent with the adverse judgment, including obtaining in any patent:
+(i) A claim that is not patentably distinct from a finally refused or canceled claim; or
+(ii) An amendment of a specification or of a drawing that was denied during the trial proceeding, but this provision does not apply to an application or patent that has a different written description.
+
+## 37 C.F.R. § 42.74
+37 C.F.R. § 42.74 — Settlement.
+(a) Board role. The parties may agree to settle any issue in a proceeding, but the Board is not a party to the settlement and may independently determine any question of jurisdiction, patentability, or Office practice.
+(b) Agreements in writing. Any agreement or understanding between the parties made in connection with, or in contemplation of, the termination of a proceeding shall be in writing and a true copy shall be filed with the Board before the termination of the trial.
+(c) Request to keep separate. A party to a settlement may request that the settlement be treated as business confidential information and be kept separate from the files of an involved patent or application. The request must be filed with the settlement. If a timely request is filed, the settlement shall only be available:
+(1) To a Government agency on written request to the Board; or
+(2) To any other person upon written request to the Board to make the settlement agreement available, along with the fee specified in § 42.15(d) and on a showing of good cause.
+
+## 37 C.F.R. § 42.80
+37 C.F.R. § 42.80 — Certificate.
+After the Board issues a final written decision in an inter partes review, post-grant review, or covered business method patent review and the time for appeal has expired or any appeal has terminated, the Office will issue and publish a certificate canceling any claim of the patent finally determined to be unpatentable, confirming any claim of the patent determined to be patentable, and incorporating in the patent any new or amended claim determined to be patentable by operation of the certificate.
+
+## 37 C.F.R. § 42.100
+37 C.F.R. § 42.100 — Procedure; pendency.
+(a) An inter partes review is a trial subject to the procedures set forth in subpart A of this part.
+(b) In an inter partes review proceeding, a claim of a patent, or a claim proposed in a motion to amend under § 42.121, shall be construed using the same claim construction standard that would be used to construe the claim in a civil action under 35 U.S.C. 282(b), including construing the claim in accordance with the ordinary and customary meaning of such claim as understood by one of ordinary skill in the art and the prosecution history pertaining to the patent. Any prior claim construction determination concerning a term of the claim in a civil action, or a proceeding before the International Trade Commission, that is timely made of record in the inter partes review proceeding will be considered.
+(c) An inter partes review proceeding shall be administered such that pendency before the Board after institution is normally no more than one year. The time can be extended by up to six months for good cause by the Chief Administrative Patent Judge, or adjusted by the Board in the case of joinder.
+[77 FR 48727, Aug. 14, 2012, as amended at 81 FR 18766, Apr. 1, 2016; 83 FR 51358, Oct. 11, 2018]
+
+## 37 C.F.R. § 42.101
+37 C.F.R. § 42.101 — Who may petition for inter partes review.
+A person who is not the owner of a patent may file with the Office a petition to institute an inter partes review of the patent unless:
+(a) Before the date on which the petition for review is filed, the petitioner or real party-in-interest filed a civil action challenging the validity of a claim of the patent;
+(b) The petition requesting the proceeding is filed more than one year after the date on which the petitioner, the petitioner's real party-in-interest, or a privy of the petitioner is served with a complaint alleging infringement of the patent; or
+(c) The petitioner, the petitioner's real party-in-interest, or a privy of the petitioner is estopped from challenging the claims on the grounds identified in the petition.
+
+## 37 C.F.R. § 42.102
+37 C.F.R. § 42.102 — Time for filing.
+(a) A petition for inter partes review of a patent must be filed after the later of the following dates, where applicable:
+(1) If the patent is a patent described in section 3(n)(1) of the Leahy-Smith America Invents Act, the date that is nine months after the date of the grant of the patent;
+(2) If the patent is a patent that is not described in section 3(n)(1) of the Leahy-Smith American Invents Act, the date of the grant of the patent; or
+(3) If a post-grant review is instituted as set forth in subpart C of this part, the date of the termination of such post-grant review.
+(b) [Reserved]
+[77 FR 48727, Aug. 14, 2012, as amended at 78 FR 17874, Mar. 25, 2013; 84 FR 51982, Oct. 1, 2019]
+
+## 37 C.F.R. § 42.103
+37 C.F.R. § 42.103 — Inter partes review fee.
+(a) An inter partes review fee set forth in § 42.15(a) must accompany the petition. (b) No filing date will be accorded to the petition until full payment is received.
+
+## 37 C.F.R. § 42.104
+37 C.F.R. § 42.104 — Content of petition.
+In addition to the requirements of §§ 42.6, 42.8, 42.22, and 42.24, the petition must set forth:
+(a) Grounds for standing. The petitioner must certify that the patent for which review is sought is available for inter partes review and that the petitioner is not barred or estopped from requesting an inter partes review challenging the patent claims on the grounds identified in the petition.
+(b) Identification of challenge. Provide a statement of the precise relief requested for each claim challenged. The statement must identify the following:
+(1) The claim;
+(2) The specific statutory grounds under 35 U.S.C. 102 or 103 on which the challenge to the claim is based and the patents or printed publications relied upon for each ground;
+(3) How the challenged claim is to be construed. Where the claim to be construed contains a means-plus-function or step-plus-function limitation as permitted under 35 U.S.C. 112(f), the construction of the claim must identify the specific portions of the specification that describe the structure, material, or acts corresponding to each claimed function;
+(4) How the construed claim is unpatentable under the statutory grounds identified in paragraph (b)(2) of this section. The petition must specify where each element of the claim is found in the prior art patents or printed publications relied upon; and
+(5) The exhibit number of the supporting evidence relied upon to support the challenge and the relevance of the evidence to the challenge raised, including identifying specific portions of the evidence that support the challenge. The Board may exclude or give no weight to the evidence where a party has failed to state its relevance or to identify specific portions of the evidence that support the challenge.
+(c) A motion may be filed that seeks to correct a clerical or typographical mistake in the petition. The grant of such a motion does not change the filing date of the petition.
+
+## 37 C.F.R. § 42.105
+37 C.F.R. § 42.105 — Service of petition.
+In addition to the requirements of § 42.6, the petitioner must serve the petition and exhibits relied upon in the petition as follows:
+(a) The petition and supporting evidence must be served on the patent owner at the correspondence address of record for the subject patent. The petitioner may additionally serve the petition and supporting evidence on the patent owner at any other address known to the petitioner as likely to effect service.
+(b) Upon agreement of the parties, service may be made electronically. Service may be by Priority Mail Express® or by means at least as fast and reliable as Priority Mail Express®. Personal service is not required.
+[77 FR 48669, Aug. 14, 2012, as amended at 79 FR 63043, Oct. 22, 2014]
+
+## 37 C.F.R. § 42.106
+37 C.F.R. § 42.106 — Filing date.
+(a) Complete petition. A petition to institute inter partes review will not be accorded a filing date until the petition satisfies all of the following requirements:
+(1) Complies with § 42.104;
+(2) Effects service of the petition on the correspondence address of record as provided in § 42.105(a); and
+(3) Is accompanied by the fee to institute required in § 42.15(a).
+(b) Incomplete petition. Where a party files an incomplete petition, no filing date will be accorded, and the Office will dismiss the petition if the deficiency in the petition is not corrected within one month from the notice of an incomplete petition.
+
+## 37 C.F.R. § 42.107
+37 C.F.R. § 42.107 — Preliminary response to petition.
+(a) The patent owner may file a preliminary response to the petition. The response is limited to setting forth the reasons why no inter partes review should be instituted under 35 U.S.C. 314 and can include supporting evidence. The preliminary response is subject to the word count under § 42.24.
+(b) Due date. The preliminary response must be filed no later than three months after the date of a notice indicating that the request to institute an inter partes review has been granted a filing date. A patent owner may expedite the proceeding by filing an election to waive the patent owner preliminary response.
+(c) [Reserved]
+(d) No amendment. The preliminary response shall not include any amendment.
+(e) Disclaim Patent Claims. The patent owner may file a statutory disclaimer under 35 U.S.C. 253(a) in compliance with § 1.321(a) of this chapter, disclaiming one or more claims in the patent. No inter partes review will be instituted based on disclaimed claims.
+[77 FR 48727, Aug. 14, 2012, as amended at 81 FR 18766, Apr. 1, 2016]
+
+## 37 C.F.R. § 42.108
+37 C.F.R. § 42.108 — Institution of inter partes review.
+(a) When instituting inter partes review, the Board will authorize the review to proceed on all of the challenged claims and on all grounds of unpatentability asserted for each claim.
+(b) At any time prior to a decision on institution of inter partes review, the Board may deny all grounds for unpatentability for all of the challenged claims. Denial of all grounds is a Board decision not to institute inter partes review.
+(c) Inter partes review shall not be instituted unless the Board decides that the information presented in the petition demonstrates that there is a reasonable likelihood that at least one of the claims challenged in the petition is unpatentable. The Board's decision will take into account a patent owner preliminary response where such a response is filed, including any testimonial evidence. A petitioner may seek leave to file a reply to the preliminary response in accordance with §§ 42.23 and 42.24(c). Any such request must make a showing of good cause.
+[85 FR 79129, Dec. 9, 2020]
+
+## 37 C.F.R. § 42.120
+37 C.F.R. § 42.120 — Patent owner response.
+(a) Scope. A patent owner may file a single response to the petition and/or decision on institution. A patent owner response is filed as an opposition and is subject to the page limits provided in § 42.24.
+(b) Due date for response. If no time for filing a patent owner response to a petition is provided in a Board order, the default date for filing a patent owner response is three months from the date the inter partes review was instituted.
+[77 FR 48727, Aug. 14, 2012, as amended at 85 FR 79129, Dec. 9, 2020]
+
+## 37 C.F.R. § 42.121
+37 C.F.R. § 42.121 — Amendment of the patent.
+(a) Motion to amend. A patent owner may file one motion to amend a patent, but only after conferring with the Board.
+(1) Due date. Unless a due date is provided in a Board order, a motion to amend must be filed no later than the filing of a patent owner response.
+(2) Scope. A motion to amend may be denied where:
+(i) The amendment does not respond to a ground of unpatentability involved in the trial; or
+(ii) The amendment seeks to enlarge the scope of the claims of the patent or introduce new subject matter.
+(3) A reasonable number of substitute claims. A motion to amend may cancel a challenged claim or propose a reasonable number of substitute claims. The presumption is that only one substitute claim would be needed to replace each challenged claim, and it may be rebutted by a demonstration of need.
+(b) Content. A motion to amend claims must include a claim listing, which claim listing may be contained in an appendix to the motion, show the changes clearly, and set forth:
+(1) The support in the original disclosure of the patent for each claim that is added or amended; and
+(2) The support in an earlier-filed disclosure for each claim for which benefit of the filing date of the earlier filed disclosure is sought.
+(c) Additional motion to amend. In addition to the requirements set forth in paragraphs (a) and (b) of this section, any additional motion to amend may not be filed without Board authorization. An additional motion to amend may be authorized when there is a good cause showing or a joint request of the petitioner and the patent owner to materially advance a settlement. In determining whether to authorize such an additional motion to amend, the Board will consider whether a petitioner has submitted supplemental information after the time period set for filing a motion to amend in paragraph (a)(1) of this section.
+(d) Burden of Persuasion. On a motion to amend:
+(1) A patent owner bears the burden of persuasion to show, by a preponderance of the evidence, that the motion to amend complies with the requirements of paragraphs (1) and (3) of 35 U.S.C. 316(d), as well as paragraphs (a)(2), (a)(3), (b)(1), and (b)(2) of this section;
+(2) A petitioner bears the burden of persuasion to show, by a preponderance of the evidence, that any proposed substitute claims are unpatentable; and
+(3) Irrespective of paragraphs (d)(1) and (2) of this section, the Board may, in the interests of justice, exercise its discretion to grant or deny a motion to amend only for reasons supported by readily identifiable and persuasive evidence of record. In doing so, the Board may make of record only readily identifiable and persuasive evidence in a related proceeding before the Office or evidence that a district court can judicially notice. Where the Board exercises its discretion under this paragraph, the parties will have an opportunity to respond.
+[77 FR 48727, Aug. 14, 2012, as amended at 80 FR 28566, May 19, 2015; 85 FR 82935, Dec. 21, 2020]
+
+## 37 C.F.R. § 42.122
+37 C.F.R. § 42.122 — Multiple proceedings and Joinder.
+(a) Multiple proceedings. Where another matter involving the patent is before the Office, the Board may during the pendency of the inter partes review enter any appropriate order regarding the additional matter including providing for the stay, transfer, consolidation, or termination of any such matter.
+(b) Request for joinder. Joinder may be requested by a patent owner or petitioner. Any request for joinder must be filed, as a motion under § 42.22, no later than one month after the institution date of any inter partes review for which joinder is requested. The time period set forth in § 42.101(b) shall not apply when the petition is accompanied by a request for joinder.
+
+## 37 C.F.R. § 42.123
+37 C.F.R. § 42.123 — Filing of supplemental information.
+(a) Motion to submit supplemental information. Once a trial has been instituted, a party may file a motion to submit supplemental information in accordance with the following requirements:
+(1) A request for the authorization to file a motion to submit supplemental information is made within one month of the date the trial is instituted.
+(2) The supplemental information must be relevant to a claim for which the trial has been instituted.
+(b) Late submission of supplemental information. A party seeking to submit supplemental information more than one month after the date the trial is instituted, must request authorization to file a motion to submit the information. The motion to submit supplemental information must show why the supplemental information reasonably could not have been obtained earlier, and that consideration of the supplemental information would be in the interests-of-justice.
+(c) Other supplemental information. A party seeking to submit supplemental information not relevant to a claim for which the trial has been instituted must request authorization to file a motion to submit the information. The motion must show why the supplemental information reasonably could not have been obtained earlier, and that consideration of the supplemental information would be in the interests-of-justice.
+
+## 37 C.F.R. § 42.200
+37 C.F.R. § 42.200 — Procedure; pendency.
+(a) A post-grant review is a trial subject to the procedures set forth in subpart A of this part.
+(b) In a post-grant review proceeding, a claim of a patent, or a claim proposed in a motion to amend under § 42.221, shall be construed using the same claim construction standard that would be used to construe the claim in a civil action under 35 U.S.C. 282(b), including construing the claim in accordance with the ordinary and customary meaning of such claim as understood by one of ordinary skill in the art and the prosecution history pertaining to the patent. Any prior claim construction determination concerning a term of the claim in a civil action, or a proceeding before the International Trade Commission, that is timely made of record in the post-grant review proceeding will be considered.
+(c) A post-grant review proceeding shall be administered such that pendency before the Board after institution is normally no more than one year. The time can be extended by up to six months for good cause by the Chief Administrative Patent Judge, or adjusted by the Board in the case of joinder.
+(d) Interferences commenced before September 16, 2012, shall proceed under part 41 of this chapter except as the Chief Administrative Patent Judge, acting on behalf of the Director, may otherwise order in the interests-of-justice.
+[77 FR 48729, Aug. 14, 2012, as amended at 81 FR 18766, Apr. 1, 2016; 83 FR 51358, Oct. 11, 2018]
+
+## 37 C.F.R. § 42.201
+37 C.F.R. § 42.201 — Who may petition for a post-grant review.
+A person who is not the owner of a patent may file with the Office a petition to institute a post-grant review of the patent unless:
+(a) Before the date on which the petition for review is filed, the petitioner or real party-in-interest filed a civil action challenging the validity of a claim of the patent; or
+(b) The petitioner, the petitioner's real party-in-interest, or a privy of the petitioner is estopped from challenging the claims on the grounds identified in the petition.
+
+## 37 C.F.R. § 42.202
+37 C.F.R. § 42.202 — Time for filing.
+(a) A petition for a post-grant review of a patent must be filed no later than the date that is nine months after the date of the grant of a patent or of the issuance of a reissue patent. A petition, however, may not request a post-grant review for a claim in a reissue patent that is identical to or narrower than a claim in the original patent from which the reissue patent was issued unless the petition is filed not later than the date that is nine months after the date of the grant of the original patent.
+(b) [Reserved]
+[77 FR 48729, Aug. 14, 2012, as amended at 84 FR 51982, Oct. 1, 2019]
+
+## 37 C.F.R. § 42.203
+37 C.F.R. § 42.203 — Post-grant review fee.
+(a) A post-grant review fee set forth in § 42.15(b) must accompany the petition.
+(b) No filing date will be accorded to the petition until full payment is received.
+
+## 37 C.F.R. § 42.204
+37 C.F.R. § 42.204 — Content of petition.
+In addition to the requirements of §§ 42.6, 42.8, 42.22, and 42.24, the petition must set forth:
+(a) Grounds for standing. The petitioner must certify that the patent for which review is sought is available for post-grant review and that the petitioner is not barred or estopped from requesting a post-grant review challenging the patent claims on the grounds identified in the petition.
+(b) Identification of challenge. Provide a statement of the precise relief requested for each claim challenged. The statement must identify the following:
+(1) The claim;
+(2) The specific statutory grounds permitted under 35 U.S.C. 282(b)(2) or (3) on which the challenge to the claim is based;
+(3) How the challenged claim is to be construed. Where the claim to be construed contains a means-plus-function or step-plus-function limitation as permitted under 35 U.S.C. 112(f), the construction of the claim must identify the specific portions of the specification that describe the structure, material, or acts corresponding to each claimed function;
+(4) How the construed claim is unpatentable under the statutory grounds identified in paragraph (b)(2) of this section. Where the grounds for unpatentability are based on prior art, the petition must specify where each element of the claim is found in the prior art. For all other grounds of unpatentability, the petition must identify the specific part of the claim that fails to comply with the statutory grounds raised and state how the identified subject matter fails to comply with the statute; and
+(5) The exhibit number of the supporting evidence relied upon to support the challenge and the relevance of the evidence to the challenge raised, including identifying specific portions of the evidence that support the challenge. The Board may exclude or give no weight to the evidence where a party has failed to state its relevance or to identify specific portions of the evidence that support the challenge.
+(c) A motion may be filed that seeks to correct a clerical or typographical mistake in the petition. The grant of such a motion does not change the filing date of the petition.
+
+## 37 C.F.R. § 42.205
+37 C.F.R. § 42.205 — Service of petition.
+In addition to the requirements of § 42.6, the petitioner must serve the petition and exhibits relied upon in the petition as follows:
+(a) The petition and supporting evidence must be served on the patent owner at the correspondence address of record for the subject patent. The petitioner may additionally serve the petition and supporting evidence on the patent owner at any other address known to the petitioner as likely to effect service.
+(b) Upon agreement of the parties, service may be made electronically. Service may be by Priority Mail Express® or by means at least as fast and reliable as Priority Mail Express®. Personal service is not required.
+[77 FR 48669, Aug. 14, 2012, as amended at 79 FR 63043, Oct. 22, 2014]
+
+## 37 C.F.R. § 42.206
+37 C.F.R. § 42.206 — Filing date.
+(a) Complete petition. A petition to institute a post-grant review will not be accorded a filing date until the petition satisfies all of the following requirements:
+(1) Complies with § 42.204 or § 42.304, as the case may be,
+(2) Effects service of the petition on the correspondence address of record as provided in § 42.205(a); and
+(3) Is accompanied by the filing fee in § 42.15(b).
+(b) Incomplete petition. Where a party files an incomplete petition, no filing date will be accorded and the Office will dismiss the request if the deficiency in the petition is not corrected within the earlier of either one month from the notice of an incomplete petition, or the expiration of the statutory deadline in which to file a petition for post-grant review.
+
+## 37 C.F.R. § 42.207
+37 C.F.R. § 42.207 — Preliminary response to petition.
+(a) The patent owner may file a preliminary response to the petition. The response is limited to setting forth the reasons why no post-grant review should be instituted under 35 U.S.C. 324 and can include supporting evidence. The preliminary response is subject to the word count under § 42.24.
+(b) Due date. The preliminary response must be filed no later than three months after the date of a notice indicating that the request to institute a post-grant review has been granted a filing date. A patent owner may expedite the proceeding by filing an election to waive the patent owner preliminary response.
+(c) [Reserved]
+(d) No amendment. The preliminary response shall not include any amendment.
+(e) Disclaim Patent Claims. The patent owner may file a statutory disclaimer under 35 U.S.C. 253(a) in compliance with § 1.321(a), disclaiming one or more claims in the patent. No post-grant review will be instituted based on disclaimed claims.
+[77 FR 48729, Aug. 14, 2012, as amended at 81 FR 18766, Apr. 1, 2016]
+
+## 37 C.F.R. § 42.208
+37 C.F.R. § 42.208 — Institution of post-grant review.
+(a) When instituting post-grant review, the Board will authorize the review to proceed on all of the challenged claims and on all grounds of unpatentability asserted for each claim.
+(b) At any time prior to institution of post-grant review, the Board may deny all grounds for unpatentability for all of the challenged claims. Denial of all grounds is a Board decision not to institute post-grant review.
+(c) Post-grant review shall not be instituted unless the Board decides that the information presented in the petition demonstrates that it is more likely than not that at least one of the claims challenged in the petition is unpatentable. The Board's decision will take into account a patent owner preliminary response where such a response is filed, including any testimonial evidence. A petitioner may seek leave to file a reply to the preliminary response in accordance with §§ 42.23 and 42.24(c). Any such request must make a showing of good cause.
+(d) Additional grounds. Sufficient grounds under § 42.208(c) may be a showing that the petition raises a novel or unsettled legal question that is important to other patents or patent applications.
+[77 FR 48729, Aug. 14, 2012, as amended at 81 FR 18766, Apr. 1, 2016; 85 FR 79129, Dec. 9, 2020]
+
+## 37 C.F.R. § 42.220
+37 C.F.R. § 42.220 — Patent owner response.
+(a) Scope. A patent owner may file a single response to the petition and/or decision on institution. A patent owner response is filed as an opposition and is subject to the page limits provided in § 42.24.
+(b) Due date for response. If no date for filing a patent owner response to a petition is provided in a Board order, the default date for filing a patent owner response is three months from the date the post-grant review is instituted.
+[77 FR 48729, Aug. 14, 2012, as amended at 85 FR 79129, Dec. 9, 2020]
+
+## 37 C.F.R. § 42.221
+37 C.F.R. § 42.221 — Amendment of the patent.
+(a) Motion to amend. A patent owner may file one motion to amend a patent, but only after conferring with the Board.
+(1) Due date. Unless a due date is provided in a Board order, a motion to amend must be filed no later than the filing of a patent owner response.
+(2) Scope. A motion to amend may be denied where:
+(i) The amendment does not respond to a ground of unpatentability involved in the trial; or
+(ii) The amendment seeks to enlarge the scope of the claims of the patent or introduce new subject matter.
+(3) A reasonable number of substitute claims. A motion to amend may cancel a challenged claim or propose a reasonable number of substitute claims. The presumption is that only one substitute claim would be needed to replace each challenged claim, and it may be rebutted by a demonstration of need.
+(b) Content. A motion to amend claims must include a claim listing, which claim listing may be contained in an appendix to the motion, show the changes clearly, and set forth:
+(1) The support in the original disclosure of the patent for each claim that is added or amended; and
+(2) The support in an earlier-filed disclosure for each claim for which benefit of the filing date of the earlier filed disclosure is sought.
+(c) Additional motion to amend. In addition to the requirements set forth in paragraphs (a) and (b) of this section, any additional motion to amend may not be filed without Board authorization. An additional motion to amend may be authorized when there is a good cause showing or a joint request of the petitioner and the patent owner to materially advance a settlement. In determining whether to authorize such an additional motion to amend, the Board will consider whether a petitioner has submitted supplemental information after the time period set for filing a motion to amend in paragraph (a)(1) of this section.
+(d) Burden of Persuasion. On a motion to amend:
+(1) A patent owner bears the burden of persuasion to show, by a preponderance of the evidence, that the motion to amend complies with the requirements of paragraphs (1) and (3) of 35 U.S.C. 326(d), as well as paragraphs (a)(2), (a)(3), (b)(1), and (b)(2) of this section;
+(2) A petitioner bears the burden of persuasion to show, by a preponderance of the evidence, that any proposed substitute claims are unpatentable; and
+(3) Irrespective of paragraphs (d)(1) and (2) of this section, the Board may, in the interests of justice, exercise its discretion to grant or deny a motion to amend only for reasons supported by readily identifiable and persuasive evidence of record. In doing so, the Board may make of record only readily identifiable and persuasive evidence in a related proceeding before the Office or evidence that a district court can judicially notice. Where the Board exercises its discretion under this paragraph, the parties will have an opportunity to respond.
+[77 FR 48729, Aug. 14, 2012, as amended at 80 FR 28566, May 19, 2015; 85 FR 82935, Dec. 21, 2020]
+
+## 37 C.F.R. § 42.222
+37 C.F.R. § 42.222 — Multiple proceedings and Joinder.
+(a) Multiple proceedings. Where another matter involving the patent is before the Office, the Board may during the pendency of the post-grant review enter any appropriate order regarding the additional matter including providing for the stay, transfer, consolidation, or termination of any such matter.
+(b) Request for joinder. Joinder may be requested by a patent owner or petitioner. Any request for joinder must be filed, as a motion under § 42.22, no later than one month after the institution date of any post-grant review for which joinder is requested.
+
+## 37 C.F.R. § 42.223
+37 C.F.R. § 42.223 — Filing of supplemental information.
+(a) Motion to submit supplemental information. Once a trial has been instituted, a party may file a motion to submit supplemental information in accordance with the following requirements:
+(1) A request for the authorization to file a motion to submit supplemental information is made within one month of the date the trial is instituted.
+(2) The supplemental information must be relevant to a claim for which the trial has been instituted.
+(b) Late submission of supplemental information. A party seeking to submit supplemental information more than one month after the date the trial is instituted, must request authorization to file a motion to submit the information. The motion to submit supplemental information must show why the supplemental information reasonably could not have been obtained earlier, and that consideration of the supplemental information would be in the interests-of-justice.
+(c) Other supplemental information. A party seeking to submit supplemental information not relevant to a claim for which the trial has been instituted must request authorization to file a motion to submit the information. The motion must show why the supplemental information reasonably could not have been obtained earlier, and that consideration of the supplemental information would be in the interests-of-justice.
+
+## 37 C.F.R. § 42.224
+37 C.F.R. § 42.224 — Discovery.
+Notwithstanding the discovery provisions of subpart A:
+(a) Requests for additional discovery may be granted upon a showing of good cause as to why the discovery is needed; and
+(b) Discovery is limited to evidence directly related to factual assertions advanced by either party in the proceeding.
+
+## 37 C.F.R. § 42.300
+37 C.F.R. § 42.300 — Procedure; pendency.
+(a) A covered business method patent review is a trial subject to the procedures set forth in subpart A of this part and is also subject to the post-grant review procedures set forth in subpart C except for §§ 42.200, 42.201, 42.202, and 42.204.
+(b) In a covered business method patent review proceeding, a claim of a patent, or a claim proposed in a motion to amend under § 42.221, shall be construed using the same claim construction standard that would be used to construe the claim in a civil action under 35 U.S.C. 282(b), including construing the claim in accordance with the ordinary and customary meaning of such claim as understood by one of ordinary skill in the art and the prosecution history pertaining to the patent. Any prior claim construction determination concerning a term of the claim in a civil action, or a proceeding before the International Trade Commission, that is timely made of record in the covered business method patent review proceeding will be considered.
+(c) A covered business method patent review proceeding shall be administered such that pendency before the Board after institution is normally no more than one year. The time can be extended by up to six months for good cause by the Chief Administrative Patent Judge, or adjusted by the Board in the case of joinder.
+(d) The rules in this subpart are applicable until September 15, 2020, except that the rules shall continue to apply to any petition for a covered business method patent review filed before the date of repeal.
+[77 FR 48731, Aug. 14, 2012, as amended at 80 FR 28566, May 19, 2015; 81 FR 18766, Apr. 1, 2016; 83 FR 51359, Oct. 11, 2018]
+
+## 37 C.F.R. § 42.301
+37 C.F.R. § 42.301 — Definitions.
+In addition to the definitions in § 42.2, the following definitions apply to proceedings under this subpart D:
+(a) Covered business method patent means a patent that claims a method or corresponding apparatus for performing data processing or other operations used in the practice, administration, or management of a financial product or service, except that the term does not include patents for technological inventions.
+(b) Technological invention. In determining whether a patent is for a technological invention solely for purposes of the Transitional Program for Covered Business Methods (section 42.301(a)), the following will be considered on a case-by-case basis: whether the claimed subject matter as a whole recites a technological feature that is novel and unobvious over the prior art; and solves a technical problem using a technical solution.
+[77 FR 48753, Aug. 14, 2012]
+
+## 37 C.F.R. § 42.302
+37 C.F.R. § 42.302 — Who may petition for a covered business method patent review.
+(a) A petitioner may not file with the Office a petition to institute a covered business method patent review of the patent unless the petitioner, the petitioner's real party-in-interest, or a privy of the petitioner has been sued for infringement of the patent or has been charged with infringement under that patent. Charged with infringement means a real and substantial controversy regarding infringement of a covered business method patent exists such that the petitioner would have standing to bring a declaratory judgment action in Federal court.
+(b) A petitioner may not file a petition to institute a covered business method patent review of the patent where the petitioner, the petitioner's real party-in-interest, or a privy of the petitioner is estopped from challenging the claims on the grounds identified in the petition.
+(c) A petitioner may not file a petition to institute a covered business method patent review of the patent where, before the date on which the petition is filed, the petitioner or real party-in-interest filed a civil action challenging the validity of a claim of the patent.
+[77 FR 48731, Aug. 14, 2012, as amended at 80 FR 28566, May 19, 2015]
+
+## 37 C.F.R. § 42.303
+37 C.F.R. § 42.303 — Time for filing.
+A petition requesting a covered business method patent review may be filed any time except during the period in which a petition for a post-grant review of the patent would satisfy the requirements of 35 U.S.C. 321(c).
+
+## 37 C.F.R. § 42.304
+37 C.F.R. § 42.304 — Content of petition.
+In addition to any other notices required by subparts A and C of this part, a petition must request judgment against one or more claims of a patent identified by patent number. In addition to the requirements of §§ 42.6, 42.8, 42.22, and 42.24 the petition must set forth:
+(a) Grounds for standing. The petitioner must demonstrate that the patent for which review is sought is a covered business method patent, and that the petitioner meets the eligibility requirements of § 42.302.
+(b) Identification of challenge. Provide a statement of the precise relief requested for each claim challenged. The statement must identify the following:
+(1) The claim;
+(2) The specific statutory grounds permitted under paragraph (2) or (3) of 35 U.S.C. 282(b), except as modified by section 18(a)(1)(C) of the Leahy-Smith America Invents Act (Pub. L. 112-29, 125 Stat. 284 (2011)), on which the challenge to the claim is based;
+(3) How the challenged claim is to be construed. Where the claim to be construed contains a means-plus-function or step-plus-function limitation as permitted under 35 U.S.C. 112(f), the construction of the claim must identify the specific portions of the specification that describe the structure, material, or acts corresponding to each claimed function;
+(4) How the construed claim is unpatentable under the statutory grounds identified in paragraph (b)(2) of this section. Where the grounds for unpatentability are based on prior art, the petition must specify where each element of the claim is found in the prior art. For all other grounds of unpatentability, the petition must identify the specific part of the claim that fails to comply with the statutory grounds raised and state how the identified subject matter fails to comply with the statute; and
+(5) The exhibit number of supporting evidence relied upon to support the challenge and the relevance of the evidence to the challenge raised, including identifying specific portions of the evidence that support the challenge. The Board may exclude or give no weight to the evidence where a party has failed to state its relevance or to identify specific portions of the evidence that support the challenge.
+(c) A motion may be filed that seeks to correct a clerical or typographical mistake in the petition. The grant of such a motion does not change the filing date of the petition.
+
+## 37 C.F.R. § 42.400
+37 C.F.R. § 42.400 — Procedure; pendency.
+(a) A derivation proceeding is a trial subject to the procedures set forth in subpart A of this part.
+(b) The Board may for good cause authorize or direct the parties to address patentability issues that arise in the course of the derivation proceeding.
+
+## 37 C.F.R. § 42.401
+37 C.F.R. § 42.401 — Definitions.
+In addition to the definitions in § 42.2, the following definitions apply to proceedings under this subpart:
+Agreement or understanding under 35 U.S.C. 135(e) means settlement for the purposes of § 42.74.
+Applicant includes a reissue applicant.
+Application includes both an application for an original patent and an application for a reissued patent.
+First publication means either a patent or an application publication under 35 U.S.C. 122(b), including a publication of an international application designating the United States as provided by 35 U.S.C. 374.
+Petitioner means a patent applicant who petitions for a determination that another party named in an earlier-filed patent application allegedly derived a claimed invention from an inventor named in the petitioner's application and filed the earlier application without authorization.
+Respondent means a party other than the petitioner.
+Same or substantially the same means patentably indistinct.
+
+## 37 C.F.R. § 42.402
+37 C.F.R. § 42.402 — Who may file a petition for a derivation proceeding.
+An applicant for patent may file a petition to institute a derivation proceeding in the Office.
+
+## 37 C.F.R. § 42.403
+37 C.F.R. § 42.403 — Time for filing.
+A petition for a derivation proceeding must be filed within the one-year period beginning on the date of the first publication of a claim to an invention that is the same or substantially the same as the earlier application's claim to the allegedly derived invention.
+
+## 37 C.F.R. § 42.404
+37 C.F.R. § 42.404 — Derivation fee.
+(a) A derivation fee set forth in § 42.15(c) must accompany the petition.
+(b) No filing date will be accorded to the petition until payment is complete.
+
+## 37 C.F.R. § 42.405
+37 C.F.R. § 42.405 — Content of petition.
+(a) Grounds for standing. The petition must:
+(1) Demonstrate compliance with §§ 42.402 and 42.403; and
+(2) Show that the petitioner has at least one claim that is:
+(i) The same or substantially the same as the respondent's claimed invention; and
+(ii) The same or substantially the same as the invention disclosed to the respondent.
+(b) In addition to the requirements of §§ 42.8 and 42.22, the petition must:
+(1) Provide sufficient information to identify the application or patent for which the petitioner seeks a derivation proceeding;
+(2) Demonstrate that a claimed invention was derived from an inventor named in the petitioner's application, and that the inventor from whom the invention was derived did not authorize the filing of the earliest application claiming such invention; and
+(3) For each of the respondent's claims to the derived invention,
+(i) Show why the claimed invention is the same or substantially the same as the invention disclosed to the respondent, and
+(ii) Identify how the claim is to be construed. Where the claim to be construed contains a means-plus-function or step-plus-function limitation as permitted under 35 U.S.C. 112(f), the construction of the claim must identify the specific portions of the specification that describe the structure, material, or acts corresponding to each claimed function.
+(c) Sufficiency of showing. A derivation showing is not sufficient unless it is supported by substantial evidence, including at least one affidavit addressing communication of the derived invention and lack of authorization that, if unrebutted, would support a determination of derivation. The showing of communication must be corroborated.
+
+## 37 C.F.R. § 42.406
+37 C.F.R. § 42.406 — Service of petition.
+In addition to the requirements of § 42.6, the petitioner must serve the petition and exhibits relied upon in the petition as follows:
+(a) The petition and supporting evidence must be served on the respondent at the correspondence address of record for the earlier application or subject patent. The petitioner may additionally serve the petition and supporting evidence on the respondent at any other address known to the petitioner as likely to effect service.
+(b) Upon agreement of the parties, service may be made electronically. Service may be by Priority Mail Express® or by means at least as fast and reliable as Priority Mail Express®. Personal service is not required.
+[77 FR 48669, Aug. 14, 2012, as amended at 79 FR 63043, Oct. 22, 2014]
+
+## 37 C.F.R. § 42.407
+37 C.F.R. § 42.407 — Filing date.
+(a) Complete petition. A petition to institute a derivation proceeding will not be accorded a filing date until the petition satisfies all of the following requirements:
+(1) Complies with §§ 42.404 and 42.405, and
+(2) Service of the petition on the correspondence address of record as provided in § 42.406.
+(b) Incomplete petition. Where the petitioner files an incomplete petition, no filing date will be accorded, and the Office will dismiss the petition if the deficiency in the petition is not corrected within the earlier of either one month from notice of the incomplete petition, or the expiration of the statutory deadline in which to file a petition for derivation.
+
+## 37 C.F.R. § 42.408
+37 C.F.R. § 42.408 — Institution of derivation proceeding.
+(a) An administrative patent judge institutes, and may as necessary reinstitute, the derivation proceeding on behalf of the Director.
+(b) Additional derivation proceeding. The petitioner may suggest the addition of a patent or application to the derivation proceeding. The suggestion should make the showings required under § 42.405 and explain why the suggestion could not have been made in the original petition.
+
+## 37 C.F.R. § 42.409
+37 C.F.R. § 42.409 — Settlement agreements.
+An agreement or understanding under 35 U.S.C. 135(e) is a settlement for the purposes of § 42.74.
+
+## 37 C.F.R. § 42.410
+37 C.F.R. § 42.410 — Arbitration.
+(a) Parties may resort to binding arbitration to determine any issue. The Office is not a party to the arbitration. The Board is not bound by, and may independently determine, any question of patentability.
+(b) The Board will not set a time for, or otherwise modify the proceeding for, an arbitration unless:
+(1) It is to be conducted according to Title 9 of the United States Code;
+(2) The parties notify the Board in writing of their intention to arbitrate;
+(3) The agreement to arbitrate:
+(i) Is in writing;
+(ii) Specifies the issues to be arbitrated;
+(iii) Names the arbitrator, or provides a date not more than 30 days after the execution of the agreement for the selection of the arbitrator;
+(iv) Provides that the arbitrator's award shall be binding on the parties and that judgment thereon can be entered by the Board;
+(v) Provides that a copy of the agreement is filed within 20 days after its execution; and
+(vi) Provides that the arbitration is completed within the time the Board sets.
+(c) The parties are solely responsible for the selection of the arbitrator and the conduct of the arbitration.
+(d) The Board may determine issues the arbitration does not resolve.
+(e) The Board will not consider the arbitration award unless it:
+(1) Is binding on the parties;
+(2) Is in writing;
+(3) States in a clear and definite manner each issue arbitrated and the disposition of each issue; and
+(4) Is filed within 20 days of the date of the award.
+(f) Once the award is filed, the parties to the award may not take actions inconsistent with the award. If the award is dispositive of the contested subject matter for a party, the Board may enter judgment as to that party.
+
+## 37 C.F.R. § 42.411
+37 C.F.R. § 42.411 — Common interests in the invention.
+The Board may decline to institute, or if already instituted the Board may issue judgment in, a derivation proceeding between an application and a patent or another application that are commonly owned.
+
+## 37 C.F.R. § 42.412
+37 C.F.R. § 42.412 — Public availability of Board records.
+(a) Publication. (1) Generally. Any Board decision is available for public inspection without a party's permission if rendered in a file open to the public pursuant to § 1.11 of this chapter or in an application that has been published in accordance with §§ 1.211 to 1.221 of this chapter. The Office may independently publish any Board decision that is available for public inspection.
+(2) Determination of special circumstances. Any Board decision not publishable under paragraph (a)(1) of this section may be published or made available for public inspection if the Director believes that special circumstances warrant publication and a party does not petition within two months after being notified of the intention to make the decision public, objecting in writing on the ground that the decision discloses the objecting party's trade secret or other confidential information and stating with specificity that such information is not otherwise publicly available.
+(b) Record of proceeding. (1) The record of a Board proceeding is available to the public, unless a patent application not otherwise available to the public is involved.
+(2) Notwithstanding paragraph (b)(1) of this section, after a final Board decision in or judgment in a Board proceeding, the record of the Board proceeding will be made available to the public if any involved file is or becomes open to the public under § 1.11 of this chapter or an involved application is or becomes published under §§ 1.211 to 1.221 of this chapter.

@@ -34,7 +34,11 @@ different set with `$LITGRAPH_PACKS` or `--packs-dir` (`Catalog::load`).
 
 - **L0 → L1**: every `cite`/`authority` in a pack should trace to a `sources`
   entry (sha256 + as-of). A pack is a claim about the law; sources make it
-  checkable.
+  checkable. `litgraph lint`'s `unverifiable-cite` diagnostic checks this
+  mechanically: it normalizes the cite, resolves it against the vendored
+  L0 text a `sources[].path` points at, and (if `note` quotes a phrase)
+  fuzzy-matches the quote within that span — see `crates/litgraph/src/cite/`
+  and `sources/PROVENANCE.md`.
 - **L1 → L2**: `packs/links.json` is where forums meet (district court
   judgment → Federal Circuit; PTAB FWD → CAFC; CoFC judgment → CAFC; CAFC
   remand → back). Ids are namespaced `pack::node`; local ids resolve when
@@ -219,4 +223,10 @@ reachable from a node.
   ongoing re-calibration (`scripts/calibrate/` currently regenerates one
   set's arithmetic from recorded constants, not a live docket puller).
 - CVaR-optimal policies; general-sum (opponent with its own payoffs).
-- Cite verification: every `authority` resolves to a span in an L0 source.
+- ~~Cite verification: every `authority` resolves to a span in an L0
+  source.~~ Shipped (`crates/litgraph/src/cite/`, `sources/*.txt`,
+  `unverifiable-cite` lint diagnostic). Remaining: wire `sources[].path`
+  on each pack to the vendored text (no pack does yet — see
+  `sources/PROVENANCE.md`'s "deliberately not vendored" section and the
+  follow-up bead); vendor RCFC / Fed. Cir. local rules / MPEP; decompose
+  range citations ("FRAP 28-31", "37 C.F.R. § 42.120–42.121").

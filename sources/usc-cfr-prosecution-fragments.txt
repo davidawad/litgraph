@@ -1,0 +1,2220 @@
+## 28 U.S.C. § 1292
+28 U.S.C. § 28 USC 1292: Interlocutory decisions
+§1292. Interlocutory decisions
+
+(a) Except as provided in subsections (c) and (d) of this section, the courts of appeals shall have jurisdiction of appeals from:
+
+(1) Interlocutory orders of the district courts of the United States, the United States District Court for the District of the Canal Zone, the District Court of Guam, and the District Court of the Virgin Islands, or of the judges thereof, granting, continuing, modifying, refusing or dissolving injunctions, or refusing to dissolve or modify injunctions, except where a direct review may be had in the Supreme Court;
+
+(2) Interlocutory orders appointing receivers, or refusing orders to wind up receiverships or to take steps to accomplish the purposes thereof, such as directing sales or other disposals of property;
+
+(3) Interlocutory decrees of such district courts or the judges thereof determining the rights and liabilities of the parties to admiralty cases in which appeals from final decrees are allowed.
+
+(b) When a district judge, in making in a civil action an order not otherwise appealable under this section, shall be of the opinion that such order involves a controlling question of law as to which there is substantial ground for difference of opinion and that an immediate appeal from the order may materially advance the ultimate termination of the litigation, he shall so state in writing in such order. The Court of Appeals which would have jurisdiction of an appeal of such action may thereupon, in its discretion, permit an appeal to be taken from such order, if application is made to it within ten days after the entry of the order:
+Provided, however
+, That application for an appeal hereunder shall not stay proceedings in the district court unless the district judge or the Court of Appeals or a judge thereof shall so order.
+
+(c) The United States Court of Appeals for the Federal Circuit shall have exclusive jurisdiction-
+
+(1) of an appeal from an interlocutory order or decree described in subsection (a) or (b) of this section in any case over which the court would have jurisdiction of an appeal under
+section 1295 of this title
+; and
+
+(2) of an appeal from a judgment in a civil action for patent infringement which would otherwise be appealable to the United States Court of Appeals for the Federal Circuit and is final except for an accounting.
+
+(d)(1) When the chief judge of the Court of International Trade issues an order under the provisions of
+section 256(b) of this title
+, or when any judge of the Court of International Trade, in issuing any other interlocutory order, includes in the order a statement that a controlling question of law is involved with respect to which there is a substantial ground for difference of opinion and that an immediate appeal from that order may materially advance the ultimate termination of the litigation, the United States Court of Appeals for the Federal Circuit may, in its discretion, permit an appeal to be taken from such order, if application is made to that Court within ten days after the entry of such order.
+
+(2) When the chief judge of the United States Court of Federal Claims issues an order under
+section 798(b) of this title
+, or when any judge of the United States Court of Federal Claims, in issuing an interlocutory order, includes in the order a statement that a controlling question of law is involved with respect to which there is a substantial ground for difference of opinion and that an immediate appeal from that order may materially advance the ultimate termination of the litigation, the United States Court of Appeals for the Federal Circuit may, in its discretion, permit an appeal to be taken from such order, if application is made to that Court within ten days after the entry of such order.
+
+(3) Neither the application for nor the granting of an appeal under this subsection shall stay proceedings in the Court of International Trade or in the Court of Federal Claims, as the case may be, unless a stay is ordered by a judge of the Court of International Trade or of the Court of Federal Claims or by the United States Court of Appeals for the Federal Circuit or a judge of that court.
+
+## 28 U.S.C. § 1441
+28 U.S.C. § 28 USC 1441: Removal of civil actions
+§1441. Removal of civil actions
+
+(a)
+Generally
+.-Except as otherwise expressly provided by Act of Congress, any civil action brought in a State court of which the district courts of the United States have original jurisdiction, may be removed by the defendant or the defendants, to the district court of the United States for the district and division embracing the place where such action is pending.
+
+(b)
+Removal Based on Diversity of Citizenship
+.-(1) In determining whether a civil action is removable on the basis of the jurisdiction under
+section 1332(a) of this title
+, the citizenship of defendants sued under fictitious names shall be disregarded.
+
+(2) A civil action otherwise removable solely on the basis of the jurisdiction under
+section 1332(a) of this title
+ may not be removed if any of the parties in interest properly joined and served as defendants is a citizen of the State in which such action is brought.
+
+(c)
+Joinder of Federal Law Claims and State Law Claims
+.-(1) If a civil action includes-
+
+(A) a claim arising under the Constitution, laws, or treaties of the United States (within the meaning of
+section 1331 of this title
+), and
+
+(B) a claim not within the original or supplemental jurisdiction of the district court or a claim that has been made nonremovable by statute,
+
+the entire action may be removed if the action would be removable without the inclusion of the claim described in subparagraph (B).
+
+(2) Upon removal of an action described in paragraph (1), the district court shall sever from the action all claims described in paragraph (1)(B) and shall remand the severed claims to the State court from which the action was removed. Only defendants against whom a claim described in paragraph (1)(A) has been asserted are required to join in or consent to the removal under paragraph (1).
+
+(d)
+Actions Against Foreign States
+.-Any civil action brought in a State court against a foreign state as defined in
+section 1603(a) of this title
+ may be removed by the foreign state to the district court of the United States for the district and division embracing the place where such action is pending. Upon removal the action shall be tried by the court without jury. Where removal is based upon this subsection, the time limitations of
+section 1446(b) of this chapter
+ may be enlarged at any time for cause shown.
+
+(e)
+Multiparty, Multiforum Jurisdiction
+.-(1) Notwithstanding the provisions of subsection (b) of this section, a defendant in a civil action in a State court may remove the action to the district court of the United States for the district and division embracing the place where the action is pending if-
+
+(A) the action could have been brought in a United States district court under
+section 1369 of this title
+; or
+
+(B) the defendant is a party to an action which is or could have been brought, in whole or in part, under section 1369 in a United States district court and arises from the same accident as the action in State court, even if the action to be removed could not have been brought in a district court as an original matter.
+
+The removal of an action under this subsection shall be made in accordance with
+section 1446 of this title
+, except that a notice of removal may also be filed before trial of the action in State court within 30 days after the date on which the defendant first becomes a party to an action under section 1369 in a United States district court that arises from the same accident as the action in State court, or at a later time with leave of the district court.
+
+(2) Whenever an action is removed under this subsection and the district court to which it is removed or transferred under section 1407(j) 
+
+1
+
+ has made a liability determination requiring further proceedings as to damages, the district court shall remand the action to the State court from which it had been removed for the determination of damages, unless the court finds that, for the convenience of parties and witnesses and in the interest of justice, the action should be retained for the determination of damages.
+
+## 28 U.S.C. § 1446
+28 U.S.C. § 28 USC 1446: Procedure for removal of civil actions
+§1446. Procedure for removal of civil actions
+
+(a)
+Generally
+.-A defendant or defendants desiring to remove any civil action from a State court shall file in the district court of the United States for the district and division within which such action is pending a notice of removal signed pursuant to Rule 11 of the Federal Rules of Civil Procedure and containing a short and plain statement of the grounds for removal, together with a copy of all process, pleadings, and orders served upon such defendant or defendants in such action.
+
+(b)
+Requirements; Generally
+.-(1) The notice of removal of a civil action or proceeding shall be filed within 30 days after the receipt by the defendant, through service or otherwise, of a copy of the initial pleading setting forth the claim for relief upon which such action or proceeding is based, or within 30 days after the service of summons upon the defendant if such initial pleading has then been filed in court and is not required to be served on the defendant, whichever period is shorter.
+
+(2)(A) When a civil action is removed solely under section 1441(a), all defendants who have been properly joined and served must join in or consent to the removal of the action.
+
+(B) Each defendant shall have 30 days after receipt by or service on that defendant of the initial pleading or summons described in paragraph (1) to file the notice of removal.
+
+(C) If defendants are served at different times, and a later-served defendant files a notice of removal, any earlier-served defendant may consent to the removal even though that earlier-served defendant did not previously initiate or consent to removal.
+
+(3) Except as provided in subsection (c), if the case stated by the initial pleading is not removable, a notice of removal may be filed within thirty days after receipt by the defendant, through service or otherwise, of a copy of an amended pleading, motion, order or other paper from which it may first be ascertained that the case is one which is or has become removable.
+
+(c)
+Requirements; Removal Based on Diversity of Citizenship
+.-(1) A case may not be removed under subsection (b)(3) on the basis of jurisdiction conferred by section 1332 more than 1 year after commencement of the action, unless the district court finds that the plaintiff has acted in bad faith in order to prevent a defendant from removing the action.
+
+(2) If removal of a civil action is sought on the basis of the jurisdiction conferred by section 1332(a), the sum demanded in good faith in the initial pleading shall be deemed to be the amount in controversy, except that-
+
+(A) the notice of removal may assert the amount in controversy if the initial pleading seeks-
+
+(i) nonmonetary relief; or
+
+(ii) a money judgment, but the State practice either does not permit demand for a specific sum or permits recovery of damages in excess of the amount demanded; and
+
+(B) removal of the action is proper on the basis of an amount in controversy asserted under subparagraph (A) if the district court finds, by the preponderance of the evidence, that the amount in controversy exceeds the amount specified in section 1332(a).
+
+(3)(A) If the case stated by the initial pleading is not removable solely because the amount in controversy does not exceed the amount specified in section 1332(a), information relating to the amount in controversy in the record of the State proceeding, or in responses to discovery, shall be treated as an "other paper" under subsection (b)(3).
+
+(B) If the notice of removal is filed more than 1 year after commencement of the action and the district court finds that the plaintiff deliberately failed to disclose the actual amount in controversy to prevent removal, that finding shall be deemed bad faith under paragraph (1).
+
+(d)
+Notice to Adverse Parties and State Court
+.-Promptly after the filing of such notice of removal of a civil action the defendant or defendants shall give written notice thereof to all adverse parties and shall file a copy of the notice with the clerk of such State court, which shall effect the removal and the State court shall proceed no further unless and until the case is remanded.
+
+(e)
+Counterclaim in
+337
+ Proceeding
+
+## 28 U.S.C. § 1447
+28 U.S.C. § 28 USC 1447: Procedure after removal generally
+§1447. Procedure after removal generally
+
+(a) In any case removed from a State court, the district court may issue all necessary orders and process to bring before it all proper parties whether served by process issued by the State court or otherwise.
+
+(b) It may require the removing party to file with its clerk copies of all records and proceedings in such State court or may cause the same to be brought before it by writ of certiorari issued to such State court.
+
+(c) A motion to remand the case on the basis of any defect other than lack of subject matter jurisdiction must be made within 30 days after the filing of the notice of removal under section 1446(a). If at any time before final judgment it appears that the district court lacks subject matter jurisdiction, the case shall be remanded. An order remanding the case may require payment of just costs and any actual expenses, including attorney fees, incurred as a result of the removal. A certified copy of the order of remand shall be mailed by the clerk to the clerk of the State court. The State court may thereupon proceed with such case.
+
+(d) An order remanding a case to the State court from which it was removed is not reviewable on appeal or otherwise, except that an order remanding a case to the State court from which it was removed pursuant to
+section 1442 or 1443 of this title
+ shall be reviewable by appeal or otherwise.
+
+(e) If after removal the plaintiff seeks to join additional defendants whose joinder would destroy subject matter jurisdiction, the court may deny joinder, or permit joinder and remand the action to the State court.
+
+(
+June 25, 1948, ch. 646,
+62 Stat. 939
+
+;
+May 24, 1949, ch. 139, §84,
+63 Stat. 102
+
+;
+
+Pub. L. 88–352,
+ title IX, §901, July 2, 1964,
+78 Stat. 266
+
+;
+
+Pub. L. 100–702,
+ title X, §1016(c), Nov. 19, 1988,
+102 Stat. 4670
+
+;
+
+Pub. L. 102–198,
+ §10(b), Dec. 9, 1991,
+105 Stat. 1626
+
+;
+
+Pub. L. 104–219,
+ §1, Oct. 1, 1996,
+110 Stat. 3022
+
+;
+
+Pub. L. 112–51,
+ §2(d), Nov. 9, 2011,
+125 Stat. 546
+
+.)
+
+Historical and Revision Notes
+
+1948 Act
+
+Based on title 28, U.S.C., 1940 ed., §§71, 72, 74, 76, 80, 81 and 83 (
+Mar. 3, 1911, ch. 231, §§28, 29, 31, 33, 37 and 38,
+36 Stat. 1094–1098
+
+;
+Jan. 20, 1914, ch. 11,
+39 Stat. 278
+
+;
+Aug. 23, 1916, ch. 399,
+39 Stat. 532
+
+;
+Apr. 16, 1920, ch. 146,
+41 Stat. 554
+
+;
+Jan. 31, 1928, ch. 14, §1,
+45 Stat. 54
+
+).
+
+Section consolidates procedural provisions of
+sections 71, 72, 74, 76, 80, 81 and 83 of title 28
+, U.S.C., 1940 ed., with important changes in substance and phraseology.
+
+Subsection (a) is derived from
+sections 72, 76, 81 and 83 of title 28
+, U.S.C., 1940 ed. The remaining provisions of said section 83 are the basis of
+section 1448 of this title
+.
+
+Subsection (b) is derived from
+sections 72, 74, 76 and 83 of title 28
+, U.S.C., 1940 ed., which have been rewritten to provide the utmost simplicity and flexibility of procedure in bringing the State court record to the district court.
+
+[
+Editorial Note.-
+Subsecs. (c), (d) and (e) as originally revised and incorporated in this section read as follows:
+
+"(c) It may order the pleadings recast and the parties realigned according to their real interest.
+
+"(d) If any party fails to comply with its lawful orders, the district court may enter such further orders and judgments as justice requires.
+
+"(e) If at any time before final judgment it appears that the case was removed improvidently and without jurisdiction, the district court shall remand the case. A certified copy of the order of remand shall be mailed by its clerk to the clerk of the State court. The State court may thereupon proceed with such case."]
+
+Subsections (c) and (d) are substituted for unnecessary and inconsistent procedural provisions.
+
+Subsection (e) [now subsec. (c)] is derived from
+sections 71 and 80 of title 28
+, U.S.C., 1940 ed. Such subsection is rewritten to eliminate the cumbersome procedure of remand. Under this chapter as revised, the petition for removal under
+section 1446 of this chapter
+ will be filed in the Federal court in the first instance and the right of removal determined in that court before the petition is granted.
+
+The provisions in
+section 80 of title 28
+
+## 35 U.S.C. § 41
+35 U.S.C. § 41 — Patent fees; patent and trademark search
+systems.
+
+(a)  GENERAL FEES. — The Director shall charge the
+following fees:
+
+(1)  FILING AND BASIC NATIONAL FEES. —
+
+(A)  On filing each application for an original
+patent, except for design, plant, or provisional applications,
+$330.
+
+(B)  On filing each application for an original
+design patent, $220.
+
+(C)  On filing each application for an original plant
+patent, $220.
+
+(D)  On filing each provisional application for an
+original patent, $220.
+
+(E)  On filing each application for the reissue of a
+patent, $330.
+
+(F)  The basic national fee for each international
+application filed under the treaty defined in section 351(a)
+entering the national stage under section 371, $330.
+
+(G)  In addition, excluding any sequence listing or
+computer program listing filed in electronic medium as
+prescribed by the Director, for any application the specification
+and drawings of which exceed 100 sheets of paper (or equivalent
+as prescribed by the Director if filed in an electronic medium),
+$270 for each additional 50 sheets of paper (or equivalent as
+prescribed by the Director if filed in an electronic medium) or
+fraction thereof.
+
+(2)  EXCESS CLAIMS FEES. —
+
+(A)  IN GENERAL. — In addition to the fee
+specified in paragraph (1) —
+
+(i)  on filing or on presentation at any other
+time, $220 for each claim in independent form in excess of 3;
+
+(ii)  on filing or on presentation at any other
+time, $52 for each claim (whether dependent or independent)
+in excess of 20; and
+
+(iii)  for each application containing a multiple
+dependent claim, $390.
+
+(B)  MULTIPLE DEPENDENT CLAIMS.— For
+the purpose of computing fees under subparagraph (A), a
+multiple dependent claim referred to in section 112 or any claim
+depending therefrom shall be considered as separate dependent
+claims in accordance with the number of claims to which
+reference is made.
+
+(C)  REFUNDS; ERRORS IN PAYMENT.— The
+Director may by regulation provide for a refund of any part of
+the fee specified in subparagraph (A) for any claim that is
+canceled before an examination on the merits, as prescribed by
+the Director, has been made of the application under section
+131. Errors in payment of the additional fees under this
+paragraph may be rectified in accordance with regulations
+prescribed by the Director.
+
+(3)  EXAMINATION FEES. —
+
+(A)  IN GENERAL.—
+
+(i)  For examination of each application for an
+original patent, except for design, plant, provisional, or
+international applications, $220.
+
+(ii)  For examination of each application for an
+original design patent, $140.
+
+(iii)  For examination of each application for
+an original plant patent, $170.
+
+(iv)  For examination of the national stage of
+each international application, $220.
+
+(v)  For examination of each application for
+the reissue of a patent, $650.
+
+(B)  APPLICABILITY OF OTHER FEE
+PROVISIONS.— The provisions of paragraphs (3) and (4) of
+section 111(a) relating to the payment of the fee for filing the
+application shall apply to the payment of the fee specified in
+subparagraph (A) with respect to an application filed under
+section 111(a). The provisions of section 371(d) relating to the
+payment of the national fee shall apply to the payment of the
+fee specified subparagraph (A) with respect to an international
+application.
+
+(4)  ISSUE FEES. —
+
+(A)  For issuing each original patent, except for
+design or plant patents, $1,510.
+
+(B)  For issuing each original design patent, $860.
+
+(C)  For issuing each original plant patent, $1,190.
+
+(D)  For issuing each reissue patent, $1,510.
+
+(5)  DISCLAIMER FEE. — On filing each disclaimer,
+$140.
+
+(6)  APPEAL FEES. —
+
+(A)  On filing an appeal from the examiner to the
+Patent Trial and Appeal Board, $540.
+
+(B)  In addition, on filing a brief in support of the
+appeal, $540, and on requesting an oral hearing in the appeal
+before the Patent Trial and Appeal Board, $1,080.
+
+July   2025
+L-15
+
+§ 41
+PATENT LAWS
+
+(7)  REVIVAL FEES. — On filing each petition for
+the revival of an abandoned application for a patent, for the
+delayed payment of the fee for issuing each patent, for the
+delayed response by the patent owner in any reexamination
+proceeding, for the delayed payment of the fee for maintaining
+a patent in force, for the delayed submission of a priority or
+benefit claim, or for the extension of the 12-month period for
+filing a subsequent application, $1,700.00. The Director may
+refund any part of the fee specified in this paragraph, in
+exceptional circumstances as determined by the Director.
+
+[Excerpt — full text in the consolidated compilation.]
+
+## 35 U.S.C. § 111
+35 U.S.C. § 111 — Application
+[Editor Note: Applicable to any patent application filed on or
+after December 18, 2013. See 35 U.S.C. 111 (pre-PLT (AIA))
+or 35 U.S.C. 111 (pre-AIA) for the law otherwise applicable.]
+
+(a)  IN GENERAL.—
+
+(1)  WRITTEN APPLICATION.—An application for
+patent shall be made, or authorized to be made, by the inventor,
+except as otherwise provided in this title, in writing to the
+Director.
+
+(2)  CONTENTS.—Such application shall include—
+
+(A)  a specification as prescribed by section 112;
+
+(B)  a drawing as prescribed by section 113;  and
+
+(C)  an oath or declaration as prescribed by section
+115.
+
+(3)  FEE, OATH OR DECLARATION, AND
+CLAIMS.—The application shall be accompanied by the fee
+required by law. The fee, oath or declaration, and 1 or more
+claims may be submitted after the filing date of the application,
+within such period and under such conditions, including the
+payment of a surcharge, as may be prescribed by the Director.
+Upon failure to submit the fee, oath or declaration, and 1 or
+more claims within such prescribed period, the application shall
+be regarded as abandoned.
+
+(4)  FILING DATE.—The filing date of an application
+shall be the date on which a specification, with or without claims,
+is received in the United States Patent and Trademark Office.
+
+(b)  PROVISIONAL APPLICATION.—
+
+(1)  AUTHORIZATION.—A provisional application
+for patent shall be made or authorized to be made by the
+inventor, except as otherwise provided in this title, in writing
+to the Director. Such application shall include—
+
+(A)  a specification as prescribed by section  112(a);
+and
+
+(B)  a drawing as prescribed by section 113.
+
+(2)  CLAIM.—A claim, as required by subsections (b)
+through (e) of section 112, shall not be required in a provisional
+application.
+
+(3)  FEE.—The application shall be accompanied by
+the fee required by law. The fee may be submitted after the filing
+date of the application, within such period and under such
+conditions, including the payment of a surcharge, as may be
+prescribed by the Director. Upon failure to submit the fee within
+such prescribed period, the application shall be regarded as
+abandoned.
+
+(4)  FILING DATE.—The filing date of a provisional
+application shall be the date on which a specification, with or
+without claims, is received in the United States Patent and
+Trademark Office.
+
+(5)  ABANDONMENT.—Notwithstanding the absence
+of a claim, upon timely request and as prescribed by the Director,
+a provisional application may be treated as an application filed
+under subsection (a). Subject to section 119(e)(3), if no such
+
+July   2025
+L-23
+
+§ 111
+PATENT LAWS
+
+request is made, the provisional application shall be regarded
+as abandoned 12 months after the filing date of such application
+and shall not be subject to revival after such 12-month period.
+
+(6)  OTHER BASIS FOR PROVISIONAL
+APPLICATION.—Subject to all the conditions in this subsection
+and section 119(e), and as prescribed by the Director, an
+application for patent filed under subsection (a) may be treated
+as a provisional application for patent.
+
+(7)  NO RIGHT OF PRIORITY OR BENEFIT OF
+EARLIEST FILING DATE.—A provisional application shall
+not be entitled to the right of priority of any other application
+under section 119, 365(a), or 386(a) or to the benefit of an earlier
+filing date in the United States under section 120, 121, 365(c),
+or 386(c).
+
+(8)  APPLICABLE PROVISIONS.—The provisions
+of this title relating to applications for patent shall apply to
+provisional applications for patent, except as otherwise provided,
+and except that provisional applications for patent shall not be
+subject to sections 131 and 135.
+
+(c)  PRIOR FILED APPLICATION.—Notwithstanding the
+provisions of subsection (a), the Director may prescribe the
+conditions, including the payment of a surcharge, under which
+a reference made upon the filing of an application under
+subsection (a) to a previously filed application, specifying the
+previously filed application by application number and the
+intellectual property authority or country in which the application
+was filed, shall constitute the specification and any drawings of
+the subsequent application for purposes of a filing date. A copy
+of the specification and any drawings of the previously filed
+application shall be submitted within such period and under
+such conditions as may be prescribed by the Director. A failure
+to submit the copy of the specification and any drawings of the
+
+[Excerpt — full text in the consolidated compilation.]
+
+## 35 U.S.C. § 119
+35 U.S.C. § 119 — Benefit of earlier filing date; right of priority
+[Editor Note: 35 U.S.C. 119(a) as set forth below is only
+applicable to patent applications subject to the first inventor to
+file provisions of the AIA (see 35 U.S.C. 100 (note)). See 35
+U.S.C. 119(a) (pre-AIA) for the law otherwise applicable.]
+
+(a)  An application for patent for an invention filed in this
+country by any person who has, or whose legal representatives
+or assigns have, previously regularly filed an application for a
+patent for the same invention in a foreign country which affords
+similar privileges in the case of applications filed in the United
+States or to citizens of the United States, or in a WTO member
+country, shall have the same effect as the same application would
+have if filed in this country on the date on which the application
+for patent for the same invention was first filed in such foreign
+country, if the application in this country is filed within 12
+months from the earliest date on which such foreign application
+was filed. The Director may prescribe regulations, including the
+requirement for payment of the fee specified in section 41(a)(7),
+pursuant to which the 12-month period set forth in this
+subsection may be extended by an additional 2 months if the
+delay in filing the application in this country within the 12-month
+period was unintentional.
+
+(b)(1)  No application for patent shall be entitled to this
+right of priority unless a claim is filed in the Patent and
+Trademark Office, identifying the foreign application by
+specifying the application number on that foreign application,
+the intellectual property authority or country in or for which the
+application was filed, and the date of filing the application, at
+such time during the pendency of the application as required by
+the Director.
+
+(2)  The Director may consider the failure of the
+applicant to file a timely claim for priority as a waiver of any
+such claim. The Director may establish procedures, including
+the requirement for payment of the fee specified in section
+41(a)(7), to accept an unintentionally delayed claim under this
+section.
+
+(3)  The Director may require a certified copy of the
+original foreign application, specification, and drawings upon
+which it is based, a translation if not in the English language,
+and such other information as the Director considers necessary.
+Any such certification shall be made by the foreign intellectual
+property authority in which the foreign application was filed
+and show the date of the application and of the filing of the
+specification and other papers.
+
+(c)  In like manner and subject to the same conditions and
+requirements, the right provided in this section may be based
+upon a subsequent regularly filed application in the same foreign
+country instead of the first filed foreign application, provided
+that any foreign application filed prior to such subsequent
+application has been withdrawn, abandoned, or otherwise
+disposed of, without having been laid open to public inspection
+
+July   2025
+L-29
+
+§ 119
+PATENT LAWS
+
+and without leaving any rights outstanding, and has not served,
+nor thereafter shall serve, as a basis for claiming a right of
+priority.
+
+(d)  Applications for inventors’ certificates filed in a foreign
+country in which applicants have a right to apply, at their
+discretion, either for a patent or for an inventor’s certificate shall
+be treated in this country in the same manner and have the same
+effect for purpose of the right of priority under this section as
+applications for patents, subject to the same conditions and
+requirements of this section as apply to applications for patents,
+provided such applicants are entitled to the benefits of the
+Stockholm Revision of the Paris Convention at the time of such
+filing.
+
+(e)(1)  An application for patent filed under section
+111(a) or section 363 for an invention disclosed in the manner
+provided by section 112(a) (other than the requirement to
+disclose the best mode) in a provisional application filed under
+section 111(b), by an inventor or inventors named in the
+provisional application, shall have the same effect, as to such
+invention, as though filed on the date of the provisional
+application filed under section 111(b), if the application for
+patent filed under section 111(a) or section 363 is filed not later
+than 12 months after the date on which the provisional
+application was filed and if it contains or is amended to contain
+a specific reference to the provisional application. The Director
+
+[Excerpt — full text in the consolidated compilation.]
+
+## 35 U.S.C. § 132
+35 U.S.C. § 132 — Notice of rejection; reexamination
+(a)  Whenever, on examination, any claim for a patent is
+rejected, or any objection or requirement made, the Director
+shall notify the applicant thereof, stating the reasons for such
+rejection, or objection or requirement, together with such
+information and references as may be useful in judging of the
+propriety of continuing the prosecution of his application; and
+if after receiving such notice, the applicant persists in his claim
+for a patent, with or without amendment, the application shall
+be reexamined. No amendment shall introduce new matter into
+the disclosure of the invention.
+
+(b)  The Director shall prescribe regulations to provide for
+the continued examination of applications for patent at the
+request of the applicant. The Director may establish appropriate
+fees for such continued examination and shall provide a 50
+percent reduction in such fees for small entities that qualify for
+reduced fees under section 41(h)(1).
+
+(Amended Nov. 29, 1999, Public Law 106-113, sec. 1000(a)(9),
+113 Stat. 1501A-560, 582 (S. 1948 secs. 4403 and
+4732(a)(10)(A)); amended Sept. 16, 2011, Public Law 112-29,
+sec. 20(j) (effective Sept. 16, 2012), 125 Stat. 284.)
+
+## 35 U.S.C. § 133
+35 U.S.C. § 133 — Time for prosecuting application
+Upon failure of the applicant to prosecute the application within
+six months after any action therein, of which notice has been
+
+given or mailed to the applicant, or within such shorter time,
+not less than thirty days, as fixed by the Director in such action,
+the application shall be regarded as abandoned by the parties
+thereto.
+
+(Amended Nov. 29, 1999, Public Law 106-113, sec. 1000(a)(9),
+113 Stat. 1501A-582 (S. 1948 sec. 4732(a)(10)(A)); Dec. 18,
+2012, Public Law 12-211, sec. 202(b)(5), 126 Stat. 1536.)
+
+## 35 U.S.C. § 141
+35 U.S.C. § 141 — Appeal to Court of Appeals for the Federal
+Circuit.
+
+[Editor Note: Applicable to proceedings commenced on or after
+September 16, 2012. See 35 U.S.C. 141 (pre-AIA) for the law
+otherwise applicable.*]
+
+(a)  EXAMINATIONS.—An applicant who is dissatisfied
+with the final decision in an appeal to the Patent Trial and
+Appeal Board under section 134(a) may appeal the Board’s
+decision to the United States Court of Appeals for the Federal
+Circuit. By filing such an appeal, the applicant waives his or
+her right to proceed under section 145 .
+
+(b)  REEXAMINATIONS.—A patent owner who is
+dissatisfied with the final decision in an appeal of a
+reexamination to the Patent Trial and Appeal Board under
+section 134(a) may appeal the Board’s decision only to the
+United States Court of Appeals for the Federal Circuit.
+
+(c)  POST-GRANT AND INTER PARTES REVIEWS.—A
+party to an inter partes review or a post-grant review who is
+dissatisfied with the final written decision of the Patent Trial
+and Appeal Board under section 318(a) or 328(a) (as the case
+may be) may appeal the Board’s decision only to the United
+States Court of Appeals for the Federal Circuit.
+
+(d)  DERIVATION PROCEEDINGS.—A party to a
+derivation proceeding who is dissatisfied with the final decision
+of the Patent Trial and Appeal Board in the proceeding may
+appeal the decision to the United States Court of Appeals for
+the Federal Circuit, but such appeal shall be dismissed if any
+adverse party to such derivation proceeding, within 20 days
+after the appellant has filed notice of appeal in accordance with
+section 142, files notice with the Director that the party elects
+to have all further proceedings conducted as provided in section
+146. If the appellant does not, within 30 days after the filing of
+such notice by the adverse party, file a civil action under section
+146, the Board’s decision shall govern the further proceedings
+in the case.
+
+(Amended Apr. 2, 1982, Public Law 97-164, sec. 163(a)(7),
+(b)(2), 96 Stat. 49, 50; Nov. 8, 1984, Public Law 98-622, sec.
+203(a), 98 Stat. 3387; Nov. 29, 1999, Public Law 106-113, sec.
+1000(a)(9), 113 Stat. 1501A-571, 582 (S. 1948 secs. 4605(c)
+and 4732(a)(10)(A)); Nov. 2, 2002, Public Law 107-273, sec.
+13106, 116 Stat. 1901; amended Sept. 16, 2011, Public Law
+112-29, sec. 7(c) (effective Sept. 16, 2012), 125 Stat. 284.)
+
+*NOTE: The provisions of this section as in effect on Sept. 15,
+2012 (35 U.S.C. 141 (pre-AIA)) apply to interference
+proceedings that are declared after September 15, 2012 under
+35 U.S.C. 135 (pre-AIA). See Public Law 112-274, sec. 1(k)(3),
+126 Stat. 2456 (Jan. 14, 2013).
+
+35 U.S.C. 141 (pre-AIA)   Appeal to the Court of Appeals
+for the Federal Circuit.
+
+[Editor Note: Not applicable to proceedings commenced on or
+after September 16, 2012.* See 35 U.S.C. 141 for the law
+otherwise applicable.]
+
+An applicant dissatisfied with the decision in an appeal to the
+Board of Patent Appeals and Interferences under section 134 of
+this title may appeal the decision to the United States Court of
+Appeals for the Federal Circuit. By filing such an appeal the
+applicant waives his or her right to proceed under section 145
+of this title. A patent owner, or a third-party requester in an inter
+partes reexamination proceeding, who is in any reexamination
+proceeding dissatisfied with the final decision in an appeal to
+the Board of Patent Appeals and Interferences under section
+134 may appeal the decision only to the United States Court of
+Appeals for the Federal Circuit. A party to an interference
+dissatisfied with the decision of the Board of Patent Appeals
+and Interferences on the interference may appeal the decision
+to the United States Court of Appeals for the Federal Circuit,
+but such appeal shall be dismissed if any adverse party to such
+
+July   2025
+L-37
+
+§ 141 (pre-AIA)
+PATENT LAWS
+
+interference, within twenty days after the appellant has filed
+notice of appeal in accordance with section 142 of this title, files
+notice with the Director that the party elects to have all further
+proceedings conducted as provided in section 146 of this title.
+If the appellant does not, within thirty days after filing of such
+notice by the adverse party, file a civil action under section 146,
+the decision appealed from shall govern the further proceedings
+in the case.
+
+(Amended Apr. 2, 1982, Public Law 97-164, sec. 163(a)(7),
+(b)(2), 96 Stat. 49, 50; Nov. 8, 1984, Public Law 98-622, sec.
+203(a), 98 Stat. 3387; Nov. 29, 1999, Public Law 106-113, sec.
+
+[Excerpt — full text in the consolidated compilation.]
+
+## 35 U.S.C. § 145
+35 U.S.C. § 145 — Civil action to obtain patent
+[Editor Note: Applicable to any patent application subject to
+the first inventor to file provisions of the AIA (see 35 U.S.C. 100
+(note)). See 35 U.S.C. 145 (pre-AIA) for the law otherwise
+applicable.]
+
+An applicant dissatisfied with the decision of the Patent Trial
+and Appeal Board in an appeal under section 134(a) may, unless
+appeal has been taken to the United States Court of Appeals for
+the Federal Circuit, have remedy by civil action against the
+Director in the United States District Court for the Eastern
+District of Virginia if commenced within such time after such
+decision, not less than sixty days, as the Director appoints. The
+
+L-38
+July   2025
+
+MANUAL OF PATENT EXAMINING PROCEDURE
+§ 142
+
+court may adjudge that such applicant is entitled to receive a
+patent for his invention, as specified in any of his claims
+involved in the decision of the Patent Trial and Appeal Board,
+as the facts in the case may appear, and such adjudication shall
+authorize the Director to issue such patent on compliance with
+the requirements of law. All the expenses of the proceedings
+shall be paid by the applicant.
+
+(Amended Apr. 2, 1982, Public Law 97-164, sec. 163(a)(7), 96
+Stat. 49; Nov. 8, 1984, Public Law 98-622, sec. 203(b), 98 Stat.
+3387; Nov. 29, 1999, Public Law 106-113, sec. 1000(a)(9), 113
+Stat. 1501A-571, 582 (S. 1948 secs. 4605(e) and 4732(a)(10)(A)
+); amended Sept. 16, 2011, Public Law 112-29, secs. 9 (effective
+Sept. 16, 2011), 20(j) (effective Sept. 16, 2012), and 3(j)
+(effective March 16, 2013), 125 Stat. 284.)
+
+35 U.S.C. 145 (pre-AIA)   Civil action to obtain patent.
+
+[Editor Note: Not applicable to any patent application subject
+to the first inventor to file provisions of the AIA (see 35 U.S.C.
+100 (note)). See 35 U.S.C. 145  for the law otherwise
+applicable.]
+
+An applicant dissatisfied with the decision of the Board of Patent
+Appeals and Interferences in an appeal under section 134(a)
+may, unless appeal has been taken to the United States Court
+of Appeals for the Federal Circuit, have remedy by civil action
+against the Director in the United States District Court for the
+Eastern District of Virginia if commenced within such time after
+such decision, not less than sixty days, as the Director appoints.
+The court may adjudge that such applicant is entitled to receive
+a patent for his invention, as specified in any of his claims
+involved in the decision of the Board of Patent Appeals and
+Interferences, as the facts in the case may appear, and such
+adjudication shall authorize the Director to issue such patent on
+compliance with the requirements of law. All the expenses of
+the proceedings shall be paid by the applicant.
+
+(Amended Apr. 2, 1982, Public Law 97-164, sec. 163(a)(7), 96
+Stat. 49; Nov. 8, 1984, Public Law 98-622, sec. 203(b), 98 Stat.
+3387; Nov. 29, 1999, Public Law 106-113, sec. 1000(a)(9), 113
+Stat. 1501A-571, 582 (S. 1948 secs. 4605(e) and 4732(a)(10)(A)
+); amended Sept. 16, 2011, Public Law 112-29, secs. 9 (effective
+Sept. 16, 2011) and 20(j) (effective Sept. 16, 2012), 125 Stat.
+284.)
+
+## 35 U.S.C. § 151
+35 U.S.C. § 151 — Issue of patent
+(a) IN GENERAL.—If it appears that an applicant is entitled
+to a patent under the law, a written notice of allowance of the
+application shall be given or mailed to the applicant. The notice
+shall specify a sum, constituting the issue fee and any required
+publication fee, which shall be paid within 3 months thereafter.
+
+(b) EFFECT OF PAYMENT.—Upon payment of this sum the
+patent may issue, but if payment is not timely made, the
+application shall be regarded as abandoned.
+
+(Amended July 24, 1965, Public Law 89-83, sec. 4, 79 Stat.
+260; Jan. 2, 1975, Public Law 93-601, sec. 3, 88 Stat. 1956;
+
+Nov. 29, 1999, Public Law 106-113, sec. 1000(a)(9), 113 Stat.
+1501A-582 (S. 1948 sec. 4732(a)(10)(A)); Nov. 29, 1999, Public
+Law 106-113, sec. 1000(a)(9), 113 Stat. 1501A-582 (S. 1948
+sec. 4732(a)(10)(A)); Dec. 18, 2012, Public Law 112-211, sec.
+202(b)(6), 126 Stat. 1536.)
+
+## 37 C.F.R. § 1.53
+37 C.F.R. § 1.53 — Application number, filing date, and
+completion of application.
+
+[Editor Note: Applicable to patent applications
+filed under 35 U.S.C. 111 on or after December 18, 2013.
+See * below for additional applicability notes.]
+
+(a)   Application number. Any papers received
+in the Patent and Trademark Office which purport
+to be an application for a patent will be assigned an
+application number for identification purposes.
+
+(b)  Application filing requirements—
+Nonprovisional application.  The filing date of an
+application for patent filed under this section, other
+than an application for a design patent or a
+provisional application under paragraph (c) of this
+section, is the date on which a specification, with
+or without claims, is received in the Office. The
+filing date of an application for a design patent filed
+under this section, except for a continued
+prosecution application under paragraph (d) of this
+section, is the date on which the specification as
+prescribed by 35 U.S.C. 112, including at least one
+claim, and any required drawings are received in
+the Office. No new matter may be introduced into
+an application after its filing date. A continuing
+application, which may be a continuation, divisional,
+or continuation-in-part application, may be filed
+under the conditions specified in 35 U.S.C. 120,
+121, 365(c), or 386(c) and § 1.78.
+
+(1)  A continuation or divisional application
+that names as inventors the same or fewer than all
+of the inventors named in the prior application may
+be filed under this paragraph or paragraph (d) of
+this section.
+
+(2)  A continuation-in-part application (which
+may disclose and claim subject matter not disclosed
+in the prior application) or a continuation or
+divisional application naming an inventor not named
+in the prior application must be filed under this
+paragraph.
+
+(c)   Application filing requirements —
+Provisional application. The filing date of a
+provisional application is the date on which a
+specification, with or without claims, is received in
+the Office. No amendment, other than to make the
+provisional application comply with the patent
+
+R-78
+July   2025
+
+MANUAL OF PATENT EXAMINING PROCEDURE
+§ 1.53
+
+statute and all applicable regulations, may be made
+to the provisional application after the filing date of
+the provisional application.
+
+(1)  A provisional application must also
+include the cover sheet required by § 1.51(c)(1),
+which may be an application data sheet (§ 1.76), or
+a cover letter identifying the application as a
+provisional application. Otherwise, the application
+will be treated as an application filed under
+paragraph (b) of this section.
+
+(2)  An application for patent filed under
+paragraph (b) of this section may be converted to a
+provisional application and be accorded the original
+filing date of the application filed under paragraph
+(b) of this section. The grant of such a request for
+conversion will not entitle applicant to a refund of
+the fees that were properly paid in the application
+filed under paragraph (b) of this section. Such a
+request for conversion must be accompanied by the
+processing fee set forth in § 1.17(q) and be filed
+prior to the earliest of:
+
+(i)  Abandonment of the application filed
+under paragraph (b) of this section;
+
+(ii)  Payment of the issue fee on the
+application filed under paragraph (b) of this section;
+or
+
+(iii)  Expiration of twelve months after
+the filing date of the application filed under
+paragraph (b) of this section.
+
+(3)  A provisional application filed under
+paragraph (c) of this section may be converted to a
+nonprovisional application filed under paragraph
+(b) of this section and accorded the original filing
+date of the provisional application. The conversion
+of a provisional application to a nonprovisional
+application will not result in either the refund of any
+fee properly paid in the provisional application or
+the application of any such fee to the filing fee, or
+any other fee, for the nonprovisional application.
+Conversion of a provisional application to a
+nonprovisional application under this paragraph will
+result in the term of any patent to issue from the
+application being measured from at least the filing
+date of the provisional application for which
+conversion is requested. Thus, applicants should
+consider avoiding this adverse patent term impact
+by filing a nonprovisional application claiming the
+benefit of the provisional application under 35
+U.S.C. 119(e), rather than converting the provisional
+
+application into a nonprovisional application
+
+[Excerpt — full text in the consolidated compilation.]
+
+## 37 C.F.R. § 1.111
+37 C.F.R. § 1.111 — Reply by applicant or patent owner
+to a non-final Office action.
+
+(a)(1)  If the Office action after the first
+examination (§ 1.104) is adverse in any respect, the
+applicant or patent owner, if he or she persists in his
+or her application for a patent or reexamination
+proceeding, must reply and request reconsideration
+or further examination, with or without amendment.
+See §§  1.135 and 1.136 for time for reply to avoid
+abandonment.
+
+(2)    Supplemental replies.
+
+(i)  A reply that is supplemental to a reply
+that is in compliance with §  1.111(b) will not be
+entered as a matter of right except as provided in
+paragraph (a)(2)(ii) of this section. The Office may
+enter a supplemental reply if the supplemental reply
+is clearly limited to:
+
+(A)  Cancellation of a claim(s);
+
+(B)  Adoption of the examiner
+suggestion(s);
+
+(C)  Placement of the application in
+condition for allowance;
+
+(D)  Reply to an Office requirement
+made after the first reply was filed;
+
+(E)  Correction of informalities (e.g.,
+typographical errors); or
+
+(F)  Simplification of issues for
+appeal.
+
+(ii)  A supplemental reply will be entered
+if the supplemental reply is filed within the period
+
+during which action by the Office is suspended
+under § 1.103(a) or (c).
+
+(b)  In order to be entitled to reconsideration or
+further examination, the applicant or patent owner
+must reply to the Office action. The reply by the
+applicant or patent owner must be reduced to a
+writing which distinctly and specifically points out
+the supposed errors in the examiner’s action and
+must reply to every ground of objection and
+rejection in the prior Office action. The reply must
+present arguments pointing out the specific
+distinctions believed to render the claims, including
+any newly presented claims, patentable over any
+applied references. If the reply is with respect to an
+application, a request may be made that objections
+or requirements as to form not necessary to further
+consideration of the claims be held in abeyance until
+allowable subject matter is indicated. The applicant’s
+or patent owner’s reply must appear throughout to
+be a  bona fide attempt to advance the application
+or the reexamination proceeding to final action. A
+general allegation that the claims define a patentable
+invention without specifically pointing out how the
+language of the claims patentably distinguishes them
+from the references does not comply with the
+requirements of this section.
+
+(c)  In amending in reply to a rejection of claims
+in an application or patent under reexamination, the
+applicant or patent owner must clearly point out the
+patentable novelty which he or she thinks the claims
+present in view of the state of the art disclosed by
+the references cited or the objections made. The
+applicant or patent owner must also show how the
+amendments avoid such references or objections.
+
+[46 FR 29182, May 29, 1981; para. (b) revised, 62
+FR 53132, Oct. 10, 1997, effective Dec. 1, 1997; paras.
+(a) and (c) revised, 65 FR 54604, Sept. 8, 2000, effective
+Nov. 7, 2000; para. (a)(2) revised, 68 FR 14332, Mar.
+25, 2003, effective May 1, 2003; para. (a)(2) revised, 69
+FR 56481, Sept. 21, 2004, effective Oct. 21, 2004; para.
+(a)(2)(i) revised, 70 FR 3880, Jan. 27, 2005, effective
+Dec. 8. 2004]
+
+## 37 C.F.R. § 1.113
+37 C.F.R. § 1.113 — Final rejection or action.
+(a)  On the second or any subsequent
+examination or consideration by the examiner the
+rejection or other action may be made final,
+whereupon applicant’s, or for ex parte
+reexaminations filed under § 1.510, patent owner’s
+reply is limited to appeal in the case of rejection of
+any claim (§ 41.31 of this title), or to amendment
+as specified in § 1.114 or § 1.116. Petition may be
+taken to the Director in the case of objections or
+requirements not involved in the rejection of any
+claim (§ 1.181). Reply to a final rejection or action
+must comply with § 1.114 or paragraph (c) of this
+section. For final actions in an inter partes
+reexamination filed under § 1.913, see § 1.953.
+
+(b)  In making such final rejection, the examiner
+shall repeat or state all grounds of rejection then
+considered applicable to the claims in the
+application, clearly stating the reasons in support
+thereof.
+
+(c)  Reply to a final rejection or action must
+include cancellation of, or appeal from the rejection
+of, each rejected claim. If any claim stands allowed,
+the reply to a final rejection or action must comply
+with any requirements or objections as to form.
+
+[24 FR 10332, Dec. 22, 1959; 46 FR 29182, May
+29, 1981; revised, 62 FR 53132, Oct. 10, 1997, effective
+Dec. 1, 1997; revised, 65 FR 14865, Mar. 20, 2000,
+
+effective May 29, 2000 (adopted as final, 65 FR 50092,
+Aug. 16, 2000); para. (a) revised, 65 FR 76756, Dec. 7,
+2000, effective Feb. 5, 2001; para. (a) revised, 68 FR
+14332, Mar. 25, 2003, effective May 1, 2003; para. (a)
+revised, 69 FR 49959, Aug. 12, 2004, effective Sept. 13,
+2004]
+
+## 37 C.F.R. § 1.114
+37 C.F.R. § 1.114 — Request for continued examination.
+(a)  If prosecution in an application is closed, an
+applicant may request continued examination of the
+application by filing a submission and the fee set
+forth in § 1.17(e) prior to the earliest of:
+
+(1)  Payment of the issue fee, unless a
+petition under § 1.313 is granted;
+
+(2)  Abandonment of the application; or
+
+(3)  The filing of a notice of appeal to the
+U.S. Court of Appeals for the Federal Circuit under
+35 U.S.C. 141, or the commencement of a civil
+action under 35 U.S.C. 145 or 146, unless the appeal
+or civil action is terminated.
+
+(b)  Prosecution in an application is closed as
+used in this section means that the application is
+under appeal, or that the last Office action is a final
+action (§ 1.113), a notice of allowance (§ 1.311), or
+an action that otherwise closes prosecution in the
+application.
+
+(c)  A submission as used in this section
+includes, but is not limited to, an information
+disclosure statement, an amendment to the written
+description, claims, or drawings, new arguments,
+or new evidence in support of patentability. If reply
+to an Office action under 35 U.S.C. 132 is
+outstanding, the submission must meet the reply
+requirements of § 1.111.
+
+(d)  If an applicant timely files a submission and
+fee set forth in § 1.17(e), the Office will withdraw
+the finality of any Office action and the submission
+will be entered and considered. If an applicant files
+a request for continued examination under this
+section after appeal, but prior to a decision on the
+appeal, it will be treated as a request to withdraw
+the appeal and to reopen prosecution of the
+application before the examiner. An appeal brief (§
+41.37 of this title) or a reply brief (§ 41.41 of this
+title), or related papers, will not be considered a
+submission under this section.
+
+(e)  The provisions of this section do not apply
+to:
+
+July   2025
+R-135
+
+§ 1.114
+CONSOLIDATED PATENT RULES - JULY 2025 UPDATE
+
+(1)  A provisional application;
+
+(2)  An application for a utility or plant patent
+filed under 35 U.S.C. 111(a) before June 8, 1995;
+
+(3)  An international application filed under
+35 U.S.C. 363 before June 8, 1995, or an
+international application that does not comply with
+35 U.S.C. 371;
+
+(4)  An application for a design patent;
+
+(5)  An international design application; or
+
+(6)  A patent under reexamination.
+
+[Added 65 FR 14865, Mar. 20, 2000, effective May
+29, 2000; revised 65 FR 50092, Aug. 16, 2000; para. (d)
+revised, 69 FR 49959, Aug. 12, 2004, effective Sept. 13,
+2004; paras. (a) and (d) revised and (f), (g), and (h) added,
+72 FR 46716, Aug. 21, 2007 (implementation enjoined
+and never became effective); paras. (a) and (d) revised
+and (f), (g), and (h) removed, 74 FR 52686, Oct. 14, 2009,
+effective Oct. 14, 2009 (to remove changes made by the
+final rules in 72 FR 46716 from the CFR); paras.
+(e)(3)-(5) revised and para. (e)(6) added, 80 FR 17918,
+Apr. 2, 2015, effective May 13, 2015]
+
+AMENDMENTS
+
+## 37 C.F.R. § 1.116
+37 C.F.R. § 1.116 — Amendments and affidavits or other
+evidence after final action and prior to
+appeal.
+
+(a)  An amendment after final action must
+comply with § 1.114 or this section.
+
+(b)  After a final rejection or other final action
+(§ 1.113) in an application or in an ex parte
+reexamination filed under § 1.510, or an action
+closing prosecution (§ 1.949) in an inter partes
+reexamination filed under § 1.913, but before or on
+the same date of filing an appeal (§ 41.31 or § 41.61
+of this title):
+
+(1)  An amendment may be made canceling
+claims or complying with any requirement of form
+expressly set forth in a previous Office action;
+
+(2)  An amendment presenting rejected
+claims in better form for consideration on appeal
+may be admitted; or
+
+(3)  An amendment touching the merits of
+the application or patent under reexamination may
+be admitted upon a showing of good and sufficient
+
+R-136
+July   2025
+
+MANUAL OF PATENT EXAMINING PROCEDURE
+§ 1.115
+
+reasons why the amendment is necessary and was
+not earlier presented.
+
+(c)  The admission of, or refusal to admit, any
+amendment after a final rejection, a final action, an
+action closing prosecution, or any related
+proceedings will not operate to relieve the
+application or reexamination proceeding from its
+condition as subject to appeal or to save the
+application from abandonment under § 1.135, or the
+reexamination prosecution from termination under
+§ 1.550(d) or § 1.957(b) or limitation of further
+prosecution under § 1.957(c).
+
+(d)(1)  Notwithstanding the provisions of
+paragraph (b) of this section, no amendment other
+than canceling claims, where such cancellation does
+not affect the scope of any other pending claim in
+the proceeding, can be made in an inter partes
+reexamination proceeding after the right of appeal
+notice under § 1.953 except as provided in § 1.981
+or as permitted by § 41.77(b)(1) of this title.
+
+(2)  Notwithstanding the provisions of
+paragraph (b) of this section, an amendment made
+after a final rejection or other final action (§ 1.113)
+in an ex parte reexamination filed under § 1.510, or
+an action closing prosecution (§ 1.949) in an inter
+partes reexamination filed under § 1.913 may not
+cancel claims where such cancellation affects the
+scope of any other pending claim in the
+reexamination proceeding except as provided in §
+1.981 or as permitted by § 41.77(b)(1) of this title.
+
+(e)  An affidavit or other evidence submitted
+after a final rejection or other final action (§ 1.113)
+in an application or in an ex parte reexamination
+filed under § 1.510, or an action closing prosecution
+(§ 1.949) in an inter partes reexamination filed under
+§ 1.913 but before or on the same date of filing an
+appeal (§ 41.31 or § 41.61 of this title), may be
+admitted upon a showing of good and sufficient
+reasons why the affidavit or other evidence is
+necessary and was not earlier presented.
+
+(f)  Notwithstanding the provisions of
+paragraph (e) of this section, no affidavit or other
+evidence can be made in an inter partes
+reexamination proceeding after the right of appeal
+notice under § 1.953 except as provided in § 1.981
+or as permitted by § 41.77(b)(1) of this title.
+
+(g)  After decision on appeal, amendments,
+affidavits and other evidence can only be made as
+provided in §§ 1.198 and 1.981, or to carry into
+
+effect a recommendation under § 41.50(c) of this
+title.
+
+[24 FR 10332, Dec. 22, 1959; 46 FR 29183, May
+29, 1981; para. (a) revised, 62 FR 53132, Oct. 10, 1997,
+effective Dec. 1, 1997; revised, 65 FR 14865, Mar. 20,
+2000, effective May 29, 2000 (adopted as final, 65 FR
+50092, Aug. 16, 2000); paras. (b) and (d) revised, 65 FR
+76756, Dec. 7, 2000, effective Feb. 5, 2001; revised, 69
+FR 49959, Aug. 12, 2004, effective Sept. 13, 2004]
+
+## 37 C.F.R. § 1.135
+37 C.F.R. § 1.135 — Abandonment for failure to reply
+within time period.
+
+(a)  If an applicant of a patent application fails
+to reply within the time period provided under §
+1.134 and § 1.136, the application will become
+abandoned unless an Office action indicates
+otherwise.
+
+(b)  Prosecution of an application to save it from
+abandonment pursuant to paragraph (a) of this
+section must include such complete and proper reply
+as the condition of the application may require. The
+admission of, or refusal to admit, any amendment
+after final rejection or any amendment not
+responsive to the last action, or any related
+proceedings, will not operate to save the application
+from abandonment.
+
+(c)  When reply by the applicant is a bona fide
+attempt to advance the application to final action,
+and is substantially a complete reply to the non-final
+Office action, but consideration of some matter or
+compliance with some requirement has been
+inadvertently omitted, applicant may be given a new
+time period for reply under § 1.134 to supply the
+omission.
+
+[Paras. (a), (b), and (c), 47 FR 41272, Sept. 17,
+1982, effective Oct. 1, 1982; para. (d) deleted, 49 FR
+555, Jan. 4, 1984, effective Apr. 1, 1984; revised, 62 FR
+53132, Oct. 10, 1997, effective Dec. 1, 1997]
+
+## 37 C.F.R. § 1.136
+37 C.F.R. § 1.136 — Extensions of time.
+(a)(1)  If an applicant is required to reply
+within a nonstatutory or shortened statutory time
+period, applicant may extend the time period for
+reply up to the earlier of the expiration of any
+maximum period set by statute or five months after
+the time period set for reply, if a petition for an
+extension of time and the fee set in § 1.17(a) or (u)
+are filed, unless:
+
+(i)  Applicant is notified otherwise in an
+Office action;
+
+(ii)  The reply is a reply brief submitted
+pursuant to § 41.41 of this title;
+
+(iii)  The reply is a request for an oral
+hearing submitted pursuant to § 41.47(a) of this title;
+
+(iv)  The reply is to a decision by the
+Patent Trial and Appeal Board pursuant to § 41.50
+
+or § 41.52 of this chapter or to § 90.3 of this chapter;
+or
+
+(v)  The application is involved in a
+contested case (§ 41.101(a) of this title) or a
+derivation proceeding (§ 42.4(b) of this title).
+
+(2)  The date on which the petition and the
+fee have been filed is the date for purposes of
+determining the period of extension and the
+corresponding amount of the fee. The expiration of
+the time period is determined by the amount of the
+fee paid. A reply must be filed prior to the expiration
+of the period of extension to avoid abandonment of
+the application (§ 1.135), but in no situation may an
+applicant reply later than the maximum time period
+set by statute, or be granted an extension of time
+under paragraph (b) of this section when the
+provisions of paragraph (a) of this section are
+available.
+
+(3)  A written request may be submitted in
+an application that is an authorization to treat any
+concurrent or future reply, requiring a petition for
+an extension of time under this paragraph for its
+timely submission, as incorporating a petition for
+extension of time for the appropriate length of time.
+An authorization to charge all required fees, fees
+under § 1.17, or all required extension of time fees
+will be treated as a constructive petition for an
+extension of time in any concurrent or future reply
+requiring a petition for an extension of time under
+this paragraph for its timely submission. Submission
+of the fee set forth in § 1.17(a) will also be treated
+as a constructive petition for an extension of time
+in any concurrent reply requiring a petition for an
+extension of time under this paragraph for its timely
+submission.
+
+(b)  When a reply cannot be filed within the time
+period set for such reply and the provisions of
+paragraph (a) of this section are not available, the
+period for reply will be extended only for sufficient
+cause and for a reasonable time specified. Any
+request for an extension of time under this paragraph
+must be filed on or before the day on which such
+reply is due, but the mere filing of such a request
+will not effect any extension under this paragraph.
+In no situation can any extension carry the date on
+which reply is due beyond the maximum time period
+set by statute. Any request under this paragraph must
+be accompanied by the petition fee set forth in §
+1.17(g).
+
+July   2025
+R-145
+
+§ 1.136
+CONSOLIDATED PATENT RULES - JULY 2025 UPDATE
+
+(c)  If an applicant is notified in a “Notice of
+Allowability” that an application is otherwise in
+condition for allowance, the following time periods
+are not extendable if set in the “Notice of
+Allowability” or in an Office action having a mail
+date on or after the mail date of the “Notice of
+Allowability”:
+
+(1)  The period for submitting the inventor’s
+oath or declaration;
+
+(2)  The period for submitting formal
+drawings set under § 1.85(c); and
+
+(3)  The period for making a deposit set under
+§ 1.809(c).
+
+(d)  See § 1.550(c) for extensions of time in ex
+parte  reexamination proceedings, § 1.956 for
+extensions of time in inter partes  reexamination
+proceedings; §§ 41.4(a) and 41.121(a)(3) of this
+chapter for extensions of time in contested cases
+before the Patent Trial and Appeal Board; § 42.5(c)
+of this chapter for extensions of time in trials before
+the Patent Trial and Appeal Board; and § 90.3 of
+this chapter for extensions of time to appeal to the
+U.S. Court of Appeals for the Federal Circuit or to
+commence a civil action.
+
+[47 FR 41272, Sept. 17, 1982, effective Oct. 1,
+1982; 49 FR 555, Jan. 4, 1984, effective Apr. 1, 1984;
+49 FR 48416, Dec. 12, 1984, effective Feb. 11, 1985; 54
+FR 29551, July 13, 1989, effective Aug. 20, 1989; para.
+(a) revised, 58 FR 54504, Oct. 22, 1993, effective Jan.
+3, 1994; revised, 62 FR 53132, Oct. 10, 1997, effective
+
+[Excerpt — full text in the consolidated compilation.]
+
+## 37 C.F.R. § 1.311
+37 C.F.R. § 1.311 — Notice of Allowance.
+(a)  If, on examination, it appears that the
+applicant is entitled to a patent under the law, a
+notice of allowance will be sent to the applicant at
+the correspondence address indicated in § 1.33. The
+notice of allowance shall specify a sum constituting
+the issue fee and any required publication fee (§
+1.211(e)), which issue fee and any required
+publication fee must both be paid within three
+months from the date of mailing of the notice of
+allowance to avoid abandonment of the application.
+This three-month period is not extendable.
+
+(b)  An authorization to charge the issue fee or
+other post-allowance fees set forth in § 1.18 to a
+deposit account may be filed in an individual
+application only after mailing of the notice of
+allowance. The submission of either of the following
+after the mailing of a notice of allowance will
+operate as a request to charge the correct issue fee
+or any publication fee due to any deposit account
+identified in a previously filed authorization to
+charge such fees:
+
+(1)  An incorrect issue fee or publication fee;
+or
+
+(2)  A fee transmittal form (or letter) for
+payment of issue fee or publication fee.
+
+[47 FR 41272, Sept. 17, 1982, effective Oct. 1,
+1982; para. (b) revised, 65 FR 54604, Sept. 8, 2000,
+effective Nov. 7, 2000; revised, 65 FR 57024, Sept. 20,
+2000, effective Nov. 29, 2000; para. (a) revised, 66 FR
+67087, Dec. 28, 2001, effective Dec. 28, 2001; para. (b)
+revised, 69 FR 56481, Sept. 21, 2004, effective Sept. 21,
+2004; para. (a) revised, 78 FR 62368, Oct. 21, 2013,
+effective Dec. 18, 2013]
+
+July   2025
+R-171
+
+§ 1.311
+CONSOLIDATED PATENT RULES - JULY 2025 UPDATE
+
+## 37 C.F.R. § 1.362
+37 C.F.R. § 1.362 — Time for payment of maintenance
+fees.
+
+(a)  Maintenance fees as set forth in §§ 1.20(e)
+through (g) are required to be paid in all patents
+based on applications filed on or after December
+12, 1980, except as noted in paragraph (b) of this
+section, to maintain a patent in force beyond 4, 8
+and 12 years after the date of grant.
+
+(b)  Maintenance fees are not required for any
+plant patents or for any design patents.
+
+(c)  The application filing dates for purposes of
+payment of maintenance fees are as follows:
+
+(1)  For an application not claiming benefit
+of an earlier application, the actual United States
+filing date of the application.
+
+(2)  For an application claiming benefit of an
+earlier foreign application under 35 U.S.C. 119, the
+United States filing date of the application.
+
+(3)  For a continuing (continuation, division,
+continuation-in-part) application claiming the benefit
+of a prior patent application under 35 U.S.C. 120,
+the actual United States filing date of the continuing
+application.
+
+(4)  For a reissue application, including a
+continuing reissue application claiming the benefit
+of a reissue application under 35 U.S.C. 120, [the]
+United States filing date of the original non-reissue
+application on which the patent reissued is based.
+
+(5)  For an international application which
+has entered the United States as a Designated Office
+under 35 U.S.C. 371, the international filing date
+granted under Article 11(1) of the Patent
+Cooperation Treaty which is considered to be the
+United States filing date under 35 U.S.C. 363.
+
+(d)  Maintenance fees may be paid in patents
+without surcharge during the periods extending
+respectively from:
+
+(1)  3 years through 3 years and 6 months
+after grant for the first maintenance fee,
+
+(2)  7 years through 7 years and 6 months
+after grant for the second maintenance fee, and
+
+(3)  11 years through 11 years and 6 months
+after grant for the third maintenance fee.
+
+(e)  Maintenance fees may be paid with the
+surcharge set forth in § 1.20(h) during the respective
+grace periods after:
+
+(1)  3 years and 6 months and through the
+day of the 4th anniversary of the grant for the first
+maintenance fee.
+
+(2)  7 years and 6 months and through the
+day of the 8th anniversary of the grant for the second
+maintenance fee, and
+
+(3)  11 years and 6 months and through the
+day of the 12th anniversary of the grant for the third
+maintenance fee.
+
+(f)  If the last day for paying a maintenance fee
+without surcharge set forth in paragraph (d) of this
+section, or the last day for paying a maintenance fee
+with surcharge set forth in paragraph (e) of this
+section, falls on a Saturday, Sunday, or a federal
+holiday within the District of Columbia, the
+maintenance fee and any necessary surcharge may
+be paid under paragraph (d) or paragraph (e)
+respectively on the next succeeding day which is
+not a Saturday, Sunday, or Federal holiday.
+
+(g)  Unless the maintenance fee and any
+applicable surcharge is paid within the time periods
+set forth in paragraphs (d), (e) or (f) of this section,
+the patent will expire as of the end of the grace
+period set forth in paragraph (e) of this section. A
+patent which expires for the failure to pay the
+maintenance fee will expire at the end of the same
+date (anniversary date) the patent was granted in the
+4th, 8th, or 12th year after grant.
+
+(h)  The periods specified in §§ 1.362(d) and (e)
+with respect to a reissue application, including a
+continuing reissue application thereof, are counted
+from the date of grant of the original non-reissue
+application on which the reissued patent is based.
+
+[49 FR 34724, Aug. 31, 1984, added effective Nov.
+1, 1984; paras. (a) and (e), 56 FR 65142, Dec. 13, 1991,
+effective Dec. 16, 1991; paras. (c)(4) and (e) revised and
+para. (h) added, 58 FR 54504, Oct. 22, 1993, effective
+Jan. 3, 1994; para. (b) revised, 82 FR 52780, Nov. 14,
+2017, effective Jan. 16, 2018]
+
+## 37 C.F.R. § 41.31
+37 C.F.R. § 41.31 — Appeal to Board.
+(a)   Who may appeal and how to file an appeal.
+An appeal is taken to the Board by filing a notice
+of appeal.
+
+(1)  Every applicant, any of whose claims
+has been twice rejected, may appeal from the
+decision of the examiner to the Board by filing a
+notice of appeal accompanied by the fee set forth
+in § 41.20(b)(1) within the time period provided
+under § 1.134 of this title for reply.
+
+(2)  Every owner of a patent under ex parte
+reexamination filed under § 1.510 of this title before
+November 29, 1999, any of whose claims has been
+twice rejected, may appeal from the decision of the
+examiner to the Board by filing a notice of appeal
+accompanied by the fee set forth in § 41.20(b)(1)
+within the time period provided under § 1.134 of
+this title for reply.
+
+(3)  Every owner of a patent under ex parte
+reexamination filed under § 1.510 of this title on or
+after November 29, 1999, any of whose claims has
+been finally (§ 1.113 of this title) rejected, may
+appeal from the decision of the examiner to the
+Board by filing a notice of appeal accompanied by
+
+the fee set forth in § 41.20(b)(1) within the time
+period provided under § 1.134 of this title for reply.
+
+(b)  The signature requirements of §§ 1.33 and
+11.18(a) of this title do not apply to a notice of
+appeal filed under this section.
+
+(c)  An appeal, when taken, is presumed to be
+taken from the rejection of all claims under rejection
+unless cancelled by an amendment filed by the
+applicant and entered by the Office. Questions
+relating to matters not affecting the merits of the
+invention may be required to be settled before an
+appeal can be considered.
+
+(d)  The time periods set forth in paragraphs
+(a)(1) through (a)(3) of this section are extendable
+under the provisions of § 1.136 of this title for patent
+applications and § 1.550(c) of this title for ex parte
+reexamination proceedings.
+
+[Added, 69 FR 49959, Aug. 12, 2004, effective
+Sept. 13, 2004; para. (a) introductory text, para. (b), and
+para. (c) first sentence revised, 76 FR 72270, Nov. 22,
+2011, effective Jan. 23, 2012]
+
+## 37 C.F.R. § 41.37
+37 C.F.R. § 41.37 — Appeal brief.
+(a)  Timing.  Appellant must file a brief under
+this section within two months from the date of
+filing the notice of appeal under § 41.31. The appeal
+brief fee in an application or ex parte  reexamination
+proceeding is $0.00, but if the appeal results in an
+examiner’s answer, the appeal forwarding fee set
+forth in § 41.20(b)(4) must be paid within the time
+period specified in § 41.45 to avoid dismissal of an
+appeal.
+
+(b)   Failure to file a brief. On failure to file the
+brief within the period specified in paragraph (a) of
+this section, the appeal will stand dismissed.
+
+(c)   Content of appeal brief.
+
+(1)  Except as otherwise provided in this
+paragraph, the brief shall contain the following items
+under appropriate headings and in the order
+indicated in paragraphs (c)(1)(i) through (v) of this
+section, except that a brief filed by an appellant who
+is not represented by a registered practitioner need
+only substantially comply with paragraphs (c)(1)(i),
+(c)(1)(ii), (c)(1)(iv), and (c)(1)(v) of this section:
+
+(i)   Real party in interest. A statement
+identifying by name the real party in interest at the
+time the appeal brief is filed, except that such
+statement is not required if the named inventor or
+inventors are themselves the real party in interest.
+If an appeal brief does not contain a statement of
+the real party in interest, the Office may assume that
+the named inventor or inventors are the real party
+in interest.
+
+(ii)   Related appeals, interferences, and
+trials. A statement identifying by application, patent,
+appeal, interference, or trial number all other prior
+and pending appeals, interferences, trials before the
+
+July   2025
+R-417
+
+§ 41.37
+CONSOLIDATED PATENT RULES - JULY 2025 UPDATE
+
+Board, or judicial proceedings (collectively, "related
+cases") which satisfy all of the following conditions:
+involve an application or patent owned by the
+appellant or assignee, are known to appellant, the
+appellant’s legal representative, or assignee, and
+may be related to, directly affect or be directly
+affected by or have a bearing on the Board’s
+decision in the pending appeal, except that such
+statement is not required if there are no such related
+cases. If an appeal brief does not contain a statement
+of related cases, the Office may assume that there
+are no such related cases.
+
+(iii)   Summary of claimed subject matter.
+A concise explanation of the subject matter defined
+in each of the rejected independent claims, which
+shall refer to the specification in the Record by page
+and line number or by paragraph number, and to the
+drawing, if any, by reference characters. For each
+rejected independent claim, and for each dependent
+claim argued separately under the provisions of
+paragraph (c)(1)(iv) of this section, if the claim
+contains a means plus function or step plus function
+recitation as permitted by 35 U.S.C. 112(f), then the
+concise explanation must identify the structure,
+material, or acts described in the specification in the
+Record as corresponding to each claimed function
+with reference to the specification in the Record by
+page and line number or by paragraph number, and
+to the drawing, if any, by reference characters.
+Reference to the patent application publication does
+not satisfy the requirements of this paragraph.
+
+(iv)  Argument.  The arguments of
+appellant with respect to each ground of rejection,
+and the basis therefor, with citations of the statutes,
+regulations, authorities, and parts of the Record
+relied on. The arguments shall explain why the
+examiner erred as to each ground of rejection
+contested by appellant. Except as provided for in
+§§ 41.41, 41.47 and 41.52, any arguments or
+authorities not included in the appeal brief will be
+refused consideration by the Board for purposes of
+the present appeal. Each ground of rejection
+contested by appellant must be argued under a
+separate heading, and each heading shall reasonably
+identify the ground of rejection being contested (e.g.,
+by claim number, statutory basis, and applied
+reference, if any). For each ground of rejection
+applying to two or more claims, the claims may be
+argued separately (claims are considered by
+appellant as separately patentable), as a group (all
+
+claims subject to the ground of rejection stand or
+fall together), or as a subgroup (a subset of the
+claims subject to the ground of rejection stand or
+fall together). When multiple claims subject to the
+same ground of rejection are argued as a group or
+
+[Excerpt — full text in the consolidated compilation.]
+
+## 37 C.F.R. § 41.39
+37 C.F.R. § 41.39 — Examiner’s answer.
+(a)   Content of examiner’s answer. The primary
+examiner may, within such time as may be directed
+by the Director, furnish a written answer to the
+appeal brief.
+
+(1)  An examiner’s answer is deemed to
+incorporate all of the grounds of rejection set forth
+in the Office action from which the appeal is taken
+(as modified by any advisory action and pre-appeal
+brief conference decision), unless the examiner’s
+answer expressly indicates that a ground of rejection
+has been withdrawn.
+
+(2)  An examiner’s answer may include a
+new ground of rejection. For purposes of the
+examiner’s answer, any rejection that relies upon
+any Evidence not relied upon in the Office action
+from which the appeal is taken (as modified by any
+advisory action) shall be designated by the primary
+examiner as a new ground of rejection. The
+examiner must obtain the approval of the Director
+to furnish an answer that includes a new ground of
+rejection.
+
+(b)   Appellant’s response to new ground of
+rejection. If an examiner’s answer contains a
+rejection designated as a new ground of rejection,
+appellant must within two months from the date of
+the examiner’s answer exercise one of the following
+two options to avoid sua sponte dismissal of the
+appeal as to the claims subject to the new ground
+of rejection:
+
+(1)  Reopen prosecution.  Request that
+prosecution be reopened before the primary
+examiner by filing a reply under § 1.111 of this title
+with or without amendment or submission of
+affidavits (§§ 1.130, 1.131 or 1.132 of this of this
+[sic ] title) or other Evidence. Any amendment or
+
+submission of affidavits or other Evidence must be
+relevant to the new ground of rejection. A request
+that complies with this paragraph will be entered
+and the application or the patent under ex parte
+reexamination will be reconsidered by the examiner
+under the provisions of § 1.112 of this title. Any
+request that prosecution be reopened under this
+paragraph will be treated as a request to withdraw
+the appeal.
+
+(2)  Maintain appeal.  Request that the appeal
+be maintained by filing a reply brief as set forth in
+§ 41.41. Such a reply brief must address as set forth
+in § 41.37(c)(1)(iv) each new ground of rejection
+and should follow the other requirements of a brief
+as set forth in § 41.37(c). A reply brief may not be
+accompanied by any amendment, affidavit (§§ 1.130
+, 1.131 or 1.132 of this of this [ sic] title) or other
+Evidence. If a reply brief filed pursuant to this
+section is accompanied by any amendment, affidavit
+or other Evidence, it shall be treated as a request
+that prosecution be reopened before the primary
+examiner under paragraph (b)(1) of this section.
+
+(c)  Extensions of time.  Extensions of time under
+§ 1.136(a) of this title for patent applications are not
+applicable to the time period set forth in this section.
+See § 1.136(b) of this title for extensions of time to
+reply for patent applications and § 1.550(c) of this
+title for extensions of time to reply for ex parte
+reexamination proceedings.
+
+[Added, 69 FR 49959, Aug. 12, 2004, effective
+Sept. 13, 2004; para. (a) revised, heading added to (b)
+introductory text, (b)(1) first two sentences revised, (b)(2)
+second, third and fourth sentences revised, and heading
+added to para.(c), 76 FR 72270, Nov. 22, 2011, effective
+Jan. 23, 2012]
+
+## 37 C.F.R. § 41.50
+37 C.F.R. § 41.50 — Decisions and other actions by the
+Board.
+
+(a)(1)   Affirmance and reversal. The Board,
+in its decision, may affirm or reverse the decision
+of the examiner in whole or in part on the grounds
+and on the claims specified by the examiner. The
+affirmance of the rejection of a claim on any of the
+grounds specified constitutes a general affirmance
+of the decision of the examiner on that claim, except
+as to any ground specifically reversed. The Board
+may also remand an application to the examiner.
+
+(2)  If a substitute examiner’s answer is
+written in response to a remand by the Board for
+further consideration of a rejection pursuant to
+paragraph (a)(1) of this section, the appellant must
+within two months from the date of the substitute
+examiner’s answer exercise one of the following
+two options to avoid sua sponte dismissal of the
+appeal as to the claims subject to the rejection for
+which the Board has remanded the proceeding:
+
+(i)  Reopen prosecution.  Request that
+prosecution be reopened before the examiner by
+filing a reply under § 1.111 of this title with or
+without amendment or submission of affidavits (§§
+1.130 , 1.131 or 1.132 of this title) or other
+Evidence. Any amendment or submission of
+affidavits or other Evidence must be relevant to the
+issues set forth in the remand or raised in the
+substitute examiner’s answer. A request that
+complies with this paragraph (a) will be entered and
+the application or the patent under ex parte
+reexamination will be reconsidered by the examiner
+under the provisions of § 1.112 of this title. Any
+request that prosecution be reopened under this
+
+July   2025
+R-421
+
+§ 41.50
+CONSOLIDATED PATENT RULES - JULY 2025 UPDATE
+
+paragraph will be treated as a request to withdraw
+the appeal.
+
+(ii)  Maintain appeal.  Request that the
+appeal be maintained by filing a reply brief as
+provided in § 41.41. If such a reply brief is
+accompanied by any amendment, affidavit or other
+Evidence, it shall be treated as a request that
+prosecution be reopened before the examiner under
+paragraph (a)(2)(i) of this section.
+
+(b)   New ground of rejection. Should the Board
+have knowledge of any grounds not involved in the
+appeal for rejecting any pending claim, it may
+include in its opinion a statement to that effect with
+its reasons for so holding, and designate such a
+statement as a new ground of rejection of the claim.
+A new ground of rejection pursuant to this paragraph
+shall not be considered final for judicial review.
+When the Board enters such a non-final decision,
+the appellant, within two months from the date of
+the decision, must exercise one of the following two
+options with respect to the new ground of rejection
+to avoid termination of the appeal as to the rejected
+claims:
+
+(1)   Reopen prosecution. Submit an
+appropriate amendment of the claims so rejected or
+new Evidence relating to the claims so rejected, or
+both, and have the matter reconsidered by the
+examiner, in which event the prosecution will be
+remanded to the examiner. The new ground of
+rejection is binding upon the examiner unless an
+amendment or new Evidence not previously of
+Record is made which, in the opinion of the
+examiner, overcomes the new ground of rejection
+designated in the decision. Should the examiner
+reject the claims, appellant may again appeal to the
+Board pursuant to this subpart.
+
+(2)  Request rehearing.  Request that the
+proceeding be reheard under § 41.52 by the Board
+upon the same Record. The request for rehearing
+must address any new ground of rejection and state
+with particularity the points believed to have been
+misapprehended or overlooked in entering the new
+ground of rejection and also state all other grounds
+upon which rehearing is sought.
+
+(c)  Review of undesignated new ground of
+rejection.  Any request to seek review of a panel’s
+failure to designate a new ground of rejection in its
+decision must be raised by filing a request for
+rehearing as set forth in § 41.52. Failure of appellant
+
+to timely file such a request for rehearing will
+constitute a waiver of any arguments that a decision
+contains an undesignated new ground of rejection.
+
+(d)   Request for briefing and information. The
+Board may order appellant to additionally brief any
+matter that the Board considers to be of assistance
+in reaching a reasoned decision on the pending
+appeal. Appellant will be given a time period within
+which to respond to such an order. Failure to timely
+comply with the order may result in the sua sponte
+dismissal of the appeal.
+
+[Excerpt — full text in the consolidated compilation.]
+
+## 37 C.F.R. § 90.1
+37 C.F.R. § 90.1 — Scope.
+The provisions herein govern judicial review for
+Patent Trial and Appeal Board decisions under
+chapter 13 of title 35, United States Code. Judicial
+review of decisions arising out of  inter partes
+reexamination proceedings that are requested under
+35 U.S.C. 311, and where available, judicial review
+of decisions arising out of interferences declared
+pursuant to 35 U.S.C. 135 continue to be governed
+by the pertinent regulations in effect on July 1, 2012.
+
+[Added, 77 FR 48612, Aug. 14, 2012, effective
+Sept. 16, 2012]
+
+## 37 C.F.R. § 90.2
+37 C.F.R. § 90.2 — Notice; service.
+(a)   For an appeal under 35 U.S.C. 141.
+
+(1)
+
+(i)  In all appeals, the notice of appeal
+required by 35 U.S.C. 142 must be filed with the
+Director by electronic mail to the email address
+indicated on the United States Patent and Trademark
+Office’s web page for the Office of the General
+Counsel. This electronically submitted notice will
+
+R-482
+July   2025
+
+MANUAL OF PATENT EXAMINING PROCEDURE
+§ 43.5
+
+be accorded a receipt date, which is the date in
+Eastern Time when the correspondence is received
+in the Office, regardless of whether that date is a
+Saturday, Sunday, or Federal holiday within the
+District of Columbia. If there is some circumstance
+in which electronic mail cannot be used, submission
+
+may be by Priority Mail Express® to the Office of
+the Solicitor, United States Patent and Trademark
+Office, Mail Stop 8, P.O. Box 1450, Alexandria,
+Virginia 22313–1450.
+
+(ii)  A copy of the notice of appeal must
+also be filed with the Patent Trial and Appeal Board
+in the appropriate manner provided in §§ 41.10(a),
+41.10(b), or 42.6(b) of this chapter.
+
+(2)  In all appeals, the party initiating the
+appeal must comply with the requirements of the
+Federal Rules of Appellate Procedure and Rules for
+the United States Court of Appeals for the Federal
+Circuit, including:
+
+(i)  Serving the requisite number of copies
+on the Court; and
+
+(ii)  Paying the requisite fee for the
+appeal.
+
+(3)   Additional requirements.
+
+(i)  In appeals arising out of an ex parte
+reexamination proceeding ordered pursuant to §
+1.525, notice of the appeal must be served as
+provided in § 1.550(f) of this title.
+
+(ii)  In appeals arising out of an inter
+partes  review, a post-grant review, a covered
+business method patent review, or a derivation
+proceeding, notice of the appeal must provide
+sufficient information to allow the Director to
+determine whether to exercise the right to intervene
+in the appeal pursuant to 35 U.S.C. 143, and it must
+be served as provided in § 42.6(e) of this title.
+
+(b)   For a notice of election under 35 U.S.C.
+141(d) to proceed under 35 U.S.C. 146.
+
+(1)  Pursuant to 35 U.S.C. 141(d), if an
+adverse party elects to have all further review
+proceedings conducted under 35 U.S.C. 146 instead
+of under 35 U.S.C. 141, that party must file a notice
+of election with the Director by electronic mail to
+the email address indicated on the United States
+Patent and Trademark Office’s web page for the
+Office of the General Counsel. This electronically
+submitted notice will be accorded a receipt date,
+
+which is the date in Eastern Time when the
+correspondence is received in the Office, regardless
+of whether that date is a Saturday, Sunday, or
+Federal holiday within the District of Columbia. If
+there is some circumstance in which electronic mail
+cannot be used, submission may be by Priority Mail
+
+Express® to the Office of the Solicitor, United
+States Patent and Trademark Office, Mail Stop 8,
+P.O. Box 1450, Alexandria, Virginia 22313–1450.
+
+(2)  A copy of the notice of election must
+also be filed with the Patent Trial and Appeal Board
+in the manner provided in § 42.6(b).
+
+(3)  A copy of the notice of election must
+also be served where necessary pursuant to §
+42.6(e).
+
+(c)  For a civil action under 35 U.S.C. 146.  The
+party initiating an action under 35 U.S.C. 146 must
+file a copy of the complaint no later than five
+business days after filing the complaint in district
+court with the Patent Trial and Appeal Board in the
+manner provided in § 42.6(b), and the Office of the
+Solicitor pursuant to § 104.2. Failure to comply with
+this requirement can result in further action within
+the United States Patent and Trademark Office
+consistent with the final Board decision.
+
+[Added, 77 FR 48612, Aug. 14, 2012, effective
+Sept. 16, 2012; paras. (a)(1) and (b)(1) revised, 89 FR
+22084, Mar. 29, 2024, effective Mar. 29, 2024]
+
+## 37 C.F.R. § 90.3
+37 C.F.R. § 90.3 — Time for appeal or civil action.
+(a)   Filing deadline.
+
+(1)   For an appeal under 35 U.S.C. 141. The
+notice of appeal filed pursuant to 35 U.S.C. 142
+must be filed with the Director of the United States
+Patent and Trademark Office no later than
+sixty-three (63) days after the date of the final Board
+decision. Any notice of cross-appeal is controlled
+by Rule 4(a)(3) of the Federal Rules of Appellate
+Procedure, and any other requirement imposed by
+the Rules of the United States Court of Appeals for
+the Federal Circuit.
+
+(2)   For a notice of election under 35 U.S.C.
+141(d). The time for filing a notice of election under
+35 U.S.C. 141(d) is governed by 35 U.S.C. 141(d).
+
+(3)   For a civil action under 35 U.S.C. 145
+or 146.
+
+July   2025
+R-483
+
+§ 90.3
+CONSOLIDATED PATENT RULES - JULY 2025 UPDATE
+
+(i)  A civil action must be commenced no
+later than sixty-three (63) days after the date of the
+final Board decision.
+
+(ii)  The time for commencing a civil
+action pursuant to a notice of election under 35
+U.S.C. 141(d) is governed by 35 U.S.C. 141(d).
+
+(b)   Time computation.
+
+(1)   Rehearing. A timely request for
+rehearing will reset the time for appeal or civil action
+to no later than sixty-three (63) days after action on
+the request. Any subsequent request for rehearing
+from the same party in the same proceeding will not
+reset the time for seeking judicial review, unless the
+additional request is permitted by order of the Board.
+
+(2)   Holidays. If the last day for filing an
+appeal or civil action falls on a Federal holiday in
+the District of Columbia, the time is extended
+pursuant to 35 U.S.C. 21(b).
+
+(c)   Extension of time.
+
+(1)  The Director, or the Director’s designee,
+may extend the time for filing an appeal, or
+commencing a civil action, upon written request if:
+
+(i)  Requested before the expiration of the
+period for filing an appeal or commencing a civil
+action, and upon a showing of good cause; or
+
+(ii)  Requested after the expiration of the
+period for filing an appeal of commencing a civil
+action, and upon a showing that the failure to act
+was the result of excusable neglect.
+
+(2)  The request must be filed with the
+Director by electronic mail to the email address
+indicated on the United States Patent and Trademark
+Office’s web page for the Office of the General
+Counsel. This electronically submitted request will
+be accorded a receipt date, which is the date in
+Eastern Time when the correspondence is received
+in the Office, regardless of whether that date is a
+Saturday, Sunday, or Federal holiday within the
+District of Columbia. If there is some circumstance
+in which electronic mail cannot be used, submission
+
+may be by Priority Mail Express® to the Office of
+the Solicitor, United States Patent and Trademark
+Office, Mail Stop 8, P.O. Box 1450, Alexandria,
+Virginia 22313–1450.
+
+[Added, 77 FR 48612, Aug. 14, 2012, effective
+Sept. 16, 2012; paras. (c)(1) introductory text and (c)(2)
+
+revised, 89 FR 22084, Mar. 29, 2024, effective Mar. 29,
+2024]
+
+SUBCHAPTER B — ADMINISTRATION
+
+PART 102 —  DISCLOSURE OF GOVERNMENT
+
+INFORMATION
+
+Freedom of Information Act
+
+Sec.
+102.1
+General.
+102.2
+Public reference facilities.
+102.3
+Records under FOIA.
+102.4
+Requirements for making requests.
+102.5
+Responsibility for responding to requests.
+102.6
+Time limits and expedited processing.
+102.7
+Responses to requests.
+102.9
+Business Information.
+102.10
+Appeals from initial determinations or
+untimely delays.
+102.11
+Fees.
+
+Privacy Act
+
+102.21
+Purpose and scope.
+102.22
+Definitions.
+102.23
+Procedures for making inquiries.
+102.24
+Procedures for making requests for records.
+102.25
+Disclosure of requested records to
+individuals.
+102.26
+Special procedures: Medical records.
+102.27
+Procedures for making requests for
+correction or amendment.
+102.28
+Review of requests for correction or
+amendment.
+102.29
+Appeal of initial adverse determination on
+correction or amendment.
+102.30
+Disclosure of record to person other than
+the individual to whom it pertains.
+102.31
+Fees.
+102.32
+Penalties.
+102.33
+General exemptions.
+102.34
+Specific exemptions.
+
+Subpart A  — Freedom of Information Act

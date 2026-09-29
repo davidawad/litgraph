@@ -33,6 +33,9 @@ embedded the same way; override with `LITGRAPH_SCENARIOS=<dir>` or
 `--scenarios-dir <dir>`. See docs/PACK_SCHEMA.md's "Scenario library" section
 for the file shape and how a request composes a named scenario with
 overrides (`{"extends": "<id>", ...}`).
+or `--packs-dir <dir>`. The vendored L0 source corpus (`sources/*.txt`,
+see `sources/PROVENANCE.md`) is embedded the same way; override it with
+`LITGRAPH_SOURCES=<dir>`.
 
 Driving this from an MCP-capable agent instead of the CLI: `litgraph-mcp`
 (`crates/litgraph-mcp`) is the same contract over stdio — every op above is
@@ -68,7 +71,10 @@ rather than silently ignoring a typo.
    traceable to a `sources` entry or a public citation (`sources[].path` is
    repo-relative only — never a local filesystem path). Run `validate`,
    `lint`, and `cargo test` after any pack change. Never invent rule
-   numbers or deadlines; mark uncertainty `UNVERIFIED` in `note`.
+   numbers or deadlines; mark uncertainty `UNVERIFIED` in `note`. If
+   `sources[].path` points at a file under `sources/`, `lint` verifies the
+   cite mechanically (`unverifiable-cite` warning with the exact reason if
+   it can't) — see `docs/PACK_SCHEMA.md`'s authoring rule 1.
 5. **Probabilities**: only on non-self edges, with basis + vintage in
    `note`. Unauthored beats invented.
 6. **Pin modes when comparing to v1** (`mixed: optimistic`,
@@ -91,11 +97,13 @@ crates/litgraph/src/
   algo/       mdp (solve), chain, sim, paths (dijkstra/yen/pareto), sweep (+tornado), structure
   api/        JSON request/response, describe, op dispatch
   lint.rs     content QA
+  cite/       cite verification against L0 sources (normalize, corpus, fuzzy match)
 crates/litgraph-cli/   the `litgraph` binary
 crates/litgraph-mcp/   the `litgraph-mcp` binary: stdio MCP server, one tool per op
 packs/                 forum packs + links.json
-docs/                  ARCHITECTURE, PACK_SCHEMA, COST_FUNCTIONS, CRITIQUE, CALIBRATION
+sources/               vendored L0 primary-law text (see sources/PROVENANCE.md)
 calibration/           calibration/*.json overlay sets (real, sourced probabilities/durations)
+docs/                  ARCHITECTURE, PACK_SCHEMA, COST_FUNCTIONS, CRITIQUE, CALIBRATION
 tests/fixtures/ts-parity/   golden outputs from the original TS engine
 ```
 

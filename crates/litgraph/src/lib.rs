@@ -19,6 +19,8 @@
 /// paths/pareto, sweep/tornado, structure (SCCs, dominators, min-cut).
 pub mod algo;
 pub mod api;
+/// Cite verification against the vendored L0 corpus (`sources/*.txt`).
+pub mod cite;
 /// Deadline computation: `FRCP 6`/`RCFC 6`/`FRAP 26`/`19 CFR 210.6(a)`
 /// court-day and calendar-day time computation.
 pub mod clock;
