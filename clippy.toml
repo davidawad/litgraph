@@ -13,3 +13,7 @@ too-many-lines-threshold = 80
 too-many-arguments-threshold = 7
 type-complexity-threshold = 250
 cognitive-complexity-threshold = 25
+
+# Tests may unwrap/expect: a panic there is the assertion.
+allow-unwrap-in-tests = true
+allow-expect-in-tests = true

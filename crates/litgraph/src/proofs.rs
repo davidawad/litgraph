@@ -48,7 +48,11 @@ fn fill_is_a_distribution() {
     let (pa, pb): (u8, u8) = (kani::any(), kani::any());
     kani::assume(pa <= PROBS.len() as u8 && pb <= PROBS.len() as u8);
     let authored = [probability(pa), probability(pb)];
-    let mode = if kani::any() { ProbFill::Residual } else { ProbFill::Uniform };
+    let mode = if kani::any() {
+        ProbFill::Residual
+    } else {
+        ProbFill::Uniform
+    };
     let dist = fill(&[0, 1], &authored, mode);
     assert_eq!(dist.len(), 2);
     let mut sum = 0.0;
