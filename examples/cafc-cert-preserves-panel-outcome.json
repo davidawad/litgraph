@@ -1,0 +1,15 @@
+{
+  "packs": [
+    "cafc-federal-circuit"
+  ],
+  "links": false,
+  "scenario": {
+    "params": {
+      "rate": 700
+    }
+  },
+  "op": {
+    "op": "chain",
+    "from": "reversed"
+  }
+}

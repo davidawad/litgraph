@@ -120,6 +120,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   content the TS-parity golden output was generated from, so
   `crates/litgraph/tests/parity.rs` keeps checking the engine against it
   independent of `packs/`'s own evolution.
+- **State flags** on edges (`sets`/`clears`/`requires`/`forbids`, pack
+  schema v2, additive): compiled into a product graph over `(node,
+  flag-set)` so a node's identity can depend on procedural history — an IPR
+  estoppel, a waived defense, a prior RCE — without any algorithm (`solve`,
+  `chain`, `simulate`, `path`, `pareto`, `sweep`, `structure`) needing to
+  change. Only reachable `(node, flag-set)` combinations are materialized; a
+  pack that never declares a flag compiles to an identical graph. A hard cap
+  (`CompileOptions.max_product_nodes` / request `max_product_nodes`, default
+  20,000) fails compilation with a clear error instead of an unbounded
+  compile. Flagged node ids are stable and readable
+  (`ptab::fwd-issued{ipr-estopped}`); a compiled `Node` carries `flags` and
+  `base_id` so API responses can project back to the base pack node.
+  Terminals can carry `payoffByFlag` to vary payoff by which flag matched.
+  `flag("x")` is available in edge and terminal expressions. New
+  `CompileOptions.no_flags` / request `no_flags` reproduces the pre-flags
+  compile exactly (used by `tests/parity.rs`). See
+  `docs/PACK_SCHEMA.md#state-flags`.
+- Modeled with real, sourced state-flag examples: IPR estoppel after a final
+  written decision (35 U.S.C. § 315(e), `ptab-patent-trial-appeal-board.json`),
+  a waived personal-jurisdiction/venue/process defense (FRCP 12(h)(1),
+  `frcp-civil-procedure.json`), an RCE already filed (37 C.F.R. § 1.114,
+  `mpep-prosecution.json`), and a fix for `cafc-federal-circuit.json`'s
+  `cert-not-sought`/`cert-denied` terminals losing the panel's actual
+  win/loss through a rehearing-or-cert detour (docs/CRITIQUE.md #13).
 
 ## [0.1.0] - 2026-09-28
 

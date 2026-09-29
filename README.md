@@ -239,12 +239,12 @@ library" section.
 |---|---|---|---|---|
 | `cofc` | Court of Federal Claims | v2 | 17, url + sha256 + as-of | 12/12 terminals |
 | `cafc` | Federal Circuit | v2 | 8, url + sha256 + as-of | 18/18 terminals |
-| `frcp-civil-procedure` | Federal Rules of Civil Procedure | v1 | none yet | heuristic fallback |
+| `frcp-civil-procedure` | Federal Rules of Civil Procedure | v1 | 1, url only (FRCP 12(h)) | heuristic fallback |
 | `frap-appellate-procedure` | Federal Rules of Appellate Procedure | v1 | none yet | heuristic fallback |
 | `frcrimp-criminal-procedure` | Federal Rules of Criminal Procedure | v1 | none yet | heuristic fallback |
 | `itc-337` | ITC § 337 unfair-import investigations | v1 | none yet | heuristic fallback |
-| `mpep-prosecution` | USPTO utility patent prosecution | v1 | none yet | heuristic fallback |
-| `ptab-patent-trial-appeal-board` | PTAB trial proceedings | v1 | none yet | heuristic fallback |
+| `mpep-prosecution` | USPTO utility patent prosecution | v1 | 1, url only (37 CFR 1.114) | heuristic fallback |
+| `ptab-patent-trial-appeal-board` | PTAB trial proceedings | v1 | 1, url only (35 U.S.C. § 315) | heuristic fallback |
 
 v1 packs load and solve like any other pack — they carry authored
 deadlines, hours, and (for most) probabilities — they just don't yet have

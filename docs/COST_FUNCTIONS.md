@@ -95,7 +95,8 @@ with existing variables; **data** = expressible once packs carry the `attrs`;
 | perspective flip (defendant's view) | `perspective: {applicant: opponent, examiner: self}` + negated payoffs | built-in |
 | settlement timing | `compare` with `policy` forcing settle at different nodes | built-in |
 | option value (keeping more terminals reachable) | betweenness / reachable-terminal count | partial (structure ops); engine for a per-edge metric |
-| estoppel / waiver that persists across forums (IPR § 315(e), claim preclusion) | needs history-dependent state | engine (state flags → product graph) |
+| estoppel / waiver that persists within a forum (IPR § 315(e), FRCP 12(h)) | edge `sets`/`clears`/`requires`/`forbids` a flag; `flag("x")` in a cost/utility expression | built-in (`docs/PACK_SCHEMA.md#state-flags`) |
+| estoppel / preclusion that persists *across forums* | flags set in one pack, read by a `flag()` expression or `forbids` on an edge in another pack (or a `links.json` link edge) — same mechanism, wired across the composed graph | built-in for a link edge in the flag's own graph; a pack whose only connection to the flag-setting pack is a scenario, not a compiled edge, still needs a shared graph to see it |
 | information value (discovery changes p) | needs belief state (POMDP) | engine |
 | non-zero-sum opponent with its own payoffs | general-sum equilibrium | engine |
 

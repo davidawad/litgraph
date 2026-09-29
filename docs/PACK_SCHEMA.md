@@ -38,6 +38,7 @@ are fallbacks.
 | `outcome` | string[] | **v2** machine tags for terminals, e.g. `["win","judgment","fee-eligible"]`, `["loss","procedural-default"]`, `["settlement"]`, `["remand"]`. Custom cost/utility functions can branch on these (`tag("fee-eligible")`) |
 | `tags` | string[] | **v2** free-form node tags for any node (not just terminals), e.g. `["entry","router"]`. Expressions see a node's `outcome` ∪ `tags` as one set: `tag("x")` on a terminal, `to_tag("x")`/`from_tag("x")` on an edge testing its target/source node |
 | `attrs` | `{string: number}` | **v2** free numeric attributes exposed to custom functions as `node.<name>` |
+| `payoffByFlag` | `{string: number}` | **v2**, terminals only. Overrides `payoff` on a flagged product-graph copy of this terminal: if the copy carries one of these keys as a set flag, its payoff is that value instead of `payoff`. See [State flags](#state-flags) |
 
 ## Edges
 
@@ -56,6 +57,8 @@ are fallbacks.
 | `tags` | string[] | **v2** e.g. `["dispositive","sanctions","waiver-trap","settlement","appeal"]` |
 | `attrs` | `{string: number}` | **v2** free numeric attributes for custom functions (`edge.<name>`), e.g. `{"opp_hours": 40, "fee_award_prob": 0.3}` |
 | `replaces` | string[] | **v2, `links.json` only** — qualified (`pack::edge-id`) local edge ids this link edge supersedes when it's active. The compiled graph drops every listed edge once the link is loaded; error if any id doesn't resolve. Invalid on a pack's own edges (packs describe one forum; superseding is a composition concern, so it belongs in `links.json`) |
+| `sets`, `clears` | string[] | **v2** state flags this edge sets/clears when taken. See [State flags](#state-flags) |
+| `requires`, `forbids` | string[] | **v2** flags that must all be set / all be absent for this edge to exist in the compiled graph. See [State flags](#state-flags) |
 
 ## Roles (v2)
 
@@ -139,6 +142,101 @@ skipped otherwise, so a two-pack request never sees a link into a third,
 unloaded pack. A link can carry `replaces` (see the edge table above) to
 supersede a pack's own edge — for instance, a link representing "appeal to
 the Federal Circuit" superseding a same-pack placeholder terminal edge.
+
+## State flags
+
+**v2.** Litigation has memory: an IPR estoppel, a waived Rule 12(h) defense, a prior
+RCE all change what can happen next without changing where you structurally
+are. A plain graph can't express "this edge only exists if X happened
+earlier" — `docs/CRITIQUE.md` calls this the *Markov on the node* limit.
+State flags are the fix: `sets`/`clears`/`requires`/`forbids` on an edge
+(pack or `links.json`), compiled at load time into a **product graph** over
+`(node, flag-set)`.
+
+```json
+{ "from": "fwd-issued", "to": "fwd-all-unpatentable", "label": "...",
+  "sets": ["ipr-estopped"] },
+{ "from": "later-invalidity-defense", "to": "...", "label": "...",
+  "forbids": ["ipr-estopped"] }
+```
+
+- **`sets` / `clears`** — flags this edge adds to / removes from the current
+  flag-set when taken. Flags are plain strings, not declared anywhere up
+  front; a typo just means the flag is never set (no error, but `litgraph
+  lint` can flag a `requires`/`forbids` that references one no edge ever
+  sets).
+- **`requires` / `forbids`** — gate the edge: it only exists in the compiled
+  graph from a state where every `requires` flag is set and every `forbids`
+  flag is absent. An edge whose `forbids` condition is always true wherever
+  it's reachable (e.g. immediately after the flag that forbids it) simply
+  never compiles anywhere — the block is absolute, not a soft preference.
+
+**Compilation.** Every base node keeps its own empty-flag copy at its
+original id and index — so a pack that never uses flags compiles to an
+*identical* graph (`Graph::compile` skips the whole mechanism when no loaded
+edge declares any of the four fields; a pack with a `sets`/`clears`/
+`requires`/`forbids` field on `RawEdge` is still ordinary v1/v2 JSON,
+these are additive, defaulted fields), and any node stays directly
+addressable as `scenario.start` regardless of true reachability, same as
+before flags existed. From there, a worklist walks `(node, flag-set)` states
+reachable by forward flag propagation; the first time a state is reached its
+node is materialized as `pack::local{flag1,flag2}` (flags sorted,
+comma-joined — e.g. `ptab::fwd-issued{ipr-estopped}`), stable and readable.
+**Only reachable combinations are materialized** — a pack with one flag used
+in one corner of the graph gets one small pocket of duplicated nodes, not a
+combinatorial blowup. A hard cap (`max_product_nodes`, default 20,000;
+`CompileOptions.max_product_nodes` / request `max_product_nodes`) fails
+compilation with a clear error naming the state it choked on, rather than
+compiling forever or truncating silently.
+
+**Everything downstream is unchanged.** Every algorithm (`solve`, `chain`,
+`simulate`, `path`, `pareto`, `sweep`, `structure`) sees the product graph as
+an ordinary graph — flags are compiled away into plain nodes before any
+algorithm runs, so none of them know flags exist. A compiled `Node` carries
+`flags` (its flag-set) and `base_id` (the unflagged id it's a copy of), so a
+response can always project a flagged node back to the pack node an author
+wrote (`api::render::node_ref` does this whenever `flags` is non-empty).
+
+**Reading flags in expressions.** `flag("x")` is available in edge
+(cost/mask/probability-transform) and terminal (utility) expressions — see
+`docs/COST_FUNCTIONS.md`. On an edge it reads the source node's flag-set; on
+a terminal it reads that terminal's own flag-set.
+
+**Terminal payoff by flag.** A terminal can carry `payoffByFlag` (Nodes
+table above): when a flagged copy of that terminal is materialized, a
+matching key overrides `payoff` for that copy specifically (first match in
+sorted key order if more than one flag matches — author mutually exclusive
+flags). This is how `cafc-federal-circuit.json`'s `cert-not-sought`/
+`cert-denied` restore the panel's actual win/loss through a rehearing-or-cert
+detour that would otherwise re-zero it (`panel-affirmed`/`panel-reversed`/
+`panel-mixed`, set on `panel-decision`'s outgoing edges and cleared on
+`rehearing-granted-to-decision` since a fresh disposition replaces the one
+being reheard).
+
+**A reachability note.** Reachability lint (`litgraph lint`'s `unreachable`
+diagnostic) checks per *base id*, not per exact compiled copy: a node that's
+only ever reached with a flag set (nothing reaches its empty-flag copy in
+practice) is not flagged as unreachable as long as *some* compiled copy of
+it is reachable from the pack's start.
+
+**Relation to `links.json` instances.** An instance (below) is a coarser,
+same-mechanism cousin: both are "the product-graph construction for one
+piece of history, expressed as data instead of code" (that phrase up front
+in the Instances section was written before flags existed and is still
+accurate for instances). An instance is a whole namespaced *copy of a pack*
+— appropriate when the history changes which pack you're even in (CAFC
+entered from the PTAB vs. from the CoFC needs a different remand target and
+a flipped perspective) or needs its own `payoff_transform`/`roles` override.
+A flag is a *value on one edge* — appropriate for memory that lives inside
+one pack's own graph (an estoppel, a waiver, a count) and needs no identity
+or perspective change. The two compose freely: an instance's own edges can
+carry `sets`/`clears`/`requires`/`forbids` like any other edge (materialized
+once the instance is compiled), and a link edge in `links.json` can too.
+Reimplementing instances purely on top of flags was considered and rejected:
+an instance's `remove_edges`/`probabilities`/`roles`/`payoff_transform`/
+`patch_edges` rewrite a whole pack's data before compilation even starts,
+which flags (a runtime product over an already-compiled edge set) have no
+mechanism for.
 
 ## Instances (`links.json`, `"instances"`)
 

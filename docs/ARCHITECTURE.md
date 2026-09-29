@@ -172,6 +172,14 @@ becomes a decision with an explicit zero-cost `accept` edge to an `#end`
 twin that keeps its payoff, so "stop here or appeal" is a real choice.
 Remand terminals in CAFC link back into the origin forum.
 
+Any pack or link edge may also declare `sets`/`clears`/`requires`/`forbids`
+state flags: compiled after links (and, for pack instances, after
+namespacing) into a product graph over `(node, flag-set)`, so a node's
+identity can depend on procedural history — an IPR estoppel, a waived
+defense, a prior RCE — without changing where you structurally are. Every
+algorithm below sees the expanded graph as ordinary; only `model::flags`
+knows flags exist. See `docs/PACK_SCHEMA.md#state-flags`.
+
 ## MCP server
 
 `litgraph-mcp` ([`crates/litgraph-mcp`](../crates/litgraph-mcp)) is a
@@ -206,8 +214,6 @@ reachable from a node.
 
 - WASM build so civ-pro-the-gathering consumes litgraph instead of
   `src/lib/graph` (one engine, two front ends).
-- State flags on edges (`sets`/`requires`) compiled to a product graph:
-  estoppel, waiver memory, RCE counts, cross-forum preclusion.
 - Scenario library (`scenarios/*.json`) for named matter profiles.
 - Port civ-pro's deadline clock (court days, holidays, FRCP/RCFC 6).
 - ~~Scenario library (`scenarios/*.json`) for named matter profiles.~~

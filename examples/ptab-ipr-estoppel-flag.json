@@ -1,0 +1,10 @@
+{
+  "packs": [
+    "ptab-patent-trial-appeal-board"
+  ],
+  "links": false,
+  "op": {
+    "op": "graph",
+    "node": "post-fwd-options{ipr-estopped}"
+  }
+}

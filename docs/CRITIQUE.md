@@ -30,6 +30,7 @@ engine defect, now fixed with a regression test.
 | 10 | absorbing chain "singular" on packs where every state can terminate | transient set was graph-reachable, so an unvisited state with a self-loop poisoned I − Q | transient set = states the *policy* reaches; diagnostics name trapped states or bad rows |
 | 11 | value iteration hit its cap silently | `converged: false` was never surfaced | `not-converged` warning naming the cyclic states |
 | 12 | appeal remanded a CoFC case to the ITC (25% each) | the CAFC remand router can't know the origin forum | pack **instances** (`cafc@cofc`) in links.json: namespaced copies that remember how they were entered, with their own edge removals, perspective flips (`cafc@cofc-gov`), payoff transforms and edge patches (45-day rehearing when the US is a party) |
+| 13 | `cafc-federal-circuit.json`'s `cert-not-sought`/`cert-denied` valued $0 regardless of whether the panel affirmed or reversed; entering rehearing or cert from a reversal silently discarded the win | those terminals sit downstream of `panel-decision` through a rehearing/mandate/cert region shared by every panel outcome, and a plain graph has no way for the same downstream node to remember which outcome got it there | **state flags**: `panel-to-affirmed`/`-reversed`/`-mixed` `sets` `panel-affirmed`/`panel-reversed`/`panel-mixed`; `rehearing-granted-to-decision` `clears` all three (a fresh disposition replaces the one being reheard); `cert-not-sought`/`cert-denied` carry `payoffByFlag` restoring the matching outcome's payoff. See `docs/PACK_SCHEMA.md#state-flags` and the *Markov on the node* entry below |
 
 ## Modeling limits (v1 had them; litgraph now names them)
 
@@ -37,11 +38,26 @@ engine defect, now fixed with a regression test.
   opponent / nature` per pack, overridable per query (`perspective`).
   Opponents default to authored probabilities when present, else minimax.
   General-sum (opponent with its own payoffs) is not solved yet.
-- **Markov on the node.** Litigation has memory: estoppel after an IPR FWD,
-  waived defenses, prior art already raised, the number of RCEs filed. The
-  graph can't express "this edge exists only if X happened earlier". Planned:
-  *state flags* on edges (`sets`, `requires`) compiled into a product graph so
-  every algorithm keeps working unchanged.
+- **Markov on the node — rung 1 fixed.** Litigation has memory: estoppel
+  after an IPR FWD, a waived Rule 12(h) defense, an RCE already filed, which
+  way a Federal Circuit panel actually ruled before a rehearing/cert detour.
+  A plain graph couldn't express "this edge exists only if X happened
+  earlier" — every algorithm still keeps working unchanged, because *state
+  flags* on edges (`sets`/`clears`/`requires`/`forbids`) are compiled into a
+  product graph over `(node, flag-set)` before any algorithm runs; only
+  `model::flags` knows flags exist. Modeled: IPR estoppel (35
+  U.S.C. § 315(e), `ptab-patent-trial-appeal-board.json`), a waived personal
+  jurisdiction/venue/process defense (FRCP 12(h)(1), `frcp-civil-procedure.json`),
+  an RCE already filed (37 C.F.R. § 1.114, `mpep-prosecution.json`), and the
+  CAFC win/loss-through-rehearing/cert bug (#13 above). See
+  `docs/PACK_SCHEMA.md#state-flags`. Not solved by this: memory that spans
+  *forums* needs an actual edge or link carrying the flag across packs (no
+  automatic cross-pack propagation without one); per-claim/per-ground
+  granularity (315(e) estoppel is modeled per proceeding, not per claim);
+  arbitrary-depth counters (the RCE example is a bounded "has this happened
+  before" flag, not a true count — an N-tier counter needs N flags and is
+  bounded by `max_product_nodes`, not free); and belief-state memory
+  (information value, POMDPs) remains unsolved, same as before.
 - **Payoff scale across packs.** Composed graphs mix v1 heuristic payoffs
   (scoring points × $1k) with v2 placeholders ($1M claim). Always set
   `scenario.payoffs` for the matter at hand; responses warn when they are
