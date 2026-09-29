@@ -543,7 +543,8 @@
       "label": "File provisional application",
       "actor": "applicant",
       "authority": "35 U.S.C. 111(b); 37 CFR 1.53(c)",
-      "cost": 320,
+      "cost": 325,
+      "note": "Provisional filing fee $325.00, undiscounted/large-entity, effective 1/19/2025 (USPTO fee schedule; 37 CFR 1.16(d)); halve for small entity, one-fifth for micro entity -- not modeled here since this pack doesn't track entity size.",
       "deadline": {
         "length": 365,
         "extendable": false,
@@ -562,7 +563,8 @@
       "label": "File nonprovisional within 12-month window",
       "actor": "applicant",
       "authority": "35 U.S.C. 111(a); 35 U.S.C. 119(e); 37 CFR 1.53(b)",
-      "cost": 1820,
+      "cost": 2000,
+      "note": "Nonprovisional utility filing fee $2,000.00, undiscounted/large-entity, effective 1/19/2025: $350.00 basic filing fee (37 CFR 1.16(a)) + $770.00 search fee (1.16(k)) + $880.00 examination fee (1.16(o)).",
       "deadline": {
         "length": 365,
         "extendable": false,
@@ -581,7 +583,8 @@
       "label": "File nonprovisional directly (no provisional)",
       "actor": "applicant",
       "authority": "35 U.S.C. 111(a); 37 CFR 1.53(b)",
-      "cost": 1820,
+      "cost": 2000,
+      "note": "Nonprovisional utility filing fee $2,000.00, undiscounted/large-entity, effective 1/19/2025: $350.00 basic filing fee (37 CFR 1.16(a)) + $770.00 search fee (1.16(k)) + $880.00 examination fee (1.16(o)).",
       "hours": 40
     },
     {
@@ -606,7 +609,8 @@
       "label": "File missing parts + surcharge",
       "actor": "applicant",
       "authority": "37 CFR 1.53(f); 37 CFR 1.16(f)",
-      "cost": 240,
+      "cost": 170,
+      "note": "Surcharge $170.00, undiscounted/large-entity, effective 1/19/2025 (37 CFR 1.16(f): late filing fee, oath/declaration, or an application filed without at least one claim).",
       "deadline": {
         "length": 60,
         "extendable": true,
@@ -709,7 +713,8 @@
       "label": "File divisional for non-elected invention (35 U.S.C. 121 shield)",
       "actor": "applicant",
       "authority": "37 CFR 1.53(b); 35 U.S.C. 121; MPEP 201.06",
-      "cost": 1820,
+      "cost": 2000,
+      "note": "Same filing/search/examination fees as an original nonprovisional: $2,000.00 undiscounted/large-entity, effective 1/19/2025 ($350.00 + $770.00 + $880.00, 37 CFR 1.16(a)/(k)/(o)).",
       "hours": 30
     },
     {
@@ -753,7 +758,8 @@
       "label": "File extension of time (1-month)",
       "actor": "applicant",
       "authority": "37 CFR 1.136(a); 37 CFR 1.17(a)",
-      "cost": 240,
+      "cost": 235,
+      "note": "1-month extension fee $235.00, undiscounted/large-entity, effective 1/19/2025 (37 CFR 1.17(a)(1)).",
       "deadline": {
         "length": 30,
         "extendable": true,
@@ -792,7 +798,8 @@
       "label": "Take additional extension of time",
       "actor": "applicant",
       "authority": "37 CFR 1.136(a); 37 CFR 1.17(a)",
-      "cost": 480,
+      "cost": 690,
+      "note": "37 CFR 1.17(a) extension fees are non-linear tiers on cumulative months late, not a per-month multiple: 1 mo $235.00, 2 mo $690.00, 3 mo $1,590.00, 4 mo $2,495.00, 5 mo $3,395.00 (undiscounted/large-entity, effective 1/19/2025). This edge's $690.00 is the month-5 (2-month-cumulative) tier; a second traversal (month 6) would be the 3-month tier ($1,590.00), not modeled separately here.",
       "deadline": {
         "length": 30,
         "extendable": false,
@@ -887,7 +894,7 @@
       "label": "File RCE — restart prosecution",
       "actor": "applicant",
       "authority": "37 CFR 1.114; MPEP 706.07(h)",
-      "cost": 1360,
+      "cost": 1500,
       "deadline": {
         "length": 90,
         "extendable": true,
@@ -901,7 +908,7 @@
         "max": 90.0
       },
       "sets": ["rce-filed-before"],
-      "note": "Marks the application as having used at least one RCE (37 CFR 1.114): a scenario can price a second/subsequent RCE differently (e.g. the higher 37 CFR 1.17(e) fee tier) with a cost expression that reads flag('rce-filed-before'). See docs/PACK_SCHEMA.md#state-flags."
+      "note": "1st RCE fee $1,500.00, undiscounted/large-entity, effective 1/19/2025 (37 CFR 1.17(e)(1)); a 2nd or subsequent RCE is $2,860.00 (1.17(e)(2)). Marks the application as having used at least one RCE (37 CFR 1.114): a scenario can price a second/subsequent RCE differently with a cost expression that reads flag('rce-filed-before'). See docs/PACK_SCHEMA.md#state-flags."
     },
     {
       "from": "after-final-decision",
@@ -909,13 +916,14 @@
       "label": "File Notice of Appeal to PTAB",
       "actor": "applicant",
       "authority": "37 CFR 41.31(a)(1); 37 CFR 1.134; MPEP 1204",
-      "cost": 800,
+      "cost": 905,
       "deadline": {
         "length": 90,
         "extendable": true,
         "extensionAuthority": "37 CFR 41.31(d); 37 CFR 1.136(a)",
         "note": "Notice of Appeal timing is governed by 37 CFR 41.31(a)(1) (any twice-rejected claim) and runs within the period under 37 CFR 1.134/1.136 (the SSP for reply to the final rejection). Extensions of that period are authorized by 37 CFR 41.31(d). Cheaper up front than RCE but risks all rejected claims; the appeal brief must follow within 2 months (37 CFR 41.37(a))."
       },
+      "note": "Notice of Appeal fee $905.00, undiscounted/large-entity, effective 1/19/2025 (37 CFR 41.20(b)(1)); a separate appeal-forwarding fee is due later, when the appeal brief is filed.",
       "hours": 6,
       "duration": {
         "min": 13.5,
@@ -938,13 +946,14 @@
       "label": "File continuation to pursue additional claims (37 CFR 1.53(b))",
       "actor": "applicant",
       "authority": "37 CFR 1.53(b); 35 U.S.C. 120; MPEP 201.07",
-      "cost": 1820,
+      "cost": 2000,
       "deadline": {
         "length": 90,
         "extendable": true,
         "extensionAuthority": "37 CFR 1.136(a)",
         "note": "Continuation must be filed while the parent is still pending (before issue-fee payment or abandonment) to claim the parent's priority under 35 U.S.C. 120. Alternative to RCE/appeal that opens a fresh child on the same disclosure."
       },
+      "note": "Same filing/search/examination fees as an original nonprovisional: $2,000.00 undiscounted/large-entity, effective 1/19/2025 ($350.00 + $770.00 + $880.00, 37 CFR 1.16(a)/(k)/(o)).",
       "hours": 25,
       "duration": {
         "min": 13.5,
@@ -972,9 +981,10 @@
       "label": "Amendment not entered — file RCE",
       "actor": "applicant",
       "authority": "37 CFR 1.114",
-      "cost": 1360,
+      "cost": 1500,
       "hours": 12,
-      "sets": ["rce-filed-before"]
+      "sets": ["rce-filed-before"],
+      "note": "1st RCE fee $1,500.00, undiscounted/large-entity, effective 1/19/2025 (37 CFR 1.17(e)(1)); a 2nd or subsequent RCE is $2,860.00 (1.17(e)(2)) -- see sets:rce-filed-before."
     },
     {
       "from": "after-final-amendment",
@@ -982,8 +992,9 @@
       "label": "Amendment not entered — appeal",
       "actor": "applicant",
       "authority": "37 CFR 41.31",
-      "cost": 800,
-      "hours": 6
+      "cost": 905,
+      "hours": 6,
+      "note": "Notice of Appeal fee $905.00, undiscounted/large-entity, effective 1/19/2025 (37 CFR 41.20(b)(1))."
     },
     {
       "from": "after-final-amendment",
@@ -1089,12 +1100,13 @@
       "label": "Pay appeal forwarding fee — appeal forwarded to PTAB",
       "actor": "applicant",
       "authority": "37 CFR 41.20(b)(4); 37 CFR 41.45; MPEP 1208.01",
-      "cost": 2360,
+      "cost": 2535,
       "deadline": {
         "length": 60,
         "extendable": false,
         "note": "The APPEAL FORWARDING FEE (37 CFR 41.20(b)(4)) — not a brief fee — is due within 2 months of the Examiner's Answer to forward the appeal to the Board (35 U.S.C. 41 note; MPEP 1208.01). 37 CFR 41.37 itself carries NO brief fee. Non-payment means the appeal is dismissed."
       },
+      "note": "Appeal forwarding fee $2,535.00, undiscounted/large-entity, effective 1/19/2025 (37 CFR 41.20(b)(4)).",
       "hours": 1,
       "duration": {
         "min": 9.0,
@@ -1108,9 +1120,10 @@
       "label": "Reopen prosecution via RCE (new grounds in Answer)",
       "actor": "applicant",
       "authority": "37 CFR 1.114; MPEP 1207.03",
-      "cost": 1360,
+      "cost": 1500,
       "hours": 12,
-      "sets": ["rce-filed-before"]
+      "sets": ["rce-filed-before"],
+      "note": "1st RCE fee $1,500.00, undiscounted/large-entity, effective 1/19/2025 (37 CFR 1.17(e)(1)); a 2nd or subsequent RCE is $2,860.00 (1.17(e)(2)) -- see sets:rce-filed-before."
     },
     {
       "from": "ptab-decision",
@@ -1222,12 +1235,13 @@
       "label": "Pay issue fee within 3 months",
       "actor": "applicant",
       "authority": "37 CFR 1.311(a); 37 CFR 1.18(a); MPEP 1306",
-      "cost": 1200,
+      "cost": 1290,
       "deadline": {
         "length": 90,
         "extendable": false,
         "note": "Issue fee due 3 months from NOA. NOT extendable under any authority — 37 CFR 1.311(a); MPEP 1306 [R-01.2024]. No 37 CFR 1.136(a)/(b) extension is available. Late payment = abandonment; only a 37 CFR 1.137 revival petition (unintentional delay) can restore the application."
       },
+      "note": "Utility issue fee $1,290.00, undiscounted/large-entity, effective 1/19/2025 (37 CFR 1.18(a)(1)).",
       "hours": 1,
       "valence": "good",
       "duration": {
@@ -1251,8 +1265,8 @@
       "label": "Petition to revive — unintentional delay (37 CFR 1.137)",
       "actor": "applicant",
       "authority": "37 CFR 1.137; 37 CFR 1.17(m); MPEP 711.03(c)",
-      "cost": 2100,
-      "note": "Revival requires (1) the required reply, (2) the petition fee under 37 CFR 1.17(m), and (3) a statement that the ENTIRE delay from the due date until the reply was UNINTENTIONAL (37 CFR 1.137(a)). Revival is not guaranteed and does not undo intervening rights. Reinstates the open reply window.",
+      "cost": 2260,
+      "note": "Revival requires (1) the required reply, (2) the petition fee under 37 CFR 1.17(m), and (3) a statement that the ENTIRE delay from the due date until the reply was UNINTENTIONAL (37 CFR 1.137(a)). Revival is not guaranteed and does not undo intervening rights. Reinstates the open reply window. Petition fee $2,260.00, undiscounted/large-entity, effective 1/19/2025, for delay of 1 year or less (37 CFR 1.17(m)(2)); a delay exceeding 1 year is $3,000.00 (1.17(m)(1)).",
       "hours": 4
     },
     {
@@ -1261,8 +1275,8 @@
       "label": "Petition to revive — pay issue fee late (37 CFR 1.137)",
       "actor": "applicant",
       "authority": "37 CFR 1.137; 37 CFR 1.17(m); MPEP 711.03(c)",
-      "cost": 2100,
-      "note": "Same 37 CFR 1.137 unintentional-delay standard + 37 CFR 1.17(m) petition fee. Because the issue-fee period is itself unextendable (MPEP 1306), revival is the ONLY route back after a missed issue fee. Reinstates the allowance posture so the issue fee can be paid.",
+      "cost": 2260,
+      "note": "Same 37 CFR 1.137 unintentional-delay standard + 37 CFR 1.17(m) petition fee. Because the issue-fee period is itself unextendable (MPEP 1306), revival is the ONLY route back after a missed issue fee. Reinstates the allowance posture so the issue fee can be paid. Petition fee $2,260.00, undiscounted/large-entity, effective 1/19/2025, for delay of 1 year or less (37 CFR 1.17(m)(2)); a delay exceeding 1 year is $3,000.00 (1.17(m)(1)).",
       "hours": 4
     },
     {
@@ -1286,9 +1300,10 @@
       "label": "Pay maintenance fee on time",
       "actor": "applicant",
       "authority": "37 CFR 1.362; 37 CFR 1.20(e)-(g)",
-      "cost": 2000,
+      "cost": 2150,
       "hours": 0.5,
-      "valence": "good"
+      "valence": "good",
+      "note": "3.5-year maintenance fee $2,150.00, undiscounted/large-entity, effective 1/19/2025 (37 CFR 1.20(e)); the 7.5-year fee is $4,040.00 (1.20(f)) and the 11.5-year fee is $8,280.00 (1.20(g)) -- this edge's self-loop models only the recurring 3.5-year-tier default since the pack has no windowed-maintenance-cycle state."
     },
     {
       "from": "maintenance-due",
@@ -1319,7 +1334,7 @@
         "extendable": false,
         "note": "If the petitioner was served with an infringement complaint, 35 U.S.C. 315(b) bars a petition filed more than one year later — unextendable."
       },
-      "note": "IPR fees APPROXIMATE (37 CFR 42.15(a), not in local corpus): ~$23,750 request shown; ~$28,125 post-institution falls due at institution.",
+      "note": "IPR request fee $23,750.00, verified, effective/last-amended 1/14/2025 (37 CFR 42.15(a)(1)): covers up to 20 claims; $470.00 per claim over 20 at request (42.15(a)(3)). A post-institution fee of $28,125.00 (42.15(a)(2)), plus $940.00 per claim over 20 instituted (42.15(a)(4)), falls due only if the Board institutes -- not modeled on this edge.",
       "duration": {
         "min": 54.8,
         "mode": 182.5,
@@ -1332,13 +1347,13 @@
       "label": "Challenger files PGR petition within 9 months (35 U.S.C. 321)",
       "actor": "either",
       "authority": "35 U.S.C. 321–324; 37 CFR 42.200",
-      "cost": 23750,
+      "cost": 25000,
       "deadline": {
         "length": 270,
         "extendable": false,
         "note": "PGR must be filed within 9 months of grant (35 U.S.C. 321(c)); AIA patents only. Unextendable, jurisdictional."
       },
-      "note": "PGR fees APPROXIMATE (37 CFR 42.15(b)): ~$23,750 request shown; ~$34,375 post-institution.",
+      "note": "PGR request fee $25,000.00, verified, effective/last-amended 1/14/2025 (37 CFR 42.15(b)(1)): covers up to 20 claims; $595.00 per claim over 20 at request (42.15(b)(3)). A post-institution fee of $34,375.00 (42.15(b)(2)), plus $1,315.00 per claim over 20 instituted (42.15(b)(4)), falls due only if the Board institutes -- not modeled on this edge. (This edge previously and incorrectly reused the IPR request fee of $23,750.00; corrected to the PGR-specific fee.)",
       "duration": {
         "min": 40.5,
         "mode": 135.0,
@@ -1351,8 +1366,8 @@
       "label": "Requester files ex parte reexam request (35 U.S.C. 302)",
       "actor": "either",
       "authority": "35 U.S.C. 302; 37 CFR 1.510; MPEP 2209",
-      "cost": 12600,
-      "note": "Any person, any time during enforceability, even anonymously. Fee 37 CFR 1.20(c)(1) — ~$12,600 large entity, APPROXIMATE (grounded in MPEP 2209; dollar amount not in local corpus)."
+      "cost": 13545,
+      "note": "Any person, any time during enforceability, even anonymously. Non-streamlined ex parte reexam request fee $13,545.00, undiscounted/large-entity, effective 1/19/2025 (37 CFR 1.20(c)(2)); a streamlined ex parte reexam (a newer, faster USPTO option, narrower eligibility) costs $6,775.00 instead (37 CFR 1.20(c)(1)(i)) -- this edge models the non-streamlined default since streamlined-track eligibility isn't tracked by this pack."
     },
     {
       "from": "ipr-petition-filed",
@@ -1624,8 +1639,8 @@
       "label": "File narrowing reissue application (§ 251; any time during enforceable term)",
       "actor": "applicant",
       "authority": "35 U.S.C. § 251; 37 CFR 1.171; MPEP 1401",
-      "cost": 1820,
-      "note": "Narrowing reissue may be filed at any time during the enforceable term. Only spec/claims/drawings needed for filing date; oath may follow (37 CFR 1.53(f); MPEP 1403). Original patent surrendered on filing, remains in force during prosecution (§ 252).",
+      "cost": 3670,
+      "note": "Narrowing reissue may be filed at any time during the enforceable term. Only spec/claims/drawings needed for filing date; oath may follow (37 CFR 1.53(f); MPEP 1403). Original patent surrendered on filing, remains in force during prosecution (§ 252). Reissue filing fees $3,670.00 total, undiscounted/large-entity, effective 1/19/2025: $350.00 basic filing (37 CFR 1.16(e)) + $770.00 search (1.16(n)) + $2,550.00 examination (1.16(r)) -- the reissue examination fee is well above the $880.00 utility examination fee.",
       "hours": 20,
       "id": "reissue-narrowing-filed"
     },
@@ -1635,12 +1650,13 @@
       "label": "File broadening reissue application — MUST be within 2 years of grant (§ 251)",
       "actor": "applicant",
       "authority": "35 U.S.C. § 251, ¶ 4; MPEP 1412",
-      "cost": 1820,
+      "cost": 3670,
       "deadline": {
         "length": 730,
         "extendable": false,
         "note": "Two-year broadening window from the date of patent grant. Filing on the anniversary date is timely (MPEP 1403). After it closes, broadening reissue is gone FOREVER — an unextendable, irreversible forfeiture (flag mpep/broadening-window-closed)."
       },
+      "note": "Reissue filing fees $3,670.00 total, undiscounted/large-entity, effective 1/19/2025: $350.00 basic filing (37 CFR 1.16(e)) + $770.00 search (1.16(n)) + $2,550.00 examination (1.16(r)) -- the reissue examination fee is well above the $880.00 utility examination fee.",
       "hours": 25,
       "valence": "good",
       "id": "reissue-broadening-filed",
@@ -1791,6 +1807,18 @@
       "title": "37 C.F.R. Part 41 (Board of Patent Appeals and Interferences / PTAB ex parte appeal rules)",
       "url": "https://www.ecfr.gov/current/title-37/chapter-I/subchapter-A/part-41",
       "path": "sources/cfr-37-part41.txt"
+    },
+    {
+      "id": "uspto-fee-schedule",
+      "title": "USPTO Fee Schedule (patent filing, search, examination, RCE, extension, appeal, issue, revival, maintenance, and reissue fees; regular/undiscounted, effective 1/19/2025)",
+      "url": "https://www.uspto.gov/learning-and-resources/fees-and-payment/uspto-fee-schedule",
+      "asOf": "2025-01-19"
+    },
+    {
+      "id": "cfr37-4215",
+      "title": "37 C.F.R. § 42.15 (PTAB IPR/PGR request, post-institution, and per-excess-claim fees, effective/last-amended 1/14/2025)",
+      "url": "https://www.law.cornell.edu/cfr/text/37/42.15",
+      "asOf": "2025-01-14"
     }
   ]
 }

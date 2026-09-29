@@ -61,7 +61,7 @@
       "label": "Complaint Filed",
       "kind": "state",
       "cite": "cfr210.10.a",
-      "note": "Complainant files a Section 337 complaint with the Commission seeking a limited exclusion order, general exclusion order, and/or cease-and-desist order (19 CFR 210.12; only a complainant may file — a named respondent cannot initiate the investigation it defends). The Commission must decide within 30 days whether to institute, absent exceptional circumstances (preinstitution temporary-relief motions, complainant-requested postponement, withdrawal, or excessive confidentiality designations).",
+      "note": "Complainant files a Section 337 complaint with the Commission seeking a limited exclusion order, general exclusion order, and/or cease-and-desist order (19 CFR 210.12; only a complainant may file — a named respondent cannot initiate the investigation it defends). The Commission must decide within 30 days whether to institute, absent exceptional circumstances (preinstitution temporary-relief motions, complainant-requested postponement, withdrawal, or excessive confidentiality designations). No filing fee: verified against 19 CFR Part 210's filing/complaint provisions (210.4, 210.8, 210.10, 210.12) and the Commission's own complaint-filing guidance, none of which impose a fee -- unlike the district courts (28 U.S.C. § 1914) or the USPTO (fee-funded under 35 U.S.C. §§ 41-42), the Commission's Section 337 docket is funded by appropriation, not party filing fees.",
       "group": "pre-institution-group"
     },
     {
@@ -1205,13 +1205,14 @@
       "actor": "applicant",
       "authority": "usc1337.c",
       "actionId": "file.appeal.fedcir",
-      "cost": 3000,
+      "cost": 600,
       "hours": 6,
       "deadline": {
         "length": 60,
         "extendable": false,
         "note": "19 U.S.C. § 1337(c): 60 days, unextendable. Missing it raises flag itc337/fedcir-appeal-forfeited."
       },
+      "note": "Filing fee $600.00: the Court of Appeals docketing fee (Court of Appeals Miscellaneous Fee Schedule item 1, effective 12/1/2023) alone -- no ITC-clerk equivalent of 28 U.S.C. § 1917's $5.00 district-clerk notice fee applies to a direct agency-to-CAFC appeal (matches cafc-federal-circuit.json's itc-file-noa edge).",
       "valence": "good",
       "duration": {
         "min": 9.0,
@@ -1299,6 +1300,12 @@
       "title": "28 U.S.C. § 1295(a)(6) (CAFC jurisdiction over ITC § 337 appeals)",
       "url": "https://www.law.cornell.edu/uscode/text/28/1295",
       "path": "sources/usc-additional.txt"
+    },
+    {
+      "id": "coa-fee-schedule",
+      "title": "Court of Appeals Miscellaneous Fee Schedule (docketing fee $600, effective 12/1/2023)",
+      "url": "https://www.uscourts.gov/court-programs/fees/court-appeals-miscellaneous-fee-schedule",
+      "asOf": "2023-12-01"
     }
   ]
 }

@@ -678,7 +678,7 @@
       "actor": "applicant",
       "authority": "28 U.S.C. 1331; 1332(a); 1391(b); FRCP 3",
       "cost": 405,
-      "note": "Filing fee APPROXIMATE (28 U.S.C. 1914(a) base fee plus the Judicial Conference administrative fee; current published fee schedule not in local corpus).",
+      "note": "Filing fee $405.00, verified: $350.00 base civil filing fee (28 U.S.C. § 1914(a)) plus the $55.00 administrative fee (District Court Miscellaneous Fee Schedule item 14), effective 12/1/2023; waivable IFP for non-prisoner plaintiffs under 28 U.S.C. § 1915.",
       "hours": 10
     },
     {
@@ -797,7 +797,7 @@
       "actor": "applicant",
       "authority": "28 U.S.C. 1446(a); 1446(b)(1)",
       "cost": 405,
-      "note": "Fee APPROXIMATE -- civil filing fee equivalent under 28 U.S.C. 1914(a).",
+      "note": "Filing fee $405.00, same civil filing fee as an original complaint ($350.00 base under 28 U.S.C. § 1914(a) plus $55.00 administrative fee, District Court Miscellaneous Fee Schedule item 14, effective 12/1/2023) -- removal is treated as instituting the action in the new forum.",
       "deadline": {
         "length": 30,
         "extendable": false,
@@ -1686,8 +1686,8 @@
       "label": "File notice of appeal within 30 days of entry of judgment",
       "actor": "applicant",
       "authority": "FRAP 4(a)(1)(A)",
-      "cost": 505,
-      "note": "Courts-of-appeals filing fee APPROXIMATE (docketing fee plus notice-of-appeal fee under 28 U.S.C. 1913 and the accompanying fee schedule; current published amount not in local corpus).",
+      "cost": 605,
+      "note": "Filing fee $605.00, verified: $600.00 court-of-appeals docketing fee (Court of Appeals Miscellaneous Fee Schedule item 1, effective 12/1/2023, raised from $500.00) plus the $5.00 statutory notice-of-appeal fee (28 U.S.C. § 1917), both collected by the district clerk on filing.",
       "deadline": {
         "length": 30,
         "extendable": true,
@@ -1733,8 +1733,8 @@
       "label": "File cross-appeal",
       "actor": "applicant",
       "authority": "FRAP 4(a)(3)",
-      "cost": 505,
-      "note": "Fee APPROXIMATE, same schedule as the lead notice of appeal.",
+      "cost": 605,
+      "note": "Filing fee $605.00, same fee as the lead notice of appeal ($600.00 docketing fee, Court of Appeals Miscellaneous Fee Schedule item 1, effective 12/1/2023, plus 28 U.S.C. § 1917's $5.00 notice fee) -- a separate notice, a separate fee.",
       "deadline": {
         "length": 14,
         "extendable": false,
@@ -1863,6 +1863,28 @@
       "title": "28 U.S.C. § 1391 (Venue generally)",
       "url": "https://www.law.cornell.edu/uscode/text/28/1391",
       "path": "sources/usc-additional.txt"
+    },
+    {
+      "id": "usdc-fee-schedule",
+      "title": "District Court Miscellaneous Fee Schedule ($350 base civil filing fee under 28 U.S.C. § 1914(a) plus $55 administrative fee, item 14, effective 12/1/2023)",
+      "url": "https://www.uscourts.gov/court-programs/fees/district-court-miscellaneous-fee-schedule",
+      "asOf": "2023-12-01"
+    },
+    {
+      "id": "usc28-1914",
+      "title": "28 U.S.C. § 1914 (District court; filing and miscellaneous fees; $350 base civil filing fee)",
+      "url": "https://www.law.cornell.edu/uscode/text/28/1914"
+    },
+    {
+      "id": "coa-fee-schedule",
+      "title": "Court of Appeals Miscellaneous Fee Schedule (docketing fee $600, effective 12/1/2023)",
+      "url": "https://www.uscourts.gov/court-programs/fees/court-appeals-miscellaneous-fee-schedule",
+      "asOf": "2023-12-01"
+    },
+    {
+      "id": "usc28-1917",
+      "title": "28 U.S.C. § 1917 (District courts; fee on filing notice of or application for appeal, $5)",
+      "url": "https://www.law.cornell.edu/uscode/text/28/1917"
     }
   ]
 }

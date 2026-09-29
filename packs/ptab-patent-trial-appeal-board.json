@@ -587,6 +587,7 @@
       "label": "File PGR petition directly",
       "actor": "applicant",
       "authority": "35 U.S.C. § 321(c)",
+      "cost": 25000,
       "deadline": {
         "length": 270,
         "extendable": false,
@@ -594,7 +595,7 @@
       },
       "valence": "good",
       "hours": 130,
-      "note": "Hours: BigLaw-honest estimate for the drafting/analysis effort of this move; basis: estimate.",
+      "note": "Hours: BigLaw-honest estimate for the drafting/analysis effort of this move; basis: estimate. PGR request fee $25,000.00, verified, effective/last-amended 1/14/2025 (37 CFR 42.15(b)(1)): covers up to 20 claims; $595.00 per claim over 20 at request (42.15(b)(3)). A post-institution fee of $34,375.00 (42.15(b)(2)), plus $1,315.00 per claim over 20 instituted (42.15(b)(4)), falls due only if the Board institutes -- not modeled on this edge.",
       "duration": {
         "min": 40.5,
         "mode": 135.0,
@@ -616,6 +617,7 @@
       "label": "File IPR directly after being sued",
       "actor": "applicant",
       "authority": "35 U.S.C. § 311; 35 U.S.C. § 315(b)",
+      "cost": 23750,
       "deadline": {
         "length": 365,
         "extendable": false,
@@ -623,7 +625,7 @@
       },
       "valence": "good",
       "hours": 120,
-      "note": "Hours: BigLaw-honest estimate for the drafting/analysis effort of this move; basis: estimate.",
+      "note": "Hours: BigLaw-honest estimate for the drafting/analysis effort of this move; basis: estimate. IPR request fee $23,750.00, verified, effective/last-amended 1/14/2025 (37 CFR 42.15(a)(1)): covers up to 20 claims; $470.00 per claim over 20 at request (42.15(a)(3)). A post-institution fee of $28,125.00 (42.15(a)(2)), plus $940.00 per claim over 20 instituted (42.15(a)(4)), falls due only if the Board institutes -- not modeled on this edge.",
       "duration": {
         "min": 54.8,
         "mode": 182.5,
@@ -636,8 +638,9 @@
       "label": "File IPR petition",
       "actor": "applicant",
       "authority": "35 U.S.C. § 311-312; 37 C.F.R. § 42.104",
+      "cost": 23750,
       "hours": 120,
-      "note": "Hours: BigLaw-honest estimate for the drafting/analysis effort of this move; basis: estimate."
+      "note": "Hours: BigLaw-honest estimate for the drafting/analysis effort of this move; basis: estimate. IPR request fee $23,750.00, verified, effective/last-amended 1/14/2025 (37 CFR 42.15(a)(1)): covers up to 20 claims; $470.00 per claim over 20 at request (42.15(a)(3)). A post-institution fee of $28,125.00 (42.15(a)(2)), plus $940.00 per claim over 20 instituted (42.15(a)(4)), falls due only if the Board institutes -- not modeled on this edge."
     },
     {
       "from": "challenge-vehicle-decision",
@@ -645,6 +648,7 @@
       "label": "File PGR petition within 9 months",
       "actor": "applicant",
       "authority": "35 U.S.C. § 321(c)",
+      "cost": 25000,
       "deadline": {
         "length": 270,
         "extendable": false,
@@ -652,7 +656,7 @@
       },
       "valence": "good",
       "hours": 130,
-      "note": "Hours: BigLaw-honest estimate for the drafting/analysis effort of this move; basis: estimate.",
+      "note": "Hours: BigLaw-honest estimate for the drafting/analysis effort of this move; basis: estimate. PGR request fee $25,000.00, verified, effective/last-amended 1/14/2025 (37 CFR 42.15(b)(1)): covers up to 20 claims; $595.00 per claim over 20 at request (42.15(b)(3)). A post-institution fee of $34,375.00 (42.15(b)(2)), plus $1,315.00 per claim over 20 instituted (42.15(b)(4)), falls due only if the Board institutes -- not modeled on this edge.",
       "duration": {
         "min": 40.5,
         "mode": 135.0,
@@ -1461,12 +1465,14 @@
       "label": "File notice of appeal",
       "actor": "either",
       "authority": "35 U.S.C. § 319; 37 CFR § 90.3(a)",
+      "cost": 600,
       "probability": 0.92,
       "deadline": {
         "length": 63,
         "extendable": false,
         "note": "If the notice of appeal is not filed within 63 days of the Board's operative decision, the deadline expires with no remedy; the Board's decision becomes final and unreviewable, terminating all appellate rights."
       },
+      "note": "Filing fee $600.00: the Court of Appeals docketing fee (Court of Appeals Miscellaneous Fee Schedule item 1, effective 12/1/2023) alone -- no district-clerk equivalent of 28 U.S.C. § 1917's $5.00 notice fee applies to a direct agency-to-CAFC appeal (matches cafc-federal-circuit.json's ptab-file-noa edge and itc-337.json's federal-circuit-appeal-window->appeal-filed edge).",
       "duration": {
         "min": 9.4,
         "mode": 31.5,
@@ -1622,6 +1628,18 @@
       "title": "5 U.S.C. § 706 (APA scope of review)",
       "url": "https://www.law.cornell.edu/uscode/text/5/706",
       "path": "sources/usc-additional.txt"
+    },
+    {
+      "id": "cfr37-4215",
+      "title": "37 C.F.R. § 42.15 (PTAB IPR/PGR request, post-institution, and per-excess-claim fees, effective/last-amended 1/14/2025)",
+      "url": "https://www.law.cornell.edu/cfr/text/37/42.15",
+      "asOf": "2025-01-14"
+    },
+    {
+      "id": "coa-fee-schedule",
+      "title": "Court of Appeals Miscellaneous Fee Schedule (docketing fee $600, effective 12/1/2023)",
+      "url": "https://www.uscourts.gov/court-programs/fees/court-appeals-miscellaneous-fee-schedule",
+      "asOf": "2023-12-01"
     }
   ]
 }

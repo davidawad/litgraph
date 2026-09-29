@@ -624,8 +624,9 @@
       "label": "File criminal complaint",
       "actor": "applicant",
       "authority": "Fed. R. Crim. P. 3, 4",
+      "cost": 0,
       "hours": 5,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate."
+      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate. No filing fee: the district court civil filing fee (28 U.S.C. § 1914(a); District Court Miscellaneous Fee Schedule) applies only to civil actions, and Fed. R. Crim. P. 3/4 impose no fee for a criminal complaint."
     },
     {
       "from": "grand-jury-convened",
@@ -821,8 +822,9 @@
       "label": "File information",
       "actor": "applicant",
       "authority": "Fed. R. Crim. P. 7(b)",
+      "cost": 0,
       "hours": 4,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate."
+      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate. No filing fee: as with a criminal complaint, 28 U.S.C. § 1914(a)'s civil filing fee doesn't apply, and Fed. R. Crim. P. 7 imposes none."
     },
     {
       "from": "information-filed",
@@ -1351,8 +1353,9 @@
         "note": "Missing both the original window and the extension-motion window forecloses direct appeal entirely."
       },
       "valence": "good",
+      "cost": 605,
       "hours": 3,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate.",
+      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate. Same $605.00 fee as a civil appeal applies in principle ($600.00 docketing fee, Court of Appeals Miscellaneous Fee Schedule item 1, effective 12/1/2023, plus 28 U.S.C. § 1917's $5.00 notice fee), but most criminal appellants proceed in forma pauperis with appointed CJA counsel (FRAP 24(a); 28 U.S.C. § 1915), waiving prepayment.",
       "duration": {
         "min": 2.1,
         "mode": 7.0,
@@ -1531,6 +1534,22 @@
       "title": "18 U.S.C. § 3553 (Imposition of a sentence)",
       "url": "https://www.law.cornell.edu/uscode/text/18/3553",
       "path": "sources/usc-additional.txt"
+    },
+    {
+      "id": "usc28-1914",
+      "title": "28 U.S.C. § 1914 (District court filing fee -- applies only to civil actions, suits or proceedings)",
+      "url": "https://www.law.cornell.edu/uscode/text/28/1914"
+    },
+    {
+      "id": "coa-fee-schedule",
+      "title": "Court of Appeals Miscellaneous Fee Schedule (docketing fee $600, effective 12/1/2023)",
+      "url": "https://www.uscourts.gov/court-programs/fees/court-appeals-miscellaneous-fee-schedule",
+      "asOf": "2023-12-01"
+    },
+    {
+      "id": "usc28-1917",
+      "title": "28 U.S.C. § 1917 (District courts; fee on filing notice of or application for appeal, $5)",
+      "url": "https://www.law.cornell.edu/uscode/text/28/1917"
     }
   ]
 }

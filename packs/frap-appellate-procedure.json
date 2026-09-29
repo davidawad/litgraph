@@ -740,8 +740,9 @@
       },
       "valence": "good",
       "id": "notice-of-appeal-civil",
+      "cost": 605,
       "hours": 4,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate.",
+      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate. Filing fee $605.00: $600.00 court-of-appeals docketing fee (Court of Appeals Miscellaneous Fee Schedule item 1, effective 12/1/2023) plus the $5.00 statutory notice-of-appeal fee (28 U.S.C. § 1917), both collected by the district clerk on filing; waivable IFP under 28 U.S.C. § 1915.",
       "duration": {
         "min": 4.5,
         "mode": 15.0,
@@ -762,8 +763,9 @@
       },
       "valence": "good",
       "id": "notice-of-appeal-us-party",
+      "cost": 605,
       "hours": 4,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate.",
+      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate. Same $605.00 filing fee as the standard notice of appeal (Court of Appeals Miscellaneous Fee Schedule item 1, effective 12/1/2023, plus 28 U.S.C. § 1917's $5.00 notice fee) — the longer 60-day period applies because the U.S., its agency, or officer is a party, not because the filer here is the government.",
       "duration": {
         "min": 9.0,
         "mode": 30.0,
@@ -784,8 +786,9 @@
       },
       "valence": "good",
       "id": "notice-of-appeal-criminal",
+      "cost": 605,
       "hours": 4,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate.",
+      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate. Same $605.00 fee as a civil appeal (Court of Appeals Miscellaneous Fee Schedule item 1, effective 12/1/2023, plus 28 U.S.C. § 1917's $5.00 notice fee) applies in principle, but most criminal appellants proceed in forma pauperis with appointed CJA counsel (FRAP 24(a); 28 U.S.C. § 1915), waiving prepayment.",
       "duration": {
         "min": 2.1,
         "mode": 7.0,
@@ -937,8 +940,9 @@
         "extendable": false,
         "note": "14 days after the first notice of appeal, or within the original FRAP 4(a)(1) period, whichever is later. Missing this deadline forecloses the cross-appeal entirely — no equitable exceptions or late filing allowed."
       },
+      "cost": 605,
       "hours": 4,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate.",
+      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate. Same $605.00 filing fee as an initial notice of appeal (Court of Appeals Miscellaneous Fee Schedule item 1, effective 12/1/2023, plus 28 U.S.C. § 1917's $5.00 notice fee) — a separate notice, a separate fee.",
       "duration": {
         "min": 2.1,
         "mode": 7.0,
@@ -1693,6 +1697,17 @@
       "sha256": "c86b327b3bbe7dd3e68ea434a2bf0bc62aee8e85229f3456f094a1b232568317",
       "asOf": "2024-12-01",
       "path": "sources/frcp.txt"
+    },
+    {
+      "id": "coa-fee-schedule",
+      "title": "Court of Appeals Miscellaneous Fee Schedule (docketing fee $600, effective 12/1/2023)",
+      "url": "https://www.uscourts.gov/court-programs/fees/court-appeals-miscellaneous-fee-schedule",
+      "asOf": "2023-12-01"
+    },
+    {
+      "id": "usc28-1917",
+      "title": "28 U.S.C. § 1917 (District courts; fee on filing notice of or application for appeal, $5)",
+      "url": "https://www.law.cornell.edu/uscode/text/28/1917"
     }
   ]
 }
