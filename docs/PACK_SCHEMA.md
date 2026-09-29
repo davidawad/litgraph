@@ -119,6 +119,18 @@ is structurally an ordinary chance node — same edges, same probabilities,
 same `fill` semantics — only its *epistemic status* differs, and every
 existing algorithm, lint check and scenario field keeps working unchanged.
 
+A fact node can also be a **mixed** node (an applicant choice alongside the
+fact-driven edges) — e.g. `ptab-patent-trial-appeal-board.json`'s
+`petition-threshold-review`: the office's finding that the petition is
+time-barred (35 U.S.C. §315(b)) is a fact, but the applicant also has a
+"correct the defect and refile" choice at the same node. `scenario.facts`
+forces the right edge exactly as for a pure-chance fact node (it's the same
+`scenario.probabilities` override underneath), and `litgraph lint`'s
+`fact-no-prior` check and the `fact-unset` response warning both look at
+just the non-applicant (interrupt) edges, so a mixed fact node needs the
+same full authored prior on those and gets the same `fact-unset`
+(not the generic `mixed-node`) warning when unset.
+
 A matter fact is true regardless of procedural history, so it applies to
 every [state-flag](#state-flags) product-graph copy of the node, not just
 the one whose id happens to match `node_ref` exactly: `scenario.facts`

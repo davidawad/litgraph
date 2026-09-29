@@ -92,9 +92,10 @@
       "id": "petition-threshold-review",
       "label": "Office Reviews Petition Compliance",
       "kind": "decision",
+      "tags": ["fact"],
       "group": "petition-group",
       "cite": "37 CFR §42.106(a)-(c); 37 CFR §42.206(a)-(c)",
-      "note": "Office examines fee payment, form/word-count compliance, and threshold sufficiency (e.g., whether claim charts actually chart the claims) before according a filing date. 42.106(b) allows minor-defect correction; material defects result in filing-date rejection. Modeled as one shared node — the time-bar branch is realistically IPR-specific, since a PGR petition cannot structurally be filed outside its own 9-month window."
+      "note": "Office examines fee payment, form/word-count compliance, and threshold sufficiency (e.g., whether claim charts actually chart the claims) before according a filing date. 42.106(b) allows minor-defect correction; material defects result in filing-date rejection. Modeled as one shared node — the time-bar branch is realistically IPR-specific, since a PGR petition cannot structurally be filed outside its own 9-month window. Tagged `fact`: whether THIS petition is time-barred under 35 U.S.C. §315(b) is a matter fact knowable from the petitioner's own service-of-complaint history, not real chance — see docs/PACK_SCHEMA.md#matter-facts-v2 and the mixed-node extension it documents (this node also has an applicant choice edge, correct-and-refile)."
     },
     {
       "id": "petition-filing-date-accorded",
@@ -698,7 +699,9 @@
       "to": "petition-filing-date-accorded",
       "label": "Petition meets fee/word-count/form",
       "actor": "office",
-      "authority": "37 CFR §42.106(a); 37 CFR §42.206(a)"
+      "authority": "37 CFR §42.106(a); 37 CFR §42.206(a)",
+      "probability": 0.97,
+      "note": "Prior for the fact-tagged node's default (unset scenario.facts) fallback: most petitions aren't §315(b) time-barred. Teaching estimate, not a sourced PTAB statistic -- basis: estimate."
     },
     {
       "from": "petition-threshold-review",
@@ -725,6 +728,7 @@
       "label": "Board finds petition time-barred",
       "actor": "examiner",
       "authority": "35 U.S.C. §315(b)",
+      "probability": 0.03,
       "deadline": {
         "length": 365,
         "extendable": false,
@@ -843,10 +847,11 @@
       "label": "File a follow-on petition",
       "actor": "applicant",
       "authority": "General Plastic Industrial Co. v. Canon Kabushiki Kaisha, IPR2016-01357, Paper 19 (PTAB Nov. 23, 2016) (precedential)",
+      "sets": ["prior-petition-denied"],
       "deadline": {
         "length": 365,
         "extendable": false,
-        "note": "Petitioner may file a follow-on IPR on different grounds/claims (subject to the §315(c) joinder bar), but the unextendable one-year bar from service of the infringement complaint under §315(b) still applies to any follow-on petition."
+        "note": "Petitioner may file a follow-on IPR on different grounds/claims (subject to the §315(c) joinder bar), but the unextendable one-year bar from service of the infringement complaint under §315(b) still applies to any follow-on petition. Sets prior-petition-denied: General Plastic's multi-factor test for discretionary denial of a follow-on petition (35 U.S.C. §314(a)) turns in part on whether petitioner already had a full opportunity to present its case in an earlier petition on this patent -- a fact that persists into the refiled petition's own petition-threshold-review, downstream of the same §315(b) time-bar fact node."
       },
       "hours": 100,
       "note": "Hours: BigLaw-honest estimate for the drafting/analysis effort of this move; basis: estimate.",
@@ -862,10 +867,11 @@
       "label": "Refile after parallel case resolves",
       "actor": "applicant",
       "authority": "35 U.S.C. 325(d); Fintiv factor 4 (parallel litigation status)",
+      "sets": ["prior-petition-denied"],
       "deadline": {
         "length": 365,
         "extendable": false,
-        "note": "If parallel litigation resolves, the Fintiv discretionary bar may no longer apply and petitioner may refile after a material change in circumstances, but the unextendable one-year bar from service of an infringement complaint under §315(b) still constrains timing."
+        "note": "If parallel litigation resolves, the Fintiv discretionary bar may no longer apply and petitioner may refile after a material change in circumstances, but the unextendable one-year bar from service of an infringement complaint under §315(b) still constrains timing. Sets prior-petition-denied, same reasoning as institution-denied-merits's edge: General Plastic's follow-on-petition factors apply again if this refiled petition is itself denied and yet another petition follows."
       },
       "hours": 60,
       "note": "Hours: BigLaw-honest estimate for the drafting/analysis effort of this move; basis: estimate.",

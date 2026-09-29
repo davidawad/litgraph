@@ -177,6 +177,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   warning from `validate`/every scenario-resolving op when an expression
   depends on one. See `docs/COST_FUNCTIONS.md` and
   `examples/cofc-prejudgment-interest-sim.json`.
+- `scenario.facts` now works on **mixed** (choice+chance) nodes, not just
+  pure chance nodes: `litgraph lint`'s `fact-no-prior` check and the
+  response's `fact-unset` warning both now look at a fact node's non-applicant
+  interrupt edges specifically (`scenario/plan.rs`'s `chooser()`/`act_or_wait()`
+  path), so a `fact`-tagged mixed node gets the same diagnostics a pure
+  chance one always did, instead of the generic `mixed-node` hedge.
+  `ptab-patent-trial-appeal-board.json`'s `petition-threshold-review`
+  (35 U.S.C. §315(b) time-bar) is now tagged `fact` as the worked example.
+  New `Graph::node_family`/`Graph::edge_family` (generalized from the
+  calibration fix above) ensure a fact forced on a base node also forces
+  every [state-flag](docs/PACK_SCHEMA.md#state-flags) product-graph copy of
+  it — demonstrated on a real flagged copy,
+  `petition-threshold-review{prior-petition-denied}` (General Plastic's
+  follow-on-petition doctrine, 35 U.S.C. §314(a), on
+  `institution-denied-merits`/`-fintiv`'s refile edges).
+- New canary test (`every_embedded_pack_file_parses_individually_against_the_strict_pack_struct`)
+  parses every embedded pack file individually against the strict `Pack`
+  struct, so a structurally-invalid pack (e.g. a duplicate top-level JSON
+  key introduced by an unlucky line-based merge -- syntactically valid to a
+  generic parser, but rejected by serde's derived `Deserialize`) fails as
+  one clearly-named test instead of a whole-suite cascade of near-identical
+  panics.
 
 ## [0.1.0] - 2026-09-28
 

@@ -6,7 +6,7 @@ use serde::Serialize;
 use std::collections::{HashMap, HashSet};
 
 use crate::cite::{CiteOutcome, SourceCorpus};
-use crate::model::{Graph, NodeKind, Pack};
+use crate::model::{Graph, NodeKind, Pack, RawEdge};
 
 /// One content-quality finding: a warning about authored data, not a
 /// structural error (those fail compilation instead).
@@ -259,7 +259,39 @@ fn lint_pack_nodes(p: &Pack, push: &mut Push<'_>) {
                 at.clone(),
                 "choices and world edges share this node; see scenario.mixed".into(),
             );
+            if is_fact {
+                lint_mixed_fact_node(&outs, &at, push);
+            }
         }
+    }
+}
+
+/// The pure-chance-node `fact-no-prior` check above is gated on "every
+/// out-edge is non-applicant", so it never ran for a *mixed* node (a choice
+/// edge plus fact-driven interrupts, e.g. ptab's petition-threshold-review:
+/// refile vs. the office's time-bar determination). Check the same thing on
+/// just the interrupt (non-applicant) edges -- scenario/plan.rs's `chooser()`
+/// reads the same `authored` array `chance()` does.
+fn lint_mixed_fact_node(outs: &[&RawEdge], at: &str, push: &mut Push<'_>) {
+    let interrupts: Vec<&RawEdge> = outs
+        .iter()
+        .copied()
+        .filter(|e| e.actor != "applicant")
+        .collect();
+    let with = interrupts
+        .iter()
+        .filter(|e| e.probability.is_some())
+        .count();
+    if with < interrupts.len() {
+        push(
+            "warn",
+            "fact-no-prior",
+            at.to_string(),
+            format!(
+                "tagged `fact` but only {with}/{} interrupt out-edges carry an authored prior probability; author base-rate estimates (basis + vintage in `note`) so an unset scenario.facts falls back to something better than an even split",
+                interrupts.len()
+            ),
+        );
     }
 }
 

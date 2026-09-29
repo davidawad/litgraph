@@ -283,6 +283,46 @@ mod tests {
         Ok(())
     }
 
+    /// Every embedded pack file, checked *individually* against the strict
+    /// `Pack` struct, with a per-file assertion message naming exactly which
+    /// one failed and why.
+    ///
+    /// A prior incident: two agents each added a top-level `"sources"` key
+    /// to the same pack, at different enough line positions that git's
+    /// line-based merge combined them with no conflict marker. The result
+    /// was syntactically valid JSON (a generic parser or `serde_json::Value`
+    /// tolerates a duplicate object key, keeping the last one silently), but
+    /// serde's derived `Deserialize` for the `Pack` struct rejects a
+    /// duplicate field -- so every embedded pack failed to compile at
+    /// startup, and because dozens of unrelated test files each
+    /// independently call `Catalog::embedded()`/`Pack::from_json`, the
+    /// *entire* suite failed at once with one root cause smeared across
+    /// hundreds of lines of near-identical panics, not a single clear
+    /// signal naming the file.
+    ///
+    /// This test is the single, first, clearly-named place that class of
+    /// failure surfaces: it parses each embedded pack file on its own, in a
+    /// loop with an assertion message giving the exact file name and parse
+    /// error, so a regression reads as one focused failure instead of a
+    /// suite-wide cascade.
+    #[test]
+    fn every_embedded_pack_file_parses_individually_against_the_strict_pack_struct() {
+        let mut checked = 0;
+        for (name, text) in EMBEDDED {
+            if *name == "links.json" {
+                continue;
+            }
+            if let Err(e) = Pack::from_json(text) {
+                panic!("embedded pack {name} failed to parse against the Pack struct: {e}");
+            }
+            checked += 1;
+        }
+        assert!(
+            checked >= 8,
+            "expected at least 8 embedded packs, checked {checked}"
+        );
+    }
+
     #[test]
     fn embedded_catalog_loads_the_scenario_library() -> Result<()> {
         let c = Catalog::embedded()?;

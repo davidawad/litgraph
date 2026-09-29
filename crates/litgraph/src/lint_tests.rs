@@ -195,6 +195,75 @@ fn fact_node_with_a_full_prior_is_not_flagged() {
     assert!(!d.iter().any(|x| x.code == "fact-no-prior"));
 }
 
+/// The `fact-no-prior` check is gated on "every out-edge is non-applicant"
+/// for a pure chance node -- a *mixed* fact node (an applicant choice plus
+/// fact-driven interrupts, e.g. ptab's petition-threshold-review) never hit
+/// that gate at all before this test, so an unauthored interrupt prior went
+/// unflagged.
+#[test]
+fn mixed_fact_node_without_a_full_interrupt_prior_is_flagged() {
+    let p = pack(
+        r#"{
+                "schemaVersion": 2, "id": "demo", "title": "Demo", "startNodeId": "check",
+                "sources": [{"id": "s", "title": "t", "url": "https://example.com"}],
+                "nodes": [
+                    {"id": "check", "label": "Check", "kind": "decision", "tags": ["fact"]},
+                    {"id": "refiled", "label": "Refiled", "kind": "state"},
+                    {"id": "a", "label": "A", "kind": "terminal", "payoff": 1.0, "outcome": ["win"]},
+                    {"id": "b", "label": "B", "kind": "terminal", "payoff": 0.0, "outcome": ["loss"]}
+                ],
+                "edges": [
+                    {"from": "check", "to": "refiled", "label": "refile", "actor": "applicant"},
+                    {"from": "check", "to": "a", "label": "a", "actor": "office"},
+                    {"from": "check", "to": "b", "label": "b", "actor": "office", "probability": 0.1}
+                ]
+            }"#,
+    );
+    let g = Graph::compile(
+        std::slice::from_ref(&p),
+        &LinkFile::default(),
+        &CompileOptions::default(),
+    )
+    .unwrap();
+    let d = lint(&g, &[p]);
+    assert!(d
+        .iter()
+        .any(|x| x.code == "fact-no-prior" && x.at == "demo::check"));
+    // Still a mixed node -- that info diagnostic is orthogonal and unchanged.
+    assert!(d
+        .iter()
+        .any(|x| x.code == "mixed-node" && x.at == "demo::check"));
+}
+
+#[test]
+fn mixed_fact_node_with_a_full_interrupt_prior_is_not_flagged() {
+    let p = pack(
+        r#"{
+                "schemaVersion": 2, "id": "demo", "title": "Demo", "startNodeId": "check",
+                "sources": [{"id": "s", "title": "t", "url": "https://example.com"}],
+                "nodes": [
+                    {"id": "check", "label": "Check", "kind": "decision", "tags": ["fact"]},
+                    {"id": "refiled", "label": "Refiled", "kind": "state"},
+                    {"id": "a", "label": "A", "kind": "terminal", "payoff": 1.0, "outcome": ["win"]},
+                    {"id": "b", "label": "B", "kind": "terminal", "payoff": 0.0, "outcome": ["loss"]}
+                ],
+                "edges": [
+                    {"from": "check", "to": "refiled", "label": "refile", "actor": "applicant"},
+                    {"from": "check", "to": "a", "label": "a", "actor": "office", "probability": 0.9},
+                    {"from": "check", "to": "b", "label": "b", "actor": "office", "probability": 0.1}
+                ]
+            }"#,
+    );
+    let g = Graph::compile(
+        std::slice::from_ref(&p),
+        &LinkFile::default(),
+        &CompileOptions::default(),
+    )
+    .unwrap();
+    let d = lint(&g, &[p]);
+    assert!(!d.iter().any(|x| x.code == "fact-no-prior"));
+}
+
 #[test]
 fn a_plain_chance_node_without_the_fact_tag_still_gets_chance_unquantified() {
     let p = pack(

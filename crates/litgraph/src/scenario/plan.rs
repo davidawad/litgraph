@@ -18,7 +18,8 @@ pub(super) struct PlanInputs<'a> {
     pub role: &'a [Role],
     pub authored: &'a [Option<f64>],
     /// Nodes with a `scenario.facts` entry (resolved), so `fact`-tagged
-    /// chance nodes with one are known-set rather than falling back silently.
+    /// chance or mixed (choice+chance) nodes with one are known-set rather
+    /// than falling back silently.
     pub fact_nodes: &'a HashSet<NodeIx>,
 }
 
@@ -137,8 +138,9 @@ impl PlanInputs<'_> {
         self.chance(n, &nat, out)
     }
 
-    /// True if `n` is tagged `fact` in its pack: a chance node whose outcome
-    /// is a matter fact knowable at filing, not real uncertainty.
+    /// True if `n` is tagged `fact` in its pack: a chance (or mixed
+    /// choice+chance) node whose non-choice outcome is a matter fact
+    /// knowable at filing, not real uncertainty.
     fn is_fact(&self, n: NodeIx) -> bool {
         self.g.nodes[n].tags.iter().any(|t| t == "fact")
     }
@@ -229,6 +231,34 @@ impl PlanInputs<'_> {
                         choice_mass: 1.0 - mass,
                         ..base
                     };
+                }
+                // A `fact`-tagged mixed node (e.g. ptab's
+                // petition-threshold-review: a choice to correct-and-refile,
+                // interrupted by the office's fact-driven time-bar
+                // determination) is the chooser() counterpart of `chance()`'s
+                // fact handling above: `scenario.facts`'s probability-1.0
+                // override already forces the right interrupt edge (it runs
+                // before plans are built, same `authored` array), so this is
+                // purely about which warning fires -- `fact-unset` naming the
+                // unset matter fact instead of the generic `mixed-node`
+                // hedge, or no warning at all once it's set.
+                if self.is_fact(n) {
+                    if !self.fact_nodes.contains(&n) {
+                        let with = interrupts
+                            .iter()
+                            .filter(|&&e| self.authored[e].is_some())
+                            .count();
+                        self.warn(
+                            out,
+                            n,
+                            "fact-unset",
+                            format!(
+                                "matter fact not set via scenario.facts; using the authored prior ({with} of {} interrupt out-edges authored) instead of this matter's actual fact -- see docs/PACK_SCHEMA.md#matter-facts",
+                                interrupts.len()
+                            ),
+                        );
+                    }
+                    return self.act_or_wait(base, interrupts, out);
                 }
                 let who = if control == Control::Me {
                     "self"
