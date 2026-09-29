@@ -1,0 +1,70 @@
+# cargo-deny configuration. `just deny` / `cargo deny check` runs all four
+# checks (advisories, bans, licenses, sources) in one pass; see
+# https://embarkstudios.github.io/cargo-deny/ for the full schema.
+
+[graph]
+targets = []
+all-features = false
+no-default-features = false
+
+# ---------------------------------------------------------------------------
+[advisories]
+version = 2
+db-urls = ["https://github.com/rustsec/advisory-db"]
+yanked = "deny"
+ignore = []
+
+# ---------------------------------------------------------------------------
+[licenses]
+version = 2
+confidence-threshold = 0.8
+
+# Allowlist compatible with distributing a GPL-3.0-or-later binary: every
+# license actually observed across the dependency tree today (MIT,
+# Apache-2.0 variants, BSD-2-Clause, Unicode-3.0), plus a few more that are
+# GPL-compatible and commonly show up one dependency bump away
+# (BSD-3-Clause, ISC, Unicode-DFS-2016, Zlib) so this doesn't need editing
+# on every routine dependency update. `cargo deny check licenses` reports
+# an "unmatched license allowance" warning (not a failure) for any entry
+# below that no current dependency actually uses.
+allow = [
+    "MIT",
+    "Apache-2.0",
+    "Apache-2.0 WITH LLVM-exception",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "ISC",
+    "Unicode-3.0",
+    "Unicode-DFS-2016",
+    "Zlib",
+    "GPL-3.0-or-later",
+]
+
+# The workspace crates (litgraph, litgraph-cli) declare `publish = false`
+# unconditionally (see Cargo.toml `[workspace.package]`); `private.ignore`
+# excludes unpublished crates from license checks entirely, so this file
+# does not need to track whether their `license` field currently reads
+# "UNLICENSED" (pre-release) or "GPL-3.0-or-later" (public release) — it
+# passes either way without being edited again.
+[licenses.private]
+ignore = true
+registries = []
+
+# ---------------------------------------------------------------------------
+[bans]
+multiple-versions = "warn"
+wildcards = "deny"
+# Intra-workspace path dependencies (litgraph-cli -> litgraph) have no
+# registry version and are otherwise flagged as "wildcard" deps; they are
+# not the unpinned-external-dependency problem this lint exists to catch.
+allow-wildcard-paths = true
+deny = []
+skip = []
+skip-tree = []
+
+# ---------------------------------------------------------------------------
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"
+allow-registry = ["https://github.com/rust-lang/crates.io-index"]
+allow-git = []

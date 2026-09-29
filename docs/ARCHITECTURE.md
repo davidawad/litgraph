@@ -28,6 +28,10 @@ layer and always find the next one up/down by id.
  L0  Sources        primary law (rules PDFs, statutes) with sha256, as-of dates
 ```
 
+Packs are compiled into the `litgraph` binary at build time (`Catalog::embedded`)
+so a released binary needs no `packs/` directory alongside it; point at a
+different set with `$LITGRAPH_PACKS` or `--packs-dir` (`Catalog::load`).
+
 - **L0 → L1**: every `cite`/`authority` in a pack should trace to a `sources`
   entry (sha256 + as-of). A pack is a claim about the law; sources make it
   checkable.
@@ -52,7 +56,12 @@ layer and always find the next one up/down by id.
    CLI, library, and the planned MCP server are thin wrappers over
    `api::handle`. `describe` is the complete, machine-readable manual:
    ops, scenario fields, built-in metrics with their source expressions,
-   variables, functions, parameters and defaults.
+   variables, functions, parameters and defaults. `litgraph schema
+   <request|response|scenario|pack|links>` gives the JSON Schema (draft
+   2020-12) for any document kind — machine-checkable before you even run
+   anything; `litgraph validate <file|->` (or the `validate` op) resolves a
+   pack, `links.json`, scenario, or request without running an analysis,
+   reporting parse errors, unresolved references, and lint diagnostics.
 2. **No silent guesses.** Every inferred number (heuristic payoff, filled
    probability, deadline-as-duration, ignored interrupt at a mixed node,
    renormalized distribution, dead end) becomes a structured warning with a
@@ -71,7 +80,9 @@ layer and always find the next one up/down by id.
 5. **Stable identity.** Packs, nodes and edges have stable ids; errors say
    what was not found and suggest near matches; the same request against the
    same pack fingerprints and engine version returns the same answer
-   (simulation is seeded).
+   (simulation is seeded). Parsing is strict everywhere (`deny_unknown_fields`
+   on every request, scenario, op, pack, and links document): a typo is a
+   hard error naming the valid fields, not a silently-ignored key.
 6. **Cheap enough to think with.** Rust, milliseconds per solve on the full
    multi-forum graph, so sweeps, tornados and comparisons fit inside an
    agent's reasoning loop instead of being a batch job. `batch` amortizes
@@ -82,6 +93,45 @@ layer and always find the next one up/down by id.
 8. **Parity before semantics.** The v1 behavior is reproducible via scenario
    modes and pinned by tests, so every semantic improvement is a visible,
    reversible choice.
+
+## Contract and versioning
+
+Every response is one envelope:
+
+```jsonc
+{
+  "ok": true,
+  "api_version": 1,
+  "op": "solve",
+  "result": { /* op-specific */ },
+  "warnings": [ { "code": "payoff-not-authored", "count": 12, "example": "...", "at": [] } ],
+  "provenance": { "engine": "litgraph 0.1.0", "packs": [...], "modes": {...} },
+  "elapsed_ms": 1.234
+}
+```
+
+or, on failure, `{"ok": false, "api_version": 1, "op": "...", "error":
+{"code", "message", "hint"}, "elapsed_ms": ...}`. `api_version` is the
+request/response *contract* version (currently `1`), bumped only when the
+shape of the envelope itself changes in a breaking way — separate from
+`litgraph`'s own semver release version (`provenance.engine`). `warnings`
+is always grouped by code (`{code, count, example, at}`, `at` capped at
+eight locations) rather than one entry per occurrence, so a graph with
+hundreds of unauthored edges doesn't drown the response.
+
+CLI exit codes: `0` the request ran and `ok: true` (or a `validate`
+document is valid); `2` the request ran and failed, or a `validate`
+document is invalid; `1` usage or I/O error (bad flags, unreadable file)
+before a request was even attempted.
+
+Every document kind in the contract — `Request`, `Response`, `Scenario`,
+`Pack`, `LinkFile` — has a generated JSON Schema (draft 2020-12) via
+`litgraph schema <kind>`, so a client can validate shapes without
+hand-maintaining a parallel schema. `litgraph validate` runs that parse
+plus, for packs and requests, the semantic checks (unresolved node/edge
+refs, bad expressions) that only show up once the document is resolved
+against a compiled graph — the same checks `api::handle` runs, without
+running an analysis.
 
 ## The agent loop
 

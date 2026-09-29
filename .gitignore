@@ -2,3 +2,31 @@ target/
 .worktrees/
 .beads/
 .DS_Store
+
+# nix / devenv local state (flake.lock and devenv.lock ARE committed)
+result
+result-*
+.direnv/
+.devenv/
+
+# env / secrets
+.env
+
+# claude code worktrees (EnterWorktree default)
+.claude/worktrees/
+
+# wasm build output (justfile `wasm` / `wasm-smoke`)
+dist/
+
+# Owner-local agent tooling (swe-project-plugin-pack-rust materialized by
+# swe-repo). Kept out of the public tree: it is personal workflow, not a
+# contributor requirement. CI and .pre-commit-config.yaml carry the real gates.
+.agent-hooks/
+.claude/hooks/
+.claude/settings.json
+.claude/settings.local.json
+scripts/reap-stale-branches.sh
+scripts/git-hooks/check-branch-worktree.sh
+scripts/git-hooks/push-after-commit.sh
+scripts/git-hooks/agent-context.sh
+dist/

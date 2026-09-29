@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! Parity with the original TypeScript engine (civ-pro-the-gathering
 //! src/lib/graph). Fixtures: tests/fixtures/ts-parity/<pack>.json.
 //!
@@ -5,6 +6,12 @@
 //! `mixed: optimistic` + `prob_fill: uniform` for value iteration; the v1
 //! absorbing chain used the *self-only* reading with the best self edge by
 //! the optimistic Q*.
+
+#![allow(
+    clippy::unwrap_used,
+    clippy::expect_used,
+    clippy::cast_possible_truncation
+)]
 
 use litgraph::algo::{chain, mdp, paths, structure};
 use litgraph::model::{CompileOptions, Graph, LinkFile, Pack, Role};
@@ -17,7 +24,7 @@ const ROOT: &str = concat!(env!("CARGO_MANIFEST_DIR"), "/../..");
 fn packs() -> Vec<String> {
     let mut v: Vec<String> = std::fs::read_dir(format!("{ROOT}/tests/fixtures/ts-parity"))
         .unwrap()
-        .filter_map(|e| e.ok())
+        .filter_map(std::result::Result::ok)
         .map(|e| e.path())
         .filter(|p| p.extension().is_some_and(|x| x == "json"))
         .map(|p| p.file_stem().unwrap().to_string_lossy().to_string())
@@ -134,12 +141,7 @@ fn absorbing_chain_matches() {
         let c = chain::chain(&vs, &sol, vs.start, &ms).unwrap_or_else(|e| panic!("{id}: {e}"));
         for (t, want) in ac["absorptionProbabilityAtStart"].as_object().unwrap() {
             let ti = g.node(t).unwrap();
-            let got = c
-                .absorption
-                .iter()
-                .find(|x| x.0 == ti)
-                .map(|x| x.1)
-                .unwrap_or(0.0);
+            let got = c.absorption.iter().find(|x| x.0 == ti).map_or(0.0, |x| x.1);
             close(got, want.as_f64().unwrap(), &format!("{id} P(absorb {t})"));
         }
         close(

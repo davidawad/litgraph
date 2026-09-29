@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! Parameter sweeps, policy-flip breakpoints, and sensitivity (tornado).
 //!
 //! Generalizes v1's policy-diff: any scenario parameter — including ones only
@@ -12,20 +13,27 @@ use crate::error::Result;
 use crate::model::{Graph, NodeIx};
 use crate::scenario::{Control, Scenario, View};
 
+/// A parameter value where a watched node's optimal choice flips.
 #[derive(Debug, Clone, Serialize)]
 pub struct Breakpoint {
+    /// The node whose optimal choice flips.
     pub node: NodeIx,
     /// Parameter value where the choice flips (± tolerance).
     pub at: f64,
+    /// Chosen out-edge index just before the flip.
     pub before: usize,
+    /// Chosen out-edge index just after the flip.
     pub after: usize,
 }
 
+/// Result of sweeping one parameter over a grid.
 #[derive(Debug, Clone, Serialize)]
 pub struct SweepResult {
+    /// The parameter that was swept.
     pub param: String,
     /// (param value, V(start)).
     pub curve: Vec<(f64, f64)>,
+    /// Every policy flip found, refined by bisection and sorted by `at`.
     pub breakpoints: Vec<Breakpoint>,
 }
 
@@ -44,16 +52,36 @@ fn policy_at(
     Ok((s.value[start.unwrap_or(v.start)], pol))
 }
 
-pub fn sweep(
-    g: &Graph,
-    sc: &Scenario,
-    param: &str,
-    lo: f64,
-    hi: f64,
-    steps: usize,
-    watch: &[NodeIx],
-    tol: f64,
-) -> Result<SweepResult> {
+/// What to sweep.
+#[derive(Debug, Clone, Copy)]
+pub struct SweepSpec<'a> {
+    /// Parameter name (any; custom functions may read it).
+    pub param: &'a str,
+    /// Low end.
+    pub lo: f64,
+    /// High end.
+    pub hi: f64,
+    /// Grid points (at least 2).
+    pub steps: usize,
+    /// Nodes whose choice flips are reported (empty = all).
+    pub watch: &'a [NodeIx],
+    /// Bisection tolerance on the parameter.
+    pub tol: f64,
+}
+
+/// Solve on a grid of parameter values and refine every policy flip to its breakpoint.
+///
+/// # Errors
+/// View or solve errors at any grid point.
+pub fn sweep(g: &Graph, sc: &Scenario, spec: &SweepSpec<'_>) -> Result<SweepResult> {
+    let SweepSpec {
+        param,
+        lo,
+        hi,
+        steps,
+        watch,
+        tol,
+    } = *spec;
     let steps = steps.max(2);
     let xs: Vec<f64> = (0..steps)
         .map(|i| lo + (hi - lo) * i as f64 / (steps - 1) as f64)
@@ -107,15 +135,21 @@ pub fn sweep(
     })
 }
 
+/// One row of a tornado analysis: how much `V(start)` swings when one input
+/// is perturbed to its low/high band.
 #[derive(Debug, Clone, Serialize)]
 pub struct Sensitivity {
     /// What was perturbed: `param:<name>` or `p:<edge id>`.
     pub input: String,
+    /// Low end of the perturbation band.
     pub low_value: f64,
+    /// High end of the perturbation band.
     pub high_value: f64,
     /// V(start) at the low / high perturbation.
     pub v_low: f64,
+    /// V(start) at the high perturbation.
     pub v_high: f64,
+    /// `|v_high - v_low|`: how much this input drives the answer.
     pub swing: f64,
     /// Did the first-move policy change within the band?
     pub policy_changes: bool,
@@ -123,6 +157,9 @@ pub struct Sensitivity {
 
 /// Tornado: perturb each listed parameter by ±`rel` and each authored draw
 /// probability by ±`dp` (siblings rescaled), rank by swing in V(start).
+///
+/// # Errors
+/// View or solve errors at any perturbation.
 pub fn tornado(
     g: &Graph,
     sc: &Scenario,

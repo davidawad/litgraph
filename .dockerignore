@@ -1,0 +1,17 @@
+target/
+.worktrees/
+.beads/
+.git/
+.github/
+.envrc
+.direnv/
+devenv.nix
+devenv.yaml
+devenv.lock
+flake.nix
+flake.lock
+result
+result-*
+*.md
+!README.md
+.DS_Store

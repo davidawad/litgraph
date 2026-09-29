@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! Structural analyses over the active edges of a view: SCCs, dominators,
 //! reachability, weighted min cut, betweenness.
 
@@ -9,6 +10,7 @@ use crate::scenario::View;
 /// Tarjan SCC. Components are returned in reverse topological order (every
 /// component appears before any component that can reach it), which is the
 /// order a backward (Bellman) pass wants.
+#[must_use]
 pub fn scc(v: &View) -> Vec<Vec<NodeIx>> {
     let n = v.g.nodes.len();
     let mut index = vec![usize::MAX; n];
@@ -54,8 +56,7 @@ pub fn scc(v: &View) -> Vec<Vec<NodeIx>> {
                 }
                 if low[u] == index[u] {
                     let mut comp = vec![];
-                    loop {
-                        let w = stack.pop().unwrap();
+                    while let Some(w) = stack.pop() {
                         on[w] = false;
                         comp.push(w);
                         if w == u {
@@ -72,10 +73,13 @@ pub fn scc(v: &View) -> Vec<Vec<NodeIx>> {
 }
 
 /// True if the component has an internal cycle (size > 1 or a self-loop).
+#[must_use]
 pub fn is_cyclic(v: &View, comp: &[NodeIx]) -> bool {
     comp.len() > 1 || v.outs(comp[0]).any(|e| v.g.edges[e].to == comp[0])
 }
 
+/// Every node reachable from `from` along active edges (BFS).
+#[must_use]
 pub fn reachable(v: &View, from: NodeIx) -> Vec<bool> {
     let mut seen = vec![false; v.g.nodes.len()];
     let mut q = VecDeque::from([from]);
@@ -93,6 +97,7 @@ pub fn reachable(v: &View, from: NodeIx) -> Vec<bool> {
 }
 
 /// Nodes that can reach any node in `targets`.
+#[must_use]
 pub fn coreachable(v: &View, targets: &[NodeIx]) -> Vec<bool> {
     let mut seen = vec![false; v.g.nodes.len()];
     let mut q: VecDeque<NodeIx> = targets.iter().copied().collect();
@@ -116,6 +121,7 @@ pub fn coreachable(v: &View, targets: &[NodeIx]) -> Vec<bool> {
 
 /// Immediate dominators from `root` (Cooper–Harvey–Kennedy). `None` for
 /// unreachable nodes and the root.
+#[must_use]
 pub fn dominators(v: &View, root: NodeIx) -> Vec<Option<NodeIx>> {
     let n = v.g.nodes.len();
     // Reverse postorder.
@@ -148,13 +154,19 @@ pub fn dominators(v: &View, root: NodeIx) -> Vec<Option<NodeIx>> {
     }
     let mut idom: Vec<Option<NodeIx>> = vec![None; n];
     idom[root] = Some(root);
-    let intersect = |idom: &Vec<Option<NodeIx>>, mut a: NodeIx, mut b: NodeIx| {
+    // `a`/`b` always enter with a defined idom by construction (the caller
+    // only intersects nodes whose idom was already set this pass); if that
+    // invariant is ever violated, degrade to returning the last-known node
+    // rather than panicking.
+    let intersect = |idom: &[Option<NodeIx>], mut a: NodeIx, mut b: NodeIx| -> NodeIx {
         while a != b {
             while rpo[a] > rpo[b] {
-                a = idom[a].unwrap();
+                let Some(ia) = idom[a] else { return a };
+                a = ia;
             }
             while rpo[b] > rpo[a] {
-                b = idom[b].unwrap();
+                let Some(ib) = idom[b] else { return b };
+                b = ib;
             }
         }
         a
@@ -187,21 +199,32 @@ pub fn dominators(v: &View, root: NodeIx) -> Vec<Option<NodeIx>> {
     idom
 }
 
+/// A minimum s–t cut: its total capacity and the edges that realize it.
 pub struct Cut {
+    /// Total capacity of the cut (max-flow value).
     pub value: f64,
+    /// Edge indices crossing the cut, from the source side to the sink side.
     pub edges: Vec<usize>,
 }
 
-/// Min s–t cut with per-edge capacities (Edmonds–Karp). Capacity 1 on every
-/// edge = fewest edges whose loss disconnects t (v1 `minCut`). Capacities
-/// from a metric (e.g. `p`, `dollars`) give weighted chokepoints. Self-loops
-/// ignored; non-finite or negative capacities are clamped to 0.
-pub fn min_cut(v: &View, s: NodeIx, t: NodeIx, cap: &[f64]) -> Cut {
+/// A directed residual network for Edmonds–Karp: `adj[u]` lists arc indices
+/// leaving `u`; arc `a` and its reverse `a ^ 1` are always adjacent pairs.
+struct Residual {
+    to: Vec<NodeIx>,
+    cap: Vec<f64>,
+    adj: Vec<Vec<usize>>,
+}
+
+/// Builds the residual network: one forward arc per active non-self-loop
+/// edge (capacity from `cap`, clamped to 0 if non-finite or negative) plus
+/// its zero-capacity reverse arc.
+fn build_residual(v: &View, cap: &[f64]) -> Residual {
     let n = v.g.nodes.len();
-    let mut to = vec![];
-    let mut c = vec![];
-    let mut orig: Vec<Option<usize>> = vec![];
-    let mut adj: Vec<Vec<usize>> = vec![vec![]; n];
+    let mut r = Residual {
+        to: vec![],
+        cap: vec![],
+        adj: vec![vec![]; n],
+    };
     for (e, edge) in v.g.edges.iter().enumerate() {
         if !v.active[e] || edge.from == edge.to {
             continue;
@@ -211,66 +234,90 @@ pub fn min_cut(v: &View, s: NodeIx, t: NodeIx, cap: &[f64]) -> Cut {
         } else {
             0.0
         };
-        adj[edge.from].push(to.len());
-        to.push(edge.to);
-        c.push(w);
-        orig.push(Some(e));
-        adj[edge.to].push(to.len());
-        to.push(edge.from);
-        c.push(0.0);
-        orig.push(None);
+        r.adj[edge.from].push(r.to.len());
+        r.to.push(edge.to);
+        r.cap.push(w);
+        r.adj[edge.to].push(r.to.len());
+        r.to.push(edge.from);
+        r.cap.push(0.0);
     }
-    let mut flow = 0.0;
-    loop {
-        let mut parent: Vec<Option<usize>> = vec![None; n];
-        let mut seen = vec![false; n];
-        seen[s] = true;
-        let mut q = VecDeque::from([s]);
-        while let Some(u) = q.pop_front() {
-            if u == t {
-                break;
+    r
+}
+
+/// One BFS augmenting step; returns the arcs of a residual path from `s` to
+/// `t` (in `t`-to-`s` order; empty when `s == t`), or `None` if `t` is
+/// unreachable.
+fn augmenting_path(r: &Residual, n: usize, s: NodeIx, t: NodeIx) -> Option<Vec<usize>> {
+    let mut parent: Vec<Option<usize>> = vec![None; n];
+    let mut seen = vec![false; n];
+    seen[s] = true;
+    let mut q = VecDeque::from([s]);
+    while let Some(u) = q.pop_front() {
+        if u == t {
+            // Only `s` has no parent among the visited nodes.
+            let mut arcs = vec![];
+            let mut x = t;
+            while let Some(a) = parent[x] {
+                arcs.push(a);
+                x = r.to[a ^ 1];
             }
-            for &a in &adj[u] {
-                if c[a] > 1e-12 && !seen[to[a]] {
-                    seen[to[a]] = true;
-                    parent[to[a]] = Some(a);
-                    q.push_back(to[a]);
-                }
+            return Some(arcs);
+        }
+        for &a in &r.adj[u] {
+            if r.cap[a] > 1e-12 && !seen[r.to[a]] {
+                seen[r.to[a]] = true;
+                parent[r.to[a]] = Some(a);
+                q.push_back(r.to[a]);
             }
         }
-        if !seen[t] || s == t {
-            break;
-        }
-        let mut bottleneck = f64::INFINITY;
-        let mut x = t;
-        while x != s {
-            let a = parent[x].unwrap();
-            bottleneck = bottleneck.min(c[a]);
-            x = to[a ^ 1];
-        }
-        if !bottleneck.is_finite() {
-            break;
-        }
-        let mut x = t;
-        while x != s {
-            let a = parent[x].unwrap();
-            c[a] -= bottleneck;
-            c[a ^ 1] += bottleneck;
-            x = to[a ^ 1];
-        }
-        flow += bottleneck;
     }
+    None
+}
+
+/// Pushes the maximum flow the augmenting path `arcs` allows; returns the
+/// bottleneck capacity pushed. Every arc on a BFS path has residual capacity
+/// above 1e-12, so the push is always positive and saturates at least one arc.
+fn push_flow(r: &mut Residual, arcs: &[usize]) -> f64 {
+    let bottleneck = arcs.iter().map(|&a| r.cap[a]).fold(f64::INFINITY, f64::min);
+    for &a in arcs {
+        r.cap[a] -= bottleneck;
+        r.cap[a ^ 1] += bottleneck;
+    }
+    bottleneck
+}
+
+/// Nodes reachable from `s` in the final residual network: the source side
+/// of a minimum cut.
+fn source_side(r: &Residual, n: usize, s: NodeIx) -> Vec<bool> {
     let mut in_s = vec![false; n];
     in_s[s] = true;
     let mut q = VecDeque::from([s]);
     while let Some(u) = q.pop_front() {
-        for &a in &adj[u] {
-            if c[a] > 1e-12 && !in_s[to[a]] {
-                in_s[to[a]] = true;
-                q.push_back(to[a]);
+        for &a in &r.adj[u] {
+            if r.cap[a] > 1e-12 && !in_s[r.to[a]] {
+                in_s[r.to[a]] = true;
+                q.push_back(r.to[a]);
             }
         }
     }
+    in_s
+}
+
+/// Min s–t cut with per-edge capacities (Edmonds–Karp). Capacity 1 on every
+/// edge = fewest edges whose loss disconnects t (v1 `minCut`). Capacities
+/// from a metric (e.g. `p`, `dollars`) give weighted chokepoints. Self-loops
+/// ignored; non-finite or negative capacities are clamped to 0.
+#[must_use]
+pub fn min_cut(v: &View, s: NodeIx, t: NodeIx, cap: &[f64]) -> Cut {
+    let n = v.g.nodes.len();
+    let mut r = build_residual(v, cap);
+    let mut flow = 0.0;
+    if s != t {
+        while let Some(arcs) = augmenting_path(&r, n, s, t) {
+            flow += push_flow(&mut r, &arcs);
+        }
+    }
+    let in_s = source_side(&r, n, s);
     let edges = (0..v.g.edges.len())
         .filter(|&e| {
             v.active[e]
@@ -284,6 +331,7 @@ pub fn min_cut(v: &View, s: NodeIx, t: NodeIx, cap: &[f64]) -> Cut {
 
 /// Brandes betweenness centrality (unweighted, directed) over active edges.
 /// High-betweenness nodes are the procedural bottlenecks most lines pass through.
+#[must_use]
 pub fn betweenness(v: &View) -> Vec<f64> {
     let n = v.g.nodes.len();
     let mut cb = vec![0.0; n];

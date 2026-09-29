@@ -1,5 +1,8 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! Semantics of the new (non-v1) capabilities on small hand-built graphs
 //! where the right answer can be computed by hand.
+
+#![allow(clippy::unwrap_used, clippy::expect_used)]
 
 use litgraph::algo::{chain, mdp, paths, sim, sweep};
 use litgraph::model::{CompileOptions, Graph, LinkFile, Pack};
@@ -17,8 +20,8 @@ fn toy() -> Graph {
         "nodes": [
             { "id": "start", "kind": "decision", "label": "Settle or litigate" },
             { "id": "trial", "kind": "state", "label": "Trial" },
-            { "id": "settled", "kind": "terminal", "label": "Settled", "payoff": 400000, "outcome": ["settlement"] },
-            { "id": "won", "kind": "terminal", "label": "Won", "payoff": 1000000, "outcome": ["win", "fee-eligible"] },
+            { "id": "settled", "kind": "terminal", "label": "Settled", "payoff": 400_000, "outcome": ["settlement"] },
+            { "id": "won", "kind": "terminal", "label": "Won", "payoff": 1_000_000, "outcome": ["win", "fee-eligible"] },
             { "id": "lost", "kind": "terminal", "label": "Lost", "payoff": 0, "outcome": ["loss"] }
         ],
         "edges": [
@@ -72,7 +75,7 @@ fn custom_cost_and_utility_expressions() {
     let s = sc(json!({
         "metrics": { "biglaw": "hours * 2000 + fees" },
         "cost": "biglaw",
-        "payoffs": { "lost": -100000 },
+        "payoffs": { "lost": -100_000 },
         "utility": "payoff < 0 ? 3 * payoff : payoff"
     }));
     let (v, sol) = solve(&g, &s);
@@ -119,7 +122,7 @@ fn mask_and_probability_override() {
 
 /// Regression: at a mixed node whose world edge has no probability, the old
 /// self-only fallback deleted the way out and forced a costly self-loop
-/// forever (CoFC discovery-open: V → −$1.27B). Act-or-wait lets us wait.
+/// forever (`CoFC` discovery-open: V → −$1.27B). Act-or-wait lets us wait.
 #[test]
 fn act_or_wait_keeps_the_world_exit() {
     let pack: Pack = serde_json::from_value(json!({
@@ -194,17 +197,15 @@ fn chain_and_simulation_agree() {
 fn sweep_finds_rate_breakpoint() {
     let g = toy();
     // Litigate beats settle while 90h*rate + 5000 < 200,000  ⇔ rate < 2166.67
-    let r = sweep::sweep(
-        &g,
-        &Scenario::default(),
-        "rate",
-        500.0,
-        5000.0,
-        10,
-        &[],
-        1e-3,
-    )
-    .unwrap();
+    let spec = sweep::SweepSpec {
+        param: "rate",
+        lo: 500.0,
+        hi: 5000.0,
+        steps: 10,
+        watch: &[],
+        tol: 1e-3,
+    };
+    let r = sweep::sweep(&g, &Scenario::default(), &spec).unwrap();
     assert_eq!(r.breakpoints.len(), 1);
     assert!((r.breakpoints[0].at - 195_000.0 / 90.0).abs() < 1e-2);
 }

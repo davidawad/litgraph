@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! Solve the procedure as a stochastic game.
 //!
 //! Each node's plan (scenario.rs) says who chooses and what may interrupt:
@@ -33,24 +34,32 @@ use crate::metrics::TerminalEnv;
 use crate::model::{NodeIx, Role};
 use crate::scenario::{Control, Objective, View, WAIT};
 
+/// Tolerances for the cyclic (SCC-local) value-iteration backup.
 #[derive(Debug, Clone, Default)]
 pub struct SolveOptions {
+    /// Convergence tolerance, relative to the component's value scale (0 = default `1e-9`).
     pub epsilon: f64,
+    /// Iteration cap per cyclic component before giving up (0 = default `100_000`).
     pub max_iterations: usize,
 }
 
+/// The solved game: values, action values, and the optimal policy.
 #[derive(Debug, Clone, Serialize)]
 pub struct Solution {
+    /// Value of every node under the optimal (or fixed-role) policy.
     pub value: Vec<f64>,
     /// Per-edge action value (NaN for inactive edges / edges out of terminals).
     pub q: Vec<f64>,
     /// Chosen edge at every node where a chooser (self or opponent) acts.
     pub choice: BTreeMap<NodeIx, usize>,
+    /// True if every cyclic component converged within its iteration cap.
     pub converged: bool,
     /// Nodes in cycles that hit the iteration cap (values unreliable; usually a
     /// loop someone can force forever at positive cost).
     pub unconverged: Vec<NodeIx>,
+    /// Iterations used by the slowest-converging cyclic component.
     pub iterations: usize,
+    /// Fee-shift policy-iteration rounds used (0 if no `fee_shift`).
     pub fee_shift_rounds: usize,
     /// Effective (possibly fee-shift-adjusted) edge costs used.
     pub cost: Vec<f64>,
@@ -58,6 +67,7 @@ pub struct Solution {
 
 impl Solution {
     /// Value of option `e` at node `n` (the expectation over the world edges when `e` is WAIT).
+    #[must_use]
     pub fn option_q(&self, v: &View, n: NodeIx, e: usize) -> f64 {
         if e == WAIT {
             v.plan[n].wait.iter().map(|&(w, p)| p * self.q[w]).sum()
@@ -86,7 +96,7 @@ struct Ctx<'a> {
     v: &'a View<'a>,
     cost: &'a [f64],
     cara: Option<f64>,
-    /// Objective::Worst: every draw (interrupts, waits) goes against us.
+    /// `Objective::Worst`: every draw (interrupts, waits) goes against us.
     worst: bool,
 }
 
@@ -276,6 +286,7 @@ fn solve_with(
 
 /// Probability of absorbing in a node with `target[n] = 1` from every node,
 /// under a fixed choice map (draws per plan, choices deterministic).
+#[must_use]
 pub fn absorb_prob(v: &View, choice: &BTreeMap<NodeIx, usize>, target: &[f64]) -> Vec<f64> {
     let n = v.g.nodes.len();
     let mut p = vec![0.0; n];
@@ -306,9 +317,10 @@ pub fn absorb_prob(v: &View, choice: &BTreeMap<NodeIx, usize>, target: &[f64]) -
                                         .sum::<f64>();
                             } else if let Some(&e) = choice.get(&u) {
                                 acc += plan.choice_mass * p[v.g.edges[e].to];
-                            } else if !plan.choices.is_empty() {
-                                // Worst-case nature with no recorded choice: average.
-                                let k = plan.choices.len() as f64;
+                            } else {
+                                // Worst-case nature with no recorded choice:
+                                // average (`max(1)` guards the no-choice case).
+                                let k = (plan.choices.len() as f64).max(1.0);
                                 acc += plan.choice_mass
                                     * plan
                                         .choices
@@ -332,6 +344,31 @@ pub fn absorb_prob(v: &View, choice: &BTreeMap<NodeIx, usize>, target: &[f64]) -
     p
 }
 
+/// Solves the stochastic game over `v`: values, optimal policy, and (if
+/// `v.sc.fee_shift` is set) the fee-shift-adjusted costs it converged on.
+///
+/// ```
+/// use litgraph::algo::mdp;
+/// use litgraph::model::{CompileOptions, Graph, LinkFile, Pack};
+/// use litgraph::scenario::{Scenario, View};
+/// let json = r#"{
+///     "schemaVersion": 2, "id": "demo", "title": "Demo", "startNodeId": "start",
+///     "nodes": [
+///         {"id": "start", "label": "Start"},
+///         {"id": "end", "label": "End", "kind": "terminal", "payoff": 100.0}
+///     ],
+///     "edges": [{"from": "start", "to": "end", "label": "go"}]
+/// }"#;
+/// let pack = Pack::from_json(json).unwrap();
+/// let g = Graph::compile(&[pack], &LinkFile::default(), &CompileOptions::default()).unwrap();
+/// let v = View::new(&g, &Scenario::default()).unwrap();
+/// let sol = mdp::solve(&v, &mdp::SolveOptions::default()).unwrap();
+/// // One free edge to a $100 terminal: the start is worth exactly $100.
+/// assert_eq!(sol.value[v.start], 100.0);
+/// ```
+///
+/// # Errors
+/// Propagates any error evaluating the fee-eligibility expression.
 pub fn solve(v: &View, opts: &SolveOptions) -> Result<Solution> {
     let base = v.cost.clone();
     let Some(fs) = v.sc.fee_shift.clone() else {
@@ -364,7 +401,7 @@ pub fn solve(v: &View, opts: &SolveOptions) -> Result<Solution> {
                 payoff: v.payoff[n],
                 params: &v.params,
             })?;
-            Ok(if x != 0.0 { 1.0 } else { 0.0 })
+            Ok(if x == 0.0 { 0.0 } else { 1.0 })
         })
         .collect::<Result<_>>()?;
     let mut cost = base.clone();

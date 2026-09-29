@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 //! Built-in metrics, terminal utilities, parameters, and the variable
 //! environments custom functions evaluate against.
 //!
@@ -11,12 +12,18 @@ use crate::expr::{Arg, Env};
 use crate::model::{Graph, Role};
 use std::collections::BTreeMap;
 
+/// A built-in metric, utility, or parameter, expressed as source: an
+/// expression an agent can read, not an opaque native function.
 pub struct Builtin {
+    /// The name a scenario refers to this built-in by.
     pub name: &'static str,
+    /// The expression source that defines it.
     pub expr: &'static str,
+    /// A one-line, human-readable description of what it computes.
     pub doc: &'static str,
 }
 
+/// Built-in edge metrics: cost/weight expressions any scenario can select by name.
 pub const METRICS: &[Builtin] = &[
     Builtin { name: "dollars", expr: "hours * rate + fees", doc: "attorney labor at `rate` plus cash fees (the v1 dollarCost)" },
     Builtin { name: "hours", expr: "hours", doc: "attorney hours" },
@@ -32,6 +39,7 @@ pub const METRICS: &[Builtin] = &[
     Builtin { name: "traps", expr: "tag('waiver-trap') + (valence_bad)", doc: "edges that are traps (tagged waiver-trap or valence bad)" },
 ];
 
+/// Built-in terminal utilities: how a terminal's payoff becomes a value.
 pub const UTILITIES: &[Builtin] = &[
     Builtin {
         name: "ev",
@@ -50,6 +58,7 @@ pub const UTILITIES: &[Builtin] = &[
     },
 ];
 
+/// Built-in scenario parameters: `(name, default, doc)`.
 pub const PARAMS: &[(&str, f64, &str)] = &[
     ("rate", 500.0, "our attorney billing rate, USD/hour"),
     ("opp_rate", 500.0, "opponent billing rate, USD/hour"),
@@ -66,6 +75,7 @@ pub const PARAMS: &[(&str, f64, &str)] = &[
     ("carry_per_day", 0.0, "per-day cost of delay for time_value"),
 ];
 
+/// Variables visible to an edge expression: `(name, doc)`.
 pub const EDGE_VARS: &[(&str, &str)] = &[
     ("hours", "attorney hours on the edge"),
     ("fees / cost", "cash fees on the edge"),
@@ -104,9 +114,11 @@ pub const EDGE_VARS: &[(&str, &str)] = &[
     ),
 ];
 
+/// Functions callable from an edge expression: `(signature, doc)`.
 pub const EDGE_FUNCS: &[(&str, &str)] = &[
     ("tag(\"x\")", "edge has tag x"),
-    ("to_tag(\"x\")", "target node has outcome tag x"),
+    ("to_tag(\"x\")", "target node has outcome or node tag x"),
+    ("from_tag(\"x\")", "source node has outcome or node tag x"),
     ("attr(\"x\", d)", "edge attr x or d"),
     ("actor(\"examiner\")", "edge's raw actor equals"),
     ("pack(\"frcp\")", "edge belongs to pack"),
@@ -120,6 +132,7 @@ pub const EDGE_FUNCS: &[(&str, &str)] = &[
     ),
 ];
 
+/// Variables visible to a terminal (utility) expression: `(name, doc)`.
 pub const TERMINAL_VARS: &[(&str, &str)] = &[
     (
         "payoff",
@@ -135,6 +148,8 @@ pub const TERMINAL_VARS: &[(&str, &str)] = &[
     ("pack(\"x\"), label_has(\"x\")", "as for edges"),
 ];
 
+/// The default value for every built-in [`PARAMS`] entry, keyed by name.
+#[must_use]
 pub fn default_params() -> BTreeMap<String, f64> {
     PARAMS.iter().map(|(k, v, _)| (k.to_string(), *v)).collect()
 }
@@ -153,11 +168,17 @@ fn contains_ci(hay: Option<&str>, needle: &str) -> bool {
 
 /// Edge evaluation environment.
 pub struct EdgeEnv<'a> {
+    /// The compiled graph the edge belongs to.
     pub g: &'a Graph,
+    /// Index of the edge being evaluated, into `g.edges`.
     pub e: usize,
+    /// The edge's role under the scenario's perspective (self/opponent/nature).
     pub role: Role,
+    /// Effective probability of the edge under the scenario (1 if not a chance edge).
     pub p: f64,
+    /// Resolved scenario parameters, visible to expressions by name.
     pub params: &'a BTreeMap<String, f64>,
+    /// Payoff of the edge's target, if it is a terminal (else unspecified).
     pub to_payoff: f64,
 }
 
@@ -221,13 +242,14 @@ impl Env for EdgeEnv<'_> {
         };
         Some(match name {
             "tag" => s().map(|t| b(e.tags.contains(&t))),
-            "to_tag" => s().map(|t| b(self.g.nodes[e.to].outcome.contains(&t))),
+            "to_tag" => s().map(|t| b(self.g.nodes[e.to].has_tag(&t))),
+            "from_tag" => s().map(|t| b(self.g.nodes[e.from].has_tag(&t))),
             "actor" => s().map(|t| b(e.actor == t)),
             "pack" => s().map(|t| b(e.pack == t || self.g.nodes[e.from].pack == t)),
             "label_has" => s().map(|t| b(contains_ci(Some(&e.label), &t))),
             "authority_has" => s().map(|t| b(contains_ci(e.authority.as_deref(), &t))),
             "attr" => s().and_then(|k| {
-                let d = args.get(1).map(|a| a.num()).transpose()?.unwrap_or(0.0);
+                let d = args.get(1).map(Arg::num).transpose()?.unwrap_or(0.0);
                 Ok(e.attrs.get(&k).copied().unwrap_or(d))
             }),
             _ => return None,
@@ -237,9 +259,13 @@ impl Env for EdgeEnv<'_> {
 
 /// Terminal evaluation environment.
 pub struct TerminalEnv<'a> {
+    /// The compiled graph the terminal belongs to.
     pub g: &'a Graph,
+    /// Index of the terminal node being evaluated, into `g.nodes`.
     pub n: usize,
+    /// The terminal's payoff (protagonist perspective, after overrides).
     pub payoff: f64,
+    /// Resolved scenario parameters, visible to expressions by name.
     pub params: &'a BTreeMap<String, f64>,
 }
 
@@ -265,7 +291,7 @@ impl Env for TerminalEnv<'_> {
                 .and_then(|a| a.str().map(str::to_string))
         };
         Some(match name {
-            "tag" | "to_tag" => s().map(|t| b(n.outcome.contains(&t))),
+            "tag" | "to_tag" => s().map(|t| b(n.has_tag(&t))),
             "pack" => s().map(|t| b(n.pack == t)),
             "label_has" => s().map(|t| b(contains_ci(Some(&n.label), &t))),
             _ => return None,

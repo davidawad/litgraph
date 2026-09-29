@@ -66,21 +66,21 @@
     {
       "id": "fedcir-rules",
       "title": "Federal Circuit Rules of Practice (FRAP + Federal Circuit Rules + Practice Notes + Attorney Discipline Rules, combined)",
-      "path": "/Users/david/Knowledge/Lawyering/Litigation/Books/Federal Rules/Federal Circuit/federal-circuit-rules-of-practice-2025-12-01.pdf",
+      "url": "https://www.cafc.uscourts.gov/wp-content/uploads/RulesProceduresAndForms/FederalCircuitRules/FederalCircuitRulesofPractice.pdf",
       "sha256": "b6346ed56a0ef66e8a681765873caf69239cda273f8946f1625571e013712c05",
       "asOf": "2025-12-01"
     },
     {
       "id": "fedcir-iops",
       "title": "Federal Circuit Internal Operating Procedures",
-      "path": "/Users/david/Knowledge/Lawyering/Litigation/Books/Federal Rules/Federal Circuit/federal-circuit-internal-operating-procedures-2026-06-09.pdf",
+      "url": "https://www.cafc.uscourts.gov/wp-content/uploads/RulesProceduresAndForms/InternalOperatingProcedures/InternalOperatingProcedures.pdf",
       "sha256": "0529dbba781897e83ed617af7a603f7fdaf7ac4af1278d035a378c5699172397",
       "asOf": "2026-06-09"
     },
     {
       "id": "fedcir-mediation-guidelines",
       "title": "Appellate Mediation Program Guidelines",
-      "path": "/Users/david/Knowledge/Lawyering/Litigation/Books/Federal Rules/Federal Circuit/appellate-mediation-program-guidelines-2013-12-06.pdf",
+      "url": "https://www.cafc.uscourts.gov/wp-content/uploads/Mediation/MediationGuidelines.pdf",
       "sha256": "b70b1463ebd122dbe3287d5c7117e822f5bfe32a59a53bb9b5b5e000b7a1dfb0",
       "asOf": "2013-12-06"
     },
