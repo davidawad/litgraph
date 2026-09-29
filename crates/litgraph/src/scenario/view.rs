@@ -51,24 +51,6 @@ pub struct View<'g> {
     pub warnings: Vec<Warning>,
 }
 
-/// `scenario.facts` is sugar over `scenario.probabilities`: each {node ref:
-/// edge ref} resolves to that edge's canonical id forced to 1.0 (siblings
-/// fall to 0 via the usual rescale, in [`probabilities`]). The returned
-/// `HashSet` records which nodes had an entry, so a `fact`-tagged node
-/// without one can warn instead of silently taking a heuristic/uniform
-/// fallback.
-fn fact_overrides(g: &Graph, sc: &Scenario) -> Result<(BTreeMap<String, f64>, HashSet<NodeIx>)> {
-    let mut overrides = sc.probabilities.clone();
-    let mut fact_nodes: HashSet<NodeIx> = HashSet::new();
-    for (node_ref, edge_ref) in &sc.facts {
-        let ni = g.node(node_ref)?;
-        let ei = g.edge_at(ni, edge_ref)?;
-        fact_nodes.insert(ni);
-        overrides.insert(g.edges[ei].id.clone(), 1.0);
-    }
-    Ok((overrides, fact_nodes))
-}
-
 /// `scenario.facts` is sugar over `scenario.probabilities`: each `{node ref:
 /// edge ref}` resolves to that edge's canonical id forced to 1.0 (siblings
 /// fall to 0 via the usual rescale). Returns the probability overrides plus
