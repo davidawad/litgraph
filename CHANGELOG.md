@@ -98,6 +98,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `fact-unset`. New lint rule `fact-no-prior` flags a `fact`-tagged node whose
   out-edges aren't all authored. Applied to `cofc::limitations-check` and
   `cofc::section-1500-check`. See `docs/PACK_SCHEMA.md#matter-facts-v2`.
+- **District-court patent route**: `packs/links.json` gains a `cafc@district-court`
+  instance (mirroring `cafc@cofc`/`cafc@ptab`/`cafc@itc`) and a link from
+  `frcp-civil-procedure::notice-of-appeal-filed` to it, alongside the existing
+  regional-circuit (FRAP) link, for 28 U.S.C. § 1295(a)(1) patent appeals.
+  Which applies is a matter fact, not a free choice between forums — a
+  scenario selects the applicable route with `scenario.remove_edges`.
+- `frap-appellate-procedure`, `frcp-civil-procedure`, `frcrimp-criminal-procedure`,
+  `itc-337`, `mpep-prosecution`, and `ptab-patent-trial-appeal-board` migrated
+  to schema v2: authored terminal `payoff`/`outcome`, `roles`, `sources`
+  (verified official URLs, several with `sha256`), stable `id`s on every
+  parallel edge, and `duration` on every deadline-bearing edge plus several
+  major no-deadline steps (sourced from the underlying rule's own timeline
+  where one exists, otherwise a labeled estimate). `frap`/`frcrimp`/`ptab`
+  also gain authored `hours` on every choice edge. `litgraph lint` reports no
+  payoff/duration-authoring/role/source/parallel-id gaps on any of the six.
+  `tests/fixtures/ts-parity/v1-packs/` freezes the pre-migration v1 pack
+  content the TS-parity golden output was generated from, so
+  `crates/litgraph/tests/parity.rs` keeps checking the engine against it
+  independent of `packs/`'s own evolution.
 
 ## [0.1.0] - 2026-09-28
 

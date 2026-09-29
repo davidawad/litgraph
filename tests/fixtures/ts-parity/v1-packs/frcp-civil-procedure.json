@@ -1,43 +1,19 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 1,
   "id": "frcp-civil-procedure",
   "title": "Federal Civil Litigation Under the FRCP",
   "description": "Pre-filing/jurisdiction & venue -> pleading (service, Rule 12 responses, default) -> amendment & joinder -> discovery (Rule 26 conference through Rule 37 sanctions and CBI-style protective orders) -> pretrial motions (summary judgment, Daubert, motions in limine) -> trial -> post-trial motions (Rule 50/59/60) -> judgment & appeal (28 U.S.C. 1291/1292, FRAP 4, cross-appeal). Citations checked against the FRCP, FRAP, and Title 28 as reflected in content/rulepacks/frcp-fragment.json and the situations corpus; approximate figures (filing fees) are flagged inline. Direct structural counterpart to content/statecharts/mpep-prosecution.json and content/statecharts/itc-337.json for the FRCP pack. Walk mode teaches the FRAP 4(a)(4) tolling trap, the unextendable Rule 59(e)/60(b) and removal clocks, and the jurisdictional (Bowles v. Russell) character of the notice-of-appeal deadline.",
   "jurisdiction": "Federal Rules of Civil Procedure / U.S. District Courts",
   "startNodeId": "pre-filing",
   "groups": [
-    {
-      "id": "pre-filing-group",
-      "label": "Pre-Filing, Jurisdiction & Venue"
-    },
-    {
-      "id": "pleading-group",
-      "label": "Pleading"
-    },
-    {
-      "id": "amendment-joinder-group",
-      "label": "Amendment & Joinder"
-    },
-    {
-      "id": "discovery-group",
-      "label": "Discovery"
-    },
-    {
-      "id": "pretrial-motions-group",
-      "label": "Pretrial Motions"
-    },
-    {
-      "id": "trial-group",
-      "label": "Trial"
-    },
-    {
-      "id": "post-trial-motions-group",
-      "label": "Post-Trial Motions"
-    },
-    {
-      "id": "judgment-appeal-group",
-      "label": "Judgment & Appeal"
-    }
+    { "id": "pre-filing-group", "label": "Pre-Filing, Jurisdiction & Venue" },
+    { "id": "pleading-group", "label": "Pleading" },
+    { "id": "amendment-joinder-group", "label": "Amendment & Joinder" },
+    { "id": "discovery-group", "label": "Discovery" },
+    { "id": "pretrial-motions-group", "label": "Pretrial Motions" },
+    { "id": "trial-group", "label": "Trial" },
+    { "id": "post-trial-motions-group", "label": "Post-Trial Motions" },
+    { "id": "judgment-appeal-group", "label": "Judgment & Appeal" }
   ],
   "nodes": [
     {
@@ -94,15 +70,9 @@
       "label": "DISMISSED WITHOUT PREJUDICE -- No Timely Service",
       "kind": "terminal",
       "cite": "FRCP 4(m)",
-      "note": "PERMADEATH for this action. No service within 90 days and no good-cause showing: the court must dismiss without prejudice as to the unserved defendant (or order service by a date certain). Dismissal without prejudice preserves the underlying claim if the statute of limitations has not since expired -- but for a claim near its limitations period, an unexcused blown Rule 4(m) window can be functionally fatal even though the dismissal itself is nominally 'without prejudice.' PLACEHOLDER PAYOFF: $0, override per matter.",
+      "note": "PERMADEATH for this action. No service within 90 days and no good-cause showing: the court must dismiss without prejudice as to the unserved defendant (or order service by a date certain). Dismissal without prejudice preserves the underlying claim if the statute of limitations has not since expired -- but for a claim near its limitations period, an unexcused blown Rule 4(m) window can be functionally fatal even though the dismissal itself is nominally 'without prejudice.'",
       "group": "pleading-group",
-      "valence": "bad",
-      "payoff": 0,
-      "outcome": [
-        "loss",
-        "procedural-default",
-        "waiver-trap"
-      ]
+      "valence": "bad"
     },
     {
       "id": "removal-window",
@@ -133,13 +103,9 @@
       "label": "Remanded to State Court",
       "kind": "terminal",
       "cite": "28 U.S.C. 1447(c); 1447(d)",
-      "note": "Case returns to state court; the federal action ends. A remand order based on a 1447(c) defect (lack of subject-matter jurisdiction or timely-raised procedural defect) is generally NOT reviewable on appeal or otherwise, 1447(d) -- one of the few genuinely unreviewable orders in federal practice. Exits the FRCP track modeled by this chart. PLACEHOLDER PAYOFF: $500,000 (stake midpoint), override per matter. The case continues in state court, outside this chart -- genuinely unresolved from here, not a plaintiff win or loss.",
+      "note": "Case returns to state court; the federal action ends. A remand order based on a 1447(c) defect (lack of subject-matter jurisdiction or timely-raised procedural defect) is generally NOT reviewable on appeal or otherwise, 1447(d) -- one of the few genuinely unreviewable orders in federal practice. Exits the FRCP track modeled by this chart.",
       "group": "pleading-group",
-      "valence": "caution",
-      "payoff": 500000,
-      "outcome": [
-        "neutral"
-      ]
+      "valence": "caution"
     },
     {
       "id": "rule12-response-window",
@@ -180,16 +146,10 @@
       "label": "DISMISSED WITH PREJUDICE",
       "kind": "terminal",
       "cite": "FRCP 12(b)(6); 41(b)",
-      "note": "PERMADEATH. The complaint fails to state a claim and the court concludes amendment would be futile -- dismissal without leave to amend. Rule 41(b)'s final sentence extends beyond its own subdivision: unless the dismissal order states otherwise, 'any dismissal not under this rule -- except one for lack of jurisdiction, improper venue, or failure to join a party under Rule 19 -- operates as an adjudication on the merits,' which is what makes a with-prejudice 12(b)(6) dismissal claim-preclusive. PLACEHOLDER PAYOFF: $0, override per matter.",
+      "note": "PERMADEATH. The complaint fails to state a claim and the court concludes amendment would be futile -- dismissal without leave to amend. Rule 41(b)'s final sentence extends beyond its own subdivision: unless the dismissal order states otherwise, 'any dismissal not under this rule -- except one for lack of jurisdiction, improper venue, or failure to join a party under Rule 19 -- operates as an adjudication on the merits,' which is what makes a with-prejudice 12(b)(6) dismissal claim-preclusive.",
       "group": "pleading-group",
       "courtListenerUrl": "https://www.courtlistener.com/opinion/769838/john-andrew-cuoco-v-kenneth-moritsugu/",
-      "valence": "bad",
-      "payoff": 0,
-      "outcome": [
-        "loss",
-        "dismissal",
-        "waiver-trap"
-      ]
+      "valence": "bad"
     },
     {
       "id": "default-entered",
@@ -204,28 +164,18 @@
       "label": "DEFAULT JUDGMENT ENTERED",
       "kind": "terminal",
       "cite": "FRCP 55(b)(1); 55(b)(2)",
-      "note": "PERMADEATH (absent a successful Rule 60(b) motion, not separately modeled from this terminal). The clerk enters judgment for a sum certain if the defendant has not appeared and is not a minor or incompetent (55(b)(1)); otherwise the court enters it, and may hold a hearing to determine damages, establish the truth of an allegation, or investigate any other matter (55(b)(2)). Well-pleaded factual allegations (other than damages) are taken as true against the defaulting party -- damages must still be proven. PLACEHOLDER PAYOFF: $900,000, override per matter. Entered against a non-appearing defendant -- a real win for the plaintiff (self), discounted from a full $1,000,000 because it was never tested on the merits. The pack's authored `valence` of \"bad\" reflects how disfavored/drastic default judgments are procedurally, not who benefits -- flagged since it runs the other way from self's payoff.",
+      "note": "PERMADEATH (absent a successful Rule 60(b) motion, not separately modeled from this terminal). The clerk enters judgment for a sum certain if the defendant has not appeared and is not a minor or incompetent (55(b)(1)); otherwise the court enters it, and may hold a hearing to determine damages, establish the truth of an allegation, or investigate any other matter (55(b)(2)). Well-pleaded factual allegations (other than damages) are taken as true against the defaulting party -- damages must still be proven.",
       "group": "pleading-group",
-      "valence": "bad",
-      "payoff": 900000,
-      "outcome": [
-        "win",
-        "default-judgment"
-      ]
+      "valence": "bad"
     },
     {
       "id": "voluntary-dismissal",
       "label": "VOLUNTARY / STIPULATED DISMISSAL",
       "kind": "terminal",
       "cite": "FRCP 41(a)",
-      "note": "Plaintiff may dismiss without a court order by filing a notice of dismissal before the opposing party serves either an answer or a summary-judgment motion (41(a)(1)(A)(i)), or by a stipulation signed by all parties who have appeared (41(a)(1)(A)(ii)) -- the common vehicle for a negotiated settlement. Otherwise dismissal requires a court order, typically on terms the court considers proper (41(a)(2)). A first 41(a)(1) dismissal is without prejudice unless the notice/stipulation states otherwise; a SECOND dismissal of the same claim operates as an adjudication on the merits (the 'two-dismissal rule,' 41(a)(1)(B)) -- not itself further modeled here. PLACEHOLDER PAYOFF: $400,000, override per matter, matching this project's settlement tier -- per this terminal's own note, \"the common vehicle for a negotiated settlement.\"",
+      "note": "Plaintiff may dismiss without a court order by filing a notice of dismissal before the opposing party serves either an answer or a summary-judgment motion (41(a)(1)(A)(i)), or by a stipulation signed by all parties who have appeared (41(a)(1)(A)(ii)) -- the common vehicle for a negotiated settlement. Otherwise dismissal requires a court order, typically on terms the court considers proper (41(a)(2)). A first 41(a)(1) dismissal is without prejudice unless the notice/stipulation states otherwise; a SECOND dismissal of the same claim operates as an adjudication on the merits (the 'two-dismissal rule,' 41(a)(1)(B)) -- not itself further modeled here.",
       "group": "pleading-group",
-      "valence": "good",
-      "payoff": 400000,
-      "outcome": [
-        "settlement",
-        "voluntary"
-      ]
+      "valence": "good"
     },
     {
       "id": "amendment-as-of-right-window",
@@ -356,32 +306,20 @@
       "label": "CASE DISMISSED -- Discovery Sanction",
       "kind": "terminal",
       "cite": "FRCP 37(b)(2)(A)(v); 37(e)(2)(C)",
-      "note": "PERMADEATH. The plaintiff's own noncompliance or spoliation was severe enough, and sufficiently willful, bad-faith, or intentional, to warrant the case-dispositive sanction of dismissal rather than a lesser remedy -- courts apply heightened scrutiny before imposing this sanction precisely because it forecloses adjudication on the merits. PLACEHOLDER PAYOFF: $0, override per matter. Per this terminal's own note, this sanction runs against the plaintiff's (self's) own discovery misconduct.",
+      "note": "PERMADEATH. The plaintiff's own noncompliance or spoliation was severe enough, and sufficiently willful, bad-faith, or intentional, to warrant the case-dispositive sanction of dismissal rather than a lesser remedy -- courts apply heightened scrutiny before imposing this sanction precisely because it forecloses adjudication on the merits.",
       "group": "discovery-group",
       "courtListenerUrl": "https://www.courtlistener.com/opinion/775569/mark-n-silvestri-v-general-motors-corporation-dfendant-appellee/",
-      "valence": "bad",
-      "payoff": 0,
-      "outcome": [
-        "loss",
-        "sanctions",
-        "dismissal"
-      ]
+      "valence": "bad"
     },
     {
       "id": "discovery-sanctions-default",
       "label": "DEFAULT JUDGMENT -- Discovery Sanction",
       "kind": "terminal",
       "cite": "FRCP 37(b)(2)(A)(vi)",
-      "note": "PERMADEATH for the defendant. The defendant's discovery misconduct (disobeying a compel order, spoliating evidence with intent to deprive) was severe enough to warrant default judgment as a sanction -- the adversarial mirror image of dismissal, and equally disfavored absent a clear showing of willfulness or bad faith. PLACEHOLDER PAYOFF: $900,000, override per matter. Per this terminal's own note, this sanction runs against the DEFENDANT's misconduct -- a real win for the plaintiff (self), discounted from a full $1,000,000 because it was never tested on the merits. The pack's authored `valence` of \"bad\" reflects how disfavored the sanction is procedurally, not who benefits -- flagged since it runs the other way from self's payoff.",
+      "note": "PERMADEATH for the defendant. The defendant's discovery misconduct (disobeying a compel order, spoliating evidence with intent to deprive) was severe enough to warrant default judgment as a sanction -- the adversarial mirror image of dismissal, and equally disfavored absent a clear showing of willfulness or bad faith.",
       "group": "discovery-group",
       "courtListenerUrl": "https://www.courtlistener.com/opinion/8776470/victor-stanley-inc-v-creative-pipe-inc/",
-      "valence": "bad",
-      "payoff": 900000,
-      "outcome": [
-        "win",
-        "sanctions",
-        "default-judgment"
-      ]
+      "valence": "bad"
     },
     {
       "id": "discovery-closed",
@@ -422,14 +360,10 @@
       "label": "SUMMARY JUDGMENT ENTERED",
       "kind": "terminal",
       "cite": "FRCP 56(a)",
-      "note": "PERMADEATH for the losing party's claims/defenses on the merits (subject to appeal). No genuine dispute of material fact exists and the movant -- plaintiff or defendant -- is entitled to judgment as a matter of law on the full case. A grant of summary judgment is reviewed de novo on appeal, unlike a jury verdict's deferential review. PLACEHOLDER PAYOFF: $500,000 (stake midpoint), override per matter. This pack does not branch on which party a judgment favors -- `verdict-rendered`'s \"for plaintiff\"/\"for defendant\" edges both lead to the same `final-judgment-entered` state, and every downstream terminal (summary judgment, appeal outcomes) tracks only the procedural posture from there, not who won. A single payoff here necessarily blends a possible plaintiff win with a possible plaintiff loss; override with scenario.payoffs once the matter's actual judgment is known.",
+      "note": "PERMADEATH for the losing party's claims/defenses on the merits (subject to appeal). No genuine dispute of material fact exists and the movant -- plaintiff or defendant -- is entitled to judgment as a matter of law on the full case. A grant of summary judgment is reviewed de novo on appeal, unlike a jury verdict's deferential review.",
       "group": "pretrial-motions-group",
       "courtListenerUrl": "https://www.courtlistener.com/opinion/145738/scott-v-harris/",
-      "valence": "good",
-      "payoff": 500000,
-      "outcome": [
-        "final"
-      ]
+      "valence": "good"
     },
     {
       "id": "partial-summary-judgment",
@@ -576,29 +510,19 @@
       "label": "APPEAL FORFEITED -- Judgment Final",
       "kind": "terminal",
       "cite": "FRAP 4(a)(1)(A); Bowles v. Russell, 551 U.S. 205 (2007)",
-      "note": "PERMADEATH. No notice of appeal within 30 days (60 if the U.S. is a party) and no timely FRAP 4(a)(5) extension motion. Because the deadline is jurisdictional rather than a claim-processing rule, the court of appeals lacks power to hear the appeal even if the appellee never objects to its untimeliness -- the single most consequential deadline-as-permadeath trap in federal civil practice, the direct analog of the MPEP pack's 35 U.S.C. 133 six-month abandonment ceiling. PLACEHOLDER PAYOFF: $350,000, override per matter -- below the blended-neutral midpoint because a missed deadline (not a deliberate choice by either side) forecloses appellate correction of whatever the judgment was. This pack does not branch on which party a judgment favors -- `verdict-rendered`'s \"for plaintiff\"/\"for defendant\" edges both lead to the same `final-judgment-entered` state, and every downstream terminal (summary judgment, appeal outcomes) tracks only the procedural posture from there, not who won. A single payoff here necessarily blends a possible plaintiff win with a possible plaintiff loss; override with scenario.payoffs once the matter's actual judgment is known.",
+      "note": "PERMADEATH. No notice of appeal within 30 days (60 if the U.S. is a party) and no timely FRAP 4(a)(5) extension motion. Because the deadline is jurisdictional rather than a claim-processing rule, the court of appeals lacks power to hear the appeal even if the appellee never objects to its untimeliness -- the single most consequential deadline-as-permadeath trap in federal civil practice, the direct analog of the MPEP pack's 35 U.S.C. 133 six-month abandonment ceiling.",
       "group": "judgment-appeal-group",
       "courtListenerUrl": "https://www.courtlistener.com/opinion/145714/bowles-v-russell/",
-      "valence": "bad",
-      "payoff": 350000,
-      "outcome": [
-        "procedural-default",
-        "waiver-trap",
-        "final"
-      ]
+      "valence": "bad"
     },
     {
       "id": "judgment-final-no-appeal",
       "label": "JUDGMENT FINAL -- No Appeal Taken",
       "kind": "terminal",
       "cite": "28 U.S.C. 1291",
-      "note": "The losing party had a live right to appeal and elected not to exercise it within the FRAP 4(a) window. The judgment becomes final and, subject to any available collateral remedies (a Rule 60(b) motion in the district court, not further modeled here), is no longer open to challenge in this action. PLACEHOLDER PAYOFF: $500,000 (stake midpoint), override per matter. This pack does not branch on which party a judgment favors -- `verdict-rendered`'s \"for plaintiff\"/\"for defendant\" edges both lead to the same `final-judgment-entered` state, and every downstream terminal (summary judgment, appeal outcomes) tracks only the procedural posture from there, not who won. A single payoff here necessarily blends a possible plaintiff win with a possible plaintiff loss; override with scenario.payoffs once the matter's actual judgment is known.",
+      "note": "The losing party had a live right to appeal and elected not to exercise it within the FRAP 4(a) window. The judgment becomes final and, subject to any available collateral remedies (a Rule 60(b) motion in the district court, not further modeled here), is no longer open to challenge in this action.",
       "group": "judgment-appeal-group",
-      "valence": "good",
-      "payoff": 500000,
-      "outcome": [
-        "final"
-      ]
+      "valence": "good"
     },
     {
       "id": "cross-appeal-window",
@@ -637,29 +561,20 @@
       "label": "JUDGMENT AFFIRMED ON APPEAL",
       "kind": "terminal",
       "cite": "28 U.S.C. 1291",
-      "note": "The district court's judgment stands. Subject only to the narrow, discretionary avenue of a petition for certiorari to the Supreme Court (28 U.S.C. 1254(1); not separately modeled in this chart), the case is over. PLACEHOLDER PAYOFF: $500,000 (stake midpoint), override per matter. This pack does not branch on which party a judgment favors -- `verdict-rendered`'s \"for plaintiff\"/\"for defendant\" edges both lead to the same `final-judgment-entered` state, and every downstream terminal (summary judgment, appeal outcomes) tracks only the procedural posture from there, not who won. A single payoff here necessarily blends a possible plaintiff win with a possible plaintiff loss; override with scenario.payoffs once the matter's actual judgment is known.",
+      "note": "The district court's judgment stands. Subject only to the narrow, discretionary avenue of a petition for certiorari to the Supreme Court (28 U.S.C. 1254(1); not separately modeled in this chart), the case is over.",
       "group": "judgment-appeal-group",
       "courtListenerUrl": "https://www.courtlistener.com/opinion/9395291/epic-games-inc-v-apple-inc/",
-      "valence": "good",
-      "payoff": 500000,
-      "outcome": [
-        "affirmed",
-        "final"
-      ]
+      "valence": "good"
     },
     {
       "id": "judgment-reversed-remanded",
       "label": "JUDGMENT REVERSED / VACATED AND REMANDED",
       "kind": "terminal",
       "cite": "28 U.S.C. 2106",
-      "note": "The court of appeals may affirm, modify, vacate, set aside, or reverse any judgment and remand the case with instructions as just under the circumstances (28 U.S.C. 2106). Marks the end of THIS chart's walk -- the remanded case re-enters district-court proceedings at whatever posture the mandate specifies (a new trial, reconsideration of a single ruling, or entry of a different judgment), which this pack does not separately re-model to avoid an unbounded loop back through the whole procedural history. PLACEHOLDER PAYOFF: $400,000, override per matter, matching this project's remand tier. This pack does not branch on which party a judgment favors -- `verdict-rendered`'s \"for plaintiff\"/\"for defendant\" edges both lead to the same `final-judgment-entered` state, and every downstream terminal (summary judgment, appeal outcomes) tracks only the procedural posture from there, not who won. A single payoff here necessarily blends a possible plaintiff win with a possible plaintiff loss; override with scenario.payoffs once the matter's actual judgment is known.",
+      "note": "The court of appeals may affirm, modify, vacate, set aside, or reverse any judgment and remand the case with instructions as just under the circumstances (28 U.S.C. 2106). Marks the end of THIS chart's walk -- the remanded case re-enters district-court proceedings at whatever posture the mandate specifies (a new trial, reconsideration of a single ruling, or entry of a different judgment), which this pack does not separately re-model to avoid an unbounded loop back through the whole procedural history.",
       "group": "judgment-appeal-group",
       "courtListenerUrl": "https://www.courtlistener.com/opinion/779367/residential-funding-corporation-v-degeorge-financial-corp-degeorge-home/",
-      "valence": "caution",
-      "payoff": 400000,
-      "outcome": [
-        "remand"
-      ]
+      "valence": "caution"
     }
   ],
   "edges": [
@@ -702,12 +617,7 @@
         "note": "90 days after filing. The court must extend for an appropriate period on a good-cause showing; absent good cause the court has discretion to extend or dismiss without prejudice."
       },
       "hours": 3,
-      "valence": "good",
-      "duration": {
-        "min": 13.5,
-        "mode": 45.0,
-        "max": 90.0
-      }
+      "valence": "good"
     },
     {
       "from": "service-window",
@@ -738,12 +648,7 @@
         "extendable": false,
         "note": "60 days after the waiver request was sent (90 days if sent to a defendant outside any U.S. judicial district) -- longer than the bare 21-day Rule 12(a)(1)(A)(i) clock, the incentive for waiving."
       },
-      "hours": 1,
-      "duration": {
-        "min": 9.0,
-        "mode": 30.0,
-        "max": 60.0
-      }
+      "hours": 1
     },
     {
       "from": "waiver-requested",
@@ -773,13 +678,6 @@
         "extendable": true,
         "extensionAuthority": "FRCP 6(b) stipulation or court order",
         "note": "21 days after service of the summons and complaint."
-      },
-      "hours": 0,
-      "note": "Hours: 0, a default/no-action transition with no billable work of its own.",
-      "duration": {
-        "min": 3.1,
-        "mode": 10.5,
-        "max": 21.0
       }
     },
     {
@@ -804,12 +702,7 @@
         "note": "30 days from formal service, running from service under Murphy Bros., Inc. v. Michetti Pipe Stringing, Inc., 526 U.S. 344 (1999), not from informal receipt. Not extendable by stipulation or court order."
       },
       "hours": 6,
-      "courtListenerUrl": "https://www.courtlistener.com/opinion/118279/murphy-brothers-inc-v-michetti-pipe-stringing-inc/",
-      "duration": {
-        "min": 4.5,
-        "mode": 15.0,
-        "max": 30.0
-      }
+      "courtListenerUrl": "https://www.courtlistener.com/opinion/118279/murphy-brothers-inc-v-michetti-pipe-stringing-inc/"
     },
     {
       "from": "removal-window",
@@ -822,13 +715,6 @@
         "extendable": true,
         "extensionAuthority": "FRCP 6(b) stipulation or court order",
         "note": "The removal option itself is unextendable and lapses at 30 days; the underlying Rule 12(a)(1)(A)(i) response clock is unaffected by declining to remove."
-      },
-      "hours": 0,
-      "note": "Hours: 0, a default/no-action transition with no billable work of its own.",
-      "duration": {
-        "min": 3.1,
-        "mode": 10.5,
-        "max": 21.0
       }
     },
     {
@@ -843,12 +729,7 @@
         "extendable": false,
         "note": "A motion to remand for a procedural defect must be made within 30 days after the notice of removal is filed; a motion (or the court's own initiative) based on lack of subject-matter jurisdiction has no outer time limit and may be raised at any time before final judgment."
       },
-      "hours": 10,
-      "duration": {
-        "min": 4.5,
-        "mode": 15.0,
-        "max": 30.0
-      }
+      "hours": 10
     },
     {
       "from": "removed-to-federal",
@@ -861,13 +742,6 @@
         "extendable": true,
         "extensionAuthority": "FRCP 6(b) stipulation or court order",
         "note": "Rule 81(c)(2) gives the longer of: time remaining under state practice, 21 days after receipt of the initial pleading, or 7 days after the removal notice is filed."
-      },
-      "hours": 0,
-      "note": "Hours: 0, a default/no-action transition with no billable work of its own.",
-      "duration": {
-        "min": 3.1,
-        "mode": 10.5,
-        "max": 21.0
       }
     },
     {
@@ -889,11 +763,6 @@
         "length": 21,
         "extendable": true,
         "extensionAuthority": "FRCP 6(b) stipulation or court order"
-      },
-      "duration": {
-        "min": 3.1,
-        "mode": 10.5,
-        "max": 21.0
       }
     },
     {
@@ -910,12 +779,7 @@
         "note": "Baseline Rule 12(a)(1)(A)(i) clock -- see this node's own note for how the actual applicable length varies by entry path (waiver, removal, or a denied Rule 12 motion)."
       },
       "hours": 15,
-      "valence": "good",
-      "duration": {
-        "min": 3.1,
-        "mode": 10.5,
-        "max": 21.0
-      }
+      "valence": "good"
     },
     {
       "from": "rule12-response-window",
@@ -930,12 +794,7 @@
         "extensionAuthority": "FRCP 6(b) stipulation or court order",
         "note": "Filing the motion extends the responsive-pleading deadline to 14 days after the court denies or postpones disposition (Rule 12(a)(4)(A))."
       },
-      "hours": 30,
-      "duration": {
-        "min": 3.1,
-        "mode": 10.5,
-        "max": 21.0
-      }
+      "hours": 30
     },
     {
       "from": "rule12-response-window",
@@ -966,11 +825,6 @@
         "length": 14,
         "extendable": true,
         "extensionAuthority": "FRCP 6(b) stipulation or court order"
-      },
-      "duration": {
-        "min": 2.1,
-        "mode": 7.0,
-        "max": 14.0
       }
     },
     {
@@ -1011,9 +865,7 @@
       "to": "jury-demand-decision",
       "label": "Last pleading directed to the issue served -- 14-day jury demand clock starts",
       "actor": "applicant",
-      "authority": "FRCP 38(b)",
-      "hours": 0,
-      "note": "Hours: 0, a default/no-action transition with no billable work of its own."
+      "authority": "FRCP 38(b)"
     },
     {
       "from": "jury-demand-decision",
@@ -1029,13 +881,7 @@
       },
       "cost": 0,
       "hours": 0.5,
-      "valence": "good",
-      "id": "jury-demand-timely",
-      "duration": {
-        "min": 2.1,
-        "mode": 7.0,
-        "max": 14.0
-      }
+      "valence": "good"
     },
     {
       "from": "jury-demand-decision",
@@ -1044,8 +890,7 @@
       "actor": "applicant",
       "authority": "FRCP 38(d)",
       "hours": 0,
-      "valence": "bad",
-      "id": "jury-demand-waived"
+      "valence": "bad"
     },
     {
       "from": "amendment-as-of-right-window",
@@ -1059,12 +904,7 @@
         "extendable": false,
         "note": "21 days after service of the responsive pleading, or 21 days after service of a Rule 12(b)/(e)/(f) motion, whichever is earlier. Not extendable -- missing it forfeits the matter-of-course right; only consent or leave under Rule 15(a)(2) remains."
       },
-      "hours": 8,
-      "duration": {
-        "min": 3.1,
-        "mode": 10.5,
-        "max": 21.0
-      }
+      "hours": 8
     },
     {
       "from": "amendment-as-of-right-window",
@@ -1080,9 +920,7 @@
       "to": "joinder-decision",
       "label": "No amendment -- proceed; consider joinder of parties",
       "actor": "applicant",
-      "authority": "FRCP 19; 20; 24",
-      "hours": 0,
-      "note": "Hours: 0, a default/no-action transition with no billable work of its own."
+      "authority": "FRCP 19; 20; 24"
     },
     {
       "from": "amended-complaint-filed",
@@ -1095,11 +933,6 @@
         "extendable": true,
         "extensionAuthority": "FRCP 6(b) stipulation or court order",
         "note": "Response due within the time remaining to respond to the original pleading, or 14 days after service of the amended pleading, whichever is LATER."
-      },
-      "duration": {
-        "min": 2.1,
-        "mode": 7.0,
-        "max": 14.0
       }
     },
     {
@@ -1133,8 +966,7 @@
       "actor": "applicant",
       "authority": "FRCP 19(a); 20(a)",
       "cost": 2500,
-      "hours": 8,
-      "id": "joinder-required-or-permissive"
+      "hours": 8
     },
     {
       "from": "joinder-decision",
@@ -1143,17 +975,14 @@
       "actor": "applicant",
       "authority": "FRCP 24(a); 24(b)",
       "cost": 2500,
-      "hours": 8,
-      "id": "joinder-intervention"
+      "hours": 8
     },
     {
       "from": "joinder-decision",
       "to": "rule26f-conference",
       "label": "No joinder -- proceed to discovery planning",
       "actor": "applicant",
-      "authority": "FRCP 26(f)",
-      "hours": 0,
-      "note": "Hours: 0, a default/no-action transition with no billable work of its own."
+      "authority": "FRCP 26(f)"
     },
     {
       "from": "parties-joined",
@@ -1174,12 +1003,7 @@
         "extensionAuthority": "court order",
         "note": "Initial disclosures due at or within 14 days after the Rule 26(f) conference unless the parties stipulate or the court sets a different time."
       },
-      "hours": 6,
-      "duration": {
-        "min": 2.1,
-        "mode": 7.0,
-        "max": 14.0
-      }
+      "hours": 6
     },
     {
       "from": "initial-disclosures",
@@ -1203,8 +1027,7 @@
       "actor": "applicant",
       "authority": "FRCP 33(a)(1)",
       "cost": 100,
-      "hours": 4,
-      "id": "discovery-serve-interrogatories"
+      "hours": 4
     },
     {
       "from": "discovery-open",
@@ -1213,8 +1036,7 @@
       "actor": "applicant",
       "authority": "FRCP 34(a)(1)",
       "cost": 100,
-      "hours": 3,
-      "id": "discovery-serve-rfp"
+      "hours": 3
     },
     {
       "from": "discovery-open",
@@ -1223,8 +1045,7 @@
       "actor": "applicant",
       "authority": "FRCP 36(a); 36(a)(3)",
       "cost": 50,
-      "hours": 2,
-      "id": "discovery-serve-rfa"
+      "hours": 2
     },
     {
       "from": "discovery-open",
@@ -1233,8 +1054,7 @@
       "actor": "applicant",
       "authority": "FRCP 30(a); 30(d)(1)",
       "cost": 3000,
-      "hours": 10,
-      "id": "discovery-take-deposition"
+      "hours": 10
     },
     {
       "from": "discovery-open",
@@ -1243,8 +1063,7 @@
       "actor": "applicant",
       "authority": "FRCP 30(b)(6)",
       "cost": 500,
-      "hours": 4,
-      "id": "discovery-serve-30b6-notice"
+      "hours": 4
     },
     {
       "from": "discovery-open",
@@ -1253,8 +1072,7 @@
       "actor": "applicant",
       "authority": "FRCP 45(a)",
       "cost": 300,
-      "hours": 3,
-      "id": "discovery-serve-subpoena"
+      "hours": 3
     },
     {
       "from": "discovery-open",
@@ -1286,9 +1104,7 @@
       "to": "discovery-closed",
       "label": "Discovery record complete -- proceed toward dispositive motions",
       "actor": "applicant",
-      "authority": "FRCP 16(b)(3)",
-      "hours": 0,
-      "note": "Hours: 0, a default/no-action transition with no billable work of its own."
+      "authority": "FRCP 16(b)(3)"
     },
     {
       "from": "meet-and-confer",
@@ -1313,8 +1129,7 @@
       "label": "Motion granted -- movant's fees shifted to the noncompliant party (Rule 37(a)(5)(A))",
       "actor": "examiner",
       "authority": "FRCP 37(a)(5)(A)",
-      "probability": 0.65,
-      "id": "compel-granted-fee-shift"
+      "probability": 0.65
     },
     {
       "from": "motion-to-compel-ruling",
@@ -1330,8 +1145,7 @@
       "label": "Motion denied -- movant's fees shifted absent substantial justification (Rule 37(a)(5)(B))",
       "actor": "examiner",
       "authority": "FRCP 37(a)(5)(B)",
-      "probability": 0.15,
-      "id": "compel-denied-fee-shift"
+      "probability": 0.15
     },
     {
       "from": "protective-order-motion",
@@ -1347,8 +1161,7 @@
       "label": "Protective order granted",
       "actor": "examiner",
       "authority": "FRCP 26(c)",
-      "probability": 0.8,
-      "id": "protective-order-granted"
+      "probability": 0.8
     },
     {
       "from": "protective-order-ruling",
@@ -1356,8 +1169,7 @@
       "label": "Protective order denied -- discovery proceeds unrestricted",
       "actor": "examiner",
       "authority": "FRCP 26(c)",
-      "probability": 0.2,
-      "id": "protective-order-denied"
+      "probability": 0.2
     },
     {
       "from": "rule37-sanctions-ruling",
@@ -1406,9 +1218,7 @@
       "to": "final-pretrial-conference",
       "label": "No dispositive or Daubert motion -- proceed to final pretrial conference",
       "actor": "applicant",
-      "authority": "FRCP 16(e)",
-      "hours": 0,
-      "note": "Hours: 0, a default/no-action transition with no billable work of its own."
+      "authority": "FRCP 16(e)"
     },
     {
       "from": "summary-judgment-motion",
@@ -1455,9 +1265,7 @@
       "to": "daubert-motion-filed",
       "label": "Proceed toward trial on the remaining claims",
       "actor": "applicant",
-      "authority": "FRE 702",
-      "hours": 0,
-      "note": "Hours: 0, a default/no-action transition with no billable work of its own."
+      "authority": "FRE 702"
     },
     {
       "from": "daubert-motion-filed",
@@ -1473,8 +1281,7 @@
       "label": "Expert testimony admitted -- reliability and fit satisfied",
       "actor": "examiner",
       "authority": "FRE 702",
-      "probability": 0.6,
-      "id": "daubert-admitted"
+      "probability": 0.6
     },
     {
       "from": "daubert-ruling",
@@ -1482,8 +1289,7 @@
       "label": "Expert testimony excluded in whole or in part",
       "actor": "examiner",
       "authority": "FRE 702",
-      "probability": 0.4,
-      "id": "daubert-excluded"
+      "probability": 0.4
     },
     {
       "from": "motions-in-limine-filed",
@@ -1514,8 +1320,7 @@
       "label": "Verdict / findings for plaintiff",
       "actor": "examiner",
       "authority": "FRCP 52(a); 58",
-      "probability": 0.5,
-      "id": "verdict-for-plaintiff"
+      "probability": 0.5
     },
     {
       "from": "verdict-rendered",
@@ -1523,26 +1328,21 @@
       "label": "Verdict / findings for defendant",
       "actor": "examiner",
       "authority": "FRCP 52(a); 58",
-      "probability": 0.5,
-      "id": "verdict-for-defendant"
+      "probability": 0.5
     },
     {
       "from": "final-judgment-entered",
       "to": "post-trial-motion-window",
       "label": "28-day post-trial motion window opens",
       "actor": "applicant",
-      "authority": "FRCP 50(b); 59(b); 59(e)",
-      "hours": 0,
-      "note": "Hours: 0, a default/no-action transition with no billable work of its own."
+      "authority": "FRCP 50(b); 59(b); 59(e)"
     },
     {
       "from": "final-judgment-entered",
       "to": "notice-of-appeal-window",
       "label": "No post-trial motion -- proceed directly toward appeal",
       "actor": "applicant",
-      "authority": "FRAP 4(a)(1)(A)",
-      "hours": 0,
-      "note": "Hours: 0, a default/no-action transition with no billable work of its own."
+      "authority": "FRAP 4(a)(1)(A)"
     },
     {
       "from": "post-trial-motion-window",
@@ -1556,12 +1356,7 @@
         "extendable": false,
         "note": "28 days after entry of judgment. Rule 6(b)(2) forbids any extension of this deadline."
       },
-      "hours": 30,
-      "duration": {
-        "min": 4.2,
-        "mode": 14.0,
-        "max": 28.0
-      }
+      "hours": 30
     },
     {
       "from": "post-trial-motion-window",
@@ -1575,12 +1370,7 @@
         "extendable": false,
         "note": "28 days after entry of judgment. Rule 6(b)(2) forbids any extension of this deadline."
       },
-      "hours": 25,
-      "duration": {
-        "min": 4.2,
-        "mode": 14.0,
-        "max": 28.0
-      }
+      "hours": 25
     },
     {
       "from": "post-trial-motion-window",
@@ -1594,12 +1384,7 @@
         "extendable": false,
         "note": "28 days after entry of judgment. Excluded from Rule 6(b) extension entirely -- no good-cause or excusable-neglect relief is available."
       },
-      "hours": 20,
-      "duration": {
-        "min": 4.2,
-        "mode": 14.0,
-        "max": 28.0
-      }
+      "hours": 20
     },
     {
       "from": "post-trial-motion-window",
@@ -1613,21 +1398,14 @@
         "extendable": false,
         "note": "Grounds (1)-(3) (mistake, newly discovered evidence, fraud) must be raised within a reasonable time and no more than one year after entry of judgment; grounds (4)-(6) require only a reasonable time with no fixed outer cap."
       },
-      "hours": 25,
-      "duration": {
-        "min": 54.8,
-        "mode": 182.5,
-        "max": 365.0
-      }
+      "hours": 25
     },
     {
       "from": "post-trial-motion-window",
       "to": "notice-of-appeal-window",
       "label": "No post-trial motion -- proceed to appeal",
       "actor": "applicant",
-      "authority": "FRAP 4(a)(1)(A)",
-      "hours": 0,
-      "note": "Hours: 0, a default/no-action transition with no billable work of its own."
+      "authority": "FRAP 4(a)(1)(A)"
     },
     {
       "from": "rule50b-jmol-filed",
@@ -1692,12 +1470,7 @@
         "note": "30 days after entry of judgment (60 if the United States is a party). JURISDICTIONAL under Bowles v. Russell, 551 U.S. 205 (2007) -- not subject to equitable exceptions once actually blown, unlike most deadlines in this chart."
       },
       "hours": 4,
-      "valence": "good",
-      "duration": {
-        "min": 4.5,
-        "mode": 15.0,
-        "max": 30.0
-      }
+      "valence": "good"
     },
     {
       "from": "notice-of-appeal-window",
@@ -1737,21 +1510,14 @@
         "extendable": false,
         "note": "14 days after the first notice of appeal, or within the original FRAP 4(a)(1) period, whichever ends LATER."
       },
-      "hours": 6,
-      "duration": {
-        "min": 2.1,
-        "mode": 7.0,
-        "max": 14.0
-      }
+      "hours": 6
     },
     {
       "from": "cross-appeal-window",
       "to": "appellate-briefing",
       "label": "No cross-appeal -- appellee will defend the judgment on the existing record",
       "actor": "applicant",
-      "authority": "FRAP 28.1",
-      "hours": 0,
-      "note": "Hours: 0, a default/no-action transition with no billable work of its own."
+      "authority": "FRAP 28.1"
     },
     {
       "from": "cross-appeal-filed",
@@ -1775,8 +1541,7 @@
       "label": "Court of appeals affirms",
       "actor": "examiner",
       "authority": "28 U.S.C. 1291",
-      "probability": 0.55,
-      "id": "coa-affirms"
+      "probability": 0.55
     },
     {
       "from": "court-of-appeals-decision",
@@ -1792,51 +1557,7 @@
       "label": "Affirmed in part, reversed in part -- net affirmance for appellee",
       "actor": "examiner",
       "authority": "28 U.S.C. 1291; 2106",
-      "probability": 0.1,
-      "id": "coa-affirmed-in-part"
-    }
-  ],
-  "forum": "frcp",
-  "roles": {
-    "applicant": "self",
-    "examiner": "nature",
-    "office": "nature",
-    "either": "nature"
-  },
-  "sources": [
-    {
-      "id": "frcp-rules",
-      "title": "Federal Rules of Civil Procedure, as amended to Dec. 1, 2024",
-      "url": "https://www.uscourts.gov/sites/default/files/2025-02/federal-rules-of-civil-procedure-dec-1-2024_0.pdf",
-      "sha256": "c86b327b3bbe7dd3e68ea434a2bf0bc62aee8e85229f3456f094a1b232568317",
-      "asOf": "2024-12-01"
-    },
-    {
-      "id": "frap-rules",
-      "title": "Federal Rules of Appellate Procedure, as amended to Dec. 1, 2024 (FRAP 4(a) civil appeal clock)",
-      "url": "https://www.uscourts.gov/sites/default/files/2025-02/federal-rules-of-appellate-procedure-dec-1-2024_0.pdf",
-      "sha256": "d61711eca8e1f65955d12f1b7d29d4cc453d9ee1e30c4fff6c54b23f113454f6",
-      "asOf": "2024-12-01"
-    },
-    {
-      "id": "usc28-1447",
-      "title": "28 U.S.C. § 1447 (Procedure after removal; 1447(d) unreviewability)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/1447"
-    },
-    {
-      "id": "usc28-1291",
-      "title": "28 U.S.C. § 1291 (Final decisions of district courts)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/1291"
-    },
-    {
-      "id": "usc28-1254",
-      "title": "28 U.S.C. § 1254 (Courts of appeals; certiorari)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/1254"
-    },
-    {
-      "id": "usc28-2106",
-      "title": "28 U.S.C. § 2106 (Determination of appellate court)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/2106"
+      "probability": 0.1
     }
   ]
 }

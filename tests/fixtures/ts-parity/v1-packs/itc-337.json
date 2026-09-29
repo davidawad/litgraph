@@ -1,59 +1,23 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 1,
   "id": "itc-337",
   "title": "ITC Section 337 Unfair Import Investigation",
   "description": "Institution → response/default → discovery (incl. CBI protective-order posture) → prehearing/summary determination → evidentiary hearing → Initial Determination → Commission petition-for-review → Commission Final Determination/remedy → Presidential (USTR) review → remedy enforcement → optional Federal Circuit appeal, under 19 U.S.C. § 1337 and 19 CFR Part 210. Direct structural counterpart to content/statecharts/mpep-prosecution.json for the non-FRCP ITC pack. Stage ids and rule refs are drawn verbatim from content/rulepacks/itc-337-pack.json.",
   "jurisdiction": "USITC / 19 CFR Part 210",
   "startNodeId": "complaint-filed",
   "groups": [
-    {
-      "id": "pre-institution-group",
-      "label": "Pre-Institution"
-    },
-    {
-      "id": "instituted-group",
-      "label": "Institution"
-    },
-    {
-      "id": "response-period-group",
-      "label": "Response Period"
-    },
-    {
-      "id": "discovery-group",
-      "label": "Discovery & CBI"
-    },
-    {
-      "id": "prehearing-group",
-      "label": "Prehearing"
-    },
-    {
-      "id": "evidentiary-hearing-group",
-      "label": "Evidentiary Hearing"
-    },
-    {
-      "id": "post-hearing-briefing-group",
-      "label": "Post-Hearing Briefing"
-    },
-    {
-      "id": "initial-determination-group",
-      "label": "Initial Determination"
-    },
-    {
-      "id": "commission-review-group",
-      "label": "Commission Review & Remedy"
-    },
-    {
-      "id": "presidential-review-group",
-      "label": "Presidential (USTR) Review"
-    },
-    {
-      "id": "remedy-enforcement-group",
-      "label": "Remedy Enforcement"
-    },
-    {
-      "id": "federal-circuit-appeal-group",
-      "label": "Federal Circuit Appeal"
-    }
+    { "id": "pre-institution-group", "label": "Pre-Institution" },
+    { "id": "instituted-group", "label": "Institution" },
+    { "id": "response-period-group", "label": "Response Period" },
+    { "id": "discovery-group", "label": "Discovery & CBI" },
+    { "id": "prehearing-group", "label": "Prehearing" },
+    { "id": "evidentiary-hearing-group", "label": "Evidentiary Hearing" },
+    { "id": "post-hearing-briefing-group", "label": "Post-Hearing Briefing" },
+    { "id": "initial-determination-group", "label": "Initial Determination" },
+    { "id": "commission-review-group", "label": "Commission Review & Remedy" },
+    { "id": "presidential-review-group", "label": "Presidential (USTR) Review" },
+    { "id": "remedy-enforcement-group", "label": "Remedy Enforcement" },
+    { "id": "federal-circuit-appeal-group", "label": "Federal Circuit Appeal" }
   ],
   "nodes": [
     {
@@ -77,14 +41,9 @@
       "label": "Complaint Dismissed — Not Instituted",
       "kind": "terminal",
       "cite": "cfr210.10.c",
-      "note": "The complaint is dismissed and complainant and all proposed respondents receive written notice of the reason(s). No investigation number is ever assigned. A fresh complaint curing the defect is a new matter, not modeled as a re-entry here. PLACEHOLDER PAYOFF: $0, override per matter. The complaint never reaches an investigation.",
+      "note": "The complaint is dismissed and complainant and all proposed respondents receive written notice of the reason(s). No investigation number is ever assigned. A fresh complaint curing the defect is a new matter, not modeled as a re-entry here.",
       "group": "pre-institution-group",
-      "valence": "bad",
-      "payoff": 0,
-      "outcome": [
-        "loss",
-        "dismissal"
-      ]
+      "valence": "bad"
     },
     {
       "id": "instituted",
@@ -211,14 +170,9 @@
       "label": "Counsel Disqualified from the Investigation",
       "kind": "terminal",
       "cite": "cfr210.34.c",
-      "note": "Official Commission reprimand, disqualification from further participation in the investigation, potential permanent disqualification from Commission practice, and referral to state licensing authorities. A genuine ITC-specific permadeath terminal with no FRCP counterpart — mishandling CBI ends the responsible lawyer's role in the matter, not just the client's discovery position. PLACEHOLDER PAYOFF: $0, override per matter. Modeled as ending the matter for the self side's own counsel; if this disqualifies opposing counsel instead, the outcome for self is very different -- override once it's clear whose counsel this was.",
+      "note": "Official Commission reprimand, disqualification from further participation in the investigation, potential permanent disqualification from Commission practice, and referral to state licensing authorities. A genuine ITC-specific permadeath terminal with no FRCP counterpart — mishandling CBI ends the responsible lawyer's role in the matter, not just the client's discovery position.",
       "group": "discovery-group",
-      "valence": "bad",
-      "payoff": 0,
-      "outcome": [
-        "loss",
-        "procedural-default"
-      ]
+      "valence": "bad"
     },
     {
       "id": "prehearing",
@@ -401,14 +355,9 @@
       "label": "Presidential/USTR Disapproval — No Force or Effect",
       "kind": "terminal",
       "cite": "usc1337.j",
-      "note": "'[S]uch determination and the action taken... shall have no force or effect.' Not merely the remedy — the DETERMINATION ITSELF is voided, which is why this is modeled as a clean terminal with no onward Federal Circuit appeal edge: there is nothing left to appeal. A governor's-clemency-style override of what looked like a final civil judgment, with no FRCP analog. PLACEHOLDER PAYOFF: $50,000, override per matter. This terminal is only reachable after a VIOLATION finding and remedy (`remedy-determined`) -- the merits were won, but § 1337(j) voids the determination and remedy entirely, so self recovers no exclusion/cease-desist relief. The pack's authored `valence` of \"good\" reflects the rarity/drama of a presidential override, not self's economic outcome; this payoff instead reflects the lost remedy (nominal vindication value only).",
+      "note": "'[S]uch determination and the action taken... shall have no force or effect.' Not merely the remedy — the DETERMINATION ITSELF is voided, which is why this is modeled as a clean terminal with no onward Federal Circuit appeal edge: there is nothing left to appeal. A governor's-clemency-style override of what looked like a final civil judgment, with no FRCP analog.",
       "group": "presidential-review-group",
-      "valence": "good",
-      "payoff": 50000,
-      "outcome": [
-        "final",
-        "no-remedy"
-      ]
+      "valence": "good"
     },
     {
       "id": "remedy-in-effect",
@@ -439,13 +388,9 @@
       "label": "Commission Determination Stands — Unappealed",
       "kind": "terminal",
       "cite": "usc1337.c",
-      "note": "The 60-day window closes with no notice of appeal; flag itc337/fedcir-appeal-forfeited raised. The Commission's determination and remedy (or its absence) stand unreviewed. PLACEHOLDER PAYOFF: $400,000, override per matter. This terminal is reached from either a no-violation or a violation/remedy-in-effect posture (the graph does not fork by which one before the appeal window lapses), so a single payoff necessarily blends a possible unappealed win with a possible unappealed loss; override once the matter's actual determination is known.",
+      "note": "The 60-day window closes with no notice of appeal; flag itc337/fedcir-appeal-forfeited raised. The Commission's determination and remedy (or its absence) stand unreviewed.",
       "group": "federal-circuit-appeal-group",
-      "valence": "bad",
-      "payoff": 400000,
-      "outcome": [
-        "final"
-      ]
+      "valence": "bad"
     },
     {
       "id": "federal-circuit-review",
@@ -460,15 +405,10 @@
       "label": "Federal Circuit Affirms",
       "kind": "terminal",
       "cite": "usc1337.c",
-      "note": "The Commission's determination and remedy stand as issued. PLACEHOLDER PAYOFF: $700,000, override per matter. Reached by affirming either a violation/remedy determination (a self win, the majority of the probability mass into this terminal) or a no-violation determination (a self loss); this blends both under one id -- override once the matter's actual determination is known.",
+      "note": "The Commission's determination and remedy stand as issued.",
       "group": "federal-circuit-appeal-group",
       "courtListenerUrl": "https://www.courtlistener.com/opinion/615096/tianrui-group-co-v-international-trade-commission/",
-      "valence": "good",
-      "payoff": 700000,
-      "outcome": [
-        "affirmed",
-        "final"
-      ]
+      "valence": "good"
     },
     {
       "id": "cafc-remanded",
@@ -486,12 +426,7 @@
       "to": "institution-decision",
       "label": "Commission reviews the complaint for institution (30-day clock, Rule 210.10(a))",
       "actor": "office",
-      "authority": "cfr210.10.a",
-      "duration": {
-        "mode": 30,
-        "max": 35
-      },
-      "note": "Duration: 19 CFR 210.10(a) requires an institution determination within 30 days of filing (35 if a motion for temporary relief is pending) -- sourced, not an estimate."
+      "authority": "cfr210.10.a"
     },
     {
       "from": "institution-decision",
@@ -531,12 +466,7 @@
         "extensionAuthority": "ALJ good-cause order (Rule 210.6(a))",
         "note": "20 days from service of the complaint and notice of investigation; 10 days if a motion for temporary relief is pending in an uncomplicated investigation (19 CFR 210.13(a))."
       },
-      "valence": "good",
-      "duration": {
-        "min": 3.0,
-        "mode": 10.0,
-        "max": 20.0
-      }
+      "valence": "good"
     },
     {
       "from": "response-period-open",
@@ -604,8 +534,7 @@
       "authority": "cfr210.29.limits",
       "actionId": "serve.discovery.interrogatories",
       "cost": 200,
-      "hours": 8,
-      "id": "discovery-serve-interrogatories"
+      "hours": 8
     },
     {
       "from": "discovery-open",
@@ -620,12 +549,6 @@
         "extendable": true,
         "extensionAuthority": "ALJ-specified period",
         "note": "19 CFR 210.29/210.30(b): 10 days to answer interrogatories or respond to document requests unless the ALJ specifies otherwise. A miss is sanction exposure under 210.33(a) — the pack does not assert an automatic waiver here, contrast the RFA trap below."
-      },
-      "id": "discovery-respond-interrogatories-rfp",
-      "duration": {
-        "min": 1.5,
-        "mode": 5.0,
-        "max": 10.0
       }
     },
     {
@@ -636,8 +559,7 @@
       "authority": "cfr210.30.b",
       "actionId": "serve.discovery.rfp",
       "cost": 150,
-      "hours": 5,
-      "id": "discovery-serve-rfp"
+      "hours": 5
     },
     {
       "from": "discovery-open",
@@ -647,8 +569,7 @@
       "authority": "cfr210.31.b",
       "actionId": "serve.discovery.rfa",
       "cost": 100,
-      "hours": 3,
-      "id": "discovery-serve-rfa"
+      "hours": 3
     },
     {
       "from": "discovery-open",
@@ -663,13 +584,7 @@
         "extensionAuthority": "ALJ-specified period",
         "note": "19 CFR 210.31(b): deemed admitted absent a sworn answer or objection within 10 days or the ALJ-specified period. Flag itc337/rfa-deemed-admitted raised — the matter is conclusively established absent ALJ leave to withdraw or amend, and the respond.rfa action itself becomes illegal once the window closes."
       },
-      "valence": "bad",
-      "id": "discovery-rfa-deemed-admitted",
-      "duration": {
-        "min": 1.5,
-        "mode": 5.0,
-        "max": 10.0
-      }
+      "valence": "bad"
     },
     {
       "from": "discovery-open",
@@ -679,8 +594,7 @@
       "authority": "cfr210.32.a",
       "actionId": "serve.subpoena",
       "cost": 250,
-      "hours": 4,
-      "id": "discovery-serve-subpoena"
+      "hours": 4
     },
     {
       "from": "discovery-open",
@@ -696,12 +610,6 @@
         "extendable": true,
         "extensionAuthority": "ALJ-extended period",
         "note": "19 CFR 210.32(d). The rule text does not itself state an automatic waiver-on-lateness consequence, so no waiver flag is asserted for a late motion to quash — contrast the RFA trap above."
-      },
-      "id": "discovery-motion-quash-subpoena",
-      "duration": {
-        "min": 1.5,
-        "mode": 5.0,
-        "max": 10.0
       }
     },
     {
@@ -712,8 +620,7 @@
       "authority": "cfr210.28.limits",
       "actionId": "take.deposition",
       "cost": 3500,
-      "hours": 12,
-      "id": "discovery-take-deposition"
+      "hours": 12
     },
     {
       "from": "discovery-open",
@@ -729,12 +636,6 @@
         "extendable": true,
         "extensionAuthority": "good cause",
         "note": "19 CFR 210.27(e): privilege log due 10 days after the response listing each withheld item's date, authors, recipients, subject matter, and privilege type. A missed log is sanction exposure under 210.33(a), not an automatic waiver — the pack deliberately declines to invent a hard waiver flag the regulatory text does not itself state."
-      },
-      "id": "discovery-file-privilege-log",
-      "duration": {
-        "min": 1.5,
-        "mode": 5.0,
-        "max": 10.0
       }
     },
     {
@@ -745,8 +646,7 @@
       "authority": "cfr210.33.a",
       "actionId": "confer.meet-and-confer",
       "cost": 800,
-      "hours": 2,
-      "id": "discovery-meet-and-confer"
+      "hours": 2
     },
     {
       "from": "discovery-open",
@@ -851,12 +751,7 @@
         "extensionAuthority": "good cause",
         "note": "19 CFR 210.5: public version due within 30 days of the confidential filing absent a good-cause extension."
       },
-      "valence": "good",
-      "duration": {
-        "min": 4.5,
-        "mode": 15.0,
-        "max": 30.0
-      }
+      "valence": "good"
     },
     {
       "from": "public-version-filed",
@@ -888,13 +783,7 @@
       "label": "Discovery record complete — case proceeds toward the summary-determination window and hearing (Rule 210.51(a))",
       "actor": "applicant",
       "authority": "cfr210.51.a",
-      "hours": 0,
-      "duration": {
-        "min": 120,
-        "mode": 270,
-        "max": 420
-      },
-      "note": "Duration: estimate. Discovery in a § 337 investigation typically runs several months within the 12-18 month target-date schedule the ALJ sets under 19 CFR 210.51(a); not a measured statistic for this matter."
+      "hours": 0
     },
     {
       "from": "prehearing",
@@ -910,11 +799,6 @@
         "extendable": true,
         "extensionAuthority": "ALJ good-cause exception",
         "note": "19 CFR 210.18(a): must be filed at least 60 days BEFORE the hearing — a backward-counted deadline. If the 60th day before the hearing falls on a weekend/holiday, the period rolls FORWARD (toward the hearing), not backward. Missing this window raises flag itc337/summary-determination-untimely — the avenue for pretrial disposition on the merits closes and the issue proceeds to hearing."
-      },
-      "duration": {
-        "min": 9.0,
-        "mode": 30.0,
-        "max": 60.0
       }
     },
     {
@@ -923,13 +807,7 @@
       "label": "No dispositive motion filed, or the 60-day pre-hearing window is missed — all issues proceed to hearing",
       "actor": "applicant",
       "authority": "cfr210.18.a",
-      "hours": 0,
-      "duration": {
-        "min": 30,
-        "mode": 60,
-        "max": 120
-      },
-      "note": "Duration: estimate, time from close of discovery/pretrial to the evidentiary hearing."
+      "hours": 0
     },
     {
       "from": "summary-determination-motion-filed",
@@ -944,11 +822,6 @@
         "extendable": true,
         "extensionAuthority": "ALJ discretion",
         "note": "19 CFR 210.18(b): 10 days to file opposing affidavits; the ALJ may permit oral argument and briefs."
-      },
-      "duration": {
-        "min": 1.5,
-        "mode": 5.0,
-        "max": 10.0
       }
     },
     {
@@ -993,13 +866,7 @@
       "to": "initial-determination",
       "label": "ALJ issues the violation Initial Determination — no later than 4 months before the target date (Rule 210.42(a)(1))",
       "actor": "examiner",
-      "authority": "cfr210.42.a.1",
-      "duration": {
-        "min": 30,
-        "mode": 60,
-        "max": 120
-      },
-      "note": "Duration: estimate for post-hearing briefing plus ALJ drafting time; 19 CFR 210.42(a)(1) only fixes the ID's relationship to the target date, not this interval directly."
+      "authority": "cfr210.42.a.1"
     },
     {
       "from": "initial-determination",
@@ -1053,12 +920,7 @@
         "extensionAuthority": "good cause",
         "note": "19 CFR 210.43(a)(1): 12 days after service for a § 210.42(a)(1) violation ID; 10 days for a terminating summary determination; 5 business days for other 210.42(c) determinations. Missing the applicable window abandons the adversely-decided issues — flag itc337/petition-review-abandoned raised."
       },
-      "valence": "good",
-      "duration": {
-        "min": 1.8,
-        "mode": 6.0,
-        "max": 12.0
-      }
+      "valence": "good"
     },
     {
       "from": "petition-for-review-window",
@@ -1082,11 +944,6 @@
         "extendable": true,
         "extensionAuthority": "good cause",
         "note": "19 CFR 210.43(c): 8 days for a § 210.42(a)(1) violation-ID petition response, 5 business days for other petition types. A party in default may not respond on issues where it defaulted."
-      },
-      "duration": {
-        "min": 1.2,
-        "mode": 4.0,
-        "max": 8.0
       }
     },
     {
@@ -1094,12 +951,7 @@
       "to": "commission-review-decision",
       "label": "Commission decides whether to grant the petition — 45 days for a terminating summary determination, 30 days otherwise (Rule 210.43(d))",
       "actor": "office",
-      "authority": "cfr210.43.d",
-      "duration": {
-        "mode": 30,
-        "max": 45
-      },
-      "note": "Duration: 19 CFR 210.43(d) gives the Commission 30 days to decide whether to review (45 for a terminating summary determination) -- sourced, not an estimate."
+      "authority": "cfr210.43.d"
     },
     {
       "from": "commission-review-decision",
@@ -1159,12 +1011,7 @@
       "to": "presidential-review-window",
       "label": "Commission serves the determination — the 60-day Presidential (USTR) disapproval window begins (§ 1337(j))",
       "actor": "office",
-      "authority": "usc1337.j",
-      "duration": {
-        "mode": 60,
-        "max": 60
-      },
-      "note": "Duration: 19 U.S.C. § 1337(j)'s disapproval window is 60 days -- sourced, not an estimate."
+      "authority": "usc1337.j"
     },
     {
       "from": "presidential-review-window",
@@ -1212,12 +1059,7 @@
         "extendable": false,
         "note": "19 U.S.C. § 1337(c): 60 days, unextendable. Missing it raises flag itc337/fedcir-appeal-forfeited."
       },
-      "valence": "good",
-      "duration": {
-        "min": 9.0,
-        "mode": 30.0,
-        "max": 60.0
-      }
+      "valence": "good"
     },
     {
       "from": "federal-circuit-appeal-window",
@@ -1233,13 +1075,7 @@
       "to": "federal-circuit-review",
       "label": "Federal Circuit reviews the Commission's determination",
       "actor": "office",
-      "authority": "usc1337.c",
-      "duration": {
-        "min": 240,
-        "mode": 365,
-        "max": 540
-      },
-      "note": "Duration: estimate. The Federal Circuit's own published median time from docketing to disposition is roughly a year across all appeal types; § 337-appeal-specific data is not in the local corpus."
+      "authority": "usc1337.c"
     },
     {
       "from": "federal-circuit-review",
@@ -1265,36 +1101,6 @@
       "label": "Commission reconsiders on remand — a remand determination can genuinely change the outcome (cf. Certain Sleep-Disordered Breathing Treatment Systems, 337-TA-890)",
       "actor": "office",
       "authority": "usc1337.c"
-    }
-  ],
-  "forum": "itc",
-  "roles": {
-    "applicant": "self",
-    "examiner": "nature",
-    "office": "nature",
-    "either": "nature"
-  },
-  "sources": [
-    {
-      "id": "usc-1337",
-      "title": "19 U.S.C. § 1337 (Unfair practices in import trade)",
-      "url": "https://www.law.cornell.edu/uscode/text/19/1337"
-    },
-    {
-      "id": "cfr-210",
-      "title": "19 C.F.R. Part 210 (USITC Rules of Adjudication and Enforcement), current",
-      "url": "https://www.ecfr.gov/current/title-19/chapter-II/part-210",
-      "asOf": "2026-08-26"
-    },
-    {
-      "id": "usc5-556",
-      "title": "5 U.S.C. § 556 (APA hearing procedure)",
-      "url": "https://www.law.cornell.edu/uscode/text/5/556"
-    },
-    {
-      "id": "usc28-1295",
-      "title": "28 U.S.C. § 1295(a)(6) (CAFC jurisdiction over ITC § 337 appeals)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/1295"
     }
   ]
 }

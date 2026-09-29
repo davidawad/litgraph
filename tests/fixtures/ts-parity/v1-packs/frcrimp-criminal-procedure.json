@@ -1,47 +1,20 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 1,
   "id": "frcrimp-criminal-procedure",
   "title": "Federal Criminal Procedure Under the FRCrimP Rules",
   "description": "Pre-charge investigation and grand jury -> criminal complaint or indictment -> arrest, initial appearance, and detention/bail determination -> arraignment and pretrial release -> Rule 12 pretrial motions (defective indictment, suppression, Speedy Trial Act) -> Rule 16 and Brady/Giglio discovery -> Rule 11 plea negotiations and the change-of-plea colloquy -> trial (Rule 29 acquittal motions, jury verdict) -> post-trial motions and U.S.S.G. sentencing -> Rule 35 correction, the FRAP 4(b) notice-of-appeal window, and direct appeal. Citations checked against the Federal Rules of Criminal Procedure, Title 18, the Sentencing Guidelines, and the Federal Rules of Appellate Procedure. Walk mode teaches the Rule 12(c)(3) pretrial-motions waiver trap, the jurisdictional (Bowles v. Russell) character of the FRAP 4(b) notice-of-appeal deadline, and the unextendable 14-day Rule 29(c)/33/35(a) post-verdict clocks.",
   "jurisdiction": "Federal Rules of Criminal Procedure / U.S. District Courts",
   "startNodeId": "investigation",
   "groups": [
-    {
-      "id": "investigation-group",
-      "label": "Pre-Charge Investigation & Grand Jury"
-    },
-    {
-      "id": "charging-group",
-      "label": "Charging & Initial Appearance"
-    },
-    {
-      "id": "arraignment-group",
-      "label": "Arraignment & Pretrial Release"
-    },
-    {
-      "id": "pretrial-motions-group",
-      "label": "Pretrial Motions (Rule 12)"
-    },
-    {
-      "id": "discovery-group",
-      "label": "Discovery & Brady/Giglio"
-    },
-    {
-      "id": "plea-group",
-      "label": "Plea Process (Rule 11)"
-    },
-    {
-      "id": "trial-group",
-      "label": "Trial"
-    },
-    {
-      "id": "verdict-sentencing-group",
-      "label": "Verdict, Post-Trial Motions & Sentencing"
-    },
-    {
-      "id": "appeal-group",
-      "label": "Post-Conviction & Appeal"
-    }
+    { "id": "investigation-group", "label": "Pre-Charge Investigation & Grand Jury" },
+    { "id": "charging-group", "label": "Charging & Initial Appearance" },
+    { "id": "arraignment-group", "label": "Arraignment & Pretrial Release" },
+    { "id": "pretrial-motions-group", "label": "Pretrial Motions (Rule 12)" },
+    { "id": "discovery-group", "label": "Discovery & Brady/Giglio" },
+    { "id": "plea-group", "label": "Plea Process (Rule 11)" },
+    { "id": "trial-group", "label": "Trial" },
+    { "id": "verdict-sentencing-group", "label": "Verdict, Post-Trial Motions & Sentencing" },
+    { "id": "appeal-group", "label": "Post-Conviction & Appeal" }
   ],
   "nodes": [
     {
@@ -82,13 +55,8 @@
       "kind": "terminal",
       "group": "investigation-group",
       "cite": "Fed. R. Crim. P. 6(f); Blockburger v. United States, 284 U.S. 299 (1932)",
-      "note": "Double jeopardy does not attach at the grand jury stage, so the government may re-present the same charges to a different grand jury. Jeopardy attaches only when the trial jury is sworn (or the first witness is sworn in a bench trial). PLACEHOLDER PAYOFF: $1,000,000, override per matter, treating this playthrough's dispositive outcome as a full win even though double jeopardy has not yet attached and the government could theoretically re-present (not modeled as a loop back in this playthrough's payoff).",
-      "valence": "good",
-      "payoff": 1000000,
-      "outcome": [
-        "win",
-        "dismissal"
-      ]
+      "note": "Double jeopardy does not attach at the grand jury stage, so the government may re-present the same charges to a different grand jury. Jeopardy attaches only when the trial jury is sworn (or the first witness is sworn in a bench trial).",
+      "valence": "good"
     },
     {
       "id": "complaint-filed",
@@ -136,13 +104,8 @@
       "kind": "terminal",
       "group": "charging-group",
       "cite": "Fed. R. Crim. P. 5.1(f)",
-      "note": "Magistrate finds no probable cause; defendant discharged on this complaint. Not a double jeopardy bar — jeopardy has not attached, so the government routinely re-prosecutes via grand jury indictment on the same conduct. PLACEHOLDER PAYOFF: $800,000, override per matter. Slightly discounted from a full win because, per this terminal's own note, the government \"routinely re-prosecutes via grand jury indictment\" on the same conduct.",
-      "valence": "good",
-      "payoff": 800000,
-      "outcome": [
-        "win",
-        "dismissal"
-      ]
+      "note": "Magistrate finds no probable cause; defendant discharged on this complaint. Not a double jeopardy bar — jeopardy has not attached, so the government routinely re-prosecutes via grand jury indictment on the same conduct.",
+      "valence": "good"
     },
     {
       "id": "detention-hearing",
@@ -246,13 +209,8 @@
       "kind": "terminal",
       "group": "pretrial-motions-group",
       "cite": "Fed. R. Crim. P. 12(b)(3)(B); 18 U.S.C. § 3282",
-      "note": "May be with or without prejudice. Dismissal without prejudice is only truly final if the five-year limitations period (18 U.S.C. § 3282) has since run — otherwise re-indictment remains possible. PLACEHOLDER PAYOFF: $700,000, override per matter. Discounted because, per this terminal's own note, dismissal without prejudice leaves re-indictment possible until the five-year limitations period runs.",
-      "valence": "good",
-      "payoff": 700000,
-      "outcome": [
-        "win",
-        "dismissal"
-      ]
+      "note": "May be with or without prejudice. Dismissal without prejudice is only truly final if the five-year limitations period (18 U.S.C. § 3282) has since run — otherwise re-indictment remains possible.",
+      "valence": "good"
     },
     {
       "id": "rule12c-waiver-trap",
@@ -260,13 +218,8 @@
       "kind": "terminal",
       "group": "pretrial-motions-group",
       "cite": "Fed. R. Crim. P. 12(c)(3); Davis v. United States, 411 U.S. 233 (1973)",
-      "note": "TRAP. An untimely Rule 12(b)(3) motion is forfeited absent a showing of good cause for the delay — a flexible but demanding standard. Most defenses are lost for good, though a narrower plain-error path can survive for some suppression claims on direct appeal. PLACEHOLDER PAYOFF: $100,000, override per matter. Not itself a verdict -- the defense loses its best pretrial motion, and the case proceeds toward an assumed unfavorable trial posture in this playthrough.",
-      "valence": "bad",
-      "payoff": 100000,
-      "outcome": [
-        "loss",
-        "waiver-trap"
-      ]
+      "note": "TRAP. An untimely Rule 12(b)(3) motion is forfeited absent a showing of good cause for the delay — a flexible but demanding standard. Most defenses are lost for good, though a narrower plain-error path can survive for some suppression claims on direct appeal.",
+      "valence": "bad"
     },
     {
       "id": "speedy-trial-dismissal",
@@ -274,13 +227,8 @@
       "kind": "terminal",
       "group": "pretrial-motions-group",
       "cite": "18 U.S.C. §§ 3161-3162",
-      "note": "70-day trial-start clock from indictment or first appearance, whichever is later, minus excludable delay under § 3161(h). Dismissal under § 3162(a)(2) can be with or without prejudice based on offense seriousness and the impact on Speedy Trial Act administration. PLACEHOLDER PAYOFF: $900,000, override per matter.",
-      "valence": "good",
-      "payoff": 900000,
-      "outcome": [
-        "win",
-        "dismissal"
-      ]
+      "note": "70-day trial-start clock from indictment or first appearance, whichever is later, minus excludable delay under § 3161(h). Dismissal under § 3162(a)(2) can be with or without prejudice based on offense seriousness and the impact on Speedy Trial Act administration.",
+      "valence": "good"
     },
     {
       "id": "rule16-discovery",
@@ -392,13 +340,8 @@
       "kind": "terminal",
       "group": "trial-group",
       "cite": "Fed. R. Crim. P. 29(a), (c)",
-      "note": "Government's evidence was legally insufficient. Double jeopardy bars a government appeal of a pre-verdict Rule 29(a) grant; a post-verdict Rule 29(c) grant CAN be appealed because a guilty verdict already existed before the court set it aside. PLACEHOLDER PAYOFF: $1,000,000, override per matter.",
-      "valence": "good",
-      "payoff": 1000000,
-      "outcome": [
-        "win",
-        "acquittal"
-      ]
+      "note": "Government's evidence was legally insufficient. Double jeopardy bars a government appeal of a pre-verdict Rule 29(a) grant; a post-verdict Rule 29(c) grant CAN be appealed because a guilty verdict already existed before the court set it aside.",
+      "valence": "good"
     },
     {
       "id": "rule29-denied",
@@ -422,13 +365,8 @@
       "kind": "terminal",
       "group": "trial-group",
       "cite": "Fed. R. Crim. P. 48(a)",
-      "note": "Government exercises prosecutorial discretion not to retry, with leave of court. Unlike an acquittal, double jeopardy did not compel this outcome — the government could have retried but chose not to. PLACEHOLDER PAYOFF: $1,000,000, override per matter.",
-      "valence": "good",
-      "payoff": 1000000,
-      "outcome": [
-        "win",
-        "dismissal"
-      ]
+      "note": "Government exercises prosecutorial discretion not to retry, with leave of court. Unlike an acquittal, double jeopardy did not compel this outcome — the government could have retried but chose not to.",
+      "valence": "good"
     },
     {
       "id": "verdict-returned",
@@ -444,13 +382,8 @@
       "kind": "terminal",
       "group": "verdict-sentencing-group",
       "cite": "Fed. R. Crim. P. 31(a); U.S. Const. amend. V",
-      "note": "Double jeopardy permanently bars retrial or a government appeal on this charge, no matter how erroneous the verdict looks on the law or the facts. PLACEHOLDER PAYOFF: $1,000,000, override per matter.",
-      "valence": "good",
-      "payoff": 1000000,
-      "outcome": [
-        "win",
-        "acquittal"
-      ]
+      "note": "Double jeopardy permanently bars retrial or a government appeal on this charge, no matter how erroneous the verdict looks on the law or the facts.",
+      "valence": "good"
     },
     {
       "id": "guilty-verdict",
@@ -506,13 +439,8 @@
       "kind": "terminal",
       "group": "verdict-sentencing-group",
       "cite": "Fed. R. Crim. P. 32(k)",
-      "note": "Written judgment is the appealable final disposition; it simultaneously starts the Rule 35(a) 14-day correction clock and the FRAP 4(b) 14-day appeal clock. Modeled as terminal because it is reached identically whether the conviction came by plea or by jury verdict, even though Rule 35/appeal paths still branch from it. PLACEHOLDER PAYOFF: $50,000, override per matter. A conviction (by plea or verdict); modeled as terminal here even though Rule 35/appeal paths still branch from it in the pack's own edges (see this node's note).",
-      "valence": "caution",
-      "payoff": 50000,
-      "outcome": [
-        "loss",
-        "conviction"
-      ]
+      "note": "Written judgment is the appealable final disposition; it simultaneously starts the Rule 35(a) 14-day correction clock and the FRAP 4(b) 14-day appeal clock. Modeled as terminal because it is reached identically whether the conviction came by plea or by jury verdict, even though Rule 35/appeal paths still branch from it.",
+      "valence": "caution"
     },
     {
       "id": "rule35-motion",
@@ -544,15 +472,8 @@
       "kind": "terminal",
       "group": "appeal-group",
       "cite": "Fed. R. App. P. 4(b); Bowles v. Russell, 551 U.S. 205 (2007)",
-      "note": "TRAP. The deadline is absolute and jurisdictional. Bowles held that even a district court's own miscalculation and invitation to file late does not excuse a missed window. Only 28 U.S.C. § 2255 collateral review — a far harder standard — remains. PLACEHOLDER PAYOFF: $0, override per matter. Conviction stands and appellate review is forfeited by a missed deadline, not by choice -- worse than a deliberate waiver.",
-      "valence": "bad",
-      "payoff": 0,
-      "outcome": [
-        "loss",
-        "conviction",
-        "procedural-default",
-        "waiver-trap"
-      ]
+      "note": "TRAP. The deadline is absolute and jurisdictional. Bowles held that even a district court's own miscalculation and invitation to file late does not excuse a missed window. Only 28 U.S.C. § 2255 collateral review — a far harder standard — remains.",
+      "valence": "bad"
     },
     {
       "id": "conviction-final-no-appeal",
@@ -560,13 +481,8 @@
       "kind": "terminal",
       "group": "appeal-group",
       "cite": "Fed. R. App. P. 4(b)",
-      "note": "Defendant deliberately lets the window lapse, often pursuant to an appeal-waiver plea agreement. Judgment becomes final for purposes of the AEDPA collateral-review clock under 28 U.S.C. § 2255(f); direct appeal is no longer available. PLACEHOLDER PAYOFF: $100,000, override per matter. Per this terminal's own note, this is often reached \"pursuant to an appeal-waiver plea agreement\" -- a deliberate, negotiated finality, valued slightly above an unreviewed trial conviction.",
-      "valence": "good",
-      "payoff": 100000,
-      "outcome": [
-        "conviction",
-        "final"
-      ]
+      "note": "Defendant deliberately lets the window lapse, often pursuant to an appeal-waiver plea agreement. Judgment becomes final for purposes of the AEDPA collateral-review clock under 28 U.S.C. § 2255(f); direct appeal is no longer available.",
+      "valence": "good"
     },
     {
       "id": "appellate-briefing",
@@ -590,14 +506,8 @@
       "kind": "terminal",
       "group": "appeal-group",
       "cite": "28 U.S.C. § 1291",
-      "note": "Judgment is final. Further review is discretionary: en banc rehearing (rarely granted), certiorari to the Supreme Court (rarer still), or a 28 U.S.C. § 2255 collateral attack limited to constitutional/jurisdictional error or newly available structural defects. PLACEHOLDER PAYOFF: $0, override per matter.",
-      "valence": "bad",
-      "payoff": 0,
-      "outcome": [
-        "loss",
-        "conviction",
-        "affirmed"
-      ]
+      "note": "Judgment is final. Further review is discretionary: en banc rehearing (rarely granted), certiorari to the Supreme Court (rarer still), or a 28 U.S.C. § 2255 collateral attack limited to constitutional/jurisdictional error or newly available structural defects.",
+      "valence": "bad"
     },
     {
       "id": "conviction-reversed-remanded",
@@ -614,18 +524,14 @@
       "to": "grand-jury-convened",
       "label": "Present case to grand jury",
       "actor": "applicant",
-      "authority": "Fed. R. Crim. P. 6(a)",
-      "hours": 40,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate."
+      "authority": "Fed. R. Crim. P. 6(a)"
     },
     {
       "from": "investigation",
       "to": "complaint-filed",
       "label": "File criminal complaint",
       "actor": "applicant",
-      "authority": "Fed. R. Crim. P. 3, 4",
-      "hours": 5,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate."
+      "authority": "Fed. R. Crim. P. 3, 4"
     },
     {
       "from": "grand-jury-convened",
@@ -655,9 +561,7 @@
       "to": "grand-jury-convened",
       "label": "Re-present to new grand jury",
       "actor": "applicant",
-      "authority": "Fed. R. Crim. P. 6(a); 18 U.S.C. § 3282",
-      "hours": 20,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate."
+      "authority": "Fed. R. Crim. P. 6(a); 18 U.S.C. § 3282"
     },
     {
       "from": "indictment-returned",
@@ -684,11 +588,6 @@
         "extendable": true,
         "extensionAuthority": "Court may extend based on 'all the facts and circumstances' (Rule 5 advisory committee notes) — e.g. weather, distance",
         "note": "Standard is 'without unnecessary delay' (McNabb-Mallory), not a fixed day count; often ~72 hours in practice but no bright-line federal rule. Violation triggers suppression of statements, not invalidation of the arrest."
-      },
-      "duration": {
-        "min": 0.5,
-        "mode": 1.5,
-        "max": 3.0
       }
     },
     {
@@ -702,11 +601,6 @@
         "extendable": true,
         "extensionAuthority": "Fed. R. Crim. P. 5.1(c) — good cause, or extraordinary circumstances where justice requires the delay, even without the defendant's consent",
         "note": "14 days if the defendant is in custody; 21 days if released. Missing the deadline does not dismiss the charge but may support a waiver or prejudicial-delay challenge."
-      },
-      "duration": {
-        "min": 2.1,
-        "mode": 7.0,
-        "max": 14.0
       }
     },
     {
@@ -751,11 +645,6 @@
         "extendable": true,
         "extensionAuthority": "18 U.S.C. § 3161(b) — one additional 30-day extension if no grand jury convened during the initial 30-day period in the district",
         "note": "Indictment must be filed within 30 days of arrest or summons. Violation requires dismissal without prejudice under the Speedy Trial Act; the clock runs from arrest, not from the bind-over date."
-      },
-      "duration": {
-        "min": 4.5,
-        "mode": 15.0,
-        "max": 30.0
       }
     },
     {
@@ -793,9 +682,7 @@
       "to": "detention-hearing",
       "label": "Move to reopen detention hearing",
       "actor": "applicant",
-      "authority": "18 U.S.C. § 3142(f)",
-      "hours": 6,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate."
+      "authority": "18 U.S.C. § 3142(f)"
     },
     {
       "from": "indictment-returned",
@@ -808,11 +695,6 @@
         "extendable": true,
         "extensionAuthority": "18 U.S.C. § 3161(h)",
         "note": "Trial must commence within 70 days of indictment or initial appearance, whichever is later. Missing the deadline triggers dismissal with prejudice unless § 3161(h) exclusions (motions, continuances, ends-of-justice findings) apply."
-      },
-      "duration": {
-        "min": 10.5,
-        "mode": 35.0,
-        "max": 70.0
       }
     },
     {
@@ -820,9 +702,7 @@
       "to": "information-filed",
       "label": "File information",
       "actor": "applicant",
-      "authority": "Fed. R. Crim. P. 7(b)",
-      "hours": 4,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate."
+      "authority": "Fed. R. Crim. P. 7(b)"
     },
     {
       "from": "information-filed",
@@ -835,10 +715,7 @@
       "from": "arraignment",
       "to": "not-guilty-plea",
       "label": "Enter not guilty plea",
-      "actor": "applicant",
-      "hours": 1,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate.",
-      "authority": "Fed. R. Crim. P. 10; 11(a)(1)"
+      "actor": "applicant"
     },
     {
       "from": "not-guilty-plea",
@@ -876,9 +753,7 @@
       "label": "File motion to dismiss indictment",
       "actor": "applicant",
       "authority": "Fed. R. Crim. P. 12(b)(3)(B)",
-      "valence": "good",
-      "hours": 25,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate."
+      "valence": "good"
     },
     {
       "from": "pretrial-motions-window",
@@ -886,9 +761,7 @@
       "label": "File motion to suppress evidence",
       "actor": "applicant",
       "authority": "Fed. R. Crim. P. 12(b)(3)(C)",
-      "valence": "good",
-      "hours": 30,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate."
+      "valence": "good"
     },
     {
       "from": "pretrial-motions-window",
@@ -896,9 +769,7 @@
       "label": "Move to dismiss for speedy trial",
       "actor": "applicant",
       "authority": "18 U.S.C. § 3162(a)(2)",
-      "valence": "good",
-      "hours": 15,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate."
+      "valence": "good"
     },
     {
       "from": "pretrial-motions-window",
@@ -906,9 +777,7 @@
       "label": "Miss pretrial motions deadline",
       "actor": "applicant",
       "authority": "Fed. R. Crim. P. 12(c)(3)",
-      "valence": "bad",
-      "hours": 0,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate."
+      "valence": "bad"
     },
     {
       "from": "pretrial-motions-window",
@@ -953,18 +822,13 @@
       "label": "Move to dismiss after suppression",
       "actor": "applicant",
       "authority": "Fed. R. Crim. P. 48(a) (government motion to dismiss)",
-      "valence": "good",
-      "hours": 10,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate."
+      "valence": "good"
     },
     {
       "from": "suppression-granted",
       "to": "rule16-discovery",
       "label": "Proceed without suppressed evidence",
-      "actor": "applicant",
-      "hours": 2,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate.",
-      "authority": "Fed. R. Crim. P. 12(d)"
+      "actor": "applicant"
     },
     {
       "from": "suppression-denied",
@@ -978,18 +842,14 @@
       "to": "brady-giglio-disclosure",
       "label": "Disclose Brady/Giglio material",
       "actor": "applicant",
-      "authority": "Brady v. Maryland, 373 U.S. 83 (1963); Giglio v. United States, 405 U.S. 150 (1972)",
-      "hours": 8,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate."
+      "authority": "Brady v. Maryland, 373 U.S. 83 (1963); Giglio v. United States, 405 U.S. 150 (1972)"
     },
     {
       "from": "rule16-discovery",
       "to": "discovery-dispute",
       "label": "Move to compel discovery",
       "actor": "applicant",
-      "authority": "Fed. R. Crim. P. 16(d)(1)",
-      "hours": 12,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate."
+      "authority": "Fed. R. Crim. P. 16(d)(1)"
     },
     {
       "from": "discovery-dispute",
@@ -1047,10 +907,7 @@
       "from": "plea-agreement-reached",
       "to": "proceed-to-trial",
       "label": "Withdraw from plea deal",
-      "actor": "applicant",
-      "hours": 3,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate.",
-      "authority": "Fed. R. Crim. P. 11(d)"
+      "actor": "applicant"
     },
     {
       "from": "change-of-plea-hearing",
@@ -1073,9 +930,7 @@
       "to": "proceed-to-trial",
       "label": "Withdraw guilty plea",
       "actor": "applicant",
-      "authority": "Fed. R. Crim. P. 11(c)(5), (d)(2)(A)",
-      "hours": 8,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate."
+      "authority": "Fed. R. Crim. P. 11(c)(5), (d)(2)(A)"
     },
     {
       "from": "plea-rejected-by-court",
@@ -1094,11 +949,6 @@
         "extendable": true,
         "extensionAuthority": "18 U.S.C. § 3161(h) (excludable delay)",
         "note": "Jury selection must begin within 70 days of indictment under the Speedy Trial Act. The 70-day period itself is rigid; only statutory § 3161(h) exclusions (continuances, motions, case complexity) toll the clock."
-      },
-      "duration": {
-        "min": 10.5,
-        "mode": 35.0,
-        "max": 70.0
       }
     },
     {
@@ -1114,9 +964,7 @@
       "label": "Move for judgment of acquittal",
       "actor": "applicant",
       "authority": "Fed. R. Crim. P. 29(a)",
-      "valence": "good",
-      "hours": 15,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate."
+      "valence": "good"
     },
     {
       "from": "rule29-motion",
@@ -1172,9 +1020,7 @@
       "to": "jury-selection",
       "label": "Retry the case",
       "actor": "applicant",
-      "authority": "Fed. R. Crim. P. 24; Arizona v. Washington, 434 U.S. 497 (1978)",
-      "hours": 80,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate."
+      "authority": "Fed. R. Crim. P. 24; Arizona v. Washington, 434 U.S. 497 (1978)"
     },
     {
       "from": "mistrial-hung-jury",
@@ -1182,9 +1028,7 @@
       "label": "Decline to retry",
       "actor": "applicant",
       "authority": "Fed. R. Crim. P. 48(a)",
-      "valence": "good",
-      "hours": 1,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate."
+      "valence": "good"
     },
     {
       "from": "guilty-verdict",
@@ -1196,13 +1040,6 @@
         "length": 14,
         "extendable": false,
         "note": "After 14 days from verdict the court loses jurisdiction to grant judgment of acquittal under Rule 29; failure to file forfeits the claim on the merits."
-      },
-      "hours": 10,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate.",
-      "duration": {
-        "min": 2.1,
-        "mode": 7.0,
-        "max": 14.0
       }
     },
     {
@@ -1216,13 +1053,6 @@
         "extendable": true,
         "extensionAuthority": "Rule 33(b) allows extension of the 14-day deadline if the court finds grounds within the original period; the 3-year newly-discovered-evidence window requires no extension",
         "note": "Standard grounds are barred after 14 days post-verdict unless extension is sought within that window; newly-discovered-evidence claims get 3 years but must be genuinely unavailable at trial."
-      },
-      "hours": 20,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate.",
-      "duration": {
-        "min": 2.1,
-        "mode": 7.0,
-        "max": 14.0
       }
     },
     {
@@ -1259,11 +1089,6 @@
         "extendable": true,
         "extensionAuthority": "Fed. R. Crim. P. 32(e)(2) — parties may stipulate to a shorter period, or the court may set a different period for good cause",
         "note": "PSR must be disclosed at least 35 days before sentencing unless waived; parties must have the opportunity to review, object, and correct factual inaccuracies before the hearing."
-      },
-      "duration": {
-        "min": 5.2,
-        "mode": 17.5,
-        "max": 35.0
       }
     },
     {
@@ -1297,11 +1122,6 @@
         "length": 14,
         "extendable": false,
         "note": "After 14 days from judgment entry, the trial court is powerless to correct the sentence under Rule 35(a), even for obvious clear error; the government's separate Rule 35(b) substantial-assistance motion has its own 1-year window and does not extend this one."
-      },
-      "duration": {
-        "min": 2.1,
-        "mode": 7.0,
-        "max": 14.0
       }
     },
     {
@@ -1331,11 +1151,6 @@
         "extendable": true,
         "extensionAuthority": "Fed. R. App. P. 4(b)(1)(B) — up to 30 additional days for good cause shown, before or after the deadline expires",
         "note": "Appeal deadline is 14 days from judgment entry; if it passes without a notice of appeal or a timely extension request, appellate jurisdiction is lost and the sentence becomes final."
-      },
-      "duration": {
-        "min": 2.1,
-        "mode": 7.0,
-        "max": 14.0
       }
     },
     {
@@ -1350,14 +1165,7 @@
         "extensionAuthority": "Fed. R. App. P. 4(b)(4) — the extension motion must itself be filed within the 14-day period, showing excusable neglect or good cause, for up to 30 additional days",
         "note": "Missing both the original window and the extension-motion window forecloses direct appeal entirely."
       },
-      "valence": "good",
-      "hours": 3,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate.",
-      "duration": {
-        "min": 2.1,
-        "mode": 7.0,
-        "max": 14.0
-      }
+      "valence": "good"
     },
     {
       "from": "notice-of-appeal-window",
@@ -1371,14 +1179,7 @@
         "extensionAuthority": "Fed. R. App. P. 4(b)(4)",
         "note": "Bowles bars equitable exceptions — the conviction becomes unreviewable on direct appeal; only § 2255 collateral relief survives."
       },
-      "valence": "bad",
-      "hours": 0,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate.",
-      "duration": {
-        "min": 2.1,
-        "mode": 7.0,
-        "max": 14.0
-      }
+      "valence": "bad"
     },
     {
       "from": "notice-of-appeal-window",
@@ -1386,9 +1187,7 @@
       "label": "Waive right to appeal",
       "actor": "applicant",
       "authority": "Fed. R. App. P. 4(b)",
-      "valence": "good",
-      "hours": 1,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate."
+      "valence": "good"
     },
     {
       "from": "notice-of-appeal-filed",
@@ -1448,53 +1247,7 @@
       "from": "indictment-dismissed-defective",
       "to": "grand-jury-convened",
       "label": "Re-indict after dismissal",
-      "actor": "applicant",
-      "hours": 15,
-      "note": "Hours: BigLaw-honest estimate for the effort of this move; basis: estimate.",
-      "authority": "Fed. R. Crim. P. 6(a); 18 U.S.C. § 3282"
-    }
-  ],
-  "forum": "frcrimp",
-  "roles": {
-    "applicant": "self",
-    "examiner": "nature",
-    "office": "nature",
-    "either": "nature"
-  },
-  "sources": [
-    {
-      "id": "frcrimp-rules",
-      "title": "Federal Rules of Criminal Procedure, as amended to Dec. 1, 2024",
-      "url": "https://www.uscourts.gov/sites/default/files/2025-02/federal-rules-of-criminal-procedure-dec-1-2024_0.pdf",
-      "sha256": "c89161b8a258b62af4d5298de832c43bd72f2eea1104c7625a5b561658e5875c",
-      "asOf": "2024-12-01"
-    },
-    {
-      "id": "frap-rules",
-      "title": "Federal Rules of Appellate Procedure, as amended to Dec. 1, 2024 (FRAP 4(b) criminal appeal clock)",
-      "url": "https://www.uscourts.gov/sites/default/files/2025-02/federal-rules-of-appellate-procedure-dec-1-2024_0.pdf",
-      "sha256": "d61711eca8e1f65955d12f1b7d29d4cc453d9ee1e30c4fff6c54b23f113454f6",
-      "asOf": "2024-12-01"
-    },
-    {
-      "id": "usc18-3161",
-      "title": "18 U.S.C. §§ 3161-3162 (Speedy Trial Act)",
-      "url": "https://www.law.cornell.edu/uscode/text/18/3161"
-    },
-    {
-      "id": "usc18-3282",
-      "title": "18 U.S.C. § 3282 (Offenses not capital -- 5-year limitations)",
-      "url": "https://www.law.cornell.edu/uscode/text/18/3282"
-    },
-    {
-      "id": "usc28-1291",
-      "title": "28 U.S.C. § 1291 (Final decisions of district courts)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/1291"
-    },
-    {
-      "id": "usc28-2255",
-      "title": "28 U.S.C. § 2255 (Collateral attack on a federal sentence)",
-      "url": "https://www.law.cornell.edu/uscode/text/28/2255"
+      "actor": "applicant"
     }
   ]
 }

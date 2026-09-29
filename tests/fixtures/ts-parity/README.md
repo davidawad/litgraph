@@ -18,6 +18,23 @@ scratchpad script, not checked in here or there); ask if you need to
 re-run it and don't have it handy — it's a straightforward ~250-line driver
 over the exports of `src/lib/graph/index.ts` and `src/lib/statechart.ts`.
 
+## `v1-packs/`
+
+Frozen copies of `packs/<id>.json` **as of schema v1** (byte-for-byte, taken
+before the v2 migration that authored payoffs/hours/durations/roles/sources
+onto these six packs). `crates/litgraph/tests/parity.rs` loads the pack from
+here, not from the live `packs/` directory, because the golden output above
+is only valid against the exact content that produced it: an authored
+`payoff` (replacing the heuristic), authored `hours` (replacing an absent
+field the TS engine treated as 0), or an authored `duration` all legitimately
+change what the engine computes. Parity is a claim about the *engine*
+reproducing the TS implementation, not about `packs/` staying frozen forever
+— so the pack content parity needs is pinned here, independent of `packs/`'s
+own evolution. If `packs/` ever needs a *structural* change (nodes/edges
+added or removed, ids renamed) that should also flow into what parity checks,
+update both copies deliberately; a content-only authoring change (payoffs,
+hours, durations, roles, sources) should touch only `packs/`.
+
 ## Files
 
 One `<pack-id>.json` per pack, e.g. `mpep-prosecution.json` for

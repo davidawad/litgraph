@@ -34,9 +34,21 @@ fn packs() -> Vec<String> {
 }
 
 fn load(id: &str) -> (Graph, Value) {
-    let pack =
-        Pack::from_json(&std::fs::read_to_string(format!("{ROOT}/packs/{id}.json")).unwrap())
-            .unwrap();
+    // The golden output in `tests/fixtures/ts-parity/<id>.json` was dumped from
+    // the TS engine against the *v1* pack content. `packs/<id>.json` has since
+    // migrated to schema v2 (authored payoffs/hours/durations/roles/sources),
+    // which legitimately changes the numbers the engine computes (heuristic
+    // payoff → authored payoff, absent hours → authored hours, etc.). Parity
+    // is a claim about the *engine*, not about whichever payoff a pack happens
+    // to carry today, so it loads the frozen v1 snapshot that actually
+    // produced the fixture instead of the live, evolving `packs/` file.
+    let pack = Pack::from_json(
+        &std::fs::read_to_string(format!(
+            "{ROOT}/tests/fixtures/ts-parity/v1-packs/{id}.json"
+        ))
+        .unwrap(),
+    )
+    .unwrap();
     let fx: Value = serde_json::from_str(
         &std::fs::read_to_string(format!("{ROOT}/tests/fixtures/ts-parity/{id}.json")).unwrap(),
     )
