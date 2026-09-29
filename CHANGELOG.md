@@ -32,9 +32,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `schemars` schema for `Op` (so a tool's shape cannot drift from what the
   engine accepts) and a description taken from `describe`'s own `"ops"`
   text; a generic `litgraph` tool takes a raw request verbatim. Packs,
-  `links.json`, and the manual are MCP resources
-  (`litgraph://packs/<id>`, `litgraph://links`, `litgraph://describe`).
-  Honors `LITGRAPH_PACKS`/`--packs-dir` like the CLI. Engine errors
+  `links.json`, the named scenario library, and the manual are MCP
+  resources (`litgraph://packs/<id>`, `litgraph://links`,
+  `litgraph://scenarios` — an index of every named scenario —,
+  `litgraph://scenarios/<id>`, `litgraph://describe`). Honors
+  `LITGRAPH_PACKS`/`--packs-dir` and `LITGRAPH_SCENARIOS`/`--scenarios-dir`
+  like the CLI. Engine errors
   (`ok: false`) become MCP tool errors carrying the same JSON envelope;
   the server never panics. Ships in the release tarballs, the container
   image, and the nix flake (`packages.litgraph-mcp`) alongside `litgraph`.

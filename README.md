@@ -162,12 +162,14 @@ pack loader directly — nothing about the CLI is required.
 (`solve`, `chain`, `explain`, ...), each with an input schema sliced
 straight out of the engine's own JSON Schema for `Op` — plus one generic
 `litgraph` tool that takes a raw request `{packs, links, no_continuations,
-scenario, op}` verbatim. Packs, `links.json`, and the manual are MCP
-resources (`litgraph://packs/<id>`, `litgraph://links`,
-`litgraph://describe`). Every tool call returns the same JSON envelope as
+scenario, op}` verbatim. Packs, `links.json`, the named scenario library,
+and the manual are MCP resources: `litgraph://packs/<id>`,
+`litgraph://links`, `litgraph://scenarios` (an index of every named
+scenario), `litgraph://scenarios/<id>` (one full matter profile), and
+`litgraph://describe`. Every tool call returns the same JSON envelope as
 the CLI; an engine error (`ok: false`) comes back as a tool error carrying
-that envelope. `LITGRAPH_PACKS` and `--packs-dir` work exactly as they do
-for the CLI.
+that envelope. `LITGRAPH_PACKS`/`--packs-dir` and
+`LITGRAPH_SCENARIOS`/`--scenarios-dir` work exactly as they do for the CLI.
 
 **Claude Code:**
 
@@ -193,10 +195,12 @@ macOS; `%APPDATA%\Claude\claude_desktop_config.json` on Windows;
 ```
 
 **Any other MCP client** that reads the same `mcpServers` stdio shape
-(Cursor, Windsurf, Zed, ...) uses the same block; add
-`"args": ["--packs-dir", "/path/to/packs"]` or `"env": {"LITGRAPH_PACKS":
-"/path/to/packs"}` to point at a pack set other than the ones embedded in
-the binary.
+(Cursor, Windsurf, Zed, ...) uses the same block; add `"args":
+["--packs-dir", "/path/to/packs", "--scenarios-dir", "/path/to/scenarios"]`
+or `"env": {"LITGRAPH_PACKS": "/path/to/packs", "LITGRAPH_SCENARIOS":
+"/path/to/scenarios"}` to point at pack/scenario sets other than the ones
+embedded in the binary (each falls back to its own embedded set
+independently).
 
 ### As the engine behind an application
 

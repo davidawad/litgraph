@@ -10,8 +10,8 @@
 //!   cannot drift from what the engine actually accepts.
 //! - A generic `litgraph` tool takes a raw [`litgraph::api::Request`]
 //!   verbatim, for anything not (yet) exposed as its own tool.
-//! - Packs, `links.json`, and the manual are MCP resources under
-//!   `litgraph://…` URIs (see [`resources`]).
+//! - Packs, `links.json`, the named scenario library, and the manual are
+//!   MCP resources under `litgraph://…` URIs (see [`resources`]).
 //! - Responses are always the same JSON envelope
 //!   ([`litgraph::api::Response`]); an engine error (`ok: false`) becomes
 //!   an MCP tool error (`isError: true`) carrying that same envelope as

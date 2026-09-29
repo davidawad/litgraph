@@ -49,6 +49,12 @@ fn structured(result: &CallToolResult) -> Result<Value> {
         .context("tool call had no structured content")
 }
 
+fn repo_dir(name: &str) -> std::path::PathBuf {
+    let dir = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join(format!("../../{name}"));
+    assert!(dir.is_dir(), "expected a {name}/ dir at {}", dir.display());
+    dir
+}
+
 #[tokio::test]
 async fn initialize_advertises_tools_and_resources() -> Result<()> {
     let client = connect().await?;
@@ -160,6 +166,65 @@ async fn resources_list_and_read_links() -> Result<()> {
 }
 
 #[tokio::test]
+async fn resources_list_and_read_scenarios() -> Result<()> {
+    let client = connect().await?;
+    let resources = client.list_all_resources().await?;
+    let uris: Vec<&str> = resources.iter().map(|r| r.uri.as_str()).collect();
+    assert!(uris.contains(&"litgraph://scenarios"));
+    assert!(
+        uris.iter().any(|u| u.starts_with("litgraph://scenarios/")),
+        "no per-scenario resources in {uris:?}"
+    );
+
+    let index = client
+        .read_resource(ReadResourceRequestParams::new("litgraph://scenarios"))
+        .await?;
+    let ResourceContents::TextResourceContents { text, .. } = &index.contents[0] else {
+        bail!(
+            "expected text contents for litgraph://scenarios, got {:?}",
+            index.contents[0]
+        );
+    };
+    let listed: Value = serde_json::from_str(text)?;
+    let first = listed["scenarios"]
+        .as_array()
+        .and_then(|xs| xs.first())
+        .context("scenarios index had no entries")?;
+    let id = first["id"].as_str().context("scenario entry had no id")?;
+
+    let named = client
+        .read_resource(ReadResourceRequestParams::new(format!(
+            "litgraph://scenarios/{id}"
+        )))
+        .await?;
+    let ResourceContents::TextResourceContents { text, .. } = &named.contents[0] else {
+        bail!(
+            "expected text contents for litgraph://scenarios/{id}, got {:?}",
+            named.contents[0]
+        );
+    };
+    let parsed: Value = serde_json::from_str(text)?;
+    assert_eq!(parsed["id"], json!(id));
+    assert!(
+        parsed.get("scenario").is_some(),
+        "expected the full engine Scenario embedded"
+    );
+
+    let missing = client
+        .read_resource(ReadResourceRequestParams::new(
+            "litgraph://scenarios/no-such-scenario",
+        ))
+        .await;
+    assert!(
+        missing.is_err(),
+        "reading an unknown scenario id should be a protocol error"
+    );
+
+    client.cancel().await?;
+    Ok(())
+}
+
+#[tokio::test]
 async fn packs_dir_flag_overrides_the_embedded_packs() -> Result<()> {
     let packs_dir = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../packs");
     assert!(
@@ -204,6 +269,48 @@ async fn litgraph_packs_env_var_overrides_the_embedded_packs() -> Result<()> {
     assert_eq!(
         envelope["result"]["packs_source"],
         json!(packs_dir.display().to_string())
+    );
+    client.cancel().await?;
+    Ok(())
+}
+
+#[tokio::test]
+async fn scenarios_dir_flag_overrides_the_embedded_scenarios() -> Result<()> {
+    let scenarios_dir = repo_dir("scenarios");
+
+    let client = connect_with(|cmd| {
+        cmd.arg("--scenarios-dir").arg(&scenarios_dir);
+    })
+    .await?;
+    let result = client
+        .call_tool(CallToolRequestParams::new("describe"))
+        .await?;
+    let envelope = structured(&result)?;
+    assert_eq!(
+        envelope["result"]["scenarios_source"],
+        json!(scenarios_dir.display().to_string())
+    );
+    // Packs still resolve to the embedded set -- the flags are independent.
+    assert_eq!(envelope["result"]["packs_source"], json!("embedded"));
+    client.cancel().await?;
+    Ok(())
+}
+
+#[tokio::test]
+async fn litgraph_scenarios_env_var_overrides_the_embedded_scenarios() -> Result<()> {
+    let scenarios_dir = repo_dir("scenarios");
+
+    let client = connect_with(|cmd| {
+        cmd.env("LITGRAPH_SCENARIOS", &scenarios_dir);
+    })
+    .await?;
+    let result = client
+        .call_tool(CallToolRequestParams::new("describe"))
+        .await?;
+    let envelope = structured(&result)?;
+    assert_eq!(
+        envelope["result"]["scenarios_source"],
+        json!(scenarios_dir.display().to_string())
     );
     client.cancel().await?;
     Ok(())

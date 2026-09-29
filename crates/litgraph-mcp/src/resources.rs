@@ -1,18 +1,17 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! MCP resources: the manual, `links.json`, and every loaded pack, served
-//! under `litgraph://…` URIs.
+//! MCP resources: the manual, `links.json`, every loaded pack, and the
+//! named scenario library, served under `litgraph://…` URIs.
 //!
 //! [`list`] and [`read`] are the only two entry points, each a flat match
-//! over the URI scheme. Adding a new resource kind — in particular
-//! `litgraph://scenarios/<name>` once the scenario library (lg-gl4,
-//! `scenarios/*.json`) exists — is one new constant, one push in [`list`],
-//! and one `strip_prefix` arm in [`read`]; nothing else in this server
-//! needs to change. That wiring is filed as follow-up bead lg-3cx rather
-//! than stubbed here, since there is nothing to load yet.
+//! over the URI scheme. Adding a new resource kind is one new constant,
+//! one push in [`list`], and one match/`strip_prefix` arm in [`read`];
+//! nothing else in this server needs to change (the scenario resources
+//! below, added in a follow-up to the initial packs/links/describe set,
+//! are the worked example).
 
 use litgraph::api::{self, Catalog};
 use rmcp::model::{Resource, ResourceContents};
-use serde_json::to_string_pretty;
+use serde_json::{json, to_string_pretty};
 
 /// The manual (same document as the `describe` op / tool).
 const DESCRIBE_URI: &str = "litgraph://describe";
@@ -20,9 +19,18 @@ const DESCRIBE_URI: &str = "litgraph://describe";
 const LINKS_URI: &str = "litgraph://links";
 /// Prefix for one-pack-per-resource URIs; `<id>` is a pack's own `id`.
 const PACK_PREFIX: &str = "litgraph://packs/";
+/// Index of every named scenario in the library (id, summary, packs).
+const SCENARIOS_INDEX_URI: &str = "litgraph://scenarios";
+/// Prefix for one-scenario-per-resource URIs; `<id>` is a scenario's own
+/// `id` (or the file stem it was loaded from -- see `Catalog::scenario`).
+const SCENARIO_PREFIX: &str = "litgraph://scenarios/";
 
 fn pack_uri(id: &str) -> String {
     format!("{PACK_PREFIX}{id}")
+}
+
+fn scenario_uri(id: &str) -> String {
+    format!("{SCENARIO_PREFIX}{id}")
 }
 
 /// Every resource this server currently exposes.
@@ -38,6 +46,12 @@ pub fn list(catalog: &Catalog) -> Vec<Resource> {
         Resource::new(LINKS_URI, "links")
             .with_description("Cross-pack links.json: where forums meet.")
             .with_mime_type("application/json"),
+        Resource::new(SCENARIOS_INDEX_URI, "scenarios")
+            .with_description(
+                "Every named scenario in the library: id, summary, packs it needs. \
+                 Read litgraph://scenarios/<id> for the full matter profile.",
+            )
+            .with_mime_type("application/json"),
     ];
     for (_, pack, _) in &catalog.packs {
         out.push(
@@ -46,11 +60,29 @@ pub fn list(catalog: &Catalog) -> Vec<Resource> {
                 .with_mime_type("application/json"),
         );
     }
+    for scenario in catalog.scenarios() {
+        out.push(
+            Resource::new(scenario_uri(&scenario.id), scenario.id.clone())
+                .with_description(scenario.summary.clone())
+                .with_mime_type("application/json"),
+        );
+    }
     out
 }
 
 fn text_resource(uri: &str, body: &str) -> ResourceContents {
     ResourceContents::text(body, uri).with_mime_type("application/json")
+}
+
+fn scenarios_index(catalog: &Catalog) -> serde_json::Value {
+    json!({
+        "origin": catalog.scenarios_origin,
+        "scenarios": catalog.scenarios().map(|s| json!({
+            "id": s.id,
+            "summary": s.summary,
+            "packs": s.packs,
+        })).collect::<Vec<_>>(),
+    })
 }
 
 /// Resolve one resource URI to its contents, or `None` if this server has
@@ -67,9 +99,18 @@ pub fn read(catalog: &Catalog, uri: &str) -> Option<Vec<ResourceContents>> {
         let body = to_string_pretty(&catalog.links).ok()?;
         return Some(vec![text_resource(uri, &body)]);
     }
+    if uri == SCENARIOS_INDEX_URI {
+        let body = to_string_pretty(&scenarios_index(catalog)).ok()?;
+        return Some(vec![text_resource(uri, &body)]);
+    }
     if let Some(id) = uri.strip_prefix(PACK_PREFIX) {
         let (_, pack, _) = catalog.packs.iter().find(|(_, p, _)| p.id == id)?;
         let body = to_string_pretty(pack).ok()?;
+        return Some(vec![text_resource(uri, &body)]);
+    }
+    if let Some(id) = uri.strip_prefix(SCENARIO_PREFIX) {
+        let named = catalog.scenario(id).ok()?;
+        let body = to_string_pretty(named).ok()?;
         return Some(vec![text_resource(uri, &body)]);
     }
     None
@@ -84,11 +125,16 @@ mod tests {
     }
 
     #[test]
-    fn list_includes_describe_links_and_every_pack() {
+    fn list_includes_describe_links_every_pack_and_every_scenario() {
         let c = catalog();
+        assert!(
+            !c.scenarios.is_empty(),
+            "embedded catalog should ship named scenarios"
+        );
         let uris: Vec<String> = list(&c).into_iter().map(|r| r.uri).collect();
         assert!(uris.contains(&DESCRIBE_URI.to_string()));
         assert!(uris.contains(&LINKS_URI.to_string()));
+        assert!(uris.contains(&SCENARIOS_INDEX_URI.to_string()));
         for (_, pack, _) in &c.packs {
             assert!(
                 uris.contains(&pack_uri(&pack.id)),
@@ -96,7 +142,14 @@ mod tests {
                 pack.id
             );
         }
-        assert_eq!(uris.len(), 2 + c.packs.len());
+        for scenario in c.scenarios() {
+            assert!(
+                uris.contains(&scenario_uri(&scenario.id)),
+                "missing resource for scenario {}",
+                scenario.id
+            );
+        }
+        assert_eq!(uris.len(), 3 + c.packs.len() + c.scenarios.len());
     }
 
     #[test]
@@ -130,6 +183,49 @@ mod tests {
         };
         let parsed: serde_json::Value = serde_json::from_str(text).unwrap();
         assert_eq!(parsed["id"], serde_json::json!(pack.id));
+    }
+
+    #[test]
+    fn read_scenarios_index_lists_every_scenario_by_id_summary_and_packs() {
+        let c = catalog();
+        let contents = read(&c, SCENARIOS_INDEX_URI).unwrap();
+        let ResourceContents::TextResourceContents { text, .. } = &contents[0] else {
+            panic!("expected text contents");
+        };
+        let parsed: serde_json::Value = serde_json::from_str(text).unwrap();
+        assert_eq!(parsed["origin"], serde_json::json!(c.scenarios_origin));
+        let listed = parsed["scenarios"].as_array().unwrap();
+        assert_eq!(listed.len(), c.scenarios.len());
+        let first = c.scenarios().next().expect("at least one scenario");
+        let entry = listed
+            .iter()
+            .find(|e| e["id"] == serde_json::json!(first.id))
+            .unwrap();
+        assert_eq!(entry["summary"], serde_json::json!(first.summary));
+        assert_eq!(entry["packs"], serde_json::json!(first.packs));
+    }
+
+    #[test]
+    fn read_a_scenario_returns_the_full_named_scenario_json() {
+        let c = catalog();
+        let named = c.scenarios().next().expect("at least one scenario");
+        let contents = read(&c, &scenario_uri(&named.id)).unwrap();
+        let ResourceContents::TextResourceContents { text, .. } = &contents[0] else {
+            panic!("expected text contents");
+        };
+        let parsed: serde_json::Value = serde_json::from_str(text).unwrap();
+        assert_eq!(parsed["id"], serde_json::json!(named.id));
+        assert_eq!(parsed["summary"], serde_json::json!(named.summary));
+        assert!(
+            parsed.get("scenario").is_some(),
+            "expected the full engine Scenario embedded"
+        );
+    }
+
+    #[test]
+    fn read_returns_none_for_an_unknown_scenario_id() {
+        let c = catalog();
+        assert!(read(&c, &scenario_uri("no-such-scenario")).is_none());
     }
 
     #[test]

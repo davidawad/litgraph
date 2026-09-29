@@ -178,14 +178,13 @@ Remand terminals in CAFC link back into the origin forum.
 stdio MCP server: every op is an MCP tool (input schema sliced out of the
 engine's own JSON Schema for `Op`, so a tool's shape can't drift from what
 `api::handle` actually accepts), plus a generic `litgraph` tool that takes
-a raw request verbatim. Packs, `links.json`, and the manual are MCP
-resources under `litgraph://…` URIs. See the README's "MCP server"
-section for client setup (Claude Code, Claude Desktop, generic clients).
+a raw request verbatim. Packs, `links.json`, the named scenario library,
+and the manual are MCP resources under `litgraph://…` URIs
+(`litgraph://packs/<id>`, `litgraph://links`, `litgraph://scenarios`,
+`litgraph://scenarios/<id>`, `litgraph://describe`). See the README's
+"MCP server" section for client setup (Claude Code, Claude Desktop,
+generic clients).
 
-`litgraph://scenarios/<name>` resources are not wired up yet — there is no
-scenario library to serve until the roadmap item below lands; the
-resource dispatch in `crates/litgraph-mcp/src/resources.rs` is already
-shaped so that adding them is one new match arm (tracked as bead lg-3cx).
 ## Deadline clock
 
 `crates/litgraph/src/clock/` computes concrete due dates from a pack-authored

@@ -48,19 +48,22 @@ impl ServerHandler for LitgraphServer {
         .with_server_info(
             Implementation::new("litgraph-mcp", env!("CARGO_PKG_VERSION")).with_description(
                 "Litigation procedure graphs as stochastic games, over MCP: one tool per \
-                     engine op, packs/links.json/the manual as resources.",
+                     engine op, packs/links.json/named scenarios/the manual as resources.",
             ),
         )
         .with_instructions(
             "Start with the `describe` tool (or the `litgraph://describe` resource) for \
-                 the full manual: ops, scenario fields, metrics, variables, params. Every op \
-                 tool takes `{packs?, links?, no_continuations?, scenario?, ...op fields}`; \
-                 `packs` defaults to every pack. The `litgraph` tool takes a raw request \
-                 `{packs, links, no_continuations, scenario, op}` verbatim -- use it for \
-                 anything not (yet) exposed as its own tool. Every response is the same JSON \
-                 envelope the CLI and library use ({ok, api_version, op, result|error, \
-                 warnings, provenance, elapsed_ms}); an engine error (`ok: false`) comes back \
-                 as a tool error carrying that same envelope as structured content.",
+                 the full manual: ops, scenario fields, metrics, variables, params, and the \
+                 named scenario library. Every op tool takes `{packs?, links?, \
+                 no_continuations?, scenario?, ...op fields}`; `packs` defaults to every pack \
+                 (or the named scenario's own packs); `scenario` is inline JSON, a name from \
+                 `litgraph://scenarios`, or `{extends: \"<name>\", ...overrides}`. The \
+                 `litgraph` tool takes a raw request `{packs, links, no_continuations, \
+                 scenario, op}` verbatim -- use it for anything not (yet) exposed as its own \
+                 tool. Every response is the same JSON envelope the CLI and library use \
+                 ({ok, api_version, op, result|error, warnings, provenance, elapsed_ms}); an \
+                 engine error (`ok: false`) comes back as a tool error carrying that same \
+                 envelope as structured content.",
         )
     }
 
