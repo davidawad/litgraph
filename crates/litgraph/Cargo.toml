@@ -17,6 +17,13 @@ build = "build.rs"
 [lints]
 workspace = true
 
+[features]
+# Embed the vendored L0 source texts (`sources/*.txt`, a few MB) so `lint`
+# can verify cites with no directory at runtime. Off for size-sensitive
+# builds such as WebAssembly; `LITGRAPH_SOURCES` still works without it.
+default = ["embed-sources"]
+embed-sources = []
+
 [dependencies]
 serde.workspace = true
 serde_json.workspace = true

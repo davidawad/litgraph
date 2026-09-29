@@ -37,8 +37,15 @@ fn main() {
         "`(file name, contents)` of every embedded calibration set file.",
         &out_dir.join("embedded_calibration.rs"),
     );
+    // Without `embed-sources`, embed an empty corpus (point at a directory
+    // that has no `*.txt`), keeping the static's shape identical.
+    let sources_dir = if std::env::var_os("CARGO_FEATURE_EMBED_SOURCES").is_some() {
+        manifest.join("../../sources")
+    } else {
+        manifest.join("src")
+    };
     embed_dir(
-        &manifest.join("../../sources"),
+        &sources_dir,
         "txt",
         Some("sources/"),
         "SOURCES_EMBEDDED",

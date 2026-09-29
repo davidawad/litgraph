@@ -48,6 +48,14 @@ pub fn lint(g: &Graph, packs: &[Pack]) -> Vec<Diagnostic> {
             lint_pack_edges(p, &mut push);
             lint_pack_nodes(p, &mut push);
             match &corpus {
+                Ok(corpus) if corpus.is_empty() => push(
+                    "info",
+                    "sources-unavailable",
+                    p.id.clone(),
+                    "this build embeds no L0 source texts (feature `embed-sources` off); \
+                     set LITGRAPH_SOURCES to a sources/ directory to verify cites"
+                        .to_string(),
+                ),
                 Ok(corpus) => lint_pack_cites(p, corpus, &mut push),
                 Err(e) => push(
                     "info",

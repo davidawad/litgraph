@@ -20,7 +20,7 @@ workspace = true
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-litgraph = { path = "../litgraph" }
+litgraph = { path = "../litgraph", default-features = false }
 serde.workspace = true
 serde_json.workspace = true
 # Pinned to the wasm-bindgen-cli in nixpkgs (the flake's dev shell); the CLI

@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Cargo feature `embed-sources` (default on) embeds the vendored L0
+  source texts for cite verification. `litgraph-wasm` builds without it to
+  keep the WebAssembly bundle small; `lint` then reports
+  `sources-unavailable` unless `LITGRAPH_SOURCES` points at a `sources/`
+  directory.
+
 - **Calibration pipeline** (`docs/CALIBRATION.md`): `calibration/*.json`
   overlay files — embedded at build time like `packs/*.json`, overridable
   via `$LITGRAPH_CALIBRATION`/`--calibration-dir` — record a sourced

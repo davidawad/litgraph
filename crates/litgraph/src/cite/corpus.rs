@@ -4,8 +4,10 @@
 //! the same way `packs/*.json` is (`api::catalog`), or loaded from a
 //! directory for `LITGRAPH_SOURCES` overrides / tests.
 
+use std::borrow::Cow;
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
+use std::sync::OnceLock;
 
 use crate::error::{Error, Result};
 
@@ -56,14 +58,31 @@ impl SourceCorpus {
         corpus
     }
 
-    /// The corpus baked into this build (`sources/*.txt` at compile time).
+    /// The corpus baked into this build (`sources/*.txt` at compile time;
+    /// empty without the `embed-sources` feature).
     #[must_use]
     pub fn embedded() -> SourceCorpus {
-        SourceCorpus::from_files(
-            SOURCES_EMBEDDED
-                .iter()
-                .map(|(p, t)| ((*p).to_string(), (*t).to_string())),
-        )
+        SourceCorpus::embedded_ref().clone()
+    }
+
+    /// The embedded corpus, parsed once per process and shared.
+    #[must_use]
+    pub fn embedded_ref() -> &'static SourceCorpus {
+        static CORPUS: OnceLock<SourceCorpus> = OnceLock::new();
+        CORPUS.get_or_init(|| {
+            SourceCorpus::from_files(
+                SOURCES_EMBEDDED
+                    .iter()
+                    .map(|(p, t)| ((*p).to_string(), (*t).to_string())),
+            )
+        })
+    }
+
+    /// True when no source files are loaded (for example a build without
+    /// `embed-sources` and no `LITGRAPH_SOURCES`).
+    #[must_use]
+    pub fn is_empty(&self) -> bool {
+        self.files.is_empty()
     }
 
     /// Every `*.txt` in `dir`, keyed by `sources/<file name>` (matching how
@@ -94,10 +113,10 @@ impl SourceCorpus {
     ///
     /// # Errors
     /// As [`SourceCorpus::load`].
-    pub fn default_source() -> Result<SourceCorpus> {
+    pub fn default_source() -> Result<Cow<'static, SourceCorpus>> {
         match std::env::var_os("LITGRAPH_SOURCES") {
-            Some(d) => SourceCorpus::load(&PathBuf::from(d)),
-            None => Ok(SourceCorpus::embedded()),
+            Some(d) => SourceCorpus::load(&PathBuf::from(d)).map(Cow::Owned),
+            None => Ok(Cow::Borrowed(SourceCorpus::embedded_ref())),
         }
     }
 
@@ -203,6 +222,16 @@ Rule 13 — Counterclaim and Crossclaim
         ]);
         let hits = corpus.lookup_all("Rule 1");
         assert_eq!(hits.len(), 2);
+    }
+
+    #[test]
+    fn empty_and_embedded_corpora_report_emptiness() {
+        assert!(SourceCorpus::default().is_empty());
+        assert!(!SourceCorpus::embedded_ref().is_empty());
+        assert!(std::ptr::eq(
+            SourceCorpus::embedded_ref(),
+            SourceCorpus::embedded_ref()
+        ));
     }
 
     #[test]
