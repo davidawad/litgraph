@@ -49,16 +49,13 @@
 
           src = craneLib.cleanCargoSource ./.;
 
-          # crates/litgraph/build.rs embeds these data directories into the
-          # binary at build time, so the crane source filter keeps them
-          # alongside the Rust sources.
-          dataDirs = [ "packs" "scenarios" "calibration" "sources" "examples" "tests" ];
+          # Build from the whole repo minus build outputs and bulky media, not an
+          # allow-list: build.rs embeds data directories and tests read
+          # examples/ and tests/, and an allow-list silently drifted twice.
+          excluded = [ "target" ".worktrees" "result" "media" "marketing" ];
           unfilteredSrc = pkgs.lib.cleanSourceWith {
-            src = ./.;
-            filter =
-              path: type:
-              (craneLib.filterCargoSources path type)
-              || builtins.any (d: pkgs.lib.hasInfix "/${d}/" path || baseNameOf path == d) dataDirs;
+            src = pkgs.lib.cleanSource ./.;
+            filter = path: _type: !(builtins.elem (baseNameOf path) excluded);
           };
 
           commonArgs = {
