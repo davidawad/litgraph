@@ -31,7 +31,7 @@ impl Risk {
     #[must_use]
     pub fn of(o: &Objective) -> Risk {
         match *o {
-            Objective::Expected => Risk::Expected,
+            Objective::Expected | Objective::Robust { .. } => Risk::Expected,
             Objective::Cara { a } => Risk::Cara(a),
             Objective::Worst => Risk::Worst,
             Objective::Cvar { alpha, .. } => Risk::Cvar(alpha),

@@ -1,0 +1,6 @@
+# Pin the workspace root for expect-test snapshots (tests/cases/*.story.txt).
+# Without it, expect-test finds the root by walking up for a [workspace]
+# Cargo.toml, which picks the wrong checkout when this repo sits inside
+# another one (e.g. a git worktree under the main checkout's .worktrees/).
+[env]
+CARGO_WORKSPACE_DIR = { value = "", relative = true }
