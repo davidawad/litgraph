@@ -12,9 +12,10 @@ gets a FILED stamp showing that request's real `elapsed_ms`.
   fallback stacks. There's no `<head>`/`<meta>`, so all non-ASCII is
   escaped (HTML entities, `\u` in JS) and the page renders the same under
   any charset.
-- `marketing/engine/litgraph.mp4`: one 45 s loop, 1920×1080, 30 fps, H.264.
+- `docs/media/litgraph-engine.mp4`: one 45 s loop, 1920×1080, 30 fps, H.264.
   Frames were rendered deterministically with `__render(t)` in headless
   Chromium and piped into ffmpeg.
+  Poster: `docs/media/litgraph-engine.png` (1280×720, the index card at t = 1.5 s).
 
 ## Storyboard (45 s loop; starts and ends on the same card, so it loops seamlessly)
 

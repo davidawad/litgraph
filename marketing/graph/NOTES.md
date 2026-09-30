@@ -5,8 +5,13 @@
   Prime, with fallback stacks). 42 s seamless loop, with pause/play and replay.
   `#t=<seconds>` opens paused on a single frame (for thumbnails).
 - Reduced motion: opens paused on the solved-graph frame (t = 28.2 s). Play still works.
-- No MP4. There's no system ffmpeg or H.264 encoder on the build box, and Playwright's
-  bundled ffmpeg only supports its own webm recording.
+- Video: `docs/media/litgraph-graph.mp4`, one 42 s loop starting at t = 0, 1920×1080,
+  30 fps, H.264 (yuv420p, faststart). Poster: `docs/media/litgraph-graph.png` (1280×720,
+  t = 28.2 s). Captured frame by frame in headless Chromium: `requestAnimationFrame` was
+  replaced with a manual clock stepped 1/30 s per screenshot, the stage was made
+  full-bleed with the control bar hidden, and all Google Fonts faces were loaded first.
+  The page has no `<meta charset>`, so it was served with `charset=utf-8`. Without that
+  header `§`, `·`, `→` and `−` show up as mojibake.
 
 ## Palette / type
 
@@ -77,7 +82,8 @@ Honesty notes:
 
 ## With more time
 
-- An MP4 capture at 1920×1080 on a machine with ffmpeg/H.264.
+- A `<meta charset="utf-8">` (or escaped non-ASCII, as in the engine piece) so the page
+  doesn't depend on the server's Content-Type charset.
 - A phone-specific layout. At 400 px the stage scales down and the caption is mirrored
   below it, but the graph labels are tiny.
 - A slower, calmer reduced-motion variant that crossfades between the five composed
