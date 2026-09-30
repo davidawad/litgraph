@@ -457,7 +457,7 @@ checksum = "32a66949e030da00e8c7d4434b251670a91556f4144941d37452769c25d58a53"
 
 [[package]]
 name = "litgraph"
-version = "0.2.1"
+version = "0.3.0"
 dependencies = [
  "expect-test",
  "proptest",
@@ -471,7 +471,7 @@ dependencies = [
 
 [[package]]
 name = "litgraph-cli"
-version = "0.2.1"
+version = "0.3.0"
 dependencies = [
  "anyhow",
  "clap",
@@ -482,7 +482,7 @@ dependencies = [
 
 [[package]]
 name = "litgraph-mcp"
-version = "0.2.1"
+version = "0.3.0"
 dependencies = [
  "anyhow",
  "clap",
@@ -495,7 +495,7 @@ dependencies = [
 
 [[package]]
 name = "litgraph-wasm"
-version = "0.2.1"
+version = "0.3.0"
 dependencies = [
  "getrandom 0.2.17",
  "litgraph",
