@@ -1,0 +1,805 @@
+<title>Filed in Milliseconds</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600;700&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* One visual world: a docket sheet. Every color is painted explicitly. */
+html, body { margin: 0; background: #0F141B; color: #DCE1E7; }
+body { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 24px 16px; box-sizing: border-box; overflow-x: hidden;
+  font-family: "Archivo Narrow", "Arial Narrow", "Roboto Condensed", "Helvetica Neue", Arial, sans-serif; }
+* { box-sizing: border-box; }
+
+#frame { position: relative; width: 100%; max-width: 1280px; aspect-ratio: 16 / 9; overflow: hidden;
+  container-type: inline-size; background: #DCE1E7; border-radius: 2px;
+  box-shadow: 0 30px 80px -30px rgba(0,0,0,.7); }
+#inner { position: absolute; left: 0; top: 0; width: 1600px; height: 900px; transform-origin: 0 0;
+  transform: scale(calc(100cqw / 1600px)); color: #141A23; background: #DCE1E7;
+  --lh: 30px; --fs: 21px; }
+
+/* persistent docket chrome */
+.hdr { position: absolute; left: 64px; right: 64px; top: 0; height: 64px; display: flex; align-items: center;
+  justify-content: space-between; border-bottom: 2px solid #141A23; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; font-size: 17px; z-index: 5; }
+.hdr b { color: #C22A2A; font-weight: 700; }
+.hdr .entry { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; letter-spacing: .02em;
+  font-weight: 600; font-size: 16px; text-transform: none; color: #24466F; }
+.ftr { position: absolute; left: 64px; right: 64px; bottom: 0; height: 52px; display: flex; align-items: center;
+  justify-content: space-between; border-top: 1px solid #8C96A1; font-size: 16px; letter-spacing: .06em;
+  color: #4A5563; z-index: 5; }
+.ftr .nla { color: #141A23; font-weight: 600; }
+
+.scene { position: absolute; inset: 64px 0 52px 0; opacity: 0; visibility: hidden; background: #DCE1E7; }
+.scene.on { visibility: visible; }
+#s-poster { opacity: 1; visibility: visible; }
+
+/* caption column = the docket-text column */
+.cap { position: absolute; left: 64px; top: 28px; width: 400px; }
+.cap .num { font-weight: 700; font-size: 148px; line-height: .8; color: #24466F; letter-spacing: -.02em;
+  font-variant-numeric: tabular-nums; }
+.cap .ttl { margin-top: 18px; padding-top: 14px; border-top: 2px solid #141A23; font-weight: 700; font-size: 44px;
+  text-transform: uppercase; letter-spacing: .04em; line-height: 1; }
+.cap p { margin: 16px 0 0; font-size: 25px; line-height: 1.3; color: #2A3340; font-weight: 500; }
+.cap code, .note code { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: .86em; color: #24466F; }
+.cap .facts { margin-top: 22px; font-size: 19px; letter-spacing: .04em; color: #4A5563; line-height: 1.45; }
+.cap .facts b { color: #141A23; font-weight: 700; font-size: 24px; }
+.foc { list-style: none; margin: 22px 0 0; padding: 0; }
+.foc li { position: relative; padding: 10px 0 10px 22px; border-top: 1px solid #A9B2BC; font-size: 22px; line-height: 1.25;
+  color: #8C96A1; font-weight: 500; transition: none; }
+.foc li b { display: block; font-size: 17px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; }
+.foc li.act { color: #141A23; }
+.foc li.act b { color: #C22A2A; }
+.foc li::before { content: ""; position: absolute; left: 0; top: 17px; width: 10px; height: 10px; background: #A9B2BC; }
+.foc li.act::before { background: #C22A2A; }
+
+.main { position: absolute; left: 520px; right: 64px; top: 28px; bottom: 24px; }
+
+/* THE BOLD PLACE: JSON on pleading paper */
+.paper { position: relative; background: #F6F8FA; padding: 12px 24px 12px 84px;
+  box-shadow: 0 1px 0 rgba(20,26,35,.08), 0 18px 36px -24px rgba(20,26,35,.55);
+  font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: var(--fs); line-height: var(--lh); color: #141A23; }
+.paper::before { content: ""; position: absolute; top: 0; bottom: 0; left: 62px; width: 7px;
+  border-left: 1.5px solid #C22A2A; border-right: 1.5px solid #C22A2A; }
+.paper .tab { position: absolute; right: 0; top: -26px; height: 26px; padding: 0 12px; background: #141A23; color: #F6F8FA;
+  font-family: "Archivo Narrow", "Arial Narrow", Arial, sans-serif; font-size: 15px; letter-spacing: .14em;
+  text-transform: uppercase; line-height: 26px; font-weight: 600; }
+.win { position: relative; overflow: hidden; }
+.scr { position: relative; will-change: transform; }
+.l { position: relative; height: var(--lh); white-space: pre; }
+.l .n { position: absolute; left: -84px; width: 48px; text-align: right; color: #8C96A1; font-size: 15px;
+  font-family: "Archivo Narrow", "Arial Narrow", Arial, sans-serif; font-weight: 600; }
+.l .t { position: relative; display: inline-block; white-space: pre; z-index: 1; }
+.caret { position: absolute; top: 5px; width: .6ch; height: calc(var(--lh) - 10px); background: #C22A2A; z-index: 2; display: none; }
+.hl { position: absolute; height: calc(var(--lh) - 4px); background: #FFE14D; transform-origin: 0 50%; transform: scaleX(0);
+  border-radius: 3px 8px 5px 3px; z-index: 0; font-size: var(--fs); }
+.k { color: #24466F; }            /* key */
+.s { color: #141A23; }            /* string */
+.v { color: #9A1F1F; font-weight: 600; } /* number / bool */
+.p { color: #7D8792; }            /* punctuation */
+.pr { color: #C22A2A; font-weight: 600; }
+.c { color: #6B7582; font-style: italic; }
+.w { color: #141A23; }
+
+/* filing stamp */
+.stamp { position: absolute; z-index: 6; border: 4px solid #C22A2A; outline: 1.5px solid #C22A2A; outline-offset: 3px;
+  color: #C22A2A; padding: 6px 14px 5px; text-align: center; transform: rotate(-7deg); opacity: 0; mix-blend-mode: multiply;
+  background: rgba(246,248,250,.35); pointer-events: none; }
+.stamp .a { display: block; font-weight: 700; font-size: 30px; letter-spacing: .22em; line-height: 1; padding-left: .22em; }
+.stamp .b { display: block; font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 17px; font-weight: 600; margin-top: 4px; }
+
+/* margin notes (a reader's pencil in the margin) */
+.note { position: absolute; font-size: 19px; line-height: 1.25; color: #C22A2A; font-weight: 600; letter-spacing: .02em; }
+
+/* poster / end card */
+.wm { position: absolute; left: 64px; top: 54px; font-weight: 700; font-size: 230px; line-height: .78; letter-spacing: -.035em; color: #141A23; }
+.wm i { font-style: normal; color: #C22A2A; }
+.kick { position: absolute; left: 70px; top: 22px; font-size: 18px; letter-spacing: .2em; text-transform: uppercase; font-weight: 700; color: #24466F; }
+.thesis { position: absolute; left: 70px; top: 262px; width: 780px; font-size: 36px; line-height: 1.2; font-weight: 500; color: #141A23; }
+.thesis em { font-style: normal; background: linear-gradient(transparent 12%, #FFE14D 12%, #FFE14D 88%, transparent 88%); padding: 0 .12em; }
+.inst { position: absolute; left: 64px; top: 470px; width: 800px; }
+.meta { position: absolute; left: 70px; top: 590px; width: 800px; font-size: 22px; line-height: 1.5; color: #2A3340; letter-spacing: .02em; }
+.meta b { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-weight: 600; color: #24466F; font-size: 21px; }
+.meta .sep { color: #8C96A1; padding: 0 8px; }
+.idx { position: absolute; left: 960px; top: 34px; width: 576px; border-top: 2px solid #141A23; }
+.idx .h, .idx .r { display: grid; grid-template-columns: 60px 1fr; column-gap: 16px; padding: 12px 0; border-bottom: 1px solid #A9B2BC; }
+.idx .h { font-size: 15px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; color: #4A5563; padding: 8px 0; }
+.idx .r .i { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-weight: 600; color: #24466F; font-size: 20px; }
+.idx .r .d { font-size: 22px; line-height: 1.25; color: #141A23; font-weight: 500; }
+.idx .r .d b { text-transform: uppercase; letter-spacing: .08em; font-size: 18px; margin-right: 8px; }
+.pstamp { opacity: .9; right: 90px; top: 560px; left: auto; }
+.pstamp .a { font-size: 34px; letter-spacing: .08em; }
+
+/* montage */
+.card { position: absolute; inset: 0; opacity: 0; visibility: hidden; background: #DCE1E7; }
+.card .ct { font-weight: 700; font-size: 50px; line-height: 1; text-transform: uppercase; letter-spacing: .02em; }
+.card .ct span { color: #C22A2A; font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 26px; vertical-align: middle; margin-right: 14px; letter-spacing: 0; }
+.card .cs { margin-top: 8px; font-size: 23px; color: #2A3340; font-weight: 500; height: 30px; }
+.card .cmd { margin-top: 18px; }
+.card .vis { position: relative; height: 262px; margin-top: 14px; }
+.card .frag { margin-top: 10px; }
+.card .stamp { right: 18px; top: -6px; }
+.vis svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.vis text { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; }
+.vis .lab { font-family: "Archivo Narrow", "Arial Narrow", Arial, sans-serif; }
+
+.cal { position: absolute; left: 0; top: 0; display: grid; grid-template-columns: repeat(7, 58px); gap: 4px;
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 17px; }
+.cal .m { grid-column: 1 / -1; font-family: "Archivo Narrow", "Arial Narrow", Arial, sans-serif; font-weight: 700; font-size: 18px; letter-spacing: .16em; text-transform: uppercase; height: 26px; }
+.cal .dh { height: 22px; text-align: center; color: #6B7582; font-size: 14px; font-family: "Archivo Narrow", Arial, sans-serif; font-weight: 600; }
+.cal .d { position: relative; height: 34px; line-height: 34px; text-align: center; background: #F6F8FA; color: #4A5563; }
+.cal .d.x { background: transparent; }
+.cal .d .f { position: absolute; inset: 0; background: #24466F; opacity: 0; }
+.cal .d .tx { position: relative; }
+.cal .d.cnt .tx { color: #F6F8FA; }
+.cal .d.trig { outline: 2px solid #141A23; outline-offset: -2px; color: #141A23; font-weight: 600; }
+.cal .d.hol .strike { position: absolute; left: 6px; right: 6px; top: 50%; height: 3px; background: #C22A2A; transform-origin: 0 50%; transform: scaleX(0); }
+.cal .d.due { outline: 3px solid #C22A2A; outline-offset: -3px; color: #C22A2A; font-weight: 700; }
+.calside { position: absolute; left: 450px; top: 26px; right: 0; font-size: 22px; line-height: 1.35; }
+.calside .big { font-weight: 700; font-size: 64px; line-height: 1; color: #24466F; font-variant-numeric: tabular-nums; }
+.calside .big small { font-size: 22px; letter-spacing: .12em; text-transform: uppercase; color: #141A23; margin-left: 8px; }
+.calside .rl { margin-top: 12px; color: #2A3340; }
+.calside .rl b { color: #C22A2A; }
+
+.chips { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 14px; }
+.chip { font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace; font-size: 18px; padding: 7px 10px; background: #F6F8FA;
+  border-left: 4px solid #24466F; opacity: 0; color: #141A23; white-space: nowrap; }
+.chip.raw { border-left-color: #C22A2A; font-weight: 600; }
+
+/* controls (outside the stage) */
+.ctl { width: 100%; max-width: 1280px; display: flex; align-items: center; gap: 12px; margin-top: 12px; }
+.ctl button { font: 600 14px/1 "Archivo Narrow", "Arial Narrow", Arial, sans-serif; letter-spacing: .14em; text-transform: uppercase;
+  color: #DCE1E7; background: transparent; border: 1px solid #4A5563; padding: 9px 14px; cursor: pointer; border-radius: 2px; }
+.ctl button:hover, .ctl button:focus-visible { border-color: #FFE14D; color: #FFE14D; outline: none; }
+.rail { position: relative; flex: 1; height: 4px; background: #2A3340; cursor: pointer; }
+.rail i { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: #FFE14D; }
+.rail u { position: absolute; top: -4px; width: 2px; height: 12px; background: #4A5563; }
+
+/* portrait layout for phones: same scenes, stacked */
+@media (max-width: 720px) {
+  #frame { aspect-ratio: 3 / 4; }
+  #inner { width: 900px; height: 1200px; transform: scale(calc(100cqw / 900px)); --fs: 20px; --lh: 29px; }
+  .hdr, .ftr { left: 36px; right: 36px; }
+  .hdr .entry { font-size: 15px; }
+  .ftr { font-size: 15px; }
+  .ftr .src { display: none; }
+  .cap { left: 36px; right: 36px; width: auto; top: 22px; }
+  .cap .num { font-size: 96px; float: left; margin-right: 22px; }
+  .cap .ttl { margin-top: 0; border-top: 0; padding-top: 4px; font-size: 40px; }
+  .cap p { font-size: 24px; margin-top: 10px; }
+  .cap .facts { display: none; }
+  .foc { display: flex; gap: 14px; margin-top: 14px; clear: both; }
+  .foc li { flex: 1; font-size: 0; padding: 8px 0 0 18px; }
+  .foc li b { font-size: 15px; }
+  .foc li::before { top: 12px; }
+  .main { left: 36px; right: 36px; top: 262px; bottom: 20px; }
+  .nt-land { display: none; }
+  .wm { left: 36px; top: 70px; font-size: 200px; }
+  .kick { left: 42px; top: 30px; }
+  .thesis { left: 42px; top: 250px; width: 820px; font-size: 34px; }
+  .inst { left: 36px; top: 440px; width: 828px; }
+  .meta { left: 42px; top: 546px; width: 820px; }
+  .idx { left: 36px; top: 700px; width: 828px; }
+  .idx .r { padding: 8px 0; }
+  .pstamp { right: 40px; top: 990px; }
+  .card .ct { font-size: 44px; }
+  .card .vis { height: 300px; }
+  .calside { left: 460px; top: 26px; font-size: 20px; }
+  .chips { grid-template-columns: repeat(4, 1fr); }
+  .chip { font-size: 17px; }
+}
+</style>
+
+<div id="frame" role="img" aria-label="litgraph motion piece: install, one JSON request, one JSON response with warnings and provenance, a montage of capabilities, the MCP server, and an end card.">
+<div id="inner">
+  <div class="hdr"><span>litgraph <b>&#xB7;</b> docket of one engine</span><span class="entry" id="entry">index &#xB7; 5 entries</span></div>
+
+  <!-- POSTER / END CARD: the composed first frame (works without JS) -->
+  <section class="scene" id="s-poster">
+    <div class="kick">For agents and engineers</div>
+    <div class="wm">litgraph<i>.</i></div>
+    <div class="thesis">Litigation procedure as a stochastic game. <em>One JSON request in, one JSON answer out</em> &#x2014; warnings and provenance attached.</div>
+    <div class="inst paper"><div class="tab">install</div><div class="l"><span class="n">1</span><span class="t"><span class="pr">$</span> <span class="w">brew install davidawad/tap/litgraph</span></span></div></div>
+    <div class="meta"><b>github.com/davidawad/litgraph</b><br>GPL-3.0<span class="sep">/</span>v0.2.1<span class="sep">/</span>CLI &#xB7; MCP server &#xB7; WebAssembly<span class="sep">/</span>8 forum packs</div>
+    <div class="idx">
+      <div class="h"><span>#</span><span>Docket text</span></div>
+      <div class="r"><span class="i">01</span><span class="d"><b>Install</b>one binary, packs embedded</span></div>
+      <div class="r"><span class="i">02</span><span class="d"><b>Request</b>packs + scenario + one op</span></div>
+      <div class="r"><span class="i">03</span><span class="d"><b>Response</b>policy, warnings, provenance</span></div>
+      <div class="r"><span class="i">04</span><span class="d"><b>Capabilities</b>forums, deadlines, tornado, flags, scenarios, calibration</span></div>
+      <div class="r"><span class="i">05</span><span class="d"><b>MCP</b>20 tools, 15 resources</span></div>
+    </div>
+    <div class="stamp pstamp" style="opacity:.9"><span class="a">"ok": true</span><span class="b">api_version 1</span></div>
+  </section>
+
+  <section class="scene" id="s-install">
+    <div class="cap"><div class="num">01</div><div class="ttl">Install</div>
+      <p>One binary. Forum packs, named scenarios and vendored rule text are compiled in &#x2014; nothing else to ship.</p>
+      <div class="facts"><b>8</b> packs &#xB7; <b>470</b> nodes &#xB7; <b>703</b> edges<br><b>18</b> cross-forum links<br><span style="font-size:15px">totals of <code>litgraph packs</code> and <code>links.json</code></span></div></div>
+    <div class="main"><div class="paper" id="c-install"><div class="tab">terminal</div></div>
+      <div class="stamp" id="st-install" style="right:30px;top:360px"><span class="a">FILED</span><span class="b">27.945 ms</span></div></div>
+  </section>
+
+  <section class="scene" id="s-request">
+    <div class="cap"><div class="num">02</div><div class="ttl">Request</div>
+      <p>One envelope in: which forums, this matter, one op. Parsing is strict &#x2014; a typo is an error naming the valid fields.</p>
+      <ul class="foc" id="f-request">
+        <li><b>packs</b>Court of Federal Claims + Federal Circuit</li>
+        <li><b>scenario</b>rates, stakes, counterfactual edges</li>
+        <li><b>op</b>explain &#x2014; one of 19 ops</li></ul></div>
+    <div class="main"><div class="paper" id="c-request"><div class="tab">stdin &#xB7; examples/cofc-explain-dispositive-fork.json</div></div></div>
+  </section>
+
+  <section class="scene" id="s-response">
+    <div class="cap"><div class="num">03</div><div class="ttl">Response</div>
+      <p>One envelope out: the answer, and everything the answer rests on.</p>
+      <ul class="foc" id="f-response">
+        <li><b>policy</b>the move, and the regret of every alternative</li>
+        <li><b>warnings</b>every fallback named and counted</li>
+        <li><b>provenance</b>pack fingerprints, every modeling mode</li></ul></div>
+    <div class="main"><div class="paper" id="c-response"><div class="tab">stdout &#xB7; abridged (&#x2026;)</div></div>
+      <div class="stamp" id="st-response" style="right:40px;top:40px"><span class="a">FILED</span><span class="b">13.293 ms</span></div></div>
+  </section>
+
+  <section class="scene" id="s-montage">
+    <div class="cap"><div class="num">04</div><div class="ttl">Capabilities</div>
+      <ul class="foc" id="f-montage">
+        <li><b>a</b>Compose forums</li><li><b>b</b>Deadline math</li><li><b>c</b>Sensitivity</li>
+        <li><b>d</b>State flags</li><li><b>e</b>Named scenario</li><li><b>f</b>Calibration</li></ul></div>
+    <div class="main" id="m-cards"></div>
+  </section>
+
+  <section class="scene" id="s-mcp">
+    <div class="cap"><div class="num">05</div><div class="ttl">MCP server</div>
+      <p>The same contract over stdio. Every op is its own tool, plus a raw <code>litgraph</code> tool; packs, scenarios and the manual are resources.</p>
+      <div class="facts"><b>20</b> tools &#xB7; <b>15</b> resources<br><span style="font-size:15px">from <code>tools/list</code> and <code>resources/list</code> on litgraph-mcp 0.2.1</span></div></div>
+    <div class="main"><div class="paper" id="c-mcp1"><div class="tab">agent config</div></div>
+      <div class="chips" id="chips"></div>
+      <div class="paper" id="c-mcp2" style="margin-top:34px"><div class="tab">json-rpc &#xB7; stdio</div></div>
+      <div class="stamp" id="st-mcp" style="right:30px;bottom:30px"><span class="a">FILED</span><span class="b">same envelope</span></div></div>
+  </section>
+
+  <div class="ftr"><span class="src">Every number on screen is real output of litgraph 0.2.1.</span><span class="nla">Not legal advice.</span></div>
+</div>
+</div>
+<div class="ctl">
+  <button id="b-play" type="button" aria-label="Pause">Pause</button>
+  <button id="b-replay" type="button">Replay</button>
+  <div class="rail" id="rail" aria-hidden="true"><i id="rail-i"></i></div>
+</div>
+
+<script>
+(() => {
+const $ = (s, r = document) => r.querySelector(s);
+const inner = $('#inner'), frame = $('#frame');
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const seg = (t, a, b) => clamp((t - a) / (b - a));
+const eo = x => 1 - Math.pow(1 - x, 3);
+const eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const portrait = () => matchMedia('(max-width: 720px)').matches;
+
+/* ---------- stage fit (CSS typed arithmetic is the no-JS fallback) ---------- */
+function fit() {
+  const W = portrait() ? 900 : 1600;
+  inner.style.transform = `scale(${frame.clientWidth / W})`;
+}
+addEventListener('resize', fit); fit();
+
+/* ---------- JSON / shell tokenizer ---------- */
+function tok(line) {
+  let out = '', m, s = line;
+  if (s.startsWith('$ ')) { out += '<span class="pr">$</span> '; s = s.slice(2); }
+  if (/^\s*#/.test(s)) return out + `<span class="c">${esc(s)}</span>`;
+  const re = /("(?:[^"\\]|\\.)*")(\s*:)?|([A-Za-z_][\w@:.\-\/]*)|(-?\d+(?:\.\d+)?)|(\u2192|\u2190)|([{}\[\],:'])|(\s+)|(.)/g;
+  while ((m = re.exec(s))) {
+    if (m[1]) out += m[2] ? `<span class="k">${esc(m[1])}</span><span class="p">${m[2]}</span>` : `<span class="s">${esc(m[1])}</span>`;
+    else if (m[3]) out += /^(true|false|null)$/.test(m[3]) ? `<span class="v">${m[3]}</span>` : `<span class="w">${esc(m[3])}</span>`;
+    else if (m[4]) out += `<span class="v">${m[4]}</span>`;
+    else if (m[5]) out += `<span class="pr">${m[5]}</span>`;
+    else if (m[6]) out += `<span class="p">${esc(m[6])}</span>`;
+    else out += esc(m[0]);
+  }
+  return out;
+}
+
+/* A code block on pleading paper. lines: strings. rows: visible window (null = all). */
+function block(host, lines, rows = null) {
+  const win = document.createElement('div'); win.className = 'win';
+  const scr = document.createElement('div'); scr.className = 'scr'; win.appendChild(scr);
+  const L = lines.map((s, i) => {
+    const d = document.createElement('div'); d.className = 'l';
+    d.innerHTML = `<span class="n">${i + 1}</span><span class="t">${tok(s)}</span><span class="caret"></span>`;
+    scr.appendChild(d);
+    return { el: d, t: d.querySelector('.t'), c: d.querySelector('.caret'), len: s.length, lead: s.match(/^\s*/)[0].length, s };
+  });
+  host.appendChild(win);
+  const B = { host, win, scr, L, rows, hls: [], sched: [] };
+  if (rows) win.style.height = `calc(var(--lh) * ${rows})`;
+  return B;
+}
+/* schedule: type lines with prompt '$', show others instantly, sequentially */
+function schedule(B, t0, { cps = 38, gap = .06, show = .07, typeAll = false } = {}) {
+  let t = t0;
+  B.sched = B.L.map(l => {
+    const typed = typeAll || l.s.startsWith('$ ');
+    const d = typed ? Math.max(.12, l.len / cps) : show;
+    const r = { a: t, b: t + d, typed }; t += d + (typed ? gap * 3 : 0); return r;
+  });
+  return t;
+}
+function hl(B, i, c0 = null, c1 = null) {
+  const l = B.L[i], h = document.createElement('div'); h.className = 'hl';
+  c0 = c0 == null ? l.lead : c0; c1 = c1 == null ? l.len : c1;
+  h.style.left = `calc(${c0}ch - .2ch)`; h.style.width = `calc(${c1 - c0}ch + .4ch)`;
+  h.style.top = `calc(var(--lh) * ${i} + 2px)`;
+  h.dataset.i = i; B.scr.appendChild(h); B.hls.push(h); return h;
+}
+function drawBlock(B, t) {
+  let last = -1;
+  B.L.forEach((l, i) => {
+    const s = B.sched[i]; if (!s) return;
+    const vis = t >= s.a;
+    l.el.style.visibility = vis ? 'visible' : 'hidden';
+    if (!vis) return;
+    last = i;
+    if (s.typed) {
+      const n = Math.round(l.len * seg(t, s.a, s.b));
+      l.t.style.clipPath = n >= l.len ? 'none' : `inset(0 calc(100% - ${n}ch) 0 0)`;
+      l.c.style.display = t < s.b + .25 ? 'block' : 'none';
+      l.c.style.left = `${n}ch`;
+    } else {
+      const p = eo(seg(t, s.a, s.a + .12));
+      l.el.style.opacity = p; l.t.style.clipPath = 'none'; l.c.style.display = 'none';
+    }
+  });
+  B.hls.forEach(h => h.style.visibility = +h.dataset.i <= last ? 'visible' : 'hidden');
+  return last;
+}
+function scrollTo(B, row) { B.scr.style.transform = `translateY(calc(var(--lh) * ${-row}))`; }
+function stamp(el, t, a) {
+  const p = seg(t, a, a + .16);
+  el.style.opacity = p * .9;
+  el.style.transform = `rotate(-7deg) scale(${1.45 - .45 * eo(p)})`;
+}
+function focus(list, i) { [...list.children].forEach((li, j) => li.classList.toggle('act', j === i)); }
+
+/* ================= REAL litgraph 0.2.1 OUTPUT (see NOTES.md) ================= */
+const INSTALL = [
+  '$ brew install davidawad/tap/litgraph',
+  '$ litgraph --version',
+  'litgraph 0.2.1',
+  '$ litgraph packs',
+  '{ "ok": true, "api_version": 1, "op": "packs", "result": [',
+  '  { "id": "cafc", "nodes": 58, "edges": 71 },',
+  '  { "id": "cofc", "nodes": 68, "edges": 84 },',
+  '  { "id": "frap-appellate-procedure", "nodes": 59, \u2026 },',
+  '  { "id": "frcp-civil-procedure", "nodes": 66, \u2026 },',
+  '  { "id": "frcrimp-criminal-procedure", "nodes": 61, \u2026 },',
+  '  { "id": "itc-337", "nodes": 49, "edges": 73 },',
+  '  { "id": "mpep-prosecution", "nodes": 54, \u2026 },',
+  '  { "id": "ptab-patent-trial-appeal-board", \u2026 } ], \u2026 }',
+];
+const REQUEST = [
+  "$ litgraph q - <<'JSON'",
+  '{',
+  '  "packs": ["cofc", "cafc"],',
+  '  "scenario": {',
+  '    "params": { "rate": 850, "stakes": 12 },',
+  '    "remove_edges": [',
+  '      "cofc::e-limitations-barred",',
+  '      "cofc::e-1500-barred",',
+  '      "cofc::e-filingfork-protest",',
+  '      "cofc::e-casetype-general",',
+  '      "cofc::e-patentfork-nonpatent" ] },',
+  '  "op": { "op": "explain",',
+  '          "node": "cofc::patent-dispositive-motion-fork" }',
+  '}',
+  'JSON',
+];
+const RESPONSE = [
+  '{',
+  '  "ok": true, "api_version": 1, "op": "explain",',
+  '  "result": {',
+  '    "node": {',
+  '      "id": "cofc::patent-dispositive-motion-fork",',
+  '      "label": "Dispositive Motion Filed Before Trial?",',
+  '      "cite": "RCFC 56", \u2026 },',
+  '    "who_decides": "you",',
+  '    "value": 2561247.961725,',
+  '    "options": [',
+  '      { "id": "cofc::e-dispositivefork-trial",',
+  '        "authority": "28 U.S.C. \u00A71498(a)",',
+  '        "chosen": true, "regret": 0.0, \u2026 },',
+  '      { "id": "cofc::e-dispositivefork-sj",',
+  '        "authority": "RCFC 56",',
+  '        "chosen": false, "regret": 15926.859596, \u2026 } ] },',
+  '  "warnings": [',
+  '    { "code": "compile", "count": 61, \u2026 },',
+  '    { "code": "fact-unset", "count": 2, \u2026 },',
+  '    { "code": "mixed-node", "count": 4, \u2026 },',
+  '    { "code": "probability-fill", "count": 267, \u2026 } ],',
+  '  "provenance": {',
+  '    "engine": "litgraph 0.2.1",',
+  '    "packs": [',
+  '      { "id": "cofc", "sources": 17,',
+  '        "fingerprint": "fnv1a64:67e772863ca46c68" },',
+  '      { "id": "cafc", "sources": 18,',
+  '        "fingerprint": "fnv1a64:87c86ec10b436caa" } ],',
+  '    "nodes": 734, "edges": 828,',
+  '    "modes": { "mixed": "nature-first",',
+  '      "prob_fill": "residual", "cost": "dollars", \u2026 } },',
+  '  "elapsed_ms": 13.293',
+  '}',
+];
+
+/* ---------- scene builders ---------- */
+const scenes = [];
+function scene(id, start, dur, build) {
+  const el = $('#' + id); const upd = build ? build(el) : () => {};
+  scenes.push({ el, start, dur, upd, id });
+}
+const T = 45;
+
+scene('s-poster', 42, 6, null);
+
+scene('s-install', 3, 5.5, el => {
+  const B = block($('#c-install'), INSTALL);
+  schedule(B, .25, { cps: 30 });
+  // after `litgraph packs`, rows stream in fast
+  const i0 = 4; let t = B.sched[3].b + .15;
+  for (let i = i0; i < INSTALL.length; i++) { B.sched[i] = { a: t, b: t, typed: false }; t += .09; }
+  B.sched[2] = { a: B.sched[1].b + .12, b: 0, typed: false };
+  const st = $('#st-install');
+  return lt => { drawBlock(B, lt); stamp(st, lt, t + .1); };
+});
+
+scene('s-request', 8.5, 5, el => {
+  const B = block($('#c-request'), REQUEST);
+  schedule(B, .2, { cps: 34 });
+  let t = B.sched[0].b + .1;
+  for (let i = 1; i < REQUEST.length; i++) { const d = REQUEST[i].length / 220; B.sched[i] = { a: t, b: t + d, typed: true }; t += d + .02; }
+  const H = [[hl(B, 2), 2.6], [hl(B, 4), 3.1], [hl(B, 5), 3.1], [hl(B, 11), 3.6], [hl(B, 12), 3.6]];
+  const F = $('#f-request');
+  return lt => {
+    drawBlock(B, lt);
+    H.forEach(([h, a]) => h.style.transform = `scaleX(${eo(seg(lt, a, a + .35))})`);
+    focus(F, lt < 2.6 ? -1 : lt < 3.1 ? 0 : lt < 3.6 ? 1 : 2);
+  };
+});
+
+scene('s-response', 13.5, 8.5, el => {
+  const rows = () => portrait() ? 24 : 23;
+  const B = block($('#c-response'), RESPONSE, rows());
+  let t = .15; B.sched = RESPONSE.map(() => { const r = { a: t, b: t, typed: false }; t += .055; return r; });
+  const arrive = t;
+  const pol = [hl(B, 8), hl(B, 12, 8), hl(B, 15, 8)];
+  const war = [17, 18, 19, 20].map(i => hl(B, i));
+  const pro = [hl(B, 22), hl(B, 25, 8), hl(B, 27, 8), hl(B, 29), hl(B, 30, 6), hl(B, 31)];
+  const F = $('#f-response'), st = $('#st-response');
+  // camera: follow arrival, then frame each focus
+  const N = RESPONSE.length;
+  const keys = [[0, 'M'], [arrive + .5, 'M'], [2.8, 3], [4.6, 3], [5.0, 9], [6.4, 9], [6.8, 'M'], [9, 'M']];
+  const cam = lt => {
+    const r = rows(), max = Math.max(0, N - r), y = v => v === 'M' ? max : Math.min(v, max);
+    if (lt < arrive) { const i = B.sched.findIndex(s => s.a > lt); return clamp((i < 0 ? N : i) - r, 0, max); }
+    for (let k = 1; k < keys.length; k++) if (lt < keys[k][0]) {
+      const [ta, ya] = keys[k - 1], [tb, yb] = keys[k];
+      return y(ya) + (y(yb) - y(ya)) * eio(seg(lt, ta, tb));
+    }
+    return max;
+  };
+  return lt => {
+    B.win.style.height = `calc(var(--lh) * ${rows()})`;
+    drawBlock(B, lt); scrollTo(B, cam(lt));
+    stamp(st, lt, arrive + .05);
+    pol.forEach((h, j) => h.style.transform = `scaleX(${eo(seg(lt, 3.0 + j * .18, 3.4 + j * .18))})`);
+    war.forEach((h, j) => h.style.transform = `scaleX(${eo(seg(lt, 5.1 + j * .12, 5.45 + j * .12))})`);
+    pro.forEach((h, j) => h.style.transform = `scaleX(${eo(seg(lt, 6.9 + j * .1, 7.25 + j * .1))})`);
+    focus(F, lt < 2.8 ? -1 : lt < 4.9 ? 0 : lt < 6.7 ? 1 : 2);
+  };
+});
+
+/* ---------- montage cards ---------- */
+const NS = 'http://www.w3.org/2000/svg';
+const fmt = n => Math.round(n).toLocaleString('en-US');
+const CARDS = [
+  { k: 'a', t: 'Compose forums', s: 'PTAB final written decision \u2192 Federal Circuit, linked by links.json', ms: '14.871 ms',
+    cmd: ["$ litgraph q '{\"packs\": [\"ptab-patent-trial-appeal-board\",", "    \"cafc\"], \"op\": {\"op\": \"graph\",", "    \"node\": \"federal-circuit-window\"}}'"],
+    frag: ['"id": "links::ptab-appeal-to-cafc",', '"to": "cafc@ptab::entry-ptab",', '"authority": "35 U.S.C. \u00A7\u00A7 141(c), 319; 37 C.F.R. \u00A7 90.3"'],
+    vis: visCompose },
+  { k: 'b', t: 'Deadline math', s: 'FRCP 6 counting, legal holidays rolled \u2014 with every step shown', ms: '2.497 ms',
+    cmd: ["$ litgraph q '{\"packs\": [\"frcp-civil-procedure\"],", "    \"op\": {\"op\": \"deadlines\", \"trigger\": \"2026-11-05\",", "    \"node\": \"service-completed\"}}'"],
+    frag: ['"authority": "FRCP 12(a)(1)(A)(i)",', '"base_date": "2026-11-26", "due_date": "2026-11-27",', '"FRCP 6(a)(1)(C): last day fell on a Saturday, Sunday,', ' or legal holiday; roll forward -> 2026-11-27"'],
+    vis: visDeadline },
+  { k: 'c', t: 'Sensitivity', s: 'Tornado: which inputs actually move the value \u2014 and which flip the policy', ms: '239.434 ms',
+    cmd: ['$ litgraph q - < examples/cofc-1498-tornado.json'],
+    frag: ['"base_value": 2747220.713689,', '{ "input": "p:cafc@cofc::panel-to-reversed",', '  "swing": 1050700.38\u2026, "policy_changes": true }'],
+    vis: visTornado },
+  { k: 'd', t: 'State flags', s: 'Litigation has memory: IPR estoppel (35 U.S.C. \u00A7 315(e)) rides along as a flag', ms: '3.179 ms',
+    cmd: ["$ litgraph q '{\"packs\": [\"ptab-patent-trial-appeal-board\"],", "    \"links\": false, \"op\": {\"op\": \"graph\",", "    \"node\": \"post-fwd-options{ipr-estopped}\"}}'"],
+    frag: ['{ "code": "compile", "example": "state flags expanded', '  the graph: 104 additional node(s) for reachable', '  flag combinations" }'],
+    vis: visFlags },
+  { k: 'e', t: 'Named scenario', s: '28 U.S.C. \u00A7 1498 patent case in the Court of Federal Claims, by name', ms: '0.583 ms',
+    cmd: ['$ litgraph chain --scenario cofc-1498-patent-case'],
+    frag: ['"expected": { "dollars": 252504.270313,', '  "elapsed": 302.224688, "hours": 387.905781 },', '"warnings": [{ "code": "fact-unset", "count": 2, \u2026 }, \u2026]'],
+    vis: visChain },
+  { k: 'f', t: 'Calibration', s: 'Teaching estimates replaced by published USPTO statistics, cited', ms: '3.738 ms',
+    cmd: ["$ litgraph q '{\"packs\": [\"ptab-patent-trial-appeal-board\"],", "    \"scenario\": {\"calibration\": [\"ptab-fy2024\"], \u2026},", "    \"op\": {\"op\": \"explain\", \"node\": \"institution-decision\"}}'"],
+    frag: ['{ "set": "ptab-fy2024", "value": 0.681, "n": 1087,', '  "sourceTitle": "PTAB Trial Statistics FY24 End of', '  Year Outcome Roundup \u2014 IPR, PGR", \u2026 }'],
+    vis: visCalib },
+];
+const CD = 2.5;
+
+function svg(host, w, h) { const s = document.createElementNS(NS, 'svg'); s.setAttribute('viewBox', `0 0 ${w} ${h}`); s.setAttribute('preserveAspectRatio', 'xMinYMin meet'); host.appendChild(s); return s; }
+function E(p, tag, a = {}, txt) { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); if (txt != null) e.textContent = txt; p.appendChild(e); return e; }
+
+function visCompose(v) {
+  const s = svg(v, 1020, 262);
+  const box = (x, title, sub, n, cols) => {
+    const g = E(s, 'g');
+    E(g, 'rect', { x, y: 18, width: 330, height: 226, fill: '#F6F8FA' });
+    E(g, 'rect', { x, y: 18, width: 330, height: 6, fill: '#141A23' });
+    E(g, 'text', { x: x + 18, y: 60, 'font-size': 26, 'font-weight': 700, class: 'lab', fill: '#141A23' }, title);
+    E(g, 'text', { x: x + 18, y: 86, 'font-size': 16, fill: '#4A5563' }, sub);
+    const dots = [];
+    for (let i = 0; i < n; i++) dots.push(E(g, 'circle', { cx: x + 26 + (i % cols) * 21, cy: 112 + Math.floor(i / cols) * 21, r: 5.5, fill: '#24466F', opacity: 0 }));
+    return dots;
+  };
+  const A = box(0, 'PTAB', 'pack \u00B7 55 nodes \u00B7 89 edges', 55, 14);
+  const B = box(690, 'CAFC @ PTAB', 'instance \u00B7 58 nodes \u00B7 71 edges', 58, 14);
+  const path = E(s, 'path', { d: 'M 336 160 C 470 160, 540 120, 684 120', fill: 'none', stroke: '#C22A2A', 'stroke-width': 4 });
+  const head = E(s, 'path', { d: 'M 684 120 l -16 -9 l 0 18 z', fill: '#C22A2A', opacity: 0 });
+  const L = path.getTotalLength ? 380 : 380; path.setAttribute('stroke-dasharray', L); path.setAttribute('stroke-dashoffset', L);
+  const lab = E(s, 'text', { x: 512, y: 96, 'text-anchor': 'middle', 'font-size': 16, fill: '#C22A2A', 'font-weight': 600, opacity: 0 }, 'links::ptab-appeal-to-cafc');
+  const lab2 = E(s, 'text', { x: 512, y: 200, 'text-anchor': 'middle', 'font-size': 15, fill: '#141A23', opacity: 0 }, 'federal-circuit-window \u2192 entry-ptab');
+  const lab3 = E(s, 'text', { x: 512, y: 226, 'text-anchor': 'middle', 'font-size': 15, fill: '#4A5563', opacity: 0 }, 'compiled: 978 nodes \u00B7 1,167 edges');
+  return lt => {
+    A.forEach((d, i) => d.setAttribute('opacity', seg(lt, .35 + i * .006, .5 + i * .006)));
+    B.forEach((d, i) => d.setAttribute('opacity', seg(lt, 1.2 + i * .006, 1.35 + i * .006)));
+    const p = eio(seg(lt, .75, 1.25)); path.setAttribute('stroke-dashoffset', L * (1 - p));
+    head.setAttribute('opacity', p > .97 ? 1 : 0);
+    lab.setAttribute('opacity', seg(lt, .9, 1.1)); lab2.setAttribute('opacity', seg(lt, 1.1, 1.3)); lab3.setAttribute('opacity', seg(lt, 1.5, 1.7));
+  };
+}
+
+function visDeadline(v) {
+  const c = document.createElement('div'); c.className = 'cal';
+  c.innerHTML = '<div class="m">November 2026</div>' + 'SMTWTFS'.split('').map(d => `<div class="dh">${d}</div>`).join('');
+  const days = [];
+  for (let d = 1; d <= 30; d++) {   // 1 Nov 2026 is a Sunday
+    const e = document.createElement('div'); e.className = 'd';
+    e.innerHTML = `<span class="f"></span><span class="tx">${d}</span>${d === 26 ? '<span class="strike"></span>' : ''}`;
+    if (d === 5) e.classList.add('trig'); if (d === 26) e.classList.add('hol');
+    c.appendChild(e); days[d] = e;
+  }
+  v.appendChild(c);
+  const side = document.createElement('div'); side.className = 'calside';
+  side.innerHTML = '<div class="big" id="dl-n">0<small>days</small></div><div class="rl">served <b>Thu 11/05</b> \u00B7 21 days \u2192 <b>Thu 11/26</b>, Thanksgiving<br>\u2192 rolls to <b style="font-size:30px">Fri 11/27</b></div>';
+  v.appendChild(side);
+  const n = side.querySelector('#dl-n'), rl = side.querySelector('.rl');
+  return lt => {
+    const k = Math.floor(21 * seg(lt, .4, 1.25));
+    for (let d = 6; d <= 26; d++) { const on = d - 5 <= k; days[d].querySelector('.f').style.opacity = on ? (d === 26 ? .35 : 1) : 0; days[d].classList.toggle('cnt', on && d !== 26); }
+    n.firstChild.nodeValue = k;
+    days[26].querySelector('.strike').style.transform = `scaleX(${eo(seg(lt, 1.3, 1.5))})`;
+    days[27].classList.toggle('due', lt > 1.55);
+    rl.style.opacity = seg(lt, 1.3, 1.5);
+  };
+}
+
+function visTornado(v) {
+  const s = svg(v, 1020, 262);
+  const base = 2747220.713689, lo = 1.75e6, hi = 3.75e6, X0 = 330, X1 = 1000;
+  const X = x => X0 + (x - lo) / (hi - lo) * (X1 - X0);
+  const rows = [
+    ['param:stakes', 1876517.88, 3617068.51, false],
+    ['p:cafc@cofc::panel-to-reversed', 2216465.39, 3267165.77, true],
+    ['p:cofc::e-settlementfork-settles', 2541537.76, 2952903.67, false],
+    ['p:cafc@cofc-gov::panel-to-dismissed', 2615298.62, 3005081.71, false],
+    ['param:rate', 2927603.93, 2565768.70, false],
+  ];
+  const G = rows.map(([name, a, b, flip], i) => {
+    const y = 18 + i * 44;
+    E(s, 'text', { x: 0, y: y + 22, 'font-size': 15, fill: '#141A23' }, name);
+    const l = E(s, 'rect', { x: X(base), y, width: 0, height: 30, fill: '#8FA3BC' });
+    const r = E(s, 'rect', { x: X(base), y, width: 0, height: 30, fill: '#24466F' });
+    let tag = null;
+    if (flip) { tag = E(s, 'text', { x: X(Math.max(a, b)) + 10, y: y + 21, 'font-size': 15, 'font-weight': 700, fill: '#C22A2A', opacity: 0 }, 'policy flips'); }
+    return { a, b, l, r, tag };
+  });
+  E(s, 'line', { x1: X(base), x2: X(base), y1: 8, y2: 240, stroke: '#141A23', 'stroke-width': 2 });
+  E(s, 'text', { x: X(base), y: 258, 'text-anchor': 'middle', 'font-size': 15, fill: '#141A23' }, 'base 2,747,221');
+  E(s, 'text', { x: X0, y: 258, 'font-size': 14, fill: '#6B7582' }, '1.75M');
+  E(s, 'text', { x: X1, y: 258, 'text-anchor': 'end', 'font-size': 14, fill: '#6B7582' }, '3.75M');
+  return lt => G.forEach((g, i) => {
+    const p = eo(seg(lt, .4 + i * .12, .85 + i * .12));
+    const lo_ = Math.min(g.a, g.b), hi_ = Math.max(g.a, g.b);
+    const wl = (X(base) - X(lo_)) * p, wr = (X(hi_) - X(base)) * p;
+    g.l.setAttribute('x', X(base) - wl); g.l.setAttribute('width', wl);
+    g.r.setAttribute('width', wr);
+    if (g.tag) g.tag.setAttribute('opacity', seg(lt, 1.3, 1.45));
+  });
+}
+
+function visFlags(v) {
+  const s = svg(v, 1020, 262);
+  const node = (x, y, w, t, flag) => {
+    const g = E(s, 'g', { opacity: 0 });
+    E(g, 'rect', { x, y, width: w, height: 40, fill: '#F6F8FA', stroke: '#141A23', 'stroke-width': 1.5 });
+    const tx = E(g, 'text', { x: x + 12, y: y + 26, 'font-size': 15, fill: '#141A23' }, t);
+    if (flag) E(tx, 'tspan', { fill: '#C22A2A', 'font-weight': 600 }, '{ipr-estopped}');
+    return g;
+  };
+  const n0 = node(0, 111, 150, 'fwd-issued');
+  const tg = [['fwd-all-unpatentable', 18, '0.55'], ['fwd-all-confirmed', 111, '0.25'], ['fwd-mixed', 204, '0.20']];
+  const edges = [], outs = [], chips = [];
+  tg.forEach(([t, y, p], i) => {
+    edges.push(E(s, 'path', { d: `M 150 131 C 230 131, 250 ${y + 20}, 330 ${y + 20}`, fill: 'none', stroke: '#141A23', 'stroke-width': 2, opacity: 0 }));
+    const c = E(s, 'g', { opacity: 0 });
+    E(c, 'rect', { x: 176, y: y + 2 + (i - 1) * 8, width: 150, height: 22, fill: '#C22A2A' });
+    E(c, 'text', { x: 183, y: y + 18 + (i - 1) * 8, 'font-size': 13, fill: '#F6F8FA', 'font-weight': 600 }, 'sets ipr-estopped');
+    chips.push(c);
+    outs.push(node(334, y, 400, t, true));
+  });
+  const post = node(770, 111, 250, '', false);
+  post.querySelector('text').textContent = 'post-fwd-options';
+  E(post.querySelector('text'), 'tspan', { x: 782, dy: 18, fill: '#C22A2A', 'font-weight': 600 }, '{ipr-estopped}');
+  post.querySelector('text').setAttribute('y', 124);
+  const join = tg.map(([, y]) => E(s, 'path', { d: `M 734 ${y + 20} C 752 ${y + 20}, 752 131, 770 131`, fill: 'none', stroke: '#8C96A1', 'stroke-width': 1.5, opacity: 0 }));
+  E(s, 'text', { x: 0, y: 256, 'font-size': 14, fill: '#4A5563' }, 'edges from the pack \u00B7 authority 35 U.S.C. \u00A7 318(a) \u00B7 p from the pack');
+  return lt => {
+    n0.setAttribute('opacity', seg(lt, .3, .45));
+    edges.forEach((e, i) => e.setAttribute('opacity', seg(lt, .5 + i * .1, .65 + i * .1)));
+    chips.forEach((e, i) => e.setAttribute('opacity', seg(lt, .75 + i * .12, .9 + i * .12)));
+    outs.forEach((e, i) => e.setAttribute('opacity', seg(lt, .85 + i * .12, 1.0 + i * .12)));
+    join.forEach(e => e.setAttribute('opacity', seg(lt, 1.3, 1.45)));
+    post.setAttribute('opacity', seg(lt, 1.4, 1.55));
+  };
+}
+
+function visChain(v) {
+  const s = svg(v, 1020, 262);
+  const A = [
+    ['judgment-for-plaintiff', .217164, '#24466F'], ['judgment-for-government', .217164, '#6B7582'], ['settled-adr', .186141, '#5F7FA8'],
+    ['dismissed-lack-of-jurisdiction', .169219, '#8C96A1'], ['dismissed-failure-to-state', .112813, '#A9B2BC'],
+    ['dismissed-time-barred', .05, '#C9CFD6'], ['dismissed-1500-bar', .0475, '#C22A2A']];
+  E(s, 'text', { x: 0, y: 18, 'font-size': 15, fill: '#4A5563' }, 'absorption under the optimal policy (p, cofc::\u2026)');
+  let x = 0; const W = 1020;
+  const R = A.map(([n, p, c], i) => {
+    const r = E(s, 'rect', { x, y: 30, width: 0, height: 56, fill: c }); const w = p * W; const g = { r, x, w };
+    x += w; return g;
+  });
+  const labs = A.map(([n, p, c], i) => {
+    const col = i % 2, row = Math.floor(i / 2);
+    const g = E(s, 'g', { opacity: 0 });
+    E(g, 'rect', { x: col * 510, y: 108 + row * 36, width: 14, height: 14, fill: c });
+    E(g, 'text', { x: col * 510 + 24, y: 121 + row * 36, 'font-size': 16, fill: '#141A23' }, `${p.toFixed(p === .05 ? 2 : 4).replace(/0+$/, '')}  ${n}`);
+    return g;
+  });
+  return lt => {
+    R.forEach((g, i) => { const p = eo(seg(lt, .35 + i * .08, .6 + i * .08)); g.r.setAttribute('width', g.w * p); });
+    labs.forEach((g, i) => g.setAttribute('opacity', seg(lt, .7 + i * .08, .85 + i * .08)));
+  };
+}
+
+function visCalib(v) {
+  const s = svg(v, 1020, 262);
+  const X0 = 250, W = 740;
+  E(s, 'text', { x: 0, y: 18, 'font-size': 15, fill: '#4A5563' }, 'institution-decision \u2192 institution-granted');
+  const row = (y, lab, sub, val, col) => {
+    E(s, 'text', { x: 0, y: y + 22, 'font-size': 17, fill: '#141A23', class: 'lab', 'font-weight': 700 }, lab);
+    E(s, 'text', { x: 0, y: y + 42, 'font-size': 13, fill: '#6B7582' }, sub);
+    E(s, 'rect', { x: X0, y, width: W, height: 40, fill: '#F6F8FA' });
+    const r = E(s, 'rect', { x: X0, y, width: 0, height: 40, fill: col });
+    const t = E(s, 'text', { x: X0 + 12, y: y + 27, 'font-size': 18, 'font-weight': 600, fill: '#F6F8FA', opacity: 0 }, val.toFixed(val === .65 ? 2 : 3));
+    return { r, t, w: val * W };
+  };
+  const a = row(34, 'PACK PRIOR', 'teaching estimate', .65, '#8C96A1');
+  const b = row(98, 'PTAB FY2024', 'USPTO trial statistics', .681, '#24466F');
+  const tick = E(s, 'text', { x: X0 + .681 * W + 12, y: 124, 'font-size': 16, fill: '#C22A2A', 'font-weight': 700, opacity: 0 }, '740 / 1,087');
+  const note = E(s, 'text', { x: 0, y: 186, 'font-size': 15, fill: '#141A23', opacity: 0 }, 'denials 0.20 / 0.15 \u2192 residual 0.1595 each \u2014 reported as a probability-fill warning, not hidden');
+  const note2 = E(s, 'text', { x: 0, y: 214, 'font-size': 15, fill: '#4A5563', opacity: 0 }, 'provenance.calibration lists every applied entry with its source URL and vintage');
+  return lt => {
+    const p = eo(seg(lt, .35, .7)), q = eo(seg(lt, .75, 1.15));
+    a.r.setAttribute('width', a.w * p); a.t.setAttribute('opacity', seg(lt, .6, .7));
+    b.r.setAttribute('width', b.w * q); b.t.setAttribute('opacity', seg(lt, 1.05, 1.15));
+    tick.setAttribute('opacity', seg(lt, 1.15, 1.3)); note.setAttribute('opacity', seg(lt, 1.35, 1.5)); note2.setAttribute('opacity', seg(lt, 1.5, 1.65));
+  };
+}
+
+scene('s-montage', 22, CARDS.length * CD, el => {
+  const host = $('#m-cards');
+  const C = CARDS.map(cd => {
+    const c = document.createElement('div'); c.className = 'card';
+    c.innerHTML = `<div class="ct"><span>${cd.k}</span>${cd.t}</div><div class="cs">${esc(cd.s)}</div><div class="paper cmd"></div><div class="vis"></div><div class="paper frag"></div><div class="stamp"><span class="a">FILED</span><span class="b">${cd.ms}</span></div>`;
+    host.appendChild(c);
+    const B1 = block(c.querySelector('.cmd'), cd.cmd); schedule(B1, .12, { typeAll: true, cps: 150, gap: 0 });
+    const B2 = block(c.querySelector('.frag'), cd.frag); let t = 1.05; B2.sched = cd.frag.map(() => { const r = { a: t, b: t, typed: false }; t += .1; return r; });
+    const vu = cd.vis(c.querySelector('.vis'));
+    return { c, B1, B2, vu, st: c.querySelector('.stamp') };
+  });
+  const F = $('#f-montage');
+  return lt => {
+    const k = Math.min(C.length - 1, Math.floor(lt / CD));
+    focus(F, k);
+    C.forEach((c, i) => {
+      const ct = lt - i * CD;
+      const on = ct >= 0 && ct < CD + .25 && !(i < C.length - 1 && ct > CD + .25);
+      c.c.style.visibility = on ? 'visible' : 'hidden';
+      if (!on) return;
+      const p = eo(seg(ct, 0, .25));
+      c.c.style.opacity = p; c.c.style.transform = `translateX(${(1 - p) * 70}px)`;
+      c.c.style.zIndex = i;
+      drawBlock(c.B1, ct); drawBlock(c.B2, ct); c.vu(ct); stamp(c.st, ct, 1.6);
+    });
+  };
+});
+
+scene('s-mcp', 37, 5, el => {
+  const B1 = block($('#c-mcp1'), ['$ claude mcp add litgraph -- litgraph-mcp']);
+  schedule(B1, .2, { cps: 36 });
+  const tools = ['describe', 'packs', 'lint', 'validate', 'graph', 'metric', 'explain', 'solve', 'chain', 'simulate', 'path', 'pareto', 'sweep', 'tornado', 'calibration', 'structure', 'deadlines', 'compare', 'batch', 'litgraph'];
+  const chips = $('#chips');
+  const CH = tools.map(n => { const d = document.createElement('div'); d.className = 'chip' + (n === 'litgraph' ? ' raw' : ''); d.textContent = n; chips.appendChild(d); return d; });
+  const L2 = [
+    '\u2192 tools/call "deadlines" { "packs": ["frcp-civil-procedure"],',
+    '    "trigger": "2026-11-05", "node": "service-completed" }',
+    '\u2190 { "ok": true, "api_version": 1, "op": "deadlines",',
+    '    \u2026 "due_date": "2026-11-27", "last_day_rolled": true, \u2026 }',
+  ];
+  const B2 = block($('#c-mcp2'), L2);
+  let t = 2.0; B2.sched = L2.map((s, i) => { const r = { a: t, b: t + (i < 2 ? s.length / 200 : 0), typed: i < 2 }; t += i < 2 ? s.length / 200 + .05 : .12; if (i === 1) t += .3; return r; });
+  const h = hl(B2, 3, 6); const st = $('#st-mcp');
+  return lt => {
+    drawBlock(B1, lt); drawBlock(B2, lt);
+    CH.forEach((c, i) => { const p = eo(seg(lt, 1.4 + i * .035, 1.6 + i * .035)); c.style.opacity = p; c.style.transform = `translateY(${(1 - p) * 10}px)`; });
+    h.style.transform = `scaleX(${eo(seg(lt, 3.6, 3.95))})`;
+    stamp(st, lt, 3.9);
+  };
+});
+
+/* ---------- timeline ---------- */
+const ENTRY = { 's-poster': 'index \u00B7 5 entries', 's-install': 'entry 01/05 \u00B7 install', 's-request': 'entry 02/05 \u00B7 request',
+  's-response': 'entry 03/05 \u00B7 response', 's-montage': 'entry 04/05 \u00B7 capabilities', 's-mcp': 'entry 05/05 \u00B7 mcp' };
+const entry = $('#entry'), railI = $('#rail-i');
+const FADE = .35;
+function render(t) {
+  t = ((t % T) + T) % T;
+  let top = null, topLt = 1e9;
+  scenes.forEach(sc => {
+    const lt = ((t - sc.start) % T + T) % T;
+    const on = lt < sc.dur + FADE;
+    sc.el.classList.toggle('on', on);
+    sc.el.style.visibility = on ? 'visible' : 'hidden';
+    if (!on) return;
+    sc.el.style.opacity = eio(clamp(lt / FADE));
+    sc.el.style.zIndex = lt < FADE ? 3 : 2;
+    if (lt < topLt && lt < sc.dur) { topLt = lt; top = sc; }
+    sc.upd(Math.min(lt, sc.dur + FADE));
+  });
+  if (top) entry.textContent = ENTRY[top.id];
+  railI.style.width = (t / T * 100) + '%';
+}
+window.__render = render; window.__T = T;
+
+// rail ticks
+const rail = $('#rail');
+scenes.forEach(sc => { if (sc.id !== 's-poster') { const u = document.createElement('u'); u.style.left = (sc.start / T * 100) + '%'; rail.appendChild(u); } });
+
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const q = new URLSearchParams(location.search);
+let playing = !reduce && !q.has('t'), t0 = performance.now(), paused = +(q.get('t') || 0);
+const btn = $('#b-play');
+function setBtn() { btn.textContent = playing ? 'Pause' : 'Play'; btn.setAttribute('aria-label', btn.textContent); }
+function now() { return playing ? (performance.now() - t0) / 1000 : paused; }
+function play() { t0 = performance.now() - paused * 1000; playing = true; setBtn(); }
+function pause() { paused = now(); playing = false; setBtn(); }
+btn.onclick = () => playing ? pause() : play();
+$('#b-replay').onclick = () => { paused = 0; t0 = performance.now(); if (!playing) play(); };
+rail.onclick = e => { const r = rail.getBoundingClientRect(); paused = (e.clientX - r.left) / r.width * T; t0 = performance.now() - paused * 1000; render(paused); };
+addEventListener('keydown', e => { if (e.code === 'Space' && e.target === document.body) { e.preventDefault(); btn.click(); } });
+setBtn();
+render(now());
+(function loop() { if (playing) render(now()); requestAnimationFrame(loop); })();
+})();
+</script>
