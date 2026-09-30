@@ -70,6 +70,8 @@ with existing variables; **data** = expressible once packs carry the `attrs`;
 | waiver / trap exposure | `tag('waiver-trap') + valence_bad` | built-in `traps` |
 | chokepoints weighted by likelihood or money | `structure mincut capacity=p` / `=dollars` | built-in |
 | judge / forum / examiner calibration | `probability_fn: "label_has('grant') ? p * judge_grant_mult : p"` | expression |
+| uncertain probabilities (robust to the credible range) | `objective: {type: robust, credibility}` (rectangular L1 robust MDP over Dirichlet credible sets; see docs/UNCERTAINTY.md) | built-in |
+| judge-specific evidence ("granted 3 of 4") | `scenario.observe` (conjugate Dirichlet update; every op uses the posterior mean) | built-in |
 | optimizing CVaR (not just reporting it) | `objective: {type: cvar, alpha}` (Rockafellar–Uryasev; see docs/CRITIQUE.md) | built-in |
 
 ### D. Outcome value (terminal)
@@ -97,7 +99,7 @@ with existing variables; **data** = expressible once packs carry the `attrs`;
 | option value (keeping more terminals reachable) | betweenness / reachable-terminal count | partial (structure ops); engine for a per-edge metric |
 | estoppel / waiver that persists within a forum (IPR § 315(e), FRCP 12(h)) | edge `sets`/`clears`/`requires`/`forbids` a flag; `flag("x")` in a cost/utility expression | built-in (`docs/PACK_SCHEMA.md#state-flags`) |
 | estoppel / preclusion that persists *across forums* | flags set in one pack, read by a `flag()` expression or `forbids` on an edge in another pack (or a `links.json` link edge) — same mechanism, wired across the composed graph | built-in for a link edge in the flag's own graph; a pack whose only connection to the flag-setting pack is a scenario, not a compiled edge, still needs a shared graph to see it |
-| information value (discovery changes p) | needs belief state (POMDP) | engine |
+| information value (discovery changes p) | `voi` op: EVPI per chance node's outcome and probabilities, EVSI of a study worth `k` observations vs its cost (Dirichlet beliefs; see docs/UNCERTAINTY.md). Learning *during* the process (a full POMDP) is still engine | built-in |
 | non-zero-sum opponent with its own payoffs | `opponent_objective: terminal-expr` (subgame-perfect equilibrium by backward induction; see docs/CRITIQUE.md) | built-in |
 
 ### F. Conduct and sanctions

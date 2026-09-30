@@ -8,12 +8,14 @@
 //! per-node arrays that every algorithm consumes, and records every fallback
 //! it had to take as a structured [`Warning`].
 
+mod belief;
 mod library;
 mod limits;
 mod plan;
 mod resolve;
 mod view;
 
+pub use belief::{Belief, Group, GroupKind, PriorSource, Uncertainty, DEFAULT_CONCENTRATION};
 pub use library::{NamedScenario, ScenarioSource};
 pub use plan::fill;
 pub use view::View;
@@ -112,6 +114,39 @@ pub enum Objective {
         #[serde(default, skip_serializing_if = "Option::is_none")]
         y_hi: Option<f64>,
     },
+    /// Maximize the worst-case expected value over a credible set of
+    /// probabilities: at every chance draw (chance nodes, interrupts,
+    /// act-or-wait waits) nature may move the distribution anywhere within
+    /// an L1 ball around the posterior mean, restricted to outcomes the
+    /// posterior deems possible — the rectangular robust MDP of Iyengar
+    /// (2005) and Nilim & El Ghaoui (2005). Each node's radius is the
+    /// `credibility` quantile of `‖θ − θ̄‖₁` under its Dirichlet posterior
+    /// (Petrik & Russel 2019's Bayesian credible ambiguity set), or the fixed
+    /// `radius`. `solve` reports the nominal (expected) value next to the
+    /// robust one and where the policy changes. See `docs/UNCERTAINTY.md`.
+    Robust {
+        /// Per-node posterior credibility of the ambiguity set, in `(0, 1)`.
+        #[serde(default = "default_credibility")]
+        credibility: f64,
+        /// Fixed L1 radius at every uncertain node instead of the credible
+        /// radius (`0` = nominal, `2` = anything within the support).
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        radius: Option<f64>,
+        /// Posterior draws per node for the credible radius (0 = default 2000).
+        #[serde(default)]
+        samples: usize,
+        /// RNG seed for those draws.
+        #[serde(default = "default_seed")]
+        seed: u64,
+    },
+}
+
+fn default_credibility() -> f64 {
+    0.9
+}
+
+fn default_seed() -> u64 {
+    7
 }
 
 /// Fee shifting: part of our cost is recovered if the matter ends at an eligible terminal.
@@ -197,6 +232,14 @@ pub struct Scenario {
     /// reported if both are set: the opponent equilibrium uses unadjusted
     /// cost). See `docs/CRITIQUE.md` ("General-sum opponents").
     pub opponent_objective: Option<String>,
+    /// Probability uncertainty: each chance node's Dirichlet prior strength
+    /// (pseudo-counts). Used by `observe`, `objective: robust`, and the
+    /// `posterior` / `voi` ops. See `docs/UNCERTAINTY.md`.
+    pub uncertainty: Uncertainty,
+    /// Observed outcomes at chance nodes: node ref → {edge ref: count}
+    /// (e.g. this judge granted 3 of 4 similar motions). Conjugate update of
+    /// that node's Dirichlet; every op then uses the posterior mean.
+    pub observe: BTreeMap<String, BTreeMap<String, f64>>,
     /// Start node (default: the first pack's start).
     pub start: Option<String>,
 }

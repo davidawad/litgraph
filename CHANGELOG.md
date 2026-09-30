@@ -50,6 +50,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `rehearing-time-expires` to 45 days, matching their `rehearing-file`. The
   `cafc@itc` instance gets both patches, because the Commission, a U.S.
   agency, is a party to every § 337 appeal (Fed. Cir. R. 40(a)(1)(B)).
+- **Uncertain probabilities** (`docs/UNCERTAINTY.md`). Every chance draw
+  (chance nodes, nature-first interrupts with their residual, act-or-wait
+  waits) carries a Dirichlet belief whose mean is the resolved probability
+  and whose strength is `scenario.uncertainty.concentration[node]`, else a
+  calibration entry's `n`, else a default of 10 pseudo-observations
+  (an estimate, warned `prior-concentration-estimated`).
+  - `scenario.observe` (`{node: {edge: count}}`): conjugate update; every
+    op then runs on the posterior mean (`provenance.modes.observe`).
+  - `objective: {type: robust, credibility?, radius?, samples?, seed?}`:
+    rectangular robust MDP (Iyengar 2005; Nilim & El Ghaoui 2005) over
+    per-node L1 Bayesian credible sets (Petrik & Russel 2019). `solve`
+    reports `robust.{nominal_value, robust_value, price_of_robustness,
+    policy_changes, ...}`.
+  - `posterior` op: Monte Carlo over the posterior; credible intervals on
+    the case value and each option's Q, and P(each option is optimal).
+  - `voi` op: EVPI of each chance node's outcome (exact) and probabilities
+    (EVPPI), EVPI of everything, and EVSI of `studies` (`{node, k, cost |
+    cost_edge}`) with `net` and `worth_paying`, all as expected regret, so
+    exactly 0 when the decision can't change.
+  - `Graph::sample_size` records calibrated edges' `n`.
 
 ## [0.2.1] - 2026-09-29
 

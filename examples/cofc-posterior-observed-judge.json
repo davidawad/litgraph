@@ -1,0 +1,7 @@
+{
+  "scenario": {
+    "extends": "cofc-1498-patent-case",
+    "observe": { "cofc::sj-ruling": { "cofc::e-sj-govt": 3, "cofc::e-sj-denied": 1 } }
+  },
+  "op": { "op": "posterior", "node": "cofc::claim-accrues", "samples": 300 }
+}

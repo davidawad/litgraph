@@ -1,0 +1,9 @@
+{
+  "packs": ["ptab-patent-trial-appeal-board"],
+  "scenario": {
+    "params": { "rate": 750 },
+    "calibration": ["ptab-fy2024"],
+    "objective": { "type": "robust", "credibility": 0.9 }
+  },
+  "op": { "op": "solve" }
+}

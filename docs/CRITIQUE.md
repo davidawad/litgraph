@@ -61,7 +61,9 @@ engine defect, now fixed with a regression test.
   arbitrary-depth counters (the RCE example is a bounded "has this happened
   before" flag, not a true count — an N-tier counter needs N flags and is
   bounded by `max_product_nodes`, not free); and belief-state memory
-  (information value, POMDPs) remains unsolved, same as before.
+  within a trajectory (a POMDP that learns as the case proceeds) remains
+  unsolved. Information value *before* committing to a policy is now
+  priced by the `voi` op (see "Uncertain probabilities" below).
 - **Payoff scale across packs.** Composed graphs mix v1 heuristic payoffs
   (scoring points × $1k) with v2 placeholders ($1M claim). Always set
   `scenario.payoffs` for the matter at hand; responses warn when they are
@@ -72,7 +74,11 @@ engine defect, now fixed with a regression test.
   also be *optimized*, with documented grid-discretization exactness limits.
 - **Probabilities are teaching estimates** in most packs (vintages noted
   in node/edge notes). `tornado` shows which ones the answer actually
-  depends on — calibrate those first.
+  depends on — calibrate those first. Since the uncertainty layer
+  (`docs/UNCERTAINTY.md`), each chance node also carries a Dirichlet
+  belief (strength from a calibration entry's `n`, else a warned default):
+  `scenario.observe` updates it, `objective: robust` optimizes against its
+  credible set, and `posterior`/`voi` propagate it and price information.
 - **Durations** are sparse; `elapsed` falls back to deadline windows and
   every response says so.
 
@@ -143,6 +149,16 @@ the recursion doesn't reference `ζ` except at the boundary, every candidate
   enumeration of every deterministic memoryless policy (exact distribution
   enumeration + the same `CVaR_alpha` formula) on small acyclic graphs,
   including a randomized proptest sweep, within a grid-step-scaled tolerance.
+
+## Uncertain probabilities
+
+Probabilities are beliefs, not constants: a Dirichlet per chance draw,
+updated by `scenario.observe`, optimized against by `objective: robust`
+(rectangular L1 robust MDP over Bayesian credible sets: Iyengar 2005,
+Nilim & El Ghaoui 2005, Petrik & Russel 2019), propagated by `posterior`,
+and priced by `voi` (EVPI/EVPPI/EVSI as expected regret). Method, citations
+and exactness limits (per-node credibility, cyclic nodes, risk-neutral
+valuation, public information) are in `docs/UNCERTAINTY.md`.
 
 ## General-sum opponents
 

@@ -35,6 +35,10 @@ pub struct Graph {
     pub pack_roles: BTreeMap<String, BTreeMap<String, Role>>,
     /// Compile-time notes (continuations, superseded edges).
     pub notes: Vec<String>,
+    /// Calibrated edge probabilities' sample size: edge → (calibration set
+    /// id, `n`). Filled by calibration; the probability-uncertainty model
+    /// (`scenario::Belief`) reads it as a chance node's prior pseudo-count.
+    pub sample_size: BTreeMap<EdgeIx, (String, u64)>,
     pub(super) node_ix: HashMap<String, NodeIx>,
     pub(super) edge_ix: HashMap<String, EdgeIx>,
 }
@@ -107,6 +111,7 @@ impl Graph {
             packs: vec![],
             pack_roles: BTreeMap::new(),
             notes: vec![],
+            sample_size: BTreeMap::new(),
             node_ix: HashMap::new(),
             edge_ix: HashMap::new(),
         };

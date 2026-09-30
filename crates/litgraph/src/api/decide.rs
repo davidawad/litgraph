@@ -66,6 +66,9 @@ pub(super) fn solve_op(
     let eq = equilibrium::resolve(v, &mdp::SolveOptions::default())?;
     let sol = &eq.solution;
     let mut result = solve_result(v, sol, start, full_policy, all_values, max_steps);
+    if matches!(v.sc.objective, Objective::Robust { .. }) && !eq.general_sum {
+        result["robust"] = super::uncertainty::robust_report(v, sol, start)?;
+    }
     if eq.general_sum {
         result["opponent_value"] = r(eq.opponent_value[start]);
         if all_values {

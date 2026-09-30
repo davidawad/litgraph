@@ -19,6 +19,7 @@ layer and always find the next one up/down by id.
  L7  Accretion      lint → fix packs · calibrate probabilities · save scenarios · add links
  L6  Answers        explain · compare · best line   (+ warnings, provenance)
  L5  Analyses       solve · chain · simulate · path · pareto · sweep · tornado · structure
+                    · posterior · voi (uncertain probabilities, docs/UNCERTAINTY.md)
  L4  View           scenario resolved against the graph: roles, active edges,
                     probabilities, costs, utilities, node plans, warnings
  L3  Scenario       the matter: perspective, stakes/payoffs, rates, custom
@@ -158,7 +159,11 @@ describe ─► packs (quality) ─► explain <node> ─► solve ─► chain 
 5. `solve` / `chain` / `simulate` for the whole-matter picture.
 6. `tornado` to find the few inputs that drive the answer; `sweep` to find
    thresholds ("above $X/hour, file the RCE instead"); `compare` for
-   discrete alternatives.
+   discrete alternatives. When the probabilities themselves are soft:
+   `scenario.observe` for matter-specific evidence, `objective: robust`
+   for a strategy that survives their credible range, `posterior` for
+   credible intervals and P(option optimal), `voi` for what is worth
+   paying to learn (`docs/UNCERTAINTY.md`).
 7. Report numbers **with** their warnings. Heuristic payoffs and filled
    probabilities are not facts.
 8. Accrete: fix what `lint` and the warnings exposed, in the pack, with a

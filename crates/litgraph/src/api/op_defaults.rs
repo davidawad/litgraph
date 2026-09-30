@@ -70,6 +70,9 @@ pub(super) fn f_rel() -> f64 {
 pub(super) fn f_dp() -> f64 {
     0.1
 }
+pub(super) fn f_credibility() -> f64 {
+    0.9
+}
 pub(super) fn seed() -> u64 {
     7
 }

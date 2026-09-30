@@ -3,17 +3,19 @@
 
 use std::collections::{BTreeMap, HashSet};
 
+use super::belief::{self, Belief};
 use super::plan::PlanInputs;
 use super::resolve::{
     active_edges, dist_to_terminal, edge_env, params_of, probabilities, ViewParts,
 };
-use super::{limits, resolve_spec, NodePlan, Scenario, Warning};
+use super::{limits, resolve_spec, NodePlan, Objective, Scenario, Warning};
 use crate::error::{Error, Result};
 use crate::expr::{self, Expr};
 use crate::metrics::{self, EdgeEnv, PathVars, TerminalEnv};
 use crate::model::{Graph, NodeIx, PayoffSource, Role};
 
 /// A scenario resolved into dense arrays. Every algorithm consumes a view.
+#[derive(Clone)]
 pub struct View<'g> {
     /// The compiled graph.
     pub g: &'g Graph,
@@ -49,6 +51,9 @@ pub struct View<'g> {
     pub start: NodeIx,
     /// Everything the engine had to assume.
     pub warnings: Vec<Warning>,
+    /// The Dirichlet belief over every chance draw (`plan` already holds its
+    /// posterior mean where `scenario.observe` updated it).
+    pub belief: Belief,
 }
 
 /// `scenario.facts` is sugar over `scenario.probabilities`: each `{node ref:
@@ -130,7 +135,7 @@ impl<'g> View<'g> {
             let ni = g.node(n)?;
             forced.insert(ni, g.edge_at(ni, e)?);
         }
-        let plans = PlanInputs {
+        let mut plans = PlanInputs {
             g,
             sc,
             active: &active,
@@ -139,6 +144,9 @@ impl<'g> View<'g> {
             fact_nodes: &fact_nodes,
         }
         .build();
+        let belief = Belief::build(g, sc, &plans.plan)?;
+        let observed = belief::apply_observed(g, &belief, &mut plans.plan, &mut plans.prob);
+        plans.warnings.extend(observed);
         let start = sc.start.as_deref().map_or(Ok(g.start), |s| g.node(s))?;
         let mut view = View {
             g,
@@ -157,6 +165,7 @@ impl<'g> View<'g> {
             forced,
             start,
             warnings: plans.warnings,
+            belief,
         };
         view.finish(sc)?;
         Ok(view)
@@ -189,6 +198,13 @@ impl<'g> View<'g> {
             });
         }
         self.warnings.extend(limits::cvar_limits(sc));
+        if let Objective::Robust { radius: None, .. } = sc.objective {
+            let uncertain = self.belief.uncertain();
+            let ws =
+                self.belief
+                    .estimated_warnings(self.g, &uncertain, "the robust ambiguity radius");
+            self.warnings.extend(ws);
+        }
         self.warnings.extend(limits::opponent_objective_limits(sc));
         Ok(())
     }

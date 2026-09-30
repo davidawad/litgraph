@@ -29,6 +29,7 @@ mod op_defaults;
 mod render;
 pub(crate) mod scenario_ref;
 mod stopwatch;
+mod uncertainty;
 mod validate;
 
 pub use calibration::{
@@ -44,7 +45,7 @@ pub use catalog::{fingerprint, Catalog};
 pub use describe::{describe, schema, SCHEMA_KINDS};
 pub(crate) use envelope::Warn;
 pub use envelope::{ApiError, GroupedWarning, Response};
-pub use op::{Op, StructureWhat};
+pub use op::{Op, StructureWhat, StudySpec};
 pub use render::choice_label;
 pub use validate::{detect, validate, Validation};
 
@@ -207,6 +208,7 @@ fn provenance(
             "mixed": sc.mixed, "opponent": sc.opponent, "prob_fill": sc.prob_fill, "objective": sc.objective,
             "cost": sc.cost.clone().unwrap_or_else(|| "dollars".into()),
             "utility": sc.utility.clone().unwrap_or_else(|| "ev".into()),
+            "uncertainty": sc.uncertainty, "observe": sc.observe,
         },
         // Which values were calibrated, and from where — empty unless
         // `scenario.calibration` named at least one set.
@@ -433,6 +435,9 @@ fn dispatch(req: &Request, catalog: &Catalog, g: &Graph, packs: &[Pack], sc: &Sc
                 "durations_truncated": out.durations_truncated,
             })))
         }),
+        Op::Posterior { .. } | Op::Voi { .. } => {
+            with_view(g, sc, |v| uncertainty::dispatch(v, &req.op))
+        }
         Op::Structure {
             from,
             what,

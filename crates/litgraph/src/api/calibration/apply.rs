@@ -69,6 +69,7 @@ pub fn apply(g: &mut Graph, set: &CalibrationSet) -> Application {
                 Ok(ix) => {
                     for i in g.edge_family(ix) {
                         g.edges[i].probability = e.value;
+                        g.sample_size.insert(i, (set.id.clone(), e.n));
                     }
                     true
                 }
@@ -192,6 +193,7 @@ mod tests {
         assert_eq!(app.skipped, 0);
         let e = g.edge("demo::to-win").unwrap();
         assert_eq!(g.edges[e].probability, Some(0.75));
+        assert_eq!(g.sample_size.get(&e), Some(&("demo-set".to_string(), 100)));
         assert_eq!(g.edges[e].duration.as_ref().unwrap().mode, 14.0);
         let n = g.node("demo::win").unwrap();
         assert_eq!(g.nodes[n].attrs.get("note_count"), Some(&3.0));

@@ -18,6 +18,13 @@ litgraph q '{"packs":["ptab-patent-trial-appeal-board"],"scenario":{"calibration
                                             # apply real docket-derived rates (docs/CALIBRATION.md)
 litgraph q '{"packs":["frcp-civil-procedure"],"op":{"op":"calibration"}}'
                                             # uncalibrated probabilities/durations, ranked by sensitivity
+litgraph q '{"scenario":{"extends":"cofc-1498-patent-case","observe":{"cofc::sj-ruling":{"cofc::e-sj-govt":3}}},"op":{"op":"solve"}}'
+                                            # Bayesian update on observed outcomes (docs/UNCERTAINTY.md)
+litgraph q '{"scenario":{"extends":"cofc-1498-patent-case","objective":{"type":"robust"}},"op":{"op":"solve"}}'
+                                            # robust to the credible range of probabilities; nominal vs robust + policy changes
+litgraph q '{"scenario":"cofc-1498-patent-case","op":{"op":"posterior"}}'   # credible intervals, P(option optimal)
+litgraph q '{"scenario":"cofc-1498-patent-case","op":{"op":"voi","studies":[{"node":"cofc::sj-ruling","k":5,"cost":25000}]}}'
+                                            # what is worth paying to learn (EVPI / EVSI vs cost)
 litgraph explain --packs frcp-civil-procedure --arg node=answer-due --set rate=900
 litgraph run request.json                  # same as `q`, reads a file
 litgraph q '{"packs":["cofc","cafc"],"scenario":{...},"op":{"op":"chain"}}'
@@ -89,6 +96,14 @@ rather than silently ignoring a typo.
    teaching estimate, check whether `calibration/*.json` already has a
    sourced value, or whether `{"op":"calibration"}` says this input is worth
    calibrating next. See `docs/CALIBRATION.md`.
+9. **Soft probabilities are uncertain, say how much.** Matter-specific
+   evidence ("this judge granted 3 of 4") goes in `scenario.observe`, not in
+   `probabilities`. Before recommending a line that rests on soft
+   probabilities, check `posterior` (P(option optimal), credible interval)
+   or `objective: robust`'s `policy_changes`; before recommending paying for
+   information, check `voi`'s EVSI against its cost. Report
+   `prior-concentration-estimated` warnings: the prior strength there is a
+   default estimate, not a sample size. See `docs/UNCERTAINTY.md`.
 
 ## Layout
 
@@ -97,8 +112,9 @@ crates/litgraph/src/
   model/      packs → compiled graph (schema, links, namespacing, continuations)
   expr/       custom-function language (lexer, parser)
   metrics.rs  built-in metrics/utilities/params (as expressions) + variable envs
-  scenario/   Scenario → View (roles, masks, probabilities, node plans, warnings)
-  algo/       mdp (solve), chain, sim, paths (dijkstra/yen/pareto), sweep (+tornado), structure
+  scenario/   Scenario → View (roles, masks, probabilities, node plans, belief, warnings)
+  algo/       mdp (solve), chain, sim, paths (dijkstra/yen/pareto), sweep (+tornado), structure,
+              robust, posterior, voi, dirichlet (uncertain probabilities)
   api/        JSON request/response, describe, op dispatch
   lint.rs     content QA
   cite/       cite verification against L0 sources (normalize, corpus, fuzzy match)
@@ -107,7 +123,7 @@ crates/litgraph-mcp/   the `litgraph-mcp` binary: stdio MCP server, one tool per
 packs/                 forum packs + links.json
 sources/               vendored L0 primary-law text (see sources/PROVENANCE.md)
 calibration/           calibration/*.json overlay sets (real, sourced probabilities/durations)
-docs/                  ARCHITECTURE, PACK_SCHEMA, COST_FUNCTIONS, CRITIQUE, CALIBRATION
+docs/                  ARCHITECTURE, PACK_SCHEMA, COST_FUNCTIONS, CRITIQUE, CALIBRATION, UNCERTAINTY
 tests/fixtures/ts-parity/   golden outputs from the original TS engine
 tests/cases/           famous cases replayed through the packs (+ story snapshots)
 tests/golden/          hand-checked 2-6 node graphs; tests/README.md explains the layers

@@ -102,12 +102,20 @@ pub(super) fn cvar_limits(sc: &Scenario) -> Vec<Warning> {
 /// (defined in terms of `self`'s policy only). See `docs/CRITIQUE.md`
 /// ("General-sum opponents").
 pub(super) fn opponent_objective_limits(sc: &Scenario) -> Vec<Warning> {
+    let mut out = vec![];
     if sc.opponent_objective.is_some() && sc.fee_shift.is_some() {
-        return vec![Warning {
+        out.push(Warning {
             code: "opponent-objective-ignores-fee-shift",
             at: None,
             message: "a general-sum `opponent_objective` ignores `fee_shift`: the equilibrium solve uses unadjusted cost".into(),
-        }];
+        });
     }
-    vec![]
+    if sc.opponent_objective.is_some() && matches!(sc.objective, Objective::Robust { .. }) {
+        out.push(Warning {
+            code: "robust-ignores-opponent-objective",
+            at: None,
+            message: "objective robust does not compose with a general-sum `opponent_objective`: the equilibrium solve uses the posterior-mean probabilities, not the ambiguity sets".into(),
+        });
+    }
+    out
 }

@@ -1,0 +1,11 @@
+{
+  "scenario": "cofc-1498-patent-case",
+  "op": {
+    "op": "voi",
+    "samples": 300,
+    "top": 5,
+    "studies": [
+      { "node": "cofc::sj-ruling", "k": 5, "cost": 25000, "label": "summary-judgment expert report (worth ~5 comparable rulings)" }
+    ]
+  }
+}

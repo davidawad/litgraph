@@ -27,6 +27,7 @@
 use serde::Serialize;
 use std::collections::BTreeMap;
 
+use crate::algo::robust;
 use crate::algo::structure::{is_cyclic, scc};
 use crate::error::Result;
 use crate::expr;
@@ -98,6 +99,8 @@ struct Ctx<'a> {
     cara: Option<f64>,
     /// `Objective::Worst`: every draw (interrupts, waits) goes against us.
     worst: bool,
+    /// `Objective::Robust`: per-node L1 ambiguity radius over each draw.
+    radius: Option<&'a [f64]>,
 }
 
 impl Ctx<'_> {
@@ -126,7 +129,8 @@ impl Ctx<'_> {
         };
         // WAIT = let the world edges fire (act-or-wait nodes).
         let q_wait = (!p.wait.is_empty()).then(|| {
-            self.aggregate(
+            self.aggregate_at(
+                n,
                 &p.wait
                     .iter()
                     .map(|&(e, pr)| (pr, self.q(e, value)))
@@ -188,13 +192,16 @@ impl Ctx<'_> {
                     .map(|(q, _)| (p.choice_mass, q)),
             )
             .collect();
-        (self.aggregate(&terms), best.map(|(_, e)| e))
+        (self.aggregate_at(n, &terms), best.map(|(_, e)| e))
     }
 
-    /// Expectation, the CARA certainty equivalent, or the worst term, of
-    /// (probability, value) terms.
-    fn aggregate(&self, terms: &[(f64, f64)]) -> f64 {
-        aggregate(self.cara, self.worst, terms)
+    /// The risk objective over node `n`'s draw: the worst case over its L1
+    /// ambiguity set under `Objective::Robust`, else [`aggregate`].
+    fn aggregate_at(&self, n: NodeIx, terms: &[(f64, f64)]) -> f64 {
+        match self.radius {
+            Some(r) if r[n] > 0.0 => robust::worst_l1(terms, r[n]),
+            _ => aggregate(self.cara, self.worst, terms),
+        }
     }
 }
 
@@ -233,6 +240,7 @@ pub(crate) fn aggregate(cara: Option<f64>, worst: bool, terms: &[(f64, f64)]) ->
 fn solve_with(
     v: &View,
     cost: &[f64],
+    radius: Option<&[f64]>,
     opts: &SolveOptions,
 ) -> (Vec<f64>, BTreeMap<NodeIx, usize>, Vec<NodeIx>, usize) {
     let eps = if opts.epsilon > 0.0 {
@@ -254,6 +262,7 @@ fn solve_with(
         cost,
         cara,
         worst: v.sc.objective == Objective::Worst,
+        radius,
     };
     let n = v.g.nodes.len();
     let mut value = vec![0.0; n];
@@ -382,11 +391,22 @@ pub fn absorb_prob(v: &View, choice: &BTreeMap<NodeIx, usize>, target: &[f64]) -
 /// ```
 ///
 /// # Errors
-/// Propagates any error evaluating the fee-eligibility expression.
+/// Propagates any error evaluating the fee-eligibility expression, or an
+/// invalid `objective: robust` credibility/radius.
 pub fn solve(v: &View, opts: &SolveOptions) -> Result<Solution> {
     let base = v.cost.clone();
+    let radii = match v.sc.objective {
+        Objective::Robust {
+            credibility,
+            radius,
+            samples,
+            seed,
+        } => Some(robust::radii(v, credibility, radius, samples, seed)?),
+        _ => None,
+    };
+    let radius = radii.as_deref();
     let Some(fs) = v.sc.fee_shift.clone() else {
-        let (value, choice, unconverged, iterations) = solve_with(v, &base, opts);
+        let (value, choice, unconverged, iterations) = solve_with(v, &base, radius, opts);
         let q = q_values(v, &base, &value);
         return Ok(Solution {
             value,
@@ -424,7 +444,7 @@ pub fn solve(v: &View, opts: &SolveOptions) -> Result<Solution> {
     let mut rounds = 0;
     loop {
         rounds += 1;
-        let (value, choice, unconverged, iterations) = solve_with(v, &cost, opts);
+        let (value, choice, unconverged, iterations) = solve_with(v, &cost, radius, opts);
         let stable = prev.as_ref() == Some(&choice);
         if stable || rounds >= 25 {
             let q = q_values(v, &cost, &value);

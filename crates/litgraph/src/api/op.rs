@@ -29,6 +29,27 @@ pub enum StructureWhat {
     Reachability,
 }
 
+/// A study to price in `voi`: evidence worth `k` observations of a chance
+/// node's outcome (e.g. an expert report, a mock-trial panel, a survey of
+/// this judge's rulings), compared against what it costs.
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct StudySpec {
+    /// The chance node the study observes.
+    pub node: String,
+    /// How many observations it is worth.
+    pub k: u64,
+    /// Its price in the scenario's cost units (USD by default).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub cost: Option<f64>,
+    /// Or: the edge that buys it; its price is that edge's scenario cost metric.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub cost_edge: Option<String>,
+    /// Display name.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub label: Option<String>,
+}
+
 /// One operation. `from` overrides the scenario's start node.
 #[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq, JsonSchema)]
 #[serde(tag = "op", rename_all = "snake_case", deny_unknown_fields)]
@@ -209,6 +230,50 @@ pub enum Op {
         #[serde(default = "n::<300>")]
         max_candidates: usize,
     },
+    /// Monte Carlo over the Dirichlet posterior of every chance node: a
+    /// credible interval on the case value and on each option's Q at a
+    /// decision node, and the probability each option is optimal.
+    Posterior {
+        /// Start override.
+        #[serde(default)]
+        from: Option<String>,
+        /// Decision node whose options to report (default: start).
+        #[serde(default)]
+        node: Option<String>,
+        /// Posterior draws (each a full solve).
+        #[serde(default = "n::<200>")]
+        samples: usize,
+        /// RNG seed.
+        #[serde(default = "seed")]
+        seed: u64,
+        /// Central credible-interval mass.
+        #[serde(default = "f_credibility")]
+        credibility: f64,
+    },
+    /// Value of information: EVPI of each chance node's outcome and
+    /// probabilities, EVPI of everything at once, and EVSI of priced
+    /// studies — ranked, and compared against each study's cost.
+    Voi {
+        /// Start override.
+        #[serde(default)]
+        from: Option<String>,
+        /// Draws per Monte Carlo estimate.
+        #[serde(default = "n::<200>")]
+        samples: usize,
+        /// RNG seed.
+        #[serde(default = "seed")]
+        seed: u64,
+        /// Rows (ranked by outcome EVPI) that also get the Monte Carlo
+        /// parameter EVPPI.
+        #[serde(default = "n::<10>")]
+        top: usize,
+        /// Cap on uncertain nodes screened (bounds cost on a large selection).
+        #[serde(default = "n::<200>")]
+        max_nodes: usize,
+        /// Studies to price (EVSI vs cost).
+        #[serde(default)]
+        studies: Vec<StudySpec>,
+    },
     /// Structural analyses.
     Structure {
         /// Start override.
@@ -293,6 +358,8 @@ impl Op {
             Op::Sweep { .. } => "sweep",
             Op::Tornado { .. } => "tornado",
             Op::Calibration { .. } => "calibration",
+            Op::Posterior { .. } => "posterior",
+            Op::Voi { .. } => "voi",
             Op::Structure { .. } => "structure",
             Op::Deadlines { .. } => "deadlines",
             Op::Compare { .. } => "compare",

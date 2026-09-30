@@ -272,6 +272,9 @@ authored payoffs) is exactly the kind of contribution described in
 - [docs/CRITIQUE.md](docs/CRITIQUE.md) — what was wrong with the original
   (v1) engine, the bugs found and fixed, what's still a known modeling
   limit.
+- [docs/UNCERTAINTY.md](docs/UNCERTAINTY.md) — probabilities as Dirichlet
+  beliefs: Bayesian updates from observed outcomes, the robust solve,
+  posterior credible intervals, and value of information (EVPI/EVSI).
 - [CONTRIBUTING.md](CONTRIBUTING.md) — dev setup, quality gates, and the
   pack-authoring guide (every cite traceable to a source, "unauthored beats
   invented").
