@@ -1,0 +1,124 @@
+{
+  "name": "diamond-k-shortest-paths",
+  "what": "Four nodes, five edges, three routes from s to t; k-shortest by dollars (fees only, no hours) ranks all three.",
+  "arithmetic": [
+    "s-a-b-t = 10 + 5 + 20 = 35",
+    "s-b-t   = 30 + 20     = 50",
+    "s-a-t   = 10 + 50     = 60",
+    "so k = 3 returns them in that order"
+  ],
+  "pack": {
+    "schemaVersion": 2,
+    "id": "diamond",
+    "title": "Diamond",
+    "startNodeId": "s",
+    "roles": {
+      "applicant": "self"
+    },
+    "nodes": [
+      {
+        "id": "s",
+        "kind": "state",
+        "label": "s"
+      },
+      {
+        "id": "a",
+        "kind": "state",
+        "label": "a"
+      },
+      {
+        "id": "b",
+        "kind": "state",
+        "label": "b"
+      },
+      {
+        "id": "t",
+        "kind": "terminal",
+        "label": "t",
+        "payoff": 0,
+        "outcome": [
+          "final"
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "s-a",
+        "from": "s",
+        "to": "a",
+        "label": "s-a",
+        "actor": "applicant",
+        "cost": 10
+      },
+      {
+        "id": "s-b",
+        "from": "s",
+        "to": "b",
+        "label": "s-b",
+        "actor": "applicant",
+        "cost": 30
+      },
+      {
+        "id": "a-t",
+        "from": "a",
+        "to": "t",
+        "label": "a-t",
+        "actor": "applicant",
+        "cost": 50
+      },
+      {
+        "id": "b-t",
+        "from": "b",
+        "to": "t",
+        "label": "b-t",
+        "actor": "applicant",
+        "cost": 20
+      },
+      {
+        "id": "a-b",
+        "from": "a",
+        "to": "b",
+        "label": "a-b",
+        "actor": "applicant",
+        "cost": 5
+      }
+    ]
+  },
+  "op": {
+    "op": "path",
+    "to": "t",
+    "k": 3
+  },
+  "expect": {
+    "paths": [
+      {
+        "totals": {
+          "dollars": 35.0
+        },
+        "edges": [
+          "diamond::s-a",
+          "diamond::a-b",
+          "diamond::b-t"
+        ]
+      },
+      {
+        "totals": {
+          "dollars": 50.0
+        },
+        "edges": [
+          "diamond::s-b",
+          "diamond::b-t"
+        ]
+      },
+      {
+        "totals": {
+          "dollars": 60.0
+        },
+        "edges": [
+          "diamond::s-a",
+          "diamond::a-t"
+        ]
+      }
+    ]
+  }
+}

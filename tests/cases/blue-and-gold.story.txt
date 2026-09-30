@@ -1,0 +1,134 @@
+Blue & Gold Fleet, L.P. v. United States, 492 F.3d 1308 (Fed. Cir. 2007)
+The bid-protest waiver rule: a protester who does not object to a patent error in a solicitation before bids close waives the objection. A Court of Federal Claims protest, denied on the administrative record, affirmed by the Federal Circuit, with no certiorari. Exercises the CoFC bid-protest track, the cafc@cofc instance and its 45-day U.S.-party rehearing window, and cert-not-sought resolving through the panel-affirmed flag.
+packs: cofc, cafc (links on)
+
+leg 1: The National Park Service selects Hornblower for the Alcatraz ferry concession (2005-09-26). Blue & Gold protests to GAO (2005-10-06), then sues.
+  start  cofc::claim-accrues "Claim Against the United States Accrues"
+    1. [-] Not a § 1498 patent claim
+       via cofc::e-accrual-to-patentfork (nature, 28 U.S.C. § 2501; 28 U.S.C. § 1498(a))
+       at  cofc::patent-claim-fork "Is This a §1498(a) Patent/Copyright Use Claim?"
+    2. [-] Proceed to the limitations check
+       via cofc::e-patentfork-nonpatent (nature)
+       at  cofc::limitations-check "Is the Petition Filed Within 6 Years of Accrual?"
+    3. [-] Suit is timely (weeks after the award)
+       via cofc::e-limitations-timely (nature, 28 U.S.C. § 2501)
+       at  cofc::section-1500-check "Is the Same Claim Currently Pending in Any Other Court?"
+    4. [-] No suit on the same claim pending in another court (the GAO protest is not a court)
+       via cofc::e-1500-clear (nature, 28 U.S.C. § 1500)
+       at  cofc::filing-track-fork "Standard Complaint or Procurement-Protest Complaint?"
+    5. [-] Blue & Gold elects the § 1491(b) bid-protest track
+       via cofc::e-filingfork-protest (self, 28 U.S.C. §1491(b); RCFC Appendix C ¶2)
+       at  cofc::bid-protest-prefiling-notice "Pre-Filing Notice to DOJ, Clerk, Contracting Officer & Awardee"
+    6. [2005-11-15] Protest complaint filed (No. 05-1203C); GAO then dismisses its protest (the pre-filing notice is not in the sources read)
+       via cofc::e-protest-notice-to-complaint (self, RCFC Appendix C ¶2; RCFC 3, within 5 calendar days)
+       at  cofc::bid-protest-complaint-filed "Protest Complaint Filed (Possibly Under Seal)"
+    7. [-] Initial status conference (route assumed)
+       via cofc::e-protest-complaint-to-conference (nature, RCFC Appendix C ¶8)
+       at  cofc::bid-protest-initial-status-conference "Initial Status Conference"
+    8. [-] Interim relief?
+       via cofc::e-protest-conference-to-pi-fork (nature)
+       at  cofc::bid-protest-injunctive-relief-fork "Temporary Restraining Order / Preliminary Injunction Sought?"
+    9. [-] No separate TRO or preliminary-injunction motion in the sources read (the complaint sought a permanent injunction)
+       via cofc::e-protest-no-pi (self)
+       at  cofc::bid-protest-merits-briefing "Administrative-Record Briefing (Cross-Motions for Judgment on the AR)"
+   10. [-] Cross-motions for judgment on the administrative record
+       via cofc::e-protest-briefing-to-ruling (self, RCFC 52.1)
+       at  cofc::bid-protest-merits-ruling "Court Rules on the Protest"
+   11. [2006-03-22] Judge Miller grants the government's and Hornblower's motions: the selection was rational, and the Service Contract Act objection came too late
+       via cofc::e-protest-denied (nature)
+       at  cofc::protest-denied "PROTEST DENIED"
+   12. [-] Blue & Gold appeals
+       via links::cofc-appeal-protest-denied (self, cross-forum link, 28 U.S.C. §§ 1295(a)(3), 2522)
+       at  cafc@cofc::entry-cofc "Court of Federal Claims Judgment Entered"
+   13. [-] Notice of appeal (No. 2006-5064)
+       via cafc@cofc::cofc-file-noa (self, 28 U.S.C. § 2522; 28 U.S.C. § 1295(a)(3); FRAP 4(a)(1)(B), within 60 calendar days)
+       at  cafc@cofc::notice-of-appeal-filed "Notice of Appeal Filed (Convergence)"
+   14. [-] Appeal docketed
+       via cafc@cofc::noa-to-docketed (nature, FRAP 12(a))
+       at  cafc@cofc::docketed "Appeal Docketed at the Federal Circuit"
+   15. [-] Entries of appearance and certificates of interest
+       via cafc@cofc::docketed-to-appearance (self, Fed. Cir. R. 47.3(b)(1); Fed. Cir. R. 47.4(b), within 14 calendar days)
+       at  cafc@cofc::appearance-and-coi-filed "Entry of Appearance & Certificate of Interest Filed"
+   16. [-] Docketing statements
+       via cafc@cofc::appearance-to-docketing-statement (self, Fed. Cir. R. 47.6, within 14 calendar days)
+       at  cafc@cofc::docketing-statement-filed "Docketing Statement Filed"
+   17. [-] Screening for mediation
+       via cafc@cofc::docketing-statement-to-screening (nature, Appellate Mediation Program Guidelines §§ 2-3)
+       at  cafc@cofc::mediation-screening "OGC Screens for the Mediation Program"
+   18. [-] Not mediated (route assumed)
+       via cafc@cofc::screening-to-motions (nature, Appellate Mediation Program Guidelines §§ 2, 7)
+       at  cafc@cofc::motions-fork "Move to Stay Judgment Pending Appeal?"
+   19. [-] No stay motion (route assumed)
+       via cafc@cofc::motions-decline (self, FRAP 8(a))
+       at  cafc@cofc::cross-appeal-fork "Appellee Considers a Cross-Appeal"
+   20. [-] No cross-appeal (the government won below)
+       via cafc@cofc::cross-appeal-decline (self, FRAP 4(a)(3))
+       at  cafc@cofc::no-cross-appeal "No Cross-Appeal — Judgment Defended Only"
+   21. [-] Briefing opens
+       via cafc@cofc::no-cross-appeal-to-briefing (nature, Fed. Cir. R. 31(a)(1))
+       at  cafc@cofc::appellant-brief-window "Appellant's Principal Brief Due"
+   22. [-] Blue & Gold's opening brief
+       via cafc@cofc::appellant-brief-file (self, Fed. Cir. R. 31(a)(1)(A)-(B), within 60 calendar days)
+       at  cafc@cofc::appellant-brief-filed "Opening Brief Filed"
+   23. [-] The government's and Hornblower's responses
+       via cafc@cofc::appellee-brief-file (opponent, Fed. Cir. R. 31(a)(2), within 40 calendar days)
+       at  cafc@cofc::appellee-brief-filed "Appellee's Principal/Response Brief Filed"
+   24. [-] Reply (route assumed)
+       via cafc@cofc::reply-brief-file (self, FRAP 31(a)(1), within 21 calendar days)
+       at  cafc@cofc::reply-brief-filed "Appellant's Reply Brief Filed"
+   25. [-] Briefing closes
+       via cafc@cofc::reply-brief-closes (nature, Fed. Cir. R. 31)
+       at  cafc@cofc::briefing-complete "Briefing Closed"
+   26. [-] Joint appendix filed
+       via cafc@cofc::briefing-to-appendix (self, Fed. Cir. R. 30(a)(2), within 7 calendar days)
+       at  cafc@cofc::joint-appendix-filed "Joint Appendix Served and Filed"
+   27. [-] Calendared
+       via cafc@cofc::appendix-to-argument-fork (nature, FRAP 34(a); Fed. Cir. IOP #7)
+       at  cafc@cofc::oral-argument-fork "Oral Argument or Submission Without Argument?"
+   28. [-] Argued (date not found; route assumed)
+       via cafc@cofc::argument-granted (nature, FRAP 34(a)(1); Fed. Cir. IOP #7)
+       at  cafc@cofc::oral-argument-held "Oral Argument Held"
+   29. [-] Panel confers
+       via cafc@cofc::argument-held-to-decision (nature, Fed. Cir. IOP #8)
+       at  cafc@cofc::panel-decision "Panel Decides the Appeal"
+   30. [2007-06-26] Affirmed (Gajarsa, J.), adopting the waiver rule as a question of first impression
+       via cafc@cofc::panel-to-affirmed (nature, FRAP 36(a))
+       at  cafc@cofc::affirmed "Affirmed (With Opinion)" {panel-affirmed}
+   31. [-] Blue & Gold weighs rehearing
+       via cafc@cofc::affirmed-to-rehearing (self, Fed. Cir. R. 40(a)(1))
+       at  cafc@cofc::rehearing-window "Losing Party Weighs Rehearing" {panel-affirmed}
+   32. [-] No rehearing petition found (route assumed)
+       via cafc@cofc::rehearing-time-expires (self, FRAP 41(b); Fed. Cir. R. 41, within 45 calendar days)
+       at  cafc@cofc::mandate-issued "Mandate Issues" {panel-affirmed}
+   33. [-] Bill of costs (route assumed; the pack requires it)
+       via cafc@cofc::mandate-to-costs (nature, FRAP 39(e)(3)(A); Fed. Cir. R. 39(b), within 14 calendar days)
+       at  cafc@cofc::costs-bill-filed "Bill of Costs Filed and Taxed" {panel-affirmed}
+   34. [-] The certiorari window runs
+       via cafc@cofc::costs-to-cert-window (nature, FRAP 39(e)(3)(C); Sup. Ct. R. 13.3)
+       at  cafc@cofc::cert-petition-window "Certiorari Petition Window" {panel-affirmed}
+   35. [-] No certiorari petition found (route assumed)
+       via cafc@cofc::cert-window-lapse (self, Sup. Ct. R. 13.1)
+       at  cafc@cofc::cert-not-sought "FINAL — Certiorari Not Sought" {panel-affirmed}
+
+outcome: cafc@cofc::cert-not-sought
+  tags:  [final]
+  flags: {panel-affirmed}
+  real:  Affirmed; no certiorari petition was found. Hornblower keeps the concession.
+
+deadlines (by rule, from the `deadlines` op):
+  cafc@cofc::cofc-file-noa
+    60 days under Fed. R. App. P. 26: 2006-03-22 (the Court of Federal Claims' decision (judgment was directed the same day)) -> due 2006-05-22
+    arithmetic: 28 U.S.C. § 2522: 60 days. Mar 22 + 9 = Mar 31; + 30 = Apr 30 (39); + 21 = May 21 (60), a Sunday; rolls to Monday May 22.
+    historical: Notice-of-appeal date not found; the appeal is No. 2006-5064.
+  cafc@cofc::rehearing-time-expires
+    45 days under Fed. R. App. P. 26: 2007-06-26 (the Federal Circuit's judgment) -> due 2007-08-10
+    arithmetic: Fed. Cir. R. 40(a)(1): 45 days because the United States is a party (links.json patches cafc@cofc). Jun 26 + 4 = Jun 30; + 31 = Jul 31 (35); + 10 = Aug 10 (45), a Friday.
+    historical: No rehearing petition was found.
+
+where the pack's shape differs from the record:
+  - The CoFC pack runs every claim, bid protests included, through the § 2501 limitations and § 1500 pending-claim checks before the filing-track fork; neither is really at issue in a protest.
+  - The CoFC pack requires the RCFC Appendix C pre-filing notice before a protest complaint; the sources read don't mention one, so that step is shown as part of the filing.
+
+sources:
+  [cfc] Blue & Gold Fleet, L.P. v. United States, 70 Fed. Cl. 487 (2006) <https://static.case.law/fed-cl/70/cases/0487-01.json>
+  [cafc] Blue & Gold Fleet, L.P. v. United States, 492 F.3d 1308 (Fed. Cir. 2007) <https://static.case.law/f3d/492/cases/1308-01.json>

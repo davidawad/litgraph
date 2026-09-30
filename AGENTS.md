@@ -109,6 +109,8 @@ sources/               vendored L0 primary-law text (see sources/PROVENANCE.md)
 calibration/           calibration/*.json overlay sets (real, sourced probabilities/durations)
 docs/                  ARCHITECTURE, PACK_SCHEMA, COST_FUNCTIONS, CRITIQUE, CALIBRATION
 tests/fixtures/ts-parity/   golden outputs from the original TS engine
+tests/cases/           famous cases replayed through the packs (+ story snapshots)
+tests/golden/          hand-checked 2-6 node graphs; tests/README.md explains the layers
 ```
 
 Issue tracking: [GitHub Issues](https://github.com/davidawad/litgraph/issues)

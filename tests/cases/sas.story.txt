@@ -1,0 +1,197 @@
+SAS Institute Inc. v. Iancu, 584 U.S. 357 (2018)
+The end of partial institution. The Board institutes SAS's IPR on only some challenged claims and issues a mixed final written decision; the Federal Circuit affirms in part and vacates in part; SAS wins certiorari and the Court holds the Board must decide every challenged claim. Exercises the fwd-mixed and panel-mixed paths and a CAFC cross-appeal.
+packs: ptab-patent-trial-appeal-board, cafc (links on)
+
+leg 1: ComplementSoft owns U.S. Patent No. 7,110,936 (16 claims).
+  start  ptab-patent-trial-appeal-board::patent-granted "Patent Granted"
+    1. [2012-09-14] ComplementSoft sues SAS in the N.D. Ill.
+       via ptab-patent-trial-appeal-board::patent-granted->infringement-complaint-served#0 (nature, 35 U.S.C. § 315(b))
+       at  ptab-patent-trial-appeal-board::infringement-complaint-served "Infringement Complaint Served"
+    2. [2013-03-29] SAS petitions for IPR2013-00226 against all 16 claims
+       via ptab-patent-trial-appeal-board::infringement-complaint-served->ipr-petition-filed#0 (self, 35 U.S.C. § 311; 35 U.S.C. § 315(b), within 365 calendar days)
+       at  ptab-patent-trial-appeal-board::ipr-petition-filed "IPR Petition Filed"
+    3. [-] Office reviews the petition
+       via ptab-patent-trial-appeal-board::ipr-petition-filed->petition-threshold-review#0 (nature, 37 CFR §42.104(c); 37 CFR §42.106(a))
+       at  ptab-patent-trial-appeal-board::petition-threshold-review "Office Reviews Petition Compliance"
+    4. [-] Filing date accorded
+       via ptab-patent-trial-appeal-board::petition-threshold-review->petition-filing-date-accorded#0 (nature, 37 CFR §42.106(a); 37 CFR §42.206(a))
+       at  ptab-patent-trial-appeal-board::petition-filing-date-accorded "Filing Date Accorded"
+    5. [-] Preliminary-response window
+       via ptab-patent-trial-appeal-board::petition-filing-date-accorded->popr-window#0 (nature, 37 CFR §42.107(b); 37 CFR §42.207(b))
+       at  ptab-patent-trial-appeal-board::popr-window "POPR Window Open"
+    6. [-] Preliminary response (not in the sources read; route assumed)
+       via ptab-patent-trial-appeal-board::popr-window->popr-filed#0 (nature, 37 CFR 42.107(a), (b), within 90 calendar days)
+       at  ptab-patent-trial-appeal-board::popr-filed "POPR Filed"
+    7. [-] The Board decides institution
+       via ptab-patent-trial-appeal-board::popr-filed->institution-decision#0 (nature, 35 U.S.C. 314(b), 37 CFR 42.108, within 90 calendar days)
+       at  ptab-patent-trial-appeal-board::institution-decision "Institution Decision"
+    8. [-] Board institutes on claims 1 and 3-10 only, denying review of claims 2 and 11-16
+       via ptab-patent-trial-appeal-board::institution-decision->institution-granted#0 (nature, 35 U.S.C. 314(a); SAS Institute Inc. v. Iancu, 138 S. Ct. 1386 (2018); 37 CFR 42.120)
+       at  ptab-patent-trial-appeal-board::institution-granted "Trial Instituted"
+    9. [-] Scheduling order
+       via ptab-patent-trial-appeal-board::institution-granted->scheduling-order-issued#0 (nature, 37 CFR 42.5(a); PTAB Standing Order on Motions, within 30 calendar days)
+       at  ptab-patent-trial-appeal-board::scheduling-order-issued "Scheduling Order Issued"
+   10. [-] Mandatory disclosures
+       via ptab-patent-trial-appeal-board::scheduling-order-issued->mandatory-disclosures#0 (nature, 37 CFR 42.51(a))
+       at  ptab-patent-trial-appeal-board::mandatory-disclosures "Mandatory Initial Disclosures Exchanged"
+   11. [-] Patent owner response window opens
+       via ptab-patent-trial-appeal-board::mandatory-disclosures->patent-owner-response-window#0 (nature, 37 CFR 42.120(b), within 90 calendar days)
+       at  ptab-patent-trial-appeal-board::patent-owner-response-window "Patent Owner Response Window"
+   12. [-] Patent owner response (route assumed)
+       via ptab-patent-trial-appeal-board::patent-owner-response-window->patent-owner-response-filed#0 (nature, 37 CFR 42.120, within 90 calendar days)
+       at  ptab-patent-trial-appeal-board::patent-owner-response-filed "Patent Owner Response Filed"
+   13. [-] Petitioner reply (route assumed)
+       via ptab-patent-trial-appeal-board::patent-owner-response-filed->petitioner-reply-brief#0 (self, 37 CFR 42.23(a), within 60 calendar days)
+       at  ptab-patent-trial-appeal-board::petitioner-reply-brief "Petitioner Reply Filed"
+   14. [-] Sur-reply: forced by the pack (see quirks)
+       via ptab-patent-trial-appeal-board::petitioner-reply-brief->patent-owner-sur-reply#0 (nature, 37 CFR 42.23(b), within 30 calendar days)
+       at  ptab-patent-trial-appeal-board::patent-owner-sur-reply "Patent Owner Sur-Reply Filed"
+   15. [-] ComplementSoft weighs amending
+       via ptab-patent-trial-appeal-board::patent-owner-sur-reply->motion-to-amend-decision#0 (nature, 35 U.S.C. 316(d); 37 CFR 42.121)
+       at  ptab-patent-trial-appeal-board::motion-to-amend-decision "Motion to Amend Decision Point"
+   16. [-] ComplementSoft moves to amend (the FWD denies the motion)
+       via ptab-patent-trial-appeal-board::motion-to-amend-decision->mta-filed#0 (nature, 35 U.S.C. 316(d); 37 CFR 42.121)
+       at  ptab-patent-trial-appeal-board::mta-filed "Contingent Motion to Amend Filed"
+   17. [-] Preliminary guidance: forced by the pack (see quirks)
+       via ptab-patent-trial-appeal-board::mta-filed->mta-preliminary-guidance#0 (nature, MTA Pilot Program, 84 Fed. Reg. 9497 (Mar. 15, 2019))
+       at  ptab-patent-trial-appeal-board::mta-preliminary-guidance "Board Issues Preliminary Guidance"
+   18. [-] SAS opposes the amendment
+       via ptab-patent-trial-appeal-board::mta-preliminary-guidance->petitioner-opposition-mta#0 (nature, 37 CFR 42.121(c))
+       at  ptab-patent-trial-appeal-board::petitioner-opposition-mta "Petitioner Opposes Motion to Amend"
+   19. [-] Briefing closes
+       via ptab-patent-trial-appeal-board::petitioner-opposition-mta->oral-hearing-request#0 (nature, 37 CFR 42.70)
+       at  ptab-patent-trial-appeal-board::oral-hearing-request "Oral Hearing Requested"
+   20. [-] Oral hearing (not in the sources read; route assumed)
+       via ptab-patent-trial-appeal-board::oral-hearing-request->oral-hearing-held#0 (nature, 37 CFR 42.70(a), (b))
+       at  ptab-patent-trial-appeal-board::oral-hearing-held "Oral Hearing Held"
+   21. [-] Case submitted
+       via ptab-patent-trial-appeal-board::oral-hearing-held->fwd-issued#0 (nature, 37 CFR 42.70(b))
+       at  ptab-patent-trial-appeal-board::fwd-issued "Board Issues Final Written Decision"
+   22. [2014-08-06] Final written decision (Paper 38): claims 1, 3 and 5-10 unpatentable; claim 4 not shown unpatentable; motion to amend denied
+       via ptab-patent-trial-appeal-board::fwd-issued->fwd-mixed#0 (nature, 35 U.S.C. § 318(a))
+       at  ptab-patent-trial-appeal-board::fwd-mixed "FWD: Mixed Result" {ipr-estopped}
+   23. [-] Both sides weigh post-decision relief
+       via ptab-patent-trial-appeal-board::fwd-mixed->post-fwd-options#0 (nature, 37 CFR § 42.71(d))
+       at  ptab-patent-trial-appeal-board::post-fwd-options "Post-FWD Options" {ipr-estopped}
+   24. [-] Straight to appeal (route assumed)
+       via ptab-patent-trial-appeal-board::post-fwd-options->federal-circuit-window#0 (nature, 35 U.S.C. § 319)
+       at  ptab-patent-trial-appeal-board::federal-circuit-window "Federal Circuit Appeal Window" {ipr-estopped}
+   25. [-] Appeal to the Federal Circuit
+       via links::ptab-appeal-to-cafc (nature, cross-forum link, 35 U.S.C. §§ 141(c), 319; 37 C.F.R. § 90.3)
+       at  cafc@ptab::entry-ptab "PTAB Final Written Decision (or Operative Post-FWD Decision)" {ipr-estopped}
+   26. [-] Notice of appeal (No. 2015-1346)
+       via cafc@ptab::ptab-file-noa (self, 37 C.F.R. § 90.3(a); 35 U.S.C. § 142, within 63 calendar days)
+       at  cafc@ptab::notice-of-appeal-filed "Notice of Appeal Filed (Convergence)" {ipr-estopped}
+   27. [-] Appeal docketed
+       via cafc@ptab::noa-to-docketed (nature, FRAP 12(a))
+       at  cafc@ptab::docketed "Appeal Docketed at the Federal Circuit" {ipr-estopped}
+   28. [-] Entries of appearance and certificates of interest
+       via cafc@ptab::docketed-to-appearance (self, Fed. Cir. R. 47.3(b)(1); Fed. Cir. R. 47.4(b), within 14 calendar days)
+       at  cafc@ptab::appearance-and-coi-filed "Entry of Appearance & Certificate of Interest Filed" {ipr-estopped}
+   29. [-] Docketing statements
+       via cafc@ptab::appearance-to-docketing-statement (self, Fed. Cir. R. 47.6, within 14 calendar days)
+       at  cafc@ptab::docketing-statement-filed "Docketing Statement Filed" {ipr-estopped}
+   30. [-] Screening for mediation
+       via cafc@ptab::docketing-statement-to-screening (nature, Appellate Mediation Program Guidelines §§ 2-3)
+       at  cafc@ptab::mediation-screening "OGC Screens for the Mediation Program" {ipr-estopped}
+   31. [-] Not mediated (route assumed)
+       via cafc@ptab::screening-to-motions (nature, Appellate Mediation Program Guidelines §§ 2, 7)
+       at  cafc@ptab::motions-fork "Move to Stay Judgment Pending Appeal?" {ipr-estopped}
+   32. [-] No stay motion (route assumed)
+       via cafc@ptab::motions-decline (self, FRAP 8(a))
+       at  cafc@ptab::cross-appeal-fork "Appellee Considers a Cross-Appeal" {ipr-estopped}
+   33. [-] Cross-appeal (No. 2015-1347)
+       via cafc@ptab::cross-appeal-file (self, FRAP 4(a)(3); Fed. Cir. R. 28.1, within 14 calendar days)
+       at  cafc@ptab::cross-appeal-filed "Notice of Cross-Appeal Filed" {ipr-estopped}
+   34. [-] Cross-appeals docketed together
+       via cafc@ptab::cross-appeal-filed-to-briefing (nature, Fed. Cir. R. 28.1; Fed. Cir. R. 31(a)(1)(D))
+       at  cafc@ptab::appellant-brief-window "Appellant's Principal Brief Due" {ipr-estopped}
+   35. [-] Opening brief
+       via cafc@ptab::appellant-brief-file (self, Fed. Cir. R. 31(a)(1)(A)-(B), within 60 calendar days)
+       at  cafc@ptab::appellant-brief-filed "Opening Brief Filed" {ipr-estopped}
+   36. [-] Response and cross-appeal brief
+       via cafc@ptab::appellee-brief-file (opponent, Fed. Cir. R. 31(a)(2), within 40 calendar days)
+       at  cafc@ptab::appellee-brief-filed "Appellee's Principal/Response Brief Filed" {ipr-estopped}
+   37. [-] Reply (route assumed)
+       via cafc@ptab::reply-brief-file (self, FRAP 31(a)(1), within 21 calendar days)
+       at  cafc@ptab::reply-brief-filed "Appellant's Reply Brief Filed" {ipr-estopped}
+   38. [-] Briefing closes
+       via cafc@ptab::reply-brief-closes (nature, Fed. Cir. R. 31)
+       at  cafc@ptab::briefing-complete "Briefing Closed" {ipr-estopped}
+   39. [-] Joint appendix filed
+       via cafc@ptab::briefing-to-appendix (self, Fed. Cir. R. 30(a)(2), within 7 calendar days)
+       at  cafc@ptab::joint-appendix-filed "Joint Appendix Served and Filed" {ipr-estopped}
+   40. [-] Calendared
+       via cafc@ptab::appendix-to-argument-fork (nature, FRAP 34(a); Fed. Cir. IOP #7)
+       at  cafc@ptab::oral-argument-fork "Oral Argument or Submission Without Argument?" {ipr-estopped}
+   41. [-] Argued before Newman, Chen and Stoll, JJ. (argument date not found; route assumed)
+       via cafc@ptab::argument-granted (nature, FRAP 34(a)(1); Fed. Cir. IOP #7)
+       at  cafc@ptab::oral-argument-held "Oral Argument Held" {ipr-estopped}
+   42. [-] Panel confers
+       via cafc@ptab::argument-held-to-decision (nature, Fed. Cir. IOP #8)
+       at  cafc@ptab::panel-decision "Panel Decides the Appeal" {ipr-estopped}
+   43. [2016-06-10] Affirmed in part; the claim 4 ruling vacated (the Board changed its construction without notice) and remanded
+       via cafc@ptab::panel-to-mixed (nature, FRAP 36(a))
+       at  cafc@ptab::affirmed-in-part-reversed-in-part "Affirmed in Part, Reversed in Part" {ipr-estopped,panel-mixed}
+   44. [-] SAS weighs rehearing
+       via cafc@ptab::mixed-to-rehearing (self, Fed. Cir. R. 40(a)(1))
+       at  cafc@ptab::rehearing-window "Losing Party Weighs Rehearing" {ipr-estopped,panel-mixed}
+   45. [-] SAS petitions for rehearing en banc on partial institution
+       via cafc@ptab::rehearing-file (self, Fed. Cir. R. 40(a)-(b), (f), within 30 calendar days)
+       at  cafc@ptab::rehearing-petition-filed "Petition for Panel Rehearing / Rehearing En Banc / Combined Petition Filed" {ipr-estopped,panel-mixed}
+   46. [-] The full court considers the petition
+       via cafc@ptab::rehearing-panel-considers (nature, Fed. Cir. R. 40(a)(1)-(4))
+       at  cafc@ptab::panel-en-banc-rehearing-decision "Panel (and, if Combined, the Full Court) Rules on the Petition" {ipr-estopped,panel-mixed}
+   47. [2016-11-07] Rehearing en banc denied, 842 F.3d 1223 (Newman, J., dissenting)
+       via cafc@ptab::rehearing-denied-edge (nature, Fed. Cir. R. 40(a)(1))
+       at  cafc@ptab::rehearing-denied "Rehearing Denied — Panel Decision Stands" {ipr-estopped,panel-mixed}
+   48. [-] Mandate clock resumes
+       via cafc@ptab::rehearing-denied-to-mandate (nature, FRAP 41(b); Fed. Cir. R. 41, within 7 calendar days)
+       at  cafc@ptab::mandate-issued "Mandate Issues" {ipr-estopped,panel-mixed}
+   49. [-] Bill of costs (route assumed; the pack requires it)
+       via cafc@ptab::mandate-to-costs (nature, FRAP 39(e)(3)(A); Fed. Cir. R. 39(b), within 14 calendar days)
+       at  cafc@ptab::costs-bill-filed "Bill of Costs Filed and Taxed" {ipr-estopped,panel-mixed}
+   50. [-] The certiorari window runs
+       via cafc@ptab::costs-to-cert-window (nature, FRAP 39(e)(3)(C); Sup. Ct. R. 13.3)
+       at  cafc@ptab::cert-petition-window "Certiorari Petition Window" {ipr-estopped,panel-mixed}
+   51. [2017-01-31] SAS petitions for certiorari (No. 16-969)
+       via cafc@ptab::cert-window-file (self, 28 U.S.C. § 2101(c); Sup. Ct. R. 13.1, 13.3, within 90 calendar days)
+       at  cafc@ptab::cert-petition-filed "Petition for Certiorari Filed" {ipr-estopped,panel-mixed}
+   52. [-] The Court considers the petition
+       via cafc@ptab::cert-filed-to-review (nature, Sup. Ct. R. 10)
+       at  cafc@ptab::cert-review-decision "Supreme Court Grants or Denies Certiorari" {ipr-estopped,panel-mixed}
+   53. [2017-05-22] Certiorari granted
+       via cafc@ptab::cert-review-grant (nature, 28 U.S.C. § 1254(1); Sup. Ct. R. 10)
+       at  cafc@ptab::cert-granted "CERT GRANTED — Case Transfers to the Supreme Court" {ipr-estopped,panel-mixed}
+  GAP: Supreme Court reverses and remands (argued 2017-11-27, decided 2018-04-24, 5-4): once it institutes, the Board must decide the patentability of every challenged claim
+       missing cafc@ptab::cert-granted -> (beyond every pack)
+       No pack models Supreme Court merits review; cert-granted is terminal.
+
+outcome: cafc@ptab::cert-granted
+  tags:  [remand]
+  flags: {ipr-estopped,panel-mixed}
+  real:  Reversed and remanded, 584 U.S. 357 (April 24, 2018).
+
+deadlines (by rule, from the `deadlines` op):
+  cafc@ptab::ptab-file-noa
+    63 days under Fed. R. App. P. 26: 2014-08-06 (the final written decision) -> due 2014-10-08
+    arithmetic: 37 C.F.R. § 90.3(a): 63 days. Aug 6 + 25 = Aug 31; + 30 = Sep 30 (55); + 8 = Oct 8 (63), a Wednesday.
+    historical: Notice-of-appeal dates not found; the appeals are Nos. 2015-1346 and -1347.
+  cafc@ptab::cert-window-file
+    90 days under Fed. R. App. P. 26: 2016-11-07 (denial of rehearing en banc (Sup. Ct. R. 13.3)) -> due 2017-02-06
+    arithmetic: Sup. Ct. R. 13.1: 90 days. Nov 7 + 23 = Nov 30; + 31 = Dec 31 (54); + 31 = Jan 31 (85); + 5 = Feb 5 (90), a Sunday, so it rolls to Monday Feb 6.
+    historical: Petition filed 2017-01-31, within the window.
+
+where the pack's shape differs from the record:
+  - The PTAB pack's only institution edge is 'Institute trial on all challenged claims', which is the rule SAS itself created. The partial institution that was the whole dispute cannot be expressed, so the walk takes the all-claims edge. Harmless going forward (SAS abolished partial institution) but a pre-2018 history can't be told faithfully.
+  - The PTAB pack forces a patent-owner sur-reply and Board preliminary guidance on the motion to amend; neither existed in 2013-14.
+  - The CAFC pack's panel-to-mixed has no remand branch; the real judgment vacated and remanded the claim 4 ruling.
+  - The CAFC pack tags cert-granted with outcome 'remand'.
+
+sources:
+  [natl-argument] SAS v. Matal: overview of oral argument (Nat'l L. Rev.) — district suit and petition dates <https://natlawreview.com/article/sas-v-matal-overview-oral-argument>
+  [fwd] SAS Institute v. ComplementSoft, IPR2013-00226, final written decision summary (Nat'l L. Rev.) <https://natlawreview.com/article/sas-institute-inc-v-complementsoft-llc-final-written-decision-ipr2013-00226>
+  [wiley] Federal Circuit Patent Bulletin: SAS Institute Inc. v. ComplementSoft, LLC, 825 F.3d 1341 (Fed. Cir. 2016) <https://www.wiley.law/newsroom-articles-Federal-Circuit-Patent-Bulletin-SAS-Institute-Inc-v-ComplementSoft-LLC.html>
+  [cafc-order] SAS Institute v. ComplementSoft, Nos. 2015-1346, -1347, order denying rehearing en banc <https://www.cafc.uscourts.gov/opinions-orders/15-1346.order.11-3-2016.1.pdf>
+  [scotus-docket] Supreme Court docket No. 16-969 <https://www.supremecourt.gov/search.aspx?filename=/docket/docketfiles/html/public/16-969.html>
+  [scotus] SAS Institute Inc. v. Iancu, 584 U.S. 357 (2018) (opinion) <https://www.law.cornell.edu/supremecourt/text/16-969>

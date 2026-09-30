@@ -1,0 +1,102 @@
+{
+  "case": "Bell Atlantic Corp. v. Twombly",
+  "citation": "550 U.S. 544 (2007)",
+  "summary": "The plausibility-pleading case. A Rule 12(b)(6) dismissal in the S.D.N.Y. is appealed as a final decision to the Second Circuit, which vacates; the defendants win certiorari. Exercises FRCP -> FRAP composition through links.json and the FRCP 12(h) waiver flag carried across forums.",
+  "packs": ["frcp-civil-procedure", "frap-appellate-procedure"],
+  "legs": [
+    {
+      "start": "frcp-civil-procedure::rule12-response-window",
+      "context": "Consumers sue the regional Bell companies under Sherman Act § 1 in the S.D.N.Y.; the defendants' Rule 12 response window is open.",
+      "steps": [
+        {"edge": "12b-motion-filed", "event": "Defendants move to dismiss the amended complaint under Rule 12(b)(6) instead of answering", "source": "scotus"},
+        {"to": "mtd-ruling", "event": "Motion briefed and submitted", "source": "sdny"},
+        {"to": "dismissed-with-prejudice", "event": "Judge Lynch grants the motion: parallel conduct without a plus factor states no § 1 claim", "date": "2003-10-08", "source": "sdny"},
+        {"edge": "dismissal-appeal-clock", "event": "Plaintiffs treat the dismissal as a final decision (28 U.S.C. § 1291) and weigh an appeal", "source": "ca2"},
+        {"to": "notice-of-appeal-filed", "event": "Plaintiffs notice an appeal to the Second Circuit (No. 03-9213)", "source": "ca2"},
+        {"to": "frap-appellate-procedure::notice-of-appeal-filed", "event": "The appeal crosses into the court of appeals (regional circuit, not the Federal Circuit)", "source": "ca2"},
+        {"to": "docketed-in-court-of-appeals", "event": "Appeal docketed as No. 03-9213", "source": "ca2"},
+        {"to": "cross-appeal-fork", "event": "Appellees consider a cross-appeal", "source": "ca2"},
+        {"to": "cross-appeal-not-filed", "event": "No cross-appeal (the defendants won everything below)", "source": "ca2"},
+        {"to": "voluntary-dismissal-fork", "event": "Appeal proceeds without a cross-appeal", "source": "ca2"},
+        {"to": "transcript-order-fork", "event": "Appeal proceeds; the record is assembled", "source": "ca2"},
+        {"edge": "no-transcript-certificate", "event": "Appeal from a ruling on the papers: no transcript to order (route assumed; FRAP 10(b)(1)(B))"},
+        {"to": "stay-pending-appeal-fork", "event": "Record complete", "source": "ca2"},
+        {"edge": "no-stay-sought", "event": "Nothing to stay: the judgment below only dismissed the complaint (route assumed)"},
+        {"to": "appellant-brief-filed", "event": "Plaintiffs file their opening brief", "source": "ca2"},
+        {"to": "appellee-brief-filed", "event": "Defendants file their response brief", "source": "ca2"},
+        {"to": "reply-brief-filed", "event": "Plaintiffs reply (route assumed; the reply is not in the sources read)"},
+        {"to": "briefing-complete", "event": "Briefing closes"},
+        {"to": "oral-argument-fork", "event": "Clerk calendars the case"},
+        {"to": "oral-argument-held", "event": "Argued before Sack, Raggi and Hall, JJ.", "date": "2004-09-15", "source": "vlex"},
+        {"to": "standard-of-review-fork", "event": "Panel deliberates", "source": "ca2"},
+        {"to": "de-novo-review", "event": "A Rule 12(b)(6) dismissal is reviewed de novo", "source": "ca2"},
+        {"to": "vacated-and-remanded", "event": "Second Circuit vacates the dismissal and remands: parallel conduct can suffice at the pleading stage", "date": "2005-10-03", "source": "ca2"},
+        {"to": "rehearing-window", "event": "Defendants, now the losing party, weigh rehearing", "source": "scotus-docket"},
+        {"to": "rehearing-petition-filed", "event": "Defendants petition for rehearing", "source": "scotus-docket"},
+        {"to": "panel-rehearing-decision", "event": "Panel considers the petition", "source": "scotus-docket"},
+        {"to": "en-banc-poll-decision", "event": "Panel denies rehearing", "source": "scotus-docket"},
+        {"to": "rehearing-en-banc-both-denied", "event": "Rehearing denied", "date": "2006-01-03", "source": "scotus-docket"},
+        {"to": "mandate-issued", "event": "Mandate clock resumes (mandate date not in the sources read)"},
+        {"to": "cert-petition-window", "event": "The 90-day certiorari window runs", "source": "scotus-docket"},
+        {"to": "cert-petition-filed", "event": "Bell Atlantic et al. petition for certiorari (No. 05-1126)", "date": "2006-03-06", "source": "scotus-docket"},
+        {"to": "cert-review-decision", "event": "The Court considers the petition", "source": "scotus-docket"},
+        {"to": "cert-granted", "event": "Certiorari granted", "date": "2006-06-26", "source": "scotus-docket"}
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "event": "Supreme Court reverses and remands (argued 2006-11-27, decided 2007-05-21): a complaint must plead enough facts to make an agreement plausible",
+      "from": "frap-appellate-procedure::cert-granted",
+      "why": "No pack models Supreme Court merits review; cert-granted is terminal. A small SCOTUS pack (briefing, argument, affirm/reverse/vacate, remand back to the circuit) would close this for every case here."
+    }
+  ],
+  "outcome": {
+    "node": "frap-appellate-procedure::cert-granted",
+    "outcome": ["pending"],
+    "flags": ["waived-12h-defenses"],
+    "real": "Reversed and remanded, 550 U.S. 544 (May 21, 2007)."
+  },
+  "deadlines": [
+    {
+      "edge": "frcp-civil-procedure::notice-of-appeal-window->notice-of-appeal-filed#0",
+      "trigger": "2003-10-08",
+      "trigger_event": "the S.D.N.Y. dismissal (opinion date; the separate judgment's entry date was not found)",
+      "rule_set": "frcp6",
+      "due": "2003-11-07",
+      "arithmetic": "FRAP 4(a)(1)(A): 30 days. Oct 8 + 23 = Oct 31; + 7 = Nov 7, a Friday, not a holiday, so no roll.",
+      "historical": "The notice-of-appeal date was not found; the appeal was docketed as No. 03-9213, i.e. in 2003."
+    },
+    {
+      "edge": "frap-appellate-procedure::rehearing-window->rehearing-petition-filed#0",
+      "trigger": "2005-10-03",
+      "trigger_event": "the Second Circuit's judgment",
+      "rule_set": "frap26",
+      "due": "2005-10-17",
+      "arithmetic": "FRAP 40: 14 days. Oct 3 + 14 = Oct 17, a Monday (Columbus Day was Oct 10, inside the period, which does not matter when counting calendar days).",
+      "historical": "A petition was filed and denied on 2006-01-03; its filing date was not found."
+    },
+    {
+      "edge": "frap-appellate-procedure::cert-petition-window->cert-petition-filed#0",
+      "trigger": "2006-01-03",
+      "trigger_event": "denial of rehearing (Sup. Ct. R. 13.3 runs the 90 days from that denial)",
+      "rule_set": "frap26",
+      "due": "2006-04-03",
+      "arithmetic": "Sup. Ct. R. 13.1: 90 days. Jan 3 + 28 = Jan 31; + 28 = Feb 28 (56); + 31 = Mar 31 (87); + 3 = Apr 3 (90), a Monday.",
+      "historical": "Petition filed 2006-03-06, four weeks early."
+    }
+  ],
+  "quirks": [
+    "The sources don't say whether the dismissal was with or without prejudice; the pack's only final-dismissal node is dismissed-with-prejudice (granted, no leave to amend), which is what made it appealable.",
+    "The FRCP 12(h) waiver flag set by filing a pre-answer motion rides along into the FRAP pack. That is correct graph semantics (flags are history), but it means the appellate nodes are the `{waived-12h-defenses}` copies.",
+    "The FRAP pack routes every panel-rehearing denial through an en banc poll; the docket only records 'rehearing denied', so whether en banc rehearing was sought is unknown.",
+    "The FRAP pack starts the certiorari window at the mandate; Sup. Ct. R. 13.3 actually runs it from the judgment or the denial of rehearing. The deadline check above uses the rule's trigger."
+  ],
+  "sources": [
+    {"id": "sdny", "title": "Twombly v. Bell Atlantic Corp., 313 F. Supp. 2d 174 (S.D.N.Y. 2003)", "url": "https://law.justia.com/cases/federal/district-courts/FSupp2/313/174/2580694/"},
+    {"id": "ca2", "title": "Twombly v. Bell Atlantic Corp., 425 F.3d 99 (2d Cir. 2005)", "url": "https://caselaw.findlaw.com/court/us-2nd-circuit/1367833.html"},
+    {"id": "vlex", "title": "Twombly v. Bell Atlantic (2d Cir.) — argument date", "url": "https://case-law.vlex.com/vid/twombly-v-bell-atlantic-893967109"},
+    {"id": "scotus", "title": "Bell Atlantic Corp. v. Twombly, 550 U.S. 544 (2007) (opinion)", "url": "https://www.law.cornell.edu/supct/html/05-1126.ZO.html"},
+    {"id": "scotus-docket", "title": "Supreme Court docket No. 05-1126", "url": "https://www.supremecourt.gov/search.aspx?filename=/docketfiles/05-1126.htm"}
+  ]
+}

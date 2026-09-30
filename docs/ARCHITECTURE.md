@@ -208,7 +208,11 @@ business-day counting for periods under 7 days). The `deadlines` API op
 resolves which rule set governs from the owning pack's `forum` (or, failing
 that, its id) and returns the due date with every computation step cited to
 its subsection, for one edge, a node's out-edges, or every deadline
-reachable from a node.
+reachable from a node. The holiday calendar respects when Juneteenth (2021)
+and Martin Luther King, Jr. Day (1986) took effect, so historical dates
+(e.g. the famous cases in `tests/cases/`) compute as they did at the time.
+The rule text itself is today's: a pre-2009 FRCP 6 short-period count, for
+instance, is not modeled.
 
 ## Roadmap (tracked as beads)
 

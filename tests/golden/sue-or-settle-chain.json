@@ -1,0 +1,117 @@
+{
+  "name": "sue-or-settle-chain",
+  "what": "The absorbing chain under the optimal policy (sue) for the same graph.",
+  "arithmetic": [
+    "policy: sue (see sue-or-settle-solve), so P(settled) = 0",
+    "P(win) = 0.6, P(lose) = 0.4",
+    "E[utility] = 0.6 * 1000 + 0.4 * 0 = 600",
+    "E[dollars] = 100 (sue is always taken once)",
+    "E[net] = 600 - 100 = 500;  E[steps] = 2 (sue, then one verdict)"
+  ],
+  "pack": {
+    "schemaVersion": 2,
+    "id": "sue-or-settle",
+    "title": "Sue or settle",
+    "startNodeId": "offer",
+    "roles": {
+      "applicant": "self",
+      "examiner": "nature"
+    },
+    "nodes": [
+      {
+        "id": "offer",
+        "kind": "decision",
+        "label": "Settlement offer on the table"
+      },
+      {
+        "id": "trial",
+        "kind": "decision",
+        "label": "Court rules"
+      },
+      {
+        "id": "win",
+        "kind": "terminal",
+        "label": "Win",
+        "payoff": 1000,
+        "outcome": [
+          "win"
+        ]
+      },
+      {
+        "id": "lose",
+        "kind": "terminal",
+        "label": "Lose",
+        "payoff": 0,
+        "outcome": [
+          "loss"
+        ]
+      },
+      {
+        "id": "settled",
+        "kind": "terminal",
+        "label": "Settled",
+        "payoff": 450,
+        "outcome": [
+          "settlement"
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "sue",
+        "from": "offer",
+        "to": "trial",
+        "label": "Sue",
+        "actor": "applicant",
+        "cost": 100
+      },
+      {
+        "id": "settle",
+        "from": "offer",
+        "to": "settled",
+        "label": "Take the offer",
+        "actor": "applicant"
+      },
+      {
+        "id": "verdict-win",
+        "from": "trial",
+        "to": "win",
+        "label": "Verdict for us",
+        "actor": "examiner",
+        "probability": 0.6
+      },
+      {
+        "id": "verdict-lose",
+        "from": "trial",
+        "to": "lose",
+        "label": "Verdict against us",
+        "actor": "examiner",
+        "probability": 0.4
+      }
+    ]
+  },
+  "op": {
+    "op": "chain"
+  },
+  "expect": {
+    "absorption": [
+      {
+        "terminal": "sue-or-settle::win",
+        "p": 0.6,
+        "utility": 1000.0
+      },
+      {
+        "terminal": "sue-or-settle::lose",
+        "p": 0.4,
+        "utility": 0.0
+      }
+    ],
+    "expected": {
+      "dollars": 100.0
+    },
+    "expected_steps": 2.0,
+    "expected_utility": 600.0,
+    "expected_net": 500.0,
+    "sink_mass": 0.0
+  }
+}

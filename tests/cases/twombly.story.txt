@@ -1,0 +1,140 @@
+Bell Atlantic Corp. v. Twombly, 550 U.S. 544 (2007)
+The plausibility-pleading case. A Rule 12(b)(6) dismissal in the S.D.N.Y. is appealed as a final decision to the Second Circuit, which vacates; the defendants win certiorari. Exercises FRCP -> FRAP composition through links.json and the FRCP 12(h) waiver flag carried across forums.
+packs: frcp-civil-procedure, frap-appellate-procedure (links on)
+
+leg 1: Consumers sue the regional Bell companies under Sherman Act § 1 in the S.D.N.Y.; the defendants' Rule 12 response window is open.
+  start  frcp-civil-procedure::rule12-response-window "Rule 12 Response Window"
+    1. [-] Defendants move to dismiss the amended complaint under Rule 12(b)(6) instead of answering
+       via frcp-civil-procedure::12b-motion-filed (self, FRCP 12(b), within 21 calendar days)
+       at  frcp-civil-procedure::motion-to-dismiss-filed "Rule 12(b) Motion Filed" {waived-12h-defenses}
+    2. [-] Motion briefed and submitted
+       via frcp-civil-procedure::motion-to-dismiss-filed->mtd-ruling#0 (self, FRCP 12(b))
+       at  frcp-civil-procedure::mtd-ruling "Court Rules on Motion to Dismiss" {waived-12h-defenses}
+    3. [2003-10-08] Judge Lynch grants the motion: parallel conduct without a plus factor states no § 1 claim
+       via frcp-civil-procedure::mtd-ruling->dismissed-with-prejudice#0 (nature, FRCP 12(b)(6); 41(b))
+       at  frcp-civil-procedure::dismissed-with-prejudice "DISMISSED WITH PREJUDICE" {waived-12h-defenses}
+    4. [-] Plaintiffs treat the dismissal as a final decision (28 U.S.C. § 1291) and weigh an appeal
+       via frcp-civil-procedure::dismissal-appeal-clock (self, 28 U.S.C. 1291; FRAP 4(a)(1)(A))
+       at  frcp-civil-procedure::notice-of-appeal-window "Notice of Appeal Window" {waived-12h-defenses}
+    5. [-] Plaintiffs notice an appeal to the Second Circuit (No. 03-9213)
+       via frcp-civil-procedure::notice-of-appeal-window->notice-of-appeal-filed#0 (self, FRAP 4(a)(1)(A), within 30 calendar days)
+       at  frcp-civil-procedure::notice-of-appeal-filed "Notice of Appeal Filed" {waived-12h-defenses}
+    6. [-] The appeal crosses into the court of appeals (regional circuit, not the Federal Circuit)
+       via links::frcp-appeal-to-regional-circuit (self, cross-forum link, 28 U.S.C. § 1291; Fed. R. App. P. 3, 4)
+       at  frap-appellate-procedure::notice-of-appeal-filed "Notice of Appeal Filed" {waived-12h-defenses}
+    7. [-] Appeal docketed as No. 03-9213
+       via frap-appellate-procedure::notice-of-appeal-filed->docketed-in-court-of-appeals#0 (nature, FRAP 3(d); FRAP 12(a); FRAP 12(b)(3))
+       at  frap-appellate-procedure::docketed-in-court-of-appeals "Appeal Docketed" {waived-12h-defenses}
+    8. [-] Appellees consider a cross-appeal
+       via frap-appellate-procedure::docketed-in-court-of-appeals->cross-appeal-fork#0 (self, FRAP 4(a)(3); FRAP 4(a)(4))
+       at  frap-appellate-procedure::cross-appeal-fork "Appellee Considers a Cross-Appeal" {waived-12h-defenses}
+    9. [-] No cross-appeal (the defendants won everything below)
+       via frap-appellate-procedure::cross-appeal-fork->cross-appeal-not-filed#0 (self, FRAP 4(a)(3))
+       at  frap-appellate-procedure::cross-appeal-not-filed "No Cross-Appeal — Judgment Defended Only" {waived-12h-defenses}
+   10. [-] Appeal proceeds without a cross-appeal
+       via frap-appellate-procedure::cross-appeal-not-filed->voluntary-dismissal-fork#0 (nature, FRAP 28.1)
+       at  frap-appellate-procedure::voluntary-dismissal-fork "Parties Consider Dismissing the Appeal" {waived-12h-defenses}
+   11. [-] Appeal proceeds; the record is assembled
+       via frap-appellate-procedure::voluntary-dismissal-fork->transcript-order-fork#0 (self, FRAP 10(b))
+       at  frap-appellate-procedure::transcript-order-fork "Transcript Needed?" {waived-12h-defenses}
+   12. [-] Appeal from a ruling on the papers: no transcript to order (route assumed; FRAP 10(b)(1)(B))
+       via frap-appellate-procedure::no-transcript-certificate (self, FRAP 10(b)(1)(B), within 14 calendar days)
+       at  frap-appellate-procedure::record-transmitted "Record on Appeal Complete and Transmitted" {waived-12h-defenses}
+   13. [-] Record complete
+       via frap-appellate-procedure::record-transmitted->stay-pending-appeal-fork#0 (nature)
+       at  frap-appellate-procedure::stay-pending-appeal-fork "Move to Stay Judgment Pending Appeal?" {waived-12h-defenses}
+   14. [-] Nothing to stay: the judgment below only dismissed the complaint (route assumed)
+       via frap-appellate-procedure::no-stay-sought (self, FRAP 8(a)(1))
+       at  frap-appellate-procedure::appellant-brief-window "Appellant's Opening Brief Due" {waived-12h-defenses}
+   15. [-] Plaintiffs file their opening brief
+       via frap-appellate-procedure::appellant-brief-window->appellant-brief-filed#0 (self, FRAP 31(a)(1), within 40 calendar days)
+       at  frap-appellate-procedure::appellant-brief-filed "Opening Brief Filed" {waived-12h-defenses}
+   16. [-] Defendants file their response brief
+       via frap-appellate-procedure::appellant-brief-filed->appellee-brief-filed#0 (self, FRAP 31(a)(1); FRAP 28(b), within 30 calendar days)
+       at  frap-appellate-procedure::appellee-brief-filed "Appellee's Response Brief Filed" {waived-12h-defenses}
+   17. [-] Plaintiffs reply (route assumed; the reply is not in the sources read)
+       via frap-appellate-procedure::appellee-brief-filed->reply-brief-filed#0 (self, FRAP 31(a)(1); FRAP 28(c), within 21 calendar days)
+       at  frap-appellate-procedure::reply-brief-filed "Appellant's Reply Brief Filed" {waived-12h-defenses}
+   18. [-] Briefing closes
+       via frap-appellate-procedure::reply-brief-filed->briefing-complete#0 (nature, FRAP 31)
+       at  frap-appellate-procedure::briefing-complete "Briefing Closed" {waived-12h-defenses}
+   19. [-] Clerk calendars the case
+       via frap-appellate-procedure::briefing-complete->oral-argument-fork#0 (nature, FRAP 34(a))
+       at  frap-appellate-procedure::oral-argument-fork "Oral Argument or Submission on Briefs?" {waived-12h-defenses}
+   20. [2004-09-15] Argued before Sack, Raggi and Hall, JJ.
+       via frap-appellate-procedure::oral-argument-fork->oral-argument-held#0 (nature, FRAP 34(a)(1))
+       at  frap-appellate-procedure::oral-argument-held "Oral Argument Held" {waived-12h-defenses}
+   21. [-] Panel deliberates
+       via frap-appellate-procedure::oral-argument-held->standard-of-review-fork#0 (nature, FRAP 34(d))
+       at  frap-appellate-procedure::standard-of-review-fork "Which Standard of Review Governs?" {waived-12h-defenses}
+   22. [-] A Rule 12(b)(6) dismissal is reviewed de novo
+       via frap-appellate-procedure::standard-of-review-fork->de-novo-review#0 (nature, Pure questions of law (statutory construction, constitutional interpretation, legal standards for admissibility))
+       at  frap-appellate-procedure::de-novo-review "De Novo Review (Questions of Law)" {waived-12h-defenses}
+   23. [2005-10-03] Second Circuit vacates the dismissal and remands: parallel conduct can suffice at the pleading stage
+       via frap-appellate-procedure::de-novo-review->vacated-and-remanded#0 (nature)
+       at  frap-appellate-procedure::vacated-and-remanded "VACATED AND REMANDED" {waived-12h-defenses}
+   24. [-] Defendants, now the losing party, weigh rehearing
+       via frap-appellate-procedure::vacated-and-remanded->rehearing-window#0 (self, FRAP 40(a)(1), within 14 calendar days)
+       at  frap-appellate-procedure::rehearing-window "Seek Rehearing?" {waived-12h-defenses}
+   25. [-] Defendants petition for rehearing
+       via frap-appellate-procedure::rehearing-window->rehearing-petition-filed#0 (self, FRAP 40(a)(1); FRAP 35(c), within 14 calendar days)
+       at  frap-appellate-procedure::rehearing-petition-filed "Petition for Rehearing / Rehearing En Banc Filed" {waived-12h-defenses}
+   26. [-] Panel considers the petition
+       via frap-appellate-procedure::rehearing-petition-filed->panel-rehearing-decision#0 (nature, FRAP 40(a)(4))
+       at  frap-appellate-procedure::panel-rehearing-decision "Panel Rules on Rehearing" {waived-12h-defenses}
+   27. [-] Panel denies rehearing
+       via frap-appellate-procedure::panel-rehearing-decision->en-banc-poll-decision#0 (nature, FRAP 40(a)(4); FRAP 40(c); 28 U.S.C. § 46(c))
+       at  frap-appellate-procedure::en-banc-poll-decision "Active Judges Vote on En Banc Rehearing" {waived-12h-defenses}
+   28. [2006-01-03] Rehearing denied
+       via frap-appellate-procedure::en-banc-poll-decision->rehearing-en-banc-both-denied#0 (nature, FRAP 40(c); FRAP 40(a)(4))
+       at  frap-appellate-procedure::rehearing-en-banc-both-denied "Rehearing and Rehearing En Banc Both Denied (Final)" {waived-12h-defenses}
+   29. [-] Mandate clock resumes (mandate date not in the sources read)
+       via frap-appellate-procedure::rehearing-en-banc-both-denied->mandate-issued#0 (nature, FRAP 41(b)(1); FRAP 41(b)(3), within 7 calendar days)
+       at  frap-appellate-procedure::mandate-issued "Mandate Issues" {waived-12h-defenses}
+   30. [-] The 90-day certiorari window runs
+       via frap-appellate-procedure::mandate-issued->cert-petition-window#0 (nature, Fed. R. App. P. 41(b); Sup. Ct. R. 13.3, within 90 calendar days)
+       at  frap-appellate-procedure::cert-petition-window "Certiorari Petition Window" {waived-12h-defenses}
+   31. [2006-03-06] Bell Atlantic et al. petition for certiorari (No. 05-1126)
+       via frap-appellate-procedure::cert-petition-window->cert-petition-filed#0 (self, Sup. Ct. R. 13.1; 28 U.S.C. § 1254(1), within 90 calendar days)
+       at  frap-appellate-procedure::cert-petition-filed "Petition for Certiorari Filed" {waived-12h-defenses}
+   32. [-] The Court considers the petition
+       via frap-appellate-procedure::cert-petition-filed->cert-review-decision#0 (nature, Sup. Ct. R. 10)
+       at  frap-appellate-procedure::cert-review-decision "Supreme Court Grants or Denies Certiorari" {waived-12h-defenses}
+   33. [2006-06-26] Certiorari granted
+       via frap-appellate-procedure::cert-review-decision->cert-granted#0 (nature, 28 U.S.C. § 1254(1); Sup. Ct. R. 10)
+       at  frap-appellate-procedure::cert-granted "CERT GRANTED — Case Transfers to the Supreme Court" {waived-12h-defenses}
+  GAP: Supreme Court reverses and remands (argued 2006-11-27, decided 2007-05-21): a complaint must plead enough facts to make an agreement plausible
+       missing frap-appellate-procedure::cert-granted -> (beyond every pack)
+       No pack models Supreme Court merits review; cert-granted is terminal. A small SCOTUS pack (briefing, argument, affirm/reverse/vacate, remand back to the circuit) would close this for every case here.
+
+outcome: frap-appellate-procedure::cert-granted
+  tags:  [pending]
+  flags: {waived-12h-defenses}
+  real:  Reversed and remanded, 550 U.S. 544 (May 21, 2007).
+
+deadlines (by rule, from the `deadlines` op):
+  frcp-civil-procedure::notice-of-appeal-window->notice-of-appeal-filed#0
+    30 days under FRCP 6: 2003-10-08 (the S.D.N.Y. dismissal (opinion date; the separate judgment's entry date was not found)) -> due 2003-11-07
+    arithmetic: FRAP 4(a)(1)(A): 30 days. Oct 8 + 23 = Oct 31; + 7 = Nov 7, a Friday, not a holiday, so no roll.
+    historical: The notice-of-appeal date was not found; the appeal was docketed as No. 03-9213, i.e. in 2003.
+  frap-appellate-procedure::rehearing-window->rehearing-petition-filed#0
+    14 days under Fed. R. App. P. 26: 2005-10-03 (the Second Circuit's judgment) -> due 2005-10-17
+    arithmetic: FRAP 40: 14 days. Oct 3 + 14 = Oct 17, a Monday (Columbus Day was Oct 10, inside the period, which does not matter when counting calendar days).
+    historical: A petition was filed and denied on 2006-01-03; its filing date was not found.
+  frap-appellate-procedure::cert-petition-window->cert-petition-filed#0
+    90 days under Fed. R. App. P. 26: 2006-01-03 (denial of rehearing (Sup. Ct. R. 13.3 runs the 90 days from that denial)) -> due 2006-04-03
+    arithmetic: Sup. Ct. R. 13.1: 90 days. Jan 3 + 28 = Jan 31; + 28 = Feb 28 (56); + 31 = Mar 31 (87); + 3 = Apr 3 (90), a Monday.
+    historical: Petition filed 2006-03-06, four weeks early.
+
+where the pack's shape differs from the record:
+  - The sources don't say whether the dismissal was with or without prejudice; the pack's only final-dismissal node is dismissed-with-prejudice (granted, no leave to amend), which is what made it appealable.
+  - The FRCP 12(h) waiver flag set by filing a pre-answer motion rides along into the FRAP pack. That is correct graph semantics (flags are history), but it means the appellate nodes are the `{waived-12h-defenses}` copies.
+  - The FRAP pack routes every panel-rehearing denial through an en banc poll; the docket only records 'rehearing denied', so whether en banc rehearing was sought is unknown.
+  - The FRAP pack starts the certiorari window at the mandate; Sup. Ct. R. 13.3 actually runs it from the judgment or the denial of rehearing. The deadline check above uses the rule's trigger.
+
+sources:
+  [sdny] Twombly v. Bell Atlantic Corp., 313 F. Supp. 2d 174 (S.D.N.Y. 2003) <https://law.justia.com/cases/federal/district-courts/FSupp2/313/174/2580694/>
+  [ca2] Twombly v. Bell Atlantic Corp., 425 F.3d 99 (2d Cir. 2005) <https://caselaw.findlaw.com/court/us-2nd-circuit/1367833.html>
+  [vlex] Twombly v. Bell Atlantic (2d Cir.) — argument date <https://case-law.vlex.com/vid/twombly-v-bell-atlantic-893967109>
+  [scotus] Bell Atlantic Corp. v. Twombly, 550 U.S. 544 (2007) (opinion) <https://www.law.cornell.edu/supct/html/05-1126.ZO.html>
+  [scotus-docket] Supreme Court docket No. 05-1126 <https://www.supremecourt.gov/search.aspx?filename=/docketfiles/05-1126.htm>

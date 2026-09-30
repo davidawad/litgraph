@@ -1,0 +1,114 @@
+{
+  "case": "SAS Institute Inc. v. Iancu",
+  "citation": "584 U.S. 357 (2018)",
+  "summary": "The end of partial institution. The Board institutes SAS's IPR on only some challenged claims and issues a mixed final written decision; the Federal Circuit affirms in part and vacates in part; SAS wins certiorari and the Court holds the Board must decide every challenged claim. Exercises the fwd-mixed and panel-mixed paths and a CAFC cross-appeal.",
+  "packs": ["ptab-patent-trial-appeal-board", "cafc"],
+  "legs": [
+    {
+      "start": "ptab-patent-trial-appeal-board::patent-granted",
+      "context": "ComplementSoft owns U.S. Patent No. 7,110,936 (16 claims).",
+      "steps": [
+        {"to": "infringement-complaint-served", "event": "ComplementSoft sues SAS in the N.D. Ill.", "date": "2012-09-14", "source": "natl-argument"},
+        {"to": "ipr-petition-filed", "event": "SAS petitions for IPR2013-00226 against all 16 claims", "date": "2013-03-29", "source": "natl-argument"},
+        {"to": "petition-threshold-review", "event": "Office reviews the petition"},
+        {"to": "petition-filing-date-accorded", "event": "Filing date accorded"},
+        {"to": "popr-window", "event": "Preliminary-response window"},
+        {"to": "popr-filed", "event": "Preliminary response (not in the sources read; route assumed)"},
+        {"to": "institution-decision", "event": "The Board decides institution"},
+        {"to": "institution-granted", "event": "Board institutes on claims 1 and 3-10 only, denying review of claims 2 and 11-16", "source": "scotus"},
+        {"to": "scheduling-order-issued", "event": "Scheduling order"},
+        {"to": "mandatory-disclosures", "event": "Mandatory disclosures"},
+        {"to": "patent-owner-response-window", "event": "Patent owner response window opens"},
+        {"to": "patent-owner-response-filed", "event": "Patent owner response (route assumed)"},
+        {"to": "petitioner-reply-brief", "event": "Petitioner reply (route assumed)"},
+        {"to": "patent-owner-sur-reply", "event": "Sur-reply: forced by the pack (see quirks)"},
+        {"to": "motion-to-amend-decision", "event": "ComplementSoft weighs amending"},
+        {"to": "mta-filed", "event": "ComplementSoft moves to amend (the FWD denies the motion)", "source": "fwd"},
+        {"to": "mta-preliminary-guidance", "event": "Preliminary guidance: forced by the pack (see quirks)"},
+        {"to": "petitioner-opposition-mta", "event": "SAS opposes the amendment"},
+        {"to": "oral-hearing-request", "event": "Briefing closes"},
+        {"to": "oral-hearing-held", "event": "Oral hearing (not in the sources read; route assumed)"},
+        {"to": "fwd-issued", "event": "Case submitted"},
+        {"to": "fwd-mixed", "event": "Final written decision (Paper 38): claims 1, 3 and 5-10 unpatentable; claim 4 not shown unpatentable; motion to amend denied", "date": "2014-08-06", "source": "fwd"},
+        {"to": "post-fwd-options", "event": "Both sides weigh post-decision relief"},
+        {"edge": "post-fwd-options->federal-circuit-window#0", "event": "Straight to appeal (route assumed)"},
+        {"to": "cafc@ptab::entry-ptab", "event": "Appeal to the Federal Circuit", "source": "wiley"},
+        {"edge": "ptab-file-noa", "event": "Notice of appeal (No. 2015-1346)", "source": "wiley"},
+        {"to": "docketed", "event": "Appeal docketed", "source": "wiley"},
+        {"to": "appearance-and-coi-filed", "event": "Entries of appearance and certificates of interest"},
+        {"to": "docketing-statement-filed", "event": "Docketing statements"},
+        {"to": "mediation-screening", "event": "Screening for mediation"},
+        {"edge": "screening-to-motions", "event": "Not mediated (route assumed)"},
+        {"edge": "motions-decline", "event": "No stay motion (route assumed)"},
+        {"edge": "cross-appeal-file", "event": "Cross-appeal (No. 2015-1347)", "source": "wiley"},
+        {"to": "appellant-brief-window", "event": "Cross-appeals docketed together", "source": "wiley"},
+        {"to": "appellant-brief-filed", "event": "Opening brief"},
+        {"to": "appellee-brief-filed", "event": "Response and cross-appeal brief"},
+        {"to": "reply-brief-filed", "event": "Reply (route assumed)"},
+        {"to": "briefing-complete", "event": "Briefing closes"},
+        {"to": "joint-appendix-filed", "event": "Joint appendix filed"},
+        {"to": "oral-argument-fork", "event": "Calendared"},
+        {"to": "oral-argument-held", "event": "Argued before Newman, Chen and Stoll, JJ. (argument date not found; route assumed)"},
+        {"to": "panel-decision", "event": "Panel confers"},
+        {"edge": "panel-to-mixed", "event": "Affirmed in part; the claim 4 ruling vacated (the Board changed its construction without notice) and remanded", "date": "2016-06-10", "source": "wiley"},
+        {"edge": "mixed-to-rehearing", "event": "SAS weighs rehearing", "source": "scotus-docket"},
+        {"edge": "rehearing-file", "event": "SAS petitions for rehearing en banc on partial institution", "source": "scotus-docket"},
+        {"edge": "rehearing-panel-considers", "event": "The full court considers the petition", "source": "scotus-docket"},
+        {"edge": "rehearing-denied-edge", "event": "Rehearing en banc denied, 842 F.3d 1223 (Newman, J., dissenting)", "date": "2016-11-07", "source": "cafc-order"},
+        {"edge": "rehearing-denied-to-mandate", "event": "Mandate clock resumes"},
+        {"edge": "mandate-to-costs", "event": "Bill of costs (route assumed; the pack requires it)"},
+        {"edge": "costs-to-cert-window", "event": "The certiorari window runs", "source": "scotus-docket"},
+        {"edge": "cert-window-file", "event": "SAS petitions for certiorari (No. 16-969)", "date": "2017-01-31", "source": "scotus-docket"},
+        {"edge": "cert-filed-to-review", "event": "The Court considers the petition", "source": "scotus-docket"},
+        {"edge": "cert-review-grant", "event": "Certiorari granted", "date": "2017-05-22", "source": "scotus-docket"}
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "event": "Supreme Court reverses and remands (argued 2017-11-27, decided 2018-04-24, 5-4): once it institutes, the Board must decide the patentability of every challenged claim",
+      "from": "cafc@ptab::cert-granted",
+      "why": "No pack models Supreme Court merits review; cert-granted is terminal."
+    }
+  ],
+  "outcome": {
+    "node": "cafc@ptab::cert-granted",
+    "outcome": ["remand"],
+    "flags": ["ipr-estopped", "panel-mixed"],
+    "real": "Reversed and remanded, 584 U.S. 357 (April 24, 2018)."
+  },
+  "deadlines": [
+    {
+      "edge": "cafc@ptab::ptab-file-noa",
+      "trigger": "2014-08-06",
+      "trigger_event": "the final written decision",
+      "rule_set": "frap26",
+      "due": "2014-10-08",
+      "arithmetic": "37 C.F.R. § 90.3(a): 63 days. Aug 6 + 25 = Aug 31; + 30 = Sep 30 (55); + 8 = Oct 8 (63), a Wednesday.",
+      "historical": "Notice-of-appeal dates not found; the appeals are Nos. 2015-1346 and -1347."
+    },
+    {
+      "edge": "cafc@ptab::cert-window-file",
+      "trigger": "2016-11-07",
+      "trigger_event": "denial of rehearing en banc (Sup. Ct. R. 13.3)",
+      "rule_set": "frap26",
+      "due": "2017-02-06",
+      "arithmetic": "Sup. Ct. R. 13.1: 90 days. Nov 7 + 23 = Nov 30; + 31 = Dec 31 (54); + 31 = Jan 31 (85); + 5 = Feb 5 (90), a Sunday, so it rolls to Monday Feb 6.",
+      "historical": "Petition filed 2017-01-31, within the window."
+    }
+  ],
+  "quirks": [
+    "The PTAB pack's only institution edge is 'Institute trial on all challenged claims', which is the rule SAS itself created. The partial institution that was the whole dispute cannot be expressed, so the walk takes the all-claims edge. Harmless going forward (SAS abolished partial institution) but a pre-2018 history can't be told faithfully.",
+    "The PTAB pack forces a patent-owner sur-reply and Board preliminary guidance on the motion to amend; neither existed in 2013-14.",
+    "The CAFC pack's panel-to-mixed has no remand branch; the real judgment vacated and remanded the claim 4 ruling.",
+    "The CAFC pack tags cert-granted with outcome 'remand'."
+  ],
+  "sources": [
+    {"id": "natl-argument", "title": "SAS v. Matal: overview of oral argument (Nat'l L. Rev.) — district suit and petition dates", "url": "https://natlawreview.com/article/sas-v-matal-overview-oral-argument"},
+    {"id": "fwd", "title": "SAS Institute v. ComplementSoft, IPR2013-00226, final written decision summary (Nat'l L. Rev.)", "url": "https://natlawreview.com/article/sas-institute-inc-v-complementsoft-llc-final-written-decision-ipr2013-00226"},
+    {"id": "wiley", "title": "Federal Circuit Patent Bulletin: SAS Institute Inc. v. ComplementSoft, LLC, 825 F.3d 1341 (Fed. Cir. 2016)", "url": "https://www.wiley.law/newsroom-articles-Federal-Circuit-Patent-Bulletin-SAS-Institute-Inc-v-ComplementSoft-LLC.html"},
+    {"id": "cafc-order", "title": "SAS Institute v. ComplementSoft, Nos. 2015-1346, -1347, order denying rehearing en banc", "url": "https://www.cafc.uscourts.gov/opinions-orders/15-1346.order.11-3-2016.1.pdf"},
+    {"id": "scotus-docket", "title": "Supreme Court docket No. 16-969", "url": "https://www.supremecourt.gov/search.aspx?filename=/docket/docketfiles/html/public/16-969.html"},
+    {"id": "scotus", "title": "SAS Institute Inc. v. Iancu, 584 U.S. 357 (2018) (opinion)", "url": "https://www.law.cornell.edu/supremecourt/text/16-969"}
+  ]
+}

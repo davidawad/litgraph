@@ -1,0 +1,195 @@
+Oil States Energy Services, LLC v. Greene's Energy Group, LLC, 584 U.S. 325 (2018)
+Inter partes review is constitutional. Sued for infringement, Greene's petitions for IPR; the Board holds the claims unpatentable; the Federal Circuit affirms without opinion under Rule 36; Oil States wins certiorari on the Article III / Seventh Amendment question. Exercises the PTAB -> CAFC link, the ipr-estopped flag and the Rule 36 path.
+packs: ptab-patent-trial-appeal-board, cafc (links on)
+
+leg 1: U.S. Patent No. 6,179,053 (wellhead protection for fracking) issued to Oil States in 2001.
+  start  ptab-patent-trial-appeal-board::patent-granted "Patent Granted"
+    1. [2012] Oil States sues Greene's for infringement in the E.D. Tex.
+       via ptab-patent-trial-appeal-board::patent-granted->infringement-complaint-served#0 (nature, 35 U.S.C. § 315(b))
+       at  ptab-patent-trial-appeal-board::infringement-complaint-served "Infringement Complaint Served"
+    2. [-] Near the close of discovery, Greene's petitions for IPR2014-00216 against claims 1 and 22 (exact date not found)
+       via ptab-patent-trial-appeal-board::infringement-complaint-served->ipr-petition-filed#0 (self, 35 U.S.C. § 311; 35 U.S.C. § 315(b), within 365 calendar days)
+       at  ptab-patent-trial-appeal-board::ipr-petition-filed "IPR Petition Filed"
+    3. [-] Office reviews the petition
+       via ptab-patent-trial-appeal-board::ipr-petition-filed->petition-threshold-review#0 (nature, 37 CFR §42.104(c); 37 CFR §42.106(a))
+       at  ptab-patent-trial-appeal-board::petition-threshold-review "Office Reviews Petition Compliance"
+    4. [-] Filing date accorded
+       via ptab-patent-trial-appeal-board::petition-threshold-review->petition-filing-date-accorded#0 (nature, 37 CFR §42.106(a); 37 CFR §42.206(a))
+       at  ptab-patent-trial-appeal-board::petition-filing-date-accorded "Filing Date Accorded"
+    5. [-] Patent owner's preliminary-response window
+       via ptab-patent-trial-appeal-board::petition-filing-date-accorded->popr-window#0 (nature, 37 CFR §42.107(b); 37 CFR §42.207(b))
+       at  ptab-patent-trial-appeal-board::popr-window "POPR Window Open"
+    6. [-] Oil States files a response opposing review
+       via ptab-patent-trial-appeal-board::popr-window->popr-filed#0 (nature, 37 CFR 42.107(a), (b), within 90 calendar days)
+       at  ptab-patent-trial-appeal-board::popr-filed "POPR Filed"
+    7. [-] The Board decides institution (date not found)
+       via ptab-patent-trial-appeal-board::popr-filed->institution-decision#0 (nature, 35 U.S.C. 314(b), 37 CFR 42.108, within 90 calendar days)
+       at  ptab-patent-trial-appeal-board::institution-decision "Institution Decision"
+    8. [-] Review instituted
+       via ptab-patent-trial-appeal-board::institution-decision->institution-granted#0 (nature, 35 U.S.C. 314(a); SAS Institute Inc. v. Iancu, 138 S. Ct. 1386 (2018); 37 CFR 42.120)
+       at  ptab-patent-trial-appeal-board::institution-granted "Trial Instituted"
+    9. [-] Scheduling order
+       via ptab-patent-trial-appeal-board::institution-granted->scheduling-order-issued#0 (nature, 37 CFR 42.5(a); PTAB Standing Order on Motions, within 30 calendar days)
+       at  ptab-patent-trial-appeal-board::scheduling-order-issued "Scheduling Order Issued"
+   10. [-] Mandatory disclosures
+       via ptab-patent-trial-appeal-board::scheduling-order-issued->mandatory-disclosures#0 (nature, 37 CFR 42.51(a))
+       at  ptab-patent-trial-appeal-board::mandatory-disclosures "Mandatory Initial Disclosures Exchanged"
+   11. [-] Patent owner response window opens
+       via ptab-patent-trial-appeal-board::mandatory-disclosures->patent-owner-response-window#0 (nature, 37 CFR 42.120(b), within 90 calendar days)
+       at  ptab-patent-trial-appeal-board::patent-owner-response-window "Patent Owner Response Window"
+   12. [-] Patent owner response (route assumed)
+       via ptab-patent-trial-appeal-board::patent-owner-response-window->patent-owner-response-filed#0 (nature, 37 CFR 42.120, within 90 calendar days)
+       at  ptab-patent-trial-appeal-board::patent-owner-response-filed "Patent Owner Response Filed"
+   13. [-] Petitioner reply (route assumed)
+       via ptab-patent-trial-appeal-board::patent-owner-response-filed->petitioner-reply-brief#0 (self, 37 CFR 42.23(a), within 60 calendar days)
+       at  ptab-patent-trial-appeal-board::petitioner-reply-brief "Petitioner Reply Filed"
+   14. [-] Sur-reply: forced by the pack (see quirks)
+       via ptab-patent-trial-appeal-board::petitioner-reply-brief->patent-owner-sur-reply#0 (nature, 37 CFR 42.23(b), within 30 calendar days)
+       at  ptab-patent-trial-appeal-board::patent-owner-sur-reply "Patent Owner Sur-Reply Filed"
+   15. [-] Oil States weighs amending
+       via ptab-patent-trial-appeal-board::patent-owner-sur-reply->motion-to-amend-decision#0 (nature, 35 U.S.C. 316(d); 37 CFR 42.121)
+       at  ptab-patent-trial-appeal-board::motion-to-amend-decision "Motion to Amend Decision Point"
+   16. [-] Oil States moves to amend (the FWD denies the motion)
+       via ptab-patent-trial-appeal-board::motion-to-amend-decision->mta-filed#0 (nature, 35 U.S.C. 316(d); 37 CFR 42.121)
+       at  ptab-patent-trial-appeal-board::mta-filed "Contingent Motion to Amend Filed"
+   17. [-] Preliminary guidance: forced by the pack (see quirks)
+       via ptab-patent-trial-appeal-board::mta-filed->mta-preliminary-guidance#0 (nature, MTA Pilot Program, 84 Fed. Reg. 9497 (Mar. 15, 2019))
+       at  ptab-patent-trial-appeal-board::mta-preliminary-guidance "Board Issues Preliminary Guidance"
+   18. [-] Greene's opposes the amendment
+       via ptab-patent-trial-appeal-board::mta-preliminary-guidance->petitioner-opposition-mta#0 (nature, 37 CFR 42.121(c))
+       at  ptab-patent-trial-appeal-board::petitioner-opposition-mta "Petitioner Opposes Motion to Amend"
+   19. [-] Briefing closes
+       via ptab-patent-trial-appeal-board::petitioner-opposition-mta->oral-hearing-request#0 (nature, 37 CFR 42.70)
+       at  ptab-patent-trial-appeal-board::oral-hearing-request "Oral Hearing Requested"
+   20. [-] Oral hearing (not found in the sources read; route assumed)
+       via ptab-patent-trial-appeal-board::oral-hearing-request->oral-hearing-held#0 (nature, 37 CFR 42.70(a), (b))
+       at  ptab-patent-trial-appeal-board::oral-hearing-held "Oral Hearing Held"
+   21. [-] Case submitted
+       via ptab-patent-trial-appeal-board::oral-hearing-held->fwd-issued#0 (nature, 37 CFR 42.70(b))
+       at  ptab-patent-trial-appeal-board::fwd-issued "Board Issues Final Written Decision"
+   22. [2015-05-01] Final written decision: claims 1 and 22 unpatentable as anticipated; motion to amend denied (Paper 53)
+       via ptab-patent-trial-appeal-board::fwd-issued->fwd-all-unpatentable#0 (nature, 35 U.S.C. § 318(a))
+       at  ptab-patent-trial-appeal-board::fwd-all-unpatentable "FWD: All Claims Unpatentable" {ipr-estopped}
+   23. [-] Oil States weighs post-decision relief
+       via ptab-patent-trial-appeal-board::fwd-all-unpatentable->post-fwd-options#0 (nature, 37 CFR § 42.71(d))
+       at  ptab-patent-trial-appeal-board::post-fwd-options "Post-FWD Options" {ipr-estopped}
+   24. [-] No rehearing or Director review in the sources read; straight to appeal (route assumed)
+       via ptab-patent-trial-appeal-board::post-fwd-options->federal-circuit-window#0 (nature, 35 U.S.C. § 319)
+       at  ptab-patent-trial-appeal-board::federal-circuit-window "Federal Circuit Appeal Window" {ipr-estopped}
+   25. [-] Oil States appeals to the Federal Circuit (35 U.S.C. § 141)
+       via links::ptab-appeal-to-cafc (nature, cross-forum link, 35 U.S.C. §§ 141(c), 319; 37 C.F.R. § 90.3)
+       at  cafc@ptab::entry-ptab "PTAB Final Written Decision (or Operative Post-FWD Decision)" {ipr-estopped}
+   26. [-] Notice of appeal (No. 2015-1855)
+       via cafc@ptab::ptab-file-noa (self, 37 C.F.R. § 90.3(a); 35 U.S.C. § 142, within 63 calendar days)
+       at  cafc@ptab::notice-of-appeal-filed "Notice of Appeal Filed (Convergence)" {ipr-estopped}
+   27. [-] Appeal docketed
+       via cafc@ptab::noa-to-docketed (nature, FRAP 12(a))
+       at  cafc@ptab::docketed "Appeal Docketed at the Federal Circuit" {ipr-estopped}
+   28. [-] Entries of appearance and certificates of interest
+       via cafc@ptab::docketed-to-appearance (self, Fed. Cir. R. 47.3(b)(1); Fed. Cir. R. 47.4(b), within 14 calendar days)
+       at  cafc@ptab::appearance-and-coi-filed "Entry of Appearance & Certificate of Interest Filed" {ipr-estopped}
+   29. [-] Docketing statements
+       via cafc@ptab::appearance-to-docketing-statement (self, Fed. Cir. R. 47.6, within 14 calendar days)
+       at  cafc@ptab::docketing-statement-filed "Docketing Statement Filed" {ipr-estopped}
+   30. [-] Screening for mediation
+       via cafc@ptab::docketing-statement-to-screening (nature, Appellate Mediation Program Guidelines §§ 2-3)
+       at  cafc@ptab::mediation-screening "OGC Screens for the Mediation Program" {ipr-estopped}
+   31. [-] Not mediated (route assumed)
+       via cafc@ptab::screening-to-motions (nature, Appellate Mediation Program Guidelines §§ 2, 7)
+       at  cafc@ptab::motions-fork "Move to Stay Judgment Pending Appeal?" {ipr-estopped}
+   32. [-] No stay motion (route assumed)
+       via cafc@ptab::motions-decline (self, FRAP 8(a))
+       at  cafc@ptab::cross-appeal-fork "Appellee Considers a Cross-Appeal" {ipr-estopped}
+   33. [-] No cross-appeal (Greene's won everything below)
+       via cafc@ptab::cross-appeal-decline (self, FRAP 4(a)(3))
+       at  cafc@ptab::no-cross-appeal "No Cross-Appeal — Judgment Defended Only" {ipr-estopped}
+   34. [-] Briefing opens
+       via cafc@ptab::no-cross-appeal-to-briefing (nature, Fed. Cir. R. 31(a)(1))
+       at  cafc@ptab::appellant-brief-window "Appellant's Principal Brief Due" {ipr-estopped}
+   35. [-] Oil States' opening brief
+       via cafc@ptab::appellant-brief-file (self, Fed. Cir. R. 31(a)(1)(A)-(B), within 60 calendar days)
+       at  cafc@ptab::appellant-brief-filed "Opening Brief Filed" {ipr-estopped}
+   36. [-] Greene's response brief
+       via cafc@ptab::appellee-brief-file (opponent, Fed. Cir. R. 31(a)(2), within 40 calendar days)
+       at  cafc@ptab::appellee-brief-filed "Appellee's Principal/Response Brief Filed" {ipr-estopped}
+   37. [-] Reply (route assumed)
+       via cafc@ptab::reply-brief-file (self, FRAP 31(a)(1), within 21 calendar days)
+       at  cafc@ptab::reply-brief-filed "Appellant's Reply Brief Filed" {ipr-estopped}
+   38. [-] Briefing closes
+       via cafc@ptab::reply-brief-closes (nature, Fed. Cir. R. 31)
+       at  cafc@ptab::briefing-complete "Briefing Closed" {ipr-estopped}
+   39. [-] Joint appendix filed
+       via cafc@ptab::briefing-to-appendix (self, Fed. Cir. R. 30(a)(2), within 7 calendar days)
+       at  cafc@ptab::joint-appendix-filed "Joint Appendix Served and Filed" {ipr-estopped}
+   40. [-] Calendared
+       via cafc@ptab::appendix-to-argument-fork (nature, FRAP 34(a); Fed. Cir. IOP #7)
+       at  cafc@ptab::oral-argument-fork "Oral Argument or Submission Without Argument?" {ipr-estopped}
+   41. [2016-05-02] Argued
+       via cafc@ptab::argument-granted (nature, FRAP 34(a)(1); Fed. Cir. IOP #7)
+       at  cafc@ptab::oral-argument-held "Oral Argument Held" {ipr-estopped}
+   42. [-] Panel confers
+       via cafc@ptab::argument-held-to-decision (nature, Fed. Cir. IOP #8)
+       at  cafc@ptab::panel-decision "Panel Decides the Appeal" {ipr-estopped}
+   43. [2016-05-04] Rule 36 judgment of affirmance without opinion, 639 F. App'x 639
+       via cafc@ptab::panel-to-rule36 (nature, Fed. Cir. R. 36(a))
+       at  cafc@ptab::rule36-affirmance "Rule 36 Judgment of Affirmance Without Opinion" {ipr-estopped,panel-affirmed}
+   44. [-] Oil States weighs rehearing
+       via cafc@ptab::rule36-to-rehearing (self, Fed. Cir. R. 40(a)(1))
+       at  cafc@ptab::rehearing-window "Losing Party Weighs Rehearing" {ipr-estopped,panel-affirmed}
+   45. [-] Oil States petitions for rehearing
+       via cafc@ptab::rehearing-file (self, Fed. Cir. R. 40(a)-(b), (f), within 30 calendar days)
+       at  cafc@ptab::rehearing-petition-filed "Petition for Panel Rehearing / Rehearing En Banc / Combined Petition Filed" {ipr-estopped,panel-affirmed}
+   46. [-] The court considers the petition
+       via cafc@ptab::rehearing-panel-considers (nature, Fed. Cir. R. 40(a)(1)-(4))
+       at  cafc@ptab::panel-en-banc-rehearing-decision "Panel (and, if Combined, the Full Court) Rules on the Petition" {ipr-estopped,panel-affirmed}
+   47. [2016-07-26] Rehearing denied
+       via cafc@ptab::rehearing-denied-edge (nature, Fed. Cir. R. 40(a)(1))
+       at  cafc@ptab::rehearing-denied "Rehearing Denied — Panel Decision Stands" {ipr-estopped,panel-affirmed}
+   48. [-] Mandate clock resumes
+       via cafc@ptab::rehearing-denied-to-mandate (nature, FRAP 41(b); Fed. Cir. R. 41, within 7 calendar days)
+       at  cafc@ptab::mandate-issued "Mandate Issues" {ipr-estopped,panel-affirmed}
+   49. [-] Bill of costs (route assumed; the pack requires it)
+       via cafc@ptab::mandate-to-costs (nature, FRAP 39(e)(3)(A); Fed. Cir. R. 39(b), within 14 calendar days)
+       at  cafc@ptab::costs-bill-filed "Bill of Costs Filed and Taxed" {ipr-estopped,panel-affirmed}
+   50. [-] The certiorari window runs
+       via cafc@ptab::costs-to-cert-window (nature, FRAP 39(e)(3)(C); Sup. Ct. R. 13.3)
+       at  cafc@ptab::cert-petition-window "Certiorari Petition Window" {ipr-estopped,panel-affirmed}
+   51. [2016-11-23] Oil States petitions for certiorari (No. 16-712)
+       via cafc@ptab::cert-window-file (self, 28 U.S.C. § 2101(c); Sup. Ct. R. 13.1, 13.3, within 90 calendar days)
+       at  cafc@ptab::cert-petition-filed "Petition for Certiorari Filed" {ipr-estopped,panel-affirmed}
+   52. [-] The Court considers the petition
+       via cafc@ptab::cert-filed-to-review (nature, Sup. Ct. R. 10)
+       at  cafc@ptab::cert-review-decision "Supreme Court Grants or Denies Certiorari" {ipr-estopped,panel-affirmed}
+   53. [2017-06-12] Certiorari granted
+       via cafc@ptab::cert-review-grant (nature, 28 U.S.C. § 1254(1); Sup. Ct. R. 10)
+       at  cafc@ptab::cert-granted "CERT GRANTED — Case Transfers to the Supreme Court" {ipr-estopped,panel-affirmed}
+  GAP: Supreme Court affirms (argued 2017-11-27, decided 2018-04-24, 7-2): IPR adjudicates a public right and does not violate Article III or the Seventh Amendment
+       missing cafc@ptab::cert-granted -> (beyond every pack)
+       No pack models Supreme Court merits review; cert-granted is terminal.
+
+outcome: cafc@ptab::cert-granted
+  tags:  [remand]
+  flags: {ipr-estopped,panel-affirmed}
+  real:  Affirmed, 584 U.S. 325 (April 24, 2018).
+
+deadlines (by rule, from the `deadlines` op):
+  cafc@ptab::ptab-file-noa
+    63 days under Fed. R. App. P. 26: 2015-05-01 (the final written decision) -> due 2015-07-06
+    arithmetic: 37 C.F.R. § 90.3(a): 63 days. May 1 + 30 = May 31; + 30 = Jun 30 (60); + 3 = Jul 3 (63), a Friday, but the observed Independence Day holiday (July 4 fell on a Saturday); the next day that is not a weekend or holiday is Monday Jul 6.
+    historical: Notice-of-appeal date not found; the appeal is No. 2015-1855. The op applies FRAP 26 (the CAFC instance's rule set); 37 C.F.R. § 90.3(c), which actually governs a PTAB notice, rolls forward the same way here.
+  cafc@ptab::cert-window-file
+    90 days under Fed. R. App. P. 26: 2016-07-26 (denial of rehearing (Sup. Ct. R. 13.3)) -> due 2016-10-24
+    arithmetic: Sup. Ct. R. 13.1: 90 days. Jul 26 + 5 = Jul 31; + 31 = Aug 31 (36); + 30 = Sep 30 (66); + 24 = Oct 24 (90), a Monday.
+    historical: Petition filed 2016-11-23, a month after the unextended date. An extension under Sup. Ct. R. 13.5 is the usual explanation, but none was found in the sources read.
+
+where the pack's shape differs from the record:
+  - The PTAB pack forces a patent-owner sur-reply and, after a motion to amend, Board preliminary guidance. Neither existed when this trial ran (2014-15): sur-replies arrived with the August 2018 Trial Practice Guide update and preliminary guidance with the 2019 motion-to-amend pilot.
+  - The PTAB pack's own federal-circuit-window deadline (63 days) cannot be computed by the `deadlines` op: the pack's forum 'ptab' maps to no rule set (37 C.F.R. § 1.7 / § 90.3(c) are not implemented). The check above uses the CAFC instance's copy of the same deadline.
+  - The CAFC pack tags cert-granted with outcome 'remand' even when the Court goes on to affirm.
+  - The CAFC pack requires a bill-of-costs step before the certiorari window.
+
+sources:
+  [fwd] Greene's Energy Group v. Oil States, IPR2014-00216, final written decision summary (Nat'l L. Rev.) <https://natlawreview.com/article/greene-s-energy-group-v-oil-states-energy-services-final-written-decision-motion-to->
+  [cafc] Oil States Energy Servs. v. Greene's Energy Grp., No. 2015-1855 (Fed. Cir. May 4, 2016) (Rule 36 judgment) <https://www.cafc.uscourts.gov/5-04-2016-15-1855-oil-states-energy-services-v-greenes-energy-group-rule-36-judgment-15-1855-rule_36_judgment-5-2-2016-1/>
+  [scotus-docket] Supreme Court docket No. 16-712 <https://www.supremecourt.gov/search.aspx?filename=/docket/docketfiles/html/public/16-712.html>
+  [scotus] Oil States Energy Services, LLC v. Greene's Energy Group, LLC, 584 U.S. 325 (2018) (opinion) <https://www.law.cornell.edu/supremecourt/text/16-712>

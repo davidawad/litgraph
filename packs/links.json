@@ -20,6 +20,12 @@
             "length": 45,
             "note": "45 days after entry of judgment because the United States is a party to every CoFC appeal (Fed. Cir. R. 40, Federal Circuit Rules of Practice Dec. 1, 2025: 30 days, or 45 if the United States or its officer or agency is a party)."
           }
+        },
+        "rehearing-time-expires": {
+          "deadline": {
+            "length": 45,
+            "note": "The rehearing window this edge waits out is 45 days here, not 30, because the United States is a party (Fed. Cir. R. 40(a)(1)); the mandate then issues 7 days after it expires (FRAP 41(b))."
+          }
         }
       }
     },
@@ -47,6 +53,12 @@
           "deadline": {
             "length": 45,
             "note": "45 days after entry of judgment because the United States is a party to every CoFC appeal (Fed. Cir. R. 40, Federal Circuit Rules of Practice Dec. 1, 2025: 30 days, or 45 if the United States or its officer or agency is a party)."
+          }
+        },
+        "rehearing-time-expires": {
+          "deadline": {
+            "length": 45,
+            "note": "The rehearing window this edge waits out is 45 days here, not 30, because the United States is a party (Fed. Cir. R. 40(a)(1)); the mandate then issues 7 days after it expires (FRAP 41(b))."
           }
         }
       }
@@ -79,6 +91,20 @@
       ],
       "probabilities": {
         "remand-route-itc": 1.0
+      },
+      "patch_edges": {
+        "rehearing-file": {
+          "deadline": {
+            "length": 45,
+            "note": "45 days after entry of judgment because the Commission, a United States agency, is a party to every Section 337 appeal (Fed. Cir. R. 40(a)(1)(B): 30 days, or 45 if a United States agency is a party)."
+          }
+        },
+        "rehearing-time-expires": {
+          "deadline": {
+            "length": 45,
+            "note": "The rehearing window this edge waits out is 45 days here because the Commission, a United States agency, is a party (Fed. Cir. R. 40(a)(1)(B)); the mandate then issues 7 days after it expires (FRAP 41(b))."
+          }
+        }
       }
     },
     "cafc@district-court": {

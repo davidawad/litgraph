@@ -1,0 +1,237 @@
+Hughes Aircraft Co. v. United States, 717 F.2d 1351 (Fed. Cir. 1983); 86 F.3d 1566 (Fed. Cir. 1996), vacated, 520 U.S. 1183 (1997); 140 F.3d 1470 (Fed. Cir. 1998)
+The 28 U.S.C. § 1498 case that ran a quarter century. Hughes sued the United States for the government's use of its spacecraft-attitude-control patent. The trial court found no infringement; the new Federal Circuit reversed and remanded for compensation; the Court of Federal Claims awarded over $112 million; the Federal Circuit affirmed; the Supreme Court granted, vacated and remanded in light of Warner-Jenkinson; the Federal Circuit affirmed again and certiorari was denied. Exercises both CoFC instances (cafc@cofc for the plaintiff's appeal, cafc@cofc-gov for the government's), the CAFC -> CoFC remand link, and cert-denied resolving through the panel-affirmed flag.
+packs: cofc, cafc (links on)
+
+leg 1: Hughes sued in 1973 (No. 426-73) over the government's use of the Williams patent (No. 3,758,051). The Court of Claims trial judge recommended a finding of non-infringement (1982-09-01).
+  start  cofc::judgment-for-government "JUDGMENT FOR THE GOVERNMENT (Bench Trial Verdict)"
+    1. [1982-10-08] Final judgment for the United States (1982-10-08); Hughes appeals to the new Federal Circuit
+       via links::cofc-appeal-judgment-for-government (self, cross-forum link, 28 U.S.C. §§ 1295(a)(3), 2522)
+       at  cafc@cofc::entry-cofc "Court of Federal Claims Judgment Entered"
+    2. [-] Notice of appeal
+       via cafc@cofc::cofc-file-noa (self, 28 U.S.C. § 2522; 28 U.S.C. § 1295(a)(3); FRAP 4(a)(1)(B), within 60 calendar days)
+       at  cafc@cofc::notice-of-appeal-filed "Notice of Appeal Filed (Convergence)"
+    3. [-] Appeal docketed
+       via cafc@cofc::noa-to-docketed (nature, FRAP 12(a))
+       at  cafc@cofc::docketed "Appeal Docketed at the Federal Circuit"
+    4. [-] Appearances (the pack's current-rule filing)
+       via cafc@cofc::docketed-to-appearance (self, Fed. Cir. R. 47.3(b)(1); Fed. Cir. R. 47.4(b), within 14 calendar days)
+       at  cafc@cofc::appearance-and-coi-filed "Entry of Appearance & Certificate of Interest Filed"
+    5. [-] Docketing statement (the pack's current-rule filing)
+       via cafc@cofc::appearance-to-docketing-statement (self, Fed. Cir. R. 47.6, within 14 calendar days)
+       at  cafc@cofc::docketing-statement-filed "Docketing Statement Filed"
+    6. [-] Mediation screening (see quirks)
+       via cafc@cofc::docketing-statement-to-screening (nature, Appellate Mediation Program Guidelines §§ 2-3)
+       at  cafc@cofc::mediation-screening "OGC Screens for the Mediation Program"
+    7. [-] Not mediated
+       via cafc@cofc::screening-to-motions (nature, Appellate Mediation Program Guidelines §§ 2, 7)
+       at  cafc@cofc::motions-fork "Move to Stay Judgment Pending Appeal?"
+    8. [-] No stay motion (route assumed)
+       via cafc@cofc::motions-decline (self, FRAP 8(a))
+       at  cafc@cofc::cross-appeal-fork "Appellee Considers a Cross-Appeal"
+    9. [-] No cross-appeal (route assumed)
+       via cafc@cofc::cross-appeal-decline (self, FRAP 4(a)(3))
+       at  cafc@cofc::no-cross-appeal "No Cross-Appeal — Judgment Defended Only"
+   10. [-] Briefing opens
+       via cafc@cofc::no-cross-appeal-to-briefing (nature, Fed. Cir. R. 31(a)(1))
+       at  cafc@cofc::appellant-brief-window "Appellant's Principal Brief Due"
+   11. [-] Hughes' opening brief
+       via cafc@cofc::appellant-brief-file (self, Fed. Cir. R. 31(a)(1)(A)-(B), within 60 calendar days)
+       at  cafc@cofc::appellant-brief-filed "Opening Brief Filed"
+   12. [-] The government's response
+       via cafc@cofc::appellee-brief-file (opponent, Fed. Cir. R. 31(a)(2), within 40 calendar days)
+       at  cafc@cofc::appellee-brief-filed "Appellee's Principal/Response Brief Filed"
+   13. [-] Reply (route assumed)
+       via cafc@cofc::reply-brief-file (self, FRAP 31(a)(1), within 21 calendar days)
+       at  cafc@cofc::reply-brief-filed "Appellant's Reply Brief Filed"
+   14. [-] Briefing closes
+       via cafc@cofc::reply-brief-closes (nature, Fed. Cir. R. 31)
+       at  cafc@cofc::briefing-complete "Briefing Closed"
+   15. [-] Joint appendix filed
+       via cafc@cofc::briefing-to-appendix (self, Fed. Cir. R. 30(a)(2), within 7 calendar days)
+       at  cafc@cofc::joint-appendix-filed "Joint Appendix Served and Filed"
+   16. [-] Calendared
+       via cafc@cofc::appendix-to-argument-fork (nature, FRAP 34(a); Fed. Cir. IOP #7)
+       at  cafc@cofc::oral-argument-fork "Oral Argument or Submission Without Argument?"
+   17. [-] Argued (date not found; route assumed)
+       via cafc@cofc::argument-granted (nature, FRAP 34(a)(1); Fed. Cir. IOP #7)
+       at  cafc@cofc::oral-argument-held "Oral Argument Held"
+   18. [-] Panel confers
+       via cafc@cofc::argument-held-to-decision (nature, Fed. Cir. IOP #8)
+       at  cafc@cofc::panel-decision "Panel Decides the Appeal"
+   19. [1983-09-20] Validity affirmed; non-infringement reversed (the spacecraft infringe under the doctrine of equivalents); remanded to determine compensation (Markey)
+       via cafc@cofc::panel-to-remand (nature, FRAP 36(a))
+       at  cafc@cofc::remand-destination "Vacated/Remanded — Destination Tribunal"
+   20. [-] Remanded to the trial court
+       via cafc@cofc::remand-route-cofc (nature, FRAP 36(a))
+       at  cafc@cofc::remanded-to-cofc "Remanded to the Court of Federal Claims"
+   21. [-] Compensation proceedings before the Claims Court (later the Court of Federal Claims)
+       via links::cafc-remand-to-cofc (nature, cross-forum link, 28 U.S.C. § 2106)
+       at  cofc::trial-bench "Bench Trial (No Jury)"
+   22. [1994-06-17] Liability opinion, 29 Fed. Cl. 197 (1993); compensation base set 1994-04-29; 1% royalty plus delay damages, 31 Fed. Cl. 481
+       via cofc::e-trial-to-verdict (nature, RCFC 39; RCFC 52(a))
+       at  cofc::verdict-rendered "Court Renders Findings & Conclusions"
+   23. [-] Judgment entered once the parties agreed the figure (entry date not found)
+       via cofc::e-verdict-to-judgment58 (nature, RCFC 52(a); RCFC 58)
+       at  cofc::judgment-rcfc58-entered "Judgment Entered (Separate Document)"
+   24. [-] Post-trial motion window
+       via cofc::e-judgment58-to-posttrialwindow (nature, RCFC 58)
+       at  cofc::post-trial-motion-window "File a RCFC 59 Motion?"
+   25. [-] No post-trial motion in the sources read (route assumed)
+       via cofc::e-posttrialwindow-lapse (nature, RCFC 59(b))
+       at  cofc::post-trial-resolved "Post-Trial Motion Practice Resolved / Window Lapsed"
+   26. [-] Costs window
+       via cofc::e-posttrialresolved-to-costs (nature)
+       at  cofc::costs-and-fees-window "Bill of Costs & EAJA Fee Application Window"
+   27. [-] Who prevailed?
+       via cofc::e-costs-to-prevailing (nature, RCFC 54(d); 28 U.S.C. §2412(d)(1)(B), within 30 calendar days)
+       at  cofc::prevailing-party-fork "Who Prevailed?"
+   28. [-] Judgment for Hughes, in excess of $112 million
+       via cofc::e-prevailing-plaintiff (nature)
+       at  cofc::judgment-for-plaintiff "JUDGMENT FOR PLAINTIFF (Bench Trial Verdict)"
+   29. [-] Appeal to the Federal Circuit (Hughes on the rate, No. 94-5149; the United States on the base and interest, No. 95-5001)
+       via links::cofc-gov-appeal-judgment-for-plaintiff (opponent, cross-forum link, 28 U.S.C. §§ 1295(a)(3), 2522)
+       at  cafc@cofc-gov::entry-cofc "Court of Federal Claims Judgment Entered"
+   30. [-] Notices of appeal
+       via cafc@cofc-gov::cofc-file-noa (opponent, 28 U.S.C. § 2522; 28 U.S.C. § 1295(a)(3); FRAP 4(a)(1)(B), within 60 calendar days)
+       at  cafc@cofc-gov::notice-of-appeal-filed "Notice of Appeal Filed (Convergence)"
+   31. [-] Appeals docketed
+       via cafc@cofc-gov::noa-to-docketed (nature, FRAP 12(a))
+       at  cafc@cofc-gov::docketed "Appeal Docketed at the Federal Circuit"
+   32. [-] Appearances
+       via cafc@cofc-gov::docketed-to-appearance (opponent, Fed. Cir. R. 47.3(b)(1); Fed. Cir. R. 47.4(b), within 14 calendar days)
+       at  cafc@cofc-gov::appearance-and-coi-filed "Entry of Appearance & Certificate of Interest Filed"
+   33. [-] Docketing statements
+       via cafc@cofc-gov::appearance-to-docketing-statement (opponent, Fed. Cir. R. 47.6, within 14 calendar days)
+       at  cafc@cofc-gov::docketing-statement-filed "Docketing Statement Filed"
+   34. [-] Mediation screening (see quirks)
+       via cafc@cofc-gov::docketing-statement-to-screening (nature, Appellate Mediation Program Guidelines §§ 2-3)
+       at  cafc@cofc-gov::mediation-screening "OGC Screens for the Mediation Program"
+   35. [-] Not mediated
+       via cafc@cofc-gov::screening-to-motions (nature, Appellate Mediation Program Guidelines §§ 2, 7)
+       at  cafc@cofc-gov::motions-fork "Move to Stay Judgment Pending Appeal?"
+   36. [-] No stay motion (route assumed)
+       via cafc@cofc-gov::motions-decline (opponent, FRAP 8(a))
+       at  cafc@cofc-gov::cross-appeal-fork "Appellee Considers a Cross-Appeal"
+   37. [-] Cross-appeal
+       via cafc@cofc-gov::cross-appeal-file (opponent, FRAP 4(a)(3); Fed. Cir. R. 28.1, within 14 calendar days)
+       at  cafc@cofc-gov::cross-appeal-filed "Notice of Cross-Appeal Filed"
+   38. [-] Cross-appeals briefed together
+       via cafc@cofc-gov::cross-appeal-filed-to-briefing (nature, Fed. Cir. R. 28.1; Fed. Cir. R. 31(a)(1)(D))
+       at  cafc@cofc-gov::appellant-brief-window "Appellant's Principal Brief Due"
+   39. [-] Opening brief
+       via cafc@cofc-gov::appellant-brief-file (opponent, Fed. Cir. R. 31(a)(1)(A)-(B), within 60 calendar days)
+       at  cafc@cofc-gov::appellant-brief-filed "Opening Brief Filed"
+   40. [-] Response and cross-appeal brief
+       via cafc@cofc-gov::appellee-brief-file (self, Fed. Cir. R. 31(a)(2), within 40 calendar days)
+       at  cafc@cofc-gov::appellee-brief-filed "Appellee's Principal/Response Brief Filed"
+   41. [-] Reply (route assumed)
+       via cafc@cofc-gov::reply-brief-file (opponent, FRAP 31(a)(1), within 21 calendar days)
+       at  cafc@cofc-gov::reply-brief-filed "Appellant's Reply Brief Filed"
+   42. [-] Briefing closes
+       via cafc@cofc-gov::reply-brief-closes (nature, Fed. Cir. R. 31)
+       at  cafc@cofc-gov::briefing-complete "Briefing Closed"
+   43. [-] Joint appendix filed
+       via cafc@cofc-gov::briefing-to-appendix (opponent, Fed. Cir. R. 30(a)(2), within 7 calendar days)
+       at  cafc@cofc-gov::joint-appendix-filed "Joint Appendix Served and Filed"
+   44. [-] Calendared
+       via cafc@cofc-gov::appendix-to-argument-fork (nature, FRAP 34(a); Fed. Cir. IOP #7)
+       at  cafc@cofc-gov::oral-argument-fork "Oral Argument or Submission Without Argument?"
+   45. [-] Argued (date not found; route assumed)
+       via cafc@cofc-gov::argument-granted (nature, FRAP 34(a)(1); Fed. Cir. IOP #7)
+       at  cafc@cofc-gov::oral-argument-held "Oral Argument Held"
+   46. [-] Panel confers
+       via cafc@cofc-gov::argument-held-to-decision (nature, Fed. Cir. IOP #8)
+       at  cafc@cofc-gov::panel-decision "Panel Decides the Appeal"
+   47. [1996-06-19] Affirmed (Archer), 86 F.3d 1566
+       via cafc@cofc-gov::panel-to-affirmed (nature, FRAP 36(a))
+       at  cafc@cofc-gov::affirmed "Affirmed (With Opinion)" {panel-affirmed}
+   48. [-] The government weighs rehearing
+       via cafc@cofc-gov::affirmed-to-rehearing (opponent, Fed. Cir. R. 40(a)(1))
+       at  cafc@cofc-gov::rehearing-window "Losing Party Weighs Rehearing" {panel-affirmed}
+   49. [-] No rehearing petition in the sources read (route assumed)
+       via cafc@cofc-gov::rehearing-time-expires (opponent, FRAP 41(b); Fed. Cir. R. 41, within 45 calendar days)
+       at  cafc@cofc-gov::mandate-issued "Mandate Issues" {panel-affirmed}
+   50. [-] Bill of costs (route assumed; the pack requires it)
+       via cafc@cofc-gov::mandate-to-costs (nature, FRAP 39(e)(3)(A); Fed. Cir. R. 39(b), within 14 calendar days)
+       at  cafc@cofc-gov::costs-bill-filed "Bill of Costs Filed and Taxed" {panel-affirmed}
+   51. [-] The certiorari window runs
+       via cafc@cofc-gov::costs-to-cert-window (nature, FRAP 39(e)(3)(C); Sup. Ct. R. 13.3)
+       at  cafc@cofc-gov::cert-petition-window "Certiorari Petition Window" {panel-affirmed}
+   52. [-] The United States petitions for certiorari (No. 96-1297)
+       via cafc@cofc-gov::cert-window-file (opponent, 28 U.S.C. § 2101(c); Sup. Ct. R. 13.1, 13.3, within 90 calendar days)
+       at  cafc@cofc-gov::cert-petition-filed "Petition for Certiorari Filed" {panel-affirmed}
+   53. [-] The Court considers the petition
+       via cafc@cofc-gov::cert-filed-to-review (nature, Sup. Ct. R. 10)
+       at  cafc@cofc-gov::cert-review-decision "Supreme Court Grants or Denies Certiorari" {panel-affirmed}
+   54. [1997-04-21] Certiorari granted, judgment vacated, and remanded for further consideration in light of Warner-Jenkinson (a GVR)
+       via cafc@cofc-gov::cert-review-grant (nature, 28 U.S.C. § 1254(1); Sup. Ct. R. 10)
+       at  cafc@cofc-gov::cert-granted "CERT GRANTED — Case Transfers to the Supreme Court" {panel-affirmed}
+  GAP: The GVR sends the case back to the Federal Circuit panel for reconsideration
+       missing cafc@cofc-gov::cert-granted -> cafc@cofc-gov::panel-decision
+       No pack models Supreme Court review, so a grant-vacate-remand, the Court's most common disposition of a granted petition, cannot return the case to the court below. cert-granted is terminal.
+
+leg 2: The GVR vacated the 1996 judgment, so the Federal Circuit decides the appeal afresh. The leg starts at the panel with no disposition flag, as after a rehearing grant.
+  start  cafc@cofc-gov::panel-decision "Panel Decides the Appeal"
+    1. [1998-04-07] The 1983 decision satisfies Warner-Jenkinson; affirmed (Archer), 140 F.3d 1470
+       via cafc@cofc-gov::panel-to-affirmed (nature, FRAP 36(a))
+       at  cafc@cofc-gov::affirmed "Affirmed (With Opinion)" {panel-affirmed}
+    2. [-] The government weighs rehearing
+       via cafc@cofc-gov::affirmed-to-rehearing (opponent, Fed. Cir. R. 40(a)(1))
+       at  cafc@cofc-gov::rehearing-window "Losing Party Weighs Rehearing" {panel-affirmed}
+    3. [-] The government petitions for rehearing en banc
+       via cafc@cofc-gov::rehearing-file (opponent, Fed. Cir. R. 40(a)-(b), (f), within 45 calendar days)
+       at  cafc@cofc-gov::rehearing-petition-filed "Petition for Panel Rehearing / Rehearing En Banc / Combined Petition Filed" {panel-affirmed}
+    4. [-] The full court considers the petition
+       via cafc@cofc-gov::rehearing-panel-considers (nature, Fed. Cir. R. 40(a)(1)-(4))
+       at  cafc@cofc-gov::panel-en-banc-rehearing-decision "Panel (and, if Combined, the Full Court) Rules on the Petition" {panel-affirmed}
+    5. [1998-07-28] Rehearing en banc denied, 148 F.3d 1384
+       via cafc@cofc-gov::rehearing-denied-edge (nature, Fed. Cir. R. 40(a)(1))
+       at  cafc@cofc-gov::rehearing-denied "Rehearing Denied — Panel Decision Stands" {panel-affirmed}
+    6. [-] Mandate clock resumes
+       via cafc@cofc-gov::rehearing-denied-to-mandate (nature, FRAP 41(b); Fed. Cir. R. 41, within 7 calendar days)
+       at  cafc@cofc-gov::mandate-issued "Mandate Issues" {panel-affirmed}
+    7. [-] Bill of costs (route assumed; the pack requires it)
+       via cafc@cofc-gov::mandate-to-costs (nature, FRAP 39(e)(3)(A); Fed. Cir. R. 39(b), within 14 calendar days)
+       at  cafc@cofc-gov::costs-bill-filed "Bill of Costs Filed and Taxed" {panel-affirmed}
+    8. [-] The certiorari window runs
+       via cafc@cofc-gov::costs-to-cert-window (nature, FRAP 39(e)(3)(C); Sup. Ct. R. 13.3)
+       at  cafc@cofc-gov::cert-petition-window "Certiorari Petition Window" {panel-affirmed}
+    9. [1998-11] The United States petitions again (No. 98-871)
+       via cafc@cofc-gov::cert-window-file (opponent, 28 U.S.C. § 2101(c); Sup. Ct. R. 13.1, 13.3, within 90 calendar days)
+       at  cafc@cofc-gov::cert-petition-filed "Petition for Certiorari Filed" {panel-affirmed}
+   10. [-] The Court considers the petition
+       via cafc@cofc-gov::cert-filed-to-review (nature, Sup. Ct. R. 10)
+       at  cafc@cofc-gov::cert-review-decision "Supreme Court Grants or Denies Certiorari" {panel-affirmed}
+   11. [1999-03-01] Certiorari denied, 525 U.S. 1177
+       via cafc@cofc-gov::cert-review-deny (nature, Sup. Ct. R. 10)
+       at  cafc@cofc-gov::cert-denied "CERT DENIED (Final)" {panel-affirmed}
+
+outcome: cafc@cofc-gov::cert-denied
+  tags:  [final]
+  flags: {panel-affirmed}
+  real:  Certiorari denied (March 1, 1999); the judgment for Hughes stands.
+
+deadlines (by rule, from the `deadlines` op):
+  cafc@cofc::cofc-file-noa
+    60 days under Fed. R. App. P. 26: 1982-10-08 (the Court of Claims' final judgment for the United States) -> due 1982-12-07
+    arithmetic: 28 U.S.C. § 2522 / FRAP 4(a)(1)(B): 60 days. Oct 8 + 23 = Oct 31; + 30 = Nov 30 (53); + 7 = Dec 7 (60), a Tuesday.
+    historical: Notice-of-appeal date not found.
+  cafc@cofc-gov::cert-window-file
+    90 days under Fed. R. App. P. 26: 1998-07-28 (denial of rehearing en banc (Sup. Ct. R. 13.3)) -> due 1998-10-26
+    arithmetic: Sup. Ct. R. 13.1: 90 days. Jul 28 + 3 = Jul 31; + 31 = Aug 31 (34); + 30 = Sep 30 (64); + 26 = Oct 26 (90), a Monday.
+    historical: The Solicitor General's petition is dated about November 1998, after the unextended date; an extension is the likely explanation but was not found in the sources read. The deadline check measures the second trip through cert-window-file; the op computes the same length for either.
+
+where the pack's shape differs from the record:
+  - The first judgment came from the U.S. Court of Claims (its trial division); the Federal Courts Improvement Act of 1982 replaced it with the Claims Court (now the Court of Federal Claims) and the Federal Circuit. The CoFC pack stands in for the predecessor court.
+  - The CAFC pack models today's practice (certificates of interest, docketing statements, the mediation program), none of which existed in the same form in 1982-96.
+  - Both sides appealed the 1994 judgment. The composed graph only has a government-appeals instance (cafc@cofc-gov) for a plaintiff's win, so Hughes' own appeal rides in as the cross-appeal.
+  - The CAFC pack tags cert-granted with outcome 'remand'; here the Court vacated and remanded without argument (a GVR).
+
+sources:
+  [cafc-1983] Hughes Aircraft Co. v. United States, 717 F.2d 1351 (Fed. Cir. 1983) <https://static.case.law/f2d/717/cases/1351-01.json>
+  [cfc-1994] Hughes Aircraft Co. v. United States, 31 Fed. Cl. 481 (1994) <https://static.case.law/fed-cl/31/cases/0481-01.json>
+  [cafc-1996] Hughes Aircraft Co. v. United States, 86 F.3d 1566 (Fed. Cir. 1996) <https://static.case.law/f3d/86/cases/1566-01.json>
+  [gvr] United States v. Hughes Aircraft Co., 520 U.S. 1183 (1997) (GVR) <https://static.case.law/us/520/cases/1183-04.json>
+  [cafc-1998] Hughes Aircraft Co. v. United States, 140 F.3d 1470 (Fed. Cir. 1998) <https://static.case.law/f3d/140/cases/1470-01.json>
+  [sg-petition] United States v. Hughes Aircraft Co., petition for a writ of certiorari (No. 98-871) <https://www.justice.gov/osg/brief/us-v-hughes-aircraft-co-petition>
+  [cert-denied] United States v. Hughes Aircraft Co., 525 U.S. 1177 (1999) (cert. denied) <https://static.case.law/us/525/cases/1177-06.json>

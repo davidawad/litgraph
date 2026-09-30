@@ -1,0 +1,119 @@
+{
+  "name": "sue-or-settle-simulate",
+  "what": "20,000 seeded runs of the same graph. The exact expectations come from the chain; the sample mean and loss rate are checked to within 3 standard errors, the extremes and the tail exactly.",
+  "arithmetic": [
+    "net = payoff - 100: +900 with p = 0.6, -100 with p = 0.4",
+    "E[net] = 0.6 * 900 + 0.4 * (-100) = 540 - 40 = 500",
+    "sd(net) = 1000 * sqrt(0.6 * 0.4) = 489.9;  3 * sd / sqrt(20000) = 10.4, so tolerance 11",
+    "P(loss) = P(net < 0) = 0.4;  3 * sqrt(0.24 / 20000) = 0.0104, so tolerance 0.011",
+    "min = -100, max = 900 exactly (both outcomes occur in 20,000 runs)",
+    "CVaR at alpha 0.1 = mean of the worst 10% = -100 exactly, because 40% of runs lose 100",
+    "dollars = 100 on every run (always sue)"
+  ],
+  "pack": {
+    "schemaVersion": 2,
+    "id": "sue-or-settle",
+    "title": "Sue or settle",
+    "startNodeId": "offer",
+    "roles": {
+      "applicant": "self",
+      "examiner": "nature"
+    },
+    "nodes": [
+      {
+        "id": "offer",
+        "kind": "decision",
+        "label": "Settlement offer on the table"
+      },
+      {
+        "id": "trial",
+        "kind": "decision",
+        "label": "Court rules"
+      },
+      {
+        "id": "win",
+        "kind": "terminal",
+        "label": "Win",
+        "payoff": 1000,
+        "outcome": [
+          "win"
+        ]
+      },
+      {
+        "id": "lose",
+        "kind": "terminal",
+        "label": "Lose",
+        "payoff": 0,
+        "outcome": [
+          "loss"
+        ]
+      },
+      {
+        "id": "settled",
+        "kind": "terminal",
+        "label": "Settled",
+        "payoff": 450,
+        "outcome": [
+          "settlement"
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "sue",
+        "from": "offer",
+        "to": "trial",
+        "label": "Sue",
+        "actor": "applicant",
+        "cost": 100
+      },
+      {
+        "id": "settle",
+        "from": "offer",
+        "to": "settled",
+        "label": "Take the offer",
+        "actor": "applicant"
+      },
+      {
+        "id": "verdict-win",
+        "from": "trial",
+        "to": "win",
+        "label": "Verdict for us",
+        "actor": "examiner",
+        "probability": 0.6
+      },
+      {
+        "id": "verdict-lose",
+        "from": "trial",
+        "to": "lose",
+        "label": "Verdict against us",
+        "actor": "examiner",
+        "probability": 0.4
+      }
+    ]
+  },
+  "op": {
+    "op": "simulate",
+    "runs": 20000,
+    "seed": 7
+  },
+  "expect": {
+    "net": {
+      "mean": 500.0,
+      "min": -100.0,
+      "max": 900.0
+    },
+    "cvar": -100.0,
+    "p_loss": 0.4,
+    "metrics": {
+      "dollars": {
+        "mean": 100.0,
+        "std": 0.0
+      }
+    }
+  },
+  "tolerance": {
+    "/net/mean": 11.0,
+    "/p_loss": 0.011
+  }
+}

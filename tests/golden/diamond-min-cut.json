@@ -1,0 +1,107 @@
+{
+  "name": "diamond-min-cut",
+  "what": "Minimum s-t cut with capacity = fees: the cheapest set of edges whose removal disconnects s from t.",
+  "arithmetic": [
+    "capacities: s-a 5, s-b 3, a-t 2, b-t 4, a-b 2",
+    "every s-t cut, by the edges it severs:",
+    "  {s-a, s-b}       = 5 + 3     = 8",
+    "  {s-b, a-t, a-b}  = 3 + 2 + 2 = 7",
+    "  {s-a, b-t}       = 5 + 4     = 9",
+    "  {a-t, b-t}       = 2 + 4     = 6   <- minimum",
+    "max flow agrees: s-a-t 2, s-b-t 3, s-a-b-t 1 = 6"
+  ],
+  "pack": {
+    "schemaVersion": 2,
+    "id": "diamond",
+    "title": "Diamond",
+    "startNodeId": "s",
+    "roles": {
+      "applicant": "self"
+    },
+    "nodes": [
+      {
+        "id": "s",
+        "kind": "state",
+        "label": "s"
+      },
+      {
+        "id": "a",
+        "kind": "state",
+        "label": "a"
+      },
+      {
+        "id": "b",
+        "kind": "state",
+        "label": "b"
+      },
+      {
+        "id": "t",
+        "kind": "terminal",
+        "label": "t",
+        "payoff": 0,
+        "outcome": [
+          "final"
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "s-a",
+        "from": "s",
+        "to": "a",
+        "label": "s-a",
+        "actor": "applicant",
+        "cost": 5
+      },
+      {
+        "id": "s-b",
+        "from": "s",
+        "to": "b",
+        "label": "s-b",
+        "actor": "applicant",
+        "cost": 3
+      },
+      {
+        "id": "a-t",
+        "from": "a",
+        "to": "t",
+        "label": "a-t",
+        "actor": "applicant",
+        "cost": 2
+      },
+      {
+        "id": "b-t",
+        "from": "b",
+        "to": "t",
+        "label": "b-t",
+        "actor": "applicant",
+        "cost": 4
+      },
+      {
+        "id": "a-b",
+        "from": "a",
+        "to": "b",
+        "label": "a-b",
+        "actor": "applicant",
+        "cost": 2
+      }
+    ]
+  },
+  "op": {
+    "op": "structure",
+    "what": "mincut",
+    "to": "t",
+    "capacity": "fees"
+  },
+  "expect": {
+    "value": 6.0,
+    "cut": [
+      {
+        "id": "diamond::a-t"
+      },
+      {
+        "id": "diamond::b-t"
+      }
+    ]
+  }
+}

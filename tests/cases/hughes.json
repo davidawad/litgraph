@@ -1,0 +1,134 @@
+{
+  "case": "Hughes Aircraft Co. v. United States",
+  "citation": "717 F.2d 1351 (Fed. Cir. 1983); 86 F.3d 1566 (Fed. Cir. 1996), vacated, 520 U.S. 1183 (1997); 140 F.3d 1470 (Fed. Cir. 1998)",
+  "summary": "The 28 U.S.C. § 1498 case that ran a quarter century. Hughes sued the United States for the government's use of its spacecraft-attitude-control patent. The trial court found no infringement; the new Federal Circuit reversed and remanded for compensation; the Court of Federal Claims awarded over $112 million; the Federal Circuit affirmed; the Supreme Court granted, vacated and remanded in light of Warner-Jenkinson; the Federal Circuit affirmed again and certiorari was denied. Exercises both CoFC instances (cafc@cofc for the plaintiff's appeal, cafc@cofc-gov for the government's), the CAFC -> CoFC remand link, and cert-denied resolving through the panel-affirmed flag.",
+  "packs": ["cofc", "cafc"],
+  "legs": [
+    {
+      "start": "cofc::judgment-for-government",
+      "context": "Hughes sued in 1973 (No. 426-73) over the government's use of the Williams patent (No. 3,758,051). The Court of Claims trial judge recommended a finding of non-infringement (1982-09-01).",
+      "steps": [
+        {"to": "cafc@cofc::entry-cofc", "event": "Final judgment for the United States (1982-10-08); Hughes appeals to the new Federal Circuit", "date": "1982-10-08", "source": "cafc-1983"},
+        {"edge": "cofc-file-noa", "event": "Notice of appeal", "source": "cafc-1983"},
+        {"to": "docketed", "event": "Appeal docketed"},
+        {"to": "appearance-and-coi-filed", "event": "Appearances (the pack's current-rule filing)"},
+        {"to": "docketing-statement-filed", "event": "Docketing statement (the pack's current-rule filing)"},
+        {"to": "mediation-screening", "event": "Mediation screening (see quirks)"},
+        {"edge": "screening-to-motions", "event": "Not mediated"},
+        {"edge": "motions-decline", "event": "No stay motion (route assumed)"},
+        {"edge": "cross-appeal-decline", "event": "No cross-appeal (route assumed)"},
+        {"to": "appellant-brief-window", "event": "Briefing opens"},
+        {"to": "appellant-brief-filed", "event": "Hughes' opening brief"},
+        {"to": "appellee-brief-filed", "event": "The government's response"},
+        {"to": "reply-brief-filed", "event": "Reply (route assumed)"},
+        {"to": "briefing-complete", "event": "Briefing closes"},
+        {"to": "joint-appendix-filed", "event": "Joint appendix filed"},
+        {"to": "oral-argument-fork", "event": "Calendared"},
+        {"to": "oral-argument-held", "event": "Argued (date not found; route assumed)"},
+        {"to": "panel-decision", "event": "Panel confers"},
+        {"edge": "panel-to-remand", "event": "Validity affirmed; non-infringement reversed (the spacecraft infringe under the doctrine of equivalents); remanded to determine compensation (Markey)", "date": "1983-09-20", "source": "cafc-1983"},
+        {"edge": "remand-route-cofc", "event": "Remanded to the trial court"},
+        {"to": "cofc::trial-bench", "event": "Compensation proceedings before the Claims Court (later the Court of Federal Claims)", "source": "cfc-1994"},
+        {"to": "verdict-rendered", "event": "Liability opinion, 29 Fed. Cl. 197 (1993); compensation base set 1994-04-29; 1% royalty plus delay damages, 31 Fed. Cl. 481", "date": "1994-06-17", "source": "cfc-1994"},
+        {"to": "judgment-rcfc58-entered", "event": "Judgment entered once the parties agreed the figure (entry date not found)", "source": "cfc-1994"},
+        {"to": "post-trial-motion-window", "event": "Post-trial motion window"},
+        {"edge": "e-posttrialwindow-lapse", "event": "No post-trial motion in the sources read (route assumed)"},
+        {"to": "costs-and-fees-window", "event": "Costs window"},
+        {"to": "prevailing-party-fork", "event": "Who prevailed?"},
+        {"to": "judgment-for-plaintiff", "event": "Judgment for Hughes, in excess of $112 million", "source": "sg-petition"},
+        {"to": "cafc@cofc-gov::entry-cofc", "event": "Appeal to the Federal Circuit (Hughes on the rate, No. 94-5149; the United States on the base and interest, No. 95-5001)", "source": "cafc-1996"},
+        {"edge": "cofc-file-noa", "event": "Notices of appeal", "source": "cafc-1996"},
+        {"to": "docketed", "event": "Appeals docketed"},
+        {"to": "appearance-and-coi-filed", "event": "Appearances"},
+        {"to": "docketing-statement-filed", "event": "Docketing statements"},
+        {"to": "mediation-screening", "event": "Mediation screening (see quirks)"},
+        {"edge": "screening-to-motions", "event": "Not mediated"},
+        {"edge": "motions-decline", "event": "No stay motion (route assumed)"},
+        {"edge": "cross-appeal-file", "event": "Cross-appeal", "source": "cafc-1996"},
+        {"to": "appellant-brief-window", "event": "Cross-appeals briefed together"},
+        {"to": "appellant-brief-filed", "event": "Opening brief"},
+        {"to": "appellee-brief-filed", "event": "Response and cross-appeal brief"},
+        {"to": "reply-brief-filed", "event": "Reply (route assumed)"},
+        {"to": "briefing-complete", "event": "Briefing closes"},
+        {"to": "joint-appendix-filed", "event": "Joint appendix filed"},
+        {"to": "oral-argument-fork", "event": "Calendared"},
+        {"to": "oral-argument-held", "event": "Argued (date not found; route assumed)"},
+        {"to": "panel-decision", "event": "Panel confers"},
+        {"edge": "panel-to-affirmed", "event": "Affirmed (Archer), 86 F.3d 1566", "date": "1996-06-19", "source": "cafc-1996"},
+        {"edge": "affirmed-to-rehearing", "event": "The government weighs rehearing"},
+        {"edge": "rehearing-time-expires", "event": "No rehearing petition in the sources read (route assumed)"},
+        {"edge": "mandate-to-costs", "event": "Bill of costs (route assumed; the pack requires it)"},
+        {"edge": "costs-to-cert-window", "event": "The certiorari window runs"},
+        {"edge": "cert-window-file", "event": "The United States petitions for certiorari (No. 96-1297)", "source": "gvr"},
+        {"edge": "cert-filed-to-review", "event": "The Court considers the petition", "source": "gvr"},
+        {"edge": "cert-review-grant", "event": "Certiorari granted, judgment vacated, and remanded for further consideration in light of Warner-Jenkinson (a GVR)", "date": "1997-04-21", "source": "gvr"}
+      ]
+    },
+    {
+      "start": "cafc@cofc-gov::panel-decision",
+      "context": "The GVR vacated the 1996 judgment, so the Federal Circuit decides the appeal afresh. The leg starts at the panel with no disposition flag, as after a rehearing grant.",
+      "steps": [
+        {"edge": "panel-to-affirmed", "event": "The 1983 decision satisfies Warner-Jenkinson; affirmed (Archer), 140 F.3d 1470", "date": "1998-04-07", "source": "cafc-1998"},
+        {"edge": "affirmed-to-rehearing", "event": "The government weighs rehearing", "source": "sg-petition"},
+        {"edge": "rehearing-file", "event": "The government petitions for rehearing en banc", "source": "sg-petition"},
+        {"edge": "rehearing-panel-considers", "event": "The full court considers the petition", "source": "sg-petition"},
+        {"edge": "rehearing-denied-edge", "event": "Rehearing en banc denied, 148 F.3d 1384", "date": "1998-07-28", "source": "sg-petition"},
+        {"edge": "rehearing-denied-to-mandate", "event": "Mandate clock resumes"},
+        {"edge": "mandate-to-costs", "event": "Bill of costs (route assumed; the pack requires it)"},
+        {"edge": "costs-to-cert-window", "event": "The certiorari window runs"},
+        {"edge": "cert-window-file", "event": "The United States petitions again (No. 98-871)", "date": "1998-11", "source": "sg-petition"},
+        {"edge": "cert-filed-to-review", "event": "The Court considers the petition", "source": "cert-denied"},
+        {"edge": "cert-review-deny", "event": "Certiorari denied, 525 U.S. 1177", "date": "1999-03-01", "source": "cert-denied"}
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "event": "The GVR sends the case back to the Federal Circuit panel for reconsideration",
+      "from": "cafc@cofc-gov::cert-granted",
+      "to": "cafc@cofc-gov::panel-decision",
+      "why": "No pack models Supreme Court review, so a grant-vacate-remand, the Court's most common disposition of a granted petition, cannot return the case to the court below. cert-granted is terminal."
+    }
+  ],
+  "outcome": {
+    "node": "cafc@cofc-gov::cert-denied",
+    "outcome": ["final"],
+    "flags": ["panel-affirmed"],
+    "real": "Certiorari denied (March 1, 1999); the judgment for Hughes stands."
+  },
+  "deadlines": [
+    {
+      "edge": "cafc@cofc::cofc-file-noa",
+      "trigger": "1982-10-08",
+      "trigger_event": "the Court of Claims' final judgment for the United States",
+      "rule_set": "frap26",
+      "due": "1982-12-07",
+      "arithmetic": "28 U.S.C. § 2522 / FRAP 4(a)(1)(B): 60 days. Oct 8 + 23 = Oct 31; + 30 = Nov 30 (53); + 7 = Dec 7 (60), a Tuesday.",
+      "historical": "Notice-of-appeal date not found."
+    },
+    {
+      "edge": "cafc@cofc-gov::cert-window-file",
+      "trigger": "1998-07-28",
+      "trigger_event": "denial of rehearing en banc (Sup. Ct. R. 13.3)",
+      "rule_set": "frap26",
+      "due": "1998-10-26",
+      "arithmetic": "Sup. Ct. R. 13.1: 90 days. Jul 28 + 3 = Jul 31; + 31 = Aug 31 (34); + 30 = Sep 30 (64); + 26 = Oct 26 (90), a Monday.",
+      "historical": "The Solicitor General's petition is dated about November 1998, after the unextended date; an extension is the likely explanation but was not found in the sources read. The deadline check measures the second trip through cert-window-file; the op computes the same length for either."
+    }
+  ],
+  "quirks": [
+    "The first judgment came from the U.S. Court of Claims (its trial division); the Federal Courts Improvement Act of 1982 replaced it with the Claims Court (now the Court of Federal Claims) and the Federal Circuit. The CoFC pack stands in for the predecessor court.",
+    "The CAFC pack models today's practice (certificates of interest, docketing statements, the mediation program), none of which existed in the same form in 1982-96.",
+    "Both sides appealed the 1994 judgment. The composed graph only has a government-appeals instance (cafc@cofc-gov) for a plaintiff's win, so Hughes' own appeal rides in as the cross-appeal.",
+    "The CAFC pack tags cert-granted with outcome 'remand'; here the Court vacated and remanded without argument (a GVR)."
+  ],
+  "sources": [
+    {"id": "cafc-1983", "title": "Hughes Aircraft Co. v. United States, 717 F.2d 1351 (Fed. Cir. 1983)", "url": "https://static.case.law/f2d/717/cases/1351-01.json"},
+    {"id": "cfc-1994", "title": "Hughes Aircraft Co. v. United States, 31 Fed. Cl. 481 (1994)", "url": "https://static.case.law/fed-cl/31/cases/0481-01.json"},
+    {"id": "cafc-1996", "title": "Hughes Aircraft Co. v. United States, 86 F.3d 1566 (Fed. Cir. 1996)", "url": "https://static.case.law/f3d/86/cases/1566-01.json"},
+    {"id": "gvr", "title": "United States v. Hughes Aircraft Co., 520 U.S. 1183 (1997) (GVR)", "url": "https://static.case.law/us/520/cases/1183-04.json"},
+    {"id": "cafc-1998", "title": "Hughes Aircraft Co. v. United States, 140 F.3d 1470 (Fed. Cir. 1998)", "url": "https://static.case.law/f3d/140/cases/1470-01.json"},
+    {"id": "sg-petition", "title": "United States v. Hughes Aircraft Co., petition for a writ of certiorari (No. 98-871)", "url": "https://www.justice.gov/osg/brief/us-v-hughes-aircraft-co-petition"},
+    {"id": "cert-denied", "title": "United States v. Hughes Aircraft Co., 525 U.S. 1177 (1999) (cert. denied)", "url": "https://static.case.law/us/525/cases/1177-06.json"}
+  ]
+}

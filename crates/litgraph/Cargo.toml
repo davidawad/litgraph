@@ -33,4 +33,5 @@ rand.workspace = true
 rand_chacha.workspace = true
 
 [dev-dependencies]
+expect-test = "1"
 proptest.workspace = true

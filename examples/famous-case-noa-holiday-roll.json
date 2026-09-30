@@ -1,0 +1,11 @@
+{
+  "packs": [
+    "ptab-patent-trial-appeal-board",
+    "cafc"
+  ],
+  "op": {
+    "op": "deadlines",
+    "trigger": "2015-05-01",
+    "edge": "cafc@ptab::ptab-file-noa"
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "name": "sue-or-settle-solve",
+  "what": "A choice between a sure $450 and a $100 lawsuit that wins $1,000 with probability 0.6.",
+  "arithmetic": [
+    "Q(sue)    = 0.6 * 1000 + 0.4 * 0 - 100 = 600 - 100 = 500",
+    "Q(settle) = 450",
+    "value(offer) = max(500, 450) = 500, so the best line is Sue, then the likelier verdict (0.6, for us)"
+  ],
+  "pack": {
+    "schemaVersion": 2,
+    "id": "sue-or-settle",
+    "title": "Sue or settle",
+    "startNodeId": "offer",
+    "roles": {
+      "applicant": "self",
+      "examiner": "nature"
+    },
+    "nodes": [
+      {
+        "id": "offer",
+        "kind": "decision",
+        "label": "Settlement offer on the table"
+      },
+      {
+        "id": "trial",
+        "kind": "decision",
+        "label": "Court rules"
+      },
+      {
+        "id": "win",
+        "kind": "terminal",
+        "label": "Win",
+        "payoff": 1000,
+        "outcome": [
+          "win"
+        ]
+      },
+      {
+        "id": "lose",
+        "kind": "terminal",
+        "label": "Lose",
+        "payoff": 0,
+        "outcome": [
+          "loss"
+        ]
+      },
+      {
+        "id": "settled",
+        "kind": "terminal",
+        "label": "Settled",
+        "payoff": 450,
+        "outcome": [
+          "settlement"
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "sue",
+        "from": "offer",
+        "to": "trial",
+        "label": "Sue",
+        "actor": "applicant",
+        "cost": 100
+      },
+      {
+        "id": "settle",
+        "from": "offer",
+        "to": "settled",
+        "label": "Take the offer",
+        "actor": "applicant"
+      },
+      {
+        "id": "verdict-win",
+        "from": "trial",
+        "to": "win",
+        "label": "Verdict for us",
+        "actor": "examiner",
+        "probability": 0.6
+      },
+      {
+        "id": "verdict-lose",
+        "from": "trial",
+        "to": "lose",
+        "label": "Verdict against us",
+        "actor": "examiner",
+        "probability": 0.4
+      }
+    ]
+  },
+  "op": {
+    "op": "solve"
+  },
+  "expect": {
+    "value": 500.0,
+    "best_line": [
+      {
+        "id": "sue-or-settle::sue",
+        "q": 500.0
+      },
+      {
+        "id": "sue-or-settle::verdict-win",
+        "p": 0.6,
+        "q": 1000.0
+      }
+    ]
+  }
+}

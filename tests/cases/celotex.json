@@ -1,0 +1,85 @@
+{
+  "case": "Celotex Corp. v. Catrett",
+  "citation": "477 U.S. 317 (1986)",
+  "summary": "The summary-judgment burden case. The D.D.C. grants summary judgment to Celotex (and every other defendant) for want of evidence of exposure; the D.C. Circuit reverses; Celotex wins certiorari. Exercises the FRCP summary-judgment -> appeal route added for this case.",
+  "packs": ["frcp-civil-procedure", "frap-appellate-procedure"],
+  "legs": [
+    {
+      "start": "frcp-civil-procedure::discovery-closed",
+      "context": "Catrett sues fifteen asbestos manufacturers for her husband's wrongful death (D.D.C., filed September 1980); discovery has run.",
+      "steps": [
+        {"to": "summary-judgment-motion", "event": "Celotex and twelve other defendants move for summary judgment: plaintiff has no evidence of exposure to their products", "source": "scotus"},
+        {"to": "sj-briefing-complete", "event": "Rule 56 briefing completes", "source": "scotus"},
+        {"to": "sj-ruling", "event": "Motions taken under submission", "source": "scotus"},
+        {"to": "summary-judgment-granted", "event": "The court grants every motion from the bench (no written opinion)", "date": "1982-07-21", "source": "cadc"},
+        {"edge": "summary-judgment-appeal-clock", "event": "With every defendant out, the judgment is final (28 U.S.C. § 1291)", "source": "scotus"},
+        {"to": "notice-of-appeal-filed", "event": "Catrett appeals only the grant for Celotex (No. 83-1694)", "source": "scotus"},
+        {"to": "frap-appellate-procedure::notice-of-appeal-filed", "event": "The appeal crosses into the D.C. Circuit", "source": "cadc"},
+        {"to": "docketed-in-court-of-appeals", "event": "Appeal docketed", "source": "cadc"},
+        {"to": "cross-appeal-fork", "event": "Celotex, the appellee, considers a cross-appeal"},
+        {"to": "cross-appeal-not-filed", "event": "No cross-appeal (Celotex won everything below)"},
+        {"to": "voluntary-dismissal-fork", "event": "Appeal proceeds"},
+        {"to": "transcript-order-fork", "event": "The record is assembled"},
+        {"to": "transcript-ordered", "event": "The ruling was delivered from the bench, so a hearing transcript is ordered (route assumed)"},
+        {"to": "record-transmitted", "event": "Record complete"},
+        {"to": "stay-pending-appeal-fork", "event": "Motions stage"},
+        {"edge": "no-stay-sought", "event": "Nothing to stay (route assumed)"},
+        {"to": "appellant-brief-filed", "event": "Catrett's opening brief"},
+        {"to": "appellee-brief-filed", "event": "Celotex's response brief"},
+        {"to": "reply-brief-filed", "event": "Reply (route assumed)"},
+        {"to": "briefing-complete", "event": "Briefing closes"},
+        {"to": "oral-argument-fork", "event": "Clerk calendars the appeal"},
+        {"to": "oral-argument-held", "event": "Argued before Wald, Bork and Starr, JJ.", "date": "1984-02-06", "source": "cadc"},
+        {"to": "standard-of-review-fork", "event": "Panel deliberates"},
+        {"to": "de-novo-review", "event": "Summary judgment is a question of law (the opinion does not name the standard)", "source": "cadc"},
+        {"to": "reversed-and-remanded", "event": "D.C. Circuit reverses and remands (Starr, J.; Bork, J., dissenting)", "date": "1985-03-08", "source": "cadc"},
+        {"to": "rehearing-window", "event": "Celotex weighs rehearing"},
+        {"to": "mandate-issued", "event": "No rehearing petition in the sources read (route assumed)"},
+        {"to": "cert-petition-window", "event": "The certiorari window runs"},
+        {"to": "cert-petition-filed", "event": "Celotex petitions for certiorari (No. 85-198; filing date not found)", "source": "scotus"},
+        {"to": "cert-review-decision", "event": "The Court considers the petition"},
+        {"to": "cert-granted", "event": "Certiorari granted, 474 U.S. 944, to resolve a conflict with the Third Circuit", "date": "1985-11-04", "source": "scotus"}
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "event": "Supreme Court reverses and remands (argued 1986-04-01, decided 1986-06-25): the movant need not negate the opponent's claim with its own evidence",
+      "from": "frap-appellate-procedure::cert-granted",
+      "why": "No pack models Supreme Court merits review; cert-granted is terminal."
+    }
+  ],
+  "outcome": {
+    "node": "frap-appellate-procedure::cert-granted",
+    "outcome": ["pending"],
+    "real": "Reversed and remanded, 477 U.S. 317 (June 25, 1986)."
+  },
+  "deadlines": [
+    {
+      "edge": "frcp-civil-procedure::notice-of-appeal-window->notice-of-appeal-filed#0",
+      "trigger": "1982-07-21",
+      "trigger_event": "the bench ruling granting summary judgment (the date the D.C. Circuit gives)",
+      "rule_set": "frcp6",
+      "due": "1982-08-20",
+      "arithmetic": "FRAP 4(a)(1)(A): 30 days. Jul 21 + 10 = Jul 31; + 20 = Aug 20 (30), a Friday.",
+      "historical": "Not found. The rule runs from entry of the separate judgment, whose date was not found either, so this trigger is the ruling date."
+    },
+    {
+      "edge": "frap-appellate-procedure::cert-petition-window->cert-petition-filed#0",
+      "trigger": "1985-03-08",
+      "trigger_event": "the D.C. Circuit's judgment, assuming no rehearing petition",
+      "rule_set": "frap26",
+      "due": "1985-06-06",
+      "arithmetic": "Sup. Ct. R. 13.1: 90 days. Mar 8 + 23 = Mar 31; + 30 = Apr 30 (53); + 31 = May 31 (84); + 6 = Jun 6 (90), a Thursday.",
+      "historical": "Filing date not found."
+    }
+  ],
+  "quirks": [
+    "The FRCP pack's summary-judgment-granted node does not say who won; here the movant (Celotex) did.",
+    "The FRCP pack models one lawsuit with one defendant; the real judgment disposed of thirteen summary-judgment motions and two personal-jurisdiction dismissals together."
+  ],
+  "sources": [
+    {"id": "cadc", "title": "Catrett v. Johns-Manville Sales Corp., 756 F.2d 181 (D.C. Cir. 1985)", "url": "https://law.resource.org/pub/us/case/reporter/F2/756/756.F2d.181.83-1694.html"},
+    {"id": "scotus", "title": "Celotex Corp. v. Catrett, 477 U.S. 317 (1986) (opinion)", "url": "https://www.law.cornell.edu/supremecourt/text/477/317"}
+  ]
+}

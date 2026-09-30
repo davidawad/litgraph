@@ -7,6 +7,50 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **Famous-case tests** (`tests/cases/`, `crates/litgraph/tests/famous_cases.rs`):
+  ten real, sourced procedural histories (Twombly, Iqbal, Celotex, eBay v.
+  MercExchange, Oil States, SAS Institute, United States v. Arthrex, Hughes
+  Aircraft (§ 1498), Blue & Gold Fleet (CoFC bid protest), Suprema v. ITC
+  (§ 337)). Each one is replayed as a walk through the compiled graph, so
+  links and state flags are honored. The tests check the terminal and flags
+  it ends on, and check key deadlines through the `deadlines` op against
+  hand-computed rule dates. Steps no pack can express are listed as
+  expected-failure gaps, and the test fails once one is closed. Each case
+  renders to an `expect-test` story snapshot (`<slug>.story.txt`) a lawyer
+  can read.
+- **Golden graphs** (`tests/golden/`, `crates/litgraph/tests/golden.rs`):
+  seven 2-6 node packs with hand-computed `solve`, `chain`, `simulate`,
+  `path` and min-cut answers, each file showing its arithmetic.
+- `tests/README.md`: the test layers and how to add a case.
+- `examples/famous-case-noa-holiday-roll.json`: the Oil States notice of
+  appeal, a 63-day window that rolls past the observed July 4 holiday.
+- Dev-dependency `expect-test` (MIT/Apache-2.0, one small transitive
+  dependency, `dissimilar`). It provides the self-updating story snapshots
+  (`UPDATE_EXPECT=1`).
+
+### Fixed
+
+- Deadline clock: Juneteenth is a legal holiday only from 2021 (Pub. L.
+  117-17) and Martin Luther King, Jr. Day only from 1986 (Pub. L. 98-144).
+  Previously both applied to every year, which moved historical ITC
+  anchors and roll-forwards. For example, the Suprema petition-for-review
+  deadline came out July 5, 2011 instead of July 1.
+- `frcp-civil-procedure`: a dismissal with prejudice and a full summary
+  judgment are final decisions (28 U.S.C. § 1291) but had no route to the
+  notice-of-appeal window. New edges `dismissal-appeal-clock` and
+  `summary-judgment-appeal-clock` add one.
+- `frap-appellate-procedure`: new edges `no-transcript-certificate` (FRAP
+  10(b)(1)(B), for appeals from rulings on the papers) and `no-stay-sought`
+  (a stay is optional under FRAP 8(a)(1); this mirrors the CAFC pack's
+  `motions-decline`). Before these, every appeal had to order a transcript
+  or file an agreed statement, and had to move for a stay.
+- `links.json`: `cafc@cofc` and `cafc@cofc-gov` now also patch
+  `rehearing-time-expires` to 45 days, matching their `rehearing-file`. The
+  `cafc@itc` instance gets both patches, because the Commission, a U.S.
+  agency, is a party to every § 337 appeal (Fed. Cir. R. 40(a)(1)(B)).
+
 ## [0.2.1] - 2026-09-29
 
 ## [0.2.0] - 2026-09-29

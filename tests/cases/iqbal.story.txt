@@ -1,0 +1,147 @@
+Ashcroft v. Iqbal, 556 U.S. 662 (2009)
+Twombly's plausibility standard extended to every civil action. The E.D.N.Y. denies the Attorney General's and FBI Director's motion to dismiss on qualified immunity, and they take an interlocutory collateral-order appeal to the Second Circuit. Exercises FRAP's interlocutory door and the 60-day notice-of-appeal window for federal officers.
+packs: frcp-civil-procedure, frap-appellate-procedure (links on)
+
+leg 1: Javaid Iqbal sues federal officials over his post-9/11 detention (Elmaghraby v. Ashcroft, E.D.N.Y.); the individual defendants' Rule 12 window is open.
+  start  frcp-civil-procedure::rule12-response-window "Rule 12 Response Window"
+    1. [-] Ashcroft and Mueller move to dismiss: the complaint pleads no facts showing their own involvement, so qualified immunity applies
+       via frcp-civil-procedure::12b-motion-filed (self, FRCP 12(b), within 21 calendar days)
+       at  frcp-civil-procedure::motion-to-dismiss-filed "Rule 12(b) Motion Filed" {waived-12h-defenses}
+    2. [-] Motion briefed and submitted
+       via frcp-civil-procedure::motion-to-dismiss-filed->mtd-ruling#0 (self, FRCP 12(b))
+       at  frcp-civil-procedure::mtd-ruling "Court Rules on Motion to Dismiss" {waived-12h-defenses}
+    3. [2005-09-27] Judge Gleeson denies the motion in relevant part
+       via frcp-civil-procedure::mtd-ruling->answer-filed#0 (nature, FRCP 12(a)(4)(A), within 14 calendar days)
+       at  frcp-civil-procedure::answer-filed "Answer Filed" {waived-12h-defenses}
+  GAP: Defendants appeal the denial of their motion to dismiss immediately, as a collateral order
+       missing frcp-civil-procedure::answer-filed -> frap-appellate-procedure::trial-court-disposition
+       links.json joins FRCP to the courts of appeals only at notice-of-appeal-filed, i.e. after a final judgment. No link carries an interlocutory order out of the district court into FRAP's interlocutory door (collateral order, 28 U.S.C. 1292(a)/(b)). Closing it needs a new FRCP node for an appealable interlocutory order plus a link, not a one-line fix.
+
+leg 2: The denial of qualified immunity is an appealable collateral order (Mitchell v. Forsyth, 472 U.S. 511 (1985)); the case restarts in the court of appeals' view of the order.
+  start  frap-appellate-procedure::trial-court-disposition "District Court Order or Judgment Entered"
+    1. [-] Is the order appealable now?
+       via frap-appellate-procedure::trial-court-disposition->appealability-fork#0 (nature, 28 U.S.C. § 1291)
+       at  frap-appellate-procedure::appealability-fork "Is the Order a Final Judgment?"
+    2. [-] The order is not a final judgment
+       via frap-appellate-procedure::appealability-fork->interlocutory-order-issued#0 (nature, 28 U.S.C. § 1291)
+       at  frap-appellate-procedure::interlocutory-order-issued "Interlocutory Order"
+    3. [-] Check the interlocutory doors
+       via frap-appellate-procedure::interlocutory-order-issued->interlocutory-review-fork#0 (self, 28 U.S.C. § 1292)
+       at  frap-appellate-procedure::interlocutory-review-fork "Interlocutory Review Door Available?"
+    4. [-] Denial of qualified immunity turning on an issue of law is a collateral order
+       via frap-appellate-procedure::interlocutory-collateral-order (self, Cohen v. Beneficial Industrial Loan Corp., 337 U.S. 541 (1949), within 30 calendar days)
+       at  frap-appellate-procedure::immediately-appealable-interlocutory "Interlocutory Order Ripe for Appeal"
+    5. [-] The notice-of-appeal clock runs
+       via frap-appellate-procedure::immediately-appealable-interlocutory->appeal-clock-open#0 (nature, Fed. R. App. P. 4(a)(1)(A))
+       at  frap-appellate-procedure::appeal-clock-open "Notice of Appeal Window Open"
+    6. [-] Defendants notice appeals (No. 05-5768 and six consolidated appeals); federal officers sued individually get 60 days
+       via frap-appellate-procedure::notice-of-appeal-us-party (self, FRAP 4(a)(1)(B), within 60 calendar days)
+       at  frap-appellate-procedure::notice-of-appeal-filed "Notice of Appeal Filed"
+    7. [-] Appeals docketed and consolidated
+       via frap-appellate-procedure::notice-of-appeal-filed->docketed-in-court-of-appeals#0 (nature, FRAP 3(d); FRAP 12(a); FRAP 12(b)(3))
+       at  frap-appellate-procedure::docketed-in-court-of-appeals "Appeal Docketed"
+    8. [-] Iqbal considers a cross-appeal
+       via frap-appellate-procedure::docketed-in-court-of-appeals->cross-appeal-fork#0 (self, FRAP 4(a)(3); FRAP 4(a)(4))
+       at  frap-appellate-procedure::cross-appeal-fork "Appellee Considers a Cross-Appeal"
+    9. [-] No cross-appeal (route assumed; none in the sources read)
+       via frap-appellate-procedure::cross-appeal-fork->cross-appeal-not-filed#0 (self, FRAP 4(a)(3))
+       at  frap-appellate-procedure::cross-appeal-not-filed "No Cross-Appeal — Judgment Defended Only"
+   10. [-] Appeal proceeds
+       via frap-appellate-procedure::cross-appeal-not-filed->voluntary-dismissal-fork#0 (nature, FRAP 28.1)
+       at  frap-appellate-procedure::voluntary-dismissal-fork "Parties Consider Dismissing the Appeal"
+   11. [-] The record is assembled
+       via frap-appellate-procedure::voluntary-dismissal-fork->transcript-order-fork#0 (self, FRAP 10(b))
+       at  frap-appellate-procedure::transcript-order-fork "Transcript Needed?"
+   12. [-] Appeal from a ruling on the papers: no transcript to order (route assumed)
+       via frap-appellate-procedure::no-transcript-certificate (self, FRAP 10(b)(1)(B), within 14 calendar days)
+       at  frap-appellate-procedure::record-transmitted "Record on Appeal Complete and Transmitted"
+   13. [-] Record complete
+       via frap-appellate-procedure::record-transmitted->stay-pending-appeal-fork#0 (nature)
+       at  frap-appellate-procedure::stay-pending-appeal-fork "Move to Stay Judgment Pending Appeal?"
+   14. [-] No stay motion in the sources read (route assumed)
+       via frap-appellate-procedure::no-stay-sought (self, FRAP 8(a)(1))
+       at  frap-appellate-procedure::appellant-brief-window "Appellant's Opening Brief Due"
+   15. [-] Appellants' opening briefs
+       via frap-appellate-procedure::appellant-brief-window->appellant-brief-filed#0 (self, FRAP 31(a)(1), within 40 calendar days)
+       at  frap-appellate-procedure::appellant-brief-filed "Opening Brief Filed"
+   16. [-] Iqbal's response brief
+       via frap-appellate-procedure::appellant-brief-filed->appellee-brief-filed#0 (self, FRAP 31(a)(1); FRAP 28(b), within 30 calendar days)
+       at  frap-appellate-procedure::appellee-brief-filed "Appellee's Response Brief Filed"
+   17. [-] Reply briefs (route assumed)
+       via frap-appellate-procedure::appellee-brief-filed->reply-brief-filed#0 (self, FRAP 31(a)(1); FRAP 28(c), within 21 calendar days)
+       at  frap-appellate-procedure::reply-brief-filed "Appellant's Reply Brief Filed"
+   18. [-] Briefing closes
+       via frap-appellate-procedure::reply-brief-filed->briefing-complete#0 (nature, FRAP 31)
+       at  frap-appellate-procedure::briefing-complete "Briefing Closed"
+   19. [-] Clerk calendars the appeal
+       via frap-appellate-procedure::briefing-complete->oral-argument-fork#0 (nature, FRAP 34(a))
+       at  frap-appellate-procedure::oral-argument-fork "Oral Argument or Submission on Briefs?"
+   20. [-] Argued before Newman, Cabranes and Sack, JJ. (argument date not found; route assumed)
+       via frap-appellate-procedure::oral-argument-fork->oral-argument-held#0 (nature, FRAP 34(a)(1))
+       at  frap-appellate-procedure::oral-argument-held "Oral Argument Held"
+   21. [-] Panel deliberates
+       via frap-appellate-procedure::oral-argument-held->standard-of-review-fork#0 (nature, FRAP 34(d))
+       at  frap-appellate-procedure::standard-of-review-fork "Which Standard of Review Governs?"
+   22. [-] Qualified immunity on the pleadings is reviewed de novo, taking the allegations as true
+       via frap-appellate-procedure::standard-of-review-fork->de-novo-review#0 (nature, Pure questions of law (statutory construction, constitutional interpretation, legal standards for admissibility))
+       at  frap-appellate-procedure::de-novo-review "De Novo Review (Questions of Law)"
+   23. [2007-06-14] Iqbal v. Hasty: affirmed in part, reversed in part (procedural due process claims), remanded
+       via frap-appellate-procedure::de-novo-review->affirmed-in-part-reversed-in-part#0 (nature)
+       at  frap-appellate-procedure::affirmed-in-part-reversed-in-part "AFFIRMED IN PART, REVERSED IN PART"
+   24. [-] Either side weighs rehearing
+       via frap-appellate-procedure::affirmed-in-part-reversed-in-part->rehearing-window#0 (self, FRAP 40(a)(1), within 14 calendar days)
+       at  frap-appellate-procedure::rehearing-window "Seek Rehearing?"
+   25. [-] Rehearing petition filed
+       via frap-appellate-procedure::rehearing-window->rehearing-petition-filed#0 (self, FRAP 40(a)(1); FRAP 35(c), within 14 calendar days)
+       at  frap-appellate-procedure::rehearing-petition-filed "Petition for Rehearing / Rehearing En Banc Filed"
+   26. [-] Panel considers it
+       via frap-appellate-procedure::rehearing-petition-filed->panel-rehearing-decision#0 (nature, FRAP 40(a)(4))
+       at  frap-appellate-procedure::panel-rehearing-decision "Panel Rules on Rehearing"
+   27. [-] Panel denies rehearing
+       via frap-appellate-procedure::panel-rehearing-decision->en-banc-poll-decision#0 (nature, FRAP 40(a)(4); FRAP 40(c); 28 U.S.C. § 46(c))
+       at  frap-appellate-procedure::en-banc-poll-decision "Active Judges Vote on En Banc Rehearing"
+   28. [2007-09-18] Rehearing denied
+       via frap-appellate-procedure::en-banc-poll-decision->rehearing-en-banc-both-denied#0 (nature, FRAP 40(c); FRAP 40(a)(4))
+       at  frap-appellate-procedure::rehearing-en-banc-both-denied "Rehearing and Rehearing En Banc Both Denied (Final)"
+   29. [-] Mandate clock resumes (mandate date not in the sources read)
+       via frap-appellate-procedure::rehearing-en-banc-both-denied->mandate-issued#0 (nature, FRAP 41(b)(1); FRAP 41(b)(3), within 7 calendar days)
+       at  frap-appellate-procedure::mandate-issued "Mandate Issues"
+   30. [-] The certiorari window runs
+       via frap-appellate-procedure::mandate-issued->cert-petition-window#0 (nature, Fed. R. App. P. 41(b); Sup. Ct. R. 13.3, within 90 calendar days)
+       at  frap-appellate-procedure::cert-petition-window "Certiorari Petition Window"
+   31. [2008-02-06] Ashcroft and Mueller petition for certiorari (No. 07-1015)
+       via frap-appellate-procedure::cert-petition-window->cert-petition-filed#0 (self, Sup. Ct. R. 13.1; 28 U.S.C. § 1254(1), within 90 calendar days)
+       at  frap-appellate-procedure::cert-petition-filed "Petition for Certiorari Filed"
+   32. [-] The Court considers the petition
+       via frap-appellate-procedure::cert-petition-filed->cert-review-decision#0 (nature, Sup. Ct. R. 10)
+       at  frap-appellate-procedure::cert-review-decision "Supreme Court Grants or Denies Certiorari"
+   33. [2008-06-16] Certiorari granted
+       via frap-appellate-procedure::cert-review-decision->cert-granted#0 (nature, 28 U.S.C. § 1254(1); Sup. Ct. R. 10)
+       at  frap-appellate-procedure::cert-granted "CERT GRANTED — Case Transfers to the Supreme Court"
+  GAP: Supreme Court reverses and remands (argued 2008-12-10, decided 2009-05-18, 5-4): Twombly's plausibility standard governs 'all civil actions'
+       missing frap-appellate-procedure::cert-granted -> (beyond every pack)
+       No pack models Supreme Court merits review; cert-granted is terminal.
+
+outcome: frap-appellate-procedure::cert-granted
+  tags:  [pending]
+  real:  Reversed and remanded, 556 U.S. 662 (May 18, 2009).
+
+deadlines (by rule, from the `deadlines` op):
+  frap-appellate-procedure::notice-of-appeal-us-party
+    60 days under Fed. R. App. P. 26: 2005-09-27 (the order denying the motion to dismiss) -> due 2005-11-28
+    arithmetic: FRAP 4(a)(1)(B): 60 days when a U.S. officer is a party. Sep 27 + 3 = Sep 30; + 31 = Oct 31 (34); + 26 = Nov 26 (60), a Saturday; FRAP 26(a)(1)(C) rolls to Monday Nov 28.
+    historical: Notice-of-appeal dates were not found; the lead appeal is No. 05-5768, i.e. docketed in 2005.
+  frap-appellate-procedure::cert-petition-window->cert-petition-filed#0
+    90 days under Fed. R. App. P. 26: 2007-09-18 (denial of rehearing (Sup. Ct. R. 13.3)) -> due 2007-12-17
+    arithmetic: Sup. Ct. R. 13.1: 90 days. Sep 18 + 12 = Sep 30; + 31 = Oct 31 (43); + 30 = Nov 30 (73); + 17 = Dec 17 (90), a Monday.
+    historical: Petition filed 2008-02-06, about seven weeks after the unextended date. An extension under Sup. Ct. R. 13.5 is the usual explanation, but none was found in the sources read.
+
+where the pack's shape differs from the record:
+  - The FRCP pack has one 'motion denied' edge into answer-filed; a denial 'in part' is not distinguished.
+  - The Second Circuit's own wording was 'affirm in part, reverse in part'; the Supreme Court's opinion describes it as affirming. The walk follows the circuit's judgment.
+  - The FRAP pack routes every panel-rehearing denial through an en banc poll; the docket only records 'rehearing denied'.
+
+sources:
+  [ca2] Iqbal v. Hasty, 490 F.3d 143 (2d Cir. 2007) <https://caselaw.findlaw.com/court/us-2nd-circuit/1426475.html>
+  [scotus] Ashcroft v. Iqbal, 556 U.S. 662 (2009) (opinion) <https://www.law.cornell.edu/supct/html/07-1015.ZO.html>
+  [scotus-docket] Supreme Court docket No. 07-1015 <https://www.supremecourt.gov/search.aspx?filename=/docketfiles/07-1015.htm>

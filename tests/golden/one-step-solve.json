@@ -1,0 +1,56 @@
+{
+  "name": "one-step-solve",
+  "what": "Two nodes, one edge: the value of the start is the payoff minus what the edge costs.",
+  "arithmetic": [
+    "dollars(file) = hours * rate + fees = 2 * 500 + 100 = 1100   (rate defaults to 500)",
+    "value(start) = payoff(done) - dollars(file) = 5000 - 1100 = 3900"
+  ],
+  "pack": {
+    "schemaVersion": 2,
+    "id": "one-step",
+    "title": "One step",
+    "startNodeId": "start",
+    "roles": {
+      "applicant": "self"
+    },
+    "nodes": [
+      {
+        "id": "start",
+        "kind": "state",
+        "label": "Start"
+      },
+      {
+        "id": "done",
+        "kind": "terminal",
+        "label": "Done",
+        "payoff": 5000,
+        "outcome": [
+          "win"
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "file",
+        "from": "start",
+        "to": "done",
+        "label": "File",
+        "actor": "applicant",
+        "hours": 2,
+        "cost": 100
+      }
+    ]
+  },
+  "op": {
+    "op": "solve"
+  },
+  "expect": {
+    "value": 3900.0,
+    "best_line": [
+      {
+        "id": "one-step::file",
+        "q": 3900.0
+      }
+    ]
+  }
+}

@@ -221,3 +221,38 @@ turns out to be. `opponent_objective: None` (the default) delegates to
   language reused for courts; v2 `roles` maps it explicitly.
 - Deadlines are calendar-day counts; court-day and holiday rules (FRCP 6,
   RCFC 6) live in civ-pro's `src/engine/clock` and are not yet ported.
+
+## Gaps found by replaying famous cases
+
+`tests/cases/` replays ten real procedural histories through the packs
+(`tests/README.md`). Each gap below is recorded in a case file as an
+expected failure, and the test fails once a pack closes it.
+
+- **No Supreme Court merits stage.** Every `cert-granted` is terminal, so
+  a reversal, an affirmance, or a grant-vacate-remand (Hughes Aircraft,
+  1997) cannot send a case back to the court below. This affects every
+  case that reached the Court.
+- **No interlocutory appeal out of the district court.** `links.json`
+  joins FRCP to the courts of appeals only at `notice-of-appeal-filed`
+  (a final judgment). A collateral-order appeal from the denial of
+  qualified immunity (Iqbal) can't cross, though FRAP's own interlocutory
+  door exists.
+- **No rehearing or certiorari after a CAFC vacate-and-remand.**
+  `panel-to-remand` goes straight to a `remanded-to-*` terminal (Arthrex,
+  2019-20: en banc denied, then cert granted).
+- **PTAB deadlines have no rule set.** The PTAB pack's `forum: "ptab"`
+  maps to no clock rule set (37 C.F.R. § 1.7 / § 90.3(c) are not
+  implemented), so the `deadlines` op can't compute any PTAB-side
+  deadline. The CAFC instance's copy of the 63-day notice-of-appeal window
+  can be computed.
+- **Anachronistic forced steps.** The PTAB pack forces a patent-owner
+  sur-reply and Board preliminary guidance on a motion to amend (2018 and
+  2019 practice), and has no partial institution (pre-SAS practice). The
+  CAFC pack forces a bill of costs before the certiorari window.
+
+Fixed while writing the cases: the FRCP dismissal and summary-judgment
+terminals had no route to an appeal; FRAP had no "no transcript" or "no
+stay" branch; the 45-day U.S.-party rehearing window was missing from
+`rehearing-time-expires` and from the whole `cafc@itc` instance; and the
+holiday calendar applied Juneteenth and MLK Day to years before they
+existed.

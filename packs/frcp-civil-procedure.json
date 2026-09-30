@@ -1713,6 +1713,26 @@
       "valence": "bad"
     },
     {
+      "id": "dismissal-appeal-clock",
+      "from": "dismissed-with-prejudice",
+      "to": "notice-of-appeal-window",
+      "label": "Dismissal is a final decision -- the losing party weighs an appeal",
+      "actor": "applicant",
+      "authority": "28 U.S.C. 1291; FRAP 4(a)(1)(A)",
+      "hours": 0,
+      "note": "A dismissal with prejudice disposes of the whole action, so it is a final decision appealable under 28 U.S.C. 1291 and the FRAP 4(a)(1)(A) clock runs from entry of the judgment (Twombly: S.D.N.Y. dismissal, 313 F. Supp. 2d 174 (2003), appealed to the Second Circuit, 425 F.3d 99 (2005)). Hours: 0, a no-action transition; the filing itself is the notice-of-appeal edge."
+    },
+    {
+      "id": "summary-judgment-appeal-clock",
+      "from": "summary-judgment-granted",
+      "to": "notice-of-appeal-window",
+      "label": "Summary judgment disposing of the case is a final decision -- the losing party weighs an appeal",
+      "actor": "applicant",
+      "authority": "28 U.S.C. 1291; FRAP 4(a)(1)(A)",
+      "hours": 0,
+      "note": "Summary judgment on the full case is a final decision appealable under 28 U.S.C. 1291; the FRAP 4(a)(1)(A) clock runs from entry of judgment (Celotex: D.D.C. summary judgment, July 1982, reversed by the D.C. Circuit, 756 F.2d 181 (1985)). A partial summary judgment is not covered here: it is interlocutory absent FRCP 54(b) certification. Hours: 0, a no-action transition."
+    },
+    {
       "from": "notice-of-appeal-window",
       "to": "judgment-final-no-appeal",
       "label": "Elect not to appeal -- judgment becomes final",

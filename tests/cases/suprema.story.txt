@@ -1,0 +1,198 @@
+Suprema, Inc. v. International Trade Commission, 742 F.3d 1350 (Fed. Cir. 2013), vacated on reh'g en banc, 796 F.3d 1338 (Fed. Cir. 2015)
+Section 337 reaches articles whose direct infringement happens only after importation, when the importer induced it. The ITC finds a violation and issues exclusion and cease-and-desist orders; a Federal Circuit panel vacates the inducement ruling; the full court grants rehearing en banc and upholds the Commission, and the panel then affirms. Exercises the ITC pack end to end, the ITC -> CAFC link, and the state flags through a rehearing grant (panel-mixed set, cleared by rehearing, panel-affirmed set) down to cert-not-sought.
+packs: itc-337, cafc (links on)
+
+leg 1: Cross Match Technologies files a Section 337 complaint against Suprema (Korea) and Mentalix (Texas) over fingerprint scanners (Inv. No. 337-TA-720, Certain Biometric Scanning Devices).
+  start  itc-337::complaint-filed "Complaint Filed"
+    1. [2010-05-11] Complaint filed (amended 2010-05-26)
+       via itc-337::complaint-filed->institution-decision#0 (nature, cfr210.10.a)
+       at  itc-337::institution-decision "Institution Decision"
+    2. [2010-06-17] Investigation instituted, 75 Fed. Reg. 34482
+       via itc-337::institution-decision->instituted#0 (nature, cfr210.10.b)
+       at  itc-337::instituted "Investigation Instituted"
+    3. [-] Notice of investigation served
+       via itc-337::instituted->response-period-open#0 (nature, cfr210.13.a)
+       at  itc-337::response-period-open "Response Window Open"
+    4. [-] Respondents respond (the en banc opinion cites 'Suprema Answer'; route assumed)
+       via itc-337::response-period-open->response-filed#0 (self, cfr210.13.a, within 20 calendar days)
+       at  itc-337::response-filed "Response Filed"
+    5. [-] Discovery opens
+       via itc-337::response-filed->discovery-open#0 (nature, cfr210.27.b)
+       at  itc-337::discovery-open "Discovery Open"
+    6. [-] Discovery closes
+       via itc-337::discovery-open->prehearing#0 (self, cfr210.51.a)
+       at  itc-337::prehearing "Prehearing — Summary-Determination Window"
+    7. [-] Cross Match moves for summary determination on the economic prong of domestic industry
+       via itc-337::prehearing->summary-determination-motion-filed#0 (self, cfr210.18.a, within 60 calendar days)
+       at  itc-337::summary-determination-motion-filed "Motion for Summary Determination Filed"
+    8. [-] Opposition (route assumed)
+       via itc-337::summary-determination-motion-filed->summary-determination-opposition#0 (nature, cfr210.18.b, within 10 calendar days)
+       at  itc-337::summary-determination-opposition "Opposing Affidavits Filed"
+    9. [-] The ALJ rules
+       via itc-337::summary-determination-opposition->summary-determination-ruling#0 (nature, cfr210.18.b)
+       at  itc-337::summary-determination-ruling "ALJ Rules on Summary Determination"
+   10. [-] Summary determination granted only as to the economic prong (2011-03-18); the rest goes to hearing
+       via itc-337::summary-determination-ruling->evidentiary-hearing#0 (nature, cfr210.18.b)
+       at  itc-337::evidentiary-hearing "Evidentiary Hearing"
+   11. [-] Hearing concludes (the hearing itself is not confirmed in a primary source; route assumed)
+       via itc-337::evidentiary-hearing->post-hearing-briefing#0 (nature, cfr210.37.b)
+       at  itc-337::post-hearing-briefing "Post-Hearing Briefing"
+   12. [-] Post-hearing briefing
+       via itc-337::post-hearing-briefing->initial-determination#0 (nature, cfr210.42.a.1)
+       at  itc-337::initial-determination "ALJ Issues Initial Determination on Violation"
+   13. [2011-06-17] Final initial determination: violation as to '993 claims 10, 12 and 15 and '344 claim 19; no violation as to the '562 patent
+       via itc-337::initial-determination->violation-id#0 (nature, cfr210.42.a.1)
+       at  itc-337::violation-id "ID: Violation Found"
+   14. [2011-06-17] Recommended determination on remedy and bonding, issued with the ID
+       via itc-337::violation-id->recommended-determination#0 (nature, cfr210.42.rd)
+       at  itc-337::recommended-determination "Recommended Determination on Remedy"
+   15. [-] ID and RD served
+       via itc-337::recommended-determination->petition-for-review-window#0 (nature, cfr210.43.a.1)
+       at  itc-337::petition-for-review-window "Petition-for-Review Window"
+   16. [2011-07-05] Cross Match, the respondents and the Commission investigative attorney each petition for review
+       via itc-337::petition-for-review-window->petition-filed#0 (self, cfr210.43.a.1, within 12 calendar days)
+       at  itc-337::petition-filed "Petition for Commission Review Filed"
+   17. [2011-07-13] Responses to the petitions
+       via itc-337::petition-filed->petition-response#0 (nature, cfr210.43.c, within 8 calendar days)
+       at  itc-337::petition-response "Response to Petition Filed"
+   18. [-] The Commission decides whether to review
+       via itc-337::petition-response->commission-review-decision#0 (nature, cfr210.43.d)
+       at  itc-337::commission-review-decision "Commission Decides Whether to Grant Review"
+   19. [2011-08-18] Review granted as to '344 claim 19 only (76 Fed. Reg. 52970)
+       via itc-337::commission-review-decision->review-granted#0 (nature, cfr210.43.d)
+       at  itc-337::review-granted "Commission Review Granted"
+   20. [-] The Commission reviews on the merits
+       via itc-337::review-granted->commission-opinion#0 (nature, cfr210.43.d)
+       at  itc-337::commission-opinion "Commission Reviews on the Merits"
+   21. [2011-10-24] Final determination: violation; Suprema induces Mentalix's direct infringement of '344 claim 19
+       via itc-337::commission-opinion->commission-final-determination#0 (nature, cfr210.43.d)
+       at  itc-337::commission-final-determination "Commission Final Determination"
+   22. [2011-10-24] Limited exclusion order, cease-and-desist order against Mentalix, 100% bond
+       via itc-337::commission-final-determination->remedy-determined#0 (nature, usc1337.d)
+       at  itc-337::remedy-determined "Commission Determines Remedy"
+   23. [-] The orders go to the President and USTR
+       via itc-337::remedy-determined->presidential-review-window#0 (nature, usc1337.j)
+       at  itc-337::presidential-review-window "Presidential (USTR) Review Window"
+   24. [-] No disapproval found in the sources read (route assumed)
+       via itc-337::presidential-review-window->remedy-in-effect#0 (nature, usc1337.j)
+       at  itc-337::remedy-in-effect "Remedy Takes Effect"
+   25. [-] Respondents may appeal
+       via itc-337::remedy-in-effect->federal-circuit-appeal-window#0 (self, usc1337.c)
+       at  itc-337::federal-circuit-appeal-window "Federal Circuit Appeal Window"
+   26. [-] Suprema and Mentalix appeal (Nos. 2012-1026, -1124, -1170, consolidated); Cross Match intervenes
+       via links::itc-appeal-to-cafc (self, cross-forum link, 19 U.S.C. § 1337(c); 28 U.S.C. § 1295(a)(6))
+       at  cafc@itc::entry-itc "ITC Final Determination — Presidential (USTR) Review Period Expired"
+   27. [-] Notices of appeal
+       via cafc@itc::itc-file-noa (self, 19 U.S.C. § 1337(c); 28 U.S.C. § 1295(a)(6), within 60 calendar days)
+       at  cafc@itc::notice-of-appeal-filed "Notice of Appeal Filed (Convergence)"
+   28. [-] Appeals docketed
+       via cafc@itc::noa-to-docketed (nature, FRAP 12(a))
+       at  cafc@itc::docketed "Appeal Docketed at the Federal Circuit"
+   29. [-] Entries of appearance and certificates of interest
+       via cafc@itc::docketed-to-appearance (self, Fed. Cir. R. 47.3(b)(1); Fed. Cir. R. 47.4(b), within 14 calendar days)
+       at  cafc@itc::appearance-and-coi-filed "Entry of Appearance & Certificate of Interest Filed"
+   30. [-] Docketing statements
+       via cafc@itc::appearance-to-docketing-statement (self, Fed. Cir. R. 47.6, within 14 calendar days)
+       at  cafc@itc::docketing-statement-filed "Docketing Statement Filed"
+   31. [-] Screening for mediation
+       via cafc@itc::docketing-statement-to-screening (nature, Appellate Mediation Program Guidelines §§ 2-3)
+       at  cafc@itc::mediation-screening "OGC Screens for the Mediation Program"
+   32. [-] Not mediated (route assumed)
+       via cafc@itc::screening-to-motions (nature, Appellate Mediation Program Guidelines §§ 2, 7)
+       at  cafc@itc::motions-fork "Move to Stay Judgment Pending Appeal?"
+   33. [-] No stay motion (route assumed)
+       via cafc@itc::motions-decline (self, FRAP 8(a))
+       at  cafc@itc::cross-appeal-fork "Appellee Considers a Cross-Appeal"
+   34. [-] No cross-appeal
+       via cafc@itc::cross-appeal-decline (self, FRAP 4(a)(3))
+       at  cafc@itc::no-cross-appeal "No Cross-Appeal — Judgment Defended Only"
+   35. [-] Briefing opens
+       via cafc@itc::no-cross-appeal-to-briefing (nature, Fed. Cir. R. 31(a)(1))
+       at  cafc@itc::appellant-brief-window "Appellant's Principal Brief Due"
+   36. [-] Appellants' opening briefs
+       via cafc@itc::appellant-brief-file (self, Fed. Cir. R. 31(a)(1)(A)-(B), within 60 calendar days)
+       at  cafc@itc::appellant-brief-filed "Opening Brief Filed"
+   37. [-] The Commission's and Cross Match's responses
+       via cafc@itc::appellee-brief-file (opponent, Fed. Cir. R. 31(a)(2), within 40 calendar days)
+       at  cafc@itc::appellee-brief-filed "Appellee's Principal/Response Brief Filed"
+   38. [-] Replies (route assumed)
+       via cafc@itc::reply-brief-file (self, FRAP 31(a)(1), within 21 calendar days)
+       at  cafc@itc::reply-brief-filed "Appellant's Reply Brief Filed"
+   39. [-] Briefing closes
+       via cafc@itc::reply-brief-closes (nature, Fed. Cir. R. 31)
+       at  cafc@itc::briefing-complete "Briefing Closed"
+   40. [-] Joint appendix filed
+       via cafc@itc::briefing-to-appendix (self, Fed. Cir. R. 30(a)(2), within 7 calendar days)
+       at  cafc@itc::joint-appendix-filed "Joint Appendix Served and Filed"
+   41. [-] Calendared
+       via cafc@itc::appendix-to-argument-fork (nature, FRAP 34(a); Fed. Cir. IOP #7)
+       at  cafc@itc::oral-argument-fork "Oral Argument or Submission Without Argument?"
+   42. [-] Argued before Prost, O'Malley and Reyna, JJ. (date not found; route assumed)
+       via cafc@itc::argument-granted (nature, FRAP 34(a)(1); Fed. Cir. IOP #7)
+       at  cafc@itc::oral-argument-held "Oral Argument Held"
+   43. [-] Panel confers
+       via cafc@itc::argument-held-to-decision (nature, Fed. Cir. IOP #8)
+       at  cafc@itc::panel-decision "Panel Decides the Appeal"
+   44. [2013-12-13] '562 no-violation and '993 infringement affirmed; the '344 inducement ruling and the cease-and-desist order vacated; exclusion order vacated in part (O'Malley, J.; Reyna, J., concurring in part and dissenting in part)
+       via cafc@itc::panel-to-mixed (nature, FRAP 36(a))
+       at  cafc@itc::affirmed-in-part-reversed-in-part "Affirmed in Part, Reversed in Part" {panel-mixed}
+   45. [-] The Commission and Cross Match weigh rehearing
+       via cafc@itc::mixed-to-rehearing (self, Fed. Cir. R. 40(a)(1))
+       at  cafc@itc::rehearing-window "Losing Party Weighs Rehearing" {panel-mixed}
+   46. [-] The Commission and Cross Match petition for rehearing en banc
+       via cafc@itc::rehearing-file (self, Fed. Cir. R. 40(a)-(b), (f), within 45 calendar days)
+       at  cafc@itc::rehearing-petition-filed "Petition for Panel Rehearing / Rehearing En Banc / Combined Petition Filed" {panel-mixed}
+   47. [-] The full court considers the petitions
+       via cafc@itc::rehearing-panel-considers (nature, Fed. Cir. R. 40(a)(1)-(4))
+       at  cafc@itc::panel-en-banc-rehearing-decision "Panel (and, if Combined, the Full Court) Rules on the Petition" {panel-mixed}
+   48. [2014-05] Rehearing en banc granted; the panel opinion is vacated
+       via cafc@itc::rehearing-granted-edge (nature, Fed. Cir. R. 40(e))
+       at  cafc@itc::rehearing-relief-granted "Rehearing Granted — Panel Modifies, or Case Reheard En Banc" {panel-mixed}
+   49. [-] The appeal is reheard; the panel's mixed disposition no longer stands (argued en banc 2015-02-05)
+       via cafc@itc::rehearing-granted-to-decision (nature, Fed. Cir. R. 40(e))
+       at  cafc@itc::panel-decision "Panel Decides the Appeal"
+   50. [2015-09-14] En banc, 6-4 (2015-08-10): Chevron deference to the Commission's reading of 'articles that infringe'. On remand the original panel affirms the Commission on the '344 patent and reinstates its rulings on the others
+       via cafc@itc::panel-to-affirmed (nature, FRAP 36(a))
+       at  cafc@itc::affirmed "Affirmed (With Opinion)" {panel-affirmed}
+   51. [-] Suprema weighs rehearing
+       via cafc@itc::affirmed-to-rehearing (self, Fed. Cir. R. 40(a)(1))
+       at  cafc@itc::rehearing-window "Losing Party Weighs Rehearing" {panel-affirmed}
+   52. [-] No further rehearing petition found (route assumed)
+       via cafc@itc::rehearing-time-expires (self, FRAP 41(b); Fed. Cir. R. 41, within 45 calendar days)
+       at  cafc@itc::mandate-issued "Mandate Issues" {panel-affirmed}
+   53. [-] Bill of costs (route assumed; the pack requires it)
+       via cafc@itc::mandate-to-costs (nature, FRAP 39(e)(3)(A); Fed. Cir. R. 39(b), within 14 calendar days)
+       at  cafc@itc::costs-bill-filed "Bill of Costs Filed and Taxed" {panel-affirmed}
+   54. [-] The certiorari window runs
+       via cafc@itc::costs-to-cert-window (nature, FRAP 39(e)(3)(C); Sup. Ct. R. 13.3)
+       at  cafc@itc::cert-petition-window "Certiorari Petition Window" {panel-affirmed}
+   55. [-] No certiorari petition found (route assumed)
+       via cafc@itc::cert-window-lapse (self, Sup. Ct. R. 13.1)
+       at  cafc@itc::cert-not-sought "FINAL — Certiorari Not Sought" {panel-affirmed}
+
+outcome: cafc@itc::cert-not-sought
+  tags:  [final]
+  flags: {panel-affirmed}
+  real:  The Commission's violation finding and exclusion order stand; no certiorari petition was found.
+
+deadlines (by rule, from the `deadlines` op):
+  itc-337::petition-for-review-window->petition-filed#0
+    12 days under 19 CFR 210.6(a): 2011-06-17 (the date the final ID issued (the 12 days actually run from service, which the sources don't date)) -> due 2011-07-01
+    arithmetic: 19 C.F.R. § 210.43(a)(1): 12 days, computed under 19 C.F.R. § 201.14(a) (via § 210.6(a)). The count begins with the first business day after the event: Friday Jun 17 -> Monday Jun 20 (day 1). Because the period is 7 days or more, calendar days are counted: day 12 = Friday Jul 1, not a holiday. Jun 20, 2011 was an ordinary business day; Juneteenth became a federal holiday only in 2021.
+    historical: Petitions filed 2011-07-05, four days after this date. That suggests the ID was served after its issue date, or the time was extended; neither is in the sources read. (Before the engine's holiday calendar respected Juneteenth's 2021 start, the op anchored at Jun 21 and returned Jul 5.)
+  cafc@itc::rehearing-file
+    45 days under Fed. R. App. P. 26: 2013-12-13 (the panel's judgment) -> due 2014-01-27
+    arithmetic: Fed. Cir. R. 40(a)(1)(B): 45 days because the Commission, a U.S. agency, is a party (links.json patches cafc@itc). Dec 13 + 18 = Dec 31; + 27 = Jan 27 (45), a Monday.
+    historical: Petition filing dates not found; rehearing en banc was granted in May 2014.
+
+where the pack's shape differs from the record:
+  - The en banc court decided only the statutory question and returned the appeal to the original panel, which affirmed on 2015-09-14. The CAFC pack has one fresh disposition after a rehearing grant, so the en banc decision and the panel's affirmance are one step.
+  - The CAFC pack's panel-to-mixed has no remand branch; the 2013 panel also remanded the exclusion order for revision.
+  - The ITC pack's own federal-circuit-review / cafc-remanded nodes duplicate the CAFC pack; with links on, the walk takes the link into cafc@itc.
+
+sources:
+  [fr-final] 76 Fed. Reg. 69762 (Nov. 9, 2011), ITC notice of final determination, Inv. No. 337-TA-720 <https://www.govinfo.gov/content/pkg/FR-2011-11-09/pdf/2011-27884.pdf>
+  [cafc-panel] Suprema, Inc. v. ITC, 742 F.3d 1350 (Fed. Cir. 2013) (FindLaw) <https://caselaw.findlaw.com/court/us-federal-circuit/1652241.html>
+  [hunton] Hunton: Suprema, Inc. v. ITC — Federal Circuit en banc hearing <https://www.hunton.com/en/insights/suprema-inc-v-itc-federal-circuit-en-banc-hearing.html>
+  [cafc-en-banc] Suprema, Inc. v. ITC, 796 F.3d 1338 (Fed. Cir. 2015) (en banc) <https://www.cafc.uscourts.gov/opinions-orders/12-1170.opinion.8-6-2015.1.pdf>
+  [cafc-remand] Suprema, Inc. v. ITC, No. 2012-1170 (Fed. Cir. Sept. 14, 2015) (nonprecedential, after remand) <https://www.cafc.uscourts.gov/opinions-orders/12-1170.opinion.9-9-2015.2.pdf>

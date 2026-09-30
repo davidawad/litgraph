@@ -1,0 +1,107 @@
+{
+  "case": "Suprema, Inc. v. International Trade Commission",
+  "citation": "742 F.3d 1350 (Fed. Cir. 2013), vacated on reh'g en banc, 796 F.3d 1338 (Fed. Cir. 2015)",
+  "summary": "Section 337 reaches articles whose direct infringement happens only after importation, when the importer induced it. The ITC finds a violation and issues exclusion and cease-and-desist orders; a Federal Circuit panel vacates the inducement ruling; the full court grants rehearing en banc and upholds the Commission, and the panel then affirms. Exercises the ITC pack end to end, the ITC -> CAFC link, and the state flags through a rehearing grant (panel-mixed set, cleared by rehearing, panel-affirmed set) down to cert-not-sought.",
+  "packs": ["itc-337", "cafc"],
+  "legs": [
+    {
+      "start": "itc-337::complaint-filed",
+      "context": "Cross Match Technologies files a Section 337 complaint against Suprema (Korea) and Mentalix (Texas) over fingerprint scanners (Inv. No. 337-TA-720, Certain Biometric Scanning Devices).",
+      "steps": [
+        {"to": "institution-decision", "event": "Complaint filed (amended 2010-05-26)", "date": "2010-05-11", "source": "fr-final"},
+        {"to": "instituted", "event": "Investigation instituted, 75 Fed. Reg. 34482", "date": "2010-06-17", "source": "fr-final"},
+        {"to": "response-period-open", "event": "Notice of investigation served"},
+        {"to": "response-filed", "event": "Respondents respond (the en banc opinion cites 'Suprema Answer'; route assumed)", "source": "cafc-en-banc"},
+        {"to": "discovery-open", "event": "Discovery opens"},
+        {"to": "prehearing", "event": "Discovery closes"},
+        {"to": "summary-determination-motion-filed", "event": "Cross Match moves for summary determination on the economic prong of domestic industry", "source": "fr-final"},
+        {"to": "summary-determination-opposition", "event": "Opposition (route assumed)"},
+        {"to": "summary-determination-ruling", "event": "The ALJ rules"},
+        {"to": "evidentiary-hearing", "event": "Summary determination granted only as to the economic prong (2011-03-18); the rest goes to hearing", "source": "fr-final"},
+        {"to": "post-hearing-briefing", "event": "Hearing concludes (the hearing itself is not confirmed in a primary source; route assumed)"},
+        {"to": "initial-determination", "event": "Post-hearing briefing"},
+        {"to": "violation-id", "event": "Final initial determination: violation as to '993 claims 10, 12 and 15 and '344 claim 19; no violation as to the '562 patent", "date": "2011-06-17", "source": "fr-final"},
+        {"to": "recommended-determination", "event": "Recommended determination on remedy and bonding, issued with the ID", "date": "2011-06-17", "source": "fr-final"},
+        {"to": "petition-for-review-window", "event": "ID and RD served"},
+        {"to": "petition-filed", "event": "Cross Match, the respondents and the Commission investigative attorney each petition for review", "date": "2011-07-05", "source": "fr-final"},
+        {"to": "petition-response", "event": "Responses to the petitions", "date": "2011-07-13", "source": "fr-final"},
+        {"to": "commission-review-decision", "event": "The Commission decides whether to review", "source": "fr-final"},
+        {"to": "review-granted", "event": "Review granted as to '344 claim 19 only (76 Fed. Reg. 52970)", "date": "2011-08-18", "source": "fr-final"},
+        {"to": "commission-opinion", "event": "The Commission reviews on the merits"},
+        {"to": "commission-final-determination", "event": "Final determination: violation; Suprema induces Mentalix's direct infringement of '344 claim 19", "date": "2011-10-24", "source": "fr-final"},
+        {"to": "remedy-determined", "event": "Limited exclusion order, cease-and-desist order against Mentalix, 100% bond", "date": "2011-10-24", "source": "fr-final"},
+        {"to": "presidential-review-window", "event": "The orders go to the President and USTR", "source": "fr-final"},
+        {"to": "remedy-in-effect", "event": "No disapproval found in the sources read (route assumed)"},
+        {"to": "federal-circuit-appeal-window", "event": "Respondents may appeal"},
+        {"to": "cafc@itc::entry-itc", "event": "Suprema and Mentalix appeal (Nos. 2012-1026, -1124, -1170, consolidated); Cross Match intervenes", "source": "cafc-panel"},
+        {"edge": "itc-file-noa", "event": "Notices of appeal", "source": "cafc-panel"},
+        {"to": "docketed", "event": "Appeals docketed"},
+        {"to": "appearance-and-coi-filed", "event": "Entries of appearance and certificates of interest"},
+        {"to": "docketing-statement-filed", "event": "Docketing statements"},
+        {"to": "mediation-screening", "event": "Screening for mediation"},
+        {"edge": "screening-to-motions", "event": "Not mediated (route assumed)"},
+        {"edge": "motions-decline", "event": "No stay motion (route assumed)"},
+        {"edge": "cross-appeal-decline", "event": "No cross-appeal"},
+        {"to": "appellant-brief-window", "event": "Briefing opens"},
+        {"to": "appellant-brief-filed", "event": "Appellants' opening briefs"},
+        {"to": "appellee-brief-filed", "event": "The Commission's and Cross Match's responses"},
+        {"to": "reply-brief-filed", "event": "Replies (route assumed)"},
+        {"to": "briefing-complete", "event": "Briefing closes"},
+        {"to": "joint-appendix-filed", "event": "Joint appendix filed"},
+        {"to": "oral-argument-fork", "event": "Calendared"},
+        {"to": "oral-argument-held", "event": "Argued before Prost, O'Malley and Reyna, JJ. (date not found; route assumed)"},
+        {"to": "panel-decision", "event": "Panel confers"},
+        {"edge": "panel-to-mixed", "event": "'562 no-violation and '993 infringement affirmed; the '344 inducement ruling and the cease-and-desist order vacated; exclusion order vacated in part (O'Malley, J.; Reyna, J., concurring in part and dissenting in part)", "date": "2013-12-13", "source": "cafc-panel"},
+        {"edge": "mixed-to-rehearing", "event": "The Commission and Cross Match weigh rehearing", "source": "cafc-en-banc"},
+        {"edge": "rehearing-file", "event": "The Commission and Cross Match petition for rehearing en banc", "source": "cafc-en-banc"},
+        {"edge": "rehearing-panel-considers", "event": "The full court considers the petitions", "source": "cafc-en-banc"},
+        {"edge": "rehearing-granted-edge", "event": "Rehearing en banc granted; the panel opinion is vacated", "date": "2014-05", "source": "hunton"},
+        {"edge": "rehearing-granted-to-decision", "event": "The appeal is reheard; the panel's mixed disposition no longer stands (argued en banc 2015-02-05)", "source": "cafc-en-banc"},
+        {"edge": "panel-to-affirmed", "event": "En banc, 6-4 (2015-08-10): Chevron deference to the Commission's reading of 'articles that infringe'. On remand the original panel affirms the Commission on the '344 patent and reinstates its rulings on the others", "date": "2015-09-14", "source": "cafc-remand"},
+        {"edge": "affirmed-to-rehearing", "event": "Suprema weighs rehearing"},
+        {"edge": "rehearing-time-expires", "event": "No further rehearing petition found (route assumed)"},
+        {"edge": "mandate-to-costs", "event": "Bill of costs (route assumed; the pack requires it)"},
+        {"edge": "costs-to-cert-window", "event": "The certiorari window runs"},
+        {"edge": "cert-window-lapse", "event": "No certiorari petition found (route assumed)"}
+      ]
+    }
+  ],
+  "outcome": {
+    "node": "cafc@itc::cert-not-sought",
+    "outcome": ["final"],
+    "flags": ["panel-affirmed"],
+    "real": "The Commission's violation finding and exclusion order stand; no certiorari petition was found."
+  },
+  "deadlines": [
+    {
+      "edge": "itc-337::petition-for-review-window->petition-filed#0",
+      "trigger": "2011-06-17",
+      "trigger_event": "the date the final ID issued (the 12 days actually run from service, which the sources don't date)",
+      "rule_set": "itc210",
+      "due": "2011-07-01",
+      "arithmetic": "19 C.F.R. § 210.43(a)(1): 12 days, computed under 19 C.F.R. § 201.14(a) (via § 210.6(a)). The count begins with the first business day after the event: Friday Jun 17 -> Monday Jun 20 (day 1). Because the period is 7 days or more, calendar days are counted: day 12 = Friday Jul 1, not a holiday. Jun 20, 2011 was an ordinary business day; Juneteenth became a federal holiday only in 2021.",
+      "historical": "Petitions filed 2011-07-05, four days after this date. That suggests the ID was served after its issue date, or the time was extended; neither is in the sources read. (Before the engine's holiday calendar respected Juneteenth's 2021 start, the op anchored at Jun 21 and returned Jul 5.)"
+    },
+    {
+      "edge": "cafc@itc::rehearing-file",
+      "trigger": "2013-12-13",
+      "trigger_event": "the panel's judgment",
+      "rule_set": "frap26",
+      "due": "2014-01-27",
+      "arithmetic": "Fed. Cir. R. 40(a)(1)(B): 45 days because the Commission, a U.S. agency, is a party (links.json patches cafc@itc). Dec 13 + 18 = Dec 31; + 27 = Jan 27 (45), a Monday.",
+      "historical": "Petition filing dates not found; rehearing en banc was granted in May 2014."
+    }
+  ],
+  "quirks": [
+    "The en banc court decided only the statutory question and returned the appeal to the original panel, which affirmed on 2015-09-14. The CAFC pack has one fresh disposition after a rehearing grant, so the en banc decision and the panel's affirmance are one step.",
+    "The CAFC pack's panel-to-mixed has no remand branch; the 2013 panel also remanded the exclusion order for revision.",
+    "The ITC pack's own federal-circuit-review / cafc-remanded nodes duplicate the CAFC pack; with links on, the walk takes the link into cafc@itc."
+  ],
+  "sources": [
+    {"id": "fr-final", "title": "76 Fed. Reg. 69762 (Nov. 9, 2011), ITC notice of final determination, Inv. No. 337-TA-720", "url": "https://www.govinfo.gov/content/pkg/FR-2011-11-09/pdf/2011-27884.pdf"},
+    {"id": "cafc-panel", "title": "Suprema, Inc. v. ITC, 742 F.3d 1350 (Fed. Cir. 2013) (FindLaw)", "url": "https://caselaw.findlaw.com/court/us-federal-circuit/1652241.html"},
+    {"id": "hunton", "title": "Hunton: Suprema, Inc. v. ITC — Federal Circuit en banc hearing", "url": "https://www.hunton.com/en/insights/suprema-inc-v-itc-federal-circuit-en-banc-hearing.html"},
+    {"id": "cafc-en-banc", "title": "Suprema, Inc. v. ITC, 796 F.3d 1338 (Fed. Cir. 2015) (en banc)", "url": "https://www.cafc.uscourts.gov/opinions-orders/12-1170.opinion.8-6-2015.1.pdf"},
+    {"id": "cafc-remand", "title": "Suprema, Inc. v. ITC, No. 2012-1170 (Fed. Cir. Sept. 14, 2015) (nonprecedential, after remand)", "url": "https://www.cafc.uscourts.gov/opinions-orders/12-1170.opinion.9-9-2015.2.pdf"}
+  ]
+}

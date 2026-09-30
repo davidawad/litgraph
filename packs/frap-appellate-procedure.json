@@ -1009,6 +1009,21 @@
       }
     },
     {
+      "id": "no-transcript-certificate",
+      "from": "transcript-order-fork",
+      "to": "record-transmitted",
+      "label": "Certify that no transcript will be ordered",
+      "actor": "applicant",
+      "authority": "FRAP 10(b)(1)(B)",
+      "deadline": {
+        "length": 14,
+        "extendable": false,
+        "note": "Same 14-day window as ordering a transcript: FRAP 10(b)(1) requires the appellant, within 14 days after filing the notice of appeal, either to order the transcript or to 'file a certificate stating that no transcript will be ordered.'"
+      },
+      "hours": 0.5,
+      "note": "The usual route when the appeal is from a ruling on the papers (a Rule 12(b)(6) dismissal, a summary judgment) and there is no hearing transcript to order: the record is the original papers and docket entries (FRAP 10(a)). Hours: teaching estimate, a one-page certificate."
+    },
+    {
       "from": "transcript-order-fork",
       "to": "statement-in-lieu-of-transcript",
       "label": "File agreed statement instead",
@@ -1047,6 +1062,16 @@
       "to": "stay-pending-appeal-fork",
       "label": "Record complete — motions begin",
       "actor": "office"
+    },
+    {
+      "id": "no-stay-sought",
+      "from": "stay-pending-appeal-fork",
+      "to": "appellant-brief-window",
+      "label": "No stay sought -- proceed to briefing",
+      "actor": "applicant",
+      "authority": "FRAP 8(a)(1)",
+      "hours": 0,
+      "note": "FRAP 8(a)(1) says a party 'must ordinarily move first in the district court' for a stay -- a stay is something a party may seek, not a required step. A party with nothing to stay (e.g. a plaintiff appealing a dismissal) goes straight to briefing. Mirrors cafc-federal-circuit.json's motions-decline edge. Hours: 0, a no-action transition."
     },
     {
       "from": "stay-pending-appeal-fork",

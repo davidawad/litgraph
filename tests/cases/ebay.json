@@ -1,0 +1,105 @@
+{
+  "case": "eBay Inc. v. MercExchange, L.L.C.",
+  "citation": "547 U.S. 388 (2006)",
+  "summary": "The permanent-injunction case. After a jury finds willful infringement, the E.D. Va. denies MercExchange a permanent injunction; the Federal Circuit reverses that denial as part of a mixed judgment; eBay wins certiorari. Exercises FRCP -> Federal Circuit (cafc@district-court) and the panel-mixed flag through rehearing and certiorari.",
+  "packs": ["frcp-civil-procedure", "cafc"],
+  "legs": [
+    {
+      "start": "frcp-civil-procedure::verdict-rendered",
+      "context": "MercExchange sues eBay and Half.com for infringing its online-auction patents (E.D. Va.); trial began 2003-04-23.",
+      "steps": [
+        {"edge": "verdict-for-plaintiff", "event": "Jury finds willful infringement and awards $35.0M", "date": "2003-05-27", "source": "sec"},
+        {"to": "post-trial-motion-window", "event": "The 28-day post-trial motion window opens", "source": "dct"},
+        {"to": "rule50b-jmol-filed", "event": "Defendants renew their JMOL motions (new-trial motions were also filed; the pack takes one motion at a time)", "source": "dct"},
+        {"to": "post-trial-ruling", "event": "Motions briefed", "source": "dct"},
+        {"to": "notice-of-appeal-window", "event": "JMOL and new trial denied (inducement award set aside); permanent injunction denied; judgment for $29.5M", "date": "2003-08-06", "source": "dct"},
+        {"to": "notice-of-appeal-filed", "event": "eBay and Half.com appeal (No. 03-1600)", "source": "cafc"},
+        {"to": "cafc@district-court::entry-district-court", "event": "A patent case goes to the Federal Circuit (28 U.S.C. § 1295(a)(1)), not the Fourth Circuit", "source": "cafc"},
+        {"edge": "district-court-file-noa", "event": "The notice of appeal, as the CAFC pack records it", "source": "cafc"},
+        {"to": "docketed", "event": "Appeal docketed at the Federal Circuit", "source": "cafc"},
+        {"to": "appearance-and-coi-filed", "event": "Entries of appearance and certificates of interest"},
+        {"to": "docketing-statement-filed", "event": "Docketing statements"},
+        {"to": "mediation-screening", "event": "Screening for mediation"},
+        {"edge": "screening-to-motions", "event": "Not mediated (route assumed)"},
+        {"edge": "motions-decline", "event": "No stay motion in the sources read (route assumed)"},
+        {"edge": "cross-appeal-file", "event": "MercExchange cross-appeals the injunction denial (No. 03-1616)", "source": "cafc"},
+        {"to": "appellant-brief-window", "event": "Cross-appeal docketed with the lead appeal", "source": "cafc"},
+        {"to": "appellant-brief-filed", "event": "Opening brief"},
+        {"to": "appellee-brief-filed", "event": "Response and cross-appeal brief"},
+        {"to": "reply-brief-filed", "event": "Reply (route assumed)"},
+        {"to": "briefing-complete", "event": "Briefing closes"},
+        {"to": "joint-appendix-filed", "event": "Joint appendix filed"},
+        {"to": "oral-argument-fork", "event": "Calendared"},
+        {"to": "oral-argument-held", "event": "Argued (date not in the sources read; route assumed)"},
+        {"to": "panel-decision", "event": "Panel confers"},
+        {"edge": "panel-to-mixed", "event": "Affirmed in part, reversed in part (including reversing the injunction denial), vacated in part, and remanded (Bryson, J.)", "date": "2005-03-16", "source": "cafc"},
+        {"edge": "mixed-to-rehearing", "event": "eBay weighs rehearing", "source": "scotus-docket"},
+        {"edge": "rehearing-file", "event": "eBay petitions for rehearing", "source": "scotus-docket"},
+        {"edge": "rehearing-panel-considers", "event": "The court considers the petition", "source": "scotus-docket"},
+        {"edge": "rehearing-denied-edge", "event": "Rehearing denied", "date": "2005-04-26", "source": "scotus-docket"},
+        {"edge": "rehearing-denied-to-mandate", "event": "Mandate clock resumes"},
+        {"edge": "mandate-to-costs", "event": "Bill of costs (route assumed; the pack requires it)"},
+        {"edge": "costs-to-cert-window", "event": "The certiorari window runs", "source": "scotus-docket"},
+        {"edge": "cert-window-file", "event": "eBay petitions for certiorari (No. 05-130)", "date": "2005-07-25", "source": "scotus-docket"},
+        {"edge": "cert-filed-to-review", "event": "The Court considers the petition", "source": "scotus-docket"},
+        {"edge": "cert-review-grant", "event": "Certiorari granted, with an added question on Continental Paper Bag", "date": "2005-11-28", "source": "scotus-docket"}
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "event": "Supreme Court vacates and remands (argued 2006-03-29, decided 2006-05-15, unanimous): the four-factor equitable test governs patent injunctions",
+      "from": "cafc@district-court::cert-granted",
+      "why": "No pack models Supreme Court merits review; cert-granted is terminal."
+    }
+  ],
+  "outcome": {
+    "node": "cafc@district-court::cert-granted",
+    "outcome": ["remand"],
+    "flags": ["panel-mixed"],
+    "real": "Vacated and remanded, 547 U.S. 388 (May 15, 2006)."
+  },
+  "deadlines": [
+    {
+      "edge": "cafc@district-court::district-court-file-noa",
+      "trigger": "2003-08-06",
+      "trigger_event": "entry of judgment",
+      "rule_set": "frap26",
+      "due": "2003-09-05",
+      "arithmetic": "FRAP 4(a)(1)(A): 30 days. Aug 6 + 25 = Aug 31; + 5 = Sep 5 (30), a Friday.",
+      "historical": "Notice-of-appeal date not found; the appeal is No. 03-1600, docketed in 2003."
+    },
+    {
+      "edge": "cafc@district-court::rehearing-file",
+      "trigger": "2005-03-16",
+      "trigger_event": "the Federal Circuit's judgment",
+      "rule_set": "frap26",
+      "due": "2005-04-15",
+      "arithmetic": "Fed. Cir. R. 40: 30 days (no U.S. party). Mar 16 + 15 = Mar 31; + 15 = Apr 15 (30), a Friday.",
+      "historical": "The petition was denied 2005-04-26; its filing date was not found. The pack encodes the current Federal Circuit rule; the period in force in 2005 was not checked."
+    },
+    {
+      "edge": "cafc@district-court::cert-window-file",
+      "trigger": "2005-04-26",
+      "trigger_event": "denial of rehearing (Sup. Ct. R. 13.3)",
+      "rule_set": "frap26",
+      "due": "2005-07-25",
+      "arithmetic": "Sup. Ct. R. 13.1: 90 days. Apr 26 + 4 = Apr 30; + 31 = May 31 (35); + 30 = Jun 30 (65); + 25 = Jul 25 (90), a Monday.",
+      "historical": "Petition filed 2005-07-25, on the last day."
+    }
+  ],
+  "quirks": [
+    "The notice of appeal is one filing but two edges: FRCP's notice-of-appeal-filed, and the CAFC pack's own district-court-file-noa after the link. Both carry the 30-day FRAP 4(a) window.",
+    "The FRCP pack does not model the permanent-injunction motion (FRCP 65 / 35 U.S.C. § 283) separately from the post-trial motions, so the injunction denial, which was the issue on certiorari, is folded into the post-trial ruling step.",
+    "The CAFC pack's panel-to-mixed has no remand branch; the real judgment also vacated in part and remanded (the '051 patent).",
+    "The CAFC pack tags cert-granted with outcome 'remand'; the FRAP pack tags the same event 'pending'.",
+    "The CAFC pack requires a bill-of-costs step before the certiorari window."
+  ],
+  "sources": [
+    {"id": "sec", "title": "eBay Inc. FY2003 Form 10-K (litigation disclosure: verdict and judgment)", "url": "https://www.sec.gov/Archives/edgar/data/0001065088/000089161804000676/f96707ore10vk.htm"},
+    {"id": "dct", "title": "MercExchange, L.L.C. v. eBay, Inc., 275 F. Supp. 2d 695 (E.D. Va. 2003)", "url": "https://static.case.law/f-supp-2d/275/cases/0695-01.json"},
+    {"id": "cafc", "title": "MercExchange, L.L.C. v. eBay, Inc., 401 F.3d 1323 (Fed. Cir. 2005)", "url": "https://www.cafc.uscourts.gov/opinions-orders/03-1600.pdf"},
+    {"id": "scotus-docket", "title": "Supreme Court docket No. 05-130", "url": "https://www.supremecourt.gov/search.aspx?filename=/docketfiles/05-130.htm"},
+    {"id": "scotus", "title": "eBay Inc. v. MercExchange, L.L.C., 547 U.S. 388 (2006) (syllabus)", "url": "https://www.law.cornell.edu/supct/html/05-130.ZS.html"}
+  ]
+}

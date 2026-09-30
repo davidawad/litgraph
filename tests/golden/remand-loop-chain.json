@@ -1,0 +1,118 @@
+{
+  "name": "remand-loop-chain",
+  "what": "A trial that can be remanded for a $100 retrial: a cycle the chain must absorb exactly.",
+  "arithmetic": [
+    "each trial: win 0.5, lose 0.3, remand 0.2 (then retry at $100)",
+    "P(win)  = 0.5 / (0.5 + 0.3) = 0.625;  P(lose) = 0.3 / 0.8 = 0.375",
+    "E[visits to trial]  = 1 / (1 - 0.2) = 1.25;  E[remands] = 0.2 * 1.25 = 0.25",
+    "E[dollars] = 0.25 * 100 = 25",
+    "E[utility] = 0.625 * 1000 = 625;  E[net] = 625 - 25 = 600",
+    "E[steps] = 1.25 (verdict draws) + 0.25 (retrials) = 1.5"
+  ],
+  "pack": {
+    "schemaVersion": 2,
+    "id": "remand-loop",
+    "title": "Remand loop",
+    "startNodeId": "trial",
+    "roles": {
+      "examiner": "nature",
+      "office": "nature"
+    },
+    "nodes": [
+      {
+        "id": "trial",
+        "kind": "decision",
+        "label": "Trial"
+      },
+      {
+        "id": "remanded",
+        "kind": "state",
+        "label": "Remanded"
+      },
+      {
+        "id": "win",
+        "kind": "terminal",
+        "label": "Win",
+        "payoff": 1000,
+        "outcome": [
+          "win"
+        ]
+      },
+      {
+        "id": "lose",
+        "kind": "terminal",
+        "label": "Lose",
+        "payoff": 0,
+        "outcome": [
+          "loss"
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "to-win",
+        "from": "trial",
+        "to": "win",
+        "label": "Judgment for us",
+        "actor": "examiner",
+        "probability": 0.5
+      },
+      {
+        "id": "to-lose",
+        "from": "trial",
+        "to": "lose",
+        "label": "Judgment against us",
+        "actor": "examiner",
+        "probability": 0.3
+      },
+      {
+        "id": "to-remand",
+        "from": "trial",
+        "to": "remanded",
+        "label": "Vacated and remanded",
+        "actor": "examiner",
+        "probability": 0.2
+      },
+      {
+        "id": "retry",
+        "from": "remanded",
+        "to": "trial",
+        "label": "Retrial",
+        "actor": "office",
+        "probability": 1.0,
+        "cost": 100
+      }
+    ]
+  },
+  "op": {
+    "op": "chain"
+  },
+  "expect": {
+    "absorption": [
+      {
+        "terminal": "remand-loop::win",
+        "p": 0.625
+      },
+      {
+        "terminal": "remand-loop::lose",
+        "p": 0.375
+      }
+    ],
+    "expected": {
+      "dollars": 25.0
+    },
+    "expected_steps": 1.5,
+    "expected_utility": 625.0,
+    "expected_net": 600.0,
+    "top_visits": [
+      {
+        "node": "remand-loop::trial",
+        "visits": 1.25
+      },
+      {
+        "node": "remand-loop::remanded",
+        "visits": 0.25
+      }
+    ]
+  }
+}

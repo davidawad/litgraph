@@ -1,0 +1,104 @@
+{
+  "case": "Ashcroft v. Iqbal",
+  "citation": "556 U.S. 662 (2009)",
+  "summary": "Twombly's plausibility standard extended to every civil action. The E.D.N.Y. denies the Attorney General's and FBI Director's motion to dismiss on qualified immunity, and they take an interlocutory collateral-order appeal to the Second Circuit. Exercises FRAP's interlocutory door and the 60-day notice-of-appeal window for federal officers.",
+  "packs": ["frcp-civil-procedure", "frap-appellate-procedure"],
+  "legs": [
+    {
+      "start": "frcp-civil-procedure::rule12-response-window",
+      "context": "Javaid Iqbal sues federal officials over his post-9/11 detention (Elmaghraby v. Ashcroft, E.D.N.Y.); the individual defendants' Rule 12 window is open.",
+      "steps": [
+        {"edge": "12b-motion-filed", "event": "Ashcroft and Mueller move to dismiss: the complaint pleads no facts showing their own involvement, so qualified immunity applies", "source": "scotus"},
+        {"to": "mtd-ruling", "event": "Motion briefed and submitted", "source": "ca2"},
+        {"to": "answer-filed", "event": "Judge Gleeson denies the motion in relevant part", "date": "2005-09-27", "source": "ca2"}
+      ]
+    },
+    {
+      "start": "frap-appellate-procedure::trial-court-disposition",
+      "context": "The denial of qualified immunity is an appealable collateral order (Mitchell v. Forsyth, 472 U.S. 511 (1985)); the case restarts in the court of appeals' view of the order.",
+      "steps": [
+        {"to": "appealability-fork", "event": "Is the order appealable now?", "source": "scotus"},
+        {"to": "interlocutory-order-issued", "event": "The order is not a final judgment", "source": "scotus"},
+        {"to": "interlocutory-review-fork", "event": "Check the interlocutory doors", "source": "scotus"},
+        {"edge": "interlocutory-collateral-order", "event": "Denial of qualified immunity turning on an issue of law is a collateral order", "source": "scotus"},
+        {"to": "appeal-clock-open", "event": "The notice-of-appeal clock runs", "source": "ca2"},
+        {"edge": "notice-of-appeal-us-party", "event": "Defendants notice appeals (No. 05-5768 and six consolidated appeals); federal officers sued individually get 60 days", "source": "ca2"},
+        {"to": "docketed-in-court-of-appeals", "event": "Appeals docketed and consolidated", "source": "ca2"},
+        {"to": "cross-appeal-fork", "event": "Iqbal considers a cross-appeal"},
+        {"to": "cross-appeal-not-filed", "event": "No cross-appeal (route assumed; none in the sources read)"},
+        {"to": "voluntary-dismissal-fork", "event": "Appeal proceeds"},
+        {"to": "transcript-order-fork", "event": "The record is assembled"},
+        {"edge": "no-transcript-certificate", "event": "Appeal from a ruling on the papers: no transcript to order (route assumed)"},
+        {"to": "stay-pending-appeal-fork", "event": "Record complete"},
+        {"edge": "no-stay-sought", "event": "No stay motion in the sources read (route assumed)"},
+        {"to": "appellant-brief-filed", "event": "Appellants' opening briefs", "source": "ca2"},
+        {"to": "appellee-brief-filed", "event": "Iqbal's response brief", "source": "ca2"},
+        {"to": "reply-brief-filed", "event": "Reply briefs (route assumed)"},
+        {"to": "briefing-complete", "event": "Briefing closes"},
+        {"to": "oral-argument-fork", "event": "Clerk calendars the appeal"},
+        {"to": "oral-argument-held", "event": "Argued before Newman, Cabranes and Sack, JJ. (argument date not found; route assumed)"},
+        {"to": "standard-of-review-fork", "event": "Panel deliberates"},
+        {"to": "de-novo-review", "event": "Qualified immunity on the pleadings is reviewed de novo, taking the allegations as true", "source": "ca2"},
+        {"to": "affirmed-in-part-reversed-in-part", "event": "Iqbal v. Hasty: affirmed in part, reversed in part (procedural due process claims), remanded", "date": "2007-06-14", "source": "ca2"},
+        {"to": "rehearing-window", "event": "Either side weighs rehearing", "source": "scotus-docket"},
+        {"to": "rehearing-petition-filed", "event": "Rehearing petition filed", "source": "scotus-docket"},
+        {"to": "panel-rehearing-decision", "event": "Panel considers it", "source": "scotus-docket"},
+        {"to": "en-banc-poll-decision", "event": "Panel denies rehearing", "source": "scotus-docket"},
+        {"to": "rehearing-en-banc-both-denied", "event": "Rehearing denied", "date": "2007-09-18", "source": "scotus-docket"},
+        {"to": "mandate-issued", "event": "Mandate clock resumes (mandate date not in the sources read)"},
+        {"to": "cert-petition-window", "event": "The certiorari window runs", "source": "scotus-docket"},
+        {"to": "cert-petition-filed", "event": "Ashcroft and Mueller petition for certiorari (No. 07-1015)", "date": "2008-02-06", "source": "scotus-docket"},
+        {"to": "cert-review-decision", "event": "The Court considers the petition", "source": "scotus-docket"},
+        {"to": "cert-granted", "event": "Certiorari granted", "date": "2008-06-16", "source": "scotus-docket"}
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "event": "Defendants appeal the denial of their motion to dismiss immediately, as a collateral order",
+      "from": "frcp-civil-procedure::answer-filed",
+      "to": "frap-appellate-procedure::trial-court-disposition",
+      "why": "links.json joins FRCP to the courts of appeals only at notice-of-appeal-filed, i.e. after a final judgment. No link carries an interlocutory order out of the district court into FRAP's interlocutory door (collateral order, 28 U.S.C. 1292(a)/(b)). Closing it needs a new FRCP node for an appealable interlocutory order plus a link, not a one-line fix."
+    },
+    {
+      "event": "Supreme Court reverses and remands (argued 2008-12-10, decided 2009-05-18, 5-4): Twombly's plausibility standard governs 'all civil actions'",
+      "from": "frap-appellate-procedure::cert-granted",
+      "why": "No pack models Supreme Court merits review; cert-granted is terminal."
+    }
+  ],
+  "outcome": {
+    "node": "frap-appellate-procedure::cert-granted",
+    "outcome": ["pending"],
+    "real": "Reversed and remanded, 556 U.S. 662 (May 18, 2009)."
+  },
+  "deadlines": [
+    {
+      "edge": "frap-appellate-procedure::notice-of-appeal-us-party",
+      "trigger": "2005-09-27",
+      "trigger_event": "the order denying the motion to dismiss",
+      "rule_set": "frap26",
+      "due": "2005-11-28",
+      "arithmetic": "FRAP 4(a)(1)(B): 60 days when a U.S. officer is a party. Sep 27 + 3 = Sep 30; + 31 = Oct 31 (34); + 26 = Nov 26 (60), a Saturday; FRAP 26(a)(1)(C) rolls to Monday Nov 28.",
+      "historical": "Notice-of-appeal dates were not found; the lead appeal is No. 05-5768, i.e. docketed in 2005."
+    },
+    {
+      "edge": "frap-appellate-procedure::cert-petition-window->cert-petition-filed#0",
+      "trigger": "2007-09-18",
+      "trigger_event": "denial of rehearing (Sup. Ct. R. 13.3)",
+      "rule_set": "frap26",
+      "due": "2007-12-17",
+      "arithmetic": "Sup. Ct. R. 13.1: 90 days. Sep 18 + 12 = Sep 30; + 31 = Oct 31 (43); + 30 = Nov 30 (73); + 17 = Dec 17 (90), a Monday.",
+      "historical": "Petition filed 2008-02-06, about seven weeks after the unextended date. An extension under Sup. Ct. R. 13.5 is the usual explanation, but none was found in the sources read."
+    }
+  ],
+  "quirks": [
+    "The FRCP pack has one 'motion denied' edge into answer-filed; a denial 'in part' is not distinguished.",
+    "The Second Circuit's own wording was 'affirm in part, reverse in part'; the Supreme Court's opinion describes it as affirming. The walk follows the circuit's judgment.",
+    "The FRAP pack routes every panel-rehearing denial through an en banc poll; the docket only records 'rehearing denied'."
+  ],
+  "sources": [
+    {"id": "ca2", "title": "Iqbal v. Hasty, 490 F.3d 143 (2d Cir. 2007)", "url": "https://caselaw.findlaw.com/court/us-2nd-circuit/1426475.html"},
+    {"id": "scotus", "title": "Ashcroft v. Iqbal, 556 U.S. 662 (2009) (opinion)", "url": "https://www.law.cornell.edu/supct/html/07-1015.ZO.html"},
+    {"id": "scotus-docket", "title": "Supreme Court docket No. 07-1015", "url": "https://www.supremecourt.gov/search.aspx?filename=/docketfiles/07-1015.htm"}
+  ]
+}

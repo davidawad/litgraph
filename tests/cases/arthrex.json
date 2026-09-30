@@ -1,0 +1,140 @@
+{
+  "case": "United States v. Arthrex, Inc.",
+  "citation": "594 U.S. 1 (2021)",
+  "summary": "Director review. The Board holds Arthrex's claims unpatentable; the Federal Circuit holds administrative patent judges were unconstitutionally appointed and remands; the Supreme Court instead requires that the Director be able to review Board decisions. On remand the Commissioner, performing the Director's functions, denies review, and the Federal Circuit affirms. Exercises two trips through the PTAB -> CAFC link, a CAFC remand to the PTAB, Director review, and cert-denied resolving through the panel-affirmed flag.",
+  "packs": ["ptab-patent-trial-appeal-board", "cafc"],
+  "legs": [
+    {
+      "start": "ptab-patent-trial-appeal-board::patent-granted",
+      "context": "Arthrex owns U.S. Patent No. 9,179,907 (knotless suture anchor).",
+      "steps": [
+        {"to": "infringement-complaint-served", "event": "Arthrex sues Smith & Nephew and ArthroCare in the E.D. Tex.", "date": "2015", "source": "cafc-2022"},
+        {"to": "ipr-petition-filed", "event": "Smith & Nephew and ArthroCare petition for IPR2017-00275 (petition date not verified)", "source": "cafc-2022"},
+        {"to": "petition-threshold-review", "event": "Office reviews the petition"},
+        {"to": "petition-filing-date-accorded", "event": "Filing date accorded"},
+        {"to": "popr-window", "event": "Preliminary-response window"},
+        {"to": "popr-filed", "event": "Preliminary response (not in the sources read; route assumed)"},
+        {"to": "institution-decision", "event": "The Board decides institution (date not found)"},
+        {"to": "institution-granted", "event": "Review instituted", "source": "cafc-2022"},
+        {"to": "scheduling-order-issued", "event": "Scheduling order"},
+        {"to": "mandatory-disclosures", "event": "Mandatory disclosures"},
+        {"to": "patent-owner-response-window", "event": "Patent owner response window opens"},
+        {"to": "patent-owner-response-filed", "event": "Patent owner response (route assumed)"},
+        {"to": "petitioner-reply-brief", "event": "Petitioner reply (route assumed)"},
+        {"to": "patent-owner-sur-reply", "event": "Sur-reply: forced by the pack (route assumed)"},
+        {"to": "motion-to-amend-decision", "event": "Arthrex weighs amending"},
+        {"edge": "motion-to-amend-decision->settlement-decision#0", "event": "No motion to amend in the sources read (route assumed)"},
+        {"to": "oral-hearing-request", "event": "No settlement"},
+        {"to": "oral-hearing-held", "event": "Oral hearing (not in the sources read; route assumed)"},
+        {"to": "fwd-issued", "event": "Case submitted"},
+        {"to": "fwd-all-unpatentable", "event": "Final written decision: claims 1, 4, 8, 10-12, 16, 18 and 25-28 unpatentable as anticipated", "date": "2018-05-02", "source": "cafc-2022"},
+        {"to": "post-fwd-options", "event": "Arthrex weighs post-decision relief"},
+        {"edge": "post-fwd-options->federal-circuit-window#0", "event": "Straight to appeal (route assumed)"},
+        {"to": "cafc@ptab::entry-ptab", "event": "Arthrex appeals to the Federal Circuit", "source": "cafc-2022"},
+        {"edge": "ptab-file-noa", "event": "Notice of appeal (No. 2018-2140)", "source": "cafc-2022"},
+        {"to": "docketed", "event": "Appeal docketed"},
+        {"to": "appearance-and-coi-filed", "event": "Entries of appearance and certificates of interest"},
+        {"to": "docketing-statement-filed", "event": "Docketing statements"},
+        {"to": "mediation-screening", "event": "Screening for mediation"},
+        {"edge": "screening-to-motions", "event": "Not mediated (route assumed)"},
+        {"edge": "motions-decline", "event": "No stay motion (route assumed)"},
+        {"edge": "cross-appeal-decline", "event": "No cross-appeal"},
+        {"to": "appellant-brief-window", "event": "Briefing opens"},
+        {"to": "appellant-brief-filed", "event": "Arthrex's opening brief, raising the Appointments Clause"},
+        {"to": "appellee-brief-filed", "event": "Response briefs"},
+        {"to": "reply-brief-filed", "event": "Reply (route assumed)"},
+        {"to": "briefing-complete", "event": "Briefing closes"},
+        {"to": "joint-appendix-filed", "event": "Joint appendix filed"},
+        {"to": "oral-argument-fork", "event": "Calendared"},
+        {"to": "oral-argument-held", "event": "Argued (date not found; route assumed)"},
+        {"to": "panel-decision", "event": "Panel confers"},
+        {"edge": "panel-to-remand", "event": "APJs are principal officers; the court severs their removal protections, vacates, and remands for a new panel, 941 F.3d 1320", "date": "2019-10-31", "source": "cafc-2022"},
+        {"edge": "remand-route-ptab", "event": "Vacated and remanded to the Board"}
+      ]
+    },
+    {
+      "start": "ptab-patent-trial-appeal-board::post-fwd-options{ipr-estopped}",
+      "context": "The Supreme Court holds the Director must be able to review final Board decisions and remands to the Acting Director (2021-06-21). The Board's decision stands, so the story resumes at the post-decision options, estoppel intact.",
+      "steps": [
+        {"to": "director-review-request-filed", "event": "Arthrex requests rehearing by the Director (Paper 39)", "date": "2021-08-27", "source": "cafc-2022"},
+        {"to": "director-review-decision", "event": "Both the Director and Deputy Director posts are vacant; Commissioner for Patents Hirshfeld performs the Director's functions", "source": "cafc-2022"},
+        {"to": "director-review-affirmed", "event": "Rehearing denied (Paper 40): the Board's decision becomes the agency's final decision", "date": "2021-10-15", "source": "cafc-2022"},
+        {"to": "federal-circuit-window", "event": "A fresh appeal window opens"},
+        {"to": "cafc@ptab::entry-ptab", "event": "Arthrex appeals again", "source": "cafc-2022"},
+        {"edge": "ptab-file-noa", "event": "Notice of appeal", "source": "cafc-2022"},
+        {"to": "docketed", "event": "Appeal docketed"},
+        {"to": "appearance-and-coi-filed", "event": "Entries of appearance and certificates of interest"},
+        {"to": "docketing-statement-filed", "event": "Docketing statements"},
+        {"to": "mediation-screening", "event": "Screening for mediation"},
+        {"edge": "screening-to-motions", "event": "Not mediated (route assumed)"},
+        {"edge": "motions-decline", "event": "No stay motion (route assumed)"},
+        {"edge": "cross-appeal-decline", "event": "No cross-appeal"},
+        {"to": "appellant-brief-window", "event": "Briefing opens"},
+        {"to": "appellant-brief-filed", "event": "Arthrex's opening brief (Appointments Clause, FVRA, separation of powers, merits)", "source": "cafc-2022"},
+        {"to": "appellee-brief-filed", "event": "Response briefs"},
+        {"to": "reply-brief-filed", "event": "Reply (route assumed)"},
+        {"to": "briefing-complete", "event": "Briefing closes"},
+        {"to": "joint-appendix-filed", "event": "Joint appendix filed"},
+        {"to": "oral-argument-fork", "event": "Calendared"},
+        {"to": "oral-argument-held", "event": "Argued before Moore, Reyna and Chen, JJ. (date not found; route assumed)"},
+        {"to": "panel-decision", "event": "Panel confers"},
+        {"edge": "panel-to-affirmed", "event": "Affirmed, 35 F.4th 1328", "date": "2022-05-27", "source": "cafc-2022"},
+        {"edge": "affirmed-to-rehearing", "event": "Arthrex weighs rehearing", "source": "scotus-docket-2"},
+        {"edge": "rehearing-file", "event": "Arthrex petitions for rehearing", "source": "scotus-docket-2"},
+        {"edge": "rehearing-panel-considers", "event": "The court considers the petition", "source": "scotus-docket-2"},
+        {"edge": "rehearing-denied-edge", "event": "Rehearing denied", "date": "2022-08-11", "source": "scotus-docket-2"},
+        {"edge": "rehearing-denied-to-mandate", "event": "Mandate clock resumes"},
+        {"edge": "mandate-to-costs", "event": "Bill of costs (route assumed; the pack requires it)"},
+        {"edge": "costs-to-cert-window", "event": "The certiorari window runs", "source": "scotus-docket-2"},
+        {"edge": "cert-window-file", "event": "Arthrex petitions for certiorari (No. 22-639)", "date": "2023-01-06", "source": "scotus-docket-2"},
+        {"edge": "cert-filed-to-review", "event": "The Court considers the petition", "source": "scotus-docket-2"},
+        {"edge": "cert-review-deny", "event": "Certiorari denied", "date": "2023-05-22", "source": "scotus-docket-2"}
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "event": "All parties seek rehearing of the 2019 vacatur (en banc rehearing denied 2020-03-23); certiorari granted 2020-10-13; the Supreme Court vacates and remands to the Acting Director (2021-06-21)",
+      "from": "cafc@ptab::remanded-to-ptab",
+      "to": "ptab-patent-trial-appeal-board::post-fwd-options",
+      "why": "Two missing pieces. (1) In the CAFC pack a vacate-and-remand goes straight to a remanded-to-* terminal: panel-to-remand sets no flag and remand-destination never reaches rehearing-window, so neither rehearing nor certiorari can follow a remand, although both routinely do. (2) No pack models Supreme Court merits review. The PTAB-side remand link (cafc-remand-to-ptab) re-enters at fwd-issued (a new FWD), not at Director review."
+    }
+  ],
+  "outcome": {
+    "node": "cafc@ptab::cert-denied",
+    "outcome": ["final"],
+    "flags": ["ipr-estopped", "panel-affirmed"],
+    "real": "Certiorari denied, No. 22-639 (May 22, 2023); the claims stay cancelled."
+  },
+  "deadlines": [
+    {
+      "edge": "cafc@ptab::ptab-file-noa",
+      "trigger": "2018-05-02",
+      "trigger_event": "the final written decision",
+      "rule_set": "frap26",
+      "due": "2018-07-05",
+      "arithmetic": "37 C.F.R. § 90.3(a): 63 days. May 2 + 29 = May 31; + 30 = Jun 30 (59); + 4 = Jul 4 (63), Independence Day (a Wednesday), so it rolls to Thursday Jul 5.",
+      "historical": "Notice-of-appeal date not found; the appeal is No. 2018-2140."
+    },
+    {
+      "edge": "cafc@ptab::cert-window-file",
+      "trigger": "2022-08-11",
+      "trigger_event": "denial of rehearing after the second appeal (Sup. Ct. R. 13.3)",
+      "rule_set": "frap26",
+      "due": "2022-11-09",
+      "arithmetic": "Sup. Ct. R. 13.1: 90 days. Aug 11 + 20 = Aug 31; + 30 = Sep 30 (50); + 31 = Oct 31 (81); + 9 = Nov 9 (90), a Wednesday.",
+      "historical": "Petition filed 2023-01-06, about two months after the unextended date. An extension under Sup. Ct. R. 13.5 is the usual explanation, but none was found in the sources read."
+    }
+  ],
+  "quirks": [
+    "The deadline check on ptab-file-noa is ambiguous about which trip it measures. The edge is walked on both appeals, and the check uses the first (from the 2018 FWD).",
+    "The PTAB pack's director-review-decision offers affirm / modify / remand; a denial of Director rehearing, which leaves the Board decision standing, is walked as 'affirmed'.",
+    "The Supreme Court's remand went to the Acting Director, a step no pack has; the second leg starts at the PTAB's post-decision options with the estoppel flag the FWD already set."
+  ],
+  "sources": [
+    {"id": "cafc-2022", "title": "Arthrex, Inc. v. Smith & Nephew, Inc., 35 F.4th 1328 (Fed. Cir. 2022) (history of the IPR, the first appeal, and the Director-review remand)", "url": "https://www.cafc.uscourts.gov/opinions-orders/18-2140.OPINION.5-27-2022_1957812.pdf"},
+    {"id": "scotus-docket", "title": "Supreme Court docket No. 19-1434", "url": "https://www.supremecourt.gov/search.aspx?filename=/docket/docketfiles/html/public/19-1434.html"},
+    {"id": "scotus", "title": "United States v. Arthrex, Inc., 594 U.S. 1 (2021) (opinion)", "url": "https://www.law.cornell.edu/supremecourt/text/19-1434"},
+    {"id": "scotus-docket-2", "title": "Supreme Court docket No. 22-639 (Arthrex, Inc. v. Smith & Nephew, Inc.)", "url": "https://www.supremecourt.gov/docket/docketfiles/html/public/22-639.html"}
+  ]
+}

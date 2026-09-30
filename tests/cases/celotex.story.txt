@@ -1,0 +1,124 @@
+Celotex Corp. v. Catrett, 477 U.S. 317 (1986)
+The summary-judgment burden case. The D.D.C. grants summary judgment to Celotex (and every other defendant) for want of evidence of exposure; the D.C. Circuit reverses; Celotex wins certiorari. Exercises the FRCP summary-judgment -> appeal route added for this case.
+packs: frcp-civil-procedure, frap-appellate-procedure (links on)
+
+leg 1: Catrett sues fifteen asbestos manufacturers for her husband's wrongful death (D.D.C., filed September 1980); discovery has run.
+  start  frcp-civil-procedure::discovery-closed "Discovery Closed"
+    1. [-] Celotex and twelve other defendants move for summary judgment: plaintiff has no evidence of exposure to their products
+       via frcp-civil-procedure::discovery-closed->summary-judgment-motion#0 (nature, FRCP 56(a); 56(b))
+       at  frcp-civil-procedure::summary-judgment-motion "Motion for Summary Judgment Filed"
+    2. [-] Rule 56 briefing completes
+       via frcp-civil-procedure::summary-judgment-motion->sj-briefing-complete#0 (self, FRCP 56(c))
+       at  frcp-civil-procedure::sj-briefing-complete "Summary Judgment Briefing Complete"
+    3. [-] Motions taken under submission
+       via frcp-civil-procedure::sj-briefing-complete->sj-ruling#0 (nature, FRCP 56(a))
+       at  frcp-civil-procedure::sj-ruling "Court Rules on Summary Judgment"
+    4. [1982-07-21] The court grants every motion from the bench (no written opinion)
+       via frcp-civil-procedure::sj-ruling->summary-judgment-granted#0 (nature, FRCP 56(a))
+       at  frcp-civil-procedure::summary-judgment-granted "SUMMARY JUDGMENT ENTERED"
+    5. [-] With every defendant out, the judgment is final (28 U.S.C. § 1291)
+       via frcp-civil-procedure::summary-judgment-appeal-clock (self, 28 U.S.C. 1291; FRAP 4(a)(1)(A))
+       at  frcp-civil-procedure::notice-of-appeal-window "Notice of Appeal Window"
+    6. [-] Catrett appeals only the grant for Celotex (No. 83-1694)
+       via frcp-civil-procedure::notice-of-appeal-window->notice-of-appeal-filed#0 (self, FRAP 4(a)(1)(A), within 30 calendar days)
+       at  frcp-civil-procedure::notice-of-appeal-filed "Notice of Appeal Filed"
+    7. [-] The appeal crosses into the D.C. Circuit
+       via links::frcp-appeal-to-regional-circuit (self, cross-forum link, 28 U.S.C. § 1291; Fed. R. App. P. 3, 4)
+       at  frap-appellate-procedure::notice-of-appeal-filed "Notice of Appeal Filed"
+    8. [-] Appeal docketed
+       via frap-appellate-procedure::notice-of-appeal-filed->docketed-in-court-of-appeals#0 (nature, FRAP 3(d); FRAP 12(a); FRAP 12(b)(3))
+       at  frap-appellate-procedure::docketed-in-court-of-appeals "Appeal Docketed"
+    9. [-] Celotex, the appellee, considers a cross-appeal
+       via frap-appellate-procedure::docketed-in-court-of-appeals->cross-appeal-fork#0 (self, FRAP 4(a)(3); FRAP 4(a)(4))
+       at  frap-appellate-procedure::cross-appeal-fork "Appellee Considers a Cross-Appeal"
+   10. [-] No cross-appeal (Celotex won everything below)
+       via frap-appellate-procedure::cross-appeal-fork->cross-appeal-not-filed#0 (self, FRAP 4(a)(3))
+       at  frap-appellate-procedure::cross-appeal-not-filed "No Cross-Appeal — Judgment Defended Only"
+   11. [-] Appeal proceeds
+       via frap-appellate-procedure::cross-appeal-not-filed->voluntary-dismissal-fork#0 (nature, FRAP 28.1)
+       at  frap-appellate-procedure::voluntary-dismissal-fork "Parties Consider Dismissing the Appeal"
+   12. [-] The record is assembled
+       via frap-appellate-procedure::voluntary-dismissal-fork->transcript-order-fork#0 (self, FRAP 10(b))
+       at  frap-appellate-procedure::transcript-order-fork "Transcript Needed?"
+   13. [-] The ruling was delivered from the bench, so a hearing transcript is ordered (route assumed)
+       via frap-appellate-procedure::transcript-order-fork->transcript-ordered#0 (self, FRAP 10(b)(1), within 14 calendar days)
+       at  frap-appellate-procedure::transcript-ordered "Transcript Ordered"
+   14. [-] Record complete
+       via frap-appellate-procedure::transcript-ordered->record-transmitted#0 (nature, FRAP 11(b), within 30 calendar days)
+       at  frap-appellate-procedure::record-transmitted "Record on Appeal Complete and Transmitted"
+   15. [-] Motions stage
+       via frap-appellate-procedure::record-transmitted->stay-pending-appeal-fork#0 (nature)
+       at  frap-appellate-procedure::stay-pending-appeal-fork "Move to Stay Judgment Pending Appeal?"
+   16. [-] Nothing to stay (route assumed)
+       via frap-appellate-procedure::no-stay-sought (self, FRAP 8(a)(1))
+       at  frap-appellate-procedure::appellant-brief-window "Appellant's Opening Brief Due"
+   17. [-] Catrett's opening brief
+       via frap-appellate-procedure::appellant-brief-window->appellant-brief-filed#0 (self, FRAP 31(a)(1), within 40 calendar days)
+       at  frap-appellate-procedure::appellant-brief-filed "Opening Brief Filed"
+   18. [-] Celotex's response brief
+       via frap-appellate-procedure::appellant-brief-filed->appellee-brief-filed#0 (self, FRAP 31(a)(1); FRAP 28(b), within 30 calendar days)
+       at  frap-appellate-procedure::appellee-brief-filed "Appellee's Response Brief Filed"
+   19. [-] Reply (route assumed)
+       via frap-appellate-procedure::appellee-brief-filed->reply-brief-filed#0 (self, FRAP 31(a)(1); FRAP 28(c), within 21 calendar days)
+       at  frap-appellate-procedure::reply-brief-filed "Appellant's Reply Brief Filed"
+   20. [-] Briefing closes
+       via frap-appellate-procedure::reply-brief-filed->briefing-complete#0 (nature, FRAP 31)
+       at  frap-appellate-procedure::briefing-complete "Briefing Closed"
+   21. [-] Clerk calendars the appeal
+       via frap-appellate-procedure::briefing-complete->oral-argument-fork#0 (nature, FRAP 34(a))
+       at  frap-appellate-procedure::oral-argument-fork "Oral Argument or Submission on Briefs?"
+   22. [1984-02-06] Argued before Wald, Bork and Starr, JJ.
+       via frap-appellate-procedure::oral-argument-fork->oral-argument-held#0 (nature, FRAP 34(a)(1))
+       at  frap-appellate-procedure::oral-argument-held "Oral Argument Held"
+   23. [-] Panel deliberates
+       via frap-appellate-procedure::oral-argument-held->standard-of-review-fork#0 (nature, FRAP 34(d))
+       at  frap-appellate-procedure::standard-of-review-fork "Which Standard of Review Governs?"
+   24. [-] Summary judgment is a question of law (the opinion does not name the standard)
+       via frap-appellate-procedure::standard-of-review-fork->de-novo-review#0 (nature, Pure questions of law (statutory construction, constitutional interpretation, legal standards for admissibility))
+       at  frap-appellate-procedure::de-novo-review "De Novo Review (Questions of Law)"
+   25. [1985-03-08] D.C. Circuit reverses and remands (Starr, J.; Bork, J., dissenting)
+       via frap-appellate-procedure::de-novo-review->reversed-and-remanded#0 (nature)
+       at  frap-appellate-procedure::reversed-and-remanded "REVERSED AND REMANDED"
+   26. [-] Celotex weighs rehearing
+       via frap-appellate-procedure::reversed-and-remanded->rehearing-window#0 (self, FRAP 40(a)(1), within 14 calendar days)
+       at  frap-appellate-procedure::rehearing-window "Seek Rehearing?"
+   27. [-] No rehearing petition in the sources read (route assumed)
+       via frap-appellate-procedure::rehearing-window->mandate-issued#0 (self, FRAP 41(b)(1), within 14 calendar days)
+       at  frap-appellate-procedure::mandate-issued "Mandate Issues"
+   28. [-] The certiorari window runs
+       via frap-appellate-procedure::mandate-issued->cert-petition-window#0 (nature, Fed. R. App. P. 41(b); Sup. Ct. R. 13.3, within 90 calendar days)
+       at  frap-appellate-procedure::cert-petition-window "Certiorari Petition Window"
+   29. [-] Celotex petitions for certiorari (No. 85-198; filing date not found)
+       via frap-appellate-procedure::cert-petition-window->cert-petition-filed#0 (self, Sup. Ct. R. 13.1; 28 U.S.C. § 1254(1), within 90 calendar days)
+       at  frap-appellate-procedure::cert-petition-filed "Petition for Certiorari Filed"
+   30. [-] The Court considers the petition
+       via frap-appellate-procedure::cert-petition-filed->cert-review-decision#0 (nature, Sup. Ct. R. 10)
+       at  frap-appellate-procedure::cert-review-decision "Supreme Court Grants or Denies Certiorari"
+   31. [1985-11-04] Certiorari granted, 474 U.S. 944, to resolve a conflict with the Third Circuit
+       via frap-appellate-procedure::cert-review-decision->cert-granted#0 (nature, 28 U.S.C. § 1254(1); Sup. Ct. R. 10)
+       at  frap-appellate-procedure::cert-granted "CERT GRANTED — Case Transfers to the Supreme Court"
+  GAP: Supreme Court reverses and remands (argued 1986-04-01, decided 1986-06-25): the movant need not negate the opponent's claim with its own evidence
+       missing frap-appellate-procedure::cert-granted -> (beyond every pack)
+       No pack models Supreme Court merits review; cert-granted is terminal.
+
+outcome: frap-appellate-procedure::cert-granted
+  tags:  [pending]
+  real:  Reversed and remanded, 477 U.S. 317 (June 25, 1986).
+
+deadlines (by rule, from the `deadlines` op):
+  frcp-civil-procedure::notice-of-appeal-window->notice-of-appeal-filed#0
+    30 days under FRCP 6: 1982-07-21 (the bench ruling granting summary judgment (the date the D.C. Circuit gives)) -> due 1982-08-20
+    arithmetic: FRAP 4(a)(1)(A): 30 days. Jul 21 + 10 = Jul 31; + 20 = Aug 20 (30), a Friday.
+    historical: Not found. The rule runs from entry of the separate judgment, whose date was not found either, so this trigger is the ruling date.
+  frap-appellate-procedure::cert-petition-window->cert-petition-filed#0
+    90 days under Fed. R. App. P. 26: 1985-03-08 (the D.C. Circuit's judgment, assuming no rehearing petition) -> due 1985-06-06
+    arithmetic: Sup. Ct. R. 13.1: 90 days. Mar 8 + 23 = Mar 31; + 30 = Apr 30 (53); + 31 = May 31 (84); + 6 = Jun 6 (90), a Thursday.
+    historical: Filing date not found.
+
+where the pack's shape differs from the record:
+  - The FRCP pack's summary-judgment-granted node does not say who won; here the movant (Celotex) did.
+  - The FRCP pack models one lawsuit with one defendant; the real judgment disposed of thirteen summary-judgment motions and two personal-jurisdiction dismissals together.
+
+sources:
+  [cadc] Catrett v. Johns-Manville Sales Corp., 756 F.2d 181 (D.C. Cir. 1985) <https://law.resource.org/pub/us/case/reporter/F2/756/756.F2d.181.83-1694.html>
+  [scotus] Celotex Corp. v. Catrett, 477 U.S. 317 (1986) (opinion) <https://www.law.cornell.edu/supremecourt/text/477/317>

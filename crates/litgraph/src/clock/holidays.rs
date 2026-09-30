@@ -12,7 +12,7 @@
 //! | Birthday of Martin Luther King, Jr. | 3rd Monday in January |
 //! | Washington's Birthday | 3rd Monday in February |
 //! | Memorial Day | last Monday in May |
-//! | Juneteenth National Independence Day | June 19 (added by Pub. L. 117-17, eff. June 19, 2021) |
+//! | Juneteenth National Independence Day | June 19 (added by Pub. L. 117-17, June 17, 2021) |
 //! | Independence Day | July 4 |
 //! | Labor Day | 1st Monday in September |
 //! | Columbus Day | 2nd Monday in October |
@@ -22,6 +22,16 @@
 //!
 //! (b) Weekend observance: a holiday on Saturday is observed the preceding
 //! Friday; a holiday on Sunday is observed the following Monday.
+//!
+//! Two of the eleven are recent enough that a deadline computed for a past
+//! matter can straddle their creation, so they are applied only from the
+//! year they first took effect: Juneteenth from 2021 (Pub. L. 117-17,
+//! signed and effective June 17, 2021, first observed Friday June 18,
+//! 2021), and Martin Luther King, Jr. Day from 1986 (Pub. L. 98-144, first
+//! observed January 20, 1986). Earlier changes (the Uniform Monday Holiday
+//! Act's move of Washington's Birthday, Memorial Day and Columbus Day to
+//! Mondays, effective 1971) are not modeled, so dates before 1971 use
+//! today's calendar.
 //!
 //! (c) Inauguration Day: "January 20 of each fourth year after 1965 ...
 //! is a legal public holiday" for federal employees in the
@@ -51,30 +61,43 @@ fn observed(d: Date) -> Date {
     }
 }
 
+/// First year Juneteenth National Independence Day was a legal public
+/// holiday (Pub. L. 117-17, effective June 17, 2021).
+pub const JUNETEENTH_FIRST_YEAR: i32 = 2021;
+
+/// First year Martin Luther King, Jr. Day was observed (Pub. L. 98-144,
+/// effective 1986).
+pub const MLK_DAY_FIRST_YEAR: i32 = 1986;
+
 /// The eleven `5 U.S.C. § 6103(a)` holidays, common to every rule set,
-/// as *observed* dates for `year`.
+/// as *observed* dates for `year` (fewer before 2021 and 1986; see the
+/// module doc).
 #[must_use]
 pub fn federal_holidays(year: i32) -> BTreeSet<Date> {
     let fixed = [
-        Date::from_ymd(year, 1, 1),   // New Year's Day
-        Date::from_ymd(year, 6, 19),  // Juneteenth (Pub. L. 117-17, 2021)
-        Date::from_ymd(year, 7, 4),   // Independence Day
-        Date::from_ymd(year, 11, 11), // Veterans Day
-        Date::from_ymd(year, 12, 25), // Christmas Day
+        (Date::from_ymd(year, 1, 1), true), // New Year's Day
+        (Date::from_ymd(year, 6, 19), year >= JUNETEENTH_FIRST_YEAR), // Juneteenth
+        (Date::from_ymd(year, 7, 4), true), // Independence Day
+        (Date::from_ymd(year, 11, 11), true), // Veterans Day
+        (Date::from_ymd(year, 12, 25), true), // Christmas Day
     ];
     let floating = [
-        Date::nth_weekday_of_month(year, 1, MONDAY, 3), // MLK Day
-        Date::nth_weekday_of_month(year, 2, MONDAY, 3), // Washington's Birthday
-        Date::nth_weekday_of_month(year, 5, MONDAY, -1), // Memorial Day
-        Date::nth_weekday_of_month(year, 9, MONDAY, 1), // Labor Day
-        Date::nth_weekday_of_month(year, 10, MONDAY, 2), // Columbus Day
-        Date::nth_weekday_of_month(year, 11, THURSDAY, 4), // Thanksgiving
+        (
+            Date::nth_weekday_of_month(year, 1, MONDAY, 3),
+            year >= MLK_DAY_FIRST_YEAR,
+        ), // MLK Day
+        (Date::nth_weekday_of_month(year, 2, MONDAY, 3), true), // Washington's Birthday
+        (Date::nth_weekday_of_month(year, 5, MONDAY, -1), true), // Memorial Day
+        (Date::nth_weekday_of_month(year, 9, MONDAY, 1), true), // Labor Day
+        (Date::nth_weekday_of_month(year, 10, MONDAY, 2), true), // Columbus Day
+        (Date::nth_weekday_of_month(year, 11, THURSDAY, 4), true), // Thanksgiving
     ];
+    let in_force = |(d, yes): (crate::error::Result<Date>, bool)| d.ok().filter(|_| yes);
     fixed
         .into_iter()
-        .filter_map(Result::ok)
+        .filter_map(in_force)
         .map(observed)
-        .chain(floating.into_iter().filter_map(Result::ok))
+        .chain(floating.into_iter().filter_map(in_force))
         .collect()
 }
 
@@ -153,6 +176,34 @@ mod tests {
             RuleSet::Frcp6,
             &[]
         ));
+    }
+
+    #[test]
+    fn juneteenth_is_not_a_holiday_before_2021() {
+        // June 20, 2011 (a Monday) would be "Juneteenth observed" under
+        // today's calendar; in 2011 it was an ordinary business day.
+        assert!(!is_legal_holiday(
+            Date::from_ymd(2011, 6, 20).unwrap(),
+            RuleSet::Itc210,
+            &[]
+        ));
+        assert_eq!(federal_holidays(2020).len(), 10);
+        assert_eq!(federal_holidays(2021).len(), 11);
+    }
+
+    #[test]
+    fn mlk_day_is_a_holiday_from_1986() {
+        assert!(!is_legal_holiday(
+            Date::from_ymd(1985, 1, 21).unwrap(),
+            RuleSet::Frcp6,
+            &[]
+        ));
+        assert!(is_legal_holiday(
+            Date::from_ymd(1986, 1, 20).unwrap(),
+            RuleSet::Frcp6,
+            &[]
+        ));
+        assert_eq!(federal_holidays(1985).len(), 9);
     }
 
     #[test]

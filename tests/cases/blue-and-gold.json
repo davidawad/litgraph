@@ -1,0 +1,83 @@
+{
+  "case": "Blue & Gold Fleet, L.P. v. United States",
+  "citation": "492 F.3d 1308 (Fed. Cir. 2007)",
+  "summary": "The bid-protest waiver rule: a protester who does not object to a patent error in a solicitation before bids close waives the objection. A Court of Federal Claims protest, denied on the administrative record, affirmed by the Federal Circuit, with no certiorari. Exercises the CoFC bid-protest track, the cafc@cofc instance and its 45-day U.S.-party rehearing window, and cert-not-sought resolving through the panel-affirmed flag.",
+  "packs": ["cofc", "cafc"],
+  "legs": [
+    {
+      "start": "cofc::claim-accrues",
+      "context": "The National Park Service selects Hornblower for the Alcatraz ferry concession (2005-09-26). Blue & Gold protests to GAO (2005-10-06), then sues.",
+      "steps": [
+        {"to": "patent-claim-fork", "event": "Not a § 1498 patent claim", "source": "cfc"},
+        {"edge": "e-patentfork-nonpatent", "event": "Proceed to the limitations check"},
+        {"edge": "e-limitations-timely", "event": "Suit is timely (weeks after the award)", "source": "cfc"},
+        {"edge": "e-1500-clear", "event": "No suit on the same claim pending in another court (the GAO protest is not a court)", "source": "cfc"},
+        {"edge": "e-filingfork-protest", "event": "Blue & Gold elects the § 1491(b) bid-protest track", "source": "cfc"},
+        {"to": "bid-protest-complaint-filed", "event": "Protest complaint filed (No. 05-1203C); GAO then dismisses its protest (the pre-filing notice is not in the sources read)", "date": "2005-11-15", "source": "cfc"},
+        {"to": "bid-protest-initial-status-conference", "event": "Initial status conference (route assumed)"},
+        {"to": "bid-protest-injunctive-relief-fork", "event": "Interim relief?"},
+        {"edge": "e-protest-no-pi", "event": "No separate TRO or preliminary-injunction motion in the sources read (the complaint sought a permanent injunction)", "source": "cfc"},
+        {"to": "bid-protest-merits-ruling", "event": "Cross-motions for judgment on the administrative record", "source": "cfc"},
+        {"to": "protest-denied", "event": "Judge Miller grants the government's and Hornblower's motions: the selection was rational, and the Service Contract Act objection came too late", "date": "2006-03-22", "source": "cfc"},
+        {"to": "cafc@cofc::entry-cofc", "event": "Blue & Gold appeals", "source": "cafc"},
+        {"edge": "cofc-file-noa", "event": "Notice of appeal (No. 2006-5064)", "source": "cafc"},
+        {"to": "docketed", "event": "Appeal docketed"},
+        {"to": "appearance-and-coi-filed", "event": "Entries of appearance and certificates of interest"},
+        {"to": "docketing-statement-filed", "event": "Docketing statements"},
+        {"to": "mediation-screening", "event": "Screening for mediation"},
+        {"edge": "screening-to-motions", "event": "Not mediated (route assumed)"},
+        {"edge": "motions-decline", "event": "No stay motion (route assumed)"},
+        {"edge": "cross-appeal-decline", "event": "No cross-appeal (the government won below)"},
+        {"to": "appellant-brief-window", "event": "Briefing opens"},
+        {"to": "appellant-brief-filed", "event": "Blue & Gold's opening brief"},
+        {"to": "appellee-brief-filed", "event": "The government's and Hornblower's responses"},
+        {"to": "reply-brief-filed", "event": "Reply (route assumed)"},
+        {"to": "briefing-complete", "event": "Briefing closes"},
+        {"to": "joint-appendix-filed", "event": "Joint appendix filed"},
+        {"to": "oral-argument-fork", "event": "Calendared"},
+        {"to": "oral-argument-held", "event": "Argued (date not found; route assumed)"},
+        {"to": "panel-decision", "event": "Panel confers"},
+        {"edge": "panel-to-affirmed", "event": "Affirmed (Gajarsa, J.), adopting the waiver rule as a question of first impression", "date": "2007-06-26", "source": "cafc"},
+        {"edge": "affirmed-to-rehearing", "event": "Blue & Gold weighs rehearing"},
+        {"edge": "rehearing-time-expires", "event": "No rehearing petition found (route assumed)"},
+        {"edge": "mandate-to-costs", "event": "Bill of costs (route assumed; the pack requires it)"},
+        {"edge": "costs-to-cert-window", "event": "The certiorari window runs"},
+        {"edge": "cert-window-lapse", "event": "No certiorari petition found (route assumed)"}
+      ]
+    }
+  ],
+  "outcome": {
+    "node": "cafc@cofc::cert-not-sought",
+    "outcome": ["final"],
+    "flags": ["panel-affirmed"],
+    "real": "Affirmed; no certiorari petition was found. Hornblower keeps the concession."
+  },
+  "deadlines": [
+    {
+      "edge": "cafc@cofc::cofc-file-noa",
+      "trigger": "2006-03-22",
+      "trigger_event": "the Court of Federal Claims' decision (judgment was directed the same day)",
+      "rule_set": "frap26",
+      "due": "2006-05-22",
+      "arithmetic": "28 U.S.C. § 2522: 60 days. Mar 22 + 9 = Mar 31; + 30 = Apr 30 (39); + 21 = May 21 (60), a Sunday; rolls to Monday May 22.",
+      "historical": "Notice-of-appeal date not found; the appeal is No. 2006-5064."
+    },
+    {
+      "edge": "cafc@cofc::rehearing-time-expires",
+      "trigger": "2007-06-26",
+      "trigger_event": "the Federal Circuit's judgment",
+      "rule_set": "frap26",
+      "due": "2007-08-10",
+      "arithmetic": "Fed. Cir. R. 40(a)(1): 45 days because the United States is a party (links.json patches cafc@cofc). Jun 26 + 4 = Jun 30; + 31 = Jul 31 (35); + 10 = Aug 10 (45), a Friday.",
+      "historical": "No rehearing petition was found."
+    }
+  ],
+  "quirks": [
+    "The CoFC pack runs every claim, bid protests included, through the § 2501 limitations and § 1500 pending-claim checks before the filing-track fork; neither is really at issue in a protest.",
+    "The CoFC pack requires the RCFC Appendix C pre-filing notice before a protest complaint; the sources read don't mention one, so that step is shown as part of the filing."
+  ],
+  "sources": [
+    {"id": "cfc", "title": "Blue & Gold Fleet, L.P. v. United States, 70 Fed. Cl. 487 (2006)", "url": "https://static.case.law/fed-cl/70/cases/0487-01.json"},
+    {"id": "cafc", "title": "Blue & Gold Fleet, L.P. v. United States, 492 F.3d 1308 (Fed. Cir. 2007)", "url": "https://static.case.law/f3d/492/cases/1308-01.json"}
+  ]
+}

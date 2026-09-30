@@ -1,0 +1,147 @@
+eBay Inc. v. MercExchange, L.L.C., 547 U.S. 388 (2006)
+The permanent-injunction case. After a jury finds willful infringement, the E.D. Va. denies MercExchange a permanent injunction; the Federal Circuit reverses that denial as part of a mixed judgment; eBay wins certiorari. Exercises FRCP -> Federal Circuit (cafc@district-court) and the panel-mixed flag through rehearing and certiorari.
+packs: frcp-civil-procedure, cafc (links on)
+
+leg 1: MercExchange sues eBay and Half.com for infringing its online-auction patents (E.D. Va.); trial began 2003-04-23.
+  start  frcp-civil-procedure::verdict-rendered "Verdict / Findings Rendered"
+    1. [2003-05-27] Jury finds willful infringement and awards $35.0M
+       via frcp-civil-procedure::verdict-for-plaintiff (nature, FRCP 52(a); 58)
+       at  frcp-civil-procedure::final-judgment-entered "Final Judgment Entered"
+    2. [-] The 28-day post-trial motion window opens
+       via frcp-civil-procedure::final-judgment-entered->post-trial-motion-window#0 (self, FRCP 50(b); 59(b); 59(e))
+       at  frcp-civil-procedure::post-trial-motion-window "Post-Trial Motion Window"
+    3. [-] Defendants renew their JMOL motions (new-trial motions were also filed; the pack takes one motion at a time)
+       via frcp-civil-procedure::post-trial-motion-window->rule50b-jmol-filed#0 (self, FRCP 50(b), within 28 calendar days)
+       at  frcp-civil-procedure::rule50b-jmol-filed "Renewed Motion for JMOL Filed"
+    4. [-] Motions briefed
+       via frcp-civil-procedure::rule50b-jmol-filed->post-trial-ruling#0 (self, FRCP 50(b))
+       at  frcp-civil-procedure::post-trial-ruling "Court Rules on Post-Trial Motion"
+    5. [2003-08-06] JMOL and new trial denied (inducement award set aside); permanent injunction denied; judgment for $29.5M
+       via frcp-civil-procedure::post-trial-ruling->notice-of-appeal-window#0 (nature, FRAP 4(a)(4))
+       at  frcp-civil-procedure::notice-of-appeal-window "Notice of Appeal Window"
+    6. [-] eBay and Half.com appeal (No. 03-1600)
+       via frcp-civil-procedure::notice-of-appeal-window->notice-of-appeal-filed#0 (self, FRAP 4(a)(1)(A), within 30 calendar days)
+       at  frcp-civil-procedure::notice-of-appeal-filed "Notice of Appeal Filed"
+    7. [-] A patent case goes to the Federal Circuit (28 U.S.C. § 1295(a)(1)), not the Fourth Circuit
+       via links::frcp-appeal-to-cafc-district-court (self, cross-forum link, 28 U.S.C. § 1295(a)(1))
+       at  cafc@district-court::entry-district-court "District Court Patent Judgment Entered"
+    8. [-] The notice of appeal, as the CAFC pack records it
+       via cafc@district-court::district-court-file-noa (self, FRAP 4(a)(1)(A)-(B); 28 U.S.C. § 1295(a)(1), within 30 calendar days)
+       at  cafc@district-court::notice-of-appeal-filed "Notice of Appeal Filed (Convergence)"
+    9. [-] Appeal docketed at the Federal Circuit
+       via cafc@district-court::noa-to-docketed (nature, FRAP 12(a))
+       at  cafc@district-court::docketed "Appeal Docketed at the Federal Circuit"
+   10. [-] Entries of appearance and certificates of interest
+       via cafc@district-court::docketed-to-appearance (self, Fed. Cir. R. 47.3(b)(1); Fed. Cir. R. 47.4(b), within 14 calendar days)
+       at  cafc@district-court::appearance-and-coi-filed "Entry of Appearance & Certificate of Interest Filed"
+   11. [-] Docketing statements
+       via cafc@district-court::appearance-to-docketing-statement (self, Fed. Cir. R. 47.6, within 14 calendar days)
+       at  cafc@district-court::docketing-statement-filed "Docketing Statement Filed"
+   12. [-] Screening for mediation
+       via cafc@district-court::docketing-statement-to-screening (nature, Appellate Mediation Program Guidelines §§ 2-3)
+       at  cafc@district-court::mediation-screening "OGC Screens for the Mediation Program"
+   13. [-] Not mediated (route assumed)
+       via cafc@district-court::screening-to-motions (nature, Appellate Mediation Program Guidelines §§ 2, 7)
+       at  cafc@district-court::motions-fork "Move to Stay Judgment Pending Appeal?"
+   14. [-] No stay motion in the sources read (route assumed)
+       via cafc@district-court::motions-decline (self, FRAP 8(a))
+       at  cafc@district-court::cross-appeal-fork "Appellee Considers a Cross-Appeal"
+   15. [-] MercExchange cross-appeals the injunction denial (No. 03-1616)
+       via cafc@district-court::cross-appeal-file (self, FRAP 4(a)(3); Fed. Cir. R. 28.1, within 14 calendar days)
+       at  cafc@district-court::cross-appeal-filed "Notice of Cross-Appeal Filed"
+   16. [-] Cross-appeal docketed with the lead appeal
+       via cafc@district-court::cross-appeal-filed-to-briefing (nature, Fed. Cir. R. 28.1; Fed. Cir. R. 31(a)(1)(D))
+       at  cafc@district-court::appellant-brief-window "Appellant's Principal Brief Due"
+   17. [-] Opening brief
+       via cafc@district-court::appellant-brief-file (self, Fed. Cir. R. 31(a)(1)(A)-(B), within 60 calendar days)
+       at  cafc@district-court::appellant-brief-filed "Opening Brief Filed"
+   18. [-] Response and cross-appeal brief
+       via cafc@district-court::appellee-brief-file (opponent, Fed. Cir. R. 31(a)(2), within 40 calendar days)
+       at  cafc@district-court::appellee-brief-filed "Appellee's Principal/Response Brief Filed"
+   19. [-] Reply (route assumed)
+       via cafc@district-court::reply-brief-file (self, FRAP 31(a)(1), within 21 calendar days)
+       at  cafc@district-court::reply-brief-filed "Appellant's Reply Brief Filed"
+   20. [-] Briefing closes
+       via cafc@district-court::reply-brief-closes (nature, Fed. Cir. R. 31)
+       at  cafc@district-court::briefing-complete "Briefing Closed"
+   21. [-] Joint appendix filed
+       via cafc@district-court::briefing-to-appendix (self, Fed. Cir. R. 30(a)(2), within 7 calendar days)
+       at  cafc@district-court::joint-appendix-filed "Joint Appendix Served and Filed"
+   22. [-] Calendared
+       via cafc@district-court::appendix-to-argument-fork (nature, FRAP 34(a); Fed. Cir. IOP #7)
+       at  cafc@district-court::oral-argument-fork "Oral Argument or Submission Without Argument?"
+   23. [-] Argued (date not in the sources read; route assumed)
+       via cafc@district-court::argument-granted (nature, FRAP 34(a)(1); Fed. Cir. IOP #7)
+       at  cafc@district-court::oral-argument-held "Oral Argument Held"
+   24. [-] Panel confers
+       via cafc@district-court::argument-held-to-decision (nature, Fed. Cir. IOP #8)
+       at  cafc@district-court::panel-decision "Panel Decides the Appeal"
+   25. [2005-03-16] Affirmed in part, reversed in part (including reversing the injunction denial), vacated in part, and remanded (Bryson, J.)
+       via cafc@district-court::panel-to-mixed (nature, FRAP 36(a))
+       at  cafc@district-court::affirmed-in-part-reversed-in-part "Affirmed in Part, Reversed in Part" {panel-mixed}
+   26. [-] eBay weighs rehearing
+       via cafc@district-court::mixed-to-rehearing (self, Fed. Cir. R. 40(a)(1))
+       at  cafc@district-court::rehearing-window "Losing Party Weighs Rehearing" {panel-mixed}
+   27. [-] eBay petitions for rehearing
+       via cafc@district-court::rehearing-file (self, Fed. Cir. R. 40(a)-(b), (f), within 30 calendar days)
+       at  cafc@district-court::rehearing-petition-filed "Petition for Panel Rehearing / Rehearing En Banc / Combined Petition Filed" {panel-mixed}
+   28. [-] The court considers the petition
+       via cafc@district-court::rehearing-panel-considers (nature, Fed. Cir. R. 40(a)(1)-(4))
+       at  cafc@district-court::panel-en-banc-rehearing-decision "Panel (and, if Combined, the Full Court) Rules on the Petition" {panel-mixed}
+   29. [2005-04-26] Rehearing denied
+       via cafc@district-court::rehearing-denied-edge (nature, Fed. Cir. R. 40(a)(1))
+       at  cafc@district-court::rehearing-denied "Rehearing Denied — Panel Decision Stands" {panel-mixed}
+   30. [-] Mandate clock resumes
+       via cafc@district-court::rehearing-denied-to-mandate (nature, FRAP 41(b); Fed. Cir. R. 41, within 7 calendar days)
+       at  cafc@district-court::mandate-issued "Mandate Issues" {panel-mixed}
+   31. [-] Bill of costs (route assumed; the pack requires it)
+       via cafc@district-court::mandate-to-costs (nature, FRAP 39(e)(3)(A); Fed. Cir. R. 39(b), within 14 calendar days)
+       at  cafc@district-court::costs-bill-filed "Bill of Costs Filed and Taxed" {panel-mixed}
+   32. [-] The certiorari window runs
+       via cafc@district-court::costs-to-cert-window (nature, FRAP 39(e)(3)(C); Sup. Ct. R. 13.3)
+       at  cafc@district-court::cert-petition-window "Certiorari Petition Window" {panel-mixed}
+   33. [2005-07-25] eBay petitions for certiorari (No. 05-130)
+       via cafc@district-court::cert-window-file (self, 28 U.S.C. § 2101(c); Sup. Ct. R. 13.1, 13.3, within 90 calendar days)
+       at  cafc@district-court::cert-petition-filed "Petition for Certiorari Filed" {panel-mixed}
+   34. [-] The Court considers the petition
+       via cafc@district-court::cert-filed-to-review (nature, Sup. Ct. R. 10)
+       at  cafc@district-court::cert-review-decision "Supreme Court Grants or Denies Certiorari" {panel-mixed}
+   35. [2005-11-28] Certiorari granted, with an added question on Continental Paper Bag
+       via cafc@district-court::cert-review-grant (nature, 28 U.S.C. § 1254(1); Sup. Ct. R. 10)
+       at  cafc@district-court::cert-granted "CERT GRANTED — Case Transfers to the Supreme Court" {panel-mixed}
+  GAP: Supreme Court vacates and remands (argued 2006-03-29, decided 2006-05-15, unanimous): the four-factor equitable test governs patent injunctions
+       missing cafc@district-court::cert-granted -> (beyond every pack)
+       No pack models Supreme Court merits review; cert-granted is terminal.
+
+outcome: cafc@district-court::cert-granted
+  tags:  [remand]
+  flags: {panel-mixed}
+  real:  Vacated and remanded, 547 U.S. 388 (May 15, 2006).
+
+deadlines (by rule, from the `deadlines` op):
+  cafc@district-court::district-court-file-noa
+    30 days under Fed. R. App. P. 26: 2003-08-06 (entry of judgment) -> due 2003-09-05
+    arithmetic: FRAP 4(a)(1)(A): 30 days. Aug 6 + 25 = Aug 31; + 5 = Sep 5 (30), a Friday.
+    historical: Notice-of-appeal date not found; the appeal is No. 03-1600, docketed in 2003.
+  cafc@district-court::rehearing-file
+    30 days under Fed. R. App. P. 26: 2005-03-16 (the Federal Circuit's judgment) -> due 2005-04-15
+    arithmetic: Fed. Cir. R. 40: 30 days (no U.S. party). Mar 16 + 15 = Mar 31; + 15 = Apr 15 (30), a Friday.
+    historical: The petition was denied 2005-04-26; its filing date was not found. The pack encodes the current Federal Circuit rule; the period in force in 2005 was not checked.
+  cafc@district-court::cert-window-file
+    90 days under Fed. R. App. P. 26: 2005-04-26 (denial of rehearing (Sup. Ct. R. 13.3)) -> due 2005-07-25
+    arithmetic: Sup. Ct. R. 13.1: 90 days. Apr 26 + 4 = Apr 30; + 31 = May 31 (35); + 30 = Jun 30 (65); + 25 = Jul 25 (90), a Monday.
+    historical: Petition filed 2005-07-25, on the last day.
+
+where the pack's shape differs from the record:
+  - The notice of appeal is one filing but two edges: FRCP's notice-of-appeal-filed, and the CAFC pack's own district-court-file-noa after the link. Both carry the 30-day FRAP 4(a) window.
+  - The FRCP pack does not model the permanent-injunction motion (FRCP 65 / 35 U.S.C. § 283) separately from the post-trial motions, so the injunction denial, which was the issue on certiorari, is folded into the post-trial ruling step.
+  - The CAFC pack's panel-to-mixed has no remand branch; the real judgment also vacated in part and remanded (the '051 patent).
+  - The CAFC pack tags cert-granted with outcome 'remand'; the FRAP pack tags the same event 'pending'.
+  - The CAFC pack requires a bill-of-costs step before the certiorari window.
+
+sources:
+  [sec] eBay Inc. FY2003 Form 10-K (litigation disclosure: verdict and judgment) <https://www.sec.gov/Archives/edgar/data/0001065088/000089161804000676/f96707ore10vk.htm>
+  [dct] MercExchange, L.L.C. v. eBay, Inc., 275 F. Supp. 2d 695 (E.D. Va. 2003) <https://static.case.law/f-supp-2d/275/cases/0695-01.json>
+  [cafc] MercExchange, L.L.C. v. eBay, Inc., 401 F.3d 1323 (Fed. Cir. 2005) <https://www.cafc.uscourts.gov/opinions-orders/03-1600.pdf>
+  [scotus-docket] Supreme Court docket No. 05-130 <https://www.supremecourt.gov/search.aspx?filename=/docketfiles/05-130.htm>
+  [scotus] eBay Inc. v. MercExchange, L.L.C., 547 U.S. 388 (2006) (syllabus) <https://www.law.cornell.edu/supct/html/05-130.ZS.html>

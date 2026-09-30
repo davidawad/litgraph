@@ -11,6 +11,9 @@ extend-ignore-re = [
 sur = "sur"
 Sur = "Sur"
 FRE = "FRE"
+# Temporary restraining order; Chief Judge Howard T. Markey (tests/cases/).
+TRO = "TRO"
+Markey = "Markey"
 
 [default.extend-identifiers]
 # Short graph-algorithm locals (node a/b, node n/d).
