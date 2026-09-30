@@ -1,0 +1,550 @@
+<title>The Docket Graph</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+Condensed:wght@500;700&display=swap');
+/* One visual world: a docket read under a lamp. Ink, paper, slate; blue = you, red = the other side, highlighter = the solved line. */
+html,body{margin:0;background:#0D1319;color:#E4E8EB}
+body{padding:16px;box-sizing:border-box;overflow-x:hidden;font:15px/1.45 "IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.lg-wrap{width:100%;max-width:1600px;margin:0 auto}
+.lg-stage{position:relative;width:100%;aspect-ratio:16/9;background:#0D1319;border:1px solid #1E2A35;box-sizing:border-box}
+.lg-stage svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.lg-bar{display:flex;align-items:center;gap:10px;margin-top:10px;color:#6E7E8E;font-size:13px}
+.lg-bar button{font:inherit;color:#E4E8EB;background:#141C24;border:1px solid #2A3844;padding:5px 12px;cursor:pointer}
+.lg-bar button:hover,.lg-bar button:focus-visible{border-color:#FFD02E;outline:none}
+.lg-prog{flex:1;height:2px;background:#1E2A35;position:relative;min-width:40px}
+.lg-prog i{position:absolute;left:0;top:0;bottom:0;width:0;background:#FFD02E}
+.lg-mcap{display:none;margin:12px 0 0;color:#A5B1BC;font-size:13px}
+.lg-mcap b{display:block;color:#E4E8EB;font:700 20px/1.2 "IBM Plex Sans Condensed","Arial Narrow","Roboto Condensed",sans-serif}
+@media (max-width:720px){.lg-mcap{display:block}.lg-bar span.lg-t{display:none}}
+svg text{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+svg .cond{font-family:"IBM Plex Sans Condensed","Arial Narrow","Roboto Condensed",sans-serif}
+svg .type{font-family:"Courier Prime","Courier New",Courier,monospace}
+svg .halo{paint-order:stroke;stroke:#0D1319;stroke-width:5px;stroke-linejoin:round}
+</style>
+
+<div class="lg-wrap">
+<div class="lg-stage">
+<svg id="lg" viewBox="0 0 1600 900" role="img" aria-labelledby="lg-desc" xmlns="http://www.w3.org/2000/svg">
+<desc id="lg-desc">Court of Federal Claims rule cards for a 28 U.S.C. 1498(a) patent case collapse into litigraph's procedure graph. Nodes are colored by who moves: you, the United States, or the court with authored probabilities. The solver backs values up from the endings and highlights the optimal line, worth an expected net of $48,423. Monte Carlo over 10,000 runs gives a mean of $45,432, a 50.5% chance of losing money, and a 10% CVaR of minus $431,706. Not legal advice.</desc>
+<defs>
+  <pattern id="rules" width="1600" height="30" patternUnits="userSpaceOnUse"><line x1="0" y1="29.5" x2="1600" y2="29.5" stroke="#16202A" stroke-width="1"/></pattern>
+</defs>
+<rect width="1600" height="900" fill="#0D1319"/>
+<rect width="1600" height="900" fill="url(#rules)"/>
+<line x1="28" y1="0" x2="28" y2="900" stroke="#1C2833"/>
+
+<g id="graph"></g>
+
+<!-- Scene 1 is static markup so the first frame is composed before any script runs.
+     Every card's text is the cofc pack's own authority + node/edge label. -->
+<g id="docs">
+  <g class="doc" data-n="gov" data-x="560" data-y="330" data-r="-3">
+    <rect x="-170" y="-100" width="340" height="200" rx="2" fill="#E4E8EB"/>
+    <g class="dt"><text class="type" x="-150" y="-66" font-size="15" font-weight="700" fill="#5A6773">RCFC 12(a)(1)(A); 12(b)</text>
+    <text class="type" x="-150" y="-34" font-size="17" font-weight="700" fill="#0D1319">United States Answers or</text>
+    <text class="type" x="-150" y="-10" font-size="17" font-weight="700" fill="#0D1319">Moves Under RCFC 12(b)?</text>
+    <text class="type" x="-150" y="24" font-size="15" fill="#0D1319">60 days after service.</text>
+    <rect x="-152" y="40" width="304" height="36" fill="none" stroke="#C0392B" stroke-width="2"/>
+    <text class="type" x="-142" y="63" font-size="14" font-weight="700" fill="#C0392B">SERVED 2026-10-01 · DUE 2026-11-30</text>
+    <text x="-150" y="92" font-size="11" fill="#6E7E8E">cofc::government-response-fork</text></g>
+  </g>
+  <g class="doc" data-n="lim" data-x="190" data-y="250" data-r="-6">
+    <rect x="-150" y="-85" width="300" height="170" rx="2" fill="#E4E8EB"/>
+    <g class="dt"><text class="type" x="-130" y="-52" font-size="15" font-weight="700" fill="#5A6773">28 U.S.C. § 2501</text>
+    <text class="type" x="-130" y="-20" font-size="16" font-weight="700" fill="#0D1319">Is the Petition Filed</text>
+    <text class="type" x="-130" y="4" font-size="16" font-weight="700" fill="#0D1319">Within 6 Years of Accrual?</text>
+    <text x="-130" y="70" font-size="11" fill="#6E7E8E">cofc::limitations-check</text></g>
+  </g>
+  <g class="doc" data-n="b1500" data-x="330" data-y="560" data-r="4">
+    <rect x="-150" y="-85" width="300" height="170" rx="2" fill="#E4E8EB"/>
+    <g class="dt"><text class="type" x="-130" y="-52" font-size="15" font-weight="700" fill="#5A6773">28 U.S.C. § 1500</text>
+    <text class="type" x="-130" y="-20" font-size="16" font-weight="700" fill="#0D1319">Is the Same Claim Currently</text>
+    <text class="type" x="-130" y="4" font-size="16" font-weight="700" fill="#0D1319">Pending in Any Other Court?</text>
+    <text class="type" x="-130" y="36" font-size="14" fill="#0D1319">United States v. Tohono O'odham</text>
+    <text class="type" x="-130" y="54" font-size="14" fill="#0D1319">Nation, 563 U.S. 307 (2011)</text>
+    <text x="-130" y="72" font-size="11" fill="#6E7E8E">cofc::section-1500-check</text></g>
+  </g>
+  <g class="doc" data-n="filing" data-x="1180" data-y="210" data-r="3">
+    <rect x="-150" y="-80" width="300" height="160" rx="2" fill="#E4E8EB"/>
+    <g class="dt"><text class="type" x="-130" y="-48" font-size="15" font-weight="700" fill="#5A6773">RCFC 3; RCFC 5.5</text>
+    <text class="type" x="-130" y="-16" font-size="16" font-weight="700" fill="#0D1319">File a standard</text>
+    <text class="type" x="-130" y="8" font-size="16" font-weight="700" fill="#0D1319">RCFC 3 complaint</text>
+    <text x="-130" y="64" font-size="11" fill="#6E7E8E">cofc::filing-track-fork</text></g>
+  </g>
+  <g class="doc" data-n="r12" data-x="900" data-y="235" data-r="-2">
+    <rect x="-150" y="-85" width="300" height="170" rx="2" fill="#E4E8EB"/>
+    <g class="dt"><text class="type" x="-130" y="-52" font-size="15" font-weight="700" fill="#5A6773">RCFC 12(b)(1); 12(b)(6)</text>
+    <text class="type" x="-130" y="-20" font-size="16" font-weight="700" fill="#0D1319">Court Rules on</text>
+    <text class="type" x="-130" y="4" font-size="16" font-weight="700" fill="#0D1319">RCFC 12(b) Motion</text>
+    <text class="type" x="-130" y="36" font-size="14" fill="#0D1319">Response due 14 days after</text>
+    <text class="type" x="-130" y="54" font-size="14" fill="#0D1319">a denial. RCFC 12(a)(4)</text>
+    <text x="-130" y="72" font-size="11" fill="#6E7E8E">cofc::ruling-12b</text></g>
+  </g>
+  <g class="doc" data-n="n14b" data-x="1400" data-y="420" data-r="5">
+    <rect x="-150" y="-85" width="300" height="170" rx="2" fill="#E4E8EB"/>
+    <g class="dt"><text class="type" x="-130" y="-52" font-size="15" font-weight="700" fill="#5A6773">RCFC 14(b)</text>
+    <text class="type" x="-130" y="-20" font-size="16" font-weight="700" fill="#0D1319">Notify a Government</text>
+    <text class="type" x="-130" y="4" font-size="16" font-weight="700" fill="#0D1319">Contractor as an</text>
+    <text class="type" x="-130" y="28" font-size="16" font-weight="700" fill="#0D1319">Interested Third Party?</text>
+    <text x="-130" y="70" font-size="11" fill="#6E7E8E">cofc::patent-14b-notice-fork</text></g>
+  </g>
+  <g class="doc" data-n="settle" data-x="760" data-y="610" data-r="-4">
+    <rect x="-150" y="-85" width="300" height="170" rx="2" fill="#E4E8EB"/>
+    <g class="dt"><text class="type" x="-130" y="-52" font-size="15" font-weight="700" fill="#5A6773">RCFC App. J Rules 16(a), 17</text>
+    <text class="type" x="-130" y="-20" font-size="16" font-weight="700" fill="#0D1319">Settlement Reached at</text>
+    <text class="type" x="-130" y="4" font-size="16" font-weight="700" fill="#0D1319">Mandatory Discussion?</text>
+    <text x="-130" y="70" font-size="11" fill="#6E7E8E">cofc::patent-settlement-fork</text></g>
+  </g>
+  <g class="doc" data-n="disp" data-x="1080" data-y="640" data-r="3">
+    <rect x="-150" y="-80" width="300" height="160" rx="2" fill="#E4E8EB"/>
+    <g class="dt"><text class="type" x="-130" y="-48" font-size="15" font-weight="700" fill="#5A6773">RCFC 56</text>
+    <text class="type" x="-130" y="-16" font-size="16" font-weight="700" fill="#0D1319">Dispositive Motion</text>
+    <text class="type" x="-130" y="8" font-size="16" font-weight="700" fill="#0D1319">Filed Before Trial?</text>
+    <text x="-130" y="64" font-size="11" fill="#6E7E8E">cofc::patent-dispositive-motion-fork</text></g>
+  </g>
+  <g class="doc" data-n="trial" data-x="420" data-y="770" data-r="-2">
+    <rect x="-150" y="-75" width="300" height="150" rx="2" fill="#E4E8EB"/>
+    <g class="dt"><text class="type" x="-130" y="-42" font-size="15" font-weight="700" fill="#5A6773">RCFC 39; RCFC 52(a)</text>
+    <text class="type" x="-130" y="-10" font-size="16" font-weight="700" fill="#0D1319">Bench Trial (No Jury)</text>
+    <text class="type" x="-130" y="18" font-size="14" fill="#0D1319">28 U.S.C. § 1498(a)</text>
+    <text x="-130" y="58" font-size="11" fill="#6E7E8E">cofc::trial-bench</text></g>
+  </g>
+  <g class="doc" data-n="prev" data-x="1340" data-y="760" data-r="-5">
+    <rect x="-150" y="-80" width="300" height="160" rx="2" fill="#E4E8EB"/>
+    <g class="dt"><text class="type" x="-130" y="-48" font-size="15" font-weight="700" fill="#5A6773">RCFC 54(d); 28 U.S.C. § 2412(d)</text>
+    <text class="type" x="-130" y="-16" font-size="16" font-weight="700" fill="#0D1319">Who Prevailed?</text>
+    <text class="type" x="-130" y="14" font-size="14" fill="#0D1319">Bill of Costs; any EAJA</text>
+    <text class="type" x="-130" y="32" font-size="14" fill="#0D1319">application within 30 days</text>
+    <text x="-130" y="64" font-size="11" fill="#6E7E8E">cofc::prevailing-party-fork</text></g>
+  </g>
+</g>
+
+<g id="payoff" opacity="0"></g>
+<g id="endcard" opacity="0"></g>
+
+<g id="cap">
+  <rect x="40" y="22" width="880" height="96" fill="#0D1319" opacity=".86" id="capbg"/>
+  <text id="cap1" class="cond" x="56" y="70" font-size="48" font-weight="700" fill="#E4E8EB">A lawsuit looks like paper.</text>
+  <text id="cap2" x="58" y="102" font-size="17" fill="#A5B1BC">Rules, deadlines, motions: a 28 U.S.C. § 1498(a) patent claim in the Court of Federal Claims.</text>
+  <g id="legend" opacity="0"></g>
+</g>
+
+<g id="foot">
+  <rect x="0" y="868" width="1600" height="32" fill="#0D1319"/>
+  <text id="cmd" x="40" y="889" font-size="13" fill="#6E7E8E">$ litgraph deadlines --scenario cofc-1498-patent-case --arg trigger=2026-10-01 --arg node=cofc::government-response-fork</text>
+  <text x="1560" y="889" font-size="13" fill="#6E7E8E" text-anchor="end">Not legal advice.</text>
+</g>
+</svg>
+</div>
+<div class="lg-bar">
+  <button id="lg-play" type="button" aria-label="Pause">❚❚ pause</button>
+  <button id="lg-replay" type="button" aria-label="Replay from the start">↺ replay</button>
+  <div class="lg-prog" aria-hidden="true"><i id="lg-prog"></i></div>
+  <span class="lg-t">litgraph v0.2.1 · real output, cofc-1498-patent-case</span>
+</div>
+<p class="lg-mcap" id="lg-mcap"><b>A lawsuit looks like paper.</b>Rules, deadlines, motions: a 28 U.S.C. § 1498(a) patent claim in the Court of Federal Claims.</p>
+</div>
+
+<script>
+(() => {
+  // ---- All numbers below are litgraph 0.2.1 output for `--scenario cofc-1498-patent-case`
+  // (graph, solve, explain, chain [--arg from=<node>], simulate, deadlines). See NOTES.md.
+  const L = 42;                       // loop length, seconds
+  const C = {ink:'#0D1319', paper:'#E4E8EB', slate:'#6E7E8E', mid:'#A5B1BC',
+             self:'#3D9BFF', opp:'#FF5A4E', hi:'#FFD02E', edge:'#3B4B5A'};
+  const NS = 'http://www.w3.org/2000/svg';
+  const svg = document.getElementById('lg');
+  const el = (tag, attrs, parent, text) => {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    if (parent) parent.appendChild(e);
+    return e;
+  };
+  const clamp = v => v < 0 ? 0 : v > 1 ? 1 : v;
+  const ease = k => k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+  const E = (t, a, b) => ease(clamp((t - a) / (b - a)));
+  const win = (t, a, b, f = .5) => Math.min(E(t, a, a + f), 1 - E(t, b - f, b));
+  const lerp = (a, b, k) => a + (b - a) * k;
+  const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  const mix = (a, b, k) => { const x = hex(a), y = hex(b);
+    return 'rgb(' + x.map((v, i) => Math.round(lerp(v, y[i], k))).join(',') + ')'; };
+  const usd = v => (v < 0 ? '−$' : '$') + Math.abs(Math.round(v)).toLocaleString('en-US');
+
+  // ---- nodes: key, cofc id, control, x, y, value (chain expected_net from the node) or payoff
+  const NODES = [
+    ['start','claim-accrues','chance',52,300],
+    ['lim','limitations-check','chance',180,300,48423],
+    ['b1500','section-1500-check','chance',390,300,50972],
+    ['filing','filing-track-fork','me',600,300,53654],
+    ['gov','government-response-fork','opponent',830,300,61859,null,null,[-22,-20,'end']],
+    ['r12','ruling-12b','chance',1085,300,100859],
+    ['ans','answer-filed','chance',1345,300,163250],
+    ['amend','amended-complaint-refiled','me',940,450,55359,null,null,[22,20,'start']],
+    ['n14b','patent-14b-notice-fork','opponent',180,660,163250],
+    ['settle','patent-settlement-fork','chance',450,660,394000],
+    ['disp','patent-dispositive-motion-fork','me',730,660,487000],
+    ['sj','sj-ruling','chance',860,775,475000,null,null,[-22,25,'end']],
+    ['trial','trial-bench','chance',1030,660,500000],
+    ['prev','prevailing-party-fork','chance',1290,660,500000,null,null,[-22,-20,'end']],
+    ['tbar','dismissed-time-barred','terminal',180,165,0,['DISMISSED','time-barred § 2501'],'r'],
+    ['t1500','dismissed-1500-bar','terminal',390,165,0,['DISMISSED','§ 1500 bar'],'r'],
+    ['tjur','dismissed-lack-of-jurisdiction','terminal',1110,455,0,['DISMISSED','no jurisdiction']],
+    ['tfts','dismissed-failure-to-state','terminal',1265,455,0,['DISMISSED','failure to state']],
+    ['tadr','settled-adr','terminal',450,790,450000,['SETTLED','via ADR']],
+    ['tsjg','summary-judgment-for-government','terminal',1010,790,0,['SUMMARY JUDGMENT','for government']],
+    ['tje','judgment-entered','terminal',1170,790,1000000,['SUMMARY JUDGMENT','for plaintiff']],
+    ['tjp','judgment-for-plaintiff','terminal',1470,570,1000000,['JUDGMENT','for plaintiff']],
+    ['tjg','judgment-for-government','terminal',1470,750,0,['JUDGMENT','for government']],
+  ].map(([k, id, ctl, x, y, v, tl, tpos, vp]) => ({k, id, ctl, x, y, v, tl, tpos, vp}));
+  const N = Object.fromEntries(NODES.map(n => [n.k, n]));
+
+  // ---- edges: from, to, role (s self / o opponent / n nature / x folded mix), prob label, opts
+  // c = number of single-step pack nodes folded into this drawn edge
+  const EDGES = [
+    ['start','lim','n',null,{c:1}],
+    ['lim','tbar','n','0.05'], ['lim','b1500','n','0.95'],
+    ['b1500','t1500','n','0.05'], ['b1500','filing','n','0.95'],
+    ['filing','gov','s',null,{c:2}],
+    ['gov','r12','o',null,{c:1}],
+    ['gov','ans','o',null,{q:[1087,120]}],
+    ['r12','ans','n','0.55'], ['r12','amend','n','0.20',{lp:.45}],
+    ['r12','tjur','n','0.15',{lp:.55}], ['r12','tfts','n','0.10',{lp:.5}],
+    ['amend','gov','s',null,{q:[850,445]}],
+    ['ans','n14b','n',null,{c:2,d:'M1345 300 H1500 Q1540 300 1540 340 V490 Q1540 530 1500 530 H220 Q180 530 180 570 V660',lc:.5}],
+    ['n14b','settle','x',null,{c:11,cl:'App. J'}],
+    ['settle','tadr','n','0.30'], ['settle','disp','n','0.70',{c:1,lp:.3,lc:.7}],
+    ['disp','trial','s'], ['disp','sj','s',null,{c:1}],
+    ['sj','trial','n','0.50 + 0.15',{lp:.3}],
+    ['sj','tsjg','n','0.20',{lp:.55}], ['sj','tje','n','0.15',{q:[1015,715],lp:.62}],
+    ['trial','prev','n',null,{c:5}],
+    ['prev','tjp','n','0.50'], ['prev','tjg','n','0.50'],
+  ].map(([a, b, role, p, o = {}], i) => ({i, a, b, role, p, ...o}));
+  const BEST = ['start','lim','b1500','filing','gov','r12','ans','n14b','settle','disp','trial','prev'];
+  const bestEdge = e => { const i = BEST.indexOf(e.a); return i >= 0 && BEST[i + 1] === e.b; };
+  const ROLE = {s:C.self, o:C.opp, n:C.mid, x:C.mid};
+  const rad = n => n.k === 'start' ? 8 : n.ctl === 'terminal' ? 13 : 19;
+
+  // ---- build the graph layer
+  const G = document.getElementById('graph');
+  const gHi = el('g', {}, G), gE = el('g', {}, G), gL = el('g', {}, G), gN = el('g', {}, G), gV = el('g', {}, G), gA = el('g', {}, G);
+  for (const e of EDGES) {
+    const A = N[e.a], B = N[e.b];
+    const d = e.d || (e.q ? `M${A.x} ${A.y} Q${e.q[0]} ${e.q[1]} ${B.x} ${B.y}` : `M${A.x} ${A.y} L${B.x} ${B.y}`);
+    e.path = el('path', {d, fill:'none', stroke:C.edge, 'stroke-width':2}, gE);
+    e.len = e.path.getTotalLength();
+    e.r0 = rad(A); e.r1 = rad(B) + 3;
+    const tip = e.path.getPointAtLength(e.len - e.r1), back = e.path.getPointAtLength(e.len - e.r1 - 6);
+    const ang = Math.atan2(tip.y - back.y, tip.x - back.x) * 180 / Math.PI;
+    e.arrow = el('path', {d:'M0 0 L-9 -4.5 L-9 4.5 Z', transform:`translate(${tip.x} ${tip.y}) rotate(${ang})`, fill:C.edge, opacity:0}, gE);
+    if (e.p) {
+      const q = e.path.getPointAtLength(e.len * (e.lp || .5));
+      e.pl = el('text', {x:q.x + 6, y:q.y - 6, 'font-size':14, fill:C.paper, class:'halo', opacity:0}, gL, e.p);
+    }
+    if (e.c) {
+      const q = e.path.getPointAtLength(e.len * (e.lc || .5));
+      const t = '⋯' + e.c + (e.cl ? ' ' + e.cl : '');
+      e.chip = el('g', {opacity:0, transform:`translate(${q.x} ${q.y})`}, gL);
+      el('rect', {x:-(t.length * 4.3 + 6), y:-10, width:t.length * 8.6 + 12, height:20, rx:10, fill:C.ink, stroke:'#2A3844'}, e.chip);
+      el('text', {x:0, y:5, 'font-size':13, fill:C.slate, 'text-anchor':'middle'}, e.chip, t);
+    }
+    if (bestEdge(e)) {
+      e.hl = el('path', {d, fill:'none', stroke:C.hi, 'stroke-width':12, 'stroke-linecap':'round', opacity:.5,
+        'stroke-dasharray':`0 ${e.len + 1}`}, gHi);
+    }
+  }
+  const SHAPE = {me:{w:28, rx:3, rot:0}, opponent:{w:26, rx:2, rot:45}, chance:{w:32, rx:16, rot:0}, terminal:{w:24, rx:2, rot:0}};
+  for (const n of NODES) {
+    n.g = el('g', {transform:`translate(${n.x} ${n.y})`, opacity:0}, gN);
+    if (n.k === 'start') {
+      n.shape = el('circle', {r:7, fill:C.paper}, n.g);
+      el('text', {x:-24, y:-18, 'font-size':12, fill:C.mid}, n.g, 'claim-accrues');
+    } else if (n.ctl === 'terminal') {
+      n.shape = el('rect', {x:-13, y:-9, width:26, height:18, fill:C.ink, stroke:C.paper, 'stroke-width':2}, n.g);
+      el('rect', {x:-9, y:-5, width:18, height:10, fill:'none', stroke:C.paper, 'stroke-width':1}, n.g);
+      const right = n.tpos === 'r';
+      n.tl.forEach((s, i) => el('text', {x:right ? 22 : 0, y:right ? -2 + i * 16 : 30 + i * 15,
+        'font-size':i ? 13 : 12, 'font-weight':i ? 500 : 700, class:'cond', 'letter-spacing':i ? 0 : 1,
+        fill:i ? C.mid : C.paper, 'text-anchor':right ? 'start' : 'middle'}, n.g, s));
+    } else {
+      const s = SHAPE[n.ctl];
+      n.shape = el('rect', {x:-s.w / 2, y:-s.w / 2, width:s.w, height:s.w, rx:s.rx, transform:`rotate(${s.rot})`,
+        fill:C.paper, stroke:C.ink, 'stroke-width':3}, n.g);
+      el('text', {x:0, y:40, 'font-size':12, fill:C.mid, 'text-anchor':'middle', class:'halo'}, n.g, n.id);
+    }
+    if (n.v != null) {
+      const term = n.ctl === 'terminal';
+      const pos = n.vp || (term ? (n.tpos === 'r' ? [22, 30] : [18, 5]) : [22, -20, 'start']);
+      n.val = el('text', {x:n.x + pos[0], y:n.y + pos[1], 'font-size':term ? 13 : 16, 'font-weight':600,
+        fill:term ? C.mid : C.paper, 'text-anchor':pos[2] || 'start', class:'halo', opacity:0}, gV, usd(n.v));
+      n.pulse = el('circle', {cx:n.x, cy:n.y, r:20, fill:'none', stroke:C.hi, 'stroke-width':2, opacity:0}, gV);
+    }
+    n.ring = el('circle', {cx:n.x, cy:n.y, r:rad(n) + 7, fill:'none', stroke:C.hi, 'stroke-width':2.5, opacity:0}, gV);
+  }
+
+  // ---- solver annotations (explain output)
+  const ann = (x, y, lines, anchor, fill) => {
+    const g = el('g', {opacity:0}, gA);
+    lines.forEach((s, i) => el('text', {x, y:y + i * 19, 'font-size':i ? 13 : 14, fill:i ? C.mid : fill, 'text-anchor':anchor, class:'halo', 'font-weight':i ? 400 : 600}, g, s));
+    return g;
+  };
+  const annGov = ann(1087, 140, ['US answers → you: $147,000', 'US moves 12(b) → you: $61,859', 'adversarial: it picks the worse one for you'], 'middle', C.opp);
+  const annSJ = ann(712, 730, ['SJ motion → $455,500', 'regret $31,500; trial wins'], 'end', C.self);
+
+  // ---- documents (scene 1 markup) morph into their nodes
+  const docs = [...document.querySelectorAll('#docs .doc')].map((g, i) => {
+    const r = g.querySelector('rect');
+    return {g, i, r, t:g.querySelector('.dt'), n:N[g.dataset.n], x:+g.dataset.x, y:+g.dataset.y, rot:+g.dataset.r,
+      w:+r.getAttribute('width'), h:+r.getAttribute('height')};
+  });
+  const morphAt = d => [5.6 + d.i * .16, 7.9 + d.i * .16];
+  const nodeShown = {};
+  docs.forEach(d => nodeShown[d.n.k] = morphAt(d)[1]);
+
+  // ---- legend (scene 3)
+  const leg = document.getElementById('legend');
+  [['me', C.self, 'you choose', 58], ['opponent', C.opp, 'the United States responds (adversarial)', 250], ['chance', C.paper, 'the court / chance, with authored probabilities', 730]]
+    .forEach(([ctl, col, s, x]) => {
+      const S = SHAPE[ctl], w = S.w * .6;
+      el('rect', {x:x, y:92 - w / 2, width:w, height:w, rx:S.rx * .6, fill:col, transform:`rotate(${S.rot} ${x + w / 2} 92)`}, leg);
+      el('text', {x:x + w + 10, y:98, 'font-size':17, fill:C.mid}, leg, s);
+    });
+
+  // ---- payoff (scene 5): chain absorption + simulate distribution
+  const P = document.getElementById('payoff');
+  el('text', {x:60, y:170, 'font-size':15, fill:C.slate}, P, 'chain · where the case ends under the optimal policy');
+  const ABS = [['judgment-for-plaintiff',.217164,1000000,'w'],['judgment-for-government',.217164,0],['settled-adr',.186141,450000,'s'],
+    ['dismissed-lack-of-jurisdiction',.169219,0],['dismissed-failure-to-state',.112813,0],['dismissed-time-barred',.05,0],['dismissed-1500-bar',.0475,0]];
+  const bars = ABS.map(([id, p, pay, kind], i) => {
+    const y = 205 + i * 44;
+    el('text', {x:60, y:y + 5, 'font-size':14, fill:C.paper}, P, id);
+    el('text', {x:60, y:y + 23, 'font-size':12, fill:C.slate}, P, 'payoff ' + usd(pay));
+    const b = el('rect', {x:400, y:y - 10, height:22, width:0, fill:kind === 'w' ? C.self : kind === 's' ? C.paper : '#4A5A69'}, P);
+    const tx = el('text', {x:408, y:y + 6, 'font-size':15, 'font-weight':600, fill:C.paper, opacity:0}, P, (p * 100).toFixed(p < .049 ? 2 : 1) + '%');
+    return {b, tx, w:p * 1150};
+  });
+  const chainStats = el('g', {opacity:0}, P);
+  el('text', {x:60, y:540, 'font-size':15, fill:C.slate}, chainStats, 'expected, from claim-accrues:');
+  [['net', '$48,423'], ['payoff', '$300,927'], ['cost', '$252,504'], ['time', '302 days']].forEach(([k, v], i) => {
+    el('text', {x:60 + i * 180, y:575, 'font-size':13, fill:C.slate}, chainStats, k);
+    el('text', {x:60 + i * 180, y:603, 'font-size':24, 'font-weight':600, fill:i ? C.paper : C.hi}, chainStats, v);
+  });
+  // simulate
+  const X0 = 910, X1 = 1530, xs = v => X0 + (v + 700000) / 1400000 * (X1 - X0);
+  el('text', {x:880, y:170, 'font-size':15, fill:C.slate}, P, 'simulate · net per run · 10,000 runs, seed 7');
+  const sim = el('g', {opacity:0}, P);
+  el('line', {x1:X0, y1:400, x2:X1, y2:400, stroke:'#2A3844', 'stroke-width':1.5}, sim);
+  [-600000, -300000, 0, 300000, 600000].forEach(v => {
+    el('line', {x1:xs(v), y1:v ? 395 : 210, x2:xs(v), y2:405, stroke:v ? '#2A3844' : C.slate, 'stroke-dasharray':v ? '' : '3 4'}, sim);
+    el('text', {x:xs(v), y:425, 'font-size':12, fill:C.slate, 'text-anchor':'middle'}, sim, v ? (v < 0 ? '−' : '') + '$' + Math.abs(v / 1000) + 'k' : '$0');
+  });
+  const Q = {min:-635455, p05:-407955, p25:-92705, p50:-47205, mean:45432, p75:172045, p95:592045, cvar:-431706};
+  el('rect', {x:xs(Q.min), y:285, width:xs(Q.p05) - xs(Q.min), height:50, fill:C.opp, opacity:.16}, sim);
+  const whisk = el('line', {x1:xs(Q.p05), y1:310, x2:xs(Q.p95), y2:310, stroke:C.mid, 'stroke-width':2}, sim);
+  [Q.p05, Q.p95].forEach(v => el('line', {x1:xs(v), y1:298, x2:xs(v), y2:322, stroke:C.mid, 'stroke-width':2}, sim));
+  el('rect', {x:xs(Q.p25), y:285, width:xs(Q.p75) - xs(Q.p25), height:50, fill:C.ink, stroke:C.paper, 'stroke-width':2}, sim);
+  el('line', {x1:xs(Q.p50), y1:285, x2:xs(Q.p50), y2:335, stroke:C.paper, 'stroke-width':3}, sim);
+  el('path', {d:`M${xs(Q.mean)} 252 l8 10 l-8 10 l-8 -10 Z`, fill:C.hi}, sim);
+  el('text', {x:xs(Q.mean) + 12, y:258, 'font-size':13, fill:C.hi}, sim, 'mean ' + usd(Q.mean));
+  el('text', {x:xs(Q.p50), y:356, 'font-size':13, fill:C.paper, 'text-anchor':'middle'}, sim, 'median ' + usd(Q.p50));
+  el('text', {x:xs(Q.p05), y:276, 'font-size':12, fill:C.mid, 'text-anchor':'end'}, sim, 'p05 ' + usd(Q.p05) + ' ');
+  el('text', {x:xs(Q.p95), y:276, 'font-size':12, fill:C.mid, 'text-anchor':'end'}, sim, 'p95 ' + usd(Q.p95) + ' ');
+  el('path', {d:`M${xs(Q.cvar)} 385 l-8 -14 h16 Z`, fill:C.opp}, sim);
+  el('text', {x:xs(Q.cvar), y:448, 'font-size':12, fill:C.opp, 'text-anchor':'middle'}, sim, 'CVaR (α = 0.10)');
+  const simStats = el('g', {opacity:0}, P);
+  [['P(loss)', '50.5%', C.paper], ['mean net', '$45,432', C.paper], ['CVaR, α = 0.10', '−$431,706', C.opp]].forEach(([k, v, c], i) => {
+    el('text', {x:880 + i * 225, y:470, 'font-size':13, fill:C.slate}, simStats, k);
+    el('text', {x:880 + i * 225, y:503, 'font-size':30, 'font-weight':600, fill:c}, simStats, v);
+  });
+  el('text', {x:880, y:548, 'font-size':15, fill:C.mid}, simStats, 'Positive on average, yet half the runs lose money.');
+  el('text', {x:880, y:571, 'font-size':15, fill:C.mid}, simStats, 'CVaR is the mean of the worst tenth. That is the bet.');
+  const warn = el('g', {opacity:0}, P);
+  el('rect', {x:44, y:650, width:1512, height:150, fill:'#101820', stroke:'#1E2A35'}, warn);
+  [['"warnings": [', C.mid], ['  {"code": "probability-fill", "count": 27},  {"code": "mixed-node", "count": 5},  {"code": "fact-unset", "count": 2}', C.paper], [']', C.mid],
+   ['// every number that rests on a fallback is reported, not hidden.', C.slate],
+   ['// the $1,000,000 stake and $650/h rate are this scenario\'s illustrative inputs; probabilities are teaching estimates.', C.slate]]
+    .forEach(([s, c], i) => el('text', {x:64, y:680 + i * 25, 'font-size':15, fill:c, style:'white-space:pre'}, warn, s));
+
+  // ---- end card
+  const EC = document.getElementById('endcard');
+  el('text', {x:120, y:225, 'font-size':16, fill:C.slate, 'letter-spacing':1}, EC, 'v0.2.1 · GPL-3.0 · CLI · MCP server · WebAssembly');
+  el('text', {x:112, y:370, 'font-size':168, 'font-weight':700, fill:C.paper, class:'cond', 'letter-spacing':-3}, EC, 'litgraph');
+  const thesis = el('text', {x:120, y:440, 'font-size':38, fill:C.paper, class:'cond', 'font-weight':500}, EC);
+  el('tspan', {}, thesis, 'Litigation procedure is a graph. ');
+  const thlT = el('tspan', {fill:C.paper, class:'thl'}, thesis, 'litgraph solves it.');
+  const thl = el('rect', {x:0, y:410, height:42, width:0, fill:C.hi}, EC);
+  EC.insertBefore(thl, thesis);
+  el('rect', {x:120, y:490, width:640, height:58, fill:'#101820', stroke:'#2A3844'}, EC);
+  el('text', {x:142, y:527, 'font-size':24, fill:C.paper}, EC, '$ brew install davidawad/tap/litgraph');
+  el('text', {x:120, y:600, 'font-size':24, fill:C.self}, EC, 'github.com/davidawad/litgraph');
+  el('text', {x:120, y:665, 'font-size':16, fill:C.mid}, EC, '8 packs · 470 nodes · 703 edges: FRCP · FRAP · FRCrimP · Court of Federal Claims · Federal Circuit');
+  el('text', {x:120, y:690, 'font-size':16, fill:C.mid}, EC, 'PTAB · ITC § 337 · USPTO prosecution. JSON in, JSON out.');
+  el('text', {x:120, y:760, 'font-size':14, fill:C.slate}, EC, 'Not legal advice. Probabilities are teaching estimates; payoffs are placeholders.');
+
+  // ---- scene script
+  const SCENES = [
+    [0, 5.6, 'A lawsuit looks like paper.', 'Rules, deadlines, motions: a 28 U.S.C. § 1498(a) patent claim in the Court of Federal Claims.',
+      '$ litgraph deadlines --scenario cofc-1498-patent-case --arg trigger=2026-10-01 --arg node=cofc::government-response-fork'],
+    [5.6, 12, 'It is a graph.', 'The cofc pack: 68 nodes, 84 edges. Shown: the § 1498 patent track; ⋯n folds n single-step nodes.',
+      '$ litgraph graph --scenario cofc-1498-patent-case'],
+    [12, 19, 'Three players move it.', null,
+      '$ litgraph explain --scenario cofc-1498-patent-case --arg node=cofc::government-response-fork'],
+    [19, 24.6, 'The solver backs values up from the endings.', 'Value at each node = expected payoff − remaining cost, under optimal play by both sides.',
+      '$ litgraph solve --scenario cofc-1498-patent-case'],
+    [24.6, 28.6, 'Then it lights the optimal line.', 'solve: converged in 40 iterations. Value at the start: $48,423 expected net.',
+      '$ litgraph solve --scenario cofc-1498-patent-case   # best_line'],
+    [28.6, 36.6, 'What it is worth, and the tail.', 'chain and simulate run on the same compiled graph and the same policy.',
+      '$ litgraph chain --scenario cofc-1498-patent-case && litgraph simulate --scenario cofc-1498-patent-case'],
+    [36.6, 42, 'A lawsuit looks like paper.', 'Rules, deadlines, motions: a 28 U.S.C. § 1498(a) patent claim in the Court of Federal Claims.',
+      '$ litgraph deadlines --scenario cofc-1498-patent-case --arg trigger=2026-10-01 --arg node=cofc::government-response-fork'],
+  ];
+  const cap1 = document.getElementById('cap1'), cap2 = document.getElementById('cap2'), cmd = document.getElementById('cmd'),
+        capG = document.getElementById('cap'), capbg = document.getElementById('capbg'), mcap = document.getElementById('lg-mcap');
+  const MOBILE = {2:['Three players move it.', 'Blue square: you choose. Red diamond: the United States responds. Circle: the court or chance, with authored probabilities.'],
+    6:['litgraph', 'Litigation procedure is a graph. litgraph solves it. brew install davidawad/tap/litgraph · github.com/davidawad/litgraph · Not legal advice.']};
+  let lastScene = -1;
+  const DOCS = document.getElementById('docs');
+
+  function render(t) {
+    // captions
+    const si = SCENES.findIndex(s => t >= s[0] && t < s[1]);
+    const sc = SCENES[si < 0 ? 0 : si];
+    if (si !== lastScene) {
+      lastScene = si;
+      cap1.textContent = sc[2]; cap2.textContent = sc[3] || ''; cmd.textContent = sc[4];
+      capbg.setAttribute('width', si === 2 ? 1260 : Math.max(sc[2].length * 23, (sc[3] || '').length * 10.3) + 50);
+      const m = MOBILE[si] || [sc[2], sc[3]];
+      mcap.textContent = '';
+      const b = document.createElement('b'); b.textContent = m[0]; mcap.appendChild(b);
+      mcap.appendChild(document.createTextNode(m[1]));
+    }
+    // scene 0 is fully on at t = 0; the last scene carries scene 0's caption in before the seam
+    const capA = si === 0 ? 1 - E(t, 5.25, 5.6) : si === 6 ? E(t, 41, 41.9)
+      : Math.min(E(t, sc[0], sc[0] + .45), 1 - E(t, sc[1] - .35, sc[1]));
+    capG.setAttribute('opacity', capA);
+    cmd.setAttribute('opacity', 1 - win(t, 36.7, 41.2, .5));
+    cap2.setAttribute('opacity', si === 2 ? 0 : 1);
+    document.getElementById('legend').setAttribute('opacity', si === 2 ? 1 : 0);
+
+    // documents: pile (with a small breath) -> morph -> gone; fade back in for the loop seam
+    const back = E(t, 40.4, 41.8);
+    const breathe = Math.sin(Math.PI * clamp(t / 5.6));
+    DOCS.style.display = (t < 9.9 || t > 40.3) ? '' : 'none';
+    for (const d of docs) {
+      const [a, b] = morphAt(d);
+      const k = t > 20 ? 0 : E(t, a, b);
+      const n = d.n, S = SHAPE[n.ctl];
+      const cx = lerp(d.x + breathe * (d.i % 2 ? 3 : -3), n.x, k), cy = lerp(d.y - breathe * 4, n.y, k);
+      const w = lerp(d.w, S.w, k), h = lerp(d.h, S.w, k), rot = lerp(d.rot, S.rot, k);
+      d.g.setAttribute('transform', `translate(${cx} ${cy}) rotate(${rot})`);
+      d.r.setAttribute('x', -w / 2); d.r.setAttribute('y', -h / 2);
+      d.r.setAttribute('width', w); d.r.setAttribute('height', h);
+      d.r.setAttribute('rx', lerp(2, S.rx, k));
+      d.t.setAttribute('opacity', 1 - clamp(k / .3));
+      d.g.setAttribute('opacity', t > 20 ? back : (t >= b ? 0 : 1));
+    }
+
+    // graph layer
+    const gOut = 1 - E(t, 28.6, 29.4) * .965;   // dims under the payoff panel and end card
+    G.setAttribute('opacity', t > 40.3 ? gOut * (1 - E(t, 40.3, 41.2)) : gOut);
+    const roleK = E(t, 12, 13.4);
+    for (const n of NODES) {
+      const shownAt = nodeShown[n.k];
+      const popA = shownAt != null ? (t >= shownAt ? 1 : 0) : E(t, 7.4 + (n.x / 1600) * 1.6 + (n.y > 500 ? .8 : 0), 8.2 + (n.x / 1600) * 1.6 + (n.y > 500 ? .8 : 0));
+      n.g.setAttribute('opacity', popA);
+      if (n.ctl !== 'terminal' && n.k !== 'start') {
+        const col = n.ctl === 'me' ? C.self : n.ctl === 'opponent' ? C.opp : C.paper;
+        n.shape.setAttribute('fill', mix(C.paper, col, roleK));
+      }
+      if (n.val) {
+        const vt = valueAt[n.k];
+        n.val.setAttribute('opacity', E(t, vt, vt + .3));
+        const pk = clamp((t - vt) / .7);
+        n.pulse.setAttribute('opacity', pk > 0 && pk < 1 ? (1 - pk) * .9 : 0);
+        n.pulse.setAttribute('r', rad(n) + 4 + pk * 22);
+      }
+      const ri = BEST.indexOf(n.k);
+      n.ring.setAttribute('opacity', ri >= 0 ? E(t, ringAt[ri], ringAt[ri] + .25) : 0);
+    }
+    for (const e of EDGES) {
+      const k = E(t, drawAt[e.i], drawAt[e.i] + .9);
+      const vis = Math.max(0, e.len - e.r0 - e.r1);
+      e.path.setAttribute('stroke-dasharray', `0 ${e.r0} ${vis * k} ${e.len + 50}`);
+      const col = mix(C.edge, ROLE[e.role], roleK * (e.role === 'x' ? .35 : e.role === 'n' ? .55 : 1));
+      e.path.setAttribute('stroke', col);
+      const dimmed = !bestEdge(e) && t > 25 ? 1 - E(t, 25, 26) * .55 : 1;
+      e.path.setAttribute('opacity', dimmed);
+      e.arrow.setAttribute('fill', col);
+      e.arrow.setAttribute('opacity', k > .96 ? dimmed : 0);
+      if (e.pl) e.pl.setAttribute('opacity', E(t, probAt[e.i], probAt[e.i] + .35) * dimmed);
+      if (e.chip) e.chip.setAttribute('opacity', E(t, drawAt[e.i] + .6, drawAt[e.i] + 1));
+      if (e.hl) {
+        const j = BEST.indexOf(e.a), hk = E(t, hlAt[j], hlAt[j + 1]);
+        e.hl.setAttribute('stroke-dasharray', `${e.len * hk} ${e.len + 1}`);
+        e.hl.setAttribute('opacity', hk > 0 ? .5 : 0);   // round caps would dot a zero-length dash
+      }
+    }
+    annGov.setAttribute('opacity', win(t, 22.9, 28.6));
+    annSJ.setAttribute('opacity', win(t, 21.4, 28.6));
+
+    // payoff panel
+    P.setAttribute('opacity', win(t, 28.7, 36.6, .6));
+    bars.forEach((b, i) => {
+      const k = E(t, 29.2 + i * .15, 30.4 + i * .15);
+      b.b.setAttribute('width', b.w * k);
+      b.tx.setAttribute('x', 408 + b.w * k); b.tx.setAttribute('opacity', k);
+    });
+    chainStats.setAttribute('opacity', E(t, 30.6, 31.2));
+    sim.setAttribute('opacity', E(t, 31, 31.8));
+    simStats.setAttribute('opacity', E(t, 32.2, 32.8));
+    warn.setAttribute('opacity', E(t, 33.4, 34));
+
+    // end card
+    EC.setAttribute('opacity', win(t, 36.7, 41.2, .7));
+    const hk = E(t, 37.6, 38.4);
+    thl.setAttribute('x', thlX); thl.setAttribute('width', thlW * hk);
+    thlT.setAttribute('fill', mix(C.paper, C.ink, clamp(hk * 2 - .6)));
+  }
+
+  // ---- timings derived from the layout
+  const drawAt = {}, probAt = {};
+  EDGES.forEach(e => {
+    const A = N[e.a], order = (A.y > 500 ? 1 : 0) * 1.1 + A.x / 1600 * 1.8;
+    drawAt[e.i] = 7.6 + order + (e.a === 'ans' ? .2 : 0);
+    probAt[e.i] = 13.6 + (A.y > 500 ? 1.6 : 0) + A.x / 1600 * 1.6;
+  });
+  const valueAt = {};
+  NODES.filter(n => n.ctl === 'terminal').forEach(n => valueAt[n.k] = 19.3);
+  ['prev','trial','sj','disp','settle','n14b','ans','amend','r12','gov','filing','b1500','lim']
+    .forEach((k, i) => valueAt[k] = 19.9 + i * .32);
+  // highlighter: one continuous stroke along BEST, speed proportional to drawn length
+  const bestEdges = BEST.slice(0, -1).map(a => EDGES.find(e => e.a === a && bestEdge(e)));
+  const total = bestEdges.reduce((s, e) => s + e.len, 0);
+  const hlAt = [24.8]; bestEdges.forEach((e, i) => hlAt.push(hlAt[i] + 3.2 * e.len / total));
+  const ringAt = BEST.map((k, i) => hlAt[i]);
+  let thlX = 0, thlW = 0;
+  const measure = () => { const s = EC.querySelector('.thl'); try { const bb = s.getBBox(); thlX = bb.x - 6; thlW = bb.width + 12; } catch (_) {} };
+
+  // ---- clock, controls, reduced motion
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const btn = document.getElementById('lg-play'), prog = document.getElementById('lg-prog');
+  const STILL = 28.2;                 // composed static frame: solved graph with the optimal line
+  const seek = /^#t=(\d+(?:\.\d+)?)$/.exec(location.hash);   // #t=28 opens paused on that frame
+  let playing = !reduce.matches && !seek, t = seek ? +seek[1] % L : playing ? 0 : STILL, last = null;
+  const setBtn = () => { btn.textContent = playing ? '❚❚ pause' : '▶ play'; btn.setAttribute('aria-label', playing ? 'Pause' : 'Play'); };
+  function frame(now) {
+    if (playing && last != null) t = (t + (now - last) / 1000) % L;
+    last = now;
+    render(t);
+    prog.style.width = (t / L * 100) + '%';
+    requestAnimationFrame(frame);
+  }
+  btn.addEventListener('click', () => { playing = !playing; setBtn(); });
+  document.getElementById('lg-replay').addEventListener('click', () => { t = 0; playing = true; setBtn(); });
+  reduce.addEventListener?.('change', m => { playing = !m.matches; if (!playing) t = STILL; setBtn(); });
+  setBtn();
+  render(t);   // compose the first frame synchronously
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { measure(); });
+  measure();
+  requestAnimationFrame(frame);
+})();
+</script>
