@@ -52,7 +52,7 @@
           # crates/litgraph/build.rs embeds these data directories into the
           # binary at build time, so the crane source filter keeps them
           # alongside the Rust sources.
-          dataDirs = [ "packs" "scenarios" "calibration" "sources" ];
+          dataDirs = [ "packs" "scenarios" "calibration" "sources" "examples" "tests" ];
           unfilteredSrc = pkgs.lib.cleanSourceWith {
             src = ./.;
             filter =
