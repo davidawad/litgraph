@@ -28,6 +28,7 @@ mod op;
 mod op_defaults;
 mod render;
 pub(crate) mod scenario_ref;
+mod settle;
 mod stopwatch;
 mod uncertainty;
 mod validate;
@@ -45,7 +46,7 @@ pub use catalog::{fingerprint, Catalog};
 pub use describe::{describe, schema, SCHEMA_KINDS};
 pub(crate) use envelope::Warn;
 pub use envelope::{ApiError, GroupedWarning, Response};
-pub use op::{Op, StructureWhat, StudySpec};
+pub use op::{Op, SettleArgs, StructureWhat, StudySpec};
 pub use render::choice_label;
 pub use validate::{detect, validate, Validation};
 
@@ -454,6 +455,7 @@ fn dispatch(req: &Request, catalog: &Catalog, g: &Graph, packs: &[Pack], sc: &Sc
                 *top,
             ))
         }),
+        Op::Settle(args) => with_view(g, sc, |v| settle::settle_op(v, args)),
         Op::Deadlines {
             trigger,
             edge,

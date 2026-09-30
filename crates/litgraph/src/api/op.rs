@@ -5,7 +5,9 @@
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
+use crate::algo::settle::{Rule68, Side, Sides};
 use crate::clock::ServiceMethod;
+use crate::scenario::Objective;
 
 #[allow(clippy::wildcard_imports)] // serde `default = "..."` paths name these helpers
 use super::op_defaults::*;
@@ -48,6 +50,45 @@ pub struct StudySpec {
     /// Display name.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub label: Option<String>,
+}
+
+/// `settle`'s arguments (see [`Op::Settle`]).
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct SettleArgs {
+    /// Node to evaluate from (default: start).
+    #[serde(default)]
+    pub node: Option<String>,
+    /// Which side `self` is on (prices are what the defendant pays).
+    #[serde(default)]
+    pub self_side: Side,
+    /// The opponent's risk attitude (`self`'s is `scenario.objective`):
+    /// `{type: expected}` | `{type: cara, a}` | `{type: worst}` |
+    /// `{type: cvar, alpha}` (`CVaR` by Monte Carlo).
+    #[serde(default)]
+    pub opponent_risk: Objective,
+    /// The plaintiff's Nash bargaining power in `[0, 1]`.
+    #[serde(default = "f_half")]
+    pub bargaining_power: f64,
+    /// Per-side annual discount rates driving Rubinstein patience
+    /// (default: `scenario.discount_annual`).
+    #[serde(default)]
+    pub discount_annual: Sides,
+    /// Per-side per-round discount factors in `(0, 1]`, overriding the rates.
+    #[serde(default)]
+    pub delta: Sides,
+    /// A Rule 68 offer of judgment served by the defendant at `node`.
+    #[serde(default)]
+    pub rule68: Option<Rule68>,
+    /// Monte Carlo runs per node for a `CVaR` side.
+    #[serde(default = "n::<20000>")]
+    pub runs: usize,
+    /// RNG seed for those runs.
+    #[serde(default = "seed")]
+    pub seed: u64,
+    /// Timing-line length cap.
+    #[serde(default = "n::<40>")]
+    pub max_steps: usize,
 }
 
 /// One operation. `from` overrides the scenario's start node.
@@ -322,6 +363,13 @@ pub enum Op {
         #[serde(default)]
         clerk_inaccessible: bool,
     },
+    /// Settlement prediction from both sides' values: the bargaining range
+    /// (ZOPA) or the no-deal gap, Nash / Rubinstein / midpoint prices, when
+    /// the surplus peaks along the likely line (settling as an
+    /// always-available action), and an optional Rule 68 offer of judgment.
+    /// Set `scenario.opponent_objective`; without it the opponent is zero-sum
+    /// and there is never a surplus to split. See `docs/SETTLEMENT.md`.
+    Settle(SettleArgs),
     /// Run `inner` under the scenario and under the scenario merge-patched with `variant`.
     Compare {
         /// JSON merge-patch applied to the scenario.
@@ -362,6 +410,7 @@ impl Op {
             Op::Voi { .. } => "voi",
             Op::Structure { .. } => "structure",
             Op::Deadlines { .. } => "deadlines",
+            Op::Settle(_) => "settle",
             Op::Compare { .. } => "compare",
             Op::Batch { .. } => "batch",
         }

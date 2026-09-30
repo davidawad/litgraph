@@ -48,6 +48,7 @@ you can read exactly what "cost" means and write your own.
 | value curve + policy breakpoints as any parameter varies | `sweep` |
 | which few inputs actually drive the answer | `tornado` |
 | SCCs, dominators, min-cut, betweenness, reachability | `structure` |
+| settlement range (ZOPA), Nash / Rubinstein / midpoint price, when to settle, Rule 68 offers | `settle` |
 | base scenario vs. a counterfactual, with deltas | `compare` |
 | several ops against one compiled graph | `batch` |
 | content QA: unsourced packs, missing payoffs, dead ends, unverifiable cites | `lint` |
@@ -103,6 +104,7 @@ patent case in the Court of Federal Claims through the Federal Circuit:
 | `cofc-1500-trap-compare.json` | the § 1500 same-claim-pending trap as a counterfactual |
 | `cofc-appeal-threshold-sweep.json` | the stake at which an appeal becomes worth briefing |
 | `cofc-explain-dispositive-fork.json` | `explain` at a dispositive-motion decision point |
+| `cofc-1498-settle.json` | settlement range, predicted prices, when the surplus peaks, a Rule 68 offer ([docs/SETTLEMENT.md](docs/SETTLEMENT.md)) |
 
 ```bash
 ./target/release/litgraph q - < examples/cofc-1498-chain.json

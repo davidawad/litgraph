@@ -31,6 +31,8 @@ litgraph q '{"packs":["cofc","cafc"],"scenario":{...},"op":{"op":"chain"}}'
 litgraph q '{"scenario":"cofc-1498-patent-case","op":{"op":"chain"}}'   # named scenario; its own `packs` apply
 litgraph chain --scenario cofc-1498-patent-case --set rate=900          # CLI: name/file/inline JSON, --set composes via `extends`
 litgraph q - < request.json
+litgraph q - < examples/cofc-1498-settle.json   # settle: ZOPA, Nash/Rubinstein price, when to settle, Rule 68
+                                            # (needs scenario.opponent_objective; docs/SETTLEMENT.md)
 ```
 
 Packs are embedded in the binary at build time — no `packs/` directory is
@@ -115,6 +117,9 @@ crates/litgraph/src/
   scenario/   Scenario → View (roles, masks, probabilities, node plans, belief, warnings)
   algo/       mdp (solve), chain, sim, paths (dijkstra/yen/pareto), sweep (+tornado), structure,
               robust, posterior, voi, dirichlet (uncertain probabilities)
+  scenario/   Scenario → View (roles, masks, probabilities, node plans, warnings)
+  algo/       mdp (solve), chain, sim, paths (dijkstra/yen/pareto), sweep (+tornado), structure,
+              equilibrium (general-sum), cvar, settle (ZOPA, bargaining prices, stopping, Rule 68)
   api/        JSON request/response, describe, op dispatch
   lint.rs     content QA
   cite/       cite verification against L0 sources (normalize, corpus, fuzzy match)
@@ -124,6 +129,7 @@ packs/                 forum packs + links.json
 sources/               vendored L0 primary-law text (see sources/PROVENANCE.md)
 calibration/           calibration/*.json overlay sets (real, sourced probabilities/durations)
 docs/                  ARCHITECTURE, PACK_SCHEMA, COST_FUNCTIONS, CRITIQUE, CALIBRATION, UNCERTAINTY
+docs/                  ARCHITECTURE, PACK_SCHEMA, COST_FUNCTIONS, CRITIQUE, CALIBRATION, SETTLEMENT
 tests/fixtures/ts-parity/   golden outputs from the original TS engine
 tests/cases/           famous cases replayed through the packs (+ story snapshots)
 tests/golden/          hand-checked 2-6 node graphs; tests/README.md explains the layers

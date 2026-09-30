@@ -70,6 +70,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     cost_edge}`) with `net` and `worth_paying`, all as expected regret, so
     exactly 0 when the decision can't change.
   - `Graph::sample_size` records calibrated edges' `n`.
+- **`settle` op: settlement prediction** (`docs/SETTLEMENT.md`). From any
+  node, each side's walk-away point is its certainty equivalent of
+  litigating on under the solved general-sum equilibrium, under its own
+  payoffs, costs and risk attitude (`scenario.objective` for `self`, the new
+  `opponent_risk` for the opponent; `cvar` sides are estimated by seeded
+  Monte Carlo). Reports the bargaining range (ZOPA) or the no-deal gap, and
+  prices side by side: split-the-surplus midpoint, symmetric and weighted
+  Nash bargaining (in each side's utility for sure money), and Rubinstein
+  alternating offers (discount factors from per-side `discount_annual` or
+  `delta` and the duration of the next procedural step, plus the
+  short-round limit). `timing` recomputes the range along the likely line,
+  names where the surplus peaks, and treats settling as an always-available
+  action (optimal stopping) to show how the policy and value change. An
+  optional `rule68: {offer, costs, eligible?}` models FRCP/RCFC 68(d)
+  cost shifting on a plaintiff's judgment not more favorable than the offer
+  (rule text verified on LII; *Delta Air Lines v. August* and *Marek v.
+  Chesny* scope). Example: `examples/cofc-1498-settle.json`.
 
 ## [0.2.1] - 2026-09-29
 

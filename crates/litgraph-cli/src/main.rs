@@ -26,7 +26,7 @@ use serde_json::{json, Map, Value};
     name = "litgraph",
     version,
     about = "Litigation procedure graphs as stochastic games: configure, submit and process scenarios. JSON in, JSON out.",
-    after_help = "Ops: describe packs lint validate graph metric explain solve chain simulate path pareto sweep tornado calibration posterior voi structure deadlines compare batch.\nRun `litgraph describe` for the full machine-readable manual."
+    after_help = "Ops: describe packs lint validate graph metric explain solve chain simulate path pareto sweep tornado calibration posterior voi structure deadlines settle compare batch.\nRun `litgraph describe` for the full machine-readable manual."
 )]
 struct Cli {
     /// `q`, `run`, `validate`, `schema`, or an op name.

@@ -19,6 +19,9 @@ Markey = "Markey"
 # Short graph-algorithm locals (node a/b, node n/d).
 ba = "ba"
 nd = "nd"
+# Short keys in marketing/graph/index.html (terminal "tje", label position "tpos").
+tje = "tje"
+tpos = "tpos"
 
 [files]
 extend-exclude = [

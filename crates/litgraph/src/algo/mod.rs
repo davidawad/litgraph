@@ -17,6 +17,8 @@ pub mod paths;
 pub mod posterior;
 /// Robust solve over Dirichlet credible (L1) ambiguity sets.
 pub mod robust;
+/// Settlement prediction: ZOPA, Nash/Rubinstein prices, timing, Rule 68.
+pub mod settle;
 /// Monte Carlo simulation: outcome distributions, `CVaR`, tails.
 pub mod sim;
 /// Graph structure: SCCs, dominators, min-cut, betweenness, reachability.

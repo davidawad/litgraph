@@ -20,6 +20,7 @@ layer and always find the next one up/down by id.
  L6  Answers        explain · compare · best line   (+ warnings, provenance)
  L5  Analyses       solve · chain · simulate · path · pareto · sweep · tornado · structure
                     · posterior · voi (uncertain probabilities, docs/UNCERTAINTY.md)
+ L5  Analyses       solve · chain · simulate · path · pareto · sweep · tornado · structure · settle
  L4  View           scenario resolved against the graph: roles, active edges,
                     probabilities, costs, utilities, node plans, warnings
  L3  Scenario       the matter: perspective, stakes/payoffs, rates, custom
@@ -156,7 +157,9 @@ describe ─► packs (quality) ─► explain <node> ─► solve ─► chain 
    a removed edge).
 4. `explain` at the current node: who decides, each option's value, regret
    vs the best, cost, deadline, and what each option leads to.
-5. `solve` / `chain` / `simulate` for the whole-matter picture.
+5. `solve` / `chain` / `simulate` for the whole-matter picture; `settle`
+   (with `scenario.opponent_objective`) for the settlement range, a
+   predicted price, and when to settle (`docs/SETTLEMENT.md`).
 6. `tornado` to find the few inputs that drive the answer; `sweep` to find
    thresholds ("above $X/hour, file the RCE instead"); `compare` for
    discrete alternatives. When the probabilities themselves are soft:

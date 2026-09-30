@@ -1,0 +1,12 @@
+{
+  "scenario": {
+    "extends": "cofc-1498-patent-case",
+    "opponent_objective": "-payoff"
+  },
+  "op": {
+    "op": "settle",
+    "bargaining_power": 0.5,
+    "discount_annual": { "plaintiff": 0.10, "defendant": 0.04 },
+    "rule68": { "offer": 450000, "costs": 25000 }
+  }
+}

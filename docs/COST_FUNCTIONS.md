@@ -82,7 +82,7 @@ with existing variables; **data** = expressible once packs carry the `attrs`;
 | per-matter payoff | `scenario.payoffs` | built-in |
 | outcome-class weighting | `tag('win') * payoff`, `tag('settlement') * payoff * 0.9` | expression |
 | fee shifting (§ 285, EAJA, 1927, Rule 37, contract) | `fee_shift: {fraction, eligible: "tag('fee-eligible')"}`, exact under policy via policy iteration | built-in |
-| Rule 68 offer-of-judgment cost shift | `fee_shift` with `eligible: "payoff < offer"` and costs-only fraction | expression |
+| Rule 68 offer-of-judgment cost shift | `settle` op's `rule68: {offer, costs, eligible?}` (FRCP/RCFC 68(d); see docs/SETTLEMENT.md); or `fee_shift` with `eligible: "payoff < offer"` and a costs-only fraction | built-in |
 | prejudgment interest, damages that grow with time | `payoff * (1+r)^(elapsed_total/365)` (see "Path-dependent terminal variables" below) | expression (exact in `simulate`; `solve`/`chain` see `elapsed_total` as 0) |
 | collectability / judgment-proof defendant | `payoff * collect_p` | expression |
 | non-monetary objectives (injunction, precedent, deterrence) | terminal `attrs` + utility expr, e.g. `payoff + node.precedent_value * precedent_weight` | data |
@@ -95,7 +95,8 @@ with existing variables; **data** = expressible once packs carry the `attrs`;
 | leverage (their cost vs ours) | `pareto objectives=[self_dollars, -opponent...]` → use `[self_dollars, opp_slack]` where `opp_slack = big - opponent_dollars` | expression (ratio of sums is not additive; frontier is the honest form) |
 | adversarial opponent | `opponent: adversarial` (minimax) | built-in |
 | perspective flip (defendant's view) | `perspective: {applicant: opponent, examiner: self}` + negated payoffs | built-in |
-| settlement timing | `compare` with `policy` forcing settle at different nodes | built-in |
+| settlement range and price (ZOPA, Nash, Rubinstein, midpoint) | `settle` op with `opponent_objective` (docs/SETTLEMENT.md) | built-in |
+| settlement timing | `settle`'s `timing` (surplus along the likely line, optimal stopping with settling always available); or `compare` with `policy` forcing settle at different nodes | built-in |
 | option value (keeping more terminals reachable) | betweenness / reachable-terminal count | partial (structure ops); engine for a per-edge metric |
 | estoppel / waiver that persists within a forum (IPR § 315(e), FRCP 12(h)) | edge `sets`/`clears`/`requires`/`forbids` a flag; `flag("x")` in a cost/utility expression | built-in (`docs/PACK_SCHEMA.md#state-flags`) |
 | estoppel / preclusion that persists *across forums* | flags set in one pack, read by a `flag()` expression or `forbids` on an edge in another pack (or a `links.json` link edge) — same mechanism, wired across the composed graph | built-in for a link edge in the flag's own graph; a pack whose only connection to the flag-setting pack is a scenario, not a compiled edge, still needs a shared graph to see it |

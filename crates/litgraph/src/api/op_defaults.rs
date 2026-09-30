@@ -61,6 +61,9 @@ pub(super) fn f_1500() -> f64 {
 pub(super) fn f_tol() -> f64 {
     1e-3
 }
+pub(super) fn f_half() -> f64 {
+    0.5
+}
 pub(super) fn f_alpha() -> f64 {
     0.1
 }
